@@ -1,0 +1,16 @@
+<h1 align="center">Tests</h1>
+
+1. [Create a window and set up the main scene.](https://github.com/Ethosa/nodesnim/blob/master/tests/test1.nim)
+2. [Play music.](https://github.com/Ethosa/nodesnim/blob/master/tests/test2.nim)
+3. [Use Control node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test3.nim)
+4. [Use ColorRect node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test4.nim)
+5. [Environment setting.](https://github.com/Ethosa/nodesnim/blob/master/tests/test5.nim)
+6. [Events handling.](https://github.com/Ethosa/nodesnim/blob/master/tests/test6.nim)
+7. [Input handling.](https://github.com/Ethosa/nodesnim/blob/master/tests/test7.nim)
+8. [Mouse setting.](https://github.com/Ethosa/nodesnim/blob/master/tests/test8.nim)
+9. [Extended Control events.](https://github.com/Ethosa/nodesnim/blob/master/tests/test9.nim)
+10. [Anchor setting.](https://github.com/Ethosa/nodesnim/blob/master/tests/test10.nim)
+11. [Canvas.](https://github.com/Ethosa/nodesnim/blob/master/tests/test11.nim)
+12. [Label node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test12.nim)
+13. [Clicker.](https://github.com/Ethosa/nodesnim/blob/master/tests/test13.nim)
+14. [Use TextureRect node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test14.nim)
