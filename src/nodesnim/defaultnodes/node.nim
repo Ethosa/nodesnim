@@ -1,6 +1,6 @@
 # author: Ethosa
 import strutils
-import sdl2
+import ../core/sdl2
 import ../default/vector2
 import ../default/enums
 import ../default/input

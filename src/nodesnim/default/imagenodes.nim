@@ -1,6 +1,6 @@
 # author: Ethosa
-import sdl2
-import sdl2/image
+import ../core/sdl2
+import ../core/sdl2/image
 {.used.}
 
 

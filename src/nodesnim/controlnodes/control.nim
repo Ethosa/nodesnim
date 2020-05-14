@@ -1,5 +1,5 @@
 # author: Ethosa
-import sdl2
+import ../core/sdl2
 import ../default/vector2
 import ../defaultnodes/canvas
 import ../defaultnodes/node
