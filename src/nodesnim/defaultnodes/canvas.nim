@@ -1,7 +1,7 @@
 # author: Ethosa
 import math
-import sdl2
-import sdl2/gfx
+import ../core/sdl2
+import ../core/sdl2/gfx
 import ../default/vector2
 import ../default/rect2
 import ../default/anchor

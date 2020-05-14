@@ -1,5 +1,5 @@
 # author: Ethosa
-import sdl2/mixer
+import ../core/sdl2/mixer
 import node
 {.used.}
 

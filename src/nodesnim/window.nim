@@ -1,5 +1,5 @@
 # author: Ethosa
-import sdl2
+import core/sdl2
 import environment
 import defaultnodes/node
 import defaultnodes/scene

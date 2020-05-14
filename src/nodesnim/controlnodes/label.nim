@@ -1,8 +1,8 @@
 # author: Ethosa
 import strutils
-import sdl2
-import sdl2/ttf
-import sdl2/gfx
+import ../core/sdl2
+import ../core/sdl2/ttf
+import ../core/sdl2/gfx
 import control
 import ../default/enums
 import ../default/anchor
