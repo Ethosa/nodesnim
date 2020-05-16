@@ -2,16 +2,13 @@
 import nodesnim
 
 
+Window("hello world")
+
 var
-  window = newWindow(
-    "hello world",  # window title
-    640,  # window width
-    360  # window height
-  )
-  main: SceneObj
-  main_scene = Scene("Main", main)  # create a new scene.
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-window.setMainScene(main_scene)
-# ^ Try to remove the line above and see what happens
 
-window.launch()  # start main loop
+addScene(main)
+setMainScene("Main")
+windowLauch()
