@@ -1,5 +1,5 @@
 # author: Ethosa
-import default/colornodes
+import core/color
 {.used.}
 
 

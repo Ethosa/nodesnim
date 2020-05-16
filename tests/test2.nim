@@ -1,19 +1,27 @@
-# --- Test 2. Play music. --- #
+# --- Test 2. Use Canvas node. --- #
 import nodesnim
 
 
+Window("hello world")
+
 var
-  window = newWindow("hello world", 640, 360)
-  main: SceneObj
-  main_scene = Scene("Main", main)
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  playerobj: MusicStreamPlayerObj
-  player = MusicStreamPlayer("MusicStreamPlayer", playerobj)
+  canvasobj: CanvasObj
+  canvas = Canvas(canvasobj)
 
-main_scene.addChild(player)
-player.load("assets/vug_ost_Weh.wav")  # Load music from file.
-player.play()
+main.addChild(canvas)
+
+canvas.fill(Color(0xffaaccff'u32))
+canvas.point(5, 5, Color("#64ffffff"))
+canvas.line(8, 16, 128, 64, Color("#ffff64ff"))
+canvas.circle(0, 240, 32, Color("#aaff6456"))
+canvas.line(200, -150, 0, 256, Color("#0e1317ff"))
+canvas.resize(256, 256)
+canvas.move(74.4, 89.4)
 
 
-window.setMainScene(main_scene)
-window.launch()
+addScene(main)
+setMainScene("Main")
+windowLauch()

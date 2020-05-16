@@ -2,7 +2,7 @@ import macros, sequtils
 
 proc glGetError*(): GLenum {.stdcall, importc, ogl.}
 
-macro wrapErrorChecking*(f: untyped): typed =
+macro wrapErrorChecking*(f: untyped): untyped =
   f.expectKind nnkStmtList
   result = newStmtList()
 
@@ -78,7 +78,7 @@ proc getGLerrorCode*: GLerrorCode = glGetError().GLerrorCode
   ## Like ``glGetError`` but returns an enumerator instead.
 
 type
-  GLerror* = object of Exception
+  GLerror* = object of ValueError
     ## An exception for OpenGL errors.
     code*: GLerrorCode ## The error code. This might be invalid for two reasons:
                     ## an outdated list of errors or a bad driver.

@@ -1,167 +1,114 @@
 # author: Ethosa
-import core/sdl2
-import environment
-import defaultnodes/node
-import defaultnodes/scene
-import default/exceptions
-import default/colornodes
-import default/input
-import default/enums
+import
+  thirdparty/opengl,
+  thirdparty/opengl/glut,
+
+  core/color,
+  core/exceptions,
+
+  nodes/node,
+  nodes/scene,
+
+  environment
 
 
-sdl2.init(INIT_EVERYTHING)
+var
+  cmdLine {.importc: "cmdLine".}: array[0..255, cstring]
+  cmdCount {.importc: "cmdCount".}: cint
+loadExtensions()  # Load OpenGL extensions.
+glutInit(addr cmdCount, addr cmdLine) # Initializ glut lib.
+glutInitDisplayMode(GLUT_DOUBLE)
 
 
-type
-  WindowObj* = object
-    is_work: bool  ## window is running
-    paused*: bool  ## window paused
-    window: WindowPtr
-    renderer: RendererPtr
-    environment*: EnvironmentRef  ## Environment object.
-    event: Event
-    scenes: seq[ScenePtr]
-    current_scene: ScenePtr
-    main_scene: ScenePtr
-  WindowRef* = ref WindowObj
+var
+  env*: EnvironmentRef = newEnvironment()
+  width, height: cint
+  main_scene*: ScenePtr = nil
+  current_scene*: ScenePtr = nil
+  scenes*: seq[ScenePtr] = @[]
+  paused*: bool = false
 
 
-# --- Private --- #
-var mouse_on: NodePtr = nil  # to check the node that is under the mouse.
+proc display {.cdecl.} =
+  ## Displays window.
+  let (r, g, b, a) = env.color.toFloatTuple()
+  glClearColor(r, g, b, a)
+  glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
 
-proc draw(window: WindowRef): void =
-  ## Draws the window.
-  var surface = window.window.getSurface()
-  # draw background environment color.
-  surface.fillRect(nil, window.environment.color.toUint32BEWithoutAlpha())
+  # Draw current scene.
+  current_scene.drawScene(width.GLfloat, height.GLfloat, paused)
 
-  for child in window.current_scene.getChildIter():
-    # skip, if pause mode is not PROCESS.
-    if window.paused and child.getPauseMode() != PROCESS:
-      continue
-    # ready(), if node is not ready.
-    if not child.is_ready:
-      child.ready()
-      child.is_ready = true
-    child.process()
-    child.draw(surface)
+  # Update window.
+  glFlush()
+  glutSwapBuffers()
 
-  discard window.window.updateSurface()
+proc mouse(button, state, x, y: cint) {.cdecl.} =
+  ## Handle mouse input.
+  discard
 
-
-proc handle_input(window: WindowRef): void =
-  ## Handles user input.
-  while window.event.pollEvent():
-    if window.event.kind == QuitEvent:
-      window.is_work = false
-    mouse_on = nil
-
-    input.updateEvent(window.event)
-    discard sdl2.captureMouse(True32)
-    discard sdl2.setRelativeMouseMode(input.is_mouse_captured)
-    discard sdl2.showCursor(input.is_show_cursor)
-
-    var nodes = window.current_scene.getChildIter()
-    for i in countdown(nodes.len()-1, 0):
-      var child = nodes[i]
-      if window.paused and child.getPauseMode() != PROCESS:
-        continue
-      child.handle(window.event, mouse_on)
-      child.input(input.last_event)
-
-    if window.event.kind == KeyDown or window.event.kind == KeyUp:
-      window.draw()
-      sdl2.delay(window.environment.delay)
+proc reshape(w, h: cint) {.cdecl.} =
+  ## This called when window resized.
+  if w > 0 and h > 0:
+    glViewport(0, 0, w, h)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -1, 1)
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+    width = w
+    height = h
 
 
-# --- Public --- #
-proc newWindow*(name: cstring, width, height: int, flags: uint32 = 0): WindowRef =
-  ## Creates a new Window object.
-  ##
-  ## Arguments:
-  ## - `name`: window title.
-  ## - `width`: window width.
-  ## - `height`: window height.
-  ##
-  ## Keyword Arguments:
-  ## - `debug_mode`: debug output.
-  ## - `flags`: SDL flags.
-  var
-    window = createWindow(
-      name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-      width.cint, height.cint, flags)
-    renderer = createRenderer(window, -1, Renderer_Software or Renderer_Accelerated)
-  WindowRef(
-    window: window, renderer: renderer, is_work: true,
-    event: sdl2.defaultEvent, environment: newEnvironment(),
-    scenes: @[], paused: false
-  )
+# ---- Public ---- #
+proc addScene*(scene: ScenePtr) =
+  ## Adds a new scenes in app.
+  if scene notin scenes:
+    scenes.add(scene)
 
-
-proc addNewScene*(window: WindowRef, scene: ScenePtr): void =
-  ## Adds a new scene.
-  ##
-  ## Arguments:
-  ## - `scene`: a scene pointer
-  window.scenes.add(scene)
-
-proc setMainScene*(window: WindowRef, scene: ScenePtr): void =
-  ## Sets a main scene.
-  ##
-  ## Arguments:
-  ## - `scene`: a scene pointer
-  window.main_scene = scene
-  window.current_scene = scene
-
-
-proc changeScene*(window: WindowRef, name: string): bool {.discardable.} =
-  ## Returns true, if scene changed
-  ##
-  ## Arguments:
-  ## - `name`: scene name.
-  var is_changed: bool = false
-  for scene in window.scenes:
+proc changeScene*(name: string): bool {.discardable.} =
+  ## Changes current scene.
+  result = false
+  for scene in scenes:
     if scene.name == name:
-      if window.current_scene != nil:
-        # Exit from current scene.
-        for child in window.current_scene.getChildIter():
-          if window.paused and child.getPauseMode() != PROCESS:
-            continue
-          child.exit()
-          child.is_ready = false
-      window.current_scene = nil
-      window.current_scene = scene
-      is_changed = true
+      if current_scene != nil:
+        current_scene.exit()
+      current_scene = nil
+      current_scene = scene
+      current_scene.enter()
+      result = true
       break
-  # Enter in scene
-  for child in window.current_scene.getChildIter():
-    if window.paused and child.getPauseMode() != PROCESS:
-      continue
-    child.calcPositionAnchor()
-    child.enter()
-  return is_changed
+
+proc setMainScene*(name: string) =
+  ## Set up main scene.
+  for scene in scenes:
+    if scene.name == name:
+      main_scene = scene
+      break
+
+proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
+  ## Creates a new window pointer
+  ##
+  ## Arguments:
+  ## - `title` - window title.
+  # Set up window.
+  glutInitWindowSize(w, h)
+  glutInitWindowPosition(100, 100)
+  let success = glutCreateWindow(title)
+
+  # Set up OpenGL
+  let (r, g, b, a) = env.color.toFloatTuple()
+  glClearColor(r, g, b, a)
+  glShadeModel(GL_FLAT)
+  glClear(GL_COLOR_BUFFER_BIT)
+
+  reshape(w, h)
 
 
-proc launch*(window: WindowRef) =
-  ## Start main loop.
-  if window.main_scene == nil:
-    raise newException(MainSceneNotLoadedError, "The main scene has not been indicated!")
-  window.changeScene(window.main_scene.name)
-
-  # Game loop
-  while window.is_work:
-    window.handle_input()
-    window.draw()
-    sdl2.delay(window.environment.delay)
-
-  # Exit from current scene
-  for child in window.current_scene.getChildIter():
-    if window.paused and child.getPauseMode() != PROCESS:
-      continue
-    child.exit()
-    child.is_ready = false
-
-  # Exit from SDL
-  sdl2.destroy(window.window)
-  sdl2.destroy(window.renderer)
-  sdl2.quit()
+proc windowLauch* =
+  glutDisplayFunc(display)
+  glutReshapeFunc(reshape)
+  glutMouseFunc(mouse)
+  if main_scene == nil:
+    raise newException(MainSceneNotLoadedError, "Main scene is not indicated!")
+  changeScene(main_scene.name)
+  glutMainLoop()
