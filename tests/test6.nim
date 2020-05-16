@@ -9,27 +9,32 @@ var
   main = Scene("Main", mainobj)
 
   colorrectobj: ColorRectObj
-  colorrect = ColorRect(colorrectobj)
+  lightblue = ColorRect(colorrectobj)
 
   colorrect1obj: ColorRectObj
-  colorrect1 = ColorRect(colorrect1obj)
+  violet = ColorRect(colorrect1obj)
 
-main.addChild(colorrect)
-colorrect.addChild(colorrect1)
+main.addChild(lightblue)
+lightblue.addChild(violet)
 
 
-colorrect1.anchor = Anchor(  # Try to change it! ^^
-  0.5,  # parent anchor at X axis.
-  0.5,  # parent anchor at Y axis.
-  0.5,  # anchor at X axis.
-  0.5   # anchor at Y axis.
+lightblue.resize(256, 128)
+lightblue.move(128, 64)
+
+violet.anchor = Anchor(  # Try to change it! ^^
+  0.5,  # parent anchor at X-axis.
+  0.5,  # parent anchor at Y-axis.
+  0.5,  # anchor at X-axis.
+  0.5   # anchor at Y-axis.
 )
-colorrect.anchor = Anchor(1, 1, 1, 1)
+lightblue.anchor = Anchor(1, 1, 1, 1)
+lightblue.size_anchor = Vector2(
+  0,  # size anchor at X-axis. If 0 then not used.
+  1   # size anchor at Y-axis. If 0 then not used.
+)
 
-colorrect.resize(256, 128)
-colorrect.move(128, 64)
-colorrect.color = Color(0xaaccffff'u32)
-colorrect1.color = Color(0xccaaffff'u32)
+lightblue.color = Color(0xaaccffff'u32)
+violet.color = Color(0xccaaffff'u32)
 
 
 addScene(main)
