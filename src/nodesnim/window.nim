@@ -64,7 +64,7 @@ proc reshape(w, h: cint) {.cdecl.} =
     height = h
 
     if current_scene != nil:
-      current_scene.reAnchorScene(paused)
+      current_scene.reAnchorScene(w.GLfloat, h.GLfloat, paused)
 
 template check(event, condition, conditionelif: untyped): untyped =
   if last_event is `event` and `condition`:
@@ -147,7 +147,7 @@ proc changeScene*(name: string): bool {.discardable.} =
       current_scene = nil
       current_scene = scene
       current_scene.enter()
-      current_scene.reAnchorScene(paused)
+      current_scene.reAnchorScene(width.GLfloat, height.GLfloat, paused)
       result = true
       break
 

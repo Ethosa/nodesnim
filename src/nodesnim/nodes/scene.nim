@@ -52,7 +52,9 @@ method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, p
       childs[i].handle(event, mouse_on)
       childs[i].input(event)
 
-method reAnchorScene*(scene: ScenePtr, paused: bool) {.base.} =
+method reAnchorScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
+  scene.rect_size.x = w
+  scene.rect_size.y = h
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
