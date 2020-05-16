@@ -17,6 +17,7 @@ var
 main.addChild(colorrect)
 colorrect.addChild(colorrect1)
 
+
 colorrect1.click =
   proc(x, y: float) =  # This called when the user clicks on the Control node (ColorRect in this case).
     colorrect1.move(3, 3)

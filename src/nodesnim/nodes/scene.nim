@@ -56,5 +56,5 @@ method reAnchorScene*(scene: ScenePtr, paused: bool) {.base.} =
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
-    if child.visible:
+    if child.visible and child.anchor != nil:
       child.calcPositionAnchor()

@@ -42,7 +42,7 @@ template nodepattern*(nodetype: untyped): untyped =
     enter: proc() = discard,
     exit: proc() = discard,
     is_ready: false, pausemode: INHERIT, visible: true,
-    anchor: Anchor(0, 0, 0, 0)
+    anchor: nil
   )
   result = variable.addr
 
@@ -201,10 +201,7 @@ method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
   ## Arguments:
   ## - `vec2`: how much to add to the position on the X,Y axes.
   self.position += vec2
-  self.anchor.x1 = 0
-  self.anchor.x2 = 0
-  self.anchor.y1 = 0
-  self.anchor.y2 = 0
+  self.anchor = nil
 
 method removeChild*(self: NodePtr, index: int) {.base.} =
   ## Removes node child at a specific position.
