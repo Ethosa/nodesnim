@@ -20,6 +20,7 @@ type
     position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
     global_position*: Vector2Ref     ## Node global position.
     rect_size*: Vector2Ref           ## Node size.
+    size_anchor*: Vector2Ref         ## Node size anchor.
     anchor*: AnchorRef               ## Node anchor.
     parent*: NodePtr                 ## Node parent.
     children*: seq[NodePtr]          ## Node children.
@@ -42,7 +43,7 @@ template nodepattern*(nodetype: untyped): untyped =
     enter: proc() = discard,
     exit: proc() = discard,
     is_ready: false, pausemode: INHERIT, visible: true,
-    anchor: nil
+    anchor: nil, size_anchor: nil
   )
   result = variable.addr
 
@@ -202,6 +203,7 @@ method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
   ## - `vec2`: how much to add to the position on the X,Y axes.
   self.position += vec2
   self.anchor = nil
+  self.size_anchor = nil
 
 method removeChild*(self: NodePtr, index: int) {.base.} =
   ## Removes node child at a specific position.

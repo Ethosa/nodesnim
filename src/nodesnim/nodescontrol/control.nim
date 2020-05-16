@@ -50,8 +50,14 @@ proc Control*(obj: var ControlObj): ControlPtr {.inline.} =
 
 method calcPositionAnchor*(self: ControlPtr) =
   if self.parent != nil:
-    self.position.x = self.parent.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
-    self.position.y = self.parent.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
+    if self.size_anchor != nil:
+      if self.size_anchor.x > 0.0:
+        self.rect_size.x = self.parent.rect_size.x * self.size_anchor.x
+      if self.size_anchor.y > 0.0:
+        self.rect_size.y = self.parent.rect_size.y * self.size_anchor.y
+    if self.anchor != nil:
+      self.position.x = self.parent.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
+      self.position.y = self.parent.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
 
 method draw*(self: ControlPtr, w, h: GLfloat) =
   {.warning[LockLevel]: off.}

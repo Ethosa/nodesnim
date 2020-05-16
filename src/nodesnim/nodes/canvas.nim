@@ -150,3 +150,5 @@ method fill*(canvas: CanvasPtr, color: ColorRef) {.base.} =
 method resize*(canvas: CanvasPtr, w, h: GLfloat) {.base.} =
   canvas.rect_size.x = w
   canvas.rect_size.y = h
+  canvas.anchor = nil
+  canvas.size_anchor = nil
