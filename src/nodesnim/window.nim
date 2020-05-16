@@ -98,6 +98,8 @@ proc keyboardpress(c: int8, x, y: cint) {.cdecl.} =
     pressed_keys.add(key)
     pressed_keys_ints.add(c)
   last_event.kind = KEYBOARD
+  last_key_state = key_state
+  key_state = true
 
   current_scene.handleScene(last_event, mouse_on, paused)
 
@@ -110,6 +112,8 @@ proc keyboardup(c: int8, x, y: cint) {.cdecl.} =
   last_event.x = x.float
   last_event.y = y.float
   last_event.kind = KEYBOARD
+  last_key_state = key_state
+  key_state = false
   var i = 0
   for k in pressed_keys:
     if k == key:
