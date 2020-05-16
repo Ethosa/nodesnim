@@ -166,10 +166,9 @@ proc isActionPressed*(a: type Input, name: string): bool =
   result = false
   for action in actionlist:
     if action.name == name:
-      if action.kind == MOUSE and (last_event.kind == MOUSE or last_event.kind == MOTION):
+      if action.kind == MOUSE:
         if action.button_index == last_event.button_index and mouse_pressed:
-          if press_state > 0:
-            result = true
+          result = true
       elif action.kind == TOUCH and last_event.kind == TOUCH:
         if press_state > 0:
           result = true

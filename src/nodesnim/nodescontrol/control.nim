@@ -60,9 +60,14 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
+method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base.} =
+  Vector2Ref(x: last_event.x, y: last_event.y)
+
 method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
   {.warning[LockLevel]: off.}
-  let hasmouse = Rect2(self.global_position, self.rect_size).hasPoint(event.x, event.y)
+  let
+    hasmouse = Rect2(self.global_position, self.rect_size).hasPoint(event.x, event.y)
+    click = mouse_pressed and event.kind == MOUSE
   if mouse_on == nil and hasmouse:
     mouse_on = self
     # Hover
@@ -70,20 +75,21 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
       self.mouse_enter(event.x, event.y)
       self.hovered = true
     # Focus
-    if not self.focused and mouse_pressed:
+    if not self.focused and click:
       self.focused = true
       self.focus()
     # Click
     if mouse_pressed and not self.pressed:
       self.pressed = true
       self.click(event.x, event.y)
-  if not hasmouse and self.hovered:
-    self.mouse_exit(event.x, event.y)
-    self.hovered = false
-  # Unfocus
-  if self.focused and mouse_pressed and not hasmouse:
-    self.unfocus()
-    self.focused = false
+  elif not hasmouse:
+    if not mouse_pressed and self.hovered:
+      self.mouse_exit(event.x, event.y)
+      self.hovered = false
+    # Unfocus
+    if self.focused and click:
+      self.unfocus()
+      self.focused = false
   if not mouse_pressed and self.pressed:
     self.pressed = false
     self.release(event.x, event.y)

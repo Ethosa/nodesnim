@@ -10,6 +10,9 @@ import
   node
 
 
+const PI2 = PI + PI
+
+
 type
   DrawCommandType* {.size: sizeof(int8).} = enum
     POINT, LINE, RECT, FILL, CIRCLE
@@ -102,7 +105,7 @@ method circle*(canvas: CanvasPtr, x, y, radius: GLfloat, color: ColorRef, qualit
   ## - `quality` - circle quality.
   var pnts: seq[GLfloat]
   for i in 0..quality:
-    let angle = 2*PI*i.float/quality.float
+    let angle = PI2*i.float/quality.float
     pnts.add(radius*cos(angle))
     pnts.add(radius*sin(angle))
   canvas.commands.add(DrawCommand(kind: CIRCLE, x1: x, y1: y, color: color, points: pnts))
