@@ -47,4 +47,4 @@ node.input =
 
 addScene(main)
 setMainScene("Main")
-windowLauch()
+windowLaunch()

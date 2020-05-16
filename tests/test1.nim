@@ -15,4 +15,4 @@ var
 
 addScene(main)        # Add new scene in window.
 setMainScene("Main")  # Set main scene.
-windowLauch()         # Start main loop.
+windowLaunch()         # Start main loop.
