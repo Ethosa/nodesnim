@@ -17,13 +17,13 @@ type
     pressed*: bool
     focused*: bool
 
-    mouse_enter*: proc(x, y: float): void
-    mouse_exit*: proc(x, y: float): void
-    click*: proc(x, y: float): void
-    press*: proc(x, y: float): void
-    release*: proc(x, y: float): void
-    focus*: proc(): void
-    unfocus*: proc(): void
+    mouse_enter*: proc(x, y: float): void  ## This called when the mouse enters the Control node.
+    mouse_exit*: proc(x, y: float): void   ## This called when the mouse exit from the Control node.
+    click*: proc(x, y: float): void        ## This called when the user clicks on the Control node.
+    press*: proc(x, y: float): void        ## This called when the user holds on the mouse on the Control node.
+    release*: proc(x, y: float): void      ## This called when the user no more holds on the mouse.
+    focus*: proc(): void                   ## This called when the Control node gets focus.
+    unfocus*: proc(): void                 ## This called when the Control node loses focus.
   ControlPtr* = ptr ControlObj
 
 
@@ -69,20 +69,21 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
     if not self.hovered:
       self.mouse_enter(event.x, event.y)
       self.hovered = true
-    else:
-      self.mouse_exit(event.x, event.y)
-      self.hovered = false
     # Focus
-    if not self.focused:
+    if not self.focused and mouse_pressed:
       self.focused = true
       self.focus()
     # Click
     if mouse_pressed and not self.pressed:
       self.pressed = true
       self.click(event.x, event.y)
+  if not hasmouse and self.hovered:
+    self.mouse_exit(event.x, event.y)
+    self.hovered = false
   # Unfocus
-  if self.focused:
+  if self.focused and mouse_pressed and not hasmouse:
     self.unfocus()
+    self.focused = false
   if not mouse_pressed and self.pressed:
     self.pressed = false
     self.release(event.x, event.y)

@@ -38,6 +38,8 @@ proc display {.cdecl.} =
   let (r, g, b, a) = env.color.toFloatTuple()
   glClearColor(r, g, b, a)
   glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
+  glEnable(GL_BLEND)
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
   # Draw current scene.
   current_scene.drawScene(width.GLfloat, height.GLfloat, paused)
