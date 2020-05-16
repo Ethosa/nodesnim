@@ -44,9 +44,17 @@ method exit*(scene: ScenePtr) {.base.} =
     child.is_ready = false
 
 method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, paused: bool) {.base.} =
+  var childs = scene.getChildIter()
+  for i in countdown(childs.len()-1, 0):
+    if paused and childs[i].getPauseMode() != PROCESS:
+      continue
+    if childs[i].visible:
+      childs[i].handle(event, mouse_on)
+      childs[i].input(event)
+
+method reAnchorScene*(scene: ScenePtr, paused: bool) {.base.} =
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
     if child.visible:
-      child.handle(event, mouse_on)
-    child.input(event)
+      child.calcPositionAnchor()

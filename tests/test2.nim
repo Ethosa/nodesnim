@@ -24,4 +24,4 @@ canvas.move(74.4, 89.4)
 
 addScene(main)
 setMainScene("Main")
-windowLauch()
+windowLaunch()

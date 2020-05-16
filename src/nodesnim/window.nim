@@ -42,10 +42,27 @@ proc display {.cdecl.} =
   # Draw current scene.
   current_scene.drawScene(width.GLfloat, height.GLfloat, paused)
   press_state = -1
+  mouse_on = nil
 
   # Update window.
   glFlush()
   glutSwapBuffers()
+
+
+proc reshape(w, h: cint) {.cdecl.} =
+  ## This called when window resized.
+  if w > 0 and h > 0:
+    glViewport(0, 0, w, h)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -1, 1)
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+    width = w
+    height = h
+
+    if current_scene != nil:
+      current_scene.reAnchorScene(paused)
 
 template check(event, condition, conditionelif: untyped): untyped =
   if last_event is `event` and `condition`:
@@ -112,19 +129,6 @@ proc motion(x, y: cint) {.cdecl.} =
   current_scene.handleScene(last_event, mouse_on, paused)
 
 
-proc reshape(w, h: cint) {.cdecl.} =
-  ## This called when window resized.
-  if w > 0 and h > 0:
-    glViewport(0, 0, w, h)
-    glMatrixMode(GL_PROJECTION)
-    glLoadIdentity()
-    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -1, 1)
-    glMatrixMode(GL_MODELVIEW)
-    glLoadIdentity()
-    width = w
-    height = h
-
-
 # ---- Public ---- #
 proc addScene*(scene: ScenePtr) =
   ## Adds a new scenes in app.
@@ -141,6 +145,7 @@ proc changeScene*(name: string): bool {.discardable.} =
       current_scene = nil
       current_scene = scene
       current_scene.enter()
+      current_scene.reAnchorScene(paused)
       result = true
       break
 
@@ -170,7 +175,7 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   reshape(w, h)
 
 
-proc windowLauch* =
+proc windowLaunch* =
   ## Start main window loop.
   glutDisplayFunc(display)
   glutIdleFunc(display)

@@ -17,11 +17,12 @@ import
   nodesnim/nodes/scene,
   nodesnim/nodes/canvas,
 
-  nodesnim/nodescontrol/control
+  nodesnim/nodescontrol/control,
+  nodesnim/nodescontrol/color_rect
 
 export
   opengl, glut,
   window, environment,
   vector2, rect2, enums, anchor, color, exceptions, input,
   node, scene, canvas,
-  control
+  control, color_rect
