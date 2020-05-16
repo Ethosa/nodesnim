@@ -5,6 +5,7 @@ import
 
   core/color,
   core/exceptions,
+  core/input,
 
   nodes/node,
   nodes/scene,
@@ -29,6 +30,9 @@ var
   paused*: bool = false
 
 
+# --- Callbacks --- #
+var mouse_on: NodePtr = nil
+
 proc display {.cdecl.} =
   ## Displays window.
   let (r, g, b, a) = env.color.toFloatTuple()
@@ -37,14 +41,76 @@ proc display {.cdecl.} =
 
   # Draw current scene.
   current_scene.drawScene(width.GLfloat, height.GLfloat, paused)
+  press_state = -1
 
   # Update window.
   glFlush()
   glutSwapBuffers()
 
+template check(event, condition, conditionelif: untyped): untyped =
+  if last_event is `event` and `condition`:
+    press_state = 2
+  elif `conditionelif`:
+    press_state = 1
+  else:
+    press_state = 0
+
 proc mouse(button, state, x, y: cint) {.cdecl.} =
   ## Handle mouse input.
-  discard
+  check(InputEventMouseButton, last_event.pressed and state == GLUT_DOWN, state == GLUT_DOWN)
+  last_event.button_index = button
+  last_event.x = x.float
+  last_event.y = y.float
+  last_event.kind = MOUSE
+  mouse_pressed = state == GLUT_DOWN
+  last_event.pressed = state == GLUT_DOWN
+
+  current_scene.handleScene(last_event, mouse_on, paused)
+
+proc keyboardpress(c: int8, x, y: cint) {.cdecl.} =
+  ## Called when press any key on keyboard.
+  let key = $c.char
+  check(InputEventKeyboard, last_event.pressed, true)
+  last_event.key = key
+  last_event.key_int = c
+  last_event.x = x.float
+  last_event.y = y.float
+  if key notin pressed_keys:
+    pressed_keys.add(key)
+    pressed_keys_ints.add(c)
+  last_event.kind = KEYBOARD
+
+  current_scene.handleScene(last_event, mouse_on, paused)
+
+proc keyboardup(c: int8, x, y: cint) {.cdecl.} =
+  ## Called when any key no more pressed.
+  let key = $c.char
+  check(InputEventKeyboard, false, false)
+  last_event.key = key
+  last_event.key_int = c
+  last_event.x = x.float
+  last_event.y = y.float
+  last_event.kind = KEYBOARD
+  var i = 0
+  for k in pressed_keys:
+    if k == key:
+      pressed_keys.delete(i)
+      pressed_keys_ints.delete(i)
+      break
+    inc i
+
+  current_scene.handleScene(last_event, mouse_on, paused)
+
+proc motion(x, y: cint) {.cdecl.} =
+  ## Called on any mouse motion.
+  last_event.kind = MOTION
+  last_event.xrel = last_event.x - x.float
+  last_event.yrel = last_event.y - y.float
+  last_event.x = x.float
+  last_event.y = y.float
+
+  current_scene.handleScene(last_event, mouse_on, paused)
+
 
 proc reshape(w, h: cint) {.cdecl.} =
   ## This called when window resized.
@@ -105,9 +171,15 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
 
 
 proc windowLauch* =
+  ## Start main window loop.
   glutDisplayFunc(display)
+  glutIdleFunc(display)
   glutReshapeFunc(reshape)
   glutMouseFunc(mouse)
+  glutKeyboardFunc(keyboardpress)
+  glutKeyboardUpFunc(keyboardup)
+  glutMotionFunc(motion)
+  glutPassiveMotionFunc(motion)
   if main_scene == nil:
     raise newException(MainSceneNotLoadedError, "Main scene is not indicated!")
   changeScene(main_scene.name)

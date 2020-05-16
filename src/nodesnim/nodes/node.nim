@@ -6,7 +6,8 @@ import
 
   ../core/vector2,
   ../core/enums,
-  ../core/anchor
+  ../core/anchor,
+  ../core/input
 {.used.}
 
 
@@ -24,7 +25,7 @@ type
     children*: seq[NodePtr]          ## Node children.
     enter*: proc()                   ## This called when scene changed.
     exit*: proc()                    ## This called when exit from the scene.
-    input*: proc()  ## This called on user input.
+    input*: proc(event: InputEvent)  ## This called on user input.
     ready*: proc()                   ## This called when the scene changed and the `enter` was called.
     process*: proc()                 ## This called every frame.
   NodePtr* = ptr NodeObj
@@ -37,7 +38,7 @@ template nodepattern*(nodetype: untyped): untyped =
     rect_size: Vector2(0, 0),
     ready: proc() = discard,
     process: proc() = discard,
-    input: proc() = discard,
+    input: proc(event: InputEvent) = discard,
     enter: proc() = discard,
     exit: proc() = discard,
     is_ready: false, pausemode: INHERIT, visible: true,
@@ -161,7 +162,7 @@ method getPauseMode*(self: NodePtr): PauseMode {.base.} =
     current = current.parent
     result = current.pausemode
 
-method handle*(self: NodePtr, mouse_on: var NodePtr) {.base.} =
+method handle*(self: NodePtr, event: InputEvent, mouse_on: var NodePtr) {.base.} =
   ## Handles user input.
   ## This used in the Window object.
   discard

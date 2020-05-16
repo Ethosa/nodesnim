@@ -2,7 +2,8 @@
 import
   node,
   ../thirdparty/opengl,
-  ../core/enums
+  ../core/enums,
+  ../core/input
 
 
 type
@@ -42,8 +43,10 @@ method exit*(scene: ScenePtr) {.base.} =
     child.enter()
     child.is_ready = false
 
-method handleScene*(scene: ScenePtr, mouse_on: var NodePtr, paused: bool) {.base.} =
+method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, paused: bool) {.base.} =
   for child in scene.getChildIter():
+    if paused and child.getPauseMode() != PROCESS:
+      continue
     if child.visible:
-      child.handle(mouse_on)
-    child.input()
+      child.handle(event, mouse_on)
+    child.input(event)
