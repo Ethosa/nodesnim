@@ -85,6 +85,8 @@ var
   pressed_keys*: seq[string] = @[]
   pressed_keys_ints*: seq[int8] = @[]
   last_event*: InputEvent = InputEvent()
+  last_key_state*: bool = false
+  key_state*: bool = false
   press_state*: int = 0
   actionlist*: seq[InputAction] = @[]
   mouse_pressed*: bool = false
@@ -122,7 +124,7 @@ proc addKeyAction*(a: type Input, name, key: string) =
   ## - `key` - key, e.g.: "w", "1", etc.
   actionlist.add(InputAction(kind: KEYBOARD, name: name, key: key))
 
-proc addKeyAction*(a: type Input, name, key: int8) =
+proc addKeyAction*(a: type Input, name: string, key: int8) =
   ## Adds a new action on keyboard.
   ##
   ## Arguments:
@@ -154,7 +156,7 @@ proc isActionJustPressed*(a: type Input, name: string): bool =
         if press_state == 1:
           result = true
       elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
-        if action.key in pressed_keys or action.key_int in pressed_keys_ints:
+        if (action.key == last_event.key or action.key_int == last_event.key_int) and last_key_state == false:
           if press_state == 1:
             result = true
 

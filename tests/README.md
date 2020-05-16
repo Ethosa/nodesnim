@@ -6,3 +6,4 @@
 4. [Use ColorRect node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test4.nim)
 5. [Handle Control node events.](https://github.com/Ethosa/nodesnim/blob/master/tests/test5.nim)
 6. [Anchor setting.](https://github.com/Ethosa/nodesnim/blob/master/tests/test6.nim)
+7. [Change scenes.](https://github.com/Ethosa/nodesnim/blob/master/tests/test7.nim)
