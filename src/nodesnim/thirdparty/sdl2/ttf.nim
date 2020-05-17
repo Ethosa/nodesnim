@@ -10,10 +10,10 @@ when not defined(SDL_Static):
 else:
   static: echo "SDL_Static option is deprecated and will soon be removed. Instead please use --dynlibOverride:SDL2."
 
-import sdl2
+import ../sdl2
 
 type
-  FontPtr* = ptr object{.pure.}
+  FontPtr*{.pure.} = ptr object
 
 # Set up for C function definitions, even when using C++
 # Printable format: "%d.%d.%d", MAJOR, MINOR, PATCHLEVEL
