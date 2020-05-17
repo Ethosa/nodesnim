@@ -13,8 +13,10 @@ var
 
 main.addChild(texturerect)
 
-texturerect.loadTexture("assets/sharp.jpg")
-texturerect.resize(640, 360)
+texturerect.loadTexture("assets/sharp.jpg")  # Load image from file.
+texturerect.resize(256, 256)
+texturerect.texture_mode = TEXTURE_CROP
+texturerect.texture_anchor = Anchor(0.5, 1, 0.5, 1)
 
 
 addScene(main)
