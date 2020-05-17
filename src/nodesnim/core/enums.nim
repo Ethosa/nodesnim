@@ -7,6 +7,6 @@ type
   PauseMode* {.size: sizeof(int8).} = enum
     PROCESS, PAUSE, INHERIT
   TextureMode* {.size: sizeof(int8).} = enum
-    TEXTURE_FULL_SIZE,
+    TEXTURE_FILL_XY,
     TEXTURE_KEEP_ASPECT_RATIO,
     TEXTURE_CROP
