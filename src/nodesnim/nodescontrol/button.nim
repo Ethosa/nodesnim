@@ -24,6 +24,10 @@ type
     hover_background_color*: ColorRef
     press_background_color*: ColorRef
 
+    normal_color*: ColorRef
+    hover_color*: ColorRef
+    press_color*: ColorRef
+
     on_click*: proc(x, y: float): void
   ButtonPtr* = ptr ButtonObj
 
@@ -39,6 +43,9 @@ proc Button*(name: string, variable: var ButtonObj): ButtonPtr =
   variable.spacing = 2
   variable.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
   variable.color = Color(1f, 1f, 1f)
+  variable.normal_color = Color(1f, 1f, 1f)
+  variable.hover_color = Color(1f, 1f, 1f)
+  variable.press_color = Color(1f, 1f, 1f)
   variable.button_mask = BUTTON_LEFT
   variable.action_mask = BUTTON_RELEASE
   variable.normal_background_color = Color(0x444444ff)
@@ -61,6 +68,13 @@ method draw*(self: ButtonPtr, w, h: GLfloat) =
         self.hover_background_color
       else:
         self.normal_background_color
+  self.color =
+    if self.pressed:
+      self.press_color
+    elif self.hovered:
+      self.hover_color
+    else:
+      self.normal_color
   glColor4f(color.r, color.g, color.b, color.a)
   glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
   procCall self.LabelPtr.draw(w, h)

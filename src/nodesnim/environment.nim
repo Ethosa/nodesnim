@@ -7,36 +7,45 @@ type
   EnvironmentObj* = object
     delay*: uint32    ## window delay.
     color*: ColorRef  ## background environment color.
+    brightness*: float
   EnvironmentRef* = ref EnvironmentObj
 
 
-proc newEnvironment*(color: ColorRef): EnvironmentRef =
+proc newEnvironment*(color: ColorRef, brightness: float): EnvironmentRef =
   ## Creates a new EnvironmentRef object.
   ##
   ## Arguments:
   ## - `color`: ColorRef object for background environment color.
-  EnvironmentRef(color: color, delay: 17)
+  ## - `brightness` - window brightness with value in range `0..1`
+  EnvironmentRef(color: color, delay: 17, brightness: brightness)
 
 proc newEnvironment*(): EnvironmentRef {.inline.} =
   ## Creates a new EnvironmentRef object.
-  newEnvironment(Color(0x313131ff))
+  newEnvironment(Color(0x313131ff), 1.0)
 
 
-proc setBackgroundColor*(env: EnvironmentRef, color: ColorRef): void =
+proc setBackgroundColor*(env: EnvironmentRef, color: ColorRef) =
   ## Changes background environment color.
   ##
   ## Arguments:
   ## - `color`: ColorRef object.
   env.color = color
 
-proc setBackgroundColor*(env: EnvironmentRef, color: uint32): void =
+proc setBackgroundColor*(env: EnvironmentRef, color: uint32) =
   ## Changes background environment color.
   ##
   ## Arguments:
   ## - `color`: uint32 color, e.g.: 0xFF64FF
   env.color = Color(color)
 
-proc setDelay*(env: EnvironmentRef, delay: uint32): void =
+proc setBrightness*(env: EnvironmentRef, brightness: float) =
+  ## Changes window brightness.
+  ##
+  ## Arguments:
+  ## - `brightness` - window brightness with value in range `0..1`
+  env.brightness = brightness
+
+proc setDelay*(env: EnvironmentRef, delay: uint32) =
   ## Changes window delay.
   ##
   ## Arguments:
