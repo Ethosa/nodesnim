@@ -17,7 +17,6 @@
 
 # Features
 - Godot-like node system.
-- All operations with changing coordinates use `float` instead of `int`, e.g. ```node.move(17.98278, 0.87127)```
 
 # F.A.Q
 *Q*: Where I can see examples?  

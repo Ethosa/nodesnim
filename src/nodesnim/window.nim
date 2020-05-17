@@ -195,3 +195,4 @@ proc windowLaunch* =
     raise newException(MainSceneNotLoadedError, "Main scene is not indicated!")
   changeScene(main_scene.name)
   glutMainLoop()
+  current_scene.exit()
