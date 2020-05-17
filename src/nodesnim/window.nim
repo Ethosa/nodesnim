@@ -36,7 +36,7 @@ var mouse_on: NodePtr = nil
 proc display {.cdecl.} =
   ## Displays window.
   let (r, g, b, a) = env.color.toFloatTuple()
-  glClearColor(r, g, b, a)
+  glClearColor(r*env.brightness, g*env.brightness, b*env.brightness, a*env.brightness)
   glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
   glEnable(GL_BLEND)
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)

@@ -10,3 +10,4 @@
 8. [Use TextureRect node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test8.nim)
 9. [Use Label node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test9.nim)
 10. [Use Button node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test10.nim)
+11. [Environment setting.](https://github.com/Ethosa/nodesnim/blob/master/tests/test11.nim)
