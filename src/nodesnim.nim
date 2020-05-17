@@ -12,17 +12,19 @@ import
   nodesnim/core/color,
   nodesnim/core/exceptions,
   nodesnim/core/input,
+  nodesnim/core/image,
 
   nodesnim/nodes/node,
   nodesnim/nodes/scene,
   nodesnim/nodes/canvas,
 
   nodesnim/nodescontrol/control,
-  nodesnim/nodescontrol/color_rect
+  nodesnim/nodescontrol/color_rect,
+  nodesnim/nodescontrol/texture_rect
 
 export
   opengl, glut,
   window, environment,
-  vector2, rect2, enums, anchor, color, exceptions, input,
+  vector2, rect2, enums, anchor, color, exceptions, input, image,
   node, scene, canvas,
-  control, color_rect
+  control, color_rect, texture_rect

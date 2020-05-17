@@ -31,7 +31,7 @@ violet.process =
   proc() =
     if Input.isActionJustPressed("change_scene"):
       echo "bye from main scene :("
-      changeScene("Second scene")
+      changeScene("Second scene")  # This function changes current scene.
 
 lightblue.process =
   proc() =

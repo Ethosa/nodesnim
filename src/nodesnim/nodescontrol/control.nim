@@ -66,7 +66,7 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base.} =
+method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base, inline.} =
   Vector2Ref(x: last_event.x, y: last_event.y)
 
 method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
@@ -99,4 +99,3 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
   if not mouse_pressed and self.pressed:
     self.pressed = false
     self.release(event.x, event.y)
-
