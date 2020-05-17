@@ -7,3 +7,5 @@
 5. [Handle Control node events.](https://github.com/Ethosa/nodesnim/blob/master/tests/test5.nim)
 6. [Anchor setting.](https://github.com/Ethosa/nodesnim/blob/master/tests/test6.nim)
 7. [Change scenes.](https://github.com/Ethosa/nodesnim/blob/master/tests/test7.nim)
+8. [Use TextureRect node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test8.nim)
+9. [Use Label node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test9.nim)

@@ -138,11 +138,17 @@ proc motion(x, y: cint) {.cdecl.} =
 # ---- Public ---- #
 proc addScene*(scene: ScenePtr) =
   ## Adds a new scenes in app.
+  ##
+  ## Arguments:
+  ## - `scene` - pointer to the Scene object.
   if scene notin scenes:
     scenes.add(scene)
 
 proc changeScene*(name: string): bool {.discardable.} =
   ## Changes current scene.
+  ##
+  ## Arguments:
+  ## - `name` - name of the added scene.
   result = false
   for scene in scenes:
     if scene.name == name:
@@ -157,6 +163,9 @@ proc changeScene*(name: string): bool {.discardable.} =
 
 proc setMainScene*(name: string) =
   ## Set up main scene.
+  ##
+  ## Arguments:
+  ## - `name` - name of the added scene.
   for scene in scenes:
     if scene.name == name:
       main_scene = scene
