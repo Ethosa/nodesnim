@@ -38,6 +38,9 @@ const
   BUTTON_MIDDLE* = 1
   BUTTON_RIGHT* = 2
 
+  BUTTON_RELEASE* = 0
+  BUTTON_CLICK* = 1
+
   K_F1* = 1
   K_F2* = 2
   K_F3* = 3

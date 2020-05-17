@@ -49,13 +49,13 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
     y = h/2 - self.global_position.y
 
   glColor4f(self.color.r, self.color.g, self.color.b, self.color.a)
-  var
-    th = 0f
-    ty = 0f
+  var th = 0f
 
   for line in self.text.splitLines():  # get text height
     th += self.spacing + self.size
-  ty = y - self.rect_size.y*self.text_align.y1 + th * self.text_align.y2
+  if th != 0:
+    th -= self.spacing
+  var ty = y - self.rect_size.y*self.text_align.y1 + th*self.text_align.y2
 
   for line in self.text.splitLines():
     var tw = self.font.glutBitmapLength(line).float

@@ -6,6 +6,7 @@ import
   ../core/rect2,
   ../core/anchor,
   ../core/input,
+  ../core/enums,
 
   ../nodes/node,
   ../nodes/canvas
@@ -16,6 +17,8 @@ type
     hovered*: bool
     pressed*: bool
     focused*: bool
+
+    mousemode*: MouseMode
 
     mouse_enter*: proc(x, y: float): void  ## This called when the mouse enters the Control node.
     mouse_exit*: proc(x, y: float): void   ## This called when the mouse exit from the Control node.
@@ -31,6 +34,8 @@ template controlpattern*: untyped =
   variable.hovered = false
   variable.focused = false
   variable.pressed = false
+
+  variable.mousemode = MOUSEMODE_SEE
 
   variable.mouse_enter = proc(x, y: float) = discard
   variable.mouse_exit = proc(x, y: float) = discard
@@ -71,6 +76,8 @@ method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base, inline.} =
 
 method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
   {.warning[LockLevel]: off.}
+  if self.mousemode == MOUSEMODE_IGNORE:
+    return
   let
     hasmouse = Rect2(self.global_position, self.rect_size).hasPoint(event.x, event.y)
     click = mouse_pressed and event.kind == MOUSE
