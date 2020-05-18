@@ -1,4 +1,4 @@
-# --- Test 14. Use VBox node. --- #
+# --- Test 15. Use GridBox node. --- #
 import nodesnim
 
 
@@ -8,8 +8,8 @@ var
   mainobj: SceneObj
   main = Scene("Main", mainobj)
 
-  vboxobj: VBoxObj     # Create a VBoxObj.
-  vbox = VBox(vboxobj)  # Create pointer to the VBoxObj.
+  grid_boxobj: GridBoxObj     # Create a GridBoxObj.
+  grid_box = GridBox(grid_boxobj)  # Create pointer to the GridBoxObj.
 
   redobj: ColorRectObj
   red = ColorRect(redobj)  # #ff6699
@@ -30,14 +30,13 @@ pink.resize(64, 64)
 orange.resize(32, 32)
 
 # Add rects in the Box node.
-vbox.addChild(red)
-vbox.addChild(pink)
-vbox.addChild(orange)
+grid_box.addChild(red)
+grid_box.addChild(pink)
+grid_box.addChild(orange)
 
-main.addChild(vbox)
-vbox.setAnchor(0, 0.5, 0, 0.5)  # Box anchor in the scene.
-vbox.setChildAnchor(0, 1, 0, 1)
-vbox.setSizeAnchor(1, 1)
+main.addChild(grid_box)
+grid_box.setAnchor(0, 0.5, 0, 0.5)
+grid_box.setRaw(1)
 
 
 addScene(main)

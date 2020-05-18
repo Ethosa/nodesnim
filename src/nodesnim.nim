@@ -25,11 +25,12 @@ import
   nodesnim/nodescontrol/button,
   nodesnim/nodescontrol/box,
   nodesnim/nodescontrol/hbox,
-  nodesnim/nodescontrol/vbox
+  nodesnim/nodescontrol/vbox,
+  nodesnim/nodescontrol/grid_box
 
 export
   opengl, glut,
   window, environment,
   vector2, rect2, enums, anchor, color, exceptions, input, image,
   node, scene, canvas,
-  control, color_rect, texture_rect, label, button, box, hbox, vbox
+  control, color_rect, texture_rect, label, button, box, hbox, vbox, grid_box

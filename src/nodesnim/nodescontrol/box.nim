@@ -67,3 +67,9 @@ method resize*(self: BoxPtr, w, h: GLfloat) =
   self.rect_size.y = size.y
   self.can_use_anchor = false
   self.can_use_size_anchor = false
+
+method setChildAnchor*(self: BoxPtr, anchor: AnchorRef) {.base.} =
+  self.child_anchor = anchor
+
+method setChildAnchor*(self: BoxPtr, x1, y1, x2, y2: float) {.base.} =
+  self.child_anchor = Anchor(x1, y1, x2, y2)
