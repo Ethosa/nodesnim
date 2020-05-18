@@ -51,7 +51,7 @@ method getChildSize*(self: GridBoxPtr): Vector2Ref =
       inc raw
     else:
       if self.raw > 1:
-        raw = 0
+        raw = 1
       y += self.separator + maxsize.y
   if y > maxsize.y:
     y -= self.separator
@@ -82,11 +82,12 @@ method draw*(self: GridBoxPtr, w, h: GLfloat) =
       inc raw
     else:
       if self.raw > 1:
-        raw = 0
+        raw = 1
       x = self.rect_size.x*self.child_anchor.x1 - fakesize.x*self.child_anchor.x2
       y += maxsize.y + self.separator
       child.position.x = x + maxsize.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
       child.position.y = y + maxsize.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
+      x += maxsize.x + self.separator
   procCall self.ControlPtr.draw(w, h)
 
 method resize*(self: GridBoxPtr, w, h: GLfloat) =
@@ -102,4 +103,8 @@ method resize*(self: GridBoxPtr, w, h: GLfloat) =
 
 method setRaw*(self: GridBoxPtr, raw: int) {.base.} =
   self.raw = raw
+  self.rect_size = self.getChildSize()
+
+method setSeparator*(self: GridBoxPtr, separator: float) {.base.} =
+  self.separator = separator
   self.rect_size = self.getChildSize()
