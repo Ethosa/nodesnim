@@ -20,15 +20,15 @@ type
     button_mask*: cint  ## Mask for handle clicks
     action_mask*: cint  ## BUTTON_RELEASE or BUTTON_CLICK.
 
-    normal_background_color*: ColorRef
-    hover_background_color*: ColorRef
-    press_background_color*: ColorRef
+    normal_background_color*: ColorRef  ## color, when button is not pressed and not hovered.
+    hover_background_color*: ColorRef   ## color, when button hovered.
+    press_background_color*: ColorRef   ## color, when button pressed.
 
-    normal_color*: ColorRef
-    hover_color*: ColorRef
-    press_color*: ColorRef
+    normal_color*: ColorRef  ## text color, whenwhen button is not pressed and not hovered.
+    hover_color*: ColorRef   ## text color, when button hovered.
+    press_color*: ColorRef   ## text color, when button pressed.
 
-    on_click*: proc(x, y: float): void
+    on_click*: proc(x, y: float): void  ## This called, when user clicks on button.
   ButtonPtr* = ptr ButtonObj
 
 
@@ -51,6 +51,7 @@ proc Button*(name: string, variable: var ButtonObj): ButtonPtr =
   variable.normal_background_color = Color(0x444444ff)
   variable.hover_background_color = Color(0x505050ff)
   variable.press_background_color = Color(0x595959ff)
+  variable.on_click = proc(x, y: float) = discard
 
 proc Button*(obj: var ButtonObj): ButtonPtr {.inline.} =
   Button("Button", obj)

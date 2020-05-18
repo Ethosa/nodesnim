@@ -21,14 +21,14 @@ lightblue.addChild(violet)
 lightblue.resize(256, 128)
 lightblue.move(128, 64)
 
-violet.anchor = Anchor(  # Try to change it! ^^
+violet.setAnchor(  # Try to change it! ^^
   0.5,  # parent anchor at X-axis.
   0.5,  # parent anchor at Y-axis.
   0.5,  # anchor at X-axis.
   0.5   # anchor at Y-axis.
 )
-lightblue.anchor = Anchor(1, 1, 1, 1)
-lightblue.size_anchor = Vector2(
+lightblue.setAnchor(1, 1, 1, 1)
+lightblue.setSizeAnchor(
   0,  # size anchor at X-axis. If 0 then not used.
   1   # size anchor at Y-axis. If 0 then not used.
 )

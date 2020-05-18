@@ -15,6 +15,8 @@ type
   NodeObj* = object of RootObj
     visible*: bool
     is_ready*: bool
+    can_use_anchor*: bool
+    can_use_size_anchor*: bool
     pausemode*: PauseMode            ## Pause mode, by default is INHERIT.
     name*: string                    ## Node name.
     position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
@@ -34,16 +36,17 @@ type
 
 template nodepattern*(nodetype: untyped): untyped =
   variable = `nodetype`(
-    name: name, position: Vector2(0.0, 0.0), children: @[],
-    global_position: Vector2(0.0, 0.0),
-    rect_size: Vector2(0, 0),
+    name: name, position: Vector2(), children: @[],
+    global_position: Vector2(),
+    rect_size: Vector2(),
     ready: proc() = discard,
     process: proc() = discard,
     input: proc(event: InputEvent) = discard,
     enter: proc() = discard,
     exit: proc() = discard,
     is_ready: false, pausemode: INHERIT, visible: true,
-    anchor: nil, size_anchor: nil
+    anchor: Anchor(0, 0, 0, 0), size_anchor: Vector2(), can_use_anchor: false,
+    can_use_size_anchor: false
   )
   result = variable.addr
 
@@ -202,8 +205,8 @@ method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
   ## Arguments:
   ## - `vec2`: how much to add to the position on the X,Y axes.
   self.position += vec2
-  self.anchor = nil
-  self.size_anchor = nil
+  self.can_use_anchor = false
+  self.can_use_size_anchor = false
 
 method removeChild*(self: NodePtr, index: int) {.base.} =
   ## Removes node child at a specific position.
@@ -224,6 +227,19 @@ method removeChild*(self: NodePtr, other: NodePtr) {.base.} =
 
 method setAnchor*(self: NodePtr, anchor: AnchorRef) {.base.} =
   self.anchor = anchor
+  self.can_use_anchor = true
+
+method setAnchor*(self: NodePtr, x1, y1, x2, y2: float) {.base.} =
+  self.anchor = Anchor(x1, y1, x2, y2)
+  self.can_use_anchor = true
+
+method setSizeAnchor*(self: NodePtr, anchor: Vector2Ref) {.base.} =
+  self.size_anchor = anchor
+  self.can_use_size_anchor = true
+
+method setSizeAnchor*(self: NodePtr, x, y: float) {.base.} =
+  self.size_anchor = Vector2(x, y)
+  self.can_use_size_anchor = true
 
 method delete*(self: NodePtr) {.base.} =
   ## Deletes current node.

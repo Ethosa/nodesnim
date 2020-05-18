@@ -29,7 +29,7 @@
 
 # Docs: http://www.ferzkopp.net/Software/SDL_gfx-2.0/Docs/html/_s_d_l__gfx_primitives_8c.html
 
-import sdl2
+import ../sdl2
 
 when not defined(SDL_Static):
   when defined(windows):

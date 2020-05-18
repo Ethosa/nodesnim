@@ -107,5 +107,18 @@ proc `-=`*(x: var Vector2Ref, y: Vector2Ref) =
 proc `/=`*(x: var Vector2Ref, y: Vector2Ref) =
   x = x / y
 
+proc `>`*(x, y: Vector2Ref): bool =
+  x.x > y.x and x.y > y.y
+proc `<`*(x, y: Vector2Ref): bool =
+  x.x < y.x and x.y < y.y
+proc `>=`*(x, y: Vector2Ref): bool =
+  x.x >= y.x and x.y >= y.y
+proc `<=`*(x, y: Vector2Ref): bool =
+  x.x <= y.x and x.y <= y.y
+proc `==`*(x, y: Vector2Ref): bool =
+  x.x == y.x and x.y == y.y
+proc `!=`*(x, y: Vector2Ref): bool =
+  x.x != y.x and x.y != y.y
+
 proc `$`*(a: Vector2Ref): string =
   "Vector2(" & $a.x & ", " & $a.y & ")"

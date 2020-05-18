@@ -8,7 +8,7 @@
 # For the latest updates, visit Delphi3D: http://www.delphi3d.net
 #******************************************************************************
 
-import opengl
+import ../opengl
 
 {.deadCodeElim: on.}
 

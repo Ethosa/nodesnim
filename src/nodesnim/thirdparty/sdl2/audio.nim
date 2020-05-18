@@ -1,4 +1,4 @@
-import sdl2
+import ../sdl2
 #
 #  Simple DirectMedia Layer
 #  Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>

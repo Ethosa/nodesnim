@@ -77,10 +77,6 @@ proc Color*(): ColorRef {.inline.} =
   ColorRef(r: 0, g: 0, b: 0, a: 0)
 
 
-proc `$`*(color: ColorRef): string =
-  "Color(" & $color.r & ", " & $color.g & ", " & $color.b & ", " & $color.a & ")"
-
-
 proc normalize*(n: float): uint32 {.inline.} =
   if n > 1.0:
     255'u32
@@ -174,3 +170,7 @@ proc lerp*(r1, g1, b1, a1, r2, g2, b2, a2: uint32, lerpv: float): uint32 =
     b = normalizeColor(b1.float * p + b2.float * lerpv).uint32
     a = normalizeColor(a1.float * p + a2.float * lerpv).uint32
   r or (g shl 8) or (b shl 16) or (a shl 24)
+
+
+proc `$`*(color: ColorRef): string =
+  "Color(" & $color.r & ", " & $color.g & ", " & $color.b & ", " & $color.a & ")"
