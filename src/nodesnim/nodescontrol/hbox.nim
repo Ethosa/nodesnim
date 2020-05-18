@@ -9,55 +9,61 @@ import
   ../core/enums,
 
   ../nodes/node,
-  control
+  control,
+  box
 
 
 type
-  BoxObj* = object of ControlPtr
-    child_anchor*: AnchorRef
-  BoxPtr* = ptr BoxObj
+  HBoxObj* = object of BoxObj
+    separator*: float
+  HBoxPtr* = ptr HBoxObj
 
 
-proc Box*(name: string, variable: var BoxObj): BoxPtr =
-  nodepattern(BoxObj)
+proc HBox*(name: string, variable: var HBoxObj): HBoxPtr =
+  nodepattern(HBoxObj)
   controlpattern()
   variable.rect_size.x = 40
   variable.rect_size.y = 40
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+  variable.separator = 4f
 
-proc Box*(obj: var BoxObj): BoxPtr {.inline.} =
-  Box("Box", obj)
+proc HBox*(obj: var HBoxObj): HBoxPtr {.inline.} =
+  HBox("HBox", obj)
 
 
-method getChildSize*(self: BoxPtr): Vector2Ref {.base.} =
+method getChildSize*(self: HBoxPtr): Vector2Ref =
   var
     x = 0f
     y = 0f
   for child in self.children:
-    x += child.rect_size.x
-    y += child.rect_size.y
+    x += child.rect_size.x + self.separator
+    if child.rect_size.y > y:
+      y = child.rect_size.y
+  if x > 0f:
+    x -= self.separator
   Vector2(x, y)
 
-method addChild*(self: BoxPtr, child: NodePtr) =
+method addChild*(self: HBoxPtr, child: NodePtr) =
   ## Adds new child in current node.
   ##
   ## Arguments:
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
-  if child.rect_size.x > self.rect_size.x:
-    self.rect_size.x = child.rect_size.x
-  if child.rect_size.y > self.rect_size.y:
-    self.rect_size.y = child.rect_size.y
+  self.rect_size = self.getChildSize()
 
 
-method draw*(self: BoxPtr, w, h: GLfloat) =
+method draw*(self: HBoxPtr, w, h: GLfloat) =
+  var
+    fakesize = self.getChildSize()
+    x = self.rect_size.x*self.child_anchor.x1 - fakesize.x*self.child_anchor.x2
   for child in self.children:
-    child.position.x = self.rect_size.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
+    child.position.x = x
     child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
+    x += child.rect_size.x + self.separator
   procCall self.ControlPtr.draw(w, h)
 
-method resize*(self: BoxPtr, w, h: GLfloat) =
+method resize*(self: HBoxPtr, w, h: GLfloat) =
   var size = self.getChildSize()
   if size.x < w:
     size.x = w

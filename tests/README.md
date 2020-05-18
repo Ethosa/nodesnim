@@ -11,3 +11,6 @@
 9. [Use Label node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test9.nim)
 10. [Use Button node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test10.nim)
 11. [Environment setting.](https://github.com/Ethosa/nodesnim/blob/master/tests/test11.nim)
+12. [Use Box node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test12.nim)
+13. [Use HBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test13.nim)
+14. [Use VBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test14.nim)
