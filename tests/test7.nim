@@ -25,7 +25,7 @@ second.addChild(lightblue)
 
 violet.color = Color(0xccaaffff'u32)
 lightblue.color = Color(0xaaccffff'u32)
-lightblue.anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+lightblue.setAnchor(0.5, 0.5, 0.5, 0.5)
 
 violet.process =
   proc() =

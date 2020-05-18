@@ -31,7 +31,9 @@ var
 
 
 # --- Callbacks --- #
-var mouse_on: NodePtr = nil
+var
+  mouse_on: NodePtr = nil
+  window_created: bool = false
 
 proc display {.cdecl.} =
   ## Displays window.
@@ -171,6 +173,12 @@ proc setMainScene*(name: string) =
       main_scene = scene
       break
 
+proc setTitle*(title: cstring) =
+  ## Changes window title.
+  if not window_created:
+    raise newException(WindowNotCreatedError, "Window not created!")
+  glutSetWindowTitle(title)
+
 proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   ## Creates a new window pointer
   ##
@@ -188,6 +196,7 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   glClear(GL_COLOR_BUFFER_BIT)
 
   reshape(w, h)
+  window_created = true
 
 
 proc windowLaunch* =

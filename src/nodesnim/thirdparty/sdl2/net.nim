@@ -20,7 +20,7 @@
 #  3. This notice may not be removed or altered from any source distribution.
 #
 # $Id$
-import sdl2
+import ../sdl2
 
 when not defined(SDL_Static):
   when defined(windows):

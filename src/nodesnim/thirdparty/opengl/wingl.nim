@@ -1,4 +1,4 @@
-import opengl, windows
+import ../opengl, windows
 
 {.deadCodeElim: on.}
 

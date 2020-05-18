@@ -15,7 +15,7 @@ main.addChild(button)
 
 button.text = "Press me!"
 button.resize(256, 64)
-button.anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+button.setAnchor(0.5, 0.5, 0.5, 0.5)
 
 
 button.on_click =

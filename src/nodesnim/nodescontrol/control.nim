@@ -55,12 +55,12 @@ proc Control*(obj: var ControlObj): ControlPtr {.inline.} =
 
 method calcPositionAnchor*(self: ControlPtr) =
   if self.parent != nil:
-    if self.size_anchor != nil:
+    if self.can_use_size_anchor:
       if self.size_anchor.x > 0.0:
         self.rect_size.x = self.parent.rect_size.x * self.size_anchor.x
       if self.size_anchor.y > 0.0:
         self.rect_size.y = self.parent.rect_size.y * self.size_anchor.y
-    if self.anchor != nil:
+    if self.can_use_anchor:
       self.position.x = self.parent.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
       self.position.y = self.parent.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
 
@@ -72,6 +72,7 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
     self.press(last_event.x, last_event.y)
 
 method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base, inline.} =
+  ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
 
 method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =

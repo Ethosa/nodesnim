@@ -15,5 +15,10 @@ proc Anchor*(x1, y1, x2, y2: float): AnchorRef {.inline.} =
 proc Anchor*(vec1, vec2: Vector2Ref): AnchorRef {.inline.} =
   AnchorRef(x1: vec1.x, y1: vec1.y, x2: vec2.x, y2: vec2.y)
 
-func isEmpty*(a: AnchorRef): bool {.inline.} =
+proc isEmpty*(a: AnchorRef): bool =
+  ## Returns true, if a is Anchor(0, 0, 0, 0)
   a.x1 == 0 and a.x2 == 0 and a.y1 == 0 and a.y2 == 0
+
+
+proc `$`*(x: AnchorRef): string =
+  "Anchor(x1: " & $x.x1 & ", y1: " & $x.y1 & ", x2: " & $x.x2 & ", y2: " & $x.y2 & ")"
