@@ -20,7 +20,7 @@
 
 # F.A.Q
 *Q*: Where I can see examples?  
-*A*: You can see this in the [`tests`](https://github.com/Ethosa/nodesnim/blob/master/tests) folder
+*A*: You can see this in the [`tests`](https://github.com/Ethosa/nodesnim/blob/master/tests) or [`examples`](https://github.com/Ethosa/nodesnim/blob/master/examples) folder.
 
 
 <div align="center">
