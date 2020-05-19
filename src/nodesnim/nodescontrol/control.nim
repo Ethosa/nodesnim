@@ -96,7 +96,7 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
     if mouse_pressed and not self.pressed:
       self.pressed = true
       self.click(event.x, event.y)
-  elif not hasmouse:
+  elif not hasmouse or mouse_on != self:
     if not mouse_pressed and self.hovered:
       self.mouse_exit(event.x, event.y)
       self.hovered = false

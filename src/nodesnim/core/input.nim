@@ -13,6 +13,7 @@ type
   InputAction* = object
     kind*: InputEventType
     key_int*: int8
+    key_cint*: cint
     button_index*: cint
     name*, key*: string
 
@@ -22,6 +23,7 @@ type
     kind*: InputEventType
     pressed*: bool
     key_int*: int8
+    key_cint*: cint
     button_index*: cint
     x*, y*, xrel*, yrel*: float
     key*: string
@@ -87,6 +89,7 @@ const
 var
   pressed_keys*: seq[string] = @[]
   pressed_keys_ints*: seq[int8] = @[]
+  pressed_keys_cints*: seq[cint] = @[]
   last_event*: InputEvent = InputEvent()
   last_key_state*: bool = false
   key_state*: bool = false

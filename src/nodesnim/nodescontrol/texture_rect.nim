@@ -102,3 +102,7 @@ method loadTexture*(self: TextureRectPtr, file: cstring) {.base.} =
   var size: Vector2Ref = Vector2Ref()
   self.texture = load(file, size)
   self.texture_size = size
+
+method setTexture*(self: TextureRectPtr, gltexture: GlTexture) {.base.} =
+  self.texture = gltexture.texture
+  self.texture_size = gltexture.size

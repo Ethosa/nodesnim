@@ -14,3 +14,5 @@
 12. [Use Box node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test12.nim)
 13. [Use HBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test13.nim)
 14. [Use VBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test14.nim)
+15. [Use GridBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test15.nim)
+16. [Use TextEdit node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test16.nim)

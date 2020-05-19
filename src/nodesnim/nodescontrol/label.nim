@@ -55,7 +55,7 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
     th += self.spacing + self.size
   if th != 0:
     th -= self.spacing
-  var ty = y - self.rect_size.y*self.text_align.y1 + th*self.text_align.y2
+  var ty = y - self.rect_size.y*self.text_align.y1 + th*self.text_align.y2 - self.size
 
   for line in self.text.splitLines():
     var tw = self.font.glutBitmapLength(line).float
@@ -70,3 +70,9 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
   # Press
   if self.pressed:
     self.press(last_event.x, last_event.y)
+
+method setTextAlign*(self: LabelPtr, align: AnchorRef) {.base.} =
+  self.text_align = align
+
+method setTextAlign*(self: LabelPtr, x1, y1, x2, y2: float) {.base.} =
+  self.text_align = Anchor(x1, y1, x2, y2)
