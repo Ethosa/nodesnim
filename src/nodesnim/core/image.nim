@@ -10,6 +10,12 @@ import
 discard image.init()
 
 
+type
+  GlTexture* = object
+    texture*: Gluint
+    size*: Vector2Ref
+
+
 proc load*(file: cstring, size: var Vector2Ref): Gluint =
   ## Loads image from file and returns texture ID.
   ##
@@ -37,3 +43,11 @@ proc load*(file: cstring, size: var Vector2Ref): Gluint =
   surface = nil
 
   textureid
+
+
+proc load*(file: cstring): GlTexture =
+  var
+    size: Vector2Ref
+    textureid: Gluint
+  textureid = load(file, size)
+  GlTexture(texture: textureid, size: size)

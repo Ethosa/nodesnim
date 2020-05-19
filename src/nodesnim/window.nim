@@ -90,6 +90,8 @@ proc mouse(button, state, x, y: cint) {.cdecl.} =
 
 proc keyboardpress(c: int8, x, y: cint) {.cdecl.} =
   ## Called when press any key on keyboard.
+  if c < 0:
+    return
   let key = $c.char
   check(InputEventKeyboard, last_event.pressed, true)
   last_event.key = key
@@ -107,6 +109,8 @@ proc keyboardpress(c: int8, x, y: cint) {.cdecl.} =
 
 proc keyboardup(c: int8, x, y: cint) {.cdecl.} =
   ## Called when any key no more pressed.
+  if c < 0:
+    return
   let key = $c.char
   check(InputEventKeyboard, false, false)
   last_event.key = key
@@ -121,6 +125,42 @@ proc keyboardup(c: int8, x, y: cint) {.cdecl.} =
     if k == key:
       pressed_keys.delete(i)
       pressed_keys_ints.delete(i)
+      break
+    inc i
+
+  current_scene.handleScene(last_event, mouse_on, paused)
+
+proc keyboardspecialpress(c: cint, x, y: cint) {.cdecl.} =
+  ## Called when press any key on keyboard.
+  if c < 0:
+    return
+  check(InputEventKeyboard, last_event.pressed, true)
+  last_event.key_cint = c
+  last_event.x = x.float
+  last_event.y = y.float
+  if c notin pressed_keys_cints:
+    pressed_keys_cints.add(c)
+  last_event.kind = KEYBOARD
+  last_key_state = key_state
+  key_state = true
+
+  current_scene.handleScene(last_event, mouse_on, paused)
+
+proc keyboardspecialup(c: cint, x, y: cint) {.cdecl.} =
+  ## Called when any key no more pressed.
+  if c < 0:
+    return
+  check(InputEventKeyboard, false, false)
+  last_event.key_cint = c
+  last_event.x = x.float
+  last_event.y = y.float
+  last_event.kind = KEYBOARD
+  last_key_state = key_state
+  key_state = false
+  var i = 0
+  for k in pressed_keys_cints:
+    if k == c:
+      pressed_keys_cints.delete(i)
       break
     inc i
 
@@ -207,6 +247,8 @@ proc windowLaunch* =
   glutMouseFunc(mouse)
   glutKeyboardFunc(keyboardpress)
   glutKeyboardUpFunc(keyboardup)
+  glutSpecialFunc(keyboardspecialpress)
+  glutSpecialUpFunc(keyboardspecialup)
   glutMotionFunc(motion)
   glutPassiveMotionFunc(motion)
   if main_scene == nil:
