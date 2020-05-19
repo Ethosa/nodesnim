@@ -10,9 +10,9 @@
 </div>
 
 # Install
-1. Install library
+1. Install this repo
    -  `nimble install https://github.com/Ethosa/nodesnim.git`
-2. Download DLLs for your OS
+2. Download OpenGL, SDL2_image and GLUT DLLs for your OS
 3. Put DLLs in the `.nimble/bin/` folder
 
 # Features
