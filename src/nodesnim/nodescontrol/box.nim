@@ -52,6 +52,13 @@ method addChild*(self: BoxPtr, child: NodePtr) =
 
 
 method draw*(self: BoxPtr, w, h: GLfloat) =
+  let
+    x = -w/2 + self.global_position.x
+    y = h/2 - self.global_position.y
+
+  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
+  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+
   for child in self.children:
     child.position.x = self.rect_size.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
     child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2

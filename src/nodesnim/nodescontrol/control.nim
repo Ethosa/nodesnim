@@ -7,6 +7,7 @@ import
   ../core/anchor,
   ../core/input,
   ../core/enums,
+  ../core/color,
 
   ../nodes/node,
   ../nodes/canvas
@@ -19,6 +20,7 @@ type
     focused*: bool
 
     mousemode*: MouseMode
+    background_color*: ColorRef
 
     mouse_enter*: proc(x, y: float): void  ## This called when the mouse enters the Control node.
     mouse_exit*: proc(x, y: float): void   ## This called when the mouse exit from the Control node.
@@ -36,6 +38,7 @@ template controlpattern*: untyped =
   variable.pressed = false
 
   variable.mousemode = MOUSEMODE_SEE
+  variable.background_color = Color()
 
   variable.mouse_enter = proc(x, y: float) = discard
   variable.mouse_exit = proc(x, y: float) = discard
@@ -67,6 +70,13 @@ method calcPositionAnchor*(self: ControlPtr) =
 method draw*(self: ControlPtr, w, h: GLfloat) =
   {.warning[LockLevel]: off.}
   self.calcGlobalPosition()
+  let
+    x = -w/2 + self.global_position.x
+    y = h/2 - self.global_position.y
+
+  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
+  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+
   # Press
   if self.pressed:
     self.press(last_event.x, last_event.y)
@@ -107,3 +117,6 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
   if not mouse_pressed and self.pressed:
     self.pressed = false
     self.release(event.x, event.y)
+
+method setBackgroundColor*(self: ControlPtr, color: ColorRef) {.base.} =
+  self.background_color = color
