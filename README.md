@@ -23,6 +23,8 @@
 *Q*: Where I can see examples?  
 *A*: You can see this in the [`tests`](https://github.com/Ethosa/nodesnim/blob/master/tests) or [`examples`](https://github.com/Ethosa/nodesnim/blob/master/examples) folder.
 
+*Q*: Where I can read the docs?  
+*A*: You can read docs [here](https://ethosa.github.io/nodesnim)
 
 <div align="center">
   Copyright 2020 Ethosa
