@@ -84,7 +84,6 @@ method dublicate*(self: ButtonPtr, obj: var ButtonObj): ButtonPtr {.base.} =
   obj = self[]
   obj.addr
 
-
 method handle*(self: ButtonPtr, event: InputEvent, mouse_on: var NodePtr) =
   procCall self.ControlPtr.handle(event, mouse_on)
 
