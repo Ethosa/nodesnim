@@ -80,6 +80,10 @@ method draw*(self: ButtonPtr, w, h: GLfloat) =
   glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
   procCall self.LabelPtr.draw(w, h)
 
+method dublicate*(self: ButtonPtr, obj: var ButtonObj): ButtonPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 
 method handle*(self: ButtonPtr, event: InputEvent, mouse_on: var NodePtr) =
   procCall self.ControlPtr.handle(event, mouse_on)

@@ -122,6 +122,10 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
+method dublicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 
 method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
   procCall self.ControlPtr.handle(event, mouse_on)

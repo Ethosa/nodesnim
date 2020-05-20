@@ -70,6 +70,10 @@ method draw*(self: VBoxPtr, w, h: GLfloat) =
     y += child.rect_size.y + self.separator
   procCall self.ControlPtr.draw(w, h)
 
+method dublicate*(self: VBoxPtr, obj: var VBoxObj): VBoxPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method resize*(self: VBoxPtr, w, h: GLfloat) =
   var size = self.getChildSize()
   if size.x < w:

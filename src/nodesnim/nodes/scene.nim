@@ -33,6 +33,10 @@ method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
       child.process()
       child.draw(w, h)
 
+method dublicate*(self: ScenePtr, obj: var SceneObj): ScenePtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method enter*(scene: ScenePtr) {.base.} =
   for child in scene.getChildIter():
     child.enter()

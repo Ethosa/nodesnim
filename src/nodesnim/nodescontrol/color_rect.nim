@@ -41,3 +41,7 @@ method draw*(self: ColorRectPtr, w, h: GLfloat) =
   # Press
   if self.pressed:
     self.press(last_event.x, last_event.y)
+
+method dublicate*(self: ColorRectPtr, obj: var ColorRectObj): ColorRectPtr {.base.} =
+  obj = self[]
+  obj.addr
