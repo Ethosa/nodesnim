@@ -90,16 +90,18 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
     var tx = x + self.rect_size.x*self.text_align.x1 - tw * self.text_align.x2
     for c in line:
       glColor4f(color.r, color.g, color.b, color.a)
-      glRasterPos2f(tx, ty)  # set char position
-      self.font.glutBitmapCharacter(c.int)  # render char
-      tx += self.font.glutBitmapWidth(c.int).float
+      let cw = self.font.glutBitmapWidth(c.int).float
+      if tx >= x and tx < x + self.rect_size.x - cw and ty <= y and ty > y - self.rect_size.y:
+        glRasterPos2f(tx, ty)  # set char position
+        self.font.glutBitmapCharacter(c.int)  # render char
+        tx += cw
 
-      inc char_num
-      if char_num == self.caret_position and self.blit_caret and self.blit_time > 1f:
-        glColor4f(self.caret_color.r, self.caret_color.g, self.caret_color.b, self.caret_color.a)
-        glRectf(tx, ty, tx+2, ty+self.size)
-        if self.blit_time > 2f:
-          self.blit_time = 0f
+        inc char_num
+        if char_num == self.caret_position and self.blit_caret and self.blit_time > 1f:
+          glColor4f(self.caret_color.r, self.caret_color.g, self.caret_color.b, self.caret_color.a)
+          glRectf(tx, ty, tx+2, ty+self.size)
+          if self.blit_time > 2f:
+            self.blit_time = 0f
     inc char_num
     ty -= self.spacing + self.size
 
