@@ -174,3 +174,6 @@ proc lerp*(r1, g1, b1, a1, r2, g2, b2, a2: uint32, lerpv: float): uint32 =
 
 proc `$`*(color: ColorRef): string =
   "Color(" & $color.r & ", " & $color.g & ", " & $color.b & ", " & $color.a & ")"
+
+proc `==`*(x, y: ColorRef): bool =
+  x.r == y.r and x.g == y.g and x.b == y.b and x.a == y.a
