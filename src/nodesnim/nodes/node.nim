@@ -35,6 +35,7 @@ type
 
 
 template nodepattern*(nodetype: untyped): untyped =
+  ## This used in childs of the NodeObj.
   variable = `nodetype`(
     name: name, position: Vector2(), children: @[],
     global_position: Vector2(),
@@ -189,6 +190,7 @@ method hasNode*(self: NodePtr, other: NodePtr): bool {.base.} =
   self.getChildIndex(other) != -1
 
 method hasParent*(self: NodePtr): bool {.base, inline.} =
+  ## Returns true, when node has parent.
   self.parent != nil
 
 method move*(self: NodePtr, x, y: float) {.base, inline.} =
@@ -226,10 +228,19 @@ method removeChild*(self: NodePtr, other: NodePtr) {.base.} =
     self.removeChild(index)
 
 method setAnchor*(self: NodePtr, anchor: AnchorRef) {.base.} =
+  ## Changes node anchor.
+  ##
+  ## Arguments:
+  ## - `anchor` - AnchorRef object.
   self.anchor = anchor
   self.can_use_anchor = true
 
 method setAnchor*(self: NodePtr, x1, y1, x2, y2: float) {.base.} =
+  ## Changes node anchor.
+  ##
+  ## Arguments:
+  ## - `x1` and `y1` - anchor relative to the parent node.
+  ## - `x2` and `y2` - anchor relative to this node.
   self.anchor = Anchor(x1, y1, x2, y2)
   self.can_use_anchor = true
 
