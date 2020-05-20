@@ -44,6 +44,17 @@ proc setColor*(self: ColorTextRef, fromc, toc: int, value: ColorRef) =
     self.chars[i].color = value
 
 
+proc setColor*(self: ColorTextRef, value: ColorRef) =
+  runnableExamples:
+    import color
+    var
+      text = clrtext"hello world"
+      clr = Color(1, 0.6, 0.8)
+    text.setColor(clr)
+  for i in 0..self.chars.high:
+    self.chars[i].color = value
+
+
 proc setColor*(self: ColorTextRef, index: int, value: ColorRef) =
   runnableExamples:
     import color
@@ -85,6 +96,10 @@ proc `&`*(x: ColorTextRef, y: ColorCharRef): ColorTextRef =
   result = x
   result.chars.add(y)
 
+proc `&`*(x: ColorCharRef, y: ColorTextRef): ColorTextRef =
+  result = y
+  result.chars.add(x)
+
 proc `&`*(x, y: ColorTextRef): ColorTextRef =
   result = x
   for c in y.chars:
@@ -100,18 +115,33 @@ proc contains*(x: ColorTextRef, y: ColorCharRef): bool =
     if c.c == y.c and c.color == y.color:
       return true
 
-converter char*(x: ColorCharRef): char =
+converter toChar*(x: ColorCharRef): char =
   x.c
 
 proc len*(x: ColorTextRef): int =
   x.chars.len()
 
 proc splitLines*(x: ColorTextRef): seq[ColorTextRef] =
-  result = @[clrtext""]
+  result = @[clrtext("")]
   for c in x.chars:
-    if c.c != '\n':
+    if c.c.int != 13:
       result[^1].chars.add(c)
     else:
-      result.add(clrtext"")
+      result.add(clrtext(""))
   if result[^1].len() == 0:
     discard result.pop()
+
+proc `[]`*[U, V](self: ColorTextRef, i: HSlice[U, V]): ColorTextRef =
+  ColorTextRef(chars: self.chars[i])
+
+proc `[]`*(self: ColorTextRef, i: BackwardsIndex): ColorCharRef =
+  self.chars[i]
+
+proc `[]`*(self: ColorTextRef, i: int): ColorCharRef =
+  self.chars[i]
+
+proc add*(self: var ColorTextRef, other: ColorTextRef) =
+  self = self & other
+
+proc add*(self: var ColorTextRef, other: ColorCharRef) =
+  self = self & other
