@@ -81,6 +81,10 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
+method dublicate*(self: ControlPtr, obj: var ControlObj): ControlPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base, inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)

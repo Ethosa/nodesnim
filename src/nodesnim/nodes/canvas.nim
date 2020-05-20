@@ -94,6 +94,10 @@ method draw*(canvas: CanvasPtr, w, h: GLfloat) =
           canvas.calculateY(y - cmd.y1 - cmd.points[i+1], y))
       glEnd()
 
+method dublicate*(self: CanvasPtr, obj: var CanvasObj): CanvasPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method circle*(canvas: CanvasPtr, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
   ## Draws a circle in the canvas.
   ##

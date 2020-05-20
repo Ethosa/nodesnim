@@ -64,6 +64,10 @@ method draw*(self: BoxPtr, w, h: GLfloat) =
     child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
   procCall self.ControlPtr.draw(w, h)
 
+method dublicate*(self: BoxPtr, obj: var BoxObj): BoxPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method resize*(self: BoxPtr, w, h: GLfloat) =
   var size = self.getChildSize()
   if size.x < w:

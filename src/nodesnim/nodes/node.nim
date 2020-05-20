@@ -85,6 +85,10 @@ method draw*(self: NodePtr, w, h: GLfloat) {.base.} =
   ## This used in the Window object.
   discard
 
+method dublicate*(self: NodePtr, obj: var NodeObj): NodePtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method getChild*(self: NodePtr, index: int): NodePtr {.base.} =
   ## Returns child at `index` position, if available.
   ##

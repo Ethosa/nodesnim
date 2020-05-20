@@ -100,6 +100,10 @@ method draw*(self: GridBoxPtr, w, h: GLfloat) =
       x += maxsize.x + self.separator
   procCall self.ControlPtr.draw(w, h)
 
+method dublicate*(self: GridBoxPtr, obj: var GridBoxObj): GridBoxPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method resize*(self: GridBoxPtr, w, h: GLfloat) =
   var size = self.getChildSize()
   if size.x < w:

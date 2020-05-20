@@ -102,6 +102,10 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
+method dublicate*(self: TextureRectPtr, obj: var TextureRectObj): TextureRectPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method loadTexture*(self: TextureRectPtr, file: cstring) {.base.} =
   var size: Vector2Ref = Vector2Ref()
   self.texture = load(file, size)

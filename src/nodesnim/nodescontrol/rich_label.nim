@@ -86,6 +86,10 @@ method draw*(self: RichLabelPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
+method dublicate*(self: RichLabelPtr, obj: var RichLabelObj): RichLabelPtr {.base.} =
+  obj = self[]
+  obj.addr
+
 method setTextAlign*(self: RichLabelPtr, align: AnchorRef) {.base.} =
   self.text_align = align
 
