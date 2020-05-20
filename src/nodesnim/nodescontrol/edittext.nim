@@ -28,7 +28,6 @@ type
     hint_text*: string
     color*: ColorRef        ## Text color.
     hint_color*: ColorRef   ## Hint color.
-    background_color*: ColorRef
     caret_color*: ColorRef
     text_align*: AnchorRef  ## Text align.
   EditTextPtr* = ptr EditTextObj
@@ -46,7 +45,6 @@ proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
   variable.text_align = Anchor(0, 0, 0, 0)
   variable.color = Color(1f, 1f, 1f)
   variable.hint_color = Color(0.8, 0.8, 0.8)
-  variable.background_color = Color(0x212121ff)
   variable.hint_text = "Edit text ..."
   variable.caret_position = 0
   variable.blit_caret = true
