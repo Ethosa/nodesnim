@@ -119,4 +119,5 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
     self.release(event.x, event.y)
 
 method setBackgroundColor*(self: ControlPtr, color: ColorRef) {.base.} =
+  ## Changes Control background color.
   self.background_color = color

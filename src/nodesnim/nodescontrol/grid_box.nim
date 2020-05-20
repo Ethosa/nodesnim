@@ -46,6 +46,7 @@ method getChildSize*(self: GridBoxPtr): Vector2Ref =
     raw = 0
     maxsize = self.getMaxChildSize()
     y = maxsize.y
+    w = maxsize.x * self.raw.float
   for child in self.children:
     if raw < self.raw:
       inc raw
@@ -55,7 +56,9 @@ method getChildSize*(self: GridBoxPtr): Vector2Ref =
       y += self.separator + maxsize.y
   if y > maxsize.y:
     y -= self.separator
-  Vector2(maxsize.x * self.raw.float + self.separator*self.raw.float, y)
+  if self.children.len() > 0:
+    w += self.separator * (self.raw.float - 1)
+  Vector2(w, y)
 
 method addChild*(self: GridBoxPtr, child: NodePtr) =
   ## Adds new child in current node.
