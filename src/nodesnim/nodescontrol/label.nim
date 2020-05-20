@@ -66,9 +66,11 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
     # Draw text:
     var tx = x + self.rect_size.x*self.text_align.x1 - tw * self.text_align.x2
     for c in line:
-      glRasterPos2f(tx, ty)  # set char position
-      self.font.glutBitmapCharacter(c.int)  # render char
-      tx += self.font.glutBitmapWidth(c.int).float
+      let cw = self.font.glutBitmapWidth(c.int).float
+      if tx >= x and tx < x + self.rect_size.x - cw and ty <= y and ty > y - self.rect_size.y:
+        glRasterPos2f(tx, ty)  # set char position
+        self.font.glutBitmapCharacter(c.int)  # render char
+        tx += cw
     ty -= self.spacing + self.size
 
   # Press

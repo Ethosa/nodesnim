@@ -63,10 +63,12 @@ method draw*(self: RichLabelPtr, w, h: GLfloat) =
     # Draw text:
     var tx = x + self.rect_size.x*self.text_align.x1 - tw * self.text_align.x2
     for c in line.chars:
-      glColor4f(c.color.r, c.color.g, c.color.b, c.color.a)
-      glRasterPos2f(tx, ty)  # set char position
-      self.font.glutBitmapCharacter(c.c.int)  # render char
-      tx += self.font.glutBitmapWidth(c.c.int).float
+      let cw = self.font.glutBitmapWidth(c.c.int).float
+      if tx >= x and tx < x + self.rect_size.x - cw and ty <= y and ty > y - self.rect_size.y:
+        glColor4f(c.color.r, c.color.g, c.color.b, c.color.a)
+        glRasterPos2f(tx, ty)  # set char position
+        self.font.glutBitmapCharacter(c.c.int)  # render char
+        tx += cw
     ty -= self.spacing + self.size
 
   # Press
