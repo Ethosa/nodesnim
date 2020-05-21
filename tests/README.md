@@ -18,3 +18,5 @@
 16. [Use TextEdit node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test16.nim)
 17. [Use RichLabel node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test17.nim)
 18. [Dublicate nodes.](https://github.com/Ethosa/nodesnim/blob/master/tests/test18.nim)
+19. [Use RichEditText node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test19.nim)
+20. [Use Scroll node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test20.nim)
