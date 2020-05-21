@@ -32,6 +32,11 @@ method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
         child.is_ready = true
       child.process()
       child.draw(w, h)
+  for child in scene.getChildIter():
+    if paused and child.getPauseMode() != PROCESS:
+      continue
+    if child.visible:
+      child.draw2stage(w, h)
 
 method dublicate*(self: ScenePtr, obj: var SceneObj): ScenePtr {.base.} =
   obj = self[]
