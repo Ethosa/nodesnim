@@ -39,6 +39,7 @@ proc Scroll*(name: string, variable: var ScrollObj): ScrollPtr =
   variable.thumb_color = Color(0, 0, 0, 128)
   variable.thumb_y_has_mouse = false
   variable.thumb_x_has_mouse = false
+  variable.mousemode = MOUSEMODE_IGNORE
 
 proc Scroll*(obj: var ScrollObj): ScrollPtr {.inline.} =
   Scroll("Scroll", obj)
@@ -66,6 +67,15 @@ method draw*(self: ScrollPtr, w, h: GLfloat) =
   glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
   glRectf(x, y, x+self.viewport_w, y-self.viewport_h)
 
+  # Press
+  if self.pressed:
+    self.press(last_event.x, last_event.y)
+
+method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
+  let
+    x = -w/2 + self.global_position.x
+    y = h/2 - self.global_position.y
+
   if self.children.len() > 0:
     var child = self.children[0]
     self.resize(child.rect_size.x, child.rect_size.y)
@@ -88,9 +98,14 @@ method draw*(self: ScrollPtr, w, h: GLfloat) =
       glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
       glRectf(x + self.viewport_w - self.thumb_width, y - thumb_y, x+self.viewport_w, y - thumb_y - thumb_h)
 
-  # Press
-  if self.pressed:
-    self.press(last_event.x, last_event.y)
+    if self.viewport_w < self.rect_size.x:
+      # Back:
+      glColor4f(self.back_color.r, self.back_color.g, self.back_color.b, self.back_color.a)
+      glRectf(x, y - self.viewport_h + self.thumb_height, x + self.viewport_w - self.thumb_width, y-self.viewport_h)
+
+      # Thumb:
+      glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
+      glRectf(x + thumb_x, y - self.viewport_h + self.thumb_height, x + thumb_x + thumb_w, y-self.viewport_h)
 
 method scrollBy*(self: ScrollPtr, x, y: float) {.base.} =
   if x + self.viewport_x + self.viewport_w < self.rect_size.x and x + self.viewport_x > 0:
@@ -124,16 +139,31 @@ method handle*(self: ScrollPtr, event: InputEvent, mouse_on: var NodePtr) =
         self.thumb_width,
         thumb_h
       ).hasPoint(event.x, event.y)
+    mouse_in_x = Rect2(
+        self.global_position.x + thumb_x,
+        self.global_position.y + self.viewport_h - self.thumb_height,
+        thumb_w,
+        self.thumb_height
+      ).hasPoint(event.x, event.y)
 
-  if mouse_in:
+  if mouse_in:  # Keyboard movement
     if event.kind == KEYBOARD:
       if event.key_cint in pressed_keys_cints:  # Special chars
         if event.key_cint == K_UP:
           self.scrollBy(0, -40)
         elif event.key_cint == K_DOWN:
           self.scrollBy(0, 40)
-  if (mouse_in_y and mouse_pressed) or self.thumb_y_has_mouse:
+
+  # Mouse Y
+  if (mouse_in_y and mouse_pressed and event.kind == MOUSE) or self.thumb_y_has_mouse:
     self.thumb_y_has_mouse = true
     self.scrollBy(0, -event.yrel)
   if not mouse_pressed and self.thumb_y_has_mouse:
     self.thumb_y_has_mouse = false
+
+  # Mouse X
+  if (mouse_in_x and mouse_pressed and event.kind == MOUSE) or self.thumb_x_has_mouse:
+    self.thumb_x_has_mouse = true
+    self.scrollBy(-event.xrel, 0)
+  if not mouse_pressed and self.thumb_x_has_mouse:
+    self.thumb_x_has_mouse = false

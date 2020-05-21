@@ -85,6 +85,11 @@ method draw*(self: NodePtr, w, h: GLfloat) {.base.} =
   ## This used in the Window object.
   discard
 
+method draw2stage*(self: NodePtr, w, h: GLfloat) {.base.} =
+  ## Draws node.
+  ## This used in the Window object.
+  discard
+
 method dublicate*(self: NodePtr, obj: var NodeObj): NodePtr {.base.} =
   obj = self[]
   obj.addr
