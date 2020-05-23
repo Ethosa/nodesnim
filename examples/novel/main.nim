@@ -19,7 +19,7 @@ var
   night = load("assets/night.jpg")
 
   # Charapters:
-  akiko_default = load("assets/sharp.jpg")
+  akiko_default = load("assets/test.png", GL_RGBA)
 
   name_charapter_obj: LabelObj
   name_charapter = Label(name_charapter_obj)

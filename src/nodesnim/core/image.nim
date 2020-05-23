@@ -16,7 +16,7 @@ type
     size*: Vector2Ref
 
 
-proc load*(file: cstring, size: var Vector2Ref): Gluint =
+proc load*(file: cstring, size: var Vector2Ref, mode: Glenum = GL_RGB): Gluint =
   ## Loads image from file and returns texture ID.
   ##
   ## Arguments:
@@ -35,7 +35,7 @@ proc load*(file: cstring, size: var Vector2Ref): Gluint =
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
 
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB.GLint, surface.w,  surface.h, 0, GL_RGB, GL_UNSIGNED_BYTE, surface.pixels)
+  glTexImage2D(GL_TEXTURE_2D, 0, mode.GLint, surface.w,  surface.h, 0, mode, GL_UNSIGNED_BYTE, surface.pixels)
   glBindTexture(GL_TEXTURE_2D, 0)
 
   # free memory
@@ -45,7 +45,7 @@ proc load*(file: cstring, size: var Vector2Ref): Gluint =
   textureid
 
 
-proc load*(file: cstring): GlTexture =
+proc load*(file: cstring, mode: Glenum = GL_RGB): GlTexture =
   ## Loads GL texture.
   ##
   ## Arguments:
@@ -53,5 +53,5 @@ proc load*(file: cstring): GlTexture =
   var
     size: Vector2Ref = Vector2Ref()
     textureid: Gluint
-  textureid = load(file, size)
+  textureid = load(file, size, mode)
   GlTexture(texture: textureid, size: size)
