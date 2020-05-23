@@ -20,3 +20,4 @@
 18. [Dublicate nodes.](https://github.com/Ethosa/nodesnim/blob/master/tests/test18.nim)
 19. [Use RichEditText node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test19.nim)
 20. [Use Scroll node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test20.nim)
+21. [Use ProgressBar node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test21.nim)

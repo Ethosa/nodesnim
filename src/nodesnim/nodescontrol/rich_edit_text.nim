@@ -98,7 +98,7 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
         self.font.glutBitmapCharacter(c.c.int)  # render char
 
         inc char_num
-        if char_num == self.caret_position and self.blit_caret and self.blit_time > 1f:
+        if char_num == self.caret_position and self.blit_caret and self.blit_time > 1f and self.focused:
           glColor4f(self.caret_color.r, self.caret_color.g, self.caret_color.b, self.caret_color.a)
           glRectf(tx+cw, ty, tx+cw+2, ty+self.size)
           if self.blit_time > 2f:
