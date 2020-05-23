@@ -119,7 +119,6 @@ function main() {
   hint_text*: string
   color*: ColorRef             ## Text color.
   hint_color*: ColorRef        ## Hint color.
-  background_color*: ColorRef
   caret_color*: ColorRef
   text_align*: AnchorRef       ## Text align."><wbr />Edit<wbr />Text<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#EditTextPtr"
@@ -142,12 +141,16 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CEditTextPtr%2CGLfloat%2CGLfloat"
     title="draw(self: EditTextPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#dublicate.e%2CEditTextPtr%2CEditTextObj"
+    title="dublicate(self: EditTextPtr; obj: var EditTextObj): EditTextPtr"><wbr />dublicate<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#handle.e%2CEditTextPtr%2CInputEvent%2CNodePtr"
     title="handle(self: EditTextPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CEditTextPtr%2CAnchorRef"
     title="setTextAlign(self: EditTextPtr; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CEditTextPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextAlign(self: EditTextPtr; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#setText.e%2CEditTextPtr%2Cstring"
+    title="setText(self: EditTextPtr; value: string)"><wbr />set<wbr />Text<span class="attachedType">EditTextPtr</span></a></li>
 
   </ul>
 </li>
@@ -180,7 +183,6 @@ function main() {
   <span class="Identifier">hint_text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">color</span><span class="Operator">*</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a>             <span class="Comment">## Text color.</span>
   <span class="Identifier">hint_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a>        <span class="Comment">## Hint color.</span>
-  <span class="Identifier">background_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">caret_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">text_align</span><span class="Operator">*</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>       <span class="Comment">## Text align.</span>
   </pre></dt>
@@ -229,6 +231,14 @@ function main() {
 
 
 </dd>
+<a id="dublicate.e,EditTextPtr,EditTextObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CEditTextPtr%2CEditTextObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="edittext.html#EditTextObj"><span class="Identifier">EditTextObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="handle.e,EditTextPtr,InputEvent,NodePtr"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CEditTextPtr%2CInputEvent%2CNodePtr"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -251,6 +261,13 @@ Changes text align.
 Changes text align.
 
 </dd>
+<a id="setText.e,EditTextPtr,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CEditTextPtr%2Cstring"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 
@@ -261,7 +278,7 @@ Changes text align.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:46:20 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-23 06:31:20 UTC</small>
       </div>
     </div>
   </div>
