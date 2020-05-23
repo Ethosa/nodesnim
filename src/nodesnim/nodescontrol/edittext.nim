@@ -165,3 +165,6 @@ method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
 method setTextAlign*(self: EditTextPtr, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
+
+method setText*(self: EditTextPtr, value: string) {.base.} =
+  self.text = value

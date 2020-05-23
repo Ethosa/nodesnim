@@ -20,6 +20,7 @@ type
     texture_mode*: TextureMode
     texture_size*: Vector2Ref
     texture_anchor*: AnchorRef
+    texture_filter*: ColorRef
   TextureRectPtr* = ptr TextureRectObj
 
 
@@ -32,6 +33,7 @@ proc TextureRect*(name: string, variable: var TextureRectObj): TextureRectPtr =
   variable.texture_mode = TEXTURE_FILL_XY
   variable.texture_size = Vector2()
   variable.texture_anchor = Anchor(0, 0, 0, 0)
+  variable.texture_filter = Color(1f, 1f, 1f)
 
 proc TextureRect*(obj: var TextureRectObj): TextureRectPtr {.inline.} =
   TextureRect("TextureRect", obj)
@@ -46,6 +48,7 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
 
   glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
   glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+  glColor4f(self.texture_filter.r, self.texture_filter.g, self.texture_filter.b, self.texture_filter.a)
 
 
   if self.texture > 0:
@@ -114,3 +117,12 @@ method loadTexture*(self: TextureRectPtr, file: cstring) {.base.} =
 method setTexture*(self: TextureRectPtr, gltexture: GlTexture) {.base.} =
   self.texture = gltexture.texture
   self.texture_size = gltexture.size
+
+method setTextureFilter*(self: TextureRectPtr, color: ColorRef) {.base.} =
+  self.texture_filter = color
+
+method setTextureAnchor*(self: TextureRectPtr, anchor: AnchorRef) {.base.} =
+  self.texture_anchor = anchor
+
+method setTextureAnchor*(self: TextureRectPtr, x1, y1, x2, y2: float) {.base.} =
+  self.texture_anchor = Anchor(x1, y1, x2, y2)
