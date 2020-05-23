@@ -134,10 +134,14 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CLabelPtr%2CGLfloat%2CGLfloat"
     title="draw(self: LabelPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">LabelPtr</span></a></li>
+  <li><a class="reference" href="#dublicate.e%2CLabelPtr%2CLabelObj"
+    title="dublicate(self: LabelPtr; obj: var LabelObj): LabelPtr"><wbr />dublicate<span class="attachedType">LabelPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelPtr%2CAnchorRef"
     title="setTextAlign(self: LabelPtr; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextAlign(self: LabelPtr; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelPtr</span></a></li>
+  <li><a class="reference" href="#setText.e%2CLabelPtr%2Cstring"
+    title="setText(self: LabelPtr; value: string)"><wbr />set<wbr />Text<span class="attachedType">LabelPtr</span></a></li>
 
   </ul>
 </li>
@@ -210,6 +214,13 @@ function main() {
 
 
 </dd>
+<a id="dublicate.e,LabelPtr,LabelObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CLabelPtr%2CLabelObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="label.html#LabelObj"><span class="Identifier">LabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="setTextAlign.e,LabelPtr,AnchorRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelPtr%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -219,6 +230,13 @@ function main() {
 </dd>
 <a id="setTextAlign.e,LabelPtr,float,float,float,float"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="setText.e,LabelPtr,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CLabelPtr%2Cstring"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -234,7 +252,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:46:42 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-23 06:31:14 UTC</small>
       </div>
     </div>
   </div>
