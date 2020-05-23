@@ -95,3 +95,6 @@ method setTextAlign*(self: RichLabelPtr, align: AnchorRef) {.base.} =
 
 method setTextAlign*(self: RichLabelPtr, x1, y1, x2, y2: float) {.base.} =
   self.text_align = Anchor(x1, y1, x2, y2)
+
+method setText*(self: RichLabelPtr, value: ColorTextRef) {.base.} =
+  self.text = value

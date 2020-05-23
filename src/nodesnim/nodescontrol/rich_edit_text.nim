@@ -156,3 +156,6 @@ method setTextAlign*(self: RichEditTextPtr, align: AnchorRef) {.base.} =
 method setTextAlign*(self: RichEditTextPtr, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
+
+method setText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
+  self.text = value

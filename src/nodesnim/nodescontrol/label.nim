@@ -97,3 +97,6 @@ method setTextAlign*(self: LabelPtr, align: AnchorRef) {.base.} =
 
 method setTextAlign*(self: LabelPtr, x1, y1, x2, y2: float) {.base.} =
   self.text_align = Anchor(x1, y1, x2, y2)
+
+method setText*(self: LabelPtr, value: string) {.base.} =
+  self.text = value

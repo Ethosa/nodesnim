@@ -67,5 +67,4 @@ method reAnchorScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
-    if child.visible:
-      child.calcPositionAnchor()
+    child.calcPositionAnchor()

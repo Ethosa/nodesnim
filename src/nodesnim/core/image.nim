@@ -46,8 +46,12 @@ proc load*(file: cstring, size: var Vector2Ref): Gluint =
 
 
 proc load*(file: cstring): GlTexture =
+  ## Loads GL texture.
+  ##
+  ## Arguments:
+  ## - `file` - image path.
   var
-    size: Vector2Ref
+    size: Vector2Ref = Vector2Ref()
     textureid: Gluint
   textureid = load(file, size)
   GlTexture(texture: textureid, size: size)
