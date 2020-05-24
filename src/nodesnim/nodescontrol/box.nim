@@ -19,6 +19,15 @@ type
 
 
 proc Box*(name: string, variable: var BoxObj): BoxPtr =
+  ## Creates a new Box pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a BoxObj variable.
+  runnableExamples:
+    var
+      box_obj: BoxObj
+      box = Box("My box", box_obj)
   nodepattern(BoxObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -26,10 +35,19 @@ proc Box*(name: string, variable: var BoxObj): BoxPtr =
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
 
 proc Box*(obj: var BoxObj): BoxPtr {.inline.} =
+  ## Creates a new Box pointer with default name "Box"
+  ##
+  ## Arguments:
+  ## - `obj` is a BoxObj variable.
+  runnableExamples:
+    var
+      box_obj: BoxObj
+      box = Box(box_obj)
   Box("Box", obj)
 
 
 method getChildSize*(self: BoxPtr): Vector2Ref {.base.} =
+  ## Returns Vector2 of the minimal size of the box pointer.
   var
     x = 0f
     y = 0f
@@ -65,6 +83,10 @@ method draw*(self: BoxPtr, w, h: GLfloat) =
   procCall self.ControlPtr.draw(w, h)
 
 method dublicate*(self: BoxPtr, obj: var BoxObj): BoxPtr {.base.} =
+  ## Dublicates Box pointer.
+  ##
+  ## Arguments:
+  ## - `obj` is BoxObj variable.
   obj = self[]
   obj.addr
 
