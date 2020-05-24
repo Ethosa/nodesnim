@@ -14,10 +14,12 @@ import
   nodesnim/core/input,
   nodesnim/core/image,
   nodesnim/core/color_text,
+  nodesnim/core/audio_stream,
 
   nodesnim/nodes/node,
   nodesnim/nodes/scene,
   nodesnim/nodes/canvas,
+  nodesnim/nodes/audio_stream_player,
 
   nodesnim/nodescontrol/control,
   nodesnim/nodescontrol/color_rect,
@@ -37,9 +39,15 @@ import
   nodesnim/nodescontrol/popup
 
 export
+  # Third party
   opengl, glut,
+  # Main
   window, environment,
+  # Core
   vector2, rect2, enums, anchor, color, exceptions, input, image, color_text,
-  node, scene, canvas,
+  audio_stream,
+  # Default nodes
+  node, scene, canvas, audio_stream_player,
+  # Control nodes
   control, color_rect, texture_rect, label, button, box, hbox, vbox, grid_box, edittext,
   rich_label, rich_edit_text, scroll, progress_bar, slider, popup
