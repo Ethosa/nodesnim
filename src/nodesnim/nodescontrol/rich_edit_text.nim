@@ -52,6 +52,18 @@ proc RichEditText*(obj: var RichEditTextObj): RichEditTextPtr {.inline.} =
   RichEditText("RichEditText", obj)
 
 
+method getTextSize*(self: RichEditTextPtr): Vector2Ref {.base.} =
+  result = Vector2()
+  for line in self.text.splitLines():  # get text height
+    var x: float = 0f
+    for c in line.chars:
+      x += self.font.glutBitmapWidth(c.c.int).float
+    if x > result.x:
+      result.x = x
+    result.y += self.spacing + self.size
+  if result.y > 0:
+    result.y -= self.spacing
+
 method draw*(self: RichEditTextPtr, w, h: GLfloat) =
   self.calcGlobalPosition()
   let
@@ -120,6 +132,43 @@ method dublicate*(self: RichEditTextPtr, obj: var RichEditTextObj): RichEditText
 
 method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
   procCall self.ControlPtr.handle(event, mouse_on)
+
+  if self.hovered:  # Change cursor, if need
+    glutSetCursor(GLUT_CURSOR_TEXT)
+  else:
+    glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
+
+  if event.kind == MOUSE and event.pressed:
+    let
+      size = self.getTextSize()
+      pos = Vector2Ref(x: event.x, y: event.y) - self.global_position
+    if pos.y > size.y:
+      self.caret_position = self.text.len()
+    else:
+      var
+        res = Vector2()
+        caret_pos = 0
+        current_pos = 0
+        stop = false
+      for line in self.text.splitLines():  # get text height
+        var x: float = 0f
+        current_pos = 0
+        res.y += self.spacing + self.size
+        for c in line.chars:
+          x += self.font.glutBitmapWidth(c.c.int).float
+          inc caret_pos
+          inc current_pos
+          if res.y >= pos.y:
+            if current_pos < line.len() and x <= pos.x:
+              continue
+            stop = true
+            self.caret_position = caret_pos
+            break
+        if stop:
+          break
+        inc caret_pos
+        if x > res.x:
+          res.x = x
 
   if self.focused:
     if event.kind == KEYBOARD:
