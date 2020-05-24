@@ -133,6 +133,8 @@ function main() {
     title="addChild(self: BoxPtr; child: NodePtr)"><wbr />add<wbr />Child<span class="attachedType">BoxPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CBoxPtr%2CGLfloat%2CGLfloat"
     title="draw(self: BoxPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">BoxPtr</span></a></li>
+  <li><a class="reference" href="#dublicate.e%2CBoxPtr%2CBoxObj"
+    title="dublicate(self: BoxPtr; obj: var BoxObj): BoxPtr"><wbr />dublicate<span class="attachedType">BoxPtr</span></a></li>
   <li><a class="reference" href="#resize.e%2CBoxPtr%2CGLfloat%2CGLfloat"
     title="resize(self: BoxPtr; w, h: GLfloat)"><wbr />resize<span class="attachedType">BoxPtr</span></a></li>
   <li><a class="reference" href="#setChildAnchor.e%2CBoxPtr%2CAnchorRef"
@@ -183,14 +185,31 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#Box%2Cstring%2CBoxObj"><span class="Identifier">Box</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="box.html#BoxObj"><span class="Identifier">BoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new Box pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a BoxObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">box_obj</span><span class="Other">:</span> <span class="Identifier">BoxObj</span>
+  <span class="Identifier">box1</span> <span class="Other">=</span> <span class="Identifier">Box</span><span class="Other">(</span><span class="StringLit">&quot;My box&quot;</span><span class="Other">,</span> <span class="Identifier">box_obj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="Box,BoxObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#Box%2CBoxObj"><span class="Identifier">Box</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="box.html#BoxObj"><span class="Identifier">BoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new Box pointer with default name &quot;Box&quot;</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">obj</span></tt> is a BoxObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">box_obj</span><span class="Other">:</span> <span class="Identifier">BoxObj</span>
+  <span class="Identifier">box1</span> <span class="Other">=</span> <span class="Identifier">Box</span><span class="Other">(</span><span class="Identifier">box_obj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -202,7 +221,7 @@ function main() {
 <dt><pre><span class="Keyword">method</span> <a href="#getChildSize.e%2CBoxPtr"><span class="Identifier">getChildSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Returns Vector2 of the minimal size of the box pointer.
 
 </dd>
 <a id="addChild.e,BoxPtr,NodePtr"></a>
@@ -217,9 +236,21 @@ function main() {
 
 </dd>
 <a id="draw.e,BoxPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+                                     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+
+
+</dd>
+<a id="dublicate.e,BoxPtr,BoxObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CBoxPtr%2CBoxObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="box.html#BoxObj"><span class="Identifier">BoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Dublicates Box pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">obj</span></tt> is BoxObj variable.</li>
+</ul>
 
 
 </dd>
@@ -254,7 +285,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:45:50 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-24 03:01:38 UTC</small>
       </div>
     </div>
   </div>
