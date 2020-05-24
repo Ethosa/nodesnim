@@ -33,7 +33,8 @@ import
   nodesnim/nodescontrol/rich_edit_text,
   nodesnim/nodescontrol/scroll,
   nodesnim/nodescontrol/progress_bar,
-  nodesnim/nodescontrol/slider
+  nodesnim/nodescontrol/slider,
+  nodesnim/nodescontrol/popup
 
 export
   opengl, glut,
@@ -41,4 +42,4 @@ export
   vector2, rect2, enums, anchor, color, exceptions, input, image, color_text,
   node, scene, canvas,
   control, color_rect, texture_rect, label, button, box, hbox, vbox, grid_box, edittext,
-  rich_label, rich_edit_text, scroll, progress_bar, slider
+  rich_label, rich_edit_text, scroll, progress_bar, slider, popup

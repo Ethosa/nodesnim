@@ -202,6 +202,9 @@ method hasParent*(self: NodePtr): bool {.base, inline.} =
   ## Returns true, when node has parent.
   self.parent != nil
 
+method hide*(self: NodePtr) {.base.} =
+  self.visible = false
+
 method move*(self: NodePtr, x, y: float) {.base, inline.} =
   ## Adds `x` and` y` to the node position.
   ##
@@ -260,6 +263,9 @@ method setSizeAnchor*(self: NodePtr, anchor: Vector2Ref) {.base.} =
 method setSizeAnchor*(self: NodePtr, x, y: float) {.base.} =
   self.size_anchor = Vector2(x, y)
   self.can_use_size_anchor = true
+
+method show*(self: NodePtr) {.base.} =
+  self.visible = true
 
 method delete*(self: NodePtr) {.base.} =
   ## Deletes current node.

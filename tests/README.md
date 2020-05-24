@@ -22,3 +22,4 @@
 20. [Use Scroll node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test20.nim)
 21. [Use ProgressBar node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test21.nim)
 22. [Use Slider node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test22.nim)
+23. [Use Popup node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test23.nim)
