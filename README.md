@@ -32,10 +32,12 @@
    -  [Input](https://ethosa.github.io/nodesnim/input.html)
    -  [Rect2](https://ethosa.github.io/nodesnim/rect2.html)
    -  [Vector2](https://ethosa.github.io/nodesnim/vector2.html)
+   -  [AudioStream](https://ethosa.github.io/nodesnim/audio_stream.html)
 -  Default nodes
    -  [Node](https://ethosa.github.io/nodesnim/node.html)
    -  [Canvas](https://ethosa.github.io/nodesnim/canvas.html)
    -  [Scene](https://ethosa.github.io/nodesnim/scene.html)
+   -  [AudioStreamPlayer](https://ethosa.github.io/nodesnim/audio_stream_player.html)
 -  Control nodes
    -  [Control](https://ethosa.github.io/nodesnim/control.html)
    -  [ColorRect](https://ethosa.github.io/nodesnim/color_rect.html)
