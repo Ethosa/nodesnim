@@ -51,6 +51,7 @@
    -  [GridBox](https://ethosa.github.io/nodesnim/grid_box.html)
    -  [Scroll](https://ethosa.github.io/nodesnim/scroll.html)
    -  [ProgressBar](https://ethosa.github.io/nodesnim/progress_bar.html)
+   -  [Slider](https://ethosa.github.io/nodesnim/slider.html)
 
 </details>
 
