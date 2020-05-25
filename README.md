@@ -13,8 +13,11 @@
 # Install
 1. Install this repo
    -  `nimble install https://github.com/Ethosa/nodesnim.git`
-2. Download OpenGL, SDL2_image, SDL2_mixer and GLUT DLLs for your OS
-3. Put DLLs in the `.nimble/bin/` folder
+2. Download OpenGL, SDL2_image, SDL2_mixer and GLUT Runtime binaries for your OS
+   -  [SDL2](https://www.libsdl.org/download-2.0.php)
+   -  [SDL2_image](https://www.libsdl.org/projects/SDL_image/)
+   -  [SDL2_mixer](https://www.libsdl.org/projects/SDL_mixer/)
+3. Put Runtime binaries in the `.nimble/bin/` folder
 
 # Features
 - Godot-like node system.
@@ -63,7 +66,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 -   CrossPlatform export for Windows (tested on Windows 7 x64 and Windows 10 x64)
     -   `nim c -d:mingw -d:release --opt:speed --noNimblePath file.nim`
-    -   put DLLs in the folder with the program.
+    -   put Runtime binaries in the folder with the program.
 
 
 # F.A.Q
