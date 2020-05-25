@@ -49,14 +49,32 @@ template controlpattern*: untyped =
   variable.unfocus = proc() = discard
 
 proc Control*(name: string, variable: var ControlObj): ControlPtr =
+  ## Creates a new Control pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a ControlObj variable.
+  runnableExamples:
+    var
+      ctrl_obj: ControlObj
+      ctrl = Control("Control", ctrl_obj)
   nodepattern(ControlObj)
   controlpattern()
 
 proc Control*(obj: var ControlObj): ControlPtr {.inline.} =
+  ## Creates a new Control pointer with deffault node name "Control".
+  ##
+  ## Arguments:
+  ## - `variable` is a ControlObj variable.
+  runnableExamples:
+    var
+      ctrl_obj: ControlObj
+      ctrl = Control(ctrl_obj)
   Control("Control", obj)
 
 
 method calcPositionAnchor*(self: ControlPtr) =
+  ## Calculates node position. This uses in the `scene.nim`.
   if self.parent != nil:
     if self.can_use_size_anchor:
       if self.size_anchor.x > 0.0:
@@ -68,6 +86,7 @@ method calcPositionAnchor*(self: ControlPtr) =
       self.position.y = self.parent.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
 
 method draw*(self: ControlPtr, w, h: GLfloat) =
+  ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   self.calcGlobalPosition()
   let
@@ -81,7 +100,8 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: ControlPtr, obj: var ControlObj): ControlPtr {.base.} =
+method duplicate*(self: ControlPtr, obj: var ControlObj): ControlPtr {.base.} =
+  ## Duplicates Control object and create a new Control pointer.
   obj = self[]
   obj.addr
 
@@ -90,6 +110,7 @@ method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base, inline.} =
   Vector2Ref(x: last_event.x, y: last_event.y)
 
 method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
+  ## Handles user input. This uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   if self.mousemode == MOUSEMODE_IGNORE:
     return

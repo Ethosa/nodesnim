@@ -19,6 +19,15 @@ type
 
 
 proc ColorRect*(name: string, variable: var ColorRectObj): ColorRectPtr =
+  ## Creates a new ColorRect pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a ColorRectObj variable
+  runnableExamples:
+    var
+      colorrect1_obj: ColorRectObj
+      colorrect1 = ColorRect("ColorRect", colorrect1_obj)
   nodepattern(ColorRectObj)
   controlpattern()
   variable.color = Color(1f, 1f, 1f)
@@ -26,10 +35,19 @@ proc ColorRect*(name: string, variable: var ColorRectObj): ColorRectPtr =
   variable.rect_size.y = 40
 
 proc ColorRect*(obj: var ColorRectObj): ColorRectPtr {.inline.} =
+  ## Creates a new ColorRect pointer with default node name "ColorRect".
+  ##
+  ## Arguments:
+  ## - `variable` is a ColorRectObj variable
+  runnableExamples:
+    var
+      colorrect1_obj: ColorRectObj
+      colorrect1 = ColorRect(colorrect1_obj)
   ColorRect("ColorRect", obj)
 
 
 method draw*(self: ColorRectPtr, w, h: GLfloat) =
+  ## this method uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -42,6 +60,7 @@ method draw*(self: ColorRectPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: ColorRectPtr, obj: var ColorRectObj): ColorRectPtr {.base.} =
+method duplicate*(self: ColorRectPtr, obj: var ColorRectObj): ColorRectPtr {.base.} =
+  ## Duplicates ColorRect object and create a new ColorRect pointer.
   obj = self[]
   obj.addr

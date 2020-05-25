@@ -21,6 +21,15 @@ type
 
 
 proc VSlider*(name: string, variable: var VSliderObj): VSliderPtr =
+  ## Creates a new VSlider pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a VSliderObj variable.
+  runnableExamples:
+    var
+      sliderobj: VSliderObj
+      slider = VSlider("VSlider", sliderobj)
   nodepattern(VSliderObj)
   controlpattern()
   variable.background_color = Color(1f, 1f, 1f)
@@ -32,10 +41,19 @@ proc VSlider*(name: string, variable: var VSliderObj): VSliderPtr =
   variable.value = 0
 
 proc VSlider*(obj: var VSliderObj): VSliderPtr {.inline.} =
+  ## Creates a new VSlider pointer with default node name "VSlider".
+  ##
+  ## Arguments:
+  ## - `variable` is a VSliderObj variable.
+  runnableExamples:
+    var
+      sliderobj: VSliderObj
+      slider = VSlider(sliderobj)
   VSlider("VSlider", obj)
 
 
 method draw*(self: VSliderPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -58,17 +76,20 @@ method draw*(self: VSliderPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: VSliderPtr, obj: var VSliderObj): VSliderPtr {.base.} =
+method duplicate*(self: VSliderPtr, obj: var VSliderObj): VSliderPtr {.base.} =
+  ## Duplicates VSlider object and create a new VSlider pointer.
   obj = self[]
   obj.addr
 
 method setMaxValue*(self: VSliderPtr, value: uint) {.base.} =
+  ## Changes max value, if it not less than progress.
   if value > self.value:
     self.max_value = value
   else:
     self.max_value = self.value
 
 method setProgress*(self: VSliderPtr, value: uint) {.base.} =
+  ## Changes progress, if it not more than max value.
   if value > self.max_value:
     self.value = self.max_value
   else:
@@ -80,6 +101,7 @@ method setProgressColor*(self: VSliderPtr, color: ColorRef) {.base.} =
   self.progress_color = color
 
 method handle*(self: VSliderPtr, event: InputEvent, mouse_on: var NodePtr) =
+  ## handles user input. This uses in the `window.nim`.
   procCall self.ControlPtr.handle(event, mouse_on)
 
   if self.pressed:

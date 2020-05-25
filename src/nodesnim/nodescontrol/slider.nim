@@ -21,6 +21,15 @@ type
 
 
 proc Slider*(name: string, variable: var SliderObj): SliderPtr =
+  ## Creates a new Slider pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a SliderObj variable.
+  runnableExamples:
+    var
+      scobj: SliderObj
+      sc = Slider("Slider", scobj)
   nodepattern(SliderObj)
   controlpattern()
   variable.background_color = Color(1f, 1f, 1f)
@@ -32,10 +41,19 @@ proc Slider*(name: string, variable: var SliderObj): SliderPtr =
   variable.value = 0
 
 proc Slider*(obj: var SliderObj): SliderPtr {.inline.} =
+  ## Creates a new Slider pointer with default node name "Slider".
+  ##
+  ## Arguments:
+  ## - `variable` is a SliderObj variable.
+  runnableExamples:
+    var
+      scobj: SliderObj
+      sc = Slider(scobj)
   Slider("Slider", obj)
 
 
 method draw*(self: SliderPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -58,17 +76,20 @@ method draw*(self: SliderPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: SliderPtr, obj: var SliderObj): SliderPtr {.base.} =
+method duplicate*(self: SliderPtr, obj: var SliderObj): SliderPtr {.base.} =
+  ## Duplicates Sider object and create a new Slider pointer.
   obj = self[]
   obj.addr
 
 method setMaxValue*(self: SliderPtr, value: uint) {.base.} =
+  ## Changes max value.
   if value > self.value:
     self.max_value = value
   else:
     self.max_value = self.value
 
 method setProgress*(self: SliderPtr, value: uint) {.base.} =
+  ## Changes progress.
   if value > self.max_value:
     self.value = self.max_value
   else:
@@ -80,6 +101,7 @@ method setProgressColor*(self: SliderPtr, color: ColorRef) {.base.} =
   self.progress_color = color
 
 method handle*(self: SliderPtr, event: InputEvent, mouse_on: var NodePtr) =
+  ## Handles user input. This uses in the `window.nim`.
   procCall self.ControlPtr.handle(event, mouse_on)
 
   if self.pressed:

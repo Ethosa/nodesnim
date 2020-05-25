@@ -32,6 +32,15 @@ type
 
 
 proc RichEditText*(name: string, variable: var RichEditTextObj): RichEditTextPtr =
+  ## Creates a new RichEditText pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a RichEditTextObj variable.
+  runnableExamples:
+    var
+      textobj: RichEditTextObj
+      text = RichEditText("RichEditText", textobj)
   nodepattern(RichEditTextObj)
   controlpattern()
   variable.rect_size.x = 64
@@ -49,10 +58,19 @@ proc RichEditText*(name: string, variable: var RichEditTextObj): RichEditTextPtr
   variable.blit_time = 0f
 
 proc RichEditText*(obj: var RichEditTextObj): RichEditTextPtr {.inline.} =
+  ## Creates a new RichEditText pointer with default node name "RichEditText".
+  ##
+  ## Arguments:
+  ## - `variable` is a RichEditTextObj variable.
+  runnableExamples:
+    var
+      textobj: RichEditTextObj
+      text = RichEditText(textobj)
   RichEditText("RichEditText", obj)
 
 
 method getTextSize*(self: RichEditTextPtr): Vector2Ref {.base.} =
+  ## Returns text size.
   result = Vector2()
   for line in self.text.splitLines():  # get text height
     var x: float = 0f
@@ -65,6 +83,7 @@ method getTextSize*(self: RichEditTextPtr): Vector2Ref {.base.} =
     result.y -= self.spacing
 
 method getLine*(self: RichEditTextPtr): int {.base.} =
+  ## Returns current caret line.
   var
     caret_pos = 0
     l = 0
@@ -80,6 +99,7 @@ method getLine*(self: RichEditTextPtr): int {.base.} =
   return l
 
 method draw*(self: RichEditTextPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -140,12 +160,14 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: RichEditTextPtr, obj: var RichEditTextObj): RichEditTextPtr {.base.} =
+method duplicate*(self: RichEditTextPtr, obj: var RichEditTextObj): RichEditTextPtr {.base.} =
+  ## Duplicates RichEditText and create a new RichEditText pointer.
   obj = self[]
   obj.addr
 
 
 method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
+  ## Handles user input. This uses in the `window.nim`.
   procCall self.ControlPtr.handle(event, mouse_on)
 
   if self.hovered:  # Change cursor, if need
@@ -203,6 +225,8 @@ method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) 
           elif self.caret_position == 1:
             self.text = self.text[1..^1]
             self.caret_position -= 1
+
+        # Other chars
         elif self.caret_position > 0 and self.caret_position < self.text.len():
           self.text = self.text[0..self.caret_position-1] & clrtext(event.key) & self.text[self.caret_position..^1]
           self.caret_position += 1
@@ -222,4 +246,5 @@ method setTextAlign*(self: RichEditTextPtr, x1, y1, x2, y2: float) {.base.} =
   self.text_align = Anchor(x1, y1, x2, y2)
 
 method setText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
+  ## Changes RichEditText text.
   self.text = value

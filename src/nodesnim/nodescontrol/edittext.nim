@@ -34,6 +34,15 @@ type
 
 
 proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
+  ## Creates a new EditText pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a EditTextObj variable.
+  runnableExamples:
+    var
+      editobj: EditTextObj
+      edit = EditText("EditText", editobj)
   nodepattern(EditTextObj)
   controlpattern()
   variable.rect_size.x = 64
@@ -53,10 +62,20 @@ proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
   variable.blit_time = 0f
 
 proc EditText*(obj: var EditTextObj): EditTextPtr {.inline.} =
+  ## Creates a new EditText pointer with default name "EditText".
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a EditTextObj variable.
+  runnableExamples:
+    var
+      editobj: EditTextObj
+      edit = EditText(editobj)
   EditText("EditText", obj)
 
 
 method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
+  ## Returns text size.
   result = Vector2()
   for line in self.text.splitLines():  # get text height
     var x: float = 0f
@@ -69,6 +88,7 @@ method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
     result.y -= self.spacing
 
 method getLine*(self: EditTextPtr): int {.base.} =
+  ## Returns current caret line.
   var
     caret_pos = 0
     l = 0
@@ -84,6 +104,7 @@ method getLine*(self: EditTextPtr): int {.base.} =
   return l
 
 method draw*(self: EditTextPtr, w, h: GLfloat) =
+  ## This method uses in the `window.nim`
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -149,12 +170,14 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =
+method duplicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =
+  ## Duplicates EditText object and create a new EditText pointer.
   obj = self[]
   obj.addr
 
 
 method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
+  ## Handles user input. Thi uses in the `window.nim`.
   procCall self.ControlPtr.handle(event, mouse_on)
 
   if self.hovered:  # Change cursor, if need
@@ -231,4 +254,5 @@ method setTextAlign*(self: EditTextPtr, x1, y1, x2, y2: float) {.base.} =
   self.text_align = Anchor(x1, y1, x2, y2)
 
 method setText*(self: EditTextPtr, value: string) {.base.} =
+  ## Changes EditText text.
   self.text = value

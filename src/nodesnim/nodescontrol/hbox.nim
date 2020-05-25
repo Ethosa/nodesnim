@@ -20,6 +20,15 @@ type
 
 
 proc HBox*(name: string, variable: var HBoxObj): HBoxPtr =
+  ## Creates a new HBox pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a HBoxObj variable.
+  runnableExamples:
+    var
+      gridobj: HBoxObj
+      grid = HBox("HBox", gridobj)
   nodepattern(HBoxObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -28,6 +37,14 @@ proc HBox*(name: string, variable: var HBoxObj): HBoxPtr =
   variable.separator = 4f
 
 proc HBox*(obj: var HBoxObj): HBoxPtr {.inline.} =
+  ## Creates a new HBox pointer with default node name "HBox".
+  ##
+  ## Arguments:
+  ## - `variable` is a HBoxObj variable.
+  runnableExamples:
+    var
+      gridobj: HBoxObj
+      grid = HBox(gridobj)
   HBox("HBox", obj)
 
 
@@ -54,6 +71,7 @@ method addChild*(self: HBoxPtr, child: NodePtr) =
 
 
 method draw*(self: HBoxPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   let
     x1 = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
@@ -70,11 +88,17 @@ method draw*(self: HBoxPtr, w, h: GLfloat) =
     x += child.rect_size.x + self.separator
   procCall self.ControlPtr.draw(w, h)
 
-method dublicate*(self: HBoxPtr, obj: var HBoxObj): HBoxPtr {.base.} =
+method duplicate*(self: HBoxPtr, obj: var HBoxObj): HBoxPtr {.base.} =
+  ## Duplicates HBox object and create a new HBox pointer.
   obj = self[]
   obj.addr
 
 method resize*(self: HBoxPtr, w, h: GLfloat) =
+  ## Resizes HBox, if `w` and `h` not less than child size.
+  ##
+  ## Arguments:
+  ## - `w` is a new width.
+  ## - `h` is a new height.
   var size = self.getChildSize()
   if size.x < w:
     size.x = w
