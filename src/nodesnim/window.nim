@@ -10,7 +10,8 @@ import
   nodes/node,
   nodes/scene,
 
-  environment
+  environment,
+  os
 
 
 var
@@ -51,6 +52,7 @@ proc display {.cdecl.} =
   # Update window.
   glFlush()
   glutSwapBuffers()
+  os.sleep(env.delay)
 
 
 proc reshape(w, h: cint) {.cdecl.} =

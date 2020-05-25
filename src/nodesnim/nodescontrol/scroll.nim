@@ -46,6 +46,8 @@ proc Scroll*(obj: var ScrollObj): ScrollPtr {.inline.} =
 
 
 method addChild*(self: ScrollPtr, other: NodePtr) =
+  ## Adds a new node in Scroll.
+  ## 
   if self.children.len() == 0:
     self.children.add(other)
     other.parent = self
@@ -87,6 +89,7 @@ method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
     child.position.x = -self.viewport_x
     child.position.y = -self.viewport_y
 
+    # Vertical
     if self.viewport_h < self.rect_size.y:
       # Back:
       glColor4f(self.back_color.r, self.back_color.g, self.back_color.b, self.back_color.a)
@@ -96,6 +99,7 @@ method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
       glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
       glRectf(x + self.viewport_w - self.thumb_width, y - thumb_y, x+self.viewport_w, y - thumb_y - thumb_h)
 
+    # Horizontal
     if self.viewport_w < self.rect_size.x:
       # Back:
       glColor4f(self.back_color.r, self.back_color.g, self.back_color.b, self.back_color.a)

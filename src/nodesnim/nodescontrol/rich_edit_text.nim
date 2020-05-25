@@ -45,7 +45,7 @@ proc RichEditText*(name: string, variable: var RichEditTextObj): RichEditTextPtr
   variable.caret_position = 0
   variable.blit_caret = true
   variable.caret_color = Color(1f, 1f, 1f, 0.7)
-  variable.blit_speed = 0.004
+  variable.blit_speed = 0.05
   variable.blit_time = 0f
 
 proc RichEditText*(obj: var RichEditTextObj): RichEditTextPtr {.inline.} =
