@@ -25,6 +25,15 @@ type
 
 
 proc TextureRect*(name: string, variable: var TextureRectObj): TextureRectPtr =
+  ## Creates a new TextureRect pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a TextureRectObj variable.
+  runnableExamples:
+    var
+      textureobj: TextureRectObj
+      texture = TextureRect("TextureRect", textureobj)
   nodepattern(TextureRectObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -36,11 +45,20 @@ proc TextureRect*(name: string, variable: var TextureRectObj): TextureRectPtr =
   variable.texture_filter = Color(1f, 1f, 1f)
 
 proc TextureRect*(obj: var TextureRectObj): TextureRectPtr {.inline.} =
+  ## Creates a new TextureRect pointer with default name "TextureRect".
+  ##
+  ## Arguments:
+  ## - `variable` is a TextureRectObj variable.
+  runnableExamples:
+    var
+      textureobj: TextureRectObj
+      texture = TextureRect(textureobj)
   TextureRect("TextureRect", obj)
 
 
 
 method draw*(self: TextureRectPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -105,24 +123,40 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: TextureRectPtr, obj: var TextureRectObj): TextureRectPtr {.base.} =
+method duplicate*(self: TextureRectPtr, obj: var TextureRectObj): TextureRectPtr {.base.} =
+  ## Duplicates TextureRect and create a new TextureRect pointer.
   obj = self[]
   obj.addr
 
 method loadTexture*(self: TextureRectPtr, file: cstring) {.base.} =
+  ## Loads texture from file.
+  ##
+  ## Arguments:
+  ## - `file` is an image file path.
   var size: Vector2Ref = Vector2Ref()
   self.texture = load(file, size)
   self.texture_size = size
 
 method setTexture*(self: TextureRectPtr, gltexture: GlTexture) {.base.} =
+  ## Changes texture.
+  ##
+  ## Arguments:
+  ## - `gltexture` is a texture, loaded via load(file, mode=GL_RGB).
   self.texture = gltexture.texture
   self.texture_size = gltexture.size
 
 method setTextureFilter*(self: TextureRectPtr, color: ColorRef) {.base.} =
+  ## Changes texture filter color.
   self.texture_filter = color
 
 method setTextureAnchor*(self: TextureRectPtr, anchor: AnchorRef) {.base.} =
+  ## Changes texture anchor.
   self.texture_anchor = anchor
 
 method setTextureAnchor*(self: TextureRectPtr, x1, y1, x2, y2: float) {.base.} =
+  ## Changes texture anchor.
+  ##
+  ## ARguments:
+  ## - `x1` and `y1` is an anchor relative to TextureRect size.
+  ## - `x2` and `y2` is an anchor relative to texture size.
   self.texture_anchor = Anchor(x1, y1, x2, y2)

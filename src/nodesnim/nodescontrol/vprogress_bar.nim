@@ -21,6 +21,15 @@ type
 
 
 proc VProgressBar*(name: string, variable: var VProgressBarObj): VProgressBarPtr =
+  ## Creates a new VProgressBar pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a VProgressBarObj variable.
+  runnableExamples:
+    var
+      progressobj: VProgressBarObj
+      progress = VProgressBar("VProgressBar", progressobj)
   nodepattern(VProgressBarObj)
   controlpattern()
   variable.background_color = Color(1f, 1f, 1f)
@@ -32,10 +41,19 @@ proc VProgressBar*(name: string, variable: var VProgressBarObj): VProgressBarPtr
   variable.value = 0
 
 proc VProgressBar*(obj: var VProgressBarObj): VProgressBarPtr {.inline.} =
+  ## Creates a new VProgressBar pointer with default node name "VProgressBar".
+  ##
+  ## Arguments:
+  ## - `variable` is a VProgressBarObj variable.
+  runnableExamples:
+    var
+      progressobj: VProgressBarObj
+      progress = VProgressBar(progressobj)
   VProgressBar("VProgressBar", obj)
 
 
 method draw*(self: VProgressBarPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -54,17 +72,20 @@ method draw*(self: VProgressBarPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: VProgressBarPtr, obj: var VProgressBarObj): VProgressBarPtr {.base.} =
+method duplicate*(self: VProgressBarPtr, obj: var VProgressBarObj): VProgressBarPtr {.base.} =
+  ## Duplicates VProgressBar object and create a new VProgressBar pointer.
   obj = self[]
   obj.addr
 
 method setMaxValue*(self: VProgressBarPtr, value: uint) {.base.} =
+  ## Changes max value.
   if value > self.value:
     self.max_value = value
   else:
     self.max_value = self.value
 
 method setProgress*(self: VProgressBarPtr, value: uint) {.base.} =
+  ## Changes progress.
   if value > self.max_value:
     self.value = self.max_value
   else:

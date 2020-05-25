@@ -34,11 +34,28 @@ type
 
 proc Canvas*(name: string, variable: var CanvasObj): CanvasPtr =
   ## Creates a new Canvas pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a CanvasObj variable
+  runnableExamples:
+    var
+      canvas1_obj: CanvasObj
+      canvas1 = Canvas("Canvas", canvas1_obj)
+  ## Creates a new Canvas pointer.
   nodepattern(CanvasObj)
   variable.rect_size.x = 40
   variable.rect_size.y = 40
 
 proc Canvas*(variable: var CanvasObj): CanvasPtr {.inline.} =
+  ## Creates a new Canvas pointer with default name "Canvas".
+  ##
+  ## Arguments:
+  ## - `variable` is a CanvasObj variable
+  runnableExamples:
+    var
+      canvas1_obj: CanvasObj
+      canvas1 = Canvas(canvas1_obj)
   Canvas("Canvas", variable)
 
 
@@ -59,6 +76,7 @@ proc calculateY(canvas: CanvasPtr, y, gy: GLfloat): GLfloat =
 
 
 method draw*(canvas: CanvasPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   canvas.calcGlobalPosition()
   let
     x = -w/2 + canvas.global_position.x
@@ -94,7 +112,8 @@ method draw*(canvas: CanvasPtr, w, h: GLfloat) =
           canvas.calculateY(y - cmd.y1 - cmd.points[i+1], y))
       glEnd()
 
-method dublicate*(self: CanvasPtr, obj: var CanvasObj): CanvasPtr {.base.} =
+method duplicate*(self: CanvasPtr, obj: var CanvasObj): CanvasPtr {.base.} =
+  ## Duplicates Canvas object and create a new Canvas pointer.
   obj = self[]
   obj.addr
 
@@ -152,6 +171,11 @@ method fill*(canvas: CanvasPtr, color: ColorRef) {.base.} =
   canvas.commands = @[DrawCommand(kind: FILL, x1: 0, y1: 0, color: color)]
 
 method resize*(canvas: CanvasPtr, w, h: GLfloat) {.base.} =
+  ## Resizes canvas.
+  ##
+  ## Arguments:
+  ## - `w` is a new width.
+  ## - `h` is a new height.
   canvas.rect_size.x = w
   canvas.rect_size.y = h
   canvas.can_use_anchor = false

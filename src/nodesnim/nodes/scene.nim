@@ -13,10 +13,18 @@ type
 
 proc Scene*(name: string, variable: var SceneObj): ScenePtr =
   ## Creates a new Scene pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a scene name.
+  ## - `variable` is a SceneObj object.
   nodepattern(SceneObj)
   variable.pausemode = PAUSE
 
 proc Scene*(variable: var SceneObj): ScenePtr {.inline.} =
+  ## Creates a new Scene pointer with default scene name "Scene".
+  ##
+  ## Arguments:
+  ## - `variable` is a SceneObj object.
   Scene("Scene", variable)
 
 
@@ -38,21 +46,25 @@ method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
     if child.visible:
       child.draw2stage(w, h)
 
-method dublicate*(self: ScenePtr, obj: var SceneObj): ScenePtr {.base.} =
+method duplicate*(self: ScenePtr, obj: var SceneObj): ScenePtr {.base.} =
+  ## Duplicates Scene object and create a new Scene pointer.
   obj = self[]
   obj.addr
 
 method enter*(scene: ScenePtr) {.base.} =
+  ## This called when scene was changed.
   for child in scene.getChildIter():
     child.enter()
     child.is_ready = false
 
 method exit*(scene: ScenePtr) {.base.} =
+  ## This called when scene was changed.
   for child in scene.getChildIter():
     child.enter()
     child.is_ready = false
 
 method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, paused: bool) {.base.} =
+  ## Handles user input. This called on any input.
   var childs = scene.getChildIter()
   for i in countdown(childs.len()-1, 0):
     if paused and childs[i].getPauseMode() != PROCESS:
@@ -62,6 +74,7 @@ method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, p
       childs[i].input(event)
 
 method reAnchorScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
+  ## Recalculates node positions.
   scene.rect_size.x = w
   scene.rect_size.y = h
   for child in scene.getChildIter():

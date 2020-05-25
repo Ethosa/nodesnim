@@ -26,8 +26,8 @@ proc Box*(name: string, variable: var BoxObj): BoxPtr =
   ## - `variable` is a BoxObj variable.
   runnableExamples:
     var
-      box_obj: BoxObj
-      box = Box("My box", box_obj)
+      box1_obj: BoxObj
+      box1 = Box("My box", box1_obj)
   nodepattern(BoxObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -41,8 +41,8 @@ proc Box*(obj: var BoxObj): BoxPtr {.inline.} =
   ## - `obj` is a BoxObj variable.
   runnableExamples:
     var
-      box_obj: BoxObj
-      box = Box(box_obj)
+      box1_obj: BoxObj
+      box1 = Box(box1_obj)
   Box("Box", obj)
 
 
@@ -70,6 +70,7 @@ method addChild*(self: BoxPtr, child: NodePtr) =
 
 
 method draw*(self: BoxPtr, w, h: GLfloat) =
+  ## this method uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
@@ -82,8 +83,8 @@ method draw*(self: BoxPtr, w, h: GLfloat) =
     child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
   procCall self.ControlPtr.draw(w, h)
 
-method dublicate*(self: BoxPtr, obj: var BoxObj): BoxPtr {.base.} =
-  ## Dublicates Box pointer.
+method duplicate*(self: BoxPtr, obj: var BoxObj): BoxPtr {.base.} =
+  ## Duplicates Box pointer.
   ##
   ## Arguments:
   ## - `obj` is BoxObj variable.
@@ -91,6 +92,11 @@ method dublicate*(self: BoxPtr, obj: var BoxObj): BoxPtr {.base.} =
   obj.addr
 
 method resize*(self: BoxPtr, w, h: GLfloat) =
+  ## Resizes Box node.
+  ##
+  ## Arguments:
+  ## - `w` is a new width.
+  ## - `h` is a new height.
   var size = self.getChildSize()
   if size.x < w:
     size.x = w
@@ -102,7 +108,16 @@ method resize*(self: BoxPtr, w, h: GLfloat) =
   self.can_use_size_anchor = false
 
 method setChildAnchor*(self: BoxPtr, anchor: AnchorRef) {.base.} =
+  ## Changes child anchor.
+  ##
+  ## Arguments:
+  ## - `anchor` - Anchor object.
   self.child_anchor = anchor
 
 method setChildAnchor*(self: BoxPtr, x1, y1, x2, y2: float) {.base.} =
+  ## Changes child anchor.
+  ##
+  ## Arguments:
+  ## - `x1` and `y1` is an anchor relative to Box size.
+  ## - `x2` and `y2` is an anchor relative to child size.
   self.child_anchor = Anchor(x1, y1, x2, y2)

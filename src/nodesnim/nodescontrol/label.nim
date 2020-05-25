@@ -27,6 +27,15 @@ type
 
 
 proc Label*(name: string, variable: var LabelObj): LabelPtr =
+  ## Creates a new Label pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a LabelObj variable.
+  runnableExamples:
+    var
+      textobj: LabelObj
+      text = Label("Label", textobj)
   nodepattern(LabelObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -39,10 +48,19 @@ proc Label*(name: string, variable: var LabelObj): LabelPtr =
   variable.color = Color(1f, 1f, 1f)
 
 proc Label*(obj: var LabelObj): LabelPtr {.inline.} =
+  ## Creates a new Labelpointer with default node name "Label".
+  ##
+  ## Arguments:
+  ## - `variable` is a LabelObj variable.
+  runnableExamples:
+    var
+      textobj: LabelObj
+      text = Label(textobj)
   Label("Label", obj)
 
 
 method draw*(self: LabelPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -88,15 +106,19 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: LabelPtr, obj: var LabelObj): LabelPtr {.base.} =
+method duplicate*(self: LabelPtr, obj: var LabelObj): LabelPtr {.base.} =
+  ## Duplicates Label object and create a new Label pointer.
   obj = self[]
   obj.addr
 
 method setTextAlign*(self: LabelPtr, align: AnchorRef) {.base.} =
+  ## Changes text alignment.
   self.text_align = align
 
 method setTextAlign*(self: LabelPtr, x1, y1, x2, y2: float) {.base.} =
+  ## Changes text alignment.
   self.text_align = Anchor(x1, y1, x2, y2)
 
 method setText*(self: LabelPtr, value: string) {.base.} =
+  ## Changes Label text.
   self.text = value

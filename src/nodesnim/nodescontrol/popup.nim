@@ -18,6 +18,15 @@ type
 
 
 proc Popup*(name: string, variable: var PopupObj): PopupPtr =
+  ## Creates a new Popup pointer.
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a PopupObj variable.
+  runnableExamples:
+    var
+      pobj: PopupObj
+      p = Popup("Popup", pobj)
   nodepattern(PopupObj)
   controlpattern()
   variable.background_color = Color(0x212121ff)
@@ -26,6 +35,14 @@ proc Popup*(name: string, variable: var PopupObj): PopupPtr =
   variable.visible = false
 
 proc Popup*(obj: var PopupObj): PopupPtr {.inline.} =
+  ## Creates a new Popup pointer with default node name "Popup".
+  ##
+  ## Arguments:
+  ## - `variable` is a PopupObj variable.
+  runnableExamples:
+    var
+      pobj: PopupObj
+      p = Popup(pobj)
   Popup("Popup", obj)
 
 
@@ -38,21 +55,25 @@ template recalc =
 
 
 method hide*(self: PopupPtr) =
+  ## Hides popup.
   {.warning[LockLevel]: off.}
   self.visible = false
   recalc()
 
 method show*(self: PopupPtr) =
+  ## Shws popup.
   {.warning[LockLevel]: off.}
   self.visible = true
   recalc()
 
 method calcPositionAnchor*(self: PopupPtr) =
+  ## This uses in the `scene.nim`.
   {.warning[LockLevel]: off.}
   procCall self.ControlPtr.calcPositionAnchor()
   recalc()
 
 method draw*(self: PopupPtr, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
   self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
@@ -65,6 +86,7 @@ method draw*(self: PopupPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method dublicate*(self: PopupPtr, obj: var PopupObj): PopupPtr {.base.} =
+method duplicate*(self: PopupPtr, obj: var PopupObj): PopupPtr {.base.} =
+  ## Duplicates Popup object and create a new Popup pointer.
   obj = self[]
   obj.addr

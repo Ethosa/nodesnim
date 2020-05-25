@@ -90,7 +90,8 @@ method draw2stage*(self: NodePtr, w, h: GLfloat) {.base.} =
   ## This used in the Window object.
   discard
 
-method dublicate*(self: NodePtr, obj: var NodeObj): NodePtr {.base.} =
+method duplicate*(self: NodePtr, obj: var NodeObj): NodePtr {.base.} =
+  ## Duplicates Node object and create a new Node pointer.
   obj = self[]
   obj.addr
 
