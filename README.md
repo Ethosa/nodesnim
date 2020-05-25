@@ -1,5 +1,5 @@
 <h1 align="center">Nodesnim</h1>
-<div align="center">The Nim GUI/2D framework using OpenGL and SDL2.
+<div align="center">The Nim GUI/2D framework based on OpenGL and SDL2.
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![Nim language-plastic](https://github.com/Ethosa/yukiko/blob/master/nim-lang.svg)](https://github.com/Ethosa/yukiko/blob/master/nim-lang.svg)

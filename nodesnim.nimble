@@ -2,7 +2,7 @@
 name = "nodesnim"
 author = "Ethosa"
 version = "0.0.1"
-description = "The Nim GUI/2D framework using OpenGL and SDL2."
+description = "The Nim GUI/2D framework based on OpenGL and SDL2."
 license = "MIT"
 srcDir = "src"
 
