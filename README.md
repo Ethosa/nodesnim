@@ -13,7 +13,7 @@
 # Install
 1. Install this repo
    -  `nimble install https://github.com/Ethosa/nodesnim.git`
-2. Download OpenGL, SDL2_image and GLUT DLLs for your OS
+2. Download OpenGL, SDL2_image, SDL2_mixer and GLUT DLLs for your OS
 3. Put DLLs in the `.nimble/bin/` folder
 
 # Features
@@ -57,6 +57,13 @@
    -  [Popup](https://ethosa.github.io/nodesnim/popup.html)
 
 </details>
+
+# Export
+Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.
+
+-   CrossPlatform export for Windows (tested on Windows 7 x64 and Windows 10 x64)
+    -   `nim c -d:mingw -d:release --opt:speed --noNimblePath file.nim`
+    -   put DLLs in the folder with the program.
 
 
 # F.A.Q
