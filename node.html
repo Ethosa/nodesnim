@@ -152,6 +152,10 @@ function main() {
     title="calcPositionAnchor(self: NodePtr)"><wbr />calc<wbr />Position<wbr />Anchor<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CNodePtr%2CGLfloat%2CGLfloat"
     title="draw(self: NodePtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">NodePtr</span></a></li>
+  <li><a class="reference" href="#draw2stage.e%2CNodePtr%2CGLfloat%2CGLfloat"
+    title="draw2stage(self: NodePtr; w, h: GLfloat)"><wbr />draw2stage<span class="attachedType">NodePtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CNodePtr%2CNodeObj"
+    title="duplicate(self: NodePtr; obj: var NodeObj): NodePtr"><wbr />duplicate<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#getChild.e%2CNodePtr%2Cint"
     title="getChild(self: NodePtr; index: int): NodePtr"><wbr />get<wbr />Child<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#getChildCount.e%2CNodePtr"
@@ -180,6 +184,8 @@ function main() {
     title="hasNode(self: NodePtr; other: NodePtr): bool"><wbr />has<wbr />Node<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#hasParent.e%2CNodePtr"
     title="hasParent(self: NodePtr): bool"><wbr />has<wbr />Parent<span class="attachedType">NodePtr</span></a></li>
+  <li><a class="reference" href="#hide.e%2CNodePtr"
+    title="hide(self: NodePtr)"><wbr />hide<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#move.e%2CNodePtr%2Cfloat%2Cfloat"
     title="move(self: NodePtr; x, y: float)"><wbr />move<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#move.e%2CNodePtr%2CVector2Ref"
@@ -196,6 +202,8 @@ function main() {
     title="setSizeAnchor(self: NodePtr; anchor: Vector2Ref)"><wbr />set<wbr />Size<wbr />Anchor<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#setSizeAnchor.e%2CNodePtr%2Cfloat%2Cfloat"
     title="setSizeAnchor(self: NodePtr; x, y: float)"><wbr />set<wbr />Size<wbr />Anchor<span class="attachedType">NodePtr</span></a></li>
+  <li><a class="reference" href="#show.e%2CNodePtr"
+    title="show(self: NodePtr)"><wbr />show<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#delete.e%2CNodePtr"
     title="delete(self: NodePtr)"><wbr />delete<span class="attachedType">NodePtr</span></a></li>
 
@@ -314,6 +322,20 @@ Calculates node position with anchor. This used in the Window object.
 Draws node. This used in the Window object.
 
 </dd>
+<a id="draw2stage.e,NodePtr,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#draw2stage.e%2CNodePtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw2stage</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Draws node. This used in the Window object.
+
+</dd>
+<a id="duplicate.e,NodePtr,NodeObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CNodePtr%2CNodeObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Duplicates Node object and create a new Node pointer.
+
+</dd>
 <a id="getChild.e,NodePtr,int"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#getChild.e%2CNodePtr%2Cint"><span class="Identifier">getChild</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -423,6 +445,13 @@ Handles user input. This used in the Window object.
 <dt><pre><span class="Keyword">method</span> <a href="#hasParent.e%2CNodePtr"><span class="Identifier">hasParent</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+Returns true, when node has parent.
+
+</dd>
+<a id="hide.e,NodePtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#hide.e%2CNodePtr"><span class="Identifier">hide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
 
 
 </dd>
@@ -475,6 +504,10 @@ Handles user input. This used in the Window object.
 <dt><pre><span class="Keyword">method</span> <a href="#setAnchor.e%2CNodePtr%2CAnchorRef"><span class="Identifier">setAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes node anchor.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">anchor</span></tt> - AnchorRef object.</li>
+</ul>
 
 
 </dd>
@@ -482,6 +515,11 @@ Handles user input. This used in the Window object.
 <dt><pre><span class="Keyword">method</span> <a href="#setAnchor.e%2CNodePtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes node anchor.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> and <tt class="docutils literal"><span class="pre">y1</span></tt> - anchor relative to the parent node.</li>
+<li><tt class="docutils literal"><span class="pre">x2</span></tt> and <tt class="docutils literal"><span class="pre">y2</span></tt> - anchor relative to this node.</li>
+</ul>
 
 
 </dd>
@@ -494,6 +532,13 @@ Handles user input. This used in the Window object.
 </dd>
 <a id="setSizeAnchor.e,NodePtr,float,float"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setSizeAnchor.e%2CNodePtr%2Cfloat%2Cfloat"><span class="Identifier">setSizeAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="show.e,NodePtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#show.e%2CNodePtr"><span class="Identifier">show</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -515,7 +560,7 @@ Deletes current node.
 <dt><pre><span class="Keyword">template</span> <a href="#nodepattern.t%2Cuntyped"><span class="Identifier">nodepattern</span></a><span class="Other">(</span><span class="Identifier">nodetype</span><span class="Other">:</span> <span class="Identifier">untyped</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">untyped</span></pre></dt>
 <dd>
 
-
+This used in childs of the NodeObj.
 
 </dd>
 
@@ -528,7 +573,7 @@ Deletes current node.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:45:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 16:01:31 UTC</small>
       </div>
     </div>
   </div>

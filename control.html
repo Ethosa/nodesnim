@@ -142,6 +142,8 @@ function main() {
     title="calcPositionAnchor(self: ControlPtr)"><wbr />calc<wbr />Position<wbr />Anchor<span class="attachedType">ControlPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CControlPtr%2CGLfloat%2CGLfloat"
     title="draw(self: ControlPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">ControlPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CControlPtr%2CControlObj"
+    title="duplicate(self: ControlPtr; obj: var ControlObj): ControlPtr"><wbr />duplicate<span class="attachedType">ControlPtr</span></a></li>
   <li><a class="reference" href="#getGlobalMousePosition.e%2CControlPtr"
     title="getGlobalMousePosition(self: ControlPtr): Vector2Ref"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">ControlPtr</span></a></li>
   <li><a class="reference" href="#handle.e%2CControlPtr%2CInputEvent%2CNodePtr"
@@ -211,14 +213,31 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#Control%2Cstring%2CControlObj"><span class="Identifier">Control</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="control.html#ControlObj"><span class="Identifier">ControlObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="control.html#ControlPtr"><span class="Identifier">ControlPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new Control pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ControlObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">ctrl_obj</span><span class="Other">:</span> <span class="Identifier">ControlObj</span>
+  <span class="Identifier">ctrl</span> <span class="Other">=</span> <span class="Identifier">Control</span><span class="Other">(</span><span class="StringLit">&quot;Control&quot;</span><span class="Other">,</span> <span class="Identifier">ctrl_obj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="Control,ControlObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#Control%2CControlObj"><span class="Identifier">Control</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="control.html#ControlObj"><span class="Identifier">ControlObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="control.html#ControlPtr"><span class="Identifier">ControlPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new Control pointer with deffault node name &quot;Control&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ControlObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">ctrl_obj</span><span class="Other">:</span> <span class="Identifier">ControlObj</span>
+  <span class="Identifier">ctrl</span> <span class="Other">=</span> <span class="Identifier">Control</span><span class="Other">(</span><span class="Identifier">ctrl_obj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -230,7 +249,7 @@ function main() {
 <dt><pre><span class="Keyword">method</span> <a href="#calcPositionAnchor.e%2CControlPtr"><span class="Identifier">calcPositionAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlPtr"><span class="Identifier">ControlPtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Calculates node position. This uses in the <tt class="docutils literal"><span class="pre">scene.nim</span></tt>.
 
 </dd>
 <a id="draw.e,ControlPtr,GLfloat,GLfloat"></a>
@@ -238,7 +257,15 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
+</dd>
+<a id="duplicate.e,ControlPtr,ControlObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CControlPtr%2CControlObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlPtr"><span class="Identifier">ControlPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="control.html#ControlObj"><span class="Identifier">ControlObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="control.html#ControlPtr"><span class="Identifier">ControlPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Duplicates Control object and create a new Control pointer.
 
 </dd>
 <a id="getGlobalMousePosition.e,ControlPtr"></a>
@@ -254,7 +281,7 @@ Returns mouse position.
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Handles user input. This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
 <a id="setBackgroundColor.e,ControlPtr,ColorRef"></a>
@@ -287,7 +314,7 @@ Changes Control background color.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-20 05:40:34 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:12:05 UTC</small>
       </div>
     </div>
   </div>

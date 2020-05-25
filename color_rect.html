@@ -129,6 +129,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CColorRectPtr%2CGLfloat%2CGLfloat"
     title="draw(self: ColorRectPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">ColorRectPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CColorRectPtr%2CColorRectObj"
+    title="duplicate(self: ColorRectPtr; obj: var ColorRectObj): ColorRectPtr"><wbr />duplicate<span class="attachedType">ColorRectPtr</span></a></li>
 
   </ul>
 </li>
@@ -174,14 +176,31 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new ColorRect pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ColorRectObj variable</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">colorrect1_obj</span><span class="Other">:</span> <span class="Identifier">ColorRectObj</span>
+  <span class="Identifier">colorrect1</span> <span class="Other">=</span> <span class="Identifier">ColorRect</span><span class="Other">(</span><span class="StringLit">&quot;ColorRect&quot;</span><span class="Other">,</span> <span class="Identifier">colorrect1_obj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="ColorRect,ColorRectObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#ColorRect%2CColorRectObj"><span class="Identifier">ColorRect</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="color_rect.html#ColorRectObj"><span class="Identifier">ColorRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new ColorRect pointer with default node name &quot;ColorRect&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ColorRectObj variable</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">colorrect1_obj</span><span class="Other">:</span> <span class="Identifier">ColorRectObj</span>
+  <span class="Identifier">colorrect1</span> <span class="Other">=</span> <span class="Identifier">ColorRect</span><span class="Other">(</span><span class="Identifier">colorrect1_obj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -194,7 +213,15 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
+</dd>
+<a id="duplicate.e,ColorRectPtr,ColorRectObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CColorRectPtr%2CColorRectObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="color_rect.html#ColorRectObj"><span class="Identifier">ColorRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Duplicates ColorRect object and create a new ColorRect pointer.
 
 </dd>
 
@@ -207,7 +234,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:46:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:09:27 UTC</small>
       </div>
     </div>
   </div>

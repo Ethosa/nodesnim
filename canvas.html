@@ -145,6 +145,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CCanvasPtr%2CGLfloat%2CGLfloat"
     title="draw(canvas: CanvasPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">CanvasPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CCanvasPtr%2CCanvasObj"
+    title="duplicate(self: CanvasPtr; obj: var CanvasObj): CanvasPtr"><wbr />duplicate<span class="attachedType">CanvasPtr</span></a></li>
   <li><a class="reference" href="#circle.e%2CCanvasPtr%2CGLfloat%2CGLfloat%2CGLfloat%2CColorRef%2Cint"
     title="circle(canvas: CanvasPtr; x, y, radius: GLfloat; color: ColorRef; quality: int = 100)"><wbr />circle<span class="attachedType">CanvasPtr</span></a></li>
   <li><a class="reference" href="#point.e%2CCanvasPtr%2CGLfloat%2CGLfloat%2CColorRef"
@@ -229,14 +231,31 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#Canvas%2Cstring%2CCanvasObj"><span class="Identifier">Canvas</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="canvas.html#CanvasObj"><span class="Identifier">CanvasObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="canvas.html#CanvasPtr"><span class="Identifier">CanvasPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Creates a new Canvas pointer.
+<p>Creates a new Canvas pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a CanvasObj variable</li>
+</ul>
+
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">canvas1_obj</span><span class="Other">:</span> <span class="Identifier">CanvasObj</span>
+  <span class="Identifier">canvas1</span> <span class="Other">=</span> <span class="Identifier">Canvas</span><span class="Other">(</span><span class="StringLit">&quot;Canvas&quot;</span><span class="Other">,</span> <span class="Identifier">canvas1_obj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="Canvas,CanvasObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#Canvas%2CCanvasObj"><span class="Identifier">Canvas</span></a><span class="Other">(</span><span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="canvas.html#CanvasObj"><span class="Identifier">CanvasObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="canvas.html#CanvasPtr"><span class="Identifier">CanvasPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new Canvas pointer with default name &quot;Canvas&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a CanvasObj variable</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">canvas1_obj</span><span class="Other">:</span> <span class="Identifier">CanvasObj</span>
+  <span class="Identifier">canvas1</span> <span class="Other">=</span> <span class="Identifier">Canvas</span><span class="Other">(</span><span class="Identifier">canvas1_obj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -249,7 +268,15 @@ Creates a new Canvas pointer.
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
+</dd>
+<a id="duplicate.e,CanvasPtr,CanvasObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CCanvasPtr%2CCanvasObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasPtr"><span class="Identifier">CanvasPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="canvas.html#CanvasObj"><span class="Identifier">CanvasObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="canvas.html#CanvasPtr"><span class="Identifier">CanvasPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Duplicates Canvas object and create a new Canvas pointer.
 
 </dd>
 <a id="circle.e,CanvasPtr,GLfloat,GLfloat,GLfloat,ColorRef,int"></a>
@@ -325,6 +352,11 @@ Fills canvas.
 <dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CCanvasPtr%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="canvas.html#CanvasPtr"><span class="Identifier">CanvasPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Resizes canvas.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">w</span></tt> is a new width.</li>
+<li><tt class="docutils literal"><span class="pre">h</span></tt> is a new height.</li>
+</ul>
 
 
 </dd>
@@ -338,7 +370,7 @@ Fills canvas.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:45:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 16:03:40 UTC</small>
       </div>
     </div>
   </div>

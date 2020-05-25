@@ -131,8 +131,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CVProgressBarPtr%2CGLfloat%2CGLfloat"
     title="draw(self: VProgressBarPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">VProgressBarPtr</span></a></li>
-  <li><a class="reference" href="#dublicate.e%2CVProgressBarPtr%2CVProgressBarObj"
-    title="dublicate(self: VProgressBarPtr; obj: var VProgressBarObj): VProgressBarPtr"><wbr />dublicate<span class="attachedType">VProgressBarPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CVProgressBarPtr%2CVProgressBarObj"
+    title="duplicate(self: VProgressBarPtr; obj: var VProgressBarObj): VProgressBarPtr"><wbr />duplicate<span class="attachedType">VProgressBarPtr</span></a></li>
   <li><a class="reference" href="#setMaxValue.e%2CVProgressBarPtr%2Cuint"
     title="setMaxValue(self: VProgressBarPtr; value: uint)"><wbr />set<wbr />Max<wbr />Value<span class="attachedType">VProgressBarPtr</span></a></li>
   <li><a class="reference" href="#setProgress.e%2CVProgressBarPtr%2Cuint"
@@ -186,7 +186,16 @@ function main() {
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new VProgressBar pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a VProgressBarObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">progressobj</span><span class="Other">:</span> <span class="Identifier">VProgressBarObj</span>
+  <span class="Identifier">progress</span> <span class="Other">=</span> <span class="Identifier">VProgressBar</span><span class="Other">(</span><span class="StringLit">&quot;VProgressBar&quot;</span><span class="Other">,</span> <span class="Identifier">progressobj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="VProgressBar,VProgressBarObj"></a>
@@ -194,7 +203,15 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new VProgressBar pointer with default node name &quot;VProgressBar&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a VProgressBarObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">progressobj</span><span class="Other">:</span> <span class="Identifier">VProgressBarObj</span>
+  <span class="Identifier">progress</span> <span class="Other">=</span> <span class="Identifier">VProgressBar</span><span class="Other">(</span><span class="Identifier">progressobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -207,29 +224,29 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="dublicate.e,VProgressBarPtr,VProgressBarObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CVProgressBarPtr%2CVProgressBarObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vprogress_bar.html#VProgressBarPtr"><span class="Identifier">VProgressBarPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="vprogress_bar.html#VProgressBarObj"><span class="Identifier">VProgressBarObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vprogress_bar.html#VProgressBarPtr"><span class="Identifier">VProgressBarPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="duplicate.e,VProgressBarPtr,VProgressBarObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CVProgressBarPtr%2CVProgressBarObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vprogress_bar.html#VProgressBarPtr"><span class="Identifier">VProgressBarPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="vprogress_bar.html#VProgressBarObj"><span class="Identifier">VProgressBarObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vprogress_bar.html#VProgressBarPtr"><span class="Identifier">VProgressBarPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Duplicates VProgressBar object and create a new VProgressBar pointer.
 
 </dd>
 <a id="setMaxValue.e,VProgressBarPtr,uint"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setMaxValue.e%2CVProgressBarPtr%2Cuint"><span class="Identifier">setMaxValue</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vprogress_bar.html#VProgressBarPtr"><span class="Identifier">VProgressBarPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes max value.
 
 </dd>
 <a id="setProgress.e,VProgressBarPtr,uint"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setProgress.e%2CVProgressBarPtr%2Cuint"><span class="Identifier">setProgress</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vprogress_bar.html#VProgressBarPtr"><span class="Identifier">VProgressBarPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes progress.
 
 </dd>
 <a id="setProgressColor.e,VProgressBarPtr,ColorRef"></a>
@@ -250,7 +267,7 @@ Changes progress color. For change background color use <tt class="docutils lite
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 04:16:58 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:54:40 UTC</small>
       </div>
     </div>
   </div>

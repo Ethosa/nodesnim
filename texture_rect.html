@@ -133,8 +133,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CTextureRectPtr%2CGLfloat%2CGLfloat"
     title="draw(self: TextureRectPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">TextureRectPtr</span></a></li>
-  <li><a class="reference" href="#dublicate.e%2CTextureRectPtr%2CTextureRectObj"
-    title="dublicate(self: TextureRectPtr; obj: var TextureRectObj): TextureRectPtr"><wbr />dublicate<span class="attachedType">TextureRectPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CTextureRectPtr%2CTextureRectObj"
+    title="duplicate(self: TextureRectPtr; obj: var TextureRectObj): TextureRectPtr"><wbr />duplicate<span class="attachedType">TextureRectPtr</span></a></li>
   <li><a class="reference" href="#loadTexture.e%2CTextureRectPtr%2Ccstring"
     title="loadTexture(self: TextureRectPtr; file: cstring)"><wbr />load<wbr />Texture<span class="attachedType">TextureRectPtr</span></a></li>
   <li><a class="reference" href="#setTexture.e%2CTextureRectPtr%2CGlTexture"
@@ -194,14 +194,31 @@ function main() {
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new TextureRect pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a TextureRectObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">textureobj</span><span class="Other">:</span> <span class="Identifier">TextureRectObj</span>
+  <span class="Identifier">texture</span> <span class="Other">=</span> <span class="Identifier">TextureRect</span><span class="Other">(</span><span class="StringLit">&quot;TextureRect&quot;</span><span class="Other">,</span> <span class="Identifier">textureobj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="TextureRect,TextureRectObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#TextureRect%2CTextureRectObj"><span class="Identifier">TextureRect</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="texture_rect.html#TextureRectObj"><span class="Identifier">TextureRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectPtr"><span class="Identifier">TextureRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new TextureRect pointer with default name &quot;TextureRect&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a TextureRectObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">textureobj</span><span class="Other">:</span> <span class="Identifier">TextureRectObj</span>
+  <span class="Identifier">texture</span> <span class="Other">=</span> <span class="Identifier">TextureRect</span><span class="Other">(</span><span class="Identifier">textureobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -214,15 +231,15 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="dublicate.e,TextureRectPtr,TextureRectObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CTextureRectPtr%2CTextureRectObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectPtr"><span class="Identifier">TextureRectPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="texture_rect.html#TextureRectObj"><span class="Identifier">TextureRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectPtr"><span class="Identifier">TextureRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="duplicate.e,TextureRectPtr,TextureRectObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CTextureRectPtr%2CTextureRectObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectPtr"><span class="Identifier">TextureRectPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="texture_rect.html#TextureRectObj"><span class="Identifier">TextureRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectPtr"><span class="Identifier">TextureRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Duplicates TextureRect and create a new TextureRect pointer.
 
 </dd>
 <a id="loadTexture.e,TextureRectPtr,cstring"></a>
@@ -230,6 +247,10 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Loads texture from file.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">file</span></tt> is an image file path.</li>
+</ul>
 
 
 </dd>
@@ -238,6 +259,10 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes texture.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">gltexture</span></tt> is a texture, loaded via load(file, mode=GL_RGB).</li>
+</ul>
 
 
 </dd>
@@ -246,7 +271,7 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes texture filter color.
 
 </dd>
 <a id="setTextureAnchor.e,TextureRectPtr,AnchorRef"></a>
@@ -254,7 +279,7 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes texture anchor.
 
 </dd>
 <a id="setTextureAnchor.e,TextureRectPtr,float,float,float,float"></a>
@@ -262,6 +287,11 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes texture anchor.</p>
+<p>ARguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> and <tt class="docutils literal"><span class="pre">y1</span></tt> is an anchor relative to TextureRect size.</li>
+<li><tt class="docutils literal"><span class="pre">x2</span></tt> and <tt class="docutils literal"><span class="pre">y2</span></tt> is an anchor relative to texture size.</li>
+</ul>
 
 
 </dd>
@@ -275,7 +305,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-23 06:30:45 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:47:57 UTC</small>
       </div>
     </div>
   </div>

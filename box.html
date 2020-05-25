@@ -133,8 +133,8 @@ function main() {
     title="addChild(self: BoxPtr; child: NodePtr)"><wbr />add<wbr />Child<span class="attachedType">BoxPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CBoxPtr%2CGLfloat%2CGLfloat"
     title="draw(self: BoxPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">BoxPtr</span></a></li>
-  <li><a class="reference" href="#dublicate.e%2CBoxPtr%2CBoxObj"
-    title="dublicate(self: BoxPtr; obj: var BoxObj): BoxPtr"><wbr />dublicate<span class="attachedType">BoxPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CBoxPtr%2CBoxObj"
+    title="duplicate(self: BoxPtr; obj: var BoxObj): BoxPtr"><wbr />duplicate<span class="attachedType">BoxPtr</span></a></li>
   <li><a class="reference" href="#resize.e%2CBoxPtr%2CGLfloat%2CGLfloat"
     title="resize(self: BoxPtr; w, h: GLfloat)"><wbr />resize<span class="attachedType">BoxPtr</span></a></li>
   <li><a class="reference" href="#setChildAnchor.e%2CBoxPtr%2CAnchorRef"
@@ -193,8 +193,8 @@ function main() {
 
 <p><strong class="examples_text">Examples:</strong></p>
 <pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">box_obj</span><span class="Other">:</span> <span class="Identifier">BoxObj</span>
-  <span class="Identifier">box1</span> <span class="Other">=</span> <span class="Identifier">Box</span><span class="Other">(</span><span class="StringLit">&quot;My box&quot;</span><span class="Other">,</span> <span class="Identifier">box_obj</span><span class="Other">)</span></pre>
+  <span class="Identifier">box1_obj</span><span class="Other">:</span> <span class="Identifier">BoxObj</span>
+  <span class="Identifier">box1</span> <span class="Other">=</span> <span class="Identifier">Box</span><span class="Other">(</span><span class="StringLit">&quot;My box&quot;</span><span class="Other">,</span> <span class="Identifier">box1_obj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="Box,BoxObj"></a>
@@ -208,8 +208,8 @@ function main() {
 
 <p><strong class="examples_text">Examples:</strong></p>
 <pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">box_obj</span><span class="Other">:</span> <span class="Identifier">BoxObj</span>
-  <span class="Identifier">box1</span> <span class="Other">=</span> <span class="Identifier">Box</span><span class="Other">(</span><span class="Identifier">box_obj</span><span class="Other">)</span></pre>
+  <span class="Identifier">box1_obj</span><span class="Other">:</span> <span class="Identifier">BoxObj</span>
+  <span class="Identifier">box1</span> <span class="Other">=</span> <span class="Identifier">Box</span><span class="Other">(</span><span class="Identifier">box1_obj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -240,11 +240,11 @@ Returns Vector2 of the minimal size of the box pointer.
                                      <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="dublicate.e,BoxPtr,BoxObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CBoxPtr%2CBoxObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="box.html#BoxObj"><span class="Identifier">BoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,BoxPtr,BoxObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CBoxPtr%2CBoxObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="box.html#BoxObj"><span class="Identifier">BoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Dublicates Box pointer.</p>
@@ -258,6 +258,11 @@ Returns Vector2 of the minimal size of the box pointer.
 <dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Resizes Box node.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">w</span></tt> is a new width.</li>
+<li><tt class="docutils literal"><span class="pre">h</span></tt> is a new height.</li>
+</ul>
 
 
 </dd>
@@ -265,6 +270,10 @@ Returns Vector2 of the minimal size of the box pointer.
 <dt><pre><span class="Keyword">method</span> <a href="#setChildAnchor.e%2CBoxPtr%2CAnchorRef"><span class="Identifier">setChildAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes child anchor.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">anchor</span></tt> - Anchor object.</li>
+</ul>
 
 
 </dd>
@@ -272,6 +281,11 @@ Returns Vector2 of the minimal size of the box pointer.
 <dt><pre><span class="Keyword">method</span> <a href="#setChildAnchor.e%2CBoxPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setChildAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="box.html#BoxPtr"><span class="Identifier">BoxPtr</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes child anchor.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> and <tt class="docutils literal"><span class="pre">y1</span></tt> is an anchor relative to Box size.</li>
+<li><tt class="docutils literal"><span class="pre">x2</span></tt> and <tt class="docutils literal"><span class="pre">y2</span></tt> is an anchor relative to child size.</li>
+</ul>
 
 
 </dd>
@@ -285,7 +299,7 @@ Returns Vector2 of the minimal size of the box pointer.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-24 03:01:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:04:55 UTC</small>
       </div>
     </div>
   </div>

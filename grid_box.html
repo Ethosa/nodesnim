@@ -109,7 +109,7 @@ function main() {
       <li><a class="reference" href="#GridBoxObj"
     title="GridBoxObj = object of BoxObj
   separator*: float
-  raw*: int"><wbr />Grid<wbr />Box<wbr />Obj<span class="attachedType"></span></a></li>
+  row*: int"><wbr />Grid<wbr />Box<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#GridBoxPtr"
     title="GridBoxPtr = ptr GridBoxObj"><wbr />Grid<wbr />Box<wbr />Ptr<span class="attachedType"></span></a></li>
 
@@ -136,10 +136,12 @@ function main() {
     title="addChild(self: GridBoxPtr; child: NodePtr)"><wbr />add<wbr />Child<span class="attachedType">GridBoxPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CGridBoxPtr%2CGLfloat%2CGLfloat"
     title="draw(self: GridBoxPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">GridBoxPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CGridBoxPtr%2CGridBoxObj"
+    title="duplicate(self: GridBoxPtr; obj: var GridBoxObj): GridBoxPtr"><wbr />duplicate<span class="attachedType">GridBoxPtr</span></a></li>
   <li><a class="reference" href="#resize.e%2CGridBoxPtr%2CGLfloat%2CGLfloat"
     title="resize(self: GridBoxPtr; w, h: GLfloat)"><wbr />resize<span class="attachedType">GridBoxPtr</span></a></li>
-  <li><a class="reference" href="#setRaw.e%2CGridBoxPtr%2Cint"
-    title="setRaw(self: GridBoxPtr; raw: int)"><wbr />set<wbr />Raw<span class="attachedType">GridBoxPtr</span></a></li>
+  <li><a class="reference" href="#setRow.e%2CGridBoxPtr%2Cint"
+    title="setRow(self: GridBoxPtr; row: int)"><wbr />set<wbr />Row<span class="attachedType">GridBoxPtr</span></a></li>
   <li><a class="reference" href="#setSeparator.e%2CGridBoxPtr%2Cfloat"
     title="setSeparator(self: GridBoxPtr; separator: float)"><wbr />set<wbr />Separator<span class="attachedType">GridBoxPtr</span></a></li>
 
@@ -164,7 +166,7 @@ function main() {
 <a id="GridBoxObj"></a>
 <dt><pre><a href="grid_box.html#GridBoxObj"><span class="Identifier">GridBoxObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="box.html#BoxObj"><span class="Identifier">BoxObj</span></a>
   <span class="Identifier">separator</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
-  <span class="Identifier">raw</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">row</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
 </pre></dt>
 <dd>
 
@@ -187,14 +189,31 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#GridBox%2Cstring%2CGridBoxObj"><span class="Identifier">GridBox</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="grid_box.html#GridBoxObj"><span class="Identifier">GridBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new GridBox pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a GridBoxObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">gridobj</span><span class="Other">:</span> <span class="Identifier">GridBoxObj</span>
+  <span class="Identifier">grid</span> <span class="Other">=</span> <span class="Identifier">GridBox</span><span class="Other">(</span><span class="StringLit">&quot;GridBox&quot;</span><span class="Other">,</span> <span class="Identifier">gridobj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="GridBox,GridBoxObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#GridBox%2CGridBoxObj"><span class="Identifier">GridBox</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="grid_box.html#GridBoxObj"><span class="Identifier">GridBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new GridBox pointer with defalut node name &quot;GridBox&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a GridBoxObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">gridobj</span><span class="Other">:</span> <span class="Identifier">GridBoxObj</span>
+  <span class="Identifier">grid</span> <span class="Other">=</span> <span class="Identifier">GridBox</span><span class="Other">(</span><span class="StringLit">&quot;GridBox&quot;</span><span class="Other">,</span> <span class="Identifier">gridobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -213,7 +232,7 @@ function main() {
 <dt><pre><span class="Keyword">method</span> <a href="#getChildSize.e%2CGridBoxPtr"><span class="Identifier">getChildSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Returns size with all childs.
 
 </dd>
 <a id="addChild.e,GridBoxPtr,NodePtr"></a>
@@ -228,31 +247,45 @@ function main() {
 
 </dd>
 <a id="draw.e,GridBoxPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CGridBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CGridBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+This method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
+</dd>
+<a id="duplicate.e,GridBoxPtr,GridBoxObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CGridBoxPtr%2CGridBoxObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="grid_box.html#GridBoxObj"><span class="Identifier">GridBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Duplicates GridBox object and create a new GridBox pointer.
 
 </dd>
 <a id="resize.e,GridBoxPtr,GLfloat,GLfloat"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CGridBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Resizes GridBox.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">w</span></tt> is a new width.</li>
+<li><tt class="docutils literal"><span class="pre">h</span></tt> is a new height.</li>
+</ul>
 
 
 </dd>
-<a id="setRaw.e,GridBoxPtr,int"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setRaw.e%2CGridBoxPtr%2Cint"><span class="Identifier">setRaw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">raw</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setRow.e,GridBoxPtr,int"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setRow.e%2CGridBoxPtr%2Cint"><span class="Identifier">setRow</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">row</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes gridBox row count.
 
 </dd>
 <a id="setSeparator.e,GridBoxPtr,float"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setSeparator.e%2CGridBoxPtr%2Cfloat"><span class="Identifier">setSeparator</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="grid_box.html#GridBoxPtr"><span class="Identifier">GridBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">separator</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes separator between child nodes.
 
 </dd>
 
@@ -265,7 +298,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:46:27 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:27:44 UTC</small>
       </div>
     </div>
   </div>

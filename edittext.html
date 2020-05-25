@@ -139,10 +139,14 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#draw.e%2CEditTextPtr%2CGLfloat%2CGLfloat"
+      <li><a class="reference" href="#getTextSize.e%2CEditTextPtr"
+    title="getTextSize(self: EditTextPtr): Vector2Ref"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#getLine.e%2CEditTextPtr"
+    title="getLine(self: EditTextPtr): int"><wbr />get<wbr />Line<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#draw.e%2CEditTextPtr%2CGLfloat%2CGLfloat"
     title="draw(self: EditTextPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">EditTextPtr</span></a></li>
-  <li><a class="reference" href="#dublicate.e%2CEditTextPtr%2CEditTextObj"
-    title="dublicate(self: EditTextPtr; obj: var EditTextObj): EditTextPtr"><wbr />dublicate<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CEditTextPtr%2CEditTextObj"
+    title="duplicate(self: EditTextPtr; obj: var EditTextObj): EditTextPtr"><wbr />duplicate<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#handle.e%2CEditTextPtr%2CInputEvent%2CNodePtr"
     title="handle(self: EditTextPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CEditTextPtr%2CAnchorRef"
@@ -208,14 +212,32 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new EditText pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a EditTextObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">editobj</span><span class="Other">:</span> <span class="Identifier">EditTextObj</span>
+  <span class="Identifier">edit</span> <span class="Other">=</span> <span class="Identifier">EditText</span><span class="Other">(</span><span class="StringLit">&quot;EditText&quot;</span><span class="Other">,</span> <span class="Identifier">editobj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="EditText,EditTextObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#EditText%2CEditTextObj"><span class="Identifier">EditText</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="edittext.html#EditTextObj"><span class="Identifier">EditTextObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new EditText pointer with default name &quot;EditText&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a EditTextObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">editobj</span><span class="Other">:</span> <span class="Identifier">EditTextObj</span>
+  <span class="Identifier">edit</span> <span class="Other">=</span> <span class="Identifier">EditText</span><span class="Other">(</span><span class="Identifier">editobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -223,20 +245,34 @@ function main() {
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
+<a id="getTextSize.e,EditTextPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getTextSize.e%2CEditTextPtr"><span class="Identifier">getTextSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Returns text size.
+
+</dd>
+<a id="getLine.e,EditTextPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getLine.e%2CEditTextPtr"><span class="Identifier">getLine</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Returns current caret line.
+
+</dd>
 <a id="draw.e,EditTextPtr,GLfloat,GLfloat"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CEditTextPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+This method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>
 
 </dd>
-<a id="dublicate.e,EditTextPtr,EditTextObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CEditTextPtr%2CEditTextObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="edittext.html#EditTextObj"><span class="Identifier">EditTextObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="duplicate.e,EditTextPtr,EditTextObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CEditTextPtr%2CEditTextObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="edittext.html#EditTextObj"><span class="Identifier">EditTextObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Duplicates EditText object and create a new EditText pointer.
 
 </dd>
 <a id="handle.e,EditTextPtr,InputEvent,NodePtr"></a>
@@ -244,7 +280,7 @@ function main() {
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Handles user input. Thi uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
 <a id="setTextAlign.e,EditTextPtr,AnchorRef"></a>
@@ -265,7 +301,7 @@ Changes text align.
 <dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CEditTextPtr%2Cstring"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes EditText text.
 
 </dd>
 
@@ -278,7 +314,7 @@ Changes text align.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-23 06:31:20 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:15:42 UTC</small>
       </div>
     </div>
   </div>
