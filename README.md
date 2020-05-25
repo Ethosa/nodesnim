@@ -57,6 +57,8 @@
    -  [Scroll](https://ethosa.github.io/nodesnim/scroll.html)
    -  [ProgressBar](https://ethosa.github.io/nodesnim/progress_bar.html)
    -  [Slider](https://ethosa.github.io/nodesnim/slider.html)
+   -  [VProgressBar](https://ethosa.github.io/nodesnim/vprogress_bar.html)
+   -  [VSlider](https://ethosa.github.io/nodesnim/vslider.html)
    -  [Popup](https://ethosa.github.io/nodesnim/popup.html)
 
 </details>
