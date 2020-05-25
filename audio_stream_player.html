@@ -129,7 +129,9 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#pause.e%2CAudioStreamPlayerPtr"
+      <li><a class="reference" href="#duplicate.e%2CAudioStreamPlayerPtr%2CAudioStreamPlayerObj"
+    title="duplicate(self: AudioStreamPlayerPtr; obj: var AudioStreamPlayerObj): AudioStreamPlayerPtr"><wbr />duplicate<span class="attachedType">AudioStreamPlayerPtr</span></a></li>
+  <li><a class="reference" href="#pause.e%2CAudioStreamPlayerPtr"
     title="pause(self: AudioStreamPlayerPtr)"><wbr />pause<span class="attachedType">AudioStreamPlayerPtr</span></a></li>
   <li><a class="reference" href="#play.e%2CAudioStreamPlayerPtr"
     title="play(self: AudioStreamPlayerPtr)"><wbr />play<span class="attachedType">AudioStreamPlayerPtr</span></a></li>
@@ -184,7 +186,16 @@ function main() {
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Creates a new AudioStreamPlayer pointer.
+<p>Creates a new AudioStreamPlayer pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is an AudioStreamPlayerObj variable</li>
+</ul>
+
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">audio_obj</span><span class="Other">:</span> <span class="Identifier">AudioStreamPlayerObj</span>
+  <span class="Identifier">audio</span> <span class="Other">=</span> <span class="Identifier">AudioStreamPlayer</span><span class="Other">(</span><span class="StringLit">&quot;AudioStreamPlayer&quot;</span><span class="Other">,</span> <span class="Identifier">audio_obj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="AudioStreamPlayer,AudioStreamPlayerObj"></a>
@@ -192,7 +203,15 @@ Creates a new AudioStreamPlayer pointer.
     <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new AudioStreamPlayer pointer width default name &quot;AudioStreamPlayer&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is an AudioStreamPlayerObj variable</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">audio_obj</span><span class="Other">:</span> <span class="Identifier">AudioStreamPlayerObj</span>
+  <span class="Identifier">audio</span> <span class="Other">=</span> <span class="Identifier">AudioStreamPlayer</span><span class="Other">(</span><span class="Identifier">audio_obj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -200,25 +219,33 @@ Creates a new AudioStreamPlayer pointer.
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
+<a id="duplicate.e,AudioStreamPlayerPtr,AudioStreamPlayerObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CAudioStreamPlayerPtr%2CAudioStreamPlayerObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="audio_stream_player.html#AudioStreamPlayerPtr"><span class="Identifier">AudioStreamPlayerPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="audio_stream_player.html#AudioStreamPlayerObj"><span class="Identifier">AudioStreamPlayerObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="audio_stream_player.html#AudioStreamPlayerPtr"><span class="Identifier">AudioStreamPlayerPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Duplicates AudioStreamPlayer object and create a new AudioStreamPlayer pointer.
+
+</dd>
 <a id="pause.e,AudioStreamPlayerPtr"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#pause.e%2CAudioStreamPlayerPtr"><span class="Identifier">pause</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="audio_stream_player.html#AudioStreamPlayerPtr"><span class="Identifier">AudioStreamPlayerPtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Pauses stream.
 
 </dd>
 <a id="play.e,AudioStreamPlayerPtr"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#play.e%2CAudioStreamPlayerPtr"><span class="Identifier">play</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="audio_stream_player.html#AudioStreamPlayerPtr"><span class="Identifier">AudioStreamPlayerPtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Play stream.
 
 </dd>
 <a id="resume.e,AudioStreamPlayerPtr"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#resume.e%2CAudioStreamPlayerPtr"><span class="Identifier">resume</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="audio_stream_player.html#AudioStreamPlayerPtr"><span class="Identifier">AudioStreamPlayerPtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Resume stream.
 
 </dd>
 <a id="setVolume.e,AudioStreamPlayerPtr,cint"></a>
@@ -242,7 +269,7 @@ Creates a new AudioStreamPlayer pointer.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-24 10:09:25 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 16:05:52 UTC</small>
       </div>
     </div>
   </div>

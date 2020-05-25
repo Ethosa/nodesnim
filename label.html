@@ -134,8 +134,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CLabelPtr%2CGLfloat%2CGLfloat"
     title="draw(self: LabelPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">LabelPtr</span></a></li>
-  <li><a class="reference" href="#dublicate.e%2CLabelPtr%2CLabelObj"
-    title="dublicate(self: LabelPtr; obj: var LabelObj): LabelPtr"><wbr />dublicate<span class="attachedType">LabelPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CLabelPtr%2CLabelObj"
+    title="duplicate(self: LabelPtr; obj: var LabelObj): LabelPtr"><wbr />duplicate<span class="attachedType">LabelPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelPtr%2CAnchorRef"
     title="setTextAlign(self: LabelPtr; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
@@ -191,14 +191,31 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#Label%2Cstring%2CLabelObj"><span class="Identifier">Label</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="label.html#LabelObj"><span class="Identifier">LabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new Label pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a LabelObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">textobj</span><span class="Other">:</span> <span class="Identifier">LabelObj</span>
+  <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">Label</span><span class="Other">(</span><span class="StringLit">&quot;Label&quot;</span><span class="Other">,</span> <span class="Identifier">textobj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="Label,LabelObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#Label%2CLabelObj"><span class="Identifier">Label</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="label.html#LabelObj"><span class="Identifier">LabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new Labelpointer with default node name &quot;Label&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a LabelObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">textobj</span><span class="Other">:</span> <span class="Identifier">LabelObj</span>
+  <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">Label</span><span class="Other">(</span><span class="Identifier">textobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -211,35 +228,35 @@ function main() {
                                        <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="dublicate.e,LabelPtr,LabelObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CLabelPtr%2CLabelObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="label.html#LabelObj"><span class="Identifier">LabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,LabelPtr,LabelObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CLabelPtr%2CLabelObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="label.html#LabelObj"><span class="Identifier">LabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Duplicates Label object and create a new Label pointer.
 
 </dd>
 <a id="setTextAlign.e,LabelPtr,AnchorRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelPtr%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes text alignment.
 
 </dd>
 <a id="setTextAlign.e,LabelPtr,float,float,float,float"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes text alignment.
 
 </dd>
 <a id="setText.e,LabelPtr,string"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CLabelPtr%2Cstring"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelPtr"><span class="Identifier">LabelPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes Label text.
 
 </dd>
 
@@ -252,7 +269,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-23 06:31:14 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:37:10 UTC</small>
       </div>
     </div>
   </div>

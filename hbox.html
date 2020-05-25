@@ -133,6 +133,8 @@ function main() {
     title="addChild(self: HBoxPtr; child: NodePtr)"><wbr />add<wbr />Child<span class="attachedType">HBoxPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CHBoxPtr%2CGLfloat%2CGLfloat"
     title="draw(self: HBoxPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">HBoxPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CHBoxPtr%2CHBoxObj"
+    title="duplicate(self: HBoxPtr; obj: var HBoxObj): HBoxPtr"><wbr />duplicate<span class="attachedType">HBoxPtr</span></a></li>
   <li><a class="reference" href="#resize.e%2CHBoxPtr%2CGLfloat%2CGLfloat"
     title="resize(self: HBoxPtr; w, h: GLfloat)"><wbr />resize<span class="attachedType">HBoxPtr</span></a></li>
 
@@ -179,14 +181,31 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#HBox%2Cstring%2CHBoxObj"><span class="Identifier">HBox</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="hbox.html#HBoxObj"><span class="Identifier">HBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="hbox.html#HBoxPtr"><span class="Identifier">HBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new HBox pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a HBoxObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">gridobj</span><span class="Other">:</span> <span class="Identifier">HBoxObj</span>
+  <span class="Identifier">grid</span> <span class="Other">=</span> <span class="Identifier">HBox</span><span class="Other">(</span><span class="StringLit">&quot;HBox&quot;</span><span class="Other">,</span> <span class="Identifier">gridobj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="HBox,HBoxObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#HBox%2CHBoxObj"><span class="Identifier">HBox</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="hbox.html#HBoxObj"><span class="Identifier">HBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="hbox.html#HBoxPtr"><span class="Identifier">HBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new HBox pointer with default node name &quot;HBox&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a HBoxObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">gridobj</span><span class="Other">:</span> <span class="Identifier">HBoxObj</span>
+  <span class="Identifier">grid</span> <span class="Other">=</span> <span class="Identifier">HBox</span><span class="Other">(</span><span class="Identifier">gridobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -213,16 +232,29 @@ function main() {
 
 </dd>
 <a id="draw.e,HBoxPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CHBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="hbox.html#HBoxPtr"><span class="Identifier">HBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CHBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="hbox.html#HBoxPtr"><span class="Identifier">HBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+                                      <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
+</dd>
+<a id="duplicate.e,HBoxPtr,HBoxObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CHBoxPtr%2CHBoxObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="hbox.html#HBoxPtr"><span class="Identifier">HBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="hbox.html#HBoxObj"><span class="Identifier">HBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="hbox.html#HBoxPtr"><span class="Identifier">HBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Duplicates HBox object and create a new HBox pointer.
 
 </dd>
 <a id="resize.e,HBoxPtr,GLfloat,GLfloat"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CHBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="hbox.html#HBoxPtr"><span class="Identifier">HBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Resizes HBox, if <tt class="docutils literal"><span class="pre">w</span></tt> and <tt class="docutils literal"><span class="pre">h</span></tt> not less than child size.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">w</span></tt> is a new width.</li>
+<li><tt class="docutils literal"><span class="pre">h</span></tt> is a new height.</li>
+</ul>
 
 
 </dd>
@@ -236,7 +268,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:46:34 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:37:45 UTC</small>
       </div>
     </div>
   </div>

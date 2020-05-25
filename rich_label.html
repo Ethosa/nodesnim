@@ -133,8 +133,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CRichLabelPtr%2CGLfloat%2CGLfloat"
     title="draw(self: RichLabelPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">RichLabelPtr</span></a></li>
-  <li><a class="reference" href="#dublicate.e%2CRichLabelPtr%2CRichLabelObj"
-    title="dublicate(self: RichLabelPtr; obj: var RichLabelObj): RichLabelPtr"><wbr />dublicate<span class="attachedType">RichLabelPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CRichLabelPtr%2CRichLabelObj"
+    title="duplicate(self: RichLabelPtr; obj: var RichLabelObj): RichLabelPtr"><wbr />duplicate<span class="attachedType">RichLabelPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CRichLabelPtr%2CAnchorRef"
     title="setTextAlign(self: RichLabelPtr; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">RichLabelPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CRichLabelPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
@@ -190,14 +190,31 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new RichLabel pointer.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a RichLabelObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">textobj</span><span class="Other">:</span> <span class="Identifier">RichLabelObj</span>
+  <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">RichLabel</span><span class="Other">(</span><span class="StringLit">&quot;RichLabel&quot;</span><span class="Other">,</span> <span class="Identifier">textobj</span><span class="Other">)</span></pre>
 
 </dd>
 <a id="RichLabel,RichLabelObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#RichLabel%2CRichLabelObj"><span class="Identifier">RichLabel</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="rich_label.html#RichLabelObj"><span class="Identifier">RichLabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new RichLabel pointer with default node name &quot;RichLabel&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a RichLabelObj variable.</li>
+</ul>
 
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">textobj</span><span class="Other">:</span> <span class="Identifier">RichLabelObj</span>
+  <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">RichLabel</span><span class="Other">(</span><span class="Identifier">textobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -210,36 +227,36 @@ function main() {
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="dublicate.e,RichLabelPtr,RichLabelObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#dublicate.e%2CRichLabelPtr%2CRichLabelObj"><span class="Identifier">dublicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="rich_label.html#RichLabelObj"><span class="Identifier">RichLabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="duplicate.e,RichLabelPtr,RichLabelObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CRichLabelPtr%2CRichLabelObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="rich_label.html#RichLabelObj"><span class="Identifier">RichLabelObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Duplicates Richlabel object and create a new RichLabel pointer.
 
 </dd>
 <a id="setTextAlign.e,RichLabelPtr,AnchorRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CRichLabelPtr%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes text alignment.
 
 </dd>
 <a id="setTextAlign.e,RichLabelPtr,float,float,float,float"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CRichLabelPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes text alignment.
 
 </dd>
 <a id="setText.e,RichLabelPtr,ColorTextRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CRichLabelPtr%2CColorTextRef"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_label.html#RichLabelPtr"><span class="Identifier">RichLabelPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes RichLabel text.
 
 </dd>
 
@@ -252,7 +269,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-23 06:30:58 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:38:39 UTC</small>
       </div>
     </div>
   </div>
