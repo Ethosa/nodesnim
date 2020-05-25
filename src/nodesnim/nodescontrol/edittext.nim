@@ -48,8 +48,8 @@ proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
   variable.hint_text = "Edit text ..."
   variable.caret_position = 0
   variable.blit_caret = true
-  variable.caret_color = Color(1f, 1f, 1f, 0.5)
-  variable.blit_speed = 0.002
+  variable.caret_color = Color(1f, 1f, 1f, 0.7)
+  variable.blit_speed = 0.004
   variable.blit_time = 0f
 
 proc EditText*(obj: var EditTextObj): EditTextPtr {.inline.} =
@@ -67,6 +67,21 @@ method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
     result.y += self.spacing + self.size
   if result.y > 0:
     result.y -= self.spacing
+
+method getLine*(self: EditTextPtr): int {.base.} =
+  var
+    caret_pos = 0
+    line = 0
+  for line in self.text.splitLines():
+    for c in line:
+      if caret_pos == self.caret_position:
+        break
+      inc caret_pos
+    if caret_pos == self.caret_position:
+      break
+    inc line
+    inc caret_pos
+  return line
 
 method draw*(self: EditTextPtr, w, h: GLfloat) =
   self.calcGlobalPosition()
@@ -119,9 +134,9 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
         self.font.glutBitmapCharacter(c.int)  # render char
 
         inc char_num
-        if char_num == self.caret_position and self.blit_caret and self.blit_time > 1f and self.focused:
+        if char_num == self.caret_position and self.blit_caret and self.blit_time > 0.8 and self.focused:
           glColor4f(self.caret_color.r, self.caret_color.g, self.caret_color.b, self.caret_color.a)
-          glRectf(tx+cw, ty, tx+cw+2, ty+self.size)
+          glRectf(tx+cw, ty, tx+cw+1.5, ty+self.size-2)
           if self.blit_time > 2f:
             self.blit_time = 0f
       tx += cw
