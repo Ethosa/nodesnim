@@ -5,7 +5,7 @@ import core/color
 
 type
   EnvironmentObj* = object
-    delay*: uint32    ## window delay.
+    delay*: int    ## window delay.
     color*: ColorRef  ## background environment color.
     brightness*: float
   EnvironmentRef* = ref EnvironmentObj
@@ -45,7 +45,7 @@ proc setBrightness*(env: EnvironmentRef, brightness: float) =
   ## - `brightness` - window brightness with value in range `0..1`
   env.brightness = brightness
 
-proc setDelay*(env: EnvironmentRef, delay: uint32) =
+proc setDelay*(env: EnvironmentRef, delay: int) =
   ## Changes window delay.
   ##
   ## Arguments:
