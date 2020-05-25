@@ -67,17 +67,17 @@ method getTextSize*(self: RichEditTextPtr): Vector2Ref {.base.} =
 method getLine*(self: RichEditTextPtr): int {.base.} =
   var
     caret_pos = 0
-    line = 0
+    l = 0
   for line in self.text.splitLines():
-    for c in line:
+    for c in line.chars:
       if caret_pos == self.caret_position:
         break
       inc caret_pos
     if caret_pos == self.caret_position:
       break
-    inc line
+    inc l
     inc caret_pos
-  return line
+  return l
 
 method draw*(self: RichEditTextPtr, w, h: GLfloat) =
   self.calcGlobalPosition()

@@ -80,8 +80,6 @@ method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
     var child = self.children[0]
     self.resize(child.rect_size.x, child.rect_size.y)
     let
-      hback_w = self.viewport_w
-      vback_h = self.viewport_h
       thumb_h = self.viewport_h * (self.viewport_h / self.rect_size.y)
       thumb_w = self.viewport_w * (self.viewport_w / self.rect_size.x)
       thumb_x = self.viewport_w * (self.viewport_x / self.rect_size.x)
@@ -127,8 +125,6 @@ method handle*(self: ScrollPtr, event: InputEvent, mouse_on: var NodePtr) =
 
   let
     mouse_in = Rect2(self.global_position, Vector2(self.viewport_w, self.viewport_h)).hasPoint(event.x, event.y)
-    hback_w = self.viewport_w
-    vback_h = self.viewport_h
     thumb_h = self.viewport_h * (self.viewport_h / self.rect_size.y)
     thumb_w = self.viewport_w * (self.viewport_w / self.rect_size.x)
     thumb_x = self.viewport_w * (self.viewport_x / self.rect_size.x)
