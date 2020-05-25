@@ -227,7 +227,7 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   # Set up window.
   glutInitWindowSize(w, h)
   glutInitWindowPosition(100, 100)
-  let success = glutCreateWindow(title)
+  discard glutCreateWindow(title)
 
   # Set up OpenGL
   let (r, g, b, a) = env.color.toFloatTuple()

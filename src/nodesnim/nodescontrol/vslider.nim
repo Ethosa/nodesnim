@@ -81,12 +81,7 @@ method setProgressColor*(self: VSliderPtr, color: ColorRef) {.base.} =
 
 method handle*(self: VSliderPtr, event: InputEvent, mouse_on: var NodePtr) =
   procCall self.ControlPtr.handle(event, mouse_on)
-  
-  let
-    mouse_in = Rect2(
-      self.global_position,
-      Vector2(self.rect_size.x, self.rect_size.y)
-    ).hasPoint(event.x, event.y)
+
   if self.pressed:
     let
       value = normalize(((self.global_position.y + self.rect_size.y - event.y) / self.rect_size.y), 0, 1)
