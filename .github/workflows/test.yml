@@ -35,7 +35,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.choosenim
-          key: ${{ runner.os }}-choosenim-${{ env.NIM_VERSION }}
+          key: ${{ runner.os }}-choosenim-${{ matrix.nim_version }}
       - name: Cache nimble
         id: cache-nimble
         uses: actions/cache@v1
