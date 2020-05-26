@@ -28,6 +28,8 @@ jobs:
           - '1.2.0'
           - 'stable'
     needs: before
+    env:
+      TIMEOUT_EXIT_STATUS: 124
     steps:
       - uses: actions/checkout@v1
       - name: Cache choosenim
@@ -45,13 +47,26 @@ jobs:
       - uses: jiro4989/setup-nim-action@v1.0.2
         with:
           nim-version: ${{ matrix.nim_version }}
+
+      - name: Install xvfb
+        run: sudo apt install -y xvfb
+
+      - name: Install freeglut
+        run: sudo apt install -y freeglut3 freeglut3-dev
+
+      - name: Install sdl2
+        run: sudo apt install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
+
       - name: Build examples
         run: |
-          (cd examples/hello_world && nim c main.nim)
-          (cd examples/calculator && nim c main.nim)
-          (cd examples/novel && nim c main.nim)
-          (cd examples/snake && nim c main.nim)
-          (cd examples/screensaver && nim c main.nim)
+          cd examples
+          for dir in hello_world calculator novel snake screensaver; do
+            (
+              cd "$dir"
+              nim c main.nim
+              timeout 2 xvfb-run ./main || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
+            )
+          done
         shell: bash
       - name: Build tests
         run: |
@@ -59,5 +74,6 @@ jobs:
           for file in $(ls -v test*.nim); do
             echo "test: $file"
             nim c $file
+            timeout 2 xvfb-run ./${file%%.nim} || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
           done
         shell: bash
