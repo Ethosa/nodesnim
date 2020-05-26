@@ -14,7 +14,7 @@
 # Install
 1. Install this repo
    -  `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
-2. Download OpenGL, SDL2_image, SDL2_mixer and GLUT Runtime binaries for your OS
+2. Download OpenGL, SDL2_image, SDL2_mixer and freeglut Runtime binaries for your OS
    -  [SDL2](https://www.libsdl.org/download-2.0.php)
    -  [SDL2_image](https://www.libsdl.org/projects/SDL_image/)
    -  [SDL2_mixer](https://www.libsdl.org/projects/SDL_mixer/)

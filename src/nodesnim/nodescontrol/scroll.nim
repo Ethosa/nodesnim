@@ -182,6 +182,8 @@ method handle*(self: ScrollPtr, event: InputEvent, mouse_on: var NodePtr) =
           self.scrollBy(0, -40)
         elif event.key_cint == K_DOWN:
           self.scrollBy(0, 40)
+    elif event.kind == WHEEL:
+      self.scrollBy(0, -20 * event.yrel)
 
   # Mouse Y
   if (mouse_in_y and mouse_pressed and event.kind == MOUSE) or self.thumb_y_has_mouse:

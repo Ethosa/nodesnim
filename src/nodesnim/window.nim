@@ -90,6 +90,17 @@ proc mouse(button, state, x, y: cint) {.cdecl.} =
 
   current_scene.handleScene(last_event, mouse_on, paused)
 
+proc wheel(button, dir, x, y: cint) {.cdecl.} =
+  ## Handle mouse wheel input.
+  check(InputEventMouseWheel, false, false)
+  last_event.button_index = button
+  last_event.x = x.float
+  last_event.y = y.float
+  last_event.kind = WHEEL
+  last_event.yrel = dir.float
+
+  current_scene.handleScene(last_event, mouse_on, paused)
+
 proc keyboardpress(c: int8, x, y: cint) {.cdecl.} =
   ## Called when press any key on keyboard.
   if c < 0:
@@ -247,6 +258,7 @@ proc windowLaunch* =
   glutIdleFunc(display)
   glutReshapeFunc(reshape)
   glutMouseFunc(mouse)
+  glutMouseWheelFunc(wheel)
   glutKeyboardFunc(keyboardpress)
   glutKeyboardUpFunc(keyboardup)
   glutSpecialFunc(keyboardspecialpress)

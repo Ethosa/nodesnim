@@ -11,6 +11,7 @@ type
     MOUSE,     ## Mouse button.
     TOUCH,     ## Touch screen.
     MOTION,    ## Mouse motion.
+    WHEEL,     ## Mouse wheel.
     KEYBOARD,  ## Keyboard input
     UNKNOWN    ## Unknown event.
 
@@ -35,6 +36,7 @@ type
   InputEventVoid* = distinct int8
   InputEventMouseButton* = distinct int8
   InputEventMouseMotion* = distinct int8
+  InputEventMouseWheel* = distinct int8
   InputEventTouchScreen* = distinct int8
   InputEventKeyboard* = distinct int8
 
@@ -113,6 +115,10 @@ proc isInputEventMouseButton*(a: InputEvent): bool =
 proc isInputEventMouseMotion*(a: InputEvent): bool =
   ## Returns true, when `a` kind is a MOTION.
   a.kind == MOTION
+
+proc isInputEventMouseWheel*(a: InputEvent): bool =
+  ## Returns true, when `a` kind is a WHEEL.
+  a.kind == WHEEL
 
 proc isInputEventTouchScreen*(a: InputEvent): bool =
   ## Returns true, when `a` kind is a TOUCH.
@@ -226,6 +232,8 @@ proc `$`*(event: InputEvent): string =
     "InputEventMouseButton(x: " & $event.x & ", y: " & $event.y & ", pressed:" & $event.pressed & ", button: " & button & ")"
   of MOTION:
     "InputEventMotionButton(x: " & $event.x & ", y: " & $event.y & ", xrel:" & $event.xrel & ", yrel:" & $event.yrel & ")"
+  of WHEEL:
+    "InputEventMouseWheel(x: " & $event.x & ", y: " & $event.y & ", button:" & $event.button_index & ", yrel:" & $event.yrel & ")"
   of TOUCH:
     "InputEventTouchScreen(x: " & $event.x & ", y: " & $event.y & ")"
   of KEYBOARD:
