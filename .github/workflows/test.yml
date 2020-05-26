@@ -64,7 +64,7 @@ jobs:
             (
               cd "$dir"
               nim c main.nim
-              timeout 2 xvfb-run ./main || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
+              timeout 2 xvfb-run --auto-servernum --server-num=1 ./main || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
             )
           done
         shell: bash
@@ -74,6 +74,6 @@ jobs:
           for file in $(ls -v test*.nim); do
             echo "test: $file"
             nim c $file
-            timeout 2 xvfb-run ./${file%%.nim} || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
+            timeout 2 xvfb-run --auto-servernum --server-num=1 ./${file%%.nim} || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
           done
         shell: bash
