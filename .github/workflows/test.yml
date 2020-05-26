@@ -55,7 +55,7 @@ jobs:
         run: sudo apt install -y freeglut3 freeglut3-dev
 
       - name: Install sdl2
-        run: sudo apt install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
+        run: sudo apt install --fix-missing -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
       - name: Build examples
         run: |
