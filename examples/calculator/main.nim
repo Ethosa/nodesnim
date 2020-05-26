@@ -59,7 +59,7 @@ vbox.addChild(result)
 vbox.addChild(buttons)
 vbox.setChildAnchor(0.5, 0.5, 0.5, 0.5)
 vbox.setSizeAnchor(1, 1)
-buttons.setRaw(4)
+buttons.setRow(4)
 
 buttons.addChild(button_7)
 button_7.text = "7"
