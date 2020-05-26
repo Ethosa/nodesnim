@@ -37,6 +37,7 @@
    -  [Rect2](https://ethosa.github.io/nodesnim/rect2.html)
    -  [Vector2](https://ethosa.github.io/nodesnim/vector2.html)
    -  [AudioStream](https://ethosa.github.io/nodesnim/audio_stream.html)
+   -  [Animation](https://ethosa.github.io/nodesnim/animation.html)
 -  Default nodes
    -  [Node](https://ethosa.github.io/nodesnim/node.html)
    -  [Canvas](https://ethosa.github.io/nodesnim/canvas.html)
@@ -65,6 +66,7 @@
 -  2D nodes
    -  [Node2D](https://ethosa.github.io/nodesnim/node2d.html)
    -  [Sprite](https://ethosa.github.io/nodesnim/sprite.html)
+   -  [AnimatedSprite](https://ethosa.github.io/nodesnim/animated_sprite.html)
 
 </details>
 

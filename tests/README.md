@@ -26,4 +26,5 @@
 24. [Use AudioStreamPlayer node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test24.nim)
 25. [Use Node2D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test25.nim)
 26. [Use Sprite node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test26.nim)
-27. [Use textureButton node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test27.nim)
+27. [Use TextureButton node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test27.nim)
+28. [Use AnimatedSprite node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test28.nim)

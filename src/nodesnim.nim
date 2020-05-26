@@ -15,6 +15,7 @@ import
   nodesnim/core/image,
   nodesnim/core/color_text,
   nodesnim/core/audio_stream,
+  nodesnim/core/animation,
 
   nodesnim/nodes/node,
   nodesnim/nodes/scene,
@@ -42,7 +43,8 @@ import
   nodesnim/nodescontrol/texture_button,
 
   nodesnim/nodes2d/node2d,
-  nodesnim/nodes2d/sprite
+  nodesnim/nodes2d/sprite,
+  nodesnim/nodes2d/animated_sprite
 
 export
   # Third party
@@ -51,7 +53,7 @@ export
   window, environment,
   # Core
   vector2, rect2, enums, anchor, color, exceptions, input, image, color_text,
-  audio_stream,
+  audio_stream, animation,
   # Default nodes
   node, scene, canvas, audio_stream_player,
   # Control nodes
@@ -59,4 +61,4 @@ export
   rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup,
   texture_button,
   # 2D nodes
-  node2d, sprite
+  node2d, sprite, animated_sprite
