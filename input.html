@@ -127,16 +127,6 @@ function main() {
   button_index*: cint
   x*, y*, xrel*, yrel*: float
   key*: string"><wbr />Input<wbr />Event<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#InputEventVoid"
-    title="InputEventVoid = distinct int8"><wbr />Input<wbr />Event<wbr />Void<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#InputEventMouseButton"
-    title="InputEventMouseButton = distinct int8"><wbr />Input<wbr />Event<wbr />Mouse<wbr />Button<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#InputEventMouseMotion"
-    title="InputEventMouseMotion = distinct int8"><wbr />Input<wbr />Event<wbr />Mouse<wbr />Motion<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#InputEventTouchScreen"
-    title="InputEventTouchScreen = distinct int8"><wbr />Input<wbr />Event<wbr />Touch<wbr />Screen<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#InputEventKeyboard"
-    title="InputEventKeyboard = distinct int8"><wbr />Input<wbr />Event<wbr />Keyboard<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -348,41 +338,6 @@ function main() {
   <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">xrel</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">yrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
   <span class="Identifier">key</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
 </pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="InputEventVoid"></a>
-<dt><pre><a href="input.html#InputEventVoid"><span class="Identifier">InputEventVoid</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">int8</span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="InputEventMouseButton"></a>
-<dt><pre><a href="input.html#InputEventMouseButton"><span class="Identifier">InputEventMouseButton</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">int8</span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="InputEventMouseMotion"></a>
-<dt><pre><a href="input.html#InputEventMouseMotion"><span class="Identifier">InputEventMouseMotion</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">int8</span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="InputEventTouchScreen"></a>
-<dt><pre><a href="input.html#InputEventTouchScreen"><span class="Identifier">InputEventTouchScreen</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">int8</span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="InputEventKeyboard"></a>
-<dt><pre><a href="input.html#InputEventKeyboard"><span class="Identifier">InputEventKeyboard</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">int8</span></pre></dt>
 <dd>
 
 
@@ -792,35 +747,35 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#isInputEventVoid%2CInputEvent"><span class="Identifier">isInputEventVoid</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> kind is an UNKNOWN.
 
 </dd>
 <a id="isInputEventMouseButton,InputEvent"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#isInputEventMouseButton%2CInputEvent"><span class="Identifier">isInputEventMouseButton</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> kind is a MOUSE.
 
 </dd>
 <a id="isInputEventMouseMotion,InputEvent"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#isInputEventMouseMotion%2CInputEvent"><span class="Identifier">isInputEventMouseMotion</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> kind is a MOTION.
 
 </dd>
 <a id="isInputEventTouchScreen,InputEvent"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#isInputEventTouchScreen%2CInputEvent"><span class="Identifier">isInputEventTouchScreen</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> kind is a TOUCH.
 
 </dd>
 <a id="isInputEventKeyboard,InputEvent"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#isInputEventKeyboard%2CInputEvent"><span class="Identifier">isInputEventKeyboard</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> kind is a KEYBOARD.
 
 </dd>
 <a id="addButtonAction,,string,cint"></a>
@@ -920,7 +875,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-19 14:44:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-26 02:51:54 UTC</small>
       </div>
     </div>
   </div>

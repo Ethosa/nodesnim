@@ -109,7 +109,8 @@ function main() {
       <li><a class="reference" href="#ColorCharRef"
     title="ColorCharRef = ref object
   c*: char
-  color*: ColorRef"><wbr />Color<wbr />Char<wbr />Ref<span class="attachedType"></span></a></li>
+  color*: ColorRef
+  underline*: bool"><wbr />Color<wbr />Char<wbr />Ref<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ColorTextRef"
     title="ColorTextRef = ref object
   chars*: seq[ColorCharRef]"><wbr />Color<wbr />Text<wbr />Ref<span class="attachedType"></span></a></li>
@@ -125,6 +126,16 @@ function main() {
     title="setColor(self: ColorTextRef; value: ColorRef)"><wbr />set<wbr />Color<span class="attachedType">ColorTextRef</span></a></li>
   <li><a class="reference" href="#setColor%2CColorTextRef%2Cint%2CColorRef"
     title="setColor(self: ColorTextRef; index: int; value: ColorRef)"><wbr />set<wbr />Color<span class="attachedType">ColorTextRef</span></a></li>
+  <li><a class="reference" href="#setUnderline%2CColorTextRef%2Cint%2Cint%2Cbool"
+    title="setUnderline(self: ColorTextRef; fromc, toc: int; value: bool)"><wbr />set<wbr />Underline<span class="attachedType">ColorTextRef</span></a></li>
+  <li><a class="reference" href="#setUnderline%2CColorTextRef%2Cbool"
+    title="setUnderline(self: ColorTextRef; value: bool)"><wbr />set<wbr />Underline<span class="attachedType">ColorTextRef</span></a></li>
+  <li><a class="reference" href="#setUnderline%2CColorTextRef%2Cint%2Cbool"
+    title="setUnderline(self: ColorTextRef; index: int; value: bool)"><wbr />set<wbr />Underline<span class="attachedType">ColorTextRef</span></a></li>
+  <li><a class="reference" href="#len%2CColorTextRef"
+    title="len(x: ColorTextRef): int"><wbr />len<span class="attachedType">ColorTextRef</span></a></li>
+  <li><a class="reference" href="#splitLines%2CColorTextRef"
+    title="splitLines(x: ColorTextRef): seq[ColorTextRef]"><wbr />split<wbr />Lines<span class="attachedType">ColorTextRef</span></a></li>
   <li><a class="reference" href="#%24%2CColorTextRef"
     title="`$`(text: ColorTextRef): string"><wbr />`$`<span class="attachedType">ColorTextRef</span></a></li>
   <li><a class="reference" href="#%24%2CColorCharRef"
@@ -141,10 +152,6 @@ function main() {
     title="`&amp;`(x, y: ColorTextRef): ColorTextRef"><wbr />`&amp;`<span class="attachedType">ColorTextRef</span></a></li>
   <li><a class="reference" href="#contains%2CColorTextRef%2CColorCharRef"
     title="contains(x: ColorTextRef; y: ColorCharRef): bool"><wbr />contains<span class="attachedType">ColorTextRef</span></a></li>
-  <li><a class="reference" href="#len%2CColorTextRef"
-    title="len(x: ColorTextRef): int"><wbr />len<span class="attachedType">ColorTextRef</span></a></li>
-  <li><a class="reference" href="#splitLines%2CColorTextRef"
-    title="splitLines(x: ColorTextRef): seq[ColorTextRef]"><wbr />split<wbr />Lines<span class="attachedType">ColorTextRef</span></a></li>
   <li><a class="reference" href="#%5B%5D%2CColorTextRef%2CHSlice%5BU%2CV%5D"
     title="`[]`[U, V](self: ColorTextRef; i: HSlice[U, V]): ColorTextRef"><wbr />`[]`<span class="attachedType">ColorTextRef</span></a></li>
   <li><a class="reference" href="#%5B%5D%2CColorTextRef%2CBackwardsIndex"
@@ -161,10 +168,12 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#13" id="63">Funcs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#clrtext%2Cstring%2CColorRef"
-    title="clrtext(text: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32)): ColorTextRef"><wbr />clrtext<span class="attachedType">ColorTextRef</span></a></li>
-  <li><a class="reference" href="#clrchar%2Cchar%2CColorRef"
-    title="clrchar(c: char; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32)): ColorCharRef"><wbr />clrchar<span class="attachedType">ColorCharRef</span></a></li>
+      <li><a class="reference" href="#clrtext%2Cstring%2CColorRef%2Cbool"
+    title="clrtext(text: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);
+        underline: bool = false): ColorTextRef"><wbr />clrtext<span class="attachedType">ColorTextRef</span></a></li>
+  <li><a class="reference" href="#clrchar%2Cchar%2CColorRef%2Cbool"
+    title="clrchar(c: char; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);
+        underline: bool = false): ColorCharRef"><wbr />clrchar<span class="attachedType">ColorCharRef</span></a></li>
 
   </ul>
 </li>
@@ -196,6 +205,7 @@ function main() {
 <dt><pre><a href="color_text.html#ColorCharRef"><span class="Identifier">ColorCharRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
   <span class="Identifier">c</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">char</span>
   <span class="Identifier">color</span><span class="Operator">*</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
+  <span class="Identifier">underline</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
 </pre></dt>
 <dd>
 
@@ -220,6 +230,12 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#setColor%2CColorTextRef%2Cint%2Cint%2CColorRef"><span class="Identifier">setColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">;</span> <span class="Identifier">fromc</span><span class="Other">,</span> <span class="Identifier">toc</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes text color.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">fromc</span></tt> - from char position.</li>
+<li><tt class="docutils literal"><span class="pre">toc</span></tt> - to char position.</li>
+<li><tt class="docutils literal"><span class="pre">value</span></tt> - new color.</li>
+</ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
 <pre class="listing"><span class="Keyword">import</span>
@@ -235,6 +251,10 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#setColor%2CColorTextRef%2CColorRef"><span class="Identifier">setColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes text color.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">value</span></tt> - new color.</li>
+</ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
 <pre class="listing"><span class="Keyword">import</span>
@@ -250,6 +270,11 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#setColor%2CColorTextRef%2Cint%2CColorRef"><span class="Identifier">setColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes text color.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">index</span></tt> - char position.</li>
+<li><tt class="docutils literal"><span class="pre">value</span></tt> - new color.</li>
+</ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
 <pre class="listing"><span class="Keyword">import</span>
@@ -259,6 +284,59 @@ function main() {
   <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">clrtext</span><span class="StringLit">&quot;hello world&quot;</span>
   <span class="Identifier">clr</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">1</span><span class="Other">,</span> <span class="FloatNumber">0.6</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">)</span>
 <span class="Identifier">text</span><span class="Other">.</span><span class="Identifier">setColor</span><span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">clr</span><span class="Other">)</span></pre>
+
+</dd>
+<a id="setUnderline,ColorTextRef,int,int,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setUnderline%2CColorTextRef%2Cint%2Cint%2Cbool"><span class="Identifier">setUnderline</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">;</span> <span class="Identifier">fromc</span><span class="Other">,</span> <span class="Identifier">toc</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Changes text underline.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">fromc</span></tt> - from char position.</li>
+<li><tt class="docutils literal"><span class="pre">toc</span></tt> - to char position.</li>
+</ul>
+
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">clrtext</span><span class="StringLit">&quot;hello world&quot;</span>
+<span class="Identifier">text</span><span class="Other">.</span><span class="Identifier">setUnderline</span><span class="Other">(</span><span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">text</span><span class="Other">.</span><span class="Identifier">chars</span><span class="Other">.</span><span class="Identifier">len</span><span class="Other">(</span><span class="Other">)</span> <span class="Operator">-</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">true</span><span class="Other">)</span></pre>
+
+</dd>
+<a id="setUnderline,ColorTextRef,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setUnderline%2CColorTextRef%2Cbool"><span class="Identifier">setUnderline</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes text underline.
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">clrtext</span><span class="StringLit">&quot;hello world&quot;</span>
+<span class="Identifier">text</span><span class="Other">.</span><span class="Identifier">setUnderline</span><span class="Other">(</span><span class="Identifier">true</span><span class="Other">)</span></pre>
+
+</dd>
+<a id="setUnderline,ColorTextRef,int,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setUnderline%2CColorTextRef%2Cint%2Cbool"><span class="Identifier">setUnderline</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Changes text underline.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">index</span></tt> - char position.</li>
+</ul>
+
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">clrtext</span><span class="StringLit">&quot;hello world&quot;</span>
+<span class="Identifier">text</span><span class="Other">.</span><span class="Identifier">setUnderline</span><span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">true</span><span class="Other">)</span></pre>
+
+</dd>
+<a id="len,ColorTextRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#len%2CColorTextRef"><span class="Identifier">len</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="splitLines,ColorTextRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#splitLines%2CColorTextRef"><span class="Identifier">splitLines</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new seq of ColorTextRef.
 
 </dd>
 <a id="$,ColorTextRef"></a>
@@ -327,20 +405,6 @@ function main() {
 <span class="Identifier">assert</span> <span class="Identifier">c</span> <span class="Keyword">in</span> <span class="Identifier">text</span></pre>
 
 </dd>
-<a id="len,ColorTextRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#len%2CColorTextRef"><span class="Identifier">len</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="splitLines,ColorTextRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#splitLines%2CColorTextRef"><span class="Identifier">splitLines</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
 <a id="[],ColorTextRef,HSlice[U,V]"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#%5B%5D%2CColorTextRef%2CHSlice%5BU%2CV%5D"><span class="Identifier">`[]`</span></a><span class="Other">[</span><span class="Identifier">U</span><span class="Other">,</span> <span class="Identifier">V</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">;</span> <span class="Identifier">i</span><span class="Other">:</span> <span class="Identifier">HSlice</span><span class="Other">[</span><span class="Identifier">U</span><span class="Other">,</span> <span class="Identifier">V</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a></pre></dt>
 <dd>
@@ -381,12 +445,17 @@ function main() {
 <div class="section" id="13">
 <h1><a class="toc-backref" href="#13">Funcs</a></h1>
 <dl class="item">
-<a id="clrtext,string,ColorRef"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#clrtext%2Cstring%2CColorRef"><span class="Identifier">clrtext</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="clrtext,string,ColorRef,bool"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#clrtext%2Cstring%2CColorRef%2Cbool"><span class="Identifier">clrtext</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">)</span><span class="Other">;</span>
+            <span class="Identifier">underline</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Creates a new ColorText ref object.
+<p>Creates a new ColorText ref object.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt> is a text color.</li>
+<li><tt class="docutils literal"><span class="pre">underline</span></tt> is a text underline.</li>
+</ul>
+
 <p><strong class="examples_text">Examples:</strong></p>
 <pre class="listing"><span class="Keyword">import</span>
   <span class="Identifier">color</span>
@@ -396,19 +465,24 @@ Creates a new ColorText ref object.
   <span class="Identifier">text1</span> <span class="Other">=</span> <span class="Identifier">clrtext</span><span class="Other">(</span><span class="StringLit">&quot;hello&quot;</span><span class="Other">,</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">1</span><span class="Other">,</span> <span class="FloatNumber">0.6</span><span class="Other">,</span> <span class="DecNumber">1</span><span class="Other">)</span><span class="Other">)</span></pre>
 
 </dd>
-<a id="clrchar,char,ColorRef"></a>
-<dt><pre><span class="Keyword">func</span> <a href="#clrchar%2Cchar%2CColorRef"><span class="Identifier">clrchar</span></a><span class="Other">(</span><span class="Identifier">c</span><span class="Other">:</span> <span class="Identifier">char</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">)</span><span class="Other">)</span><span class="Other">:</span> <a href="color_text.html#ColorCharRef"><span class="Identifier">ColorCharRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="clrchar,char,ColorRef,bool"></a>
+<dt><pre><span class="Keyword">func</span> <a href="#clrchar%2Cchar%2CColorRef%2Cbool"><span class="Identifier">clrchar</span></a><span class="Other">(</span><span class="Identifier">c</span><span class="Other">:</span> <span class="Identifier">char</span><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">)</span><span class="Other">;</span>
+            <span class="Identifier">underline</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="color_text.html#ColorCharRef"><span class="Identifier">ColorCharRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Creates a new ColorChar ref object.
+<p>Creates a new ColorChar ref object.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt> is a char color.</li>
+<li><tt class="docutils literal"><span class="pre">underline</span></tt> is a char underline.</li>
+</ul>
+
 <p><strong class="examples_text">Examples:</strong></p>
 <pre class="listing"><span class="Keyword">import</span>
   <span class="Identifier">color</span>
 
 <span class="Keyword">var</span>
   <span class="Identifier">c</span> <span class="Other">=</span> <span class="Identifier">clrchar</span> <span class="CharLit">'s'</span>
-  <span class="Identifier">c1</span> <span class="Other">=</span> <span class="Identifier">clrchar</span><span class="Other">(</span><span class="CharLit">'s'</span><span class="Other">,</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">)</span><span class="Other">)</span></pre>
+  <span class="Identifier">c1</span> <span class="Other">=</span> <span class="Identifier">clrchar</span><span class="Other">(</span><span class="CharLit">'s'</span><span class="Other">,</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">,</span> <span class="FloatNumber">1.0'f32</span><span class="Other">)</span><span class="Other">,</span> <span class="Identifier">underline</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -433,7 +507,7 @@ Creates a new ColorChar ref object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-20 14:28:18 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-26 02:18:00 UTC</small>
       </div>
     </div>
   </div>
