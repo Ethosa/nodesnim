@@ -54,28 +54,9 @@ jobs:
         shell: bash
       - name: Build tests
         run: |
-          (cd tests && nim c test1.nim)
-          (cd tests && nim c test2.nim)
-          (cd tests && nim c test3.nim)
-          (cd tests && nim c test4.nim)
-          (cd tests && nim c test5.nim)
-          (cd tests && nim c test6.nim)
-          (cd tests && nim c test7.nim)
-          (cd tests && nim c test8.nim)
-          (cd tests && nim c test9.nim)
-          (cd tests && nim c test10.nim)
-          (cd tests && nim c test11.nim)
-          (cd tests && nim c test12.nim)
-          (cd tests && nim c test13.nim)
-          (cd tests && nim c test14.nim)
-          (cd tests && nim c test15.nim)
-          (cd tests && nim c test16.nim)
-          (cd tests && nim c test17.nim)
-          (cd tests && nim c test18.nim)
-          (cd tests && nim c test19.nim)
-          (cd tests && nim c test20.nim)
-          (cd tests && nim c test21.nim)
-          (cd tests && nim c test22.nim)
-          (cd tests && nim c test23.nim)
-          (cd tests && nim c test24.nim)
+          cd tests
+          for file in $(ls -v test*.nim); do
+            echo "test: $file"
+            nim c $file
+          done
         shell: bash
