@@ -38,7 +38,10 @@ import
   nodesnim/nodescontrol/vprogress_bar,
   nodesnim/nodescontrol/slider,
   nodesnim/nodescontrol/vslider,
-  nodesnim/nodescontrol/popup
+  nodesnim/nodescontrol/popup,
+
+  nodesnim/nodes2d/node2d,
+  nodesnim/nodes2d/sprite
 
 export
   # Third party
@@ -52,4 +55,6 @@ export
   node, scene, canvas, audio_stream_player,
   # Control nodes
   control, color_rect, texture_rect, label, button, box, hbox, vbox, grid_box, edittext,
-  rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup
+  rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup,
+  # 2D nodes
+  node2d, sprite

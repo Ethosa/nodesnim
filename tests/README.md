@@ -24,3 +24,5 @@
 22. [Use Slider node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test22.nim)
 23. [Use Popup node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test23.nim)
 24. [Use AudioStreamPlayer node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test24.nim)
+25. [Use Node2D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test25.nim)
+26. [Use Sprite node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test26.nim)

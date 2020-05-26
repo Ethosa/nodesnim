@@ -223,6 +223,13 @@ method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
   self.can_use_anchor = false
   self.can_use_size_anchor = false
 
+method move*(self: NodePtr, x, y: GLfloat) {.base, inline.} =
+  ## Adds `x` and `y` to the node position.
+  self.position.x += x
+  self.position.y += y
+  self.can_use_anchor = false
+  self.can_use_size_anchor = false
+
 method removeChild*(self: NodePtr, index: int) {.base.} =
   ## Removes node child at a specific position.
   ##

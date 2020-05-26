@@ -11,7 +11,7 @@ discard image.init()
 
 
 type
-  GlTexture* = object
+  GlTextureObj* = object
     texture*: Gluint
     size*: Vector2Ref
 
@@ -45,7 +45,7 @@ proc load*(file: cstring, size: var Vector2Ref, mode: Glenum = GL_RGB): Gluint =
   textureid
 
 
-proc load*(file: cstring, mode: Glenum = GL_RGB): GlTexture =
+proc load*(file: cstring, mode: Glenum = GL_RGB): GlTextureObj =
   ## Loads GL texture.
   ##
   ## Arguments:
@@ -54,4 +54,4 @@ proc load*(file: cstring, mode: Glenum = GL_RGB): GlTexture =
     size: Vector2Ref = Vector2Ref()
     textureid: Gluint
   textureid = load(file, size, mode)
-  GlTexture(texture: textureid, size: size)
+  GlTextureObj(texture: textureid, size: size)

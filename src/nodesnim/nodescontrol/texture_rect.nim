@@ -137,7 +137,7 @@ method loadTexture*(self: TextureRectPtr, file: cstring) {.base.} =
   self.texture = load(file, size)
   self.texture_size = size
 
-method setTexture*(self: TextureRectPtr, gltexture: GlTexture) {.base.} =
+method setTexture*(self: TextureRectPtr, gltexture: GlTextureObj) {.base.} =
   ## Changes texture.
   ##
   ## Arguments:
