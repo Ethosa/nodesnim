@@ -8,7 +8,11 @@ import
 
 type
   InputEventType* {.size: sizeof(int8).} = enum
-    MOUSE, TOUCH, MOTION, KEYBOARD, UNKNOWN
+    MOUSE,     ## Mouse button.
+    TOUCH,     ## Touch screen.
+    MOTION,    ## Mouse motion.
+    KEYBOARD,  ## Keyboard input
+    UNKNOWN    ## Unknown event.
 
   InputAction* = object
     kind*: InputEventType
@@ -27,12 +31,6 @@ type
     button_index*: cint
     x*, y*, xrel*, yrel*: float
     key*: string
-
-  InputEventVoid* = distinct int8
-  InputEventMouseButton* = distinct int8
-  InputEventMouseMotion* = distinct int8
-  InputEventTouchScreen* = distinct int8
-  InputEventKeyboard* = distinct int8
 
 
 const
@@ -99,18 +97,23 @@ var
 
 
 proc isInputEventVoid*(a: InputEvent): bool =
+  ## Returns true, when `a` kind is an UNKNOWN.
   a.kind == UNKNOWN
 
 proc isInputEventMouseButton*(a: InputEvent): bool =
+  ## Returns true, when `a` kind is a MOUSE.
   a.kind == MOUSE
 
 proc isInputEventMouseMotion*(a: InputEvent): bool =
+  ## Returns true, when `a` kind is a MOTION.
   a.kind == MOTION
 
 proc isInputEventTouchScreen*(a: InputEvent): bool =
+  ## Returns true, when `a` kind is a TOUCH.
   a.kind == TOUCH
 
 proc isInputEventKeyboard*(a: InputEvent): bool =
+  ## Returns true, when `a` kind is a KEYBOARD.
   a.kind == KEYBOARD
 
 

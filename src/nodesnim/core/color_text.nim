@@ -6,12 +6,17 @@ type
   ColorCharRef* = ref object
     c*: char
     color*: ColorRef
+    underline*: bool
   ColorTextRef* = ref object
     chars*: seq[ColorCharRef]
 
 
-func clrtext*(text: string, color: ColorRef = Color(1f, 1f, 1f)): ColorTextRef =
+func clrtext*(text: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool = false): ColorTextRef =
   ## Creates a new ColorText ref object.
+  ##
+  ## Arguments:
+  ## - `color` is a text color.
+  ## - `underline` is a text underline.
   runnableExamples:
     import color
     var
@@ -19,21 +24,31 @@ func clrtext*(text: string, color: ColorRef = Color(1f, 1f, 1f)): ColorTextRef =
       text1 = clrtext("hello", Color(1, 0.6, 1))
   var chars: seq[ColorCharRef] = @[]
   for c in text:
-    chars.add(ColorCharRef(c: c, color: color))
+    chars.add(ColorCharRef(c: c, color: color, underline: underline))
   result = ColorTextRef(chars: chars)
 
 
-func clrchar*(c: char, color: ColorRef = Color(1f, 1f, 1f)): ColorCharRef =
+func clrchar*(c: char, color: ColorRef = Color(1f, 1f, 1f), underline: bool = false): ColorCharRef =
   ## Creates a new ColorChar ref object.
+  ##
+  ## Arguments:
+  ## - `color` is a char color.
+  ## - `underline` is a char underline.
   runnableExamples:
     import color
     var
       c = clrchar's'
-      c1 = clrchar('s', Color(1f, 1f, 1f))
-  result = ColorCharRef(c: c, color: color)
+      c1 = clrchar('s', Color(1f, 1f, 1f), underline=true)
+  result = ColorCharRef(c: c, color: color, underline: underline)
 
 
 proc setColor*(self: ColorTextRef, fromc, toc: int, value: ColorRef) =
+  ## Changes text color.
+  ##
+  ## Arguments:
+  ## - `fromc` - from char position.
+  ## - `toc` - to char position.
+  ## - `value` - new color.
   runnableExamples:
     import color
     var
@@ -45,6 +60,10 @@ proc setColor*(self: ColorTextRef, fromc, toc: int, value: ColorRef) =
 
 
 proc setColor*(self: ColorTextRef, value: ColorRef) =
+  ## Changes text color.
+  ##
+  ## Arguments:
+  ## - `value` - new color.
   runnableExamples:
     import color
     var
@@ -56,6 +75,11 @@ proc setColor*(self: ColorTextRef, value: ColorRef) =
 
 
 proc setColor*(self: ColorTextRef, index: int, value: ColorRef) =
+  ## Changes text color.
+  ##
+  ## Arguments:
+  ## - `index` - char position.
+  ## - `value` - new color.
   runnableExamples:
     import color
     var
@@ -63,6 +87,59 @@ proc setColor*(self: ColorTextRef, index: int, value: ColorRef) =
       clr = Color(1, 0.6, 1)
     text.setColor(0, clr)
   self.chars[index].color = value
+
+
+proc setUnderline*(self: ColorTextRef, fromc, toc: int, value: bool) =
+  ## Changes text underline.
+  ##
+  ## Arguments:
+  ## - `fromc` - from char position.
+  ## - `toc` - to char position.
+  runnableExamples:
+    var
+      text = clrtext"hello world"
+    text.setUnderline(5, text.chars.len()-1, true)
+  for i in fromc..toc:
+    self.chars[i].underline = value
+
+
+proc setUnderline*(self: ColorTextRef, value: bool) =
+  ## Changes text underline.
+  runnableExamples:
+    var
+      text = clrtext"hello world"
+    text.setUnderline(true)
+  for i in 0..self.chars.high:
+    self.chars[i].underline = value
+
+
+proc setUnderline*(self: ColorTextRef, index: int, value: bool) =
+  ## Changes text underline.
+  ##
+  ## Arguments:
+  ## - `index` - char position.
+  runnableExamples:
+    var
+      text = clrtext"hello world"
+    text.setUnderline(0, true)
+  self.chars[index].underline = value
+
+
+proc len*(x: ColorTextRef): int =
+  x.chars.len()
+
+
+proc splitLines*(x: ColorTextRef): seq[ColorTextRef] =
+  ## Creates a new seq of ColorTextRef.
+  result = @[clrtext("")]
+  for c in x.chars:
+    if c.c.int != 13:
+      result[^1].chars.add(c)
+    else:
+      result.add(clrtext(""))
+  if result[^1].len() == 0:
+    discard result.pop()
+
 
 # --- Operators --- #
 proc `$`*(text: ColorTextRef): string =
@@ -117,19 +194,6 @@ proc contains*(x: ColorTextRef, y: ColorCharRef): bool =
 
 converter toChar*(x: ColorCharRef): char =
   x.c
-
-proc len*(x: ColorTextRef): int =
-  x.chars.len()
-
-proc splitLines*(x: ColorTextRef): seq[ColorTextRef] =
-  result = @[clrtext("")]
-  for c in x.chars:
-    if c.c.int != 13:
-      result[^1].chars.add(c)
-    else:
-      result.add(clrtext(""))
-  if result[^1].len() == 0:
-    discard result.pop()
 
 proc `[]`*[U, V](self: ColorTextRef, i: HSlice[U, V]): ColorTextRef =
   ColorTextRef(chars: self.chars[i])
