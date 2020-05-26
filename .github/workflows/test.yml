@@ -51,6 +51,7 @@ jobs:
           (cd examples/calculator && nim c main.nim)
           (cd examples/novel && nim c main.nim)
           (cd examples/snake && nim c main.nim)
+          (cd examples/screensaver && nim c main.nim)
         shell: bash
       - name: Build tests
         run: |

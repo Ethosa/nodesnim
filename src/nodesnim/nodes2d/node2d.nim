@@ -59,7 +59,7 @@ method draw*(self: Node2DPtr, w, h: GLfloat) =
   else:
     self.position = self.timed_position
 
-method move*(self: Node2DPtr, x, y: GLfloat) =
+method move*(self: Node2DPtr, x, y: float) =
   ## Moves Node2D object by `x` and `y`.
   self.position.x += x
   self.position.y += y
