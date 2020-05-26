@@ -213,6 +213,8 @@ method move*(self: NodePtr, x, y: float) {.base, inline.} =
   ## - `x`: how much to add to the position on the X axis.
   ## - `y`: how much to add to the position on the Y axis.
   self.position += Vector2(x, y)
+  self.can_use_anchor = false
+  self.can_use_size_anchor = false
 
 method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
   ## Adds `vec2` to the node position.
@@ -220,13 +222,6 @@ method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
   ## Arguments:
   ## - `vec2`: how much to add to the position on the X,Y axes.
   self.position += vec2
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
-
-method move*(self: NodePtr, x, y: GLfloat) {.base, inline.} =
-  ## Adds `x` and `y` to the node position.
-  self.position.x += x
-  self.position.y += y
   self.can_use_anchor = false
   self.can_use_size_anchor = false
 
