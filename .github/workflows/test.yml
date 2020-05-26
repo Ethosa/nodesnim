@@ -51,6 +51,7 @@ jobs:
           # (cd examples/calculator && nim c main.nim)
 
           (cd examples/hello_world && nim c main.nim)
+          (cd examples/calculator && nim c main.nim)
           (cd examples/novel && nim c main.nim)
           (cd examples/snake && nim c main.nim)
         shell: bash
