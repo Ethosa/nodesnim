@@ -32,6 +32,12 @@ type
     x*, y*, xrel*, yrel*: float
     key*: string
 
+  InputEventVoid* = distinct int8
+  InputEventMouseButton* = distinct int8
+  InputEventMouseMotion* = distinct int8
+  InputEventTouchScreen* = distinct int8
+  InputEventKeyboard* = distinct int8
+
 
 const
   BUTTON_LEFT* = 0
