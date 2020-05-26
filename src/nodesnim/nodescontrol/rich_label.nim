@@ -97,6 +97,8 @@ method draw*(self: RichLabelPtr, w, h: GLfloat) =
         glColor4f(c.color.r, c.color.g, c.color.b, c.color.a)
         glRasterPos2f(tx, ty)  # set char position
         self.font.glutBitmapCharacter(c.c.int)  # render char
+        if c.underline:
+          glRectf(tx, ty+self.size, tx+cw, 1)
       tx += cw
     ty -= self.spacing + self.size
 

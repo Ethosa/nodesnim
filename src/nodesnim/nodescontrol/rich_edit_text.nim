@@ -144,6 +144,8 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
       if tx >= x and tx < x + self.rect_size.x+right and ty <= y and ty > y - self.rect_size.y+bottom:
         glColor4f(c.color.r, c.color.g, c.color.b, c.color.a)
         glRasterPos2f(tx, ty)  # set char position
+        if c.underline:
+          glRectf(tx, ty+self.size, tx+cw, 1)
         self.font.glutBitmapCharacter(c.c.int)  # render char
 
         inc char_num
