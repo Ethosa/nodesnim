@@ -1,0 +1,56 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  skip:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Skip job"
+
+  before:
+    runs-on: ubuntu-latest
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - run: echo "not contains '[skip ci]'"
+
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          #- windows-latest
+          #- macOS-latest
+        nim_version:
+          - '1.2.0'
+          - 'stable'
+    needs: before
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache choosenim
+        id: cache-choosenim
+        uses: actions/cache@v1
+        with:
+          path: ~/.choosenim
+          key: ${{ runner.os }}-choosenim-${{ env.NIM_VERSION }}
+      - name: Cache nimble
+        id: cache-nimble
+        uses: actions/cache@v1
+        with:
+          path: ~/.nimble
+          key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
+      - uses: jiro4989/setup-nim-action@v1.0.2
+        with:
+          nim-version: ${{ matrix.nim_version }}
+      - name: Build examples
+        run: |
+          # FIXME: build failing
+          # (cd examples/calculator && nim c main.nim)
+
+          (cd examples/hello_world && nim c main.nim)
+          (cd examples/novel && nim c main.nim)
+          (cd examples/snake && nim c main.nim)
+        shell: bash
