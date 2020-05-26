@@ -172,8 +172,27 @@ proc lerp*(r1, g1, b1, a1, r2, g2, b2, a2: uint32, lerpv: float): uint32 =
   r or (g shl 8) or (b shl 16) or (a shl 24)
 
 
+# --- Operators --- #
 proc `$`*(color: ColorRef): string =
   "Color(" & $color.r & ", " & $color.g & ", " & $color.b & ", " & $color.a & ")"
+
+proc `+`*(x, y: ColorRef): ColorRef =
+  ColorRef(r: x.r + y.r, g: x.g + y.g, b: x.b + y.b, a: x.a + y.a)
+proc `-`*(x, y: ColorRef): ColorRef =
+  ColorRef(r: x.r - y.r, g: x.g - y.g, b: x.b - y.b, a: x.a - y.a)
+proc `*`*(x, y: ColorRef): ColorRef =
+  ColorRef(r: x.r * y.r, g: x.g * y.g, b: x.b * y.b, a: x.a * y.a)
+proc `/`*(x, y: ColorRef): ColorRef =
+  ColorRef(r: x.r / y.r, g: x.g / y.g, b: x.b / y.b, a: x.a / y.a)
+
+proc `+=`*(x: var ColorRef, y: ColorRef) =
+  x = x + y
+proc `-=`*(x: var ColorRef, y: ColorRef) =
+  x = x - y
+proc `*=`*(x: var ColorRef, y: ColorRef) =
+  x = x * y
+proc `/=`*(x: var ColorRef, y: ColorRef) =
+  x = x / y
 
 proc `==`*(x, y: ColorRef): bool =
   x.r == y.r and x.g == y.g and x.b == y.b and x.a == y.a

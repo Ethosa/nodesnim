@@ -40,5 +40,6 @@ proc contains*(self, other: Rect2Ref): bool =
    self.hasPoint(other.x+other.w, other.y+other.h))
 
 
+# --- Operators --- #
 proc `$`*(x: Rect2Ref): string =
   "Rect2(x: " & $x.x & ", y: " & $x.y & ", w: " & $x.w & ", h: " & $x.h & ")"
