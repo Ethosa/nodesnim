@@ -30,6 +30,7 @@ type
     hint_color*: ColorRef   ## Hint color.
     caret_color*: ColorRef
     text_align*: AnchorRef  ## Text align.
+    on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
   EditTextPtr* = ptr EditTextObj
 
 
@@ -60,6 +61,7 @@ proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
   variable.caret_color = Color(1f, 1f, 1f, 0.7)
   variable.blit_speed = 0.05
   variable.blit_time = 0f
+  variable.on_edit = proc(key: string) = discard
 
 proc EditText*(obj: var EditTextObj): EditTextPtr {.inline.} =
   ## Creates a new EditText pointer with default name "EditText".
@@ -235,15 +237,20 @@ method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
           elif self.caret_position == 1:
             self.text = self.text[1..^1]
             self.caret_position -= 1
+
+        # Other keys
         elif self.caret_position > 0 and self.caret_position < self.text.len():
           self.text = self.text[0..self.caret_position-1] & event.key & self.text[self.caret_position..^1]
           self.caret_position += 1
+          self.on_edit(event.key)
         elif self.caret_position == 0:
           self.text = event.key & self.text
           self.caret_position += 1
+          self.on_edit(event.key)
         elif self.caret_position == self.text.len():
           self.text &= event.key
           self.caret_position += 1
+          self.on_edit(event.key)
 
 method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
   ## Changes text align.

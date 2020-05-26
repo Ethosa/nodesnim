@@ -28,6 +28,7 @@ type
     hint_text*: ColorTextRef
     caret_color*: ColorRef
     text_align*: AnchorRef  ## Text align.
+    on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
   RichEditTextPtr* = ptr RichEditTextObj
 
 
@@ -56,6 +57,7 @@ proc RichEditText*(name: string, variable: var RichEditTextObj): RichEditTextPtr
   variable.caret_color = Color(1f, 1f, 1f, 0.7)
   variable.blit_speed = 0.05
   variable.blit_time = 0f
+  variable.on_edit = proc(key: string) = discard
 
 proc RichEditText*(obj: var RichEditTextObj): RichEditTextPtr {.inline.} =
   ## Creates a new RichEditText pointer with default node name "RichEditText".
@@ -230,12 +232,15 @@ method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) 
         elif self.caret_position > 0 and self.caret_position < self.text.len():
           self.text = self.text[0..self.caret_position-1] & clrtext(event.key) & self.text[self.caret_position..^1]
           self.caret_position += 1
+          self.on_edit(event.key)
         elif self.caret_position == 0:
           self.text = clrtext(event.key) & self.text
           self.caret_position += 1
+          self.on_edit(event.key)
         elif self.caret_position == self.text.len():
           self.text &= clrtext(event.key)
           self.caret_position += 1
+          self.on_edit(event.key)
 
 method setTextAlign*(self: RichEditTextPtr, align: AnchorRef) {.base.} =
   ## Changes text align.
