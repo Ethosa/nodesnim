@@ -57,7 +57,7 @@ grid_box.addChild(red2)
 
 main.addChild(scroll)
 grid_box.setAnchor(0.5, 0.5, 0.5, 0.5)
-grid_box.setRaw(3)
+grid_box.setRow(3)
 grid_box.setSeparator(2)
 scroll.addChild(grid_box)
 
