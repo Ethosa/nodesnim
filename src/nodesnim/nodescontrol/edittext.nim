@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides primitive text input.
 import
   strutils,
   ../thirdparty/opengl,

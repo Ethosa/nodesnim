@@ -1,4 +1,7 @@
 # author: Ethosa
+## AudioStreamPlayer used for playing audio.
+## 
+## AudioStream is responsible for audio. You can play multiple audio recordings at once.
 import
   node,
   ../thirdparty/sdl2/mixer,

@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides convenient text input. With it, you can set color and underlie for specific chars.
 import
   ../thirdparty/opengl,
   ../thirdparty/opengl/glut,

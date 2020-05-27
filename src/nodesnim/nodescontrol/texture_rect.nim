@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides a primitive display image.
 import
   ../thirdparty/opengl,
 

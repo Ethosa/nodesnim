@@ -1,4 +1,7 @@
 # author: Ethosa
+## Canvas is the root type of all 2D and Control nodes.
+## 
+## Canvas used for drawing primitive geometry.
 import
   math,
   ../thirdparty/opengl,

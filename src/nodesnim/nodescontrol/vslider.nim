@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides a primitive vertical slider.
 import
   ../thirdparty/opengl,
 

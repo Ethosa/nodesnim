@@ -1,4 +1,5 @@
 # author: Ethosa
+## The Scene uses in the `window.nim`. It contains other nodes. Only one scene can work at a time.
 import
   node,
   ../thirdparty/opengl,

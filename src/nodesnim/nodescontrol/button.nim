@@ -1,4 +1,5 @@
 # author: Ethosa
+## Handles mouse clicks.
 import
   ../thirdparty/opengl,
   ../thirdparty/opengl/glut,

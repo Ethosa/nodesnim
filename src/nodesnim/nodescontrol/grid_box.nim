@@ -1,4 +1,5 @@
 # author: Ethosa
+## Contains children in grid.
 import
   ../thirdparty/opengl,
 

@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides primitive scroll box.
 import
   ../thirdparty/opengl,
 

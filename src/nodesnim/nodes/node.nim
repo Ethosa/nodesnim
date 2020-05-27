@@ -1,4 +1,5 @@
 # author: Ethosa
+## Node is the root type of all other nodes.
 import
   strutils,
 

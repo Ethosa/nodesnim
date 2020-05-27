@@ -1,4 +1,5 @@
 # author: Ethosa
+## The base of other 2D nodes.
 import
   ../thirdparty/opengl,
 

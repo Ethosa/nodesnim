@@ -1,4 +1,5 @@
 # author: Ethosa
+## Moves all child nodes at the center of the box.
 import
   ../thirdparty/opengl,
 

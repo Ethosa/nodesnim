@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides primitive display progress.
 import
   ../thirdparty/opengl,
 

@@ -1,4 +1,5 @@
 # author: Ethosa
+## Sorts children by its Y position.
 import
   ../thirdparty/opengl,
 

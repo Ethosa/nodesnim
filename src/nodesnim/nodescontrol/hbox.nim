@@ -1,4 +1,5 @@
 # author: Ethosa
+## Contains children in horizontal box.
 import
   ../thirdparty/opengl,
 

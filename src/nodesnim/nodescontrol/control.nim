@@ -1,4 +1,5 @@
 # author: Ethosa
+## The base of other Control nodes.
 import
   ../thirdparty/opengl,
 

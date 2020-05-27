@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides display animated sprites.
 import
   ../thirdparty/opengl,
 

@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides convenient display progress.
 import
   ../thirdparty/opengl,
 

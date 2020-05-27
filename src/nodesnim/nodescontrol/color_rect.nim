@@ -1,4 +1,5 @@
 # author: Ethosa
+## Displays colour rectangle.
 import
   ../thirdparty/opengl,
 

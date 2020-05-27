@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides primitive text rendering.
 import
   strutils,
   ../thirdparty/opengl,

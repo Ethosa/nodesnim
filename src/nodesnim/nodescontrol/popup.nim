@@ -1,4 +1,5 @@
 # author: Ethosa
+## By default popup visible is false. Popup, unlike other nodes, changes children visible when calling show() and hide().
 import
   ../thirdparty/opengl,
 

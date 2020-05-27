@@ -1,4 +1,5 @@
 # author: Ethosa
+## It provides a primitive display vertical progress.
 import
   ../thirdparty/opengl,
 

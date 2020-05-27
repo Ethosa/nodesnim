@@ -1,4 +1,5 @@
 # author: Ethosa
+## It is the convenient alternative of the Button node.
 import
   ../thirdparty/opengl,
   ../thirdparty/opengl/glut,
