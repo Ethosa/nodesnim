@@ -130,14 +130,16 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CNode2DPtr%2CGLfloat%2CGLfloat"
     title="draw(self: Node2DPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">Node2DPtr</span></a></li>
-  <li><a class="reference" href="#move.e%2CNode2DPtr%2CGLfloat%2CGLfloat"
-    title="move(self: Node2DPtr; x, y: GLfloat)"><wbr />move<span class="attachedType">Node2DPtr</span></a></li>
+  <li><a class="reference" href="#move.e%2CNode2DPtr%2Cfloat%2Cfloat"
+    title="move(self: Node2DPtr; x, y: float)"><wbr />move<span class="attachedType">Node2DPtr</span></a></li>
   <li><a class="reference" href="#move.e%2CNode2DPtr%2CVector2Ref"
     title="move(self: Node2DPtr; vec2: Vector2Ref)"><wbr />move<span class="attachedType">Node2DPtr</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CNode2DPtr%2CNode2DObj"
     title="duplicate(self: Node2DPtr; obj: var Node2DObj): Node2DPtr"><wbr />duplicate<span class="attachedType">Node2DPtr</span></a></li>
   <li><a class="reference" href="#getGlobalMousePosition.e%2CNode2DPtr"
     title="getGlobalMousePosition(self: Node2DPtr): Vector2Ref"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">Node2DPtr</span></a></li>
+  <li><a class="reference" href="#setZIndex.e%2CNode2DPtr%2Cint"
+    title="setZIndex(self: Node2DPtr; z_index: int)"><wbr />set<wbr />ZIndex<span class="attachedType">Node2DPtr</span></a></li>
 
   </ul>
 </li>
@@ -156,7 +158,7 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc"></p>
+  <p class="module-desc">The base of other 2D nodes.</p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
@@ -230,8 +232,8 @@ function main() {
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="move.e,Node2DPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CNode2DPtr%2CGLfloat%2CGLfloat"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node2d.html#Node2DPtr"><span class="Identifier">Node2DPtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <a href="opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="move.e,Node2DPtr,float,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CNode2DPtr%2Cfloat%2Cfloat"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node2d.html#Node2DPtr"><span class="Identifier">Node2DPtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Moves Node2D object by <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>.
@@ -260,6 +262,13 @@ Duplicates Node2D object and create a new Node2D pointer.
 Returns mouse position.
 
 </dd>
+<a id="setZIndex.e,Node2DPtr,int"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setZIndex.e%2CNode2DPtr%2Cint"><span class="Identifier">setZIndex</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node2d.html#Node2DPtr"><span class="Identifier">Node2DPtr</span></a><span class="Other">;</span> <span class="Identifier">z_index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes Z index.
+
+</dd>
 
 </dl></div>
 <div class="section" id="18">
@@ -282,7 +291,7 @@ Returns mouse position.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-26 09:51:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-27 16:15:55 UTC</small>
       </div>
     </div>
   </div>

@@ -112,6 +112,8 @@ function main() {
   is_ready*: bool
   can_use_anchor*: bool
   can_use_size_anchor*: bool
+  relative_z_index*: bool      ## Uses in the Node2D
+  z_index*, z_index_global*: float ## Uses in the Node2D
   pausemode*: PauseMode        ## Pause mode, by default is INHERIT.
   name*: string                ## Node name.
   position*: Vector2Ref        ## Node position, by default is Vector2(0, 0).
@@ -224,7 +226,7 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc"></p>
+  <p class="module-desc">Node is the root type of all other nodes.</p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
@@ -239,6 +241,8 @@ function main() {
   <span class="Identifier">is_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">can_use_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">can_use_size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">relative_z_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>      <span class="Comment">## Uses in the Node2D</span>
+  <span class="Identifier">z_index</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">z_index_global</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Comment">## Uses in the Node2D</span>
   <span class="Identifier">pausemode</span><span class="Operator">*</span><span class="Other">:</span> <a href="enums.html#PauseMode"><span class="Identifier">PauseMode</span></a>        <span class="Comment">## Pause mode, by default is INHERIT.</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>                <span class="Comment">## Node name.</span>
   <span class="Identifier">position</span><span class="Operator">*</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>        <span class="Comment">## Node position, by default is Vector2(0, 0).</span>
@@ -573,7 +577,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 16:01:31 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-27 15:10:18 UTC</small>
       </div>
     </div>
   </div>

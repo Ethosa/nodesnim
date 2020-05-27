@@ -144,6 +144,8 @@ function main() {
     title="draw2stage(self: ScrollPtr; w, h: GLfloat)"><wbr />draw2stage<span class="attachedType">ScrollPtr</span></a></li>
   <li><a class="reference" href="#scrollBy.e%2CScrollPtr%2Cfloat%2Cfloat"
     title="scrollBy(self: ScrollPtr; x, y: float)"><wbr />scroll<wbr />By<span class="attachedType">ScrollPtr</span></a></li>
+  <li><a class="reference" href="#scrollTo.e%2CScrollPtr%2Cfloat%2Cfloat"
+    title="scrollTo(self: ScrollPtr; x, y: float)"><wbr />scroll<wbr />To<span class="attachedType">ScrollPtr</span></a></li>
   <li><a class="reference" href="#handle.e%2CScrollPtr%2CInputEvent%2CNodePtr"
     title="handle(self: ScrollPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">ScrollPtr</span></a></li>
 
@@ -156,7 +158,7 @@ function main() {
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
-  <p class="module-desc"></p>
+  <p class="module-desc">It provides primitive scroll box.</p>
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
@@ -280,6 +282,13 @@ This uses in the <tt class="docutils literal"><span class="pre">window.nim</span
 Scrolls by <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>, if available.
 
 </dd>
+<a id="scrollTo.e,ScrollPtr,float,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#scrollTo.e%2CScrollPtr%2Cfloat%2Cfloat"><span class="Identifier">scrollTo</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Scrolls to <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> position.
+
+</dd>
 <a id="handle.e,ScrollPtr,InputEvent,NodePtr"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CScrollPtr%2CInputEvent%2CNodePtr"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -298,7 +307,7 @@ handles user input. This uses in the <tt class="docutils literal"><span class="p
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-25 15:41:40 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-27 16:08:38 UTC</small>
       </div>
     </div>
   </div>
