@@ -15,12 +15,14 @@ import
 type
   Node2DObj* = object of CanvasObj
     centered*: bool
+    z_index*: float
     timed_position*: Vector2Ref
   Node2DPtr* = ptr Node2DObj
 
 
 template node2dpattern*: untyped =
   variable.centered = true
+  variable.z_index = 0
   variable.timed_position = Vector2()
 
 proc Node2D*(name: string, variable: var Node2DObj): Node2DPtr =
@@ -78,3 +80,7 @@ method duplicate*(self: Node2DPtr, obj: var Node2DObj): Node2DPtr {.base.} =
 method getGlobalMousePosition*(self: Node2DPtr): Vector2Ref {.base, inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
+
+method setZIndex*(self: Node2DPtr, z_index: int) {.base.} =
+  ## Changes Z index.
+  self.z_index = z_index.float

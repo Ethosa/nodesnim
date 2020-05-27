@@ -65,17 +65,17 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
     if texture.texture > 0:
       self.rect_size = texture.size
 
-  self.calcGlobalPosition()
-  let
-    x = -w/2 + self.global_position.x
-    y = h/2 - self.global_position.y
-
   # Recalculate position.
   self.position = self.timed_position
   if self.centered:
     self.position = self.timed_position - self.rect_size/2
   else:
     self.position = self.timed_position
+
+  self.calcGlobalPosition()
+  let
+    x = -w/2 + self.global_position.x
+    y = h/2 - self.global_position.y
 
   # Draw frame
   if frame >= 0 and frame < frames_count:
@@ -88,13 +88,13 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
 
       glBegin(GL_QUADS)
       glTexCoord2f(0, 0)
-      glVertex2f(x, y)
+      glVertex3f(x, y, self.z_index)
       glTexCoord2f(0, 1)
-      glVertex2f(x, y - self.rect_size.y)
+      glVertex3f(x, y - self.rect_size.y, self.z_index)
       glTexCoord2f(1, 1)
-      glVertex2f(x + self.rect_size.x, y - self.rect_size.y)
+      glVertex3f(x + self.rect_size.x, y - self.rect_size.y, self.z_index)
       glTexCoord2f(1, 0)
-      glVertex2f(x + self.rect_size.x, y)
+      glVertex3f(x + self.rect_size.x, y, self.z_index)
       glEnd()
       glDisable(GL_TEXTURE_2D)
     else:
