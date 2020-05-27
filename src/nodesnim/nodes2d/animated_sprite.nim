@@ -57,8 +57,11 @@ proc AnimatedSprite*(obj: var AnimatedSpriteObj): AnimatedSpritePtr {.inline.} =
 method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  if self.animations[self.animation].frame >= 0 and self.animations[self.animation].frame < self.animations[self.animation].frames.len():
-    var texture = self.animations[self.animation].frames[self.animations[self.animation].frame]
+  let
+    frame = self.animations[self.animation].frame
+    frames_count = self.animations[self.animation].frames.len()
+  if frame >= 0 and frame < frames_count:
+    var texture = self.animations[self.animation].frames[frame]
     if texture.texture > 0:
       self.rect_size = texture.size
 
@@ -74,9 +77,9 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
   else:
     self.position = self.timed_position
 
-  # Draw
-  if self.animations[self.animation].frame >= 0 and self.animations[self.animation].frame < self.animations[self.animation].frames.len():
-    var texture = self.animations[self.animation].frames[self.animations[self.animation].frame]
+  # Draw frame
+  if frame >= 0 and frame < frames_count:
+    var texture = self.animations[self.animation].frames[frame]
     if texture.texture > 0:
       glColor4f(self.filter.r, self.filter.g, self.filter.b, self.filter.a)
 
@@ -97,18 +100,19 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
     else:
       self.rect_size = Vector2()
 
+  # Change frame
   if not self.paused:
     if self.animations[self.animation].current < 60f:
       self.animations[self.animation].current += self.animations[self.animation].speed
     else:
       self.animations[self.animation].current = 0f
       if self.reversed:
-        if self.animations[self.animation].frame - 1 < 0:
-          self.animations[self.animation].frame = self.animations[self.animation].frames.len()-1
+        if frame - 1 < 0:
+          self.animations[self.animation].frame = frames_count-1
         else:
           self.animations[self.animation].frame -= 1
       else:
-        if self.animations[self.animation].frame + 1 > self.animations[self.animation].frames.len()-1:
+        if frame + 1 > frames_count-1:
           self.animations[self.animation].frame = 0
         else:
           self.animations[self.animation].frame += 1
@@ -142,7 +146,7 @@ method addFrame*(self: AnimatedSpritePtr, name: string, frame: GlTextureObj) {.b
 
 method removeAnimation*(self: AnimatedSpritePtr, name: string) {.base.} =
   ## Deletes animation from the AnimatedSprite animations.
-  ## If `name` is a current animation name, than animation will not delete.
+  ## If `name` is a current animation name, then animation will not delete.
   ##
   ## Arguments:
   ## - `name` is an animation name.
@@ -162,7 +166,7 @@ method play*(self: AnimatedSpritePtr, name: string = "", backward: bool = false)
   ##
   ## Arguments:
   ## - `name` is an animation name. if it is "" than plays current animation.
-  ## - if `backward` is true than plays animation in reverse order.
+  ## - if `backward` is true then plays animation in reverse order.
   if name != "":
     self.animation = name
   self.reversed = backward
@@ -176,3 +180,15 @@ method play*(self: AnimatedSpritePtr, name: string = "", backward: bool = false)
 method resume*(self: AnimatedSpritePtr) {.base.} =
   ## Resumes animation.
   self.paused = false
+
+method setSpeed*(self: AnimatedSpritePtr, name: string = "", speed: float = 2f) {.base.} =
+  ## Changes animation speed.
+  ## If `name` is "" then changes the speed of the current animation.
+  ##
+  ## Arguments:
+  ## - `name` is an animation name.
+  ## - `speed` is a new speed.
+  if name == "":
+    self.animations[self.animation].speed = speed
+  else:
+    self.animations[name].speed = speed
