@@ -17,6 +17,8 @@ type
     is_ready*: bool
     can_use_anchor*: bool
     can_use_size_anchor*: bool
+    relative_z_index*: bool           ## Uses in the Node2D
+    z_index*, z_index_global*: float  ## Uses in the Node2D
     pausemode*: PauseMode            ## Pause mode, by default is INHERIT.
     name*: string                    ## Node name.
     position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
@@ -47,7 +49,7 @@ template nodepattern*(nodetype: untyped): untyped =
     exit: proc() = discard,
     is_ready: false, pausemode: INHERIT, visible: true,
     anchor: Anchor(0, 0, 0, 0), size_anchor: Vector2(), can_use_anchor: false,
-    can_use_size_anchor: false
+    can_use_size_anchor: false, z_index: 0f, z_index_global: 0f, relative_z_index: true
   )
   result = variable.addr
 
@@ -71,9 +73,12 @@ method calcGlobalPosition*(self: NodePtr) {.base.} =
   ## Returns global node position.
   self.global_position = self.position
   var current: NodePtr = self
+  self.z_index_global = self.z_index
   while current.parent != nil:
     current = current.parent
     self.global_position += current.position
+    if self.relative_z_index:
+      self.z_index_global += current.z_index
 
 method calcPositionAnchor*(self: NodePtr) {.base.} =
   ## Calculates node position with anchor.

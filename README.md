@@ -68,6 +68,7 @@
    -  [Node2D](https://ethosa.github.io/nodesnim/node2d.html)
    -  [Sprite](https://ethosa.github.io/nodesnim/sprite.html)
    -  [AnimatedSprite](https://ethosa.github.io/nodesnim/animated_sprite.html)
+   -  [YSort](https://ethosa.github.io/nodesnim/ysort.html)
 
 </details>
 

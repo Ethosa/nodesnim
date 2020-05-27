@@ -45,7 +45,8 @@ import
 
   nodesnim/nodes2d/node2d,
   nodesnim/nodes2d/sprite,
-  nodesnim/nodes2d/animated_sprite
+  nodesnim/nodes2d/animated_sprite,
+  nodesnim/nodes2d/ysort
 
 export
   # Third party
@@ -62,4 +63,4 @@ export
   rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup,
   texture_button, texture_progress_bar,
   # 2D nodes
-  node2d, sprite, animated_sprite
+  node2d, sprite, animated_sprite, ysort

@@ -29,3 +29,4 @@
 27. [Use TextureButton node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test27.nim)
 28. [Use AnimatedSprite node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test28.nim)
 29. [Use TextureProgressBar node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test29.nim)
+30. [Use YSort node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test30.nim)

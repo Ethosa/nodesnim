@@ -61,7 +61,7 @@ proc reshape(w, h: cint) {.cdecl.} =
     glViewport(0, 0, w, h)
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -1, 1)
+    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
     width = w
