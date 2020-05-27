@@ -71,10 +71,12 @@ method addChild*(self: ScrollPtr, other: NodePtr) =
     self.children.add(other)
     other.parent = self
 
+
 method duplicate*(self: ScrollPtr, obj: var ScrollObj): ScrollPtr {.base.} =
   ## Duplicates Scroll object and create a new Scroll pointer.
   obj = self[]
   obj.addr
+
 
 method resize*(canvas: ScrollPtr, w, h: GLfloat) =
   ## Resizes scroll.
@@ -84,6 +86,7 @@ method resize*(canvas: ScrollPtr, w, h: GLfloat) =
   ## - `h` is a new height.
   canvas.rect_size.x = w
   canvas.rect_size.y = h
+
 
 method draw*(self: ScrollPtr, w, h: GLfloat) =
   ## This uses in the `window.nim`.
@@ -98,6 +101,7 @@ method draw*(self: ScrollPtr, w, h: GLfloat) =
   # Press
   if self.pressed:
     self.press(last_event.x, last_event.y)
+
 
 method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
   ## This uses in the `window.nim`.
@@ -136,6 +140,7 @@ method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
       glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
       glRectf(x + thumb_x, y - self.viewport_h + self.thumb_height, x + thumb_x + thumb_w, y-self.viewport_h)
 
+
 method scrollBy*(self: ScrollPtr, x, y: float) {.base.} =
   ## Scrolls by `x` and `y`, if available.
   if x + self.viewport_x + self.viewport_w < self.rect_size.x and x + self.viewport_x > 0:
@@ -151,6 +156,24 @@ method scrollBy*(self: ScrollPtr, x, y: float) {.base.} =
     self.viewport_y = 0
   elif y > 0:
     self.viewport_y = self.rect_size.y - self.viewport_h
+
+
+method scrollTo*(self: ScrollPtr, x, y: float) {.base.} =
+  ## Scrolls to `x` and `y` position.
+  if x + self.viewport_w < self.rect_size.x and x > 0:
+    self.viewport_x = x
+  elif x < 0:
+    self.viewport_x = 0
+  elif x > 0:
+    self.viewport_x = self.rect_size.x - self.viewport_w
+
+  if y + self.viewport_h < self.rect_size.y and y > 0:
+    self.viewport_y = y
+  elif y < 0:
+    self.viewport_y = 0
+  elif y > 0:
+    self.viewport_y = self.rect_size.y - self.viewport_h
+
 
 method handle*(self: ScrollPtr, event: InputEvent, mouse_on: var NodePtr) =
   ## handles user input. This uses in the `window.nim`.
