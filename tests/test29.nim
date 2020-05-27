@@ -1,0 +1,29 @@
+# --- Test 21. Use TextureProgressBar node. --- #
+import nodesnim
+
+
+Window("hello world")
+
+var
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
+
+  progressbarobj: TextureProgressBarObj
+  progressbar = TextureProgressBar(progressbarobj)
+
+  back = load("assets/texture_progress_0.png", GL_RGBA)
+  progress = load("assets/texture_progress_1.png", GL_RGBA)
+
+main.addChild(progressbar)
+
+progressbar.setProgress(50)  # default max progress value is 100.
+progressbar.setMaxValue(150)
+progressbar.resize(256, 85)
+
+progressbar.setProgressTexture(progress)
+progressbar.setBackgroundTexture(back)
+
+
+addScene(main)
+setMainScene("Main")
+windowLaunch()

@@ -63,6 +63,7 @@
    -  [VSlider](https://ethosa.github.io/nodesnim/vslider.html)
    -  [Popup](https://ethosa.github.io/nodesnim/popup.html)
    -  [TextureButton](https://ethosa.github.io/nodesnim/texture_button.html)
+   -  [TextureProgressBar](https://ethosa.github.io/nodesnim/texture_progress_bar.html)
 -  2D nodes
    -  [Node2D](https://ethosa.github.io/nodesnim/node2d.html)
    -  [Sprite](https://ethosa.github.io/nodesnim/sprite.html)
