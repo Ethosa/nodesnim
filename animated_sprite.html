@@ -148,6 +148,8 @@ function main() {
     title="play(self: AnimatedSpritePtr; name: string = &quot;&quot;; backward: bool = false)"><wbr />play<span class="attachedType">AnimatedSpritePtr</span></a></li>
   <li><a class="reference" href="#resume.e%2CAnimatedSpritePtr"
     title="resume(self: AnimatedSpritePtr)"><wbr />resume<span class="attachedType">AnimatedSpritePtr</span></a></li>
+  <li><a class="reference" href="#setSpeed.e%2CAnimatedSpritePtr%2Cstring%2Cfloat"
+    title="setSpeed(self: AnimatedSpritePtr; name: string = &quot;&quot;; speed: float = 2.0&apos;f32)"><wbr />set<wbr />Speed<span class="attachedType">AnimatedSpritePtr</span></a></li>
 
   </ul>
 </li>
@@ -283,7 +285,7 @@ Returns mouse position.
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Deletes animation from the AnimatedSprite animations. If <tt class="docutils literal"><span class="pre">name</span></tt> is a current animation name, than animation will not delete.</p>
+<p>Deletes animation from the AnimatedSprite animations. If <tt class="docutils literal"><span class="pre">name</span></tt> is a current animation name, then animation will not delete.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is an animation name.</li>
 </ul>
@@ -305,7 +307,7 @@ Stops animation.
 <p>Plays animation.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is an animation name. if it is &quot;&quot; than plays current animation.</li>
-<li>if <tt class="docutils literal"><span class="pre">backward</span></tt> is true than plays animation in reverse order.</li>
+<li>if <tt class="docutils literal"><span class="pre">backward</span></tt> is true then plays animation in reverse order.</li>
 </ul>
 
 
@@ -315,6 +317,19 @@ Stops animation.
 <dd>
 
 Resumes animation.
+
+</dd>
+<a id="setSpeed.e,AnimatedSpritePtr,string,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setSpeed.e%2CAnimatedSpritePtr%2Cstring%2Cfloat"><span class="Identifier">setSpeed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">speed</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">2.0'f32</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Changes animation speed. If <tt class="docutils literal"><span class="pre">name</span></tt> is &quot;&quot; then changes the speed of the current animation.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is an animation name.</li>
+<li><tt class="docutils literal"><span class="pre">speed</span></tt> is a new speed.</li>
+</ul>
+
 
 </dd>
 
@@ -327,7 +342,7 @@ Resumes animation.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-26 17:12:47 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-27 03:22:43 UTC</small>
       </div>
     </div>
   </div>
