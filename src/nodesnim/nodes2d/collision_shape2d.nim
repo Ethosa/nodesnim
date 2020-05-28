@@ -14,7 +14,8 @@ import
   node2d
 
 
-const PI2 = PI*2
+when defined(debug):
+  const PI2 = PI*2
 
 
 type

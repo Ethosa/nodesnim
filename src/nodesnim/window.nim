@@ -223,6 +223,8 @@ proc changeScene*(name: string): bool {.discardable.} =
       current_scene.reAnchorScene(width.GLfloat, height.GLfloat, paused)
       result = true
       break
+  when defined(debug):
+    debug("result of `changeScene` is ", result)
 
 proc setMainScene*(name: string) =
   ## Set up main scene.

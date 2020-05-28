@@ -28,8 +28,14 @@ proc load*(file: cstring, size: var Vector2Ref, mode: Glenum = GL_RGB): Gluint =
   var
     surface = image.load(file)  # load image from file
     textureid: Gluint
+  when defined(debug):
+    if surface == nil:
+      error("image \"", file, "\" not loaded!")
+    elif size == nil:
+      error("size is nil! maybe you mean: var size = Vector2()?")
   size.x = surface.w.float
   size.y = surface.h.float
+
 
   # OpenGL:
   glGenTextures(1, textureid.addr)
