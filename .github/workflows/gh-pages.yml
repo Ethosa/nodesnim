@@ -1,4 +1,4 @@
-name: test
+name: gh-pages
 
 on:
   push:
@@ -16,20 +16,11 @@ jobs:
     steps:
       - run: echo "not contains '[skip ci]'"
 
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          #- windows-latest
-          #- macOS-latest
-        nim_version:
-          - '1.2.0'
-          - 'stable'
+  docs:
+    runs-on: ubuntu-latest
     needs: before
     env:
-      TIMEOUT_EXIT_STATUS: 124
+      nim_version: '1.2.0'
     steps:
       - uses: actions/checkout@v1
       - name: Cache choosenim
@@ -37,7 +28,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.choosenim
-          key: ${{ runner.os }}-choosenim-${{ matrix.nim_version }}
+          key: ${{ runner.os }}-choosenim-${{ env.nim_version }}
       - name: Cache nimble
         id: cache-nimble
         uses: actions/cache@v1
@@ -46,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-nimble-${{ hashFiles('*.nimble') }}
       - uses: jiro4989/setup-nim-action@v1.0.2
         with:
-          nim-version: ${{ matrix.nim_version }}
+          nim-version: ${{ env.nim_version }}
 
       - name: Fix apt packages
         run: |
@@ -54,32 +45,19 @@ jobs:
           sudo sed -i 's/azure\.//' /etc/apt/sources.list
           sudo apt update -yqq
 
-      - name: Install xvfb
-        run: sudo apt install -y xvfb
-
       - name: Install freeglut
         run: sudo apt install -y freeglut3 freeglut3-dev
 
       - name: Install sdl2
         run: sudo apt install --fix-missing -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
-      - name: Build examples
-        run: |
-          cd examples
-          for dir in hello_world calculator novel snake screensaver; do
-            (
-              cd "$dir"
-              nim c main.nim
-              timeout 2 xvfb-run --auto-servernum --server-num=1 ./main || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-            )
-          done
-        shell: bash
-      - name: Build tests
-        run: |
-          cd tests
-          for file in $(ls -v test*.nim); do
-            echo "test: $file"
-            nim c $file
-            timeout 2 xvfb-run --auto-servernum --server-num=1 ./${file%%.nim} || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
-          done
-        shell: bash
+      - name: Generate API documents
+        run: nimble doc --index:on --project --out:docs --hints:off src/nodesnim.nim
+
+      - name: Deploy documents
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+        if: github.ref == 'refs/heads/master'
+
