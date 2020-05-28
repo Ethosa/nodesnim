@@ -2,6 +2,7 @@
 ## Provides Circle2 type.
 import
   vector2
+{.used.}
 
 
 type
@@ -27,7 +28,7 @@ proc Circle2*(vec: Vector2Ref, r: float): Circle2Ref =
   ## Arguments:
   ## - `vec` is a circle center position.
   ## - `r` is a circle radius.
-  Circle2Ref(x: x, y: y, r: r)
+  Circle2Ref(x: vec.x, y: vec.y, r: r)
 
 
 proc contains*(self: Circle2Ref, x, y: float): bool =
