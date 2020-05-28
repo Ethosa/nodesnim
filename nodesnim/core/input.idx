@@ -1,0 +1,79 @@
+InputEventType	nodesnim/core/input.html#InputEventType	input: InputEventType	
+InputAction	nodesnim/core/input.html#InputAction	input: InputAction	
+Input	nodesnim/core/input.html#Input	input: Input	
+InputEvent	nodesnim/core/input.html#InputEvent	input: InputEvent	
+InputEventVoid	nodesnim/core/input.html#InputEventVoid	input: InputEventVoid	
+InputEventMouseButton	nodesnim/core/input.html#InputEventMouseButton	input: InputEventMouseButton	
+InputEventMouseMotion	nodesnim/core/input.html#InputEventMouseMotion	input: InputEventMouseMotion	
+InputEventMouseWheel	nodesnim/core/input.html#InputEventMouseWheel	input: InputEventMouseWheel	
+InputEventTouchScreen	nodesnim/core/input.html#InputEventTouchScreen	input: InputEventTouchScreen	
+InputEventKeyboard	nodesnim/core/input.html#InputEventKeyboard	input: InputEventKeyboard	
+BUTTON_LEFT	nodesnim/core/input.html#BUTTON_LEFT	input: BUTTON_LEFT	
+BUTTON_MIDDLE	nodesnim/core/input.html#BUTTON_MIDDLE	input: BUTTON_MIDDLE	
+BUTTON_RIGHT	nodesnim/core/input.html#BUTTON_RIGHT	input: BUTTON_RIGHT	
+BUTTON_RELEASE	nodesnim/core/input.html#BUTTON_RELEASE	input: BUTTON_RELEASE	
+BUTTON_CLICK	nodesnim/core/input.html#BUTTON_CLICK	input: BUTTON_CLICK	
+K_F1	nodesnim/core/input.html#K_F1	input: K_F1	
+K_F2	nodesnim/core/input.html#K_F2	input: K_F2	
+K_F3	nodesnim/core/input.html#K_F3	input: K_F3	
+K_F4	nodesnim/core/input.html#K_F4	input: K_F4	
+K_F5	nodesnim/core/input.html#K_F5	input: K_F5	
+K_F6	nodesnim/core/input.html#K_F6	input: K_F6	
+K_F7	nodesnim/core/input.html#K_F7	input: K_F7	
+K_F8	nodesnim/core/input.html#K_F8	input: K_F8	
+K_F9	nodesnim/core/input.html#K_F9	input: K_F9	
+K_TAB	nodesnim/core/input.html#K_TAB	input: K_TAB	
+K_F10	nodesnim/core/input.html#K_F10	input: K_F10	
+K_F11	nodesnim/core/input.html#K_F11	input: K_F11	
+K_F12	nodesnim/core/input.html#K_F12	input: K_F12	
+K_ENTER	nodesnim/core/input.html#K_ENTER	input: K_ENTER	
+K_ESCAPE	nodesnim/core/input.html#K_ESCAPE	input: K_ESCAPE	
+K_SPACE	nodesnim/core/input.html#K_SPACE	input: K_SPACE	
+K_NUM_MUL	nodesnim/core/input.html#K_NUM_MUL	input: K_NUM_MUL	
+K_NUM_SUB	nodesnim/core/input.html#K_NUM_SUB	input: K_NUM_SUB	
+K_NUM_ADD	nodesnim/core/input.html#K_NUM_ADD	input: K_NUM_ADD	
+K_NUM_POINT	nodesnim/core/input.html#K_NUM_POINT	input: K_NUM_POINT	
+K_NUM_DIV	nodesnim/core/input.html#K_NUM_DIV	input: K_NUM_DIV	
+K_0	nodesnim/core/input.html#K_0	input: K_0	
+K_1	nodesnim/core/input.html#K_1	input: K_1	
+K_2	nodesnim/core/input.html#K_2	input: K_2	
+K_3	nodesnim/core/input.html#K_3	input: K_3	
+K_4	nodesnim/core/input.html#K_4	input: K_4	
+K_5	nodesnim/core/input.html#K_5	input: K_5	
+K_6	nodesnim/core/input.html#K_6	input: K_6	
+K_7	nodesnim/core/input.html#K_7	input: K_7	
+K_8	nodesnim/core/input.html#K_8	input: K_8	
+K_9	nodesnim/core/input.html#K_9	input: K_9	
+K_LEFT	nodesnim/core/input.html#K_LEFT	input: K_LEFT	
+K_UP	nodesnim/core/input.html#K_UP	input: K_UP	
+K_RIGHT	nodesnim/core/input.html#K_RIGHT	input: K_RIGHT	
+K_DOWN	nodesnim/core/input.html#K_DOWN	input: K_DOWN	
+K_PAGE_UP	nodesnim/core/input.html#K_PAGE_UP	input: K_PAGE_UP	
+K_PAGE_DOWN	nodesnim/core/input.html#K_PAGE_DOWN	input: K_PAGE_DOWN	
+K_HOME	nodesnim/core/input.html#K_HOME	input: K_HOME	
+K_END	nodesnim/core/input.html#K_END	input: K_END	
+K_INSERT	nodesnim/core/input.html#K_INSERT	input: K_INSERT	
+K_DELETE	nodesnim/core/input.html#K_DELETE	input: K_DELETE	
+pressed_keys	nodesnim/core/input.html#pressed_keys	input: pressed_keys	
+pressed_keys_ints	nodesnim/core/input.html#pressed_keys_ints	input: pressed_keys_ints	
+pressed_keys_cints	nodesnim/core/input.html#pressed_keys_cints	input: pressed_keys_cints	
+last_event	nodesnim/core/input.html#last_event	input: last_event	
+last_key_state	nodesnim/core/input.html#last_key_state	input: last_key_state	
+key_state	nodesnim/core/input.html#key_state	input: key_state	
+press_state	nodesnim/core/input.html#press_state	input: press_state	
+actionlist	nodesnim/core/input.html#actionlist	input: actionlist	
+mouse_pressed	nodesnim/core/input.html#mouse_pressed	input: mouse_pressed	
+isInputEventVoid	nodesnim/core/input.html#isInputEventVoid,InputEvent	input: isInputEventVoid(a: InputEvent): bool	
+isInputEventMouseButton	nodesnim/core/input.html#isInputEventMouseButton,InputEvent	input: isInputEventMouseButton(a: InputEvent): bool	
+isInputEventMouseMotion	nodesnim/core/input.html#isInputEventMouseMotion,InputEvent	input: isInputEventMouseMotion(a: InputEvent): bool	
+isInputEventMouseWheel	nodesnim/core/input.html#isInputEventMouseWheel,InputEvent	input: isInputEventMouseWheel(a: InputEvent): bool	
+isInputEventTouchScreen	nodesnim/core/input.html#isInputEventTouchScreen,InputEvent	input: isInputEventTouchScreen(a: InputEvent): bool	
+isInputEventKeyboard	nodesnim/core/input.html#isInputEventKeyboard,InputEvent	input: isInputEventKeyboard(a: InputEvent): bool	
+addButtonAction	nodesnim/core/input.html#addButtonAction,,string,cint	input: addButtonAction(a: type Input; name: string; button: cint)	
+addKeyAction	nodesnim/core/input.html#addKeyAction,,string,string	input: addKeyAction(a: type Input; name, key: string)	
+addKeyAction	nodesnim/core/input.html#addKeyAction,,string,int8	input: addKeyAction(a: type Input; name: string; key: int8)	
+addTouchAction	nodesnim/core/input.html#addTouchAction,,string	input: addTouchAction(a: type Input; name: string)	
+isActionJustPressed	nodesnim/core/input.html#isActionJustPressed,,string	input: isActionJustPressed(a: type Input; name: string): bool	
+isActionPressed	nodesnim/core/input.html#isActionPressed,,string	input: isActionPressed(a: type Input; name: string): bool	
+isActionReleased	nodesnim/core/input.html#isActionReleased,,string	input: isActionReleased(a: type Input; name: string): bool	
+`$`	nodesnim/core/input.html#$,InputEvent	input: `$`(event: InputEvent): string	

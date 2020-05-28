@@ -1,0 +1,39 @@
+NodeObj	nodesnim/nodes/node.html#NodeObj	node: NodeObj	
+NodePtr	nodesnim/nodes/node.html#NodePtr	node: NodePtr	
+nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nodetype: untyped): untyped	
+Node	nodesnim/nodes/node.html#Node,string,NodeObj	node: Node(name: string; variable: var NodeObj): NodePtr	
+Node	nodesnim/nodes/node.html#Node,NodeObj	node: Node(variable: var NodeObj): NodePtr	
+addChild	nodesnim/nodes/node.html#addChild.e,NodePtr,NodePtr	node: addChild(self: NodePtr; child: NodePtr)	
+calcGlobalPosition	nodesnim/nodes/node.html#calcGlobalPosition.e,NodePtr	node: calcGlobalPosition(self: NodePtr)	
+calcPositionAnchor	nodesnim/nodes/node.html#calcPositionAnchor.e,NodePtr	node: calcPositionAnchor(self: NodePtr)	
+draw	nodesnim/nodes/node.html#draw.e,NodePtr,GLfloat,GLfloat	node: draw(self: NodePtr; w, h: GLfloat)	
+draw2stage	nodesnim/nodes/node.html#draw2stage.e,NodePtr,GLfloat,GLfloat	node: draw2stage(self: NodePtr; w, h: GLfloat)	
+duplicate	nodesnim/nodes/node.html#duplicate.e,NodePtr,NodeObj	node: duplicate(self: NodePtr; obj: var NodeObj): NodePtr	
+getChild	nodesnim/nodes/node.html#getChild.e,NodePtr,int	node: getChild(self: NodePtr; index: int): NodePtr	
+getChildCount	nodesnim/nodes/node.html#getChildCount.e,NodePtr	node: getChildCount(self: NodePtr): int	
+getChildIndex	nodesnim/nodes/node.html#getChildIndex.e,NodePtr,string	node: getChildIndex(self: NodePtr; name: string): int	
+getChildIndex	nodesnim/nodes/node.html#getChildIndex.e,NodePtr,NodePtr	node: getChildIndex(self: NodePtr; child: NodePtr): int	
+getChildIter	nodesnim/nodes/node.html#getChildIter.e,NodePtr	node: getChildIter(self: NodePtr): seq[NodePtr]	
+getNode	nodesnim/nodes/node.html#getNode.e,NodePtr,string	node: getNode(self: NodePtr; path: string): NodePtr	
+getPath	nodesnim/nodes/node.html#getPath.e,NodePtr	node: getPath(self: NodePtr): string	
+getParent	nodesnim/nodes/node.html#getParent.e,NodePtr	node: getParent(self: NodePtr): NodePtr	
+getPauseMode	nodesnim/nodes/node.html#getPauseMode.e,NodePtr	node: getPauseMode(self: NodePtr): PauseMode	
+isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,float,float	node: isCollide(self: NodePtr; x, y: float): bool	
+isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,Vector2Ref	node: isCollide(self: NodePtr; vec2: Vector2Ref): bool	
+isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,NodePtr	node: isCollide(self, other: NodePtr): bool	
+isParentOf	nodesnim/nodes/node.html#isParentOf.e,NodePtr,NodePtr	node: isParentOf(self, other: NodePtr): bool	
+handle	nodesnim/nodes/node.html#handle.e,NodePtr,InputEvent,NodePtr	node: handle(self: NodePtr; event: InputEvent; mouse_on: var NodePtr)	
+hasNode	nodesnim/nodes/node.html#hasNode.e,NodePtr,string	node: hasNode(self: NodePtr; name: string): bool	
+hasNode	nodesnim/nodes/node.html#hasNode.e,NodePtr,NodePtr	node: hasNode(self: NodePtr; other: NodePtr): bool	
+hasParent	nodesnim/nodes/node.html#hasParent.e,NodePtr	node: hasParent(self: NodePtr): bool	
+hide	nodesnim/nodes/node.html#hide.e,NodePtr	node: hide(self: NodePtr)	
+move	nodesnim/nodes/node.html#move.e,NodePtr,float,float	node: move(self: NodePtr; x, y: float)	
+move	nodesnim/nodes/node.html#move.e,NodePtr,Vector2Ref	node: move(self: NodePtr; vec2: Vector2Ref)	
+removeChild	nodesnim/nodes/node.html#removeChild.e,NodePtr,int	node: removeChild(self: NodePtr; index: int)	
+removeChild	nodesnim/nodes/node.html#removeChild.e,NodePtr,NodePtr	node: removeChild(self: NodePtr; other: NodePtr)	
+setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodePtr,AnchorRef	node: setAnchor(self: NodePtr; anchor: AnchorRef)	
+setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodePtr,float,float,float,float	node: setAnchor(self: NodePtr; x1, y1, x2, y2: float)	
+setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodePtr,Vector2Ref	node: setSizeAnchor(self: NodePtr; anchor: Vector2Ref)	
+setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodePtr,float,float	node: setSizeAnchor(self: NodePtr; x, y: float)	
+show	nodesnim/nodes/node.html#show.e,NodePtr	node: show(self: NodePtr)	
+delete	nodesnim/nodes/node.html#delete.e,NodePtr	node: delete(self: NodePtr)	

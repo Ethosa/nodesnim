@@ -1,0 +1,9 @@
+AnimationObj	nodesnim/core/animation.html#AnimationObj	animation: AnimationObj	
+AnimationRef	nodesnim/core/animation.html#AnimationRef	animation: AnimationRef	
+AnimationArray	nodesnim/core/animation.html#AnimationArray	animation: AnimationArray	
+Animation	nodesnim/core/animation.html#Animation,string,float	animation: Animation[T](name: string; speed: float = 1.0&apos;f32): AnimationRef[T]	
+addFrame	nodesnim/core/animation.html#addFrame,AnimationRef[T],T	animation: addFrame[T](anim: AnimationRef[T]; frame: T)	
+`==`	nodesnim/core/animation.html#==,AnimationRef[T],AnimationRef[T]	animation: `==`[T](x, y: AnimationRef[T]): bool	
+`[]`	nodesnim/core/animation.html#[],AnimationArray[T],string	animation: `[]`[T](arr: AnimationArray[T]; index: string): AnimationRef[T]	
+contains	nodesnim/core/animation.html#contains,AnimationArray[T],AnimationRef[T]	animation: contains[T](arr: AnimationArray[T]; animation: AnimationRef[T]): bool	
+contains	nodesnim/core/animation.html#contains,AnimationArray[T],string	animation: contains[T](arr: AnimationArray[T]; name: string): bool	

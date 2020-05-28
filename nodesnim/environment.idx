@@ -1,0 +1,8 @@
+EnvironmentObj	nodesnim/environment.html#EnvironmentObj	environment: EnvironmentObj	
+EnvironmentRef	nodesnim/environment.html#EnvironmentRef	environment: EnvironmentRef	
+newEnvironment	nodesnim/environment.html#newEnvironment,ColorRef,float	environment: newEnvironment(color: ColorRef; brightness: float): EnvironmentRef	
+newEnvironment	nodesnim/environment.html#newEnvironment	environment: newEnvironment(): EnvironmentRef	
+setBackgroundColor	nodesnim/environment.html#setBackgroundColor,EnvironmentRef,ColorRef	environment: setBackgroundColor(env: EnvironmentRef; color: ColorRef)	
+setBackgroundColor	nodesnim/environment.html#setBackgroundColor,EnvironmentRef,uint32	environment: setBackgroundColor(env: EnvironmentRef; color: uint32)	
+setBrightness	nodesnim/environment.html#setBrightness,EnvironmentRef,float	environment: setBrightness(env: EnvironmentRef; brightness: float)	
+setDelay	nodesnim/environment.html#setDelay,EnvironmentRef,int	environment: setDelay(env: EnvironmentRef; delay: int)	

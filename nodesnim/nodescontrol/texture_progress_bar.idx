@@ -1,0 +1,10 @@
+TextureProgressBarObj	nodesnim/nodescontrol/texture_progress_bar.html#TextureProgressBarObj	texture_progress_bar: TextureProgressBarObj	
+TextureProgressBarPtr	nodesnim/nodescontrol/texture_progress_bar.html#TextureProgressBarPtr	texture_progress_bar: TextureProgressBarPtr	
+TextureProgressBar	nodesnim/nodescontrol/texture_progress_bar.html#TextureProgressBar,string,TextureProgressBarObj	texture_progress_bar: TextureProgressBar(name: string; variable: var TextureProgressBarObj): TextureProgressBarPtr	
+TextureProgressBar	nodesnim/nodescontrol/texture_progress_bar.html#TextureProgressBar,TextureProgressBarObj	texture_progress_bar: TextureProgressBar(obj: var TextureProgressBarObj): TextureProgressBarPtr	
+draw	nodesnim/nodescontrol/texture_progress_bar.html#draw.e,TextureProgressBarPtr,GLfloat,GLfloat	texture_progress_bar: draw(self: TextureProgressBarPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/texture_progress_bar.html#duplicate.e,TextureProgressBarPtr,TextureProgressBarObj	texture_progress_bar: duplicate(self: TextureProgressBarPtr; obj: var TextureProgressBarObj): TextureProgressBarPtr	
+setMaxValue	nodesnim/nodescontrol/texture_progress_bar.html#setMaxValue.e,TextureProgressBarPtr,uint	texture_progress_bar: setMaxValue(self: TextureProgressBarPtr; value: uint)	
+setProgress	nodesnim/nodescontrol/texture_progress_bar.html#setProgress.e,TextureProgressBarPtr,uint	texture_progress_bar: setProgress(self: TextureProgressBarPtr; value: uint)	
+setProgressTexture	nodesnim/nodescontrol/texture_progress_bar.html#setProgressTexture.e,TextureProgressBarPtr,GlTextureObj	texture_progress_bar: setProgressTexture(self: TextureProgressBarPtr; texture: GlTextureObj)	
+setBackgroundTexture	nodesnim/nodescontrol/texture_progress_bar.html#setBackgroundTexture.e,TextureProgressBarPtr,GlTextureObj	texture_progress_bar: setBackgroundTexture(self: TextureProgressBarPtr; texture: GlTextureObj)	

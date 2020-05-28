@@ -1,0 +1,12 @@
+RichEditTextObj	nodesnim/nodescontrol/rich_edit_text.html#RichEditTextObj	rich_edit_text: RichEditTextObj	
+RichEditTextPtr	nodesnim/nodescontrol/rich_edit_text.html#RichEditTextPtr	rich_edit_text: RichEditTextPtr	
+RichEditText	nodesnim/nodescontrol/rich_edit_text.html#RichEditText,string,RichEditTextObj	rich_edit_text: RichEditText(name: string; variable: var RichEditTextObj): RichEditTextPtr	
+RichEditText	nodesnim/nodescontrol/rich_edit_text.html#RichEditText,RichEditTextObj	rich_edit_text: RichEditText(obj: var RichEditTextObj): RichEditTextPtr	
+getTextSize	nodesnim/nodescontrol/rich_edit_text.html#getTextSize.e,RichEditTextPtr	rich_edit_text: getTextSize(self: RichEditTextPtr): Vector2Ref	
+getLine	nodesnim/nodescontrol/rich_edit_text.html#getLine.e,RichEditTextPtr	rich_edit_text: getLine(self: RichEditTextPtr): int	
+draw	nodesnim/nodescontrol/rich_edit_text.html#draw.e,RichEditTextPtr,GLfloat,GLfloat	rich_edit_text: draw(self: RichEditTextPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/rich_edit_text.html#duplicate.e,RichEditTextPtr,RichEditTextObj	rich_edit_text: duplicate(self: RichEditTextPtr; obj: var RichEditTextObj): RichEditTextPtr	
+handle	nodesnim/nodescontrol/rich_edit_text.html#handle.e,RichEditTextPtr,InputEvent,NodePtr	rich_edit_text: handle(self: RichEditTextPtr; event: InputEvent; mouse_on: var NodePtr)	
+setTextAlign	nodesnim/nodescontrol/rich_edit_text.html#setTextAlign.e,RichEditTextPtr,AnchorRef	rich_edit_text: setTextAlign(self: RichEditTextPtr; align: AnchorRef)	
+setTextAlign	nodesnim/nodescontrol/rich_edit_text.html#setTextAlign.e,RichEditTextPtr,float,float,float,float	rich_edit_text: setTextAlign(self: RichEditTextPtr; x1, y1, x2, y2: float)	
+setText	nodesnim/nodescontrol/rich_edit_text.html#setText.e,RichEditTextPtr,ColorTextRef	rich_edit_text: setText(self: RichEditTextPtr; value: ColorTextRef)	

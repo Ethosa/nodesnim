@@ -1,0 +1,12 @@
+EditTextObj	nodesnim/nodescontrol/edittext.html#EditTextObj	edittext: EditTextObj	
+EditTextPtr	nodesnim/nodescontrol/edittext.html#EditTextPtr	edittext: EditTextPtr	
+EditText	nodesnim/nodescontrol/edittext.html#EditText,string,EditTextObj	edittext: EditText(name: string; variable: var EditTextObj): EditTextPtr	
+EditText	nodesnim/nodescontrol/edittext.html#EditText,EditTextObj	edittext: EditText(obj: var EditTextObj): EditTextPtr	
+getTextSize	nodesnim/nodescontrol/edittext.html#getTextSize.e,EditTextPtr	edittext: getTextSize(self: EditTextPtr): Vector2Ref	
+getLine	nodesnim/nodescontrol/edittext.html#getLine.e,EditTextPtr	edittext: getLine(self: EditTextPtr): int	
+draw	nodesnim/nodescontrol/edittext.html#draw.e,EditTextPtr,GLfloat,GLfloat	edittext: draw(self: EditTextPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/edittext.html#duplicate.e,EditTextPtr,EditTextObj	edittext: duplicate(self: EditTextPtr; obj: var EditTextObj): EditTextPtr	
+handle	nodesnim/nodescontrol/edittext.html#handle.e,EditTextPtr,InputEvent,NodePtr	edittext: handle(self: EditTextPtr; event: InputEvent; mouse_on: var NodePtr)	
+setTextAlign	nodesnim/nodescontrol/edittext.html#setTextAlign.e,EditTextPtr,AnchorRef	edittext: setTextAlign(self: EditTextPtr; align: AnchorRef)	
+setTextAlign	nodesnim/nodescontrol/edittext.html#setTextAlign.e,EditTextPtr,float,float,float,float	edittext: setTextAlign(self: EditTextPtr; x1, y1, x2, y2: float)	
+setText	nodesnim/nodescontrol/edittext.html#setText.e,EditTextPtr,string	edittext: setText(self: EditTextPtr; value: string)	

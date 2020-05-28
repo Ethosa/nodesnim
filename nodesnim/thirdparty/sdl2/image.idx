@@ -1,0 +1,44 @@
+IMG_INIT_JPG	nodesnim/thirdparty/sdl2/image.html#IMG_INIT_JPG	image: IMG_INIT_JPG	
+IMG_INIT_PNG	nodesnim/thirdparty/sdl2/image.html#IMG_INIT_PNG	image: IMG_INIT_PNG	
+IMG_INIT_TIF	nodesnim/thirdparty/sdl2/image.html#IMG_INIT_TIF	image: IMG_INIT_TIF	
+IMG_INIT_WEBP	nodesnim/thirdparty/sdl2/image.html#IMG_INIT_WEBP	image: IMG_INIT_WEBP	
+linkedVersion	nodesnim/thirdparty/sdl2/image.html#linkedVersion	image: linkedVersion(): ptr SDL_Version	
+init	nodesnim/thirdparty/sdl2/image.html#init,cint	image: init(flags: cint = 0x00000001 or 0x00000002): cint	
+quit	nodesnim/thirdparty/sdl2/image.html#quit	image: quit()	
+loadTyped_RW	nodesnim/thirdparty/sdl2/image.html#loadTyped_RW,RWopsPtr,cint,cstring	image: loadTyped_RW(src: RWopsPtr; freesrc: cint; `type`: cstring): SurfacePtr	
+load	nodesnim/thirdparty/sdl2/image.html#load,cstring	image: load(file: cstring): SurfacePtr	
+load_RW	nodesnim/thirdparty/sdl2/image.html#load_RW,RWopsPtr,cint	image: load_RW(src: RWopsPtr; freesrc: cint): SurfacePtr	
+loadTexture	nodesnim/thirdparty/sdl2/image.html#loadTexture,RendererPtr,cstring	image: loadTexture(renderer: RendererPtr; file: cstring): TexturePtr	
+loadTexture_RW	nodesnim/thirdparty/sdl2/image.html#loadTexture_RW,RendererPtr,RWopsPtr,cint	image: loadTexture_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint): TexturePtr	
+loadTextureTyped_RW	nodesnim/thirdparty/sdl2/image.html#loadTextureTyped_RW,RendererPtr,RWopsPtr,cint,cstring	image: loadTextureTyped_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint;\n                    `type`: cstring): TexturePtr	
+isICO	nodesnim/thirdparty/sdl2/image.html#isICO,RWopsPtr	image: isICO(src: RWopsPtr): cint	
+isCUR	nodesnim/thirdparty/sdl2/image.html#isCUR,RWopsPtr	image: isCUR(src: RWopsPtr): cint	
+isBMP	nodesnim/thirdparty/sdl2/image.html#isBMP,RWopsPtr	image: isBMP(src: RWopsPtr): cint	
+isGIF	nodesnim/thirdparty/sdl2/image.html#isGIF,RWopsPtr	image: isGIF(src: RWopsPtr): cint	
+isJPG	nodesnim/thirdparty/sdl2/image.html#isJPG,RWopsPtr	image: isJPG(src: RWopsPtr): cint	
+isLBM	nodesnim/thirdparty/sdl2/image.html#isLBM,RWopsPtr	image: isLBM(src: RWopsPtr): cint	
+isPCX	nodesnim/thirdparty/sdl2/image.html#isPCX,RWopsPtr	image: isPCX(src: RWopsPtr): cint	
+isPNG	nodesnim/thirdparty/sdl2/image.html#isPNG,RWopsPtr	image: isPNG(src: RWopsPtr): cint	
+isPNM	nodesnim/thirdparty/sdl2/image.html#isPNM,RWopsPtr	image: isPNM(src: RWopsPtr): cint	
+isTIF	nodesnim/thirdparty/sdl2/image.html#isTIF,RWopsPtr	image: isTIF(src: RWopsPtr): cint	
+isXCF	nodesnim/thirdparty/sdl2/image.html#isXCF,RWopsPtr	image: isXCF(src: RWopsPtr): cint	
+isXPM	nodesnim/thirdparty/sdl2/image.html#isXPM,RWopsPtr	image: isXPM(src: RWopsPtr): cint	
+isXV	nodesnim/thirdparty/sdl2/image.html#isXV,RWopsPtr	image: isXV(src: RWopsPtr): cint	
+isWEBP	nodesnim/thirdparty/sdl2/image.html#isWEBP,RWopsPtr	image: isWEBP(src: RWopsPtr): cint	
+loadICO_RW	nodesnim/thirdparty/sdl2/image.html#loadICO_RW,RWopsPtr	image: loadICO_RW(src: RWopsPtr): SurfacePtr	
+loadCUR_RW	nodesnim/thirdparty/sdl2/image.html#loadCUR_RW,RWopsPtr	image: loadCUR_RW(src: RWopsPtr): SurfacePtr	
+loadBMP_RW	nodesnim/thirdparty/sdl2/image.html#loadBMP_RW,RWopsPtr	image: loadBMP_RW(src: RWopsPtr): SurfacePtr	
+loadGIF_RW	nodesnim/thirdparty/sdl2/image.html#loadGIF_RW,RWopsPtr	image: loadGIF_RW(src: RWopsPtr): SurfacePtr	
+loadJPG_RW	nodesnim/thirdparty/sdl2/image.html#loadJPG_RW,RWopsPtr	image: loadJPG_RW(src: RWopsPtr): SurfacePtr	
+loadLBM_RW	nodesnim/thirdparty/sdl2/image.html#loadLBM_RW,RWopsPtr	image: loadLBM_RW(src: RWopsPtr): SurfacePtr	
+loadPCX_RW	nodesnim/thirdparty/sdl2/image.html#loadPCX_RW,RWopsPtr	image: loadPCX_RW(src: RWopsPtr): SurfacePtr	
+loadPNG_RW	nodesnim/thirdparty/sdl2/image.html#loadPNG_RW,RWopsPtr	image: loadPNG_RW(src: RWopsPtr): SurfacePtr	
+loadPNM_RW	nodesnim/thirdparty/sdl2/image.html#loadPNM_RW,RWopsPtr	image: loadPNM_RW(src: RWopsPtr): SurfacePtr	
+loadTGA_RW	nodesnim/thirdparty/sdl2/image.html#loadTGA_RW,RWopsPtr	image: loadTGA_RW(src: RWopsPtr): SurfacePtr	
+loadTIF_RW	nodesnim/thirdparty/sdl2/image.html#loadTIF_RW,RWopsPtr	image: loadTIF_RW(src: RWopsPtr): SurfacePtr	
+loadXCF_RW	nodesnim/thirdparty/sdl2/image.html#loadXCF_RW,RWopsPtr	image: loadXCF_RW(src: RWopsPtr): SurfacePtr	
+loadXPM_RW	nodesnim/thirdparty/sdl2/image.html#loadXPM_RW,RWopsPtr	image: loadXPM_RW(src: RWopsPtr): SurfacePtr	
+loadXV_RW	nodesnim/thirdparty/sdl2/image.html#loadXV_RW,RWopsPtr	image: loadXV_RW(src: RWopsPtr): SurfacePtr	
+loadWEBP_RW	nodesnim/thirdparty/sdl2/image.html#loadWEBP_RW,RWopsPtr	image: loadWEBP_RW(src: RWopsPtr): SurfacePtr	
+readXPMFromArray	nodesnim/thirdparty/sdl2/image.html#readXPMFromArray,cstringArray	image: readXPMFromArray(xpm: cstringArray): SurfacePtr	
+savePNG	nodesnim/thirdparty/sdl2/image.html#savePNG,SurfacePtr,cstring	image: savePNG(surface: SurfacePtr; file: cstring): cint	

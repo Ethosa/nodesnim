@@ -1,0 +1,98 @@
+LibName	nodesnim/thirdparty/sdl2/mixer.html#LibName	mixer: LibName	
+MIX_DEFAULT_FORMAT	nodesnim/thirdparty/sdl2/mixer.html#MIX_DEFAULT_FORMAT	mixer: MIX_DEFAULT_FORMAT	
+linkedVersion	nodesnim/thirdparty/sdl2/mixer.html#linkedVersion	mixer: linkedVersion(): ptr SDL_Version	
+MIX_INIT_FLAC	nodesnim/thirdparty/sdl2/mixer.html#MIX_INIT_FLAC	mixer: MIX_INIT_FLAC	
+MIX_INIT_MOD	nodesnim/thirdparty/sdl2/mixer.html#MIX_INIT_MOD	mixer: MIX_INIT_MOD	
+MIX_INIT_MODPLUG	nodesnim/thirdparty/sdl2/mixer.html#MIX_INIT_MODPLUG	mixer: MIX_INIT_MODPLUG	
+MIX_INIT_MP3	nodesnim/thirdparty/sdl2/mixer.html#MIX_INIT_MP3	mixer: MIX_INIT_MP3	
+MIX_INIT_OGG	nodesnim/thirdparty/sdl2/mixer.html#MIX_INIT_OGG	mixer: MIX_INIT_OGG	
+MIX_INIT_FLUIDSYNTH	nodesnim/thirdparty/sdl2/mixer.html#MIX_INIT_FLUIDSYNTH	mixer: MIX_INIT_FLUIDSYNTH	
+init	nodesnim/thirdparty/sdl2/mixer.html#init,cint	mixer: init(flags: cint): cint	
+quit	nodesnim/thirdparty/sdl2/mixer.html#quit	mixer: quit()	
+MIX_CHANNELS	nodesnim/thirdparty/sdl2/mixer.html#MIX_CHANNELS	mixer: MIX_CHANNELS	
+MIX_DEFAULT_FREQUENCY	nodesnim/thirdparty/sdl2/mixer.html#MIX_DEFAULT_FREQUENCY	mixer: MIX_DEFAULT_FREQUENCY	
+MIX_DEFAULT_CHANNELS	nodesnim/thirdparty/sdl2/mixer.html#MIX_DEFAULT_CHANNELS	mixer: MIX_DEFAULT_CHANNELS	
+MIX_MAX_VOLUME	nodesnim/thirdparty/sdl2/mixer.html#MIX_MAX_VOLUME	mixer: MIX_MAX_VOLUME	
+ChunkPtr	nodesnim/thirdparty/sdl2/mixer.html#ChunkPtr	mixer: ChunkPtr	
+Chunk	nodesnim/thirdparty/sdl2/mixer.html#Chunk	mixer: Chunk	
+Fading	nodesnim/thirdparty/sdl2/mixer.html#Fading	mixer: Fading	
+MusicType	nodesnim/thirdparty/sdl2/mixer.html#MusicType	mixer: MusicType	
+MusicPtr	nodesnim/thirdparty/sdl2/mixer.html#MusicPtr	mixer: MusicPtr	
+Music	nodesnim/thirdparty/sdl2/mixer.html#Music	mixer: Music	
+openAudio	nodesnim/thirdparty/sdl2/mixer.html#openAudio,cint,uint16,cint,cint	mixer: openAudio(frequency: cint; format: uint16; channels: cint; chunksize: cint): cint	
+allocateChannels	nodesnim/thirdparty/sdl2/mixer.html#allocateChannels,cint	mixer: allocateChannels(numchans: cint): cint	
+querySpec	nodesnim/thirdparty/sdl2/mixer.html#querySpec,ptr.cint,ptr.uint16,ptr.cint	mixer: querySpec(frequency: ptr cint; format: ptr uint16; channels: ptr cint): cint	
+loadWAV_RW	nodesnim/thirdparty/sdl2/mixer.html#loadWAV_RW,RWopsPtr,cint	mixer: loadWAV_RW(src: RWopsPtr; freesrc: cint): ptr Chunk	
+loadWAV	nodesnim/thirdparty/sdl2/mixer.html#loadWAV.t,untyped	mixer: loadWAV(file: untyped): untyped	
+loadMUS	nodesnim/thirdparty/sdl2/mixer.html#loadMUS,cstring	mixer: loadMUS(file: cstring): ptr Music	
+loadMUS_RW	nodesnim/thirdparty/sdl2/mixer.html#loadMUS_RW,RWopsPtr,cint	mixer: loadMUS_RW(src: RWopsPtr; freesrc: cint): ptr Music	
+loadMUSType_RW	nodesnim/thirdparty/sdl2/mixer.html#loadMUSType_RW,RWopsPtr,MusicType,cint	mixer: loadMUSType_RW(src: RWopsPtr; `type`: MusicType; freesrc: cint): ptr Music	
+quickLoad_WAV	nodesnim/thirdparty/sdl2/mixer.html#quickLoad_WAV,ptr.uint8	mixer: quickLoad_WAV(mem: ptr uint8): ptr Chunk	
+quickLoad_RAW	nodesnim/thirdparty/sdl2/mixer.html#quickLoad_RAW,ptr.uint8,uint32	mixer: quickLoad_RAW(mem: ptr uint8; len: uint32): ptr Chunk	
+freeChunk	nodesnim/thirdparty/sdl2/mixer.html#freeChunk,ptr.Chunk	mixer: freeChunk(chunk: ptr Chunk)	
+freeMusic	nodesnim/thirdparty/sdl2/mixer.html#freeMusic,ptr.Music	mixer: freeMusic(music: ptr Music)	
+getNumChunkDecoders	nodesnim/thirdparty/sdl2/mixer.html#getNumChunkDecoders	mixer: getNumChunkDecoders(): cint	
+getChunkDecoder	nodesnim/thirdparty/sdl2/mixer.html#getChunkDecoder,cint	mixer: getChunkDecoder(index: cint): cstring	
+getNumMusicDecoders	nodesnim/thirdparty/sdl2/mixer.html#getNumMusicDecoders	mixer: getNumMusicDecoders(): cint	
+getMusicDecoder	nodesnim/thirdparty/sdl2/mixer.html#getMusicDecoder,cint	mixer: getMusicDecoder(index: cint): cstring	
+getMusicType	nodesnim/thirdparty/sdl2/mixer.html#getMusicType,ptr.Music	mixer: getMusicType(music: ptr Music): MusicType	
+setPostMix	nodesnim/thirdparty/sdl2/mixer.html#setPostMix,proc(pointer,ptr.uint8,cint),pointer	mixer: setPostMix(mix_func: proc (udata: pointer; stream: ptr uint8; len: cint) {.cdecl.};\n           arg: pointer)	
+hookMusic	nodesnim/thirdparty/sdl2/mixer.html#hookMusic,proc(pointer,ptr.uint8,cint),pointer	mixer: hookMusic(mix_func: proc (udata: pointer; stream: ptr uint8; len: cint) {.cdecl.};\n          arg: pointer)	
+hookMusicFinished	nodesnim/thirdparty/sdl2/mixer.html#hookMusicFinished,proc)	mixer: hookMusicFinished(music_finished: proc () {.cdecl.})	
+getMusicHookData	nodesnim/thirdparty/sdl2/mixer.html#getMusicHookData	mixer: getMusicHookData(): pointer	
+channelFinished	nodesnim/thirdparty/sdl2/mixer.html#channelFinished,proc(cint)	mixer: channelFinished(channel_finished: proc (channel: cint) {.cdecl.})	
+MIX_CHANNEL_POST	nodesnim/thirdparty/sdl2/mixer.html#MIX_CHANNEL_POST	mixer: MIX_CHANNEL_POST	
+Mix_EffectFunc_t	nodesnim/thirdparty/sdl2/mixer.html#Mix_EffectFunc_t	mixer: Mix_EffectFunc_t	
+Mix_EffectDone_t	nodesnim/thirdparty/sdl2/mixer.html#Mix_EffectDone_t	mixer: Mix_EffectDone_t	
+registerEffect	nodesnim/thirdparty/sdl2/mixer.html#registerEffect,cint,Mix_EffectFunc_t,Mix_EffectDone_t,pointer	mixer: registerEffect(chan: cint; f: Mix_EffectFunc_t; d: Mix_EffectDone_t; arg: pointer): cint	
+unregisterEffect	nodesnim/thirdparty/sdl2/mixer.html#unregisterEffect,cint,Mix_EffectFunc_t	mixer: unregisterEffect(channel: cint; f: Mix_EffectFunc_t): cint	
+unregisterAllEffects	nodesnim/thirdparty/sdl2/mixer.html#unregisterAllEffects,cint	mixer: unregisterAllEffects(channel: cint): cint	
+MIX_EFFECTSMAXSPEED	nodesnim/thirdparty/sdl2/mixer.html#MIX_EFFECTSMAXSPEED	mixer: MIX_EFFECTSMAXSPEED	
+setPanning	nodesnim/thirdparty/sdl2/mixer.html#setPanning,cint,uint8,uint8	mixer: setPanning(channel: cint; left: uint8; right: uint8): cint	
+setPosition	nodesnim/thirdparty/sdl2/mixer.html#setPosition,cint,int16,uint8	mixer: setPosition(channel: cint; angle: int16; distance: uint8): cint	
+setDistance	nodesnim/thirdparty/sdl2/mixer.html#setDistance,cint,uint8	mixer: setDistance(channel: cint; distance: uint8): cint	
+setReverseStereo	nodesnim/thirdparty/sdl2/mixer.html#setReverseStereo,cint,cint	mixer: setReverseStereo(channel: cint; flip: cint): cint	
+reserveChannels	nodesnim/thirdparty/sdl2/mixer.html#reserveChannels,cint	mixer: reserveChannels(num: cint): cint	
+groupChannel	nodesnim/thirdparty/sdl2/mixer.html#groupChannel,cint,cint	mixer: groupChannel(which: cint; tag: cint): cint	
+groupChannels	nodesnim/thirdparty/sdl2/mixer.html#groupChannels,cint,cint,cint	mixer: groupChannels(`from`: cint; to: cint; tag: cint): cint	
+groupAvailable	nodesnim/thirdparty/sdl2/mixer.html#groupAvailable,cint	mixer: groupAvailable(tag: cint): cint	
+groupCount	nodesnim/thirdparty/sdl2/mixer.html#groupCount,cint	mixer: groupCount(tag: cint): cint	
+groupOldest	nodesnim/thirdparty/sdl2/mixer.html#groupOldest,cint	mixer: groupOldest(tag: cint): cint	
+groupNewer	nodesnim/thirdparty/sdl2/mixer.html#groupNewer,cint	mixer: groupNewer(tag: cint): cint	
+playChannelTimed	nodesnim/thirdparty/sdl2/mixer.html#playChannelTimed,cint,ptr.Chunk,cint,cint	mixer: playChannelTimed(channel: cint; chunk: ptr Chunk; loops: cint; ticks: cint): cint	
+playChannel	nodesnim/thirdparty/sdl2/mixer.html#playChannel.t,untyped,untyped,untyped	mixer: playChannel(channel, chunk, loops: untyped): untyped	
+playMusic	nodesnim/thirdparty/sdl2/mixer.html#playMusic,ptr.Music,cint	mixer: playMusic(music: ptr Music; loops: cint): cint	
+fadeInMusic	nodesnim/thirdparty/sdl2/mixer.html#fadeInMusic,ptr.Music,cint,cint	mixer: fadeInMusic(music: ptr Music; loops: cint; ms: cint): cint	
+fadeInMusicPos	nodesnim/thirdparty/sdl2/mixer.html#fadeInMusicPos,ptr.Music,cint,cint,cdouble	mixer: fadeInMusicPos(music: ptr Music; loops: cint; ms: cint; position: cdouble): cint	
+fadeInChannel	nodesnim/thirdparty/sdl2/mixer.html#fadeInChannel.t,untyped,untyped,untyped,untyped	mixer: fadeInChannel(channel, chunk, loops, ms: untyped): untyped	
+fadeInChannelTimed	nodesnim/thirdparty/sdl2/mixer.html#fadeInChannelTimed,cint,ptr.Chunk,cint,cint,cint	mixer: fadeInChannelTimed(channel: cint; chunk: ptr Chunk; loops: cint; ms: cint; ticks: cint): cint	
+volume	nodesnim/thirdparty/sdl2/mixer.html#volume,cint,cint	mixer: volume(channel: cint; volume: cint): cint	
+volumeChunk	nodesnim/thirdparty/sdl2/mixer.html#volumeChunk,ptr.Chunk,cint	mixer: volumeChunk(chunk: ptr Chunk; volume: cint): cint	
+volumeMusic	nodesnim/thirdparty/sdl2/mixer.html#volumeMusic,cint	mixer: volumeMusic(volume: cint): cint	
+haltChannel	nodesnim/thirdparty/sdl2/mixer.html#haltChannel,cint	mixer: haltChannel(channel: cint): cint	
+haltGroup	nodesnim/thirdparty/sdl2/mixer.html#haltGroup,cint	mixer: haltGroup(tag: cint): cint	
+haltMusic	nodesnim/thirdparty/sdl2/mixer.html#haltMusic	mixer: haltMusic(): cint	
+expireChannel	nodesnim/thirdparty/sdl2/mixer.html#expireChannel,cint,cint	mixer: expireChannel(channel: cint; ticks: cint): cint	
+fadeOutChannel	nodesnim/thirdparty/sdl2/mixer.html#fadeOutChannel,cint,cint	mixer: fadeOutChannel(which: cint; ms: cint): cint	
+fadeOutGroup	nodesnim/thirdparty/sdl2/mixer.html#fadeOutGroup,cint,cint	mixer: fadeOutGroup(tag: cint; ms: cint): cint	
+fadeOutMusic	nodesnim/thirdparty/sdl2/mixer.html#fadeOutMusic,cint	mixer: fadeOutMusic(ms: cint): cint	
+fadingMusic	nodesnim/thirdparty/sdl2/mixer.html#fadingMusic	mixer: fadingMusic(): Fading	
+fadingChannel	nodesnim/thirdparty/sdl2/mixer.html#fadingChannel,cint	mixer: fadingChannel(which: cint): Fading	
+pause	nodesnim/thirdparty/sdl2/mixer.html#pause,cint	mixer: pause(channel: cint)	
+resume	nodesnim/thirdparty/sdl2/mixer.html#resume,cint	mixer: resume(channel: cint)	
+paused	nodesnim/thirdparty/sdl2/mixer.html#paused,cint	mixer: paused(channel: cint): cint	
+pauseMusic	nodesnim/thirdparty/sdl2/mixer.html#pauseMusic	mixer: pauseMusic()	
+resumeMusic	nodesnim/thirdparty/sdl2/mixer.html#resumeMusic	mixer: resumeMusic()	
+rewindMusic	nodesnim/thirdparty/sdl2/mixer.html#rewindMusic	mixer: rewindMusic()	
+pausedMusic	nodesnim/thirdparty/sdl2/mixer.html#pausedMusic	mixer: pausedMusic(): cint	
+setMusicPosition	nodesnim/thirdparty/sdl2/mixer.html#setMusicPosition,cdouble	mixer: setMusicPosition(position: cdouble): cint	
+playing	nodesnim/thirdparty/sdl2/mixer.html#playing,cint	mixer: playing(channel: cint): cint	
+playingMusic	nodesnim/thirdparty/sdl2/mixer.html#playingMusic	mixer: playingMusic(): cint	
+setMusicCMD	nodesnim/thirdparty/sdl2/mixer.html#setMusicCMD,cstring	mixer: setMusicCMD(command: cstring): cint	
+setSynchroValue	nodesnim/thirdparty/sdl2/mixer.html#setSynchroValue,cint	mixer: setSynchroValue(value: cint): cint	
+getSynchroValue	nodesnim/thirdparty/sdl2/mixer.html#getSynchroValue	mixer: getSynchroValue(): cint	
+setSoundFonts	nodesnim/thirdparty/sdl2/mixer.html#setSoundFonts,cstring	mixer: setSoundFonts(paths: cstring): cint	
+getSoundFonts	nodesnim/thirdparty/sdl2/mixer.html#getSoundFonts	mixer: getSoundFonts(): cstring	
+eachSoundFont	nodesnim/thirdparty/sdl2/mixer.html#eachSoundFont,proc(cstring,pointer),pointer	mixer: eachSoundFont(function: proc (a2: cstring; a3: pointer): cint {.cdecl.}; data: pointer): cint	
+getChunk	nodesnim/thirdparty/sdl2/mixer.html#getChunk,cint	mixer: getChunk(channel: cint): ptr Chunk	
+closeAudio	nodesnim/thirdparty/sdl2/mixer.html#closeAudio	mixer: closeAudio()	

@@ -1,0 +1,10 @@
+TextureButtonObj	nodesnim/nodescontrol/texture_button.html#TextureButtonObj	texture_button: TextureButtonObj	
+TextureButtonPtr	nodesnim/nodescontrol/texture_button.html#TextureButtonPtr	texture_button: TextureButtonPtr	
+TextureButton	nodesnim/nodescontrol/texture_button.html#TextureButton,string,TextureButtonObj	texture_button: TextureButton(name: string; variable: var TextureButtonObj): TextureButtonPtr	
+TextureButton	nodesnim/nodescontrol/texture_button.html#TextureButton,TextureButtonObj	texture_button: TextureButton(obj: var TextureButtonObj): TextureButtonPtr	
+draw	nodesnim/nodescontrol/texture_button.html#draw.e,TextureButtonPtr,GLfloat,GLfloat	texture_button: draw(self: TextureButtonPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/texture_button.html#duplicate.e,TextureButtonPtr,TextureButtonObj	texture_button: duplicate(self: TextureButtonPtr; obj: var TextureButtonObj): TextureButtonPtr	
+handle	nodesnim/nodescontrol/texture_button.html#handle.e,TextureButtonPtr,InputEvent,NodePtr	texture_button: handle(self: TextureButtonPtr; event: InputEvent; mouse_on: var NodePtr)	
+setNormalTexture	nodesnim/nodescontrol/texture_button.html#setNormalTexture.e,TextureButtonPtr,GlTextureObj	texture_button: setNormalTexture(self: TextureButtonPtr; texture: GlTextureObj)	
+setHoverTexture	nodesnim/nodescontrol/texture_button.html#setHoverTexture.e,TextureButtonPtr,GlTextureObj	texture_button: setHoverTexture(self: TextureButtonPtr; texture: GlTextureObj)	
+setPressTexture	nodesnim/nodescontrol/texture_button.html#setPressTexture.e,TextureButtonPtr,GlTextureObj	texture_button: setPressTexture(self: TextureButtonPtr; texture: GlTextureObj)	

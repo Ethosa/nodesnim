@@ -1,0 +1,11 @@
+env	nodesnim/window.html#env	window: env	
+main_scene	nodesnim/window.html#main_scene	window: main_scene	
+current_scene	nodesnim/window.html#current_scene	window: current_scene	
+scenes	nodesnim/window.html#scenes	window: scenes	
+paused	nodesnim/window.html#paused	window: paused	
+addScene	nodesnim/window.html#addScene,ScenePtr	window: addScene(scene: ScenePtr)	
+changeScene	nodesnim/window.html#changeScene,string	window: changeScene(name: string): bool	
+setMainScene	nodesnim/window.html#setMainScene,string	window: setMainScene(name: string)	
+setTitle	nodesnim/window.html#setTitle,cstring	window: setTitle(title: cstring)	
+Window	nodesnim/window.html#Window,cstring,cint,cint	window: Window(title: cstring; w: cint = 640; h: cint = 360)	
+windowLaunch	nodesnim/window.html#windowLaunch	window: windowLaunch()	

@@ -1,0 +1,74 @@
+AudioFormat	nodesnim/thirdparty/sdl2/audio.html#AudioFormat	audio: AudioFormat	
+SDL_AUDIO_MASK_BITSIZE	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_MASK_BITSIZE	audio: SDL_AUDIO_MASK_BITSIZE	
+SDL_AUDIO_MASK_DATATYPE	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_MASK_DATATYPE	audio: SDL_AUDIO_MASK_DATATYPE	
+SDL_AUDIO_MASK_ENDIAN	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_MASK_ENDIAN	audio: SDL_AUDIO_MASK_ENDIAN	
+SDL_AUDIO_MASK_SIGNED	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_MASK_SIGNED	audio: SDL_AUDIO_MASK_SIGNED	
+SDL_AUDIO_BITSIZE	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_BITSIZE.t,uint32	audio: SDL_AUDIO_BITSIZE(x: uint32): uint32	
+SDL_AUDIO_ISFLOAT	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ISFLOAT.t,uint32	audio: SDL_AUDIO_ISFLOAT(x: uint32): bool	
+SDL_AUDIO_ISBIGENDIAN	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ISBIGENDIAN.t,uint32	audio: SDL_AUDIO_ISBIGENDIAN(x: uint32): bool	
+SDL_AUDIO_ISSIGNED	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ISSIGNED.t,uint32	audio: SDL_AUDIO_ISSIGNED(x: uint32): bool	
+SDL_AUDIO_ISINT	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ISINT.t,uint32	audio: SDL_AUDIO_ISINT(x: uint32): bool	
+SDL_AUDIO_ISLITTLEENDIAN	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ISLITTLEENDIAN.t,uint32	audio: SDL_AUDIO_ISLITTLEENDIAN(x: uint32): bool	
+SDL_AUDIO_ISUNSIGNED	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ISUNSIGNED.t,uint32	audio: SDL_AUDIO_ISUNSIGNED(x: uint32): bool	
+AUDIO_U8	nodesnim/thirdparty/sdl2/audio.html#AUDIO_U8	audio: AUDIO_U8	
+AUDIO_S8	nodesnim/thirdparty/sdl2/audio.html#AUDIO_S8	audio: AUDIO_S8	
+AUDIO_U16LSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_U16LSB	audio: AUDIO_U16LSB	
+AUDIO_S16LSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_S16LSB	audio: AUDIO_S16LSB	
+AUDIO_U16MSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_U16MSB	audio: AUDIO_U16MSB	
+AUDIO_S16MSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_S16MSB	audio: AUDIO_S16MSB	
+AUDIO_U16	nodesnim/thirdparty/sdl2/audio.html#AUDIO_U16	audio: AUDIO_U16	
+AUDIO_S16	nodesnim/thirdparty/sdl2/audio.html#AUDIO_S16	audio: AUDIO_S16	
+AUDIO_S32LSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_S32LSB	audio: AUDIO_S32LSB	
+AUDIO_S32MSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_S32MSB	audio: AUDIO_S32MSB	
+AUDIO_S32	nodesnim/thirdparty/sdl2/audio.html#AUDIO_S32	audio: AUDIO_S32	
+AUDIO_F32LSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_F32LSB	audio: AUDIO_F32LSB	
+AUDIO_F32MSB	nodesnim/thirdparty/sdl2/audio.html#AUDIO_F32MSB	audio: AUDIO_F32MSB	
+AUDIO_F32	nodesnim/thirdparty/sdl2/audio.html#AUDIO_F32	audio: AUDIO_F32	
+SDL_AUDIO_ALLOW_FREQUENCY_CHANGE	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ALLOW_FREQUENCY_CHANGE	audio: SDL_AUDIO_ALLOW_FREQUENCY_CHANGE	
+SDL_AUDIO_ALLOW_FORMAT_CHANGE	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ALLOW_FORMAT_CHANGE	audio: SDL_AUDIO_ALLOW_FORMAT_CHANGE	
+SDL_AUDIO_ALLOW_CHANNELS_CHANGE	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ALLOW_CHANNELS_CHANGE	audio: SDL_AUDIO_ALLOW_CHANNELS_CHANGE	
+SDL_AUDIO_ALLOW_ANY_CHANGE	nodesnim/thirdparty/sdl2/audio.html#SDL_AUDIO_ALLOW_ANY_CHANGE	audio: SDL_AUDIO_ALLOW_ANY_CHANGE	
+AudioCallback	nodesnim/thirdparty/sdl2/audio.html#AudioCallback	audio: AudioCallback	
+AudioSpec	nodesnim/thirdparty/sdl2/audio.html#AudioSpec	audio: AudioSpec	
+AudioCVT	nodesnim/thirdparty/sdl2/audio.html#AudioCVT	audio: AudioCVT	
+AudioFilter	nodesnim/thirdparty/sdl2/audio.html#AudioFilter	audio: AudioFilter	
+AudioStreamPtr	nodesnim/thirdparty/sdl2/audio.html#AudioStreamPtr	audio: AudioStreamPtr	
+AudioDeviceID	nodesnim/thirdparty/sdl2/audio.html#AudioDeviceID	audio: AudioDeviceID	
+AudioStatus	nodesnim/thirdparty/sdl2/audio.html#AudioStatus	audio: AudioStatus	
+SDL_MIX_MAXVOLUME	nodesnim/thirdparty/sdl2/audio.html#SDL_MIX_MAXVOLUME	audio: SDL_MIX_MAXVOLUME	
+getNumAudioDrivers	nodesnim/thirdparty/sdl2/audio.html#getNumAudioDrivers	audio: getNumAudioDrivers(): cint	
+getAudioDriver	nodesnim/thirdparty/sdl2/audio.html#getAudioDriver,cint	audio: getAudioDriver(index: cint): cstring	
+audioInit	nodesnim/thirdparty/sdl2/audio.html#audioInit,cstring	audio: audioInit(driver_name: cstring): cint	
+audioQuit	nodesnim/thirdparty/sdl2/audio.html#audioQuit	audio: audioQuit()	
+getCurrentAudioDriver	nodesnim/thirdparty/sdl2/audio.html#getCurrentAudioDriver	audio: getCurrentAudioDriver(): cstring	
+openAudio	nodesnim/thirdparty/sdl2/audio.html#openAudio,ptr.AudioSpec,ptr.AudioSpec	audio: openAudio(desired: ptr AudioSpec; obtained: ptr AudioSpec): cint	
+getNumAudioDevices	nodesnim/thirdparty/sdl2/audio.html#getNumAudioDevices,cint	audio: getNumAudioDevices(iscapture: cint): cint	
+getAudioDeviceName	nodesnim/thirdparty/sdl2/audio.html#getAudioDeviceName,cint,cint	audio: getAudioDeviceName(index: cint; iscapture: cint): cstring	
+openAudioDevice	nodesnim/thirdparty/sdl2/audio.html#openAudioDevice,cstring,cint,ptr.AudioSpec,ptr.AudioSpec,cint	audio: openAudioDevice(device: cstring; iscapture: cint; desired: ptr AudioSpec;\n                obtained: ptr AudioSpec; allowed_changes: cint): AudioDeviceID	
+getAudioStatus	nodesnim/thirdparty/sdl2/audio.html#getAudioStatus	audio: getAudioStatus(): AudioStatus	
+getAudioDeviceStatus	nodesnim/thirdparty/sdl2/audio.html#getAudioDeviceStatus,AudioDeviceID	audio: getAudioDeviceStatus(dev: AudioDeviceID): AudioStatus	
+getQueuedAudioSize	nodesnim/thirdparty/sdl2/audio.html#getQueuedAudioSize,AudioDeviceID	audio: getQueuedAudioSize(dev: AudioDeviceID): uint32	
+queueAudio	nodesnim/thirdparty/sdl2/audio.html#queueAudio,AudioDeviceID,pointer,uint32	audio: queueAudio(dev: AudioDeviceID; data: pointer; len: uint32): cint	
+pauseAudio	nodesnim/thirdparty/sdl2/audio.html#pauseAudio,cint	audio: pauseAudio(pause_on: cint)	
+pauseAudioDevice	nodesnim/thirdparty/sdl2/audio.html#pauseAudioDevice,AudioDeviceID,cint	audio: pauseAudioDevice(dev: AudioDeviceID; pause_on: cint)	
+loadWAV_RW	nodesnim/thirdparty/sdl2/audio.html#loadWAV_RW,ptr.RWops,cint,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32	audio: loadWAV_RW(src: ptr RWops; freesrc: cint; spec: ptr AudioSpec; audio_buf: ptr ptr uint8;\n           audio_len: ptr uint32): ptr AudioSpec	
+loadWAV	nodesnim/thirdparty/sdl2/audio.html#loadWAV.t,string,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32	audio: loadWAV(file: string; spec: ptr AudioSpec; audio_buf: ptr ptr uint8;\n        audio_len: ptr uint32): ptr AudioSpec	
+freeWAV	nodesnim/thirdparty/sdl2/audio.html#freeWAV,ptr.uint8	audio: freeWAV(audio_buf: ptr uint8)	
+buildAudioCVT	nodesnim/thirdparty/sdl2/audio.html#buildAudioCVT,ptr.AudioCVT,AudioFormat,uint8,cint,AudioFormat,uint8,cint	audio: buildAudioCVT(cvt: ptr AudioCVT; src_format: AudioFormat; src_channels: uint8;\n              src_rate: cint; dst_format: AudioFormat; dst_channels: uint8;\n              dst_rate: cint): cint	
+convertAudio	nodesnim/thirdparty/sdl2/audio.html#convertAudio,ptr.AudioCVT	audio: convertAudio(cvt: ptr AudioCVT): cint	
+mixAudio	nodesnim/thirdparty/sdl2/audio.html#mixAudio,ptr.uint8,ptr.uint8,uint32,cint	audio: mixAudio(dst: ptr uint8; src: ptr uint8; len: uint32; volume: cint)	
+mixAudioFormat	nodesnim/thirdparty/sdl2/audio.html#mixAudioFormat,ptr.uint8,ptr.uint8,AudioFormat,uint32,cint	audio: mixAudioFormat(dst: ptr uint8; src: ptr uint8; format: AudioFormat; len: uint32;\n               volume: cint)	
+lockAudio	nodesnim/thirdparty/sdl2/audio.html#lockAudio	audio: lockAudio()	
+lockAudioDevice	nodesnim/thirdparty/sdl2/audio.html#lockAudioDevice,AudioDeviceID	audio: lockAudioDevice(dev: AudioDeviceID)	
+unlockAudio	nodesnim/thirdparty/sdl2/audio.html#unlockAudio	audio: unlockAudio()	
+unlockAudioDevice	nodesnim/thirdparty/sdl2/audio.html#unlockAudioDevice,AudioDeviceID	audio: unlockAudioDevice(dev: AudioDeviceID)	
+closeAudio	nodesnim/thirdparty/sdl2/audio.html#closeAudio	audio: closeAudio()	
+closeAudioDevice	nodesnim/thirdparty/sdl2/audio.html#closeAudioDevice,AudioDeviceID	audio: closeAudioDevice(dev: AudioDeviceID)	
+newAudioStream	nodesnim/thirdparty/sdl2/audio.html#newAudioStream,AudioFormat,uint8,cint,AudioFormat,uint8,cint	audio: newAudioStream(src_format: AudioFormat; src_channels: uint8; src_rate: cint;\n               dst_format: AudioFormat; dst_channels: uint8; dst_rate: cint): AudioStreamPtr	
+newAudioStream	nodesnim/thirdparty/sdl2/audio.html#newAudioStream,AudioSpec,AudioSpec	audio: newAudioStream(srcSpec, destSpec: AudioSpec): AudioStreamPtr	
+put	nodesnim/thirdparty/sdl2/audio.html#put,AudioStreamPtr,pointer,cint	audio: put(stream: AudioStreamPtr; buf: pointer; len: cint): cint	
+get	nodesnim/thirdparty/sdl2/audio.html#get,AudioStreamPtr,pointer,cint	audio: get(stream: AudioStreamPtr; buf: pointer; len: cint): cint	
+available	nodesnim/thirdparty/sdl2/audio.html#available,AudioStreamPtr	audio: available(stream: AudioStreamPtr): cint	
+flush	nodesnim/thirdparty/sdl2/audio.html#flush,AudioStreamPtr	audio: flush(stream: AudioStreamPtr): cint	
+clear	nodesnim/thirdparty/sdl2/audio.html#clear,AudioStreamPtr	audio: clear(stream: AudioStreamPtr)	
+destroy	nodesnim/thirdparty/sdl2/audio.html#destroy,AudioStreamPtr	audio: destroy(stream: AudioStreamPtr)	

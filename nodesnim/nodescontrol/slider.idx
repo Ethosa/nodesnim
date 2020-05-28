@@ -1,0 +1,10 @@
+SliderObj	nodesnim/nodescontrol/slider.html#SliderObj	slider: SliderObj	
+SliderPtr	nodesnim/nodescontrol/slider.html#SliderPtr	slider: SliderPtr	
+Slider	nodesnim/nodescontrol/slider.html#Slider,string,SliderObj	slider: Slider(name: string; variable: var SliderObj): SliderPtr	
+Slider	nodesnim/nodescontrol/slider.html#Slider,SliderObj	slider: Slider(obj: var SliderObj): SliderPtr	
+draw	nodesnim/nodescontrol/slider.html#draw.e,SliderPtr,GLfloat,GLfloat	slider: draw(self: SliderPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/slider.html#duplicate.e,SliderPtr,SliderObj	slider: duplicate(self: SliderPtr; obj: var SliderObj): SliderPtr	
+setMaxValue	nodesnim/nodescontrol/slider.html#setMaxValue.e,SliderPtr,uint	slider: setMaxValue(self: SliderPtr; value: uint)	
+setProgress	nodesnim/nodescontrol/slider.html#setProgress.e,SliderPtr,uint	slider: setProgress(self: SliderPtr; value: uint)	
+setProgressColor	nodesnim/nodescontrol/slider.html#setProgressColor.e,SliderPtr,ColorRef	slider: setProgressColor(self: SliderPtr; color: ColorRef)	
+handle	nodesnim/nodescontrol/slider.html#handle.e,SliderPtr,InputEvent,NodePtr	slider: handle(self: SliderPtr; event: InputEvent; mouse_on: var NodePtr)	

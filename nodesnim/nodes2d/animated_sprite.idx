@@ -1,0 +1,14 @@
+AnimatedSpriteObj	nodesnim/nodes2d/animated_sprite.html#AnimatedSpriteObj	animated_sprite: AnimatedSpriteObj	
+AnimatedSpritePtr	nodesnim/nodes2d/animated_sprite.html#AnimatedSpritePtr	animated_sprite: AnimatedSpritePtr	
+AnimatedSprite	nodesnim/nodes2d/animated_sprite.html#AnimatedSprite,string,AnimatedSpriteObj	animated_sprite: AnimatedSprite(name: string; variable: var AnimatedSpriteObj): AnimatedSpritePtr	
+AnimatedSprite	nodesnim/nodes2d/animated_sprite.html#AnimatedSprite,AnimatedSpriteObj	animated_sprite: AnimatedSprite(obj: var AnimatedSpriteObj): AnimatedSpritePtr	
+draw	nodesnim/nodes2d/animated_sprite.html#draw.e,AnimatedSpritePtr,GLfloat,GLfloat	animated_sprite: draw(self: AnimatedSpritePtr; w, h: GLfloat)	
+duplicate	nodesnim/nodes2d/animated_sprite.html#duplicate.e,AnimatedSpritePtr,AnimatedSpriteObj	animated_sprite: duplicate(self: AnimatedSpritePtr; obj: var AnimatedSpriteObj): AnimatedSpritePtr	
+getGlobalMousePosition	nodesnim/nodes2d/animated_sprite.html#getGlobalMousePosition.e,AnimatedSpritePtr	animated_sprite: getGlobalMousePosition(self: AnimatedSpritePtr): Vector2Ref	
+addAnimation	nodesnim/nodes2d/animated_sprite.html#addAnimation.e,AnimatedSpritePtr,string,float	animated_sprite: addAnimation(self: AnimatedSpritePtr; name: string; speed: float = 2.0&apos;f32)	
+addFrame	nodesnim/nodes2d/animated_sprite.html#addFrame.e,AnimatedSpritePtr,string,GlTextureObj	animated_sprite: addFrame(self: AnimatedSpritePtr; name: string; frame: GlTextureObj)	
+removeAnimation	nodesnim/nodes2d/animated_sprite.html#removeAnimation.e,AnimatedSpritePtr,string	animated_sprite: removeAnimation(self: AnimatedSpritePtr; name: string)	
+pause	nodesnim/nodes2d/animated_sprite.html#pause.e,AnimatedSpritePtr	animated_sprite: pause(self: AnimatedSpritePtr)	
+play	nodesnim/nodes2d/animated_sprite.html#play.e,AnimatedSpritePtr,string,bool	animated_sprite: play(self: AnimatedSpritePtr; name: string = &quot;&quot;; backward: bool = false)	
+resume	nodesnim/nodes2d/animated_sprite.html#resume.e,AnimatedSpritePtr	animated_sprite: resume(self: AnimatedSpritePtr)	
+setSpeed	nodesnim/nodes2d/animated_sprite.html#setSpeed.e,AnimatedSpritePtr,string,float	animated_sprite: setSpeed(self: AnimatedSpritePtr; name: string = &quot;&quot;; speed: float = 2.0&apos;f32)	

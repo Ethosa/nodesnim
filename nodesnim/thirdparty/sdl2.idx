@@ -1,0 +1,869 @@
+LibName	nodesnim/thirdparty/sdl2.html#LibName	sdl2: LibName	
+Scancode	nodesnim/thirdparty/sdl2.html#Scancode	sdl2: Scancode	
+K_UNKNOWN	nodesnim/thirdparty/sdl2.html#K_UNKNOWN	sdl2: K_UNKNOWN	
+K_BACKSPACE	nodesnim/thirdparty/sdl2.html#K_BACKSPACE	sdl2: K_BACKSPACE	
+K_TAB	nodesnim/thirdparty/sdl2.html#K_TAB	sdl2: K_TAB	
+K_RETURN	nodesnim/thirdparty/sdl2.html#K_RETURN	sdl2: K_RETURN	
+K_ESCAPE	nodesnim/thirdparty/sdl2.html#K_ESCAPE	sdl2: K_ESCAPE	
+K_SPACE	nodesnim/thirdparty/sdl2.html#K_SPACE	sdl2: K_SPACE	
+K_EXCLAIM	nodesnim/thirdparty/sdl2.html#K_EXCLAIM	sdl2: K_EXCLAIM	
+K_QUOTEDBL	nodesnim/thirdparty/sdl2.html#K_QUOTEDBL	sdl2: K_QUOTEDBL	
+K_HASH	nodesnim/thirdparty/sdl2.html#K_HASH	sdl2: K_HASH	
+K_DOLLAR	nodesnim/thirdparty/sdl2.html#K_DOLLAR	sdl2: K_DOLLAR	
+K_PERCENT	nodesnim/thirdparty/sdl2.html#K_PERCENT	sdl2: K_PERCENT	
+K_AMPERSAND	nodesnim/thirdparty/sdl2.html#K_AMPERSAND	sdl2: K_AMPERSAND	
+K_QUOTE	nodesnim/thirdparty/sdl2.html#K_QUOTE	sdl2: K_QUOTE	
+K_LEFTPAREN	nodesnim/thirdparty/sdl2.html#K_LEFTPAREN	sdl2: K_LEFTPAREN	
+K_RIGHTPAREN	nodesnim/thirdparty/sdl2.html#K_RIGHTPAREN	sdl2: K_RIGHTPAREN	
+K_ASTERISK	nodesnim/thirdparty/sdl2.html#K_ASTERISK	sdl2: K_ASTERISK	
+K_PLUS	nodesnim/thirdparty/sdl2.html#K_PLUS	sdl2: K_PLUS	
+K_COMMA	nodesnim/thirdparty/sdl2.html#K_COMMA	sdl2: K_COMMA	
+K_MINUS	nodesnim/thirdparty/sdl2.html#K_MINUS	sdl2: K_MINUS	
+K_PERIOD	nodesnim/thirdparty/sdl2.html#K_PERIOD	sdl2: K_PERIOD	
+K_SLASH	nodesnim/thirdparty/sdl2.html#K_SLASH	sdl2: K_SLASH	
+K_0	nodesnim/thirdparty/sdl2.html#K_0	sdl2: K_0	
+K_1	nodesnim/thirdparty/sdl2.html#K_1	sdl2: K_1	
+K_2	nodesnim/thirdparty/sdl2.html#K_2	sdl2: K_2	
+K_3	nodesnim/thirdparty/sdl2.html#K_3	sdl2: K_3	
+K_4	nodesnim/thirdparty/sdl2.html#K_4	sdl2: K_4	
+K_5	nodesnim/thirdparty/sdl2.html#K_5	sdl2: K_5	
+K_6	nodesnim/thirdparty/sdl2.html#K_6	sdl2: K_6	
+K_7	nodesnim/thirdparty/sdl2.html#K_7	sdl2: K_7	
+K_8	nodesnim/thirdparty/sdl2.html#K_8	sdl2: K_8	
+K_9	nodesnim/thirdparty/sdl2.html#K_9	sdl2: K_9	
+K_COLON	nodesnim/thirdparty/sdl2.html#K_COLON	sdl2: K_COLON	
+K_SEMICOLON	nodesnim/thirdparty/sdl2.html#K_SEMICOLON	sdl2: K_SEMICOLON	
+K_LESS	nodesnim/thirdparty/sdl2.html#K_LESS	sdl2: K_LESS	
+K_EQUALS	nodesnim/thirdparty/sdl2.html#K_EQUALS	sdl2: K_EQUALS	
+K_GREATER	nodesnim/thirdparty/sdl2.html#K_GREATER	sdl2: K_GREATER	
+K_QUESTION	nodesnim/thirdparty/sdl2.html#K_QUESTION	sdl2: K_QUESTION	
+K_AT	nodesnim/thirdparty/sdl2.html#K_AT	sdl2: K_AT	
+K_LEFTBRACKET	nodesnim/thirdparty/sdl2.html#K_LEFTBRACKET	sdl2: K_LEFTBRACKET	
+K_BACKSLASH	nodesnim/thirdparty/sdl2.html#K_BACKSLASH	sdl2: K_BACKSLASH	
+K_RIGHTBRACKET	nodesnim/thirdparty/sdl2.html#K_RIGHTBRACKET	sdl2: K_RIGHTBRACKET	
+K_CARET	nodesnim/thirdparty/sdl2.html#K_CARET	sdl2: K_CARET	
+K_UNDERSCORE	nodesnim/thirdparty/sdl2.html#K_UNDERSCORE	sdl2: K_UNDERSCORE	
+K_BACKQUOTE	nodesnim/thirdparty/sdl2.html#K_BACKQUOTE	sdl2: K_BACKQUOTE	
+K_a	nodesnim/thirdparty/sdl2.html#K_a	sdl2: K_a	
+K_b	nodesnim/thirdparty/sdl2.html#K_b	sdl2: K_b	
+K_c	nodesnim/thirdparty/sdl2.html#K_c	sdl2: K_c	
+K_d	nodesnim/thirdparty/sdl2.html#K_d	sdl2: K_d	
+K_e	nodesnim/thirdparty/sdl2.html#K_e	sdl2: K_e	
+K_f	nodesnim/thirdparty/sdl2.html#K_f	sdl2: K_f	
+K_g	nodesnim/thirdparty/sdl2.html#K_g	sdl2: K_g	
+K_h	nodesnim/thirdparty/sdl2.html#K_h	sdl2: K_h	
+K_i	nodesnim/thirdparty/sdl2.html#K_i	sdl2: K_i	
+K_j	nodesnim/thirdparty/sdl2.html#K_j	sdl2: K_j	
+K_k	nodesnim/thirdparty/sdl2.html#K_k	sdl2: K_k	
+K_l	nodesnim/thirdparty/sdl2.html#K_l	sdl2: K_l	
+K_m	nodesnim/thirdparty/sdl2.html#K_m	sdl2: K_m	
+K_n	nodesnim/thirdparty/sdl2.html#K_n	sdl2: K_n	
+K_o	nodesnim/thirdparty/sdl2.html#K_o	sdl2: K_o	
+K_p	nodesnim/thirdparty/sdl2.html#K_p	sdl2: K_p	
+K_q	nodesnim/thirdparty/sdl2.html#K_q	sdl2: K_q	
+K_r	nodesnim/thirdparty/sdl2.html#K_r	sdl2: K_r	
+K_s	nodesnim/thirdparty/sdl2.html#K_s	sdl2: K_s	
+K_t	nodesnim/thirdparty/sdl2.html#K_t	sdl2: K_t	
+K_u	nodesnim/thirdparty/sdl2.html#K_u	sdl2: K_u	
+K_v	nodesnim/thirdparty/sdl2.html#K_v	sdl2: K_v	
+K_w	nodesnim/thirdparty/sdl2.html#K_w	sdl2: K_w	
+K_x	nodesnim/thirdparty/sdl2.html#K_x	sdl2: K_x	
+K_y	nodesnim/thirdparty/sdl2.html#K_y	sdl2: K_y	
+K_z	nodesnim/thirdparty/sdl2.html#K_z	sdl2: K_z	
+K_DELETE	nodesnim/thirdparty/sdl2.html#K_DELETE	sdl2: K_DELETE	
+K_CAPSLOCK	nodesnim/thirdparty/sdl2.html#K_CAPSLOCK	sdl2: K_CAPSLOCK	
+K_F1	nodesnim/thirdparty/sdl2.html#K_F1	sdl2: K_F1	
+K_F2	nodesnim/thirdparty/sdl2.html#K_F2	sdl2: K_F2	
+K_F3	nodesnim/thirdparty/sdl2.html#K_F3	sdl2: K_F3	
+K_F4	nodesnim/thirdparty/sdl2.html#K_F4	sdl2: K_F4	
+K_F5	nodesnim/thirdparty/sdl2.html#K_F5	sdl2: K_F5	
+K_F6	nodesnim/thirdparty/sdl2.html#K_F6	sdl2: K_F6	
+K_F7	nodesnim/thirdparty/sdl2.html#K_F7	sdl2: K_F7	
+K_F8	nodesnim/thirdparty/sdl2.html#K_F8	sdl2: K_F8	
+K_F9	nodesnim/thirdparty/sdl2.html#K_F9	sdl2: K_F9	
+K_F10	nodesnim/thirdparty/sdl2.html#K_F10	sdl2: K_F10	
+K_F11	nodesnim/thirdparty/sdl2.html#K_F11	sdl2: K_F11	
+K_F12	nodesnim/thirdparty/sdl2.html#K_F12	sdl2: K_F12	
+K_PRINTSCREEN	nodesnim/thirdparty/sdl2.html#K_PRINTSCREEN	sdl2: K_PRINTSCREEN	
+K_SCROLLLOCK	nodesnim/thirdparty/sdl2.html#K_SCROLLLOCK	sdl2: K_SCROLLLOCK	
+K_PAUSE	nodesnim/thirdparty/sdl2.html#K_PAUSE	sdl2: K_PAUSE	
+K_INSERT	nodesnim/thirdparty/sdl2.html#K_INSERT	sdl2: K_INSERT	
+K_HOME	nodesnim/thirdparty/sdl2.html#K_HOME	sdl2: K_HOME	
+K_PAGEUP	nodesnim/thirdparty/sdl2.html#K_PAGEUP	sdl2: K_PAGEUP	
+K_END	nodesnim/thirdparty/sdl2.html#K_END	sdl2: K_END	
+K_PAGEDOWN	nodesnim/thirdparty/sdl2.html#K_PAGEDOWN	sdl2: K_PAGEDOWN	
+K_RIGHT	nodesnim/thirdparty/sdl2.html#K_RIGHT	sdl2: K_RIGHT	
+K_LEFT	nodesnim/thirdparty/sdl2.html#K_LEFT	sdl2: K_LEFT	
+K_DOWN	nodesnim/thirdparty/sdl2.html#K_DOWN	sdl2: K_DOWN	
+K_UP	nodesnim/thirdparty/sdl2.html#K_UP	sdl2: K_UP	
+K_NUMLOCKCLEAR	nodesnim/thirdparty/sdl2.html#K_NUMLOCKCLEAR	sdl2: K_NUMLOCKCLEAR	
+K_KP_DIVIDE	nodesnim/thirdparty/sdl2.html#K_KP_DIVIDE	sdl2: K_KP_DIVIDE	
+K_KP_MULTIPLY	nodesnim/thirdparty/sdl2.html#K_KP_MULTIPLY	sdl2: K_KP_MULTIPLY	
+K_KP_MINUS	nodesnim/thirdparty/sdl2.html#K_KP_MINUS	sdl2: K_KP_MINUS	
+K_KP_PLUS	nodesnim/thirdparty/sdl2.html#K_KP_PLUS	sdl2: K_KP_PLUS	
+K_KP_ENTER	nodesnim/thirdparty/sdl2.html#K_KP_ENTER	sdl2: K_KP_ENTER	
+K_KP_1	nodesnim/thirdparty/sdl2.html#K_KP_1	sdl2: K_KP_1	
+K_KP_2	nodesnim/thirdparty/sdl2.html#K_KP_2	sdl2: K_KP_2	
+K_KP_3	nodesnim/thirdparty/sdl2.html#K_KP_3	sdl2: K_KP_3	
+K_KP_4	nodesnim/thirdparty/sdl2.html#K_KP_4	sdl2: K_KP_4	
+K_KP_5	nodesnim/thirdparty/sdl2.html#K_KP_5	sdl2: K_KP_5	
+K_KP_6	nodesnim/thirdparty/sdl2.html#K_KP_6	sdl2: K_KP_6	
+K_KP_7	nodesnim/thirdparty/sdl2.html#K_KP_7	sdl2: K_KP_7	
+K_KP_8	nodesnim/thirdparty/sdl2.html#K_KP_8	sdl2: K_KP_8	
+K_KP_9	nodesnim/thirdparty/sdl2.html#K_KP_9	sdl2: K_KP_9	
+K_KP_0	nodesnim/thirdparty/sdl2.html#K_KP_0	sdl2: K_KP_0	
+K_KP_PERIOD	nodesnim/thirdparty/sdl2.html#K_KP_PERIOD	sdl2: K_KP_PERIOD	
+K_APPLICATION	nodesnim/thirdparty/sdl2.html#K_APPLICATION	sdl2: K_APPLICATION	
+K_POWER	nodesnim/thirdparty/sdl2.html#K_POWER	sdl2: K_POWER	
+K_KP_EQUALS	nodesnim/thirdparty/sdl2.html#K_KP_EQUALS	sdl2: K_KP_EQUALS	
+K_F13	nodesnim/thirdparty/sdl2.html#K_F13	sdl2: K_F13	
+K_F14	nodesnim/thirdparty/sdl2.html#K_F14	sdl2: K_F14	
+K_F15	nodesnim/thirdparty/sdl2.html#K_F15	sdl2: K_F15	
+K_F16	nodesnim/thirdparty/sdl2.html#K_F16	sdl2: K_F16	
+K_F17	nodesnim/thirdparty/sdl2.html#K_F17	sdl2: K_F17	
+K_F18	nodesnim/thirdparty/sdl2.html#K_F18	sdl2: K_F18	
+K_F19	nodesnim/thirdparty/sdl2.html#K_F19	sdl2: K_F19	
+K_F20	nodesnim/thirdparty/sdl2.html#K_F20	sdl2: K_F20	
+K_F21	nodesnim/thirdparty/sdl2.html#K_F21	sdl2: K_F21	
+K_F22	nodesnim/thirdparty/sdl2.html#K_F22	sdl2: K_F22	
+K_F23	nodesnim/thirdparty/sdl2.html#K_F23	sdl2: K_F23	
+K_F24	nodesnim/thirdparty/sdl2.html#K_F24	sdl2: K_F24	
+K_EXECUTE	nodesnim/thirdparty/sdl2.html#K_EXECUTE	sdl2: K_EXECUTE	
+K_HELP	nodesnim/thirdparty/sdl2.html#K_HELP	sdl2: K_HELP	
+K_MENU	nodesnim/thirdparty/sdl2.html#K_MENU	sdl2: K_MENU	
+K_SELECT	nodesnim/thirdparty/sdl2.html#K_SELECT	sdl2: K_SELECT	
+K_STOP	nodesnim/thirdparty/sdl2.html#K_STOP	sdl2: K_STOP	
+K_AGAIN	nodesnim/thirdparty/sdl2.html#K_AGAIN	sdl2: K_AGAIN	
+K_UNDO	nodesnim/thirdparty/sdl2.html#K_UNDO	sdl2: K_UNDO	
+K_CUT	nodesnim/thirdparty/sdl2.html#K_CUT	sdl2: K_CUT	
+K_COPY	nodesnim/thirdparty/sdl2.html#K_COPY	sdl2: K_COPY	
+K_PASTE	nodesnim/thirdparty/sdl2.html#K_PASTE	sdl2: K_PASTE	
+K_FIND	nodesnim/thirdparty/sdl2.html#K_FIND	sdl2: K_FIND	
+K_MUTE	nodesnim/thirdparty/sdl2.html#K_MUTE	sdl2: K_MUTE	
+K_VOLUMEUP	nodesnim/thirdparty/sdl2.html#K_VOLUMEUP	sdl2: K_VOLUMEUP	
+K_VOLUMEDOWN	nodesnim/thirdparty/sdl2.html#K_VOLUMEDOWN	sdl2: K_VOLUMEDOWN	
+K_KP_COMMA	nodesnim/thirdparty/sdl2.html#K_KP_COMMA	sdl2: K_KP_COMMA	
+K_KP_EQUALSAS400	nodesnim/thirdparty/sdl2.html#K_KP_EQUALSAS400	sdl2: K_KP_EQUALSAS400	
+K_ALTERASE	nodesnim/thirdparty/sdl2.html#K_ALTERASE	sdl2: K_ALTERASE	
+K_SYSREQ	nodesnim/thirdparty/sdl2.html#K_SYSREQ	sdl2: K_SYSREQ	
+K_CANCEL	nodesnim/thirdparty/sdl2.html#K_CANCEL	sdl2: K_CANCEL	
+K_CLEAR	nodesnim/thirdparty/sdl2.html#K_CLEAR	sdl2: K_CLEAR	
+K_PRIOR	nodesnim/thirdparty/sdl2.html#K_PRIOR	sdl2: K_PRIOR	
+K_RETURN2	nodesnim/thirdparty/sdl2.html#K_RETURN2	sdl2: K_RETURN2	
+K_SEPARATOR	nodesnim/thirdparty/sdl2.html#K_SEPARATOR	sdl2: K_SEPARATOR	
+K_OUT	nodesnim/thirdparty/sdl2.html#K_OUT	sdl2: K_OUT	
+K_OPER	nodesnim/thirdparty/sdl2.html#K_OPER	sdl2: K_OPER	
+K_CLEARAGAIN	nodesnim/thirdparty/sdl2.html#K_CLEARAGAIN	sdl2: K_CLEARAGAIN	
+K_CRSEL	nodesnim/thirdparty/sdl2.html#K_CRSEL	sdl2: K_CRSEL	
+K_EXSEL	nodesnim/thirdparty/sdl2.html#K_EXSEL	sdl2: K_EXSEL	
+K_KP_00	nodesnim/thirdparty/sdl2.html#K_KP_00	sdl2: K_KP_00	
+K_KP_000	nodesnim/thirdparty/sdl2.html#K_KP_000	sdl2: K_KP_000	
+K_THOUSANDSSEPARATOR	nodesnim/thirdparty/sdl2.html#K_THOUSANDSSEPARATOR	sdl2: K_THOUSANDSSEPARATOR	
+K_DECIMALSEPARATOR	nodesnim/thirdparty/sdl2.html#K_DECIMALSEPARATOR	sdl2: K_DECIMALSEPARATOR	
+K_CURRENCYUNIT	nodesnim/thirdparty/sdl2.html#K_CURRENCYUNIT	sdl2: K_CURRENCYUNIT	
+K_CURRENCYSUBUNIT	nodesnim/thirdparty/sdl2.html#K_CURRENCYSUBUNIT	sdl2: K_CURRENCYSUBUNIT	
+K_KP_LEFTPAREN	nodesnim/thirdparty/sdl2.html#K_KP_LEFTPAREN	sdl2: K_KP_LEFTPAREN	
+K_KP_RIGHTPAREN	nodesnim/thirdparty/sdl2.html#K_KP_RIGHTPAREN	sdl2: K_KP_RIGHTPAREN	
+K_KP_LEFTBRACE	nodesnim/thirdparty/sdl2.html#K_KP_LEFTBRACE	sdl2: K_KP_LEFTBRACE	
+K_KP_RIGHTBRACE	nodesnim/thirdparty/sdl2.html#K_KP_RIGHTBRACE	sdl2: K_KP_RIGHTBRACE	
+K_KP_TAB	nodesnim/thirdparty/sdl2.html#K_KP_TAB	sdl2: K_KP_TAB	
+K_KP_BACKSPACE	nodesnim/thirdparty/sdl2.html#K_KP_BACKSPACE	sdl2: K_KP_BACKSPACE	
+K_KP_A	nodesnim/thirdparty/sdl2.html#K_KP_A	sdl2: K_KP_A	
+K_KP_B	nodesnim/thirdparty/sdl2.html#K_KP_B	sdl2: K_KP_B	
+K_KP_C	nodesnim/thirdparty/sdl2.html#K_KP_C	sdl2: K_KP_C	
+K_KP_D	nodesnim/thirdparty/sdl2.html#K_KP_D	sdl2: K_KP_D	
+K_KP_E	nodesnim/thirdparty/sdl2.html#K_KP_E	sdl2: K_KP_E	
+K_KP_F	nodesnim/thirdparty/sdl2.html#K_KP_F	sdl2: K_KP_F	
+K_KP_XOR	nodesnim/thirdparty/sdl2.html#K_KP_XOR	sdl2: K_KP_XOR	
+K_KP_POWER	nodesnim/thirdparty/sdl2.html#K_KP_POWER	sdl2: K_KP_POWER	
+K_KP_PERCENT	nodesnim/thirdparty/sdl2.html#K_KP_PERCENT	sdl2: K_KP_PERCENT	
+K_KP_LESS	nodesnim/thirdparty/sdl2.html#K_KP_LESS	sdl2: K_KP_LESS	
+K_KP_GREATER	nodesnim/thirdparty/sdl2.html#K_KP_GREATER	sdl2: K_KP_GREATER	
+K_KP_AMPERSAND	nodesnim/thirdparty/sdl2.html#K_KP_AMPERSAND	sdl2: K_KP_AMPERSAND	
+K_KP_DBLAMPERSAND	nodesnim/thirdparty/sdl2.html#K_KP_DBLAMPERSAND	sdl2: K_KP_DBLAMPERSAND	
+K_KP_VERTICALBAR	nodesnim/thirdparty/sdl2.html#K_KP_VERTICALBAR	sdl2: K_KP_VERTICALBAR	
+K_KP_DBLVERTICALBAR	nodesnim/thirdparty/sdl2.html#K_KP_DBLVERTICALBAR	sdl2: K_KP_DBLVERTICALBAR	
+K_KP_COLON	nodesnim/thirdparty/sdl2.html#K_KP_COLON	sdl2: K_KP_COLON	
+K_KP_HASH	nodesnim/thirdparty/sdl2.html#K_KP_HASH	sdl2: K_KP_HASH	
+K_KP_SPACE	nodesnim/thirdparty/sdl2.html#K_KP_SPACE	sdl2: K_KP_SPACE	
+K_KP_AT	nodesnim/thirdparty/sdl2.html#K_KP_AT	sdl2: K_KP_AT	
+K_KP_EXCLAM	nodesnim/thirdparty/sdl2.html#K_KP_EXCLAM	sdl2: K_KP_EXCLAM	
+K_KP_MEMSTORE	nodesnim/thirdparty/sdl2.html#K_KP_MEMSTORE	sdl2: K_KP_MEMSTORE	
+K_KP_MEMRECALL	nodesnim/thirdparty/sdl2.html#K_KP_MEMRECALL	sdl2: K_KP_MEMRECALL	
+K_KP_MEMCLEAR	nodesnim/thirdparty/sdl2.html#K_KP_MEMCLEAR	sdl2: K_KP_MEMCLEAR	
+K_KP_MEMADD	nodesnim/thirdparty/sdl2.html#K_KP_MEMADD	sdl2: K_KP_MEMADD	
+K_KP_MEMSUBTRACT	nodesnim/thirdparty/sdl2.html#K_KP_MEMSUBTRACT	sdl2: K_KP_MEMSUBTRACT	
+K_KP_MEMMULTIPLY	nodesnim/thirdparty/sdl2.html#K_KP_MEMMULTIPLY	sdl2: K_KP_MEMMULTIPLY	
+K_KP_MEMDIVIDE	nodesnim/thirdparty/sdl2.html#K_KP_MEMDIVIDE	sdl2: K_KP_MEMDIVIDE	
+K_KP_PLUSMINUS	nodesnim/thirdparty/sdl2.html#K_KP_PLUSMINUS	sdl2: K_KP_PLUSMINUS	
+K_KP_CLEAR	nodesnim/thirdparty/sdl2.html#K_KP_CLEAR	sdl2: K_KP_CLEAR	
+K_KP_CLEARENTRY	nodesnim/thirdparty/sdl2.html#K_KP_CLEARENTRY	sdl2: K_KP_CLEARENTRY	
+K_KP_BINARY	nodesnim/thirdparty/sdl2.html#K_KP_BINARY	sdl2: K_KP_BINARY	
+K_KP_OCTAL	nodesnim/thirdparty/sdl2.html#K_KP_OCTAL	sdl2: K_KP_OCTAL	
+K_KP_DECIMAL	nodesnim/thirdparty/sdl2.html#K_KP_DECIMAL	sdl2: K_KP_DECIMAL	
+K_KP_HEXADECIMAL	nodesnim/thirdparty/sdl2.html#K_KP_HEXADECIMAL	sdl2: K_KP_HEXADECIMAL	
+K_LCTRL	nodesnim/thirdparty/sdl2.html#K_LCTRL	sdl2: K_LCTRL	
+K_LSHIFT	nodesnim/thirdparty/sdl2.html#K_LSHIFT	sdl2: K_LSHIFT	
+K_LALT	nodesnim/thirdparty/sdl2.html#K_LALT	sdl2: K_LALT	
+K_LGUI	nodesnim/thirdparty/sdl2.html#K_LGUI	sdl2: K_LGUI	
+K_RCTRL	nodesnim/thirdparty/sdl2.html#K_RCTRL	sdl2: K_RCTRL	
+K_RSHIFT	nodesnim/thirdparty/sdl2.html#K_RSHIFT	sdl2: K_RSHIFT	
+K_RALT	nodesnim/thirdparty/sdl2.html#K_RALT	sdl2: K_RALT	
+K_RGUI	nodesnim/thirdparty/sdl2.html#K_RGUI	sdl2: K_RGUI	
+K_MODE	nodesnim/thirdparty/sdl2.html#K_MODE	sdl2: K_MODE	
+K_AUDIONEXT	nodesnim/thirdparty/sdl2.html#K_AUDIONEXT	sdl2: K_AUDIONEXT	
+K_AUDIOPREV	nodesnim/thirdparty/sdl2.html#K_AUDIOPREV	sdl2: K_AUDIOPREV	
+K_AUDIOSTOP	nodesnim/thirdparty/sdl2.html#K_AUDIOSTOP	sdl2: K_AUDIOSTOP	
+K_AUDIOPLAY	nodesnim/thirdparty/sdl2.html#K_AUDIOPLAY	sdl2: K_AUDIOPLAY	
+K_AUDIOMUTE	nodesnim/thirdparty/sdl2.html#K_AUDIOMUTE	sdl2: K_AUDIOMUTE	
+K_MEDIASELECT	nodesnim/thirdparty/sdl2.html#K_MEDIASELECT	sdl2: K_MEDIASELECT	
+K_WWW	nodesnim/thirdparty/sdl2.html#K_WWW	sdl2: K_WWW	
+K_MAIL	nodesnim/thirdparty/sdl2.html#K_MAIL	sdl2: K_MAIL	
+K_CALCULATOR	nodesnim/thirdparty/sdl2.html#K_CALCULATOR	sdl2: K_CALCULATOR	
+K_COMPUTER	nodesnim/thirdparty/sdl2.html#K_COMPUTER	sdl2: K_COMPUTER	
+K_AC_SEARCH	nodesnim/thirdparty/sdl2.html#K_AC_SEARCH	sdl2: K_AC_SEARCH	
+K_AC_HOME	nodesnim/thirdparty/sdl2.html#K_AC_HOME	sdl2: K_AC_HOME	
+K_AC_BACK	nodesnim/thirdparty/sdl2.html#K_AC_BACK	sdl2: K_AC_BACK	
+K_AC_FORWARD	nodesnim/thirdparty/sdl2.html#K_AC_FORWARD	sdl2: K_AC_FORWARD	
+K_AC_STOP	nodesnim/thirdparty/sdl2.html#K_AC_STOP	sdl2: K_AC_STOP	
+K_AC_REFRESH	nodesnim/thirdparty/sdl2.html#K_AC_REFRESH	sdl2: K_AC_REFRESH	
+K_AC_BOOKMARKS	nodesnim/thirdparty/sdl2.html#K_AC_BOOKMARKS	sdl2: K_AC_BOOKMARKS	
+K_BRIGHTNESSDOWN	nodesnim/thirdparty/sdl2.html#K_BRIGHTNESSDOWN	sdl2: K_BRIGHTNESSDOWN	
+K_BRIGHTNESSUP	nodesnim/thirdparty/sdl2.html#K_BRIGHTNESSUP	sdl2: K_BRIGHTNESSUP	
+K_DISPLAYSWITCH	nodesnim/thirdparty/sdl2.html#K_DISPLAYSWITCH	sdl2: K_DISPLAYSWITCH	
+K_KBDILLUMTOGGLE	nodesnim/thirdparty/sdl2.html#K_KBDILLUMTOGGLE	sdl2: K_KBDILLUMTOGGLE	
+K_KBDILLUMDOWN	nodesnim/thirdparty/sdl2.html#K_KBDILLUMDOWN	sdl2: K_KBDILLUMDOWN	
+K_KBDILLUMUP	nodesnim/thirdparty/sdl2.html#K_KBDILLUMUP	sdl2: K_KBDILLUMUP	
+K_EJECT	nodesnim/thirdparty/sdl2.html#K_EJECT	sdl2: K_EJECT	
+K_SLEEP	nodesnim/thirdparty/sdl2.html#K_SLEEP	sdl2: K_SLEEP	
+Keymod	nodesnim/thirdparty/sdl2.html#Keymod	sdl2: Keymod	
+toInt	nodesnim/thirdparty/sdl2.html#toInt.c,Keymod	sdl2: toInt(some: Keymod): cint	
+KMOD_CTRL	nodesnim/thirdparty/sdl2.html#KMOD_CTRL.t	sdl2: KMOD_CTRL(): untyped	
+KMOD_SHIFT	nodesnim/thirdparty/sdl2.html#KMOD_SHIFT.t	sdl2: KMOD_SHIFT(): untyped	
+KMOD_ALT	nodesnim/thirdparty/sdl2.html#KMOD_ALT.t	sdl2: KMOD_ALT(): untyped	
+KMOD_GUI	nodesnim/thirdparty/sdl2.html#KMOD_GUI.t	sdl2: KMOD_GUI(): untyped	
+SDL_TEXTEDITINGEVENT_TEXT_SIZE	nodesnim/thirdparty/sdl2.html#SDL_TEXTEDITINGEVENT_TEXT_SIZE	sdl2: SDL_TEXTEDITINGEVENT_TEXT_SIZE	
+SDL_TEXTINPUTEVENT_TEXT_SIZE	nodesnim/thirdparty/sdl2.html#SDL_TEXTINPUTEVENT_TEXT_SIZE	sdl2: SDL_TEXTINPUTEVENT_TEXT_SIZE	
+WindowEventID	nodesnim/thirdparty/sdl2.html#WindowEventID	sdl2: WindowEventID	
+EventType	nodesnim/thirdparty/sdl2.html#EventType	sdl2: EventType	
+Event	nodesnim/thirdparty/sdl2.html#Event	sdl2: Event	
+QuitEventPtr	nodesnim/thirdparty/sdl2.html#QuitEventPtr	sdl2: QuitEventPtr	
+QuitEventObj	nodesnim/thirdparty/sdl2.html#QuitEventObj	sdl2: QuitEventObj	
+WindowEventPtr	nodesnim/thirdparty/sdl2.html#WindowEventPtr	sdl2: WindowEventPtr	
+WindowEventObj	nodesnim/thirdparty/sdl2.html#WindowEventObj	sdl2: WindowEventObj	
+KeyboardEventPtr	nodesnim/thirdparty/sdl2.html#KeyboardEventPtr	sdl2: KeyboardEventPtr	
+KeyboardEventObj	nodesnim/thirdparty/sdl2.html#KeyboardEventObj	sdl2: KeyboardEventObj	
+TextEditingEventPtr	nodesnim/thirdparty/sdl2.html#TextEditingEventPtr	sdl2: TextEditingEventPtr	
+TextEditingEventObj	nodesnim/thirdparty/sdl2.html#TextEditingEventObj	sdl2: TextEditingEventObj	
+TextInputEventPtr	nodesnim/thirdparty/sdl2.html#TextInputEventPtr	sdl2: TextInputEventPtr	
+TextInputEventObj	nodesnim/thirdparty/sdl2.html#TextInputEventObj	sdl2: TextInputEventObj	
+MouseMotionEventPtr	nodesnim/thirdparty/sdl2.html#MouseMotionEventPtr	sdl2: MouseMotionEventPtr	
+MouseMotionEventObj	nodesnim/thirdparty/sdl2.html#MouseMotionEventObj	sdl2: MouseMotionEventObj	
+MouseButtonEventPtr	nodesnim/thirdparty/sdl2.html#MouseButtonEventPtr	sdl2: MouseButtonEventPtr	
+MouseButtonEventObj	nodesnim/thirdparty/sdl2.html#MouseButtonEventObj	sdl2: MouseButtonEventObj	
+MouseWheelEventPtr	nodesnim/thirdparty/sdl2.html#MouseWheelEventPtr	sdl2: MouseWheelEventPtr	
+MouseWheelEventObj	nodesnim/thirdparty/sdl2.html#MouseWheelEventObj	sdl2: MouseWheelEventObj	
+JoyAxisEventPtr	nodesnim/thirdparty/sdl2.html#JoyAxisEventPtr	sdl2: JoyAxisEventPtr	
+JoyAxisEventObj	nodesnim/thirdparty/sdl2.html#JoyAxisEventObj	sdl2: JoyAxisEventObj	
+JoyBallEventPtr	nodesnim/thirdparty/sdl2.html#JoyBallEventPtr	sdl2: JoyBallEventPtr	
+JoyBallEventObj	nodesnim/thirdparty/sdl2.html#JoyBallEventObj	sdl2: JoyBallEventObj	
+JoyHatEventPtr	nodesnim/thirdparty/sdl2.html#JoyHatEventPtr	sdl2: JoyHatEventPtr	
+JoyHatEventObj	nodesnim/thirdparty/sdl2.html#JoyHatEventObj	sdl2: JoyHatEventObj	
+JoyButtonEventPtr	nodesnim/thirdparty/sdl2.html#JoyButtonEventPtr	sdl2: JoyButtonEventPtr	
+JoyButtonEventObj	nodesnim/thirdparty/sdl2.html#JoyButtonEventObj	sdl2: JoyButtonEventObj	
+JoyDeviceEventPtr	nodesnim/thirdparty/sdl2.html#JoyDeviceEventPtr	sdl2: JoyDeviceEventPtr	
+JoyDeviceEventObj	nodesnim/thirdparty/sdl2.html#JoyDeviceEventObj	sdl2: JoyDeviceEventObj	
+ControllerAxisEventPtr	nodesnim/thirdparty/sdl2.html#ControllerAxisEventPtr	sdl2: ControllerAxisEventPtr	
+ControllerAxisEventObj	nodesnim/thirdparty/sdl2.html#ControllerAxisEventObj	sdl2: ControllerAxisEventObj	
+ControllerButtonEventPtr	nodesnim/thirdparty/sdl2.html#ControllerButtonEventPtr	sdl2: ControllerButtonEventPtr	
+ControllerButtonEventObj	nodesnim/thirdparty/sdl2.html#ControllerButtonEventObj	sdl2: ControllerButtonEventObj	
+ControllerDeviceEventPtr	nodesnim/thirdparty/sdl2.html#ControllerDeviceEventPtr	sdl2: ControllerDeviceEventPtr	
+ControllerDeviceEventObj	nodesnim/thirdparty/sdl2.html#ControllerDeviceEventObj	sdl2: ControllerDeviceEventObj	
+TouchID	nodesnim/thirdparty/sdl2.html#TouchID	sdl2: TouchID	
+FingerID	nodesnim/thirdparty/sdl2.html#FingerID	sdl2: FingerID	
+TouchFingerEventPtr	nodesnim/thirdparty/sdl2.html#TouchFingerEventPtr	sdl2: TouchFingerEventPtr	
+TouchFingerEventObj	nodesnim/thirdparty/sdl2.html#TouchFingerEventObj	sdl2: TouchFingerEventObj	
+MultiGestureEventPtr	nodesnim/thirdparty/sdl2.html#MultiGestureEventPtr	sdl2: MultiGestureEventPtr	
+MultiGestureEventObj	nodesnim/thirdparty/sdl2.html#MultiGestureEventObj	sdl2: MultiGestureEventObj	
+Finger	nodesnim/thirdparty/sdl2.html#Finger	sdl2: Finger	
+DollarGestureEventPtr	nodesnim/thirdparty/sdl2.html#DollarGestureEventPtr	sdl2: DollarGestureEventPtr	
+DollarGestureEventObj	nodesnim/thirdparty/sdl2.html#DollarGestureEventObj	sdl2: DollarGestureEventObj	
+DropEventPtr	nodesnim/thirdparty/sdl2.html#DropEventPtr	sdl2: DropEventPtr	
+DropEventObj	nodesnim/thirdparty/sdl2.html#DropEventObj	sdl2: DropEventObj	
+UserEventPtr	nodesnim/thirdparty/sdl2.html#UserEventPtr	sdl2: UserEventPtr	
+UserEventObj	nodesnim/thirdparty/sdl2.html#UserEventObj	sdl2: UserEventObj	
+Eventaction	nodesnim/thirdparty/sdl2.html#Eventaction	sdl2: Eventaction	
+EventFilter	nodesnim/thirdparty/sdl2.html#EventFilter	sdl2: EventFilter	
+SDL_Return	nodesnim/thirdparty/sdl2.html#SDL_Return	sdl2: SDL_Return	
+Bool32	nodesnim/thirdparty/sdl2.html#Bool32	sdl2: Bool32	
+KeyState	nodesnim/thirdparty/sdl2.html#KeyState	sdl2: KeyState	
+KeySym	nodesnim/thirdparty/sdl2.html#KeySym	sdl2: KeySym	
+Point	nodesnim/thirdparty/sdl2.html#Point	sdl2: Point	
+Rect	nodesnim/thirdparty/sdl2.html#Rect	sdl2: Rect	
+GLattr	nodesnim/thirdparty/sdl2.html#GLattr	sdl2: GLattr	
+MouseWheelDirection	nodesnim/thirdparty/sdl2.html#MouseWheelDirection	sdl2: MouseWheelDirection	
+SDL_GL_CONTEXT_PROFILE_CORE	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_PROFILE_CORE	sdl2: SDL_GL_CONTEXT_PROFILE_CORE	
+SDL_GL_CONTEXT_PROFILE_COMPATIBILITY	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_PROFILE_COMPATIBILITY	sdl2: SDL_GL_CONTEXT_PROFILE_COMPATIBILITY	
+SDL_GL_CONTEXT_PROFILE_ES	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_PROFILE_ES	sdl2: SDL_GL_CONTEXT_PROFILE_ES	
+SDL_GL_CONTEXT_DEBUG_FLAG	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_DEBUG_FLAG	sdl2: SDL_GL_CONTEXT_DEBUG_FLAG	
+SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG	sdl2: SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG	
+SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG	sdl2: SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG	
+SDL_GL_CONTEXT_RESET_ISOLATION_FLAG	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_RESET_ISOLATION_FLAG	sdl2: SDL_GL_CONTEXT_RESET_ISOLATION_FLAG	
+SDL_GL_CONTEXT_RELEASE_BEHAVIOR_NONE	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_RELEASE_BEHAVIOR_NONE	sdl2: SDL_GL_CONTEXT_RELEASE_BEHAVIOR_NONE	
+SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH	nodesnim/thirdparty/sdl2.html#SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH	sdl2: SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH	
+DisplayMode	nodesnim/thirdparty/sdl2.html#DisplayMode	sdl2: DisplayMode	
+WindowPtr	nodesnim/thirdparty/sdl2.html#WindowPtr	sdl2: WindowPtr	
+RendererPtr	nodesnim/thirdparty/sdl2.html#RendererPtr	sdl2: RendererPtr	
+TexturePtr	nodesnim/thirdparty/sdl2.html#TexturePtr	sdl2: TexturePtr	
+CursorPtr	nodesnim/thirdparty/sdl2.html#CursorPtr	sdl2: CursorPtr	
+GlContextPtr	nodesnim/thirdparty/sdl2.html#GlContextPtr	sdl2: GlContextPtr	
+SDL_Version	nodesnim/thirdparty/sdl2.html#SDL_Version	sdl2: SDL_Version	
+RendererInfoPtr	nodesnim/thirdparty/sdl2.html#RendererInfoPtr	sdl2: RendererInfoPtr	
+RendererInfo	nodesnim/thirdparty/sdl2.html#RendererInfo	sdl2: RendererInfo	
+TextureAccess	nodesnim/thirdparty/sdl2.html#TextureAccess	sdl2: TextureAccess	
+TextureModulate	nodesnim/thirdparty/sdl2.html#TextureModulate	sdl2: TextureModulate	
+RendererFlip	nodesnim/thirdparty/sdl2.html#RendererFlip	sdl2: RendererFlip	
+SysWMType	nodesnim/thirdparty/sdl2.html#SysWMType	sdl2: SysWMType	
+WMinfo	nodesnim/thirdparty/sdl2.html#WMinfo	sdl2: WMinfo	
+SDL_WINDOW_FULLSCREEN	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_FULLSCREEN	sdl2: SDL_WINDOW_FULLSCREEN	
+SDL_WINDOW_OPENGL	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_OPENGL	sdl2: SDL_WINDOW_OPENGL	
+SDL_WINDOW_SHOWN	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_SHOWN	sdl2: SDL_WINDOW_SHOWN	
+SDL_WINDOW_HIDDEN	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_HIDDEN	sdl2: SDL_WINDOW_HIDDEN	
+SDL_WINDOW_BORDERLESS	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_BORDERLESS	sdl2: SDL_WINDOW_BORDERLESS	
+SDL_WINDOW_RESIZABLE	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_RESIZABLE	sdl2: SDL_WINDOW_RESIZABLE	
+SDL_WINDOW_MINIMIZED	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_MINIMIZED	sdl2: SDL_WINDOW_MINIMIZED	
+SDL_WINDOW_MAXIMIZED	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_MAXIMIZED	sdl2: SDL_WINDOW_MAXIMIZED	
+SDL_WINDOW_INPUT_GRABBED	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_INPUT_GRABBED	sdl2: SDL_WINDOW_INPUT_GRABBED	
+SDL_WINDOW_INPUT_FOCUS	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_INPUT_FOCUS	sdl2: SDL_WINDOW_INPUT_FOCUS	
+SDL_WINDOW_MOUSE_FOCUS	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_MOUSE_FOCUS	sdl2: SDL_WINDOW_MOUSE_FOCUS	
+SDL_WINDOW_FULLSCREEN_DESKTOP	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_FULLSCREEN_DESKTOP	sdl2: SDL_WINDOW_FULLSCREEN_DESKTOP	
+SDL_WINDOW_FOREIGN	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_FOREIGN	sdl2: SDL_WINDOW_FOREIGN	
+SDL_WINDOW_ALLOW_HIGHDPI	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_ALLOW_HIGHDPI	sdl2: SDL_WINDOW_ALLOW_HIGHDPI	
+SDL_WINDOW_MOUSE_CAPTURE	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_MOUSE_CAPTURE	sdl2: SDL_WINDOW_MOUSE_CAPTURE	
+SDL_WINDOW_VULKAN	nodesnim/thirdparty/sdl2.html#SDL_WINDOW_VULKAN	sdl2: SDL_WINDOW_VULKAN	
+SDL_FLIP_NONE	nodesnim/thirdparty/sdl2.html#SDL_FLIP_NONE	sdl2: SDL_FLIP_NONE	
+SDL_FLIP_HORIZONTAL	nodesnim/thirdparty/sdl2.html#SDL_FLIP_HORIZONTAL	sdl2: SDL_FLIP_HORIZONTAL	
+SDL_FLIP_VERTICAL	nodesnim/thirdparty/sdl2.html#SDL_FLIP_VERTICAL	sdl2: SDL_FLIP_VERTICAL	
+toBool	nodesnim/thirdparty/sdl2.html#toBool.c,Bool32	sdl2: toBool(some: Bool32): bool	
+toBool	nodesnim/thirdparty/sdl2.html#toBool.c,SDL_Return	sdl2: toBool(some: SDL_Return): bool	
+toCint	nodesnim/thirdparty/sdl2.html#toCint.c,TextureAccess	sdl2: toCint(some: TextureAccess): cint	
+SDL_ALPHA_OPAQUE	nodesnim/thirdparty/sdl2.html#SDL_ALPHA_OPAQUE	sdl2: SDL_ALPHA_OPAQUE	
+SDL_ALPHA_TRANSPARENT	nodesnim/thirdparty/sdl2.html#SDL_ALPHA_TRANSPARENT	sdl2: SDL_ALPHA_TRANSPARENT	
+SDL_PIXELTYPE_UNKNOWN	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_UNKNOWN	sdl2: SDL_PIXELTYPE_UNKNOWN	
+SDL_PIXELTYPE_INDEX1	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_INDEX1	sdl2: SDL_PIXELTYPE_INDEX1	
+SDL_PIXELTYPE_INDEX4	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_INDEX4	sdl2: SDL_PIXELTYPE_INDEX4	
+SDL_PIXELTYPE_INDEX8	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_INDEX8	sdl2: SDL_PIXELTYPE_INDEX8	
+SDL_PIXELTYPE_PACKED8	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_PACKED8	sdl2: SDL_PIXELTYPE_PACKED8	
+SDL_PIXELTYPE_PACKED16	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_PACKED16	sdl2: SDL_PIXELTYPE_PACKED16	
+SDL_PIXELTYPE_PACKED32	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_PACKED32	sdl2: SDL_PIXELTYPE_PACKED32	
+SDL_PIXELTYPE_ARRAYU8	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_ARRAYU8	sdl2: SDL_PIXELTYPE_ARRAYU8	
+SDL_PIXELTYPE_ARRAYU16	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_ARRAYU16	sdl2: SDL_PIXELTYPE_ARRAYU16	
+SDL_PIXELTYPE_ARRAYU32	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_ARRAYU32	sdl2: SDL_PIXELTYPE_ARRAYU32	
+SDL_PIXELTYPE_ARRAYF16	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_ARRAYF16	sdl2: SDL_PIXELTYPE_ARRAYF16	
+SDL_PIXELTYPE_ARRAYF32	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE_ARRAYF32	sdl2: SDL_PIXELTYPE_ARRAYF32	
+SDL_BITMAPORDER_NONE	nodesnim/thirdparty/sdl2.html#SDL_BITMAPORDER_NONE	sdl2: SDL_BITMAPORDER_NONE	
+SDL_BITMAPORDER_4321	nodesnim/thirdparty/sdl2.html#SDL_BITMAPORDER_4321	sdl2: SDL_BITMAPORDER_4321	
+SDL_BITMAPORDER_1234	nodesnim/thirdparty/sdl2.html#SDL_BITMAPORDER_1234	sdl2: SDL_BITMAPORDER_1234	
+SDL_PACKEDORDER_NONE	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_NONE	sdl2: SDL_PACKEDORDER_NONE	
+SDL_PACKEDORDER_XRGB	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_XRGB	sdl2: SDL_PACKEDORDER_XRGB	
+SDL_PACKEDORDER_RGBX	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_RGBX	sdl2: SDL_PACKEDORDER_RGBX	
+SDL_PACKEDORDER_ARGB	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_ARGB	sdl2: SDL_PACKEDORDER_ARGB	
+SDL_PACKEDORDER_RGBA	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_RGBA	sdl2: SDL_PACKEDORDER_RGBA	
+SDL_PACKEDORDER_XBGR	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_XBGR	sdl2: SDL_PACKEDORDER_XBGR	
+SDL_PACKEDORDER_BGRX	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_BGRX	sdl2: SDL_PACKEDORDER_BGRX	
+SDL_PACKEDORDER_ABGR	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_ABGR	sdl2: SDL_PACKEDORDER_ABGR	
+SDL_PACKEDORDER_BGRA	nodesnim/thirdparty/sdl2.html#SDL_PACKEDORDER_BGRA	sdl2: SDL_PACKEDORDER_BGRA	
+SDL_ARRAYORDER_NONE	nodesnim/thirdparty/sdl2.html#SDL_ARRAYORDER_NONE	sdl2: SDL_ARRAYORDER_NONE	
+SDL_ARRAYORDER_RGB	nodesnim/thirdparty/sdl2.html#SDL_ARRAYORDER_RGB	sdl2: SDL_ARRAYORDER_RGB	
+SDL_ARRAYORDER_RGBA	nodesnim/thirdparty/sdl2.html#SDL_ARRAYORDER_RGBA	sdl2: SDL_ARRAYORDER_RGBA	
+SDL_ARRAYORDER_ARGB	nodesnim/thirdparty/sdl2.html#SDL_ARRAYORDER_ARGB	sdl2: SDL_ARRAYORDER_ARGB	
+SDL_ARRAYORDER_BGR	nodesnim/thirdparty/sdl2.html#SDL_ARRAYORDER_BGR	sdl2: SDL_ARRAYORDER_BGR	
+SDL_ARRAYORDER_BGRA	nodesnim/thirdparty/sdl2.html#SDL_ARRAYORDER_BGRA	sdl2: SDL_ARRAYORDER_BGRA	
+SDL_ARRAYORDER_ABGR	nodesnim/thirdparty/sdl2.html#SDL_ARRAYORDER_ABGR	sdl2: SDL_ARRAYORDER_ABGR	
+SDL_PACKEDLAYOUT_NONE	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_NONE	sdl2: SDL_PACKEDLAYOUT_NONE	
+SDL_PACKEDLAYOUT_332	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_332	sdl2: SDL_PACKEDLAYOUT_332	
+SDL_PACKEDLAYOUT_4444	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_4444	sdl2: SDL_PACKEDLAYOUT_4444	
+SDL_PACKEDLAYOUT_1555	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_1555	sdl2: SDL_PACKEDLAYOUT_1555	
+SDL_PACKEDLAYOUT_5551	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_5551	sdl2: SDL_PACKEDLAYOUT_5551	
+SDL_PACKEDLAYOUT_565	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_565	sdl2: SDL_PACKEDLAYOUT_565	
+SDL_PACKEDLAYOUT_8888	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_8888	sdl2: SDL_PACKEDLAYOUT_8888	
+SDL_PACKEDLAYOUT_2101010	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_2101010	sdl2: SDL_PACKEDLAYOUT_2101010	
+SDL_PACKEDLAYOUT_1010102	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_1010102	sdl2: SDL_PACKEDLAYOUT_1010102	
+SDL_DEFINE_PIXELFOURCC	nodesnim/thirdparty/sdl2.html#SDL_DEFINE_PIXELFOURCC.t,char,char,char,char	sdl2: SDL_DEFINE_PIXELFOURCC(A, B, C, D: char): uint32	
+SDL_DEFINE_PIXELFORMAT	nodesnim/thirdparty/sdl2.html#SDL_DEFINE_PIXELFORMAT.t,int,int,int,int,int	sdl2: SDL_DEFINE_PIXELFORMAT(`type`, order, layout, bits, bytes: int): uint32	
+SDL_PIXELFLAG	nodesnim/thirdparty/sdl2.html#SDL_PIXELFLAG.t,uint32	sdl2: SDL_PIXELFLAG(X: uint32): int	
+SDL_PIXELTYPE	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE.t,uint32	sdl2: SDL_PIXELTYPE(X: uint32): int	
+SDL_PIXELORDER	nodesnim/thirdparty/sdl2.html#SDL_PIXELORDER.t,uint32	sdl2: SDL_PIXELORDER(X: uint32): int	
+SDL_PIXELLAYOUT	nodesnim/thirdparty/sdl2.html#SDL_PIXELLAYOUT.t,uint32	sdl2: SDL_PIXELLAYOUT(X: uint32): int	
+SDL_BITSPERPIXEL	nodesnim/thirdparty/sdl2.html#SDL_BITSPERPIXEL.t,uint32	sdl2: SDL_BITSPERPIXEL(X: uint32): int	
+SDL_BYTESPERPIXEL	nodesnim/thirdparty/sdl2.html#SDL_BYTESPERPIXEL.t,uint32	sdl2: SDL_BYTESPERPIXEL(X: uint32): int	
+SDL_ISPIXELFORMAT_INDEXED	nodesnim/thirdparty/sdl2.html#SDL_ISPIXELFORMAT_INDEXED.t,uint32	sdl2: SDL_ISPIXELFORMAT_INDEXED(format: uint32): bool	
+SDL_ISPIXELFORMAT_ALPHA	nodesnim/thirdparty/sdl2.html#SDL_ISPIXELFORMAT_ALPHA.t,uint32	sdl2: SDL_ISPIXELFORMAT_ALPHA(format: uint32): bool	
+SDL_ISPIXELFORMAT_FOURCC	nodesnim/thirdparty/sdl2.html#SDL_ISPIXELFORMAT_FOURCC.t,uint32	sdl2: SDL_ISPIXELFORMAT_FOURCC(format: uint32): bool	
+SDL_PIXELFORMAT_UNKNOWN	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_UNKNOWN	sdl2: SDL_PIXELFORMAT_UNKNOWN	
+SDL_PIXELFORMAT_INDEX1LSB	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_INDEX1LSB	sdl2: SDL_PIXELFORMAT_INDEX1LSB	
+SDL_PIXELFORMAT_INDEX1MSB	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_INDEX1MSB	sdl2: SDL_PIXELFORMAT_INDEX1MSB	
+SDL_PIXELFORMAT_INDEX4LSB	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_INDEX4LSB	sdl2: SDL_PIXELFORMAT_INDEX4LSB	
+SDL_PIXELFORMAT_INDEX4MSB	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_INDEX4MSB	sdl2: SDL_PIXELFORMAT_INDEX4MSB	
+SDL_PIXELFORMAT_INDEX8	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_INDEX8	sdl2: SDL_PIXELFORMAT_INDEX8	
+SDL_PIXELFORMAT_RGB332	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGB332	sdl2: SDL_PIXELFORMAT_RGB332	
+SDL_PIXELFORMAT_RGB444	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGB444	sdl2: SDL_PIXELFORMAT_RGB444	
+SDL_PIXELFORMAT_RGB555	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGB555	sdl2: SDL_PIXELFORMAT_RGB555	
+SDL_PIXELFORMAT_BGR555	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGR555	sdl2: SDL_PIXELFORMAT_BGR555	
+SDL_PIXELFORMAT_ARGB4444	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_ARGB4444	sdl2: SDL_PIXELFORMAT_ARGB4444	
+SDL_PIXELFORMAT_RGBA4444	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGBA4444	sdl2: SDL_PIXELFORMAT_RGBA4444	
+SDL_PIXELFORMAT_ABGR4444	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_ABGR4444	sdl2: SDL_PIXELFORMAT_ABGR4444	
+SDL_PIXELFORMAT_BGRA4444	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGRA4444	sdl2: SDL_PIXELFORMAT_BGRA4444	
+SDL_PIXELFORMAT_ARGB1555	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_ARGB1555	sdl2: SDL_PIXELFORMAT_ARGB1555	
+SDL_PIXELFORMAT_RGBA5551	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGBA5551	sdl2: SDL_PIXELFORMAT_RGBA5551	
+SDL_PIXELFORMAT_ABGR1555	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_ABGR1555	sdl2: SDL_PIXELFORMAT_ABGR1555	
+SDL_PIXELFORMAT_BGRA5551	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGRA5551	sdl2: SDL_PIXELFORMAT_BGRA5551	
+SDL_PIXELFORMAT_RGB565	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGB565	sdl2: SDL_PIXELFORMAT_RGB565	
+SDL_PIXELFORMAT_BGR565	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGR565	sdl2: SDL_PIXELFORMAT_BGR565	
+SDL_PIXELFORMAT_RGB24	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGB24	sdl2: SDL_PIXELFORMAT_RGB24	
+SDL_PIXELFORMAT_BGR24	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGR24	sdl2: SDL_PIXELFORMAT_BGR24	
+SDL_PIXELFORMAT_RGB888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGB888	sdl2: SDL_PIXELFORMAT_RGB888	
+SDL_PIXELFORMAT_RGBX8888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGBX8888	sdl2: SDL_PIXELFORMAT_RGBX8888	
+SDL_PIXELFORMAT_BGR888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGR888	sdl2: SDL_PIXELFORMAT_BGR888	
+SDL_PIXELFORMAT_BGRX8888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGRX8888	sdl2: SDL_PIXELFORMAT_BGRX8888	
+SDL_PIXELFORMAT_ARGB8888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_ARGB8888	sdl2: SDL_PIXELFORMAT_ARGB8888	
+SDL_PIXELFORMAT_RGBA8888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_RGBA8888	sdl2: SDL_PIXELFORMAT_RGBA8888	
+SDL_PIXELFORMAT_ABGR8888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_ABGR8888	sdl2: SDL_PIXELFORMAT_ABGR8888	
+SDL_PIXELFORMAT_BGRA8888	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_BGRA8888	sdl2: SDL_PIXELFORMAT_BGRA8888	
+SDL_PIXELFORMAT_ARGB2101010	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_ARGB2101010	sdl2: SDL_PIXELFORMAT_ARGB2101010	
+SDL_PIXELFORMAT_YV12	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_YV12	sdl2: SDL_PIXELFORMAT_YV12	
+SDL_PIXELFORMAT_IYUV	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_IYUV	sdl2: SDL_PIXELFORMAT_IYUV	
+SDL_PIXELFORMAT_YUY2	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_YUY2	sdl2: SDL_PIXELFORMAT_YUY2	
+SDL_PIXELFORMAT_UYVY	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_UYVY	sdl2: SDL_PIXELFORMAT_UYVY	
+SDL_PIXELFORMAT_YVYU	nodesnim/thirdparty/sdl2.html#SDL_PIXELFORMAT_YVYU	sdl2: SDL_PIXELFORMAT_YVYU	
+Color	nodesnim/thirdparty/sdl2.html#Color	sdl2: Color	
+Palette	nodesnim/thirdparty/sdl2.html#Palette	sdl2: Palette	
+PixelFormat	nodesnim/thirdparty/sdl2.html#PixelFormat	sdl2: PixelFormat	
+BlitMapPtr	nodesnim/thirdparty/sdl2.html#BlitMapPtr	sdl2: BlitMapPtr	
+SurfacePtr	nodesnim/thirdparty/sdl2.html#SurfacePtr	sdl2: SurfacePtr	
+Surface	nodesnim/thirdparty/sdl2.html#Surface	sdl2: Surface	
+BlendMode	nodesnim/thirdparty/sdl2.html#BlendMode	sdl2: BlendMode	
+BlitFunction	nodesnim/thirdparty/sdl2.html#BlitFunction	sdl2: BlitFunction	
+TimerCallback	nodesnim/thirdparty/sdl2.html#TimerCallback	sdl2: TimerCallback	
+TimerID	nodesnim/thirdparty/sdl2.html#TimerID	sdl2: TimerID	
+Renderer_Software	nodesnim/thirdparty/sdl2.html#Renderer_Software	sdl2: Renderer_Software	
+Renderer_Accelerated	nodesnim/thirdparty/sdl2.html#Renderer_Accelerated	sdl2: Renderer_Accelerated	
+Renderer_PresentVsync	nodesnim/thirdparty/sdl2.html#Renderer_PresentVsync	sdl2: Renderer_PresentVsync	
+Renderer_TargetTexture	nodesnim/thirdparty/sdl2.html#Renderer_TargetTexture	sdl2: Renderer_TargetTexture	
+SDL_SWSURFACE	nodesnim/thirdparty/sdl2.html#SDL_SWSURFACE	sdl2: SDL_SWSURFACE	
+SDL_PREALLOC	nodesnim/thirdparty/sdl2.html#SDL_PREALLOC	sdl2: SDL_PREALLOC	
+SDL_RLEACCEL	nodesnim/thirdparty/sdl2.html#SDL_RLEACCEL	sdl2: SDL_RLEACCEL	
+SDL_DONTFREE	nodesnim/thirdparty/sdl2.html#SDL_DONTFREE	sdl2: SDL_DONTFREE	
+SDL_MUSTLOCK	nodesnim/thirdparty/sdl2.html#SDL_MUSTLOCK.t,SurfacePtr	sdl2: SDL_MUSTLOCK(some: SurfacePtr): bool	
+INIT_TIMER	nodesnim/thirdparty/sdl2.html#INIT_TIMER	sdl2: INIT_TIMER	
+INIT_AUDIO	nodesnim/thirdparty/sdl2.html#INIT_AUDIO	sdl2: INIT_AUDIO	
+INIT_VIDEO	nodesnim/thirdparty/sdl2.html#INIT_VIDEO	sdl2: INIT_VIDEO	
+INIT_JOYSTICK	nodesnim/thirdparty/sdl2.html#INIT_JOYSTICK	sdl2: INIT_JOYSTICK	
+INIT_HAPTIC	nodesnim/thirdparty/sdl2.html#INIT_HAPTIC	sdl2: INIT_HAPTIC	
+INIT_GAMECONTROLLER	nodesnim/thirdparty/sdl2.html#INIT_GAMECONTROLLER	sdl2: INIT_GAMECONTROLLER	
+INIT_EVENTS	nodesnim/thirdparty/sdl2.html#INIT_EVENTS	sdl2: INIT_EVENTS	
+INIT_NOPARACHUTE	nodesnim/thirdparty/sdl2.html#INIT_NOPARACHUTE	sdl2: INIT_NOPARACHUTE	
+INIT_EVERYTHING	nodesnim/thirdparty/sdl2.html#INIT_EVERYTHING	sdl2: INIT_EVERYTHING	
+SDL_WINDOWPOS_UNDEFINED_MASK	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_UNDEFINED_MASK	sdl2: SDL_WINDOWPOS_UNDEFINED_MASK	
+SDL_WINDOWPOS_UNDEFINED_DISPLAY	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_UNDEFINED_DISPLAY.t,cint	sdl2: SDL_WINDOWPOS_UNDEFINED_DISPLAY(X: cint): untyped	
+SDL_WINDOWPOS_UNDEFINED	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_UNDEFINED	sdl2: SDL_WINDOWPOS_UNDEFINED	
+SDL_WINDOWPOS_ISUNDEFINED	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_ISUNDEFINED.t,cint	sdl2: SDL_WINDOWPOS_ISUNDEFINED(X: cint): bool	
+SDL_WINDOWPOS_CENTERED_MASK	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_CENTERED_MASK	sdl2: SDL_WINDOWPOS_CENTERED_MASK	
+SDL_WINDOWPOS_CENTERED_DISPLAY	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_CENTERED_DISPLAY.t,cint	sdl2: SDL_WINDOWPOS_CENTERED_DISPLAY(X: cint): cint	
+SDL_WINDOWPOS_CENTERED	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_CENTERED	sdl2: SDL_WINDOWPOS_CENTERED	
+SDL_WINDOWPOS_ISCENTERED	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_ISCENTERED.t,cint	sdl2: SDL_WINDOWPOS_ISCENTERED(X: cint): bool	
+evWindow	nodesnim/thirdparty/sdl2.html#evWindow,Event	sdl2: evWindow(event`gensym16595034: Event): WindowEventPtr	
+window	nodesnim/thirdparty/sdl2.html#window,Event	sdl2: window(event`gensym16595035: Event): WindowEventPtr	
+evKeyboard	nodesnim/thirdparty/sdl2.html#evKeyboard,Event	sdl2: evKeyboard(event`gensym16630217: Event): KeyboardEventPtr	
+key	nodesnim/thirdparty/sdl2.html#key,Event	sdl2: key(event`gensym16630218: Event): KeyboardEventPtr	
+evTextEditing	nodesnim/thirdparty/sdl2.html#evTextEditing,Event	sdl2: evTextEditing(event`gensym16665217: Event): TextEditingEventPtr	
+edit	nodesnim/thirdparty/sdl2.html#edit,Event	sdl2: edit(event`gensym16665218: Event): TextEditingEventPtr	
+evTextInput	nodesnim/thirdparty/sdl2.html#evTextInput,Event	sdl2: evTextInput(event`gensym16700217: Event): TextInputEventPtr	
+text	nodesnim/thirdparty/sdl2.html#text,Event	sdl2: text(event`gensym16700218: Event): TextInputEventPtr	
+evMouseMotion	nodesnim/thirdparty/sdl2.html#evMouseMotion,Event	sdl2: evMouseMotion(event`gensym16735217: Event): MouseMotionEventPtr	
+motion	nodesnim/thirdparty/sdl2.html#motion,Event	sdl2: motion(event`gensym16735218: Event): MouseMotionEventPtr	
+evMouseButton	nodesnim/thirdparty/sdl2.html#evMouseButton,Event	sdl2: evMouseButton(event`gensym16770217: Event): MouseButtonEventPtr	
+button	nodesnim/thirdparty/sdl2.html#button,Event	sdl2: button(event`gensym16770218: Event): MouseButtonEventPtr	
+evMouseWheel	nodesnim/thirdparty/sdl2.html#evMouseWheel,Event	sdl2: evMouseWheel(event`gensym16805217: Event): MouseWheelEventPtr	
+wheel	nodesnim/thirdparty/sdl2.html#wheel,Event	sdl2: wheel(event`gensym16805218: Event): MouseWheelEventPtr	
+EvJoyAxis	nodesnim/thirdparty/sdl2.html#EvJoyAxis,Event	sdl2: EvJoyAxis(event`gensym16840217: Event): JoyAxisEventPtr	
+jaxis	nodesnim/thirdparty/sdl2.html#jaxis,Event	sdl2: jaxis(event`gensym16840218: Event): JoyAxisEventPtr	
+EvJoyBall	nodesnim/thirdparty/sdl2.html#EvJoyBall,Event	sdl2: EvJoyBall(event`gensym16875217: Event): JoyBallEventPtr	
+jball	nodesnim/thirdparty/sdl2.html#jball,Event	sdl2: jball(event`gensym16875218: Event): JoyBallEventPtr	
+EvJoyHat	nodesnim/thirdparty/sdl2.html#EvJoyHat,Event	sdl2: EvJoyHat(event`gensym16910217: Event): JoyHatEventPtr	
+jhat	nodesnim/thirdparty/sdl2.html#jhat,Event	sdl2: jhat(event`gensym16910218: Event): JoyHatEventPtr	
+EvJoyButton	nodesnim/thirdparty/sdl2.html#EvJoyButton,Event	sdl2: EvJoyButton(event`gensym16945217: Event): JoyButtonEventPtr	
+jbutton	nodesnim/thirdparty/sdl2.html#jbutton,Event	sdl2: jbutton(event`gensym16945218: Event): JoyButtonEventPtr	
+EvJoyDevice	nodesnim/thirdparty/sdl2.html#EvJoyDevice,Event	sdl2: EvJoyDevice(event`gensym16980217: Event): JoyDeviceEventPtr	
+jdevice	nodesnim/thirdparty/sdl2.html#jdevice,Event	sdl2: jdevice(event`gensym16980218: Event): JoyDeviceEventPtr	
+EvControllerAxis	nodesnim/thirdparty/sdl2.html#EvControllerAxis,Event	sdl2: EvControllerAxis(event`gensym17015217: Event): ControllerAxisEventPtr	
+caxis	nodesnim/thirdparty/sdl2.html#caxis,Event	sdl2: caxis(event`gensym17015218: Event): ControllerAxisEventPtr	
+EvControllerButton	nodesnim/thirdparty/sdl2.html#EvControllerButton,Event	sdl2: EvControllerButton(event`gensym17050217: Event): ControllerButtonEventPtr	
+cbutton	nodesnim/thirdparty/sdl2.html#cbutton,Event	sdl2: cbutton(event`gensym17050218: Event): ControllerButtonEventPtr	
+EvControllerDevice	nodesnim/thirdparty/sdl2.html#EvControllerDevice,Event	sdl2: EvControllerDevice(event`gensym17085217: Event): ControllerDeviceEventPtr	
+cdevice	nodesnim/thirdparty/sdl2.html#cdevice,Event	sdl2: cdevice(event`gensym17085218: Event): ControllerDeviceEventPtr	
+EvTouchFinger	nodesnim/thirdparty/sdl2.html#EvTouchFinger,Event	sdl2: EvTouchFinger(event`gensym17120217: Event): TouchFingerEventPtr	
+tfinger	nodesnim/thirdparty/sdl2.html#tfinger,Event	sdl2: tfinger(event`gensym17120218: Event): TouchFingerEventPtr	
+EvMultiGesture	nodesnim/thirdparty/sdl2.html#EvMultiGesture,Event	sdl2: EvMultiGesture(event`gensym17155217: Event): MultiGestureEventPtr	
+mgesture	nodesnim/thirdparty/sdl2.html#mgesture,Event	sdl2: mgesture(event`gensym17155218: Event): MultiGestureEventPtr	
+EvDollarGesture	nodesnim/thirdparty/sdl2.html#EvDollarGesture,Event	sdl2: EvDollarGesture(event`gensym17190217: Event): DollarGestureEventPtr	
+dgesture	nodesnim/thirdparty/sdl2.html#dgesture,Event	sdl2: dgesture(event`gensym17190218: Event): DollarGestureEventPtr	
+evDropFile	nodesnim/thirdparty/sdl2.html#evDropFile,Event	sdl2: evDropFile(event`gensym17225217: Event): DropEventPtr	
+drop	nodesnim/thirdparty/sdl2.html#drop,Event	sdl2: drop(event`gensym17225218: Event): DropEventPtr	
+evQuit	nodesnim/thirdparty/sdl2.html#evQuit,Event	sdl2: evQuit(event`gensym17260217: Event): QuitEventPtr	
+quit	nodesnim/thirdparty/sdl2.html#quit,Event	sdl2: quit(event`gensym17260218: Event): QuitEventPtr	
+evUser	nodesnim/thirdparty/sdl2.html#evUser,Event	sdl2: evUser(event`gensym17295217: Event): UserEventPtr	
+user	nodesnim/thirdparty/sdl2.html#user,Event	sdl2: user(event`gensym17295218: Event): UserEventPtr	
+SDL_MESSAGEBOX_ERROR	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_ERROR	sdl2: SDL_MESSAGEBOX_ERROR	
+SDL_MESSAGEBOX_WARNING	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_WARNING	sdl2: SDL_MESSAGEBOX_WARNING	
+SDL_MESSAGEBOX_INFORMATION	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_INFORMATION	sdl2: SDL_MESSAGEBOX_INFORMATION	
+SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT	sdl2: SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT	
+SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT	sdl2: SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT	
+MessageBoxColor	nodesnim/thirdparty/sdl2.html#MessageBoxColor	sdl2: MessageBoxColor	
+SDL_MESSAGEBOX_COLOR_BACKGROUND	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_COLOR_BACKGROUND	MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BACKGROUND	
+SDL_MESSAGEBOX_COLOR_TEXT	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_COLOR_TEXT	MessageBoxColorType.SDL_MESSAGEBOX_COLOR_TEXT	
+SDL_MESSAGEBOX_COLOR_BUTTON_BORDER	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_COLOR_BUTTON_BORDER	MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BUTTON_BORDER	
+SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND	MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND	
+SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED	MessageBoxColorType.SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED	
+SDL_MESSAGEBOX_COLOR_MAX	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_COLOR_MAX	MessageBoxColorType.SDL_MESSAGEBOX_COLOR_MAX	
+MessageBoxColorType	nodesnim/thirdparty/sdl2.html#MessageBoxColorType	sdl2: MessageBoxColorType	
+MessageBoxColorScheme	nodesnim/thirdparty/sdl2.html#MessageBoxColorScheme	sdl2: MessageBoxColorScheme	
+MessageBoxButtonData	nodesnim/thirdparty/sdl2.html#MessageBoxButtonData	sdl2: MessageBoxButtonData	
+MessageBoxData	nodesnim/thirdparty/sdl2.html#MessageBoxData	sdl2: MessageBoxData	
+RWopsPtr	nodesnim/thirdparty/sdl2.html#RWopsPtr	sdl2: RWopsPtr	
+RWops	nodesnim/thirdparty/sdl2.html#RWops	sdl2: RWops	
+Mem	nodesnim/thirdparty/sdl2.html#Mem	sdl2: Mem	
+VoidCallback	nodesnim/thirdparty/sdl2.html#VoidCallback	sdl2: VoidCallback	
+SDL_ANDROID_EXTERNAL_STORAGE_READ	nodesnim/thirdparty/sdl2.html#SDL_ANDROID_EXTERNAL_STORAGE_READ	sdl2: SDL_ANDROID_EXTERNAL_STORAGE_READ	
+SDL_ANDROID_EXTERNAL_STORAGE_WRITE	nodesnim/thirdparty/sdl2.html#SDL_ANDROID_EXTERNAL_STORAGE_WRITE	sdl2: SDL_ANDROID_EXTERNAL_STORAGE_WRITE	
+getWMInfo	nodesnim/thirdparty/sdl2.html#getWMInfo,WindowPtr,WMinfo	sdl2: getWMInfo(window: WindowPtr; info: var WMinfo): Bool32	
+setLogicalSize	nodesnim/thirdparty/sdl2.html#setLogicalSize,RendererPtr,cint,cint	sdl2: setLogicalSize(renderer: RendererPtr; w, h: cint): cint	
+getLogicalSize	nodesnim/thirdparty/sdl2.html#getLogicalSize,RendererPtr,cint,cint	sdl2: getLogicalSize(renderer: RendererPtr; w, h: var cint)	
+setDrawColor	nodesnim/thirdparty/sdl2.html#setDrawColor,RendererPtr,uint8,uint8,uint8,uint8	sdl2: setDrawColor(renderer: RendererPtr; r, g, b: uint8; a = 255&apos;u8): SDL_Return	
+setDrawColor	nodesnim/thirdparty/sdl2.html#setDrawColor,RendererPtr,Color	sdl2: setDrawColor(renderer: RendererPtr; c: Color)	
+getDrawColor	nodesnim/thirdparty/sdl2.html#getDrawColor,RendererPtr,uint8,uint8,uint8,uint8	sdl2: getDrawColor(renderer: RendererPtr; r, g, b, a: var uint8): SDL_Return	
+setDrawBlendMode	nodesnim/thirdparty/sdl2.html#setDrawBlendMode,RendererPtr,BlendMode	sdl2: setDrawBlendMode(renderer: RendererPtr; blendMode: BlendMode): SDL_Return	
+getDrawBlendMode	nodesnim/thirdparty/sdl2.html#getDrawBlendMode,RendererPtr,BlendMode	sdl2: getDrawBlendMode(renderer: RendererPtr; blendMode: var BlendMode): SDL_Return	
+destroy	nodesnim/thirdparty/sdl2.html#destroy,TexturePtr	sdl2: destroy(texture: TexturePtr)	
+destroy	nodesnim/thirdparty/sdl2.html#destroy,RendererPtr	sdl2: destroy(renderer: RendererPtr)	
+getDisplayIndex	nodesnim/thirdparty/sdl2.html#getDisplayIndex,WindowPtr	sdl2: getDisplayIndex(window: WindowPtr): cint	
+setDisplayMode	nodesnim/thirdparty/sdl2.html#setDisplayMode,WindowPtr,ptr.DisplayMode	sdl2: setDisplayMode(window: WindowPtr; mode: ptr DisplayMode): SDL_Return	
+getDisplayMode	nodesnim/thirdparty/sdl2.html#getDisplayMode,WindowPtr,DisplayMode	sdl2: getDisplayMode(window: WindowPtr; mode: var DisplayMode): cint	
+getPixelFormat	nodesnim/thirdparty/sdl2.html#getPixelFormat,WindowPtr	sdl2: getPixelFormat(window: WindowPtr): uint32	
+getID	nodesnim/thirdparty/sdl2.html#getID,WindowPtr	sdl2: getID(window: WindowPtr): uint32	
+getFlags	nodesnim/thirdparty/sdl2.html#getFlags,WindowPtr	sdl2: getFlags(window: WindowPtr): uint32	
+setTitle	nodesnim/thirdparty/sdl2.html#setTitle,WindowPtr,cstring	sdl2: setTitle(window: WindowPtr; title: cstring)	
+getTitle	nodesnim/thirdparty/sdl2.html#getTitle,WindowPtr	sdl2: getTitle(window: WindowPtr): cstring	
+setIcon	nodesnim/thirdparty/sdl2.html#setIcon,WindowPtr,SurfacePtr	sdl2: setIcon(window: WindowPtr; icon: SurfacePtr)	
+setData	nodesnim/thirdparty/sdl2.html#setData,WindowPtr,cstring,pointer	sdl2: setData(window: WindowPtr; name: cstring; userdata: pointer): pointer	
+getData	nodesnim/thirdparty/sdl2.html#getData,WindowPtr,cstring	sdl2: getData(window: WindowPtr; name: cstring): pointer	
+setPosition	nodesnim/thirdparty/sdl2.html#setPosition,WindowPtr,cint,cint	sdl2: setPosition(window: WindowPtr; x, y: cint)	
+getPosition	nodesnim/thirdparty/sdl2.html#getPosition,WindowPtr,cint,cint	sdl2: getPosition(window: WindowPtr; x, y: var cint)	
+setSize	nodesnim/thirdparty/sdl2.html#setSize,WindowPtr,cint,cint	sdl2: setSize(window: WindowPtr; w, h: cint)	
+getSize	nodesnim/thirdparty/sdl2.html#getSize,WindowPtr,cint,cint	sdl2: getSize(window: WindowPtr; w, h: var cint)	
+setBordered	nodesnim/thirdparty/sdl2.html#setBordered,WindowPtr,Bool32	sdl2: setBordered(window: WindowPtr; bordered: Bool32)	
+setFullscreen	nodesnim/thirdparty/sdl2.html#setFullscreen,WindowPtr,uint32	sdl2: setFullscreen(window: WindowPtr; fullscreen: uint32): SDL_Return	
+getSurface	nodesnim/thirdparty/sdl2.html#getSurface,WindowPtr	sdl2: getSurface(window: WindowPtr): SurfacePtr	
+updateSurface	nodesnim/thirdparty/sdl2.html#updateSurface,WindowPtr	sdl2: updateSurface(window: WindowPtr): SDL_Return	
+updateSurfaceRects	nodesnim/thirdparty/sdl2.html#updateSurfaceRects,WindowPtr,ptr.Rect,cint	sdl2: updateSurfaceRects(window: WindowPtr; rects: ptr Rect; numrects: cint): SDL_Return	
+setGrab	nodesnim/thirdparty/sdl2.html#setGrab,WindowPtr,Bool32	sdl2: setGrab(window: WindowPtr; grabbed: Bool32)	
+getGrab	nodesnim/thirdparty/sdl2.html#getGrab,WindowPtr	sdl2: getGrab(window: WindowPtr): Bool32	
+setBrightness	nodesnim/thirdparty/sdl2.html#setBrightness,WindowPtr,cfloat	sdl2: setBrightness(window: WindowPtr; brightness: cfloat): SDL_Return	
+getBrightness	nodesnim/thirdparty/sdl2.html#getBrightness,WindowPtr	sdl2: getBrightness(window: WindowPtr): cfloat	
+setGammaRamp	nodesnim/thirdparty/sdl2.html#setGammaRamp,WindowPtr,ptr.uint16,ptr.uint16,ptr.uint16	sdl2: setGammaRamp(window: WindowPtr; red, green, blue: ptr uint16): SDL_Return	
+getGammaRamp	nodesnim/thirdparty/sdl2.html#getGammaRamp,WindowPtr,ptr.uint16,ptr.uint16,ptr.uint16	sdl2: getGammaRamp(window: WindowPtr; red: ptr uint16; green: ptr uint16; blue: ptr uint16): cint	
+init	nodesnim/thirdparty/sdl2.html#init,cint	sdl2: init(flags: cint): SDL_Return	
+initSubSystem	nodesnim/thirdparty/sdl2.html#initSubSystem,uint32	sdl2: initSubSystem(flags: uint32): cint	
+quitSubSystem	nodesnim/thirdparty/sdl2.html#quitSubSystem,uint32	sdl2: quitSubSystem(flags: uint32)	
+wasInit	nodesnim/thirdparty/sdl2.html#wasInit,uint32	sdl2: wasInit(flags: uint32): uint32	
+quit	nodesnim/thirdparty/sdl2.html#quit	sdl2: quit()	
+getPlatform	nodesnim/thirdparty/sdl2.html#getPlatform	sdl2: getPlatform(): cstring	
+getVersion	nodesnim/thirdparty/sdl2.html#getVersion,SDL_Version	sdl2: getVersion(ver: var SDL_Version)	
+getRevision	nodesnim/thirdparty/sdl2.html#getRevision	sdl2: getRevision(): cstring	
+getRevisionNumber	nodesnim/thirdparty/sdl2.html#getRevisionNumber	sdl2: getRevisionNumber(): cint	
+getBasePath	nodesnim/thirdparty/sdl2.html#getBasePath	sdl2: getBasePath(): cstring	
+getPrefPath	nodesnim/thirdparty/sdl2.html#getPrefPath,cstring,cstring	sdl2: getPrefPath(org, app: cstring): cstring	
+getNumRenderDrivers	nodesnim/thirdparty/sdl2.html#getNumRenderDrivers	sdl2: getNumRenderDrivers(): cint	
+getRenderDriverInfo	nodesnim/thirdparty/sdl2.html#getRenderDriverInfo,cint,RendererInfo	sdl2: getRenderDriverInfo(index: cint; info: var RendererInfo): SDL_Return	
+createWindowAndRenderer	nodesnim/thirdparty/sdl2.html#createWindowAndRenderer,cint,cint,uint32,WindowPtr,RendererPtr	sdl2: createWindowAndRenderer(width, height: cint; window_flags: uint32;\n                        window: var WindowPtr; renderer: var RendererPtr): SDL_Return	
+createRenderer	nodesnim/thirdparty/sdl2.html#createRenderer,WindowPtr,cint,cint	sdl2: createRenderer(window: WindowPtr; index: cint; flags: cint): RendererPtr	
+createSoftwareRenderer	nodesnim/thirdparty/sdl2.html#createSoftwareRenderer,SurfacePtr	sdl2: createSoftwareRenderer(surface: SurfacePtr): RendererPtr	
+getRenderer	nodesnim/thirdparty/sdl2.html#getRenderer,WindowPtr	sdl2: getRenderer(window: WindowPtr): RendererPtr	
+getRendererInfo	nodesnim/thirdparty/sdl2.html#getRendererInfo,RendererPtr,RendererInfoPtr	sdl2: getRendererInfo(renderer: RendererPtr; info: RendererInfoPtr): cint	
+getRendererOutputSize	nodesnim/thirdparty/sdl2.html#getRendererOutputSize,RendererPtr,ptr.cint,ptr.cint	sdl2: getRendererOutputSize(renderer: RendererPtr; w: ptr cint; h: ptr cint): cint	
+createTexture	nodesnim/thirdparty/sdl2.html#createTexture,RendererPtr,uint32,cint,cint,cint	sdl2: createTexture(renderer: RendererPtr; format: uint32; access, w, h: cint): TexturePtr	
+createTextureFromSurface	nodesnim/thirdparty/sdl2.html#createTextureFromSurface,RendererPtr,SurfacePtr	sdl2: createTextureFromSurface(renderer: RendererPtr; surface: SurfacePtr): TexturePtr	
+createTexture	nodesnim/thirdparty/sdl2.html#createTexture,RendererPtr,SurfacePtr	sdl2: createTexture(renderer: RendererPtr; surface: SurfacePtr): TexturePtr	
+queryTexture	nodesnim/thirdparty/sdl2.html#queryTexture,TexturePtr,ptr.uint32,ptr.cint,ptr.cint,ptr.cint	sdl2: queryTexture(texture: TexturePtr; format: ptr uint32; access, w, h: ptr cint): SDL_Return	
+setTextureColorMod	nodesnim/thirdparty/sdl2.html#setTextureColorMod,TexturePtr,uint8,uint8,uint8	sdl2: setTextureColorMod(texture: TexturePtr; r, g, b: uint8): SDL_Return	
+getTextureColorMod	nodesnim/thirdparty/sdl2.html#getTextureColorMod,TexturePtr,uint8,uint8,uint8	sdl2: getTextureColorMod(texture: TexturePtr; r, g, b: var uint8): SDL_Return	
+setTextureAlphaMod	nodesnim/thirdparty/sdl2.html#setTextureAlphaMod,TexturePtr,uint8	sdl2: setTextureAlphaMod(texture: TexturePtr; alpha: uint8): SDL_Return	
+getTextureAlphaMod	nodesnim/thirdparty/sdl2.html#getTextureAlphaMod,TexturePtr,uint8	sdl2: getTextureAlphaMod(texture: TexturePtr; alpha: var uint8): SDL_Return	
+setTextureBlendMode	nodesnim/thirdparty/sdl2.html#setTextureBlendMode,TexturePtr,BlendMode	sdl2: setTextureBlendMode(texture: TexturePtr; blendMode: BlendMode): SDL_Return	
+getTextureBlendMode	nodesnim/thirdparty/sdl2.html#getTextureBlendMode,TexturePtr,BlendMode	sdl2: getTextureBlendMode(texture: TexturePtr; blendMode: var BlendMode): SDL_Return	
+updateTexture	nodesnim/thirdparty/sdl2.html#updateTexture,TexturePtr,ptr.Rect,pointer,cint	sdl2: updateTexture(texture: TexturePtr; rect: ptr Rect; pixels: pointer; pitch: cint): SDL_Return	
+lockTexture	nodesnim/thirdparty/sdl2.html#lockTexture,TexturePtr,ptr.Rect,ptr.pointer,ptr.cint	sdl2: lockTexture(texture: TexturePtr; rect: ptr Rect; pixels: ptr pointer; pitch: ptr cint): SDL_Return	
+unlockTexture	nodesnim/thirdparty/sdl2.html#unlockTexture,TexturePtr	sdl2: unlockTexture(texture: TexturePtr)	
+renderTargetSupported	nodesnim/thirdparty/sdl2.html#renderTargetSupported,RendererPtr	sdl2: renderTargetSupported(renderer: RendererPtr): Bool32	
+setRenderTarget	nodesnim/thirdparty/sdl2.html#setRenderTarget,RendererPtr,TexturePtr	sdl2: setRenderTarget(renderer: RendererPtr; texture: TexturePtr): SDL_Return	
+getRenderTarget	nodesnim/thirdparty/sdl2.html#getRenderTarget,RendererPtr	sdl2: getRenderTarget(renderer: RendererPtr): TexturePtr	
+setViewport	nodesnim/thirdparty/sdl2.html#setViewport,RendererPtr,ptr.Rect	sdl2: setViewport(renderer: RendererPtr; rect: ptr Rect): SDL_Return	
+getViewport	nodesnim/thirdparty/sdl2.html#getViewport,RendererPtr,Rect	sdl2: getViewport(renderer: RendererPtr; rect: var Rect)	
+setScale	nodesnim/thirdparty/sdl2.html#setScale,RendererPtr,cfloat,cfloat	sdl2: setScale(renderer: RendererPtr; scaleX, scaleY: cfloat): SDL_Return	
+getScale	nodesnim/thirdparty/sdl2.html#getScale,RendererPtr,cfloat,cfloat	sdl2: getScale(renderer: RendererPtr; scaleX, scaleY: var cfloat)	
+drawPoint	nodesnim/thirdparty/sdl2.html#drawPoint,RendererPtr,cint,cint	sdl2: drawPoint(renderer: RendererPtr; x, y: cint): SDL_Return	
+drawPoints	nodesnim/thirdparty/sdl2.html#drawPoints,RendererPtr,ptr.Point,cint	sdl2: drawPoints(renderer: RendererPtr; points: ptr Point; count: cint): SDL_Return	
+drawLine	nodesnim/thirdparty/sdl2.html#drawLine,RendererPtr,cint,cint,cint,cint	sdl2: drawLine(renderer: RendererPtr; x1, y1, x2, y2: cint): SDL_Return	
+drawLines	nodesnim/thirdparty/sdl2.html#drawLines,RendererPtr,ptr.Point,cint	sdl2: drawLines(renderer: RendererPtr; points: ptr Point; count: cint): SDL_Return	
+drawRect	nodesnim/thirdparty/sdl2.html#drawRect,RendererPtr,Rect	sdl2: drawRect(renderer: RendererPtr; rect: var Rect): SDL_Return	
+drawRect	nodesnim/thirdparty/sdl2.html#drawRect,RendererPtr,ptr.Rect	sdl2: drawRect(renderer: RendererPtr; rect: ptr Rect = nil): SDL_Return	
+drawRects	nodesnim/thirdparty/sdl2.html#drawRects,RendererPtr,ptr.Rect,cint	sdl2: drawRects(renderer: RendererPtr; rects: ptr Rect; count: cint): SDL_Return	
+fillRect	nodesnim/thirdparty/sdl2.html#fillRect,RendererPtr,Rect	sdl2: fillRect(renderer: RendererPtr; rect: var Rect): SDL_Return	
+fillRect	nodesnim/thirdparty/sdl2.html#fillRect,RendererPtr,ptr.Rect	sdl2: fillRect(renderer: RendererPtr; rect: ptr Rect = nil): SDL_Return	
+fillRects	nodesnim/thirdparty/sdl2.html#fillRects,RendererPtr,ptr.Rect,cint	sdl2: fillRects(renderer: RendererPtr; rects: ptr Rect; count: cint): SDL_Return	
+copy	nodesnim/thirdparty/sdl2.html#copy,RendererPtr,TexturePtr,ptr.Rect,ptr.Rect	sdl2: copy(renderer: RendererPtr; texture: TexturePtr; srcrect, dstrect: ptr Rect): SDL_Return	
+copyEx	nodesnim/thirdparty/sdl2.html#copyEx,RendererPtr,TexturePtr,Rect,Rect,cdouble,ptr.Point,RendererFlip	sdl2: copyEx(renderer: RendererPtr; texture: TexturePtr; srcrect, dstrect: var Rect;\n       angle: cdouble; center: ptr Point; flip: RendererFlip = SDL_FLIP_NONE): SDL_Return	
+copyEx	nodesnim/thirdparty/sdl2.html#copyEx,RendererPtr,TexturePtr,ptr.Rect,ptr.Rect,cdouble,ptr.Point,RendererFlip	sdl2: copyEx(renderer: RendererPtr; texture: TexturePtr; srcrect, dstrect: ptr Rect;\n       angle: cdouble; center: ptr Point; flip: RendererFlip = SDL_FLIP_NONE): SDL_Return	
+clear	nodesnim/thirdparty/sdl2.html#clear,RendererPtr	sdl2: clear(renderer: RendererPtr): cint	
+readPixels	nodesnim/thirdparty/sdl2.html#readPixels,RendererPtr,Rect,cint,pointer,cint	sdl2: readPixels(renderer: RendererPtr; rect: var Rect; format: cint; pixels: pointer;\n           pitch: cint): cint	
+readPixels	nodesnim/thirdparty/sdl2.html#readPixels,RendererPtr,ptr.Rect,cint,pointer,cint	sdl2: readPixels(renderer: RendererPtr; rect: ptr Rect; format: cint; pixels: pointer;\n           pitch: cint): cint	
+present	nodesnim/thirdparty/sdl2.html#present,RendererPtr	sdl2: present(renderer: RendererPtr)	
+glBindTexture	nodesnim/thirdparty/sdl2.html#glBindTexture,TexturePtr,cfloat,cfloat	sdl2: glBindTexture(texture: TexturePtr; texw, texh: var cfloat): cint	
+glUnbindTexture	nodesnim/thirdparty/sdl2.html#glUnbindTexture,TexturePtr	sdl2: glUnbindTexture(texture: TexturePtr)	
+createRGBSurface	nodesnim/thirdparty/sdl2.html#createRGBSurface,cint,cint,cint,cint,uint32,uint32,uint32,uint32	sdl2: createRGBSurface(flags: cint; width, height, depth: cint;\n                 Rmask, Gmask, BMask, Amask: uint32): SurfacePtr	
+createRGBSurfaceFrom	nodesnim/thirdparty/sdl2.html#createRGBSurfaceFrom,pointer,cint,cint,cint,cint,uint32,uint32,uint32,uint32	sdl2: createRGBSurfaceFrom(pixels: pointer; width, height, depth, pitch: cint;\n                     Rmask, Gmask, Bmask, Amask: uint32): SurfacePtr	
+freeSurface	nodesnim/thirdparty/sdl2.html#freeSurface,SurfacePtr	sdl2: freeSurface(surface: SurfacePtr)	
+setSurfacePalette	nodesnim/thirdparty/sdl2.html#setSurfacePalette,SurfacePtr,ptr.Palette	sdl2: setSurfacePalette(surface: SurfacePtr; palette: ptr Palette): cint	
+lockSurface	nodesnim/thirdparty/sdl2.html#lockSurface,SurfacePtr	sdl2: lockSurface(surface: SurfacePtr): cint	
+unlockSurface	nodesnim/thirdparty/sdl2.html#unlockSurface,SurfacePtr	sdl2: unlockSurface(surface: SurfacePtr)	
+loadBMP_RW	nodesnim/thirdparty/sdl2.html#loadBMP_RW,RWopsPtr,cint	sdl2: loadBMP_RW(src: RWopsPtr; freesrc: cint): SurfacePtr	
+rwFromFile	nodesnim/thirdparty/sdl2.html#rwFromFile,cstring,cstring	sdl2: rwFromFile(file: cstring; mode: cstring): RWopsPtr	
+rwFromFP	nodesnim/thirdparty/sdl2.html#rwFromFP,File,Bool32	sdl2: rwFromFP(fp: File; autoclose: Bool32): RWopsPtr	
+rwFromMem	nodesnim/thirdparty/sdl2.html#rwFromMem,pointer,cint	sdl2: rwFromMem(mem: pointer; size: cint): RWopsPtr	
+rwFromConstMem	nodesnim/thirdparty/sdl2.html#rwFromConstMem,pointer,cint	sdl2: rwFromConstMem(mem: pointer; size: cint): RWopsPtr	
+allocRW	nodesnim/thirdparty/sdl2.html#allocRW	sdl2: allocRW(): RWopsPtr	
+freeRW	nodesnim/thirdparty/sdl2.html#freeRW,RWopsPtr	sdl2: freeRW(area: RWopsPtr)	
+saveBMP_RW	nodesnim/thirdparty/sdl2.html#saveBMP_RW,SurfacePtr,RWopsPtr,cint	sdl2: saveBMP_RW(surface: SurfacePtr; dst: RWopsPtr; freedst: cint): SDL_Return	
+setSurfaceRLE	nodesnim/thirdparty/sdl2.html#setSurfaceRLE,SurfacePtr,cint	sdl2: setSurfaceRLE(surface: SurfacePtr; flag: cint): cint	
+setColorKey	nodesnim/thirdparty/sdl2.html#setColorKey,SurfacePtr,cint,uint32	sdl2: setColorKey(surface: SurfacePtr; flag: cint; key: uint32): cint	
+getColorKey	nodesnim/thirdparty/sdl2.html#getColorKey,SurfacePtr,uint32	sdl2: getColorKey(surface: SurfacePtr; key: var uint32): cint	
+setSurfaceColorMod	nodesnim/thirdparty/sdl2.html#setSurfaceColorMod,SurfacePtr,uint8,uint8,uint8	sdl2: setSurfaceColorMod(surface: SurfacePtr; r, g, b: uint8): cint	
+getSurfaceColorMod	nodesnim/thirdparty/sdl2.html#getSurfaceColorMod,SurfacePtr,uint8,uint8,uint8	sdl2: getSurfaceColorMod(surface: SurfacePtr; r, g, b: var uint8): cint	
+setSurfaceAlphaMod	nodesnim/thirdparty/sdl2.html#setSurfaceAlphaMod,SurfacePtr,uint8	sdl2: setSurfaceAlphaMod(surface: SurfacePtr; alpha: uint8): cint	
+getSurfaceAlphaMod	nodesnim/thirdparty/sdl2.html#getSurfaceAlphaMod,SurfacePtr,uint8	sdl2: getSurfaceAlphaMod(surface: SurfacePtr; alpha: var uint8): cint	
+setSurfaceBlendMode	nodesnim/thirdparty/sdl2.html#setSurfaceBlendMode,SurfacePtr,BlendMode	sdl2: setSurfaceBlendMode(surface: SurfacePtr; blendMode: BlendMode): cint	
+getSurfaceBlendMode	nodesnim/thirdparty/sdl2.html#getSurfaceBlendMode,SurfacePtr,ptr.BlendMode	sdl2: getSurfaceBlendMode(surface: SurfacePtr; blendMode: ptr BlendMode): cint	
+setClipRect	nodesnim/thirdparty/sdl2.html#setClipRect,SurfacePtr,ptr.Rect	sdl2: setClipRect(surface: SurfacePtr; rect: ptr Rect): Bool32	
+getClipRect	nodesnim/thirdparty/sdl2.html#getClipRect,SurfacePtr,ptr.Rect	sdl2: getClipRect(surface: SurfacePtr; rect: ptr Rect)	
+setClipRect	nodesnim/thirdparty/sdl2.html#setClipRect,RendererPtr,ptr.Rect	sdl2: setClipRect(renderer: RendererPtr; rect: ptr Rect): cint	
+getClipRect	nodesnim/thirdparty/sdl2.html#getClipRect,RendererPtr,ptr.Rect	sdl2: getClipRect(renderer: RendererPtr; rect: ptr Rect): cint	
+isClipEnabled	nodesnim/thirdparty/sdl2.html#isClipEnabled,RendererPtr	sdl2: isClipEnabled(renderer: RendererPtr): cint	
+convertSurface	nodesnim/thirdparty/sdl2.html#convertSurface,SurfacePtr,ptr.PixelFormat,cint	sdl2: convertSurface(src: SurfacePtr; fmt: ptr PixelFormat; flags: cint): SurfacePtr	
+convertSurfaceFormat	nodesnim/thirdparty/sdl2.html#convertSurfaceFormat,SurfacePtr,uint32,uint32	sdl2: convertSurfaceFormat(src: SurfacePtr; pixel_format, flags: uint32): SurfacePtr	
+convertPixels	nodesnim/thirdparty/sdl2.html#convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint	sdl2: convertPixels(width, height: cint; src_format: uint32; src: pointer; src_pitch: cint;\n              dst_format: uint32; dst: pointer; dst_pitch: cint): cint	
+fillRect	nodesnim/thirdparty/sdl2.html#fillRect,SurfacePtr,ptr.Rect,uint32	sdl2: fillRect(dst: SurfacePtr; rect: ptr Rect; color: uint32): SDL_Return	
+fillRects	nodesnim/thirdparty/sdl2.html#fillRects,SurfacePtr,ptr.Rect,cint,uint32	sdl2: fillRects(dst: SurfacePtr; rects: ptr Rect; count: cint; color: uint32): cint	
+upperBlit	nodesnim/thirdparty/sdl2.html#upperBlit,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: upperBlit(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+lowerBlit	nodesnim/thirdparty/sdl2.html#lowerBlit,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: lowerBlit(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+softStretch	nodesnim/thirdparty/sdl2.html#softStretch,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: softStretch(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+upperBlitScaled	nodesnim/thirdparty/sdl2.html#upperBlitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: upperBlitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+lowerBlitScaled	nodesnim/thirdparty/sdl2.html#lowerBlitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: lowerBlitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+readU8	nodesnim/thirdparty/sdl2.html#readU8,RWopsPtr	sdl2: readU8(src: RWopsPtr): uint8	
+readLE16	nodesnim/thirdparty/sdl2.html#readLE16,RWopsPtr	sdl2: readLE16(src: RWopsPtr): uint16	
+readBE16	nodesnim/thirdparty/sdl2.html#readBE16,RWopsPtr	sdl2: readBE16(src: RWopsPtr): uint16	
+readLE32	nodesnim/thirdparty/sdl2.html#readLE32,RWopsPtr	sdl2: readLE32(src: RWopsPtr): uint32	
+readBE32	nodesnim/thirdparty/sdl2.html#readBE32,RWopsPtr	sdl2: readBE32(src: RWopsPtr): uint32	
+readLE64	nodesnim/thirdparty/sdl2.html#readLE64,RWopsPtr	sdl2: readLE64(src: RWopsPtr): uint64	
+readBE64	nodesnim/thirdparty/sdl2.html#readBE64,RWopsPtr	sdl2: readBE64(src: RWopsPtr): uint64	
+writeU8	nodesnim/thirdparty/sdl2.html#writeU8,RWopsPtr,uint8	sdl2: writeU8(dst: RWopsPtr; value: uint8): csize_t	
+writeLE16	nodesnim/thirdparty/sdl2.html#writeLE16,RWopsPtr,uint16	sdl2: writeLE16(dst: RWopsPtr; value: uint16): csize_t	
+writeBE16	nodesnim/thirdparty/sdl2.html#writeBE16,RWopsPtr,uint16	sdl2: writeBE16(dst: RWopsPtr; value: uint16): csize_t	
+writeLE32	nodesnim/thirdparty/sdl2.html#writeLE32,RWopsPtr,uint32	sdl2: writeLE32(dst: RWopsPtr; value: uint32): csize_t	
+writeBE32	nodesnim/thirdparty/sdl2.html#writeBE32,RWopsPtr,uint32	sdl2: writeBE32(dst: RWopsPtr; value: uint32): csize_t	
+writeLE64	nodesnim/thirdparty/sdl2.html#writeLE64,RWopsPtr,uint64	sdl2: writeLE64(dst: RWopsPtr; value: uint64): csize_t	
+writeBE64	nodesnim/thirdparty/sdl2.html#writeBE64,RWopsPtr,uint64	sdl2: writeBE64(dst: RWopsPtr; value: uint64): csize_t	
+showMessageBox	nodesnim/thirdparty/sdl2.html#showMessageBox,ptr.MessageBoxData,cint	sdl2: showMessageBox(messageboxdata: ptr MessageBoxData; buttonid: var cint): cint	
+showSimpleMessageBox	nodesnim/thirdparty/sdl2.html#showSimpleMessageBox,uint32,cstring,cstring,WindowPtr	sdl2: showSimpleMessageBox(flags: uint32; title, message: cstring; window: WindowPtr): cint	
+getNumVideoDrivers	nodesnim/thirdparty/sdl2.html#getNumVideoDrivers	sdl2: getNumVideoDrivers(): cint	
+getVideoDriver	nodesnim/thirdparty/sdl2.html#getVideoDriver,cint	sdl2: getVideoDriver(index: cint): cstring	
+videoInit	nodesnim/thirdparty/sdl2.html#videoInit,cstring	sdl2: videoInit(driver_name: cstring): SDL_Return	
+videoQuit	nodesnim/thirdparty/sdl2.html#videoQuit	sdl2: videoQuit()	
+getCurrentVideoDriver	nodesnim/thirdparty/sdl2.html#getCurrentVideoDriver	sdl2: getCurrentVideoDriver(): cstring	
+getNumVideoDisplays	nodesnim/thirdparty/sdl2.html#getNumVideoDisplays	sdl2: getNumVideoDisplays(): cint	
+getDisplayBounds	nodesnim/thirdparty/sdl2.html#getDisplayBounds,cint,Rect	sdl2: getDisplayBounds(displayIndex: cint; rect: var Rect): SDL_Return	
+getNumDisplayModes	nodesnim/thirdparty/sdl2.html#getNumDisplayModes,cint	sdl2: getNumDisplayModes(displayIndex: cint): cint	
+getDisplayMode	nodesnim/thirdparty/sdl2.html#getDisplayMode,cint,cint,DisplayMode	sdl2: getDisplayMode(displayIndex: cint; modeIndex: cint; mode: var DisplayMode): SDL_Return	
+getDesktopDisplayMode	nodesnim/thirdparty/sdl2.html#getDesktopDisplayMode,cint,DisplayMode	sdl2: getDesktopDisplayMode(displayIndex: cint; mode: var DisplayMode): SDL_Return	
+getCurrentDisplayMode	nodesnim/thirdparty/sdl2.html#getCurrentDisplayMode,cint,DisplayMode	sdl2: getCurrentDisplayMode(displayIndex: cint; mode: var DisplayMode): SDL_Return	
+getClosestDisplayMode	nodesnim/thirdparty/sdl2.html#getClosestDisplayMode,cint,ptr.DisplayMode,ptr.DisplayMode	sdl2: getClosestDisplayMode(displayIndex: cint; mode: ptr DisplayMode;\n                      closest: ptr DisplayMode): ptr DisplayMode	
+getDisplayDPI	nodesnim/thirdparty/sdl2.html#getDisplayDPI,cint,ptr.cfloat,ptr.cfloat,ptr.cfloat	sdl2: getDisplayDPI(displayIndex: cint; ddpi, hdpi, vdpi: ptr cfloat): SDL_Return	
+createWindow	nodesnim/thirdparty/sdl2.html#createWindow,cstring,cint,cint,cint,cint,uint32	sdl2: createWindow(title: cstring; x, y, w, h: cint; flags: uint32): WindowPtr	
+createWindowFrom	nodesnim/thirdparty/sdl2.html#createWindowFrom,pointer	sdl2: createWindowFrom(data: pointer): WindowPtr	
+getWindowFromID	nodesnim/thirdparty/sdl2.html#getWindowFromID,uint32	sdl2: getWindowFromID(id: uint32): WindowPtr	
+showWindow	nodesnim/thirdparty/sdl2.html#showWindow,WindowPtr	sdl2: showWindow(window: WindowPtr)	
+hideWindow	nodesnim/thirdparty/sdl2.html#hideWindow,WindowPtr	sdl2: hideWindow(window: WindowPtr)	
+raiseWindow	nodesnim/thirdparty/sdl2.html#raiseWindow,WindowPtr	sdl2: raiseWindow(window: WindowPtr)	
+maximizeWindow	nodesnim/thirdparty/sdl2.html#maximizeWindow,WindowPtr	sdl2: maximizeWindow(window: WindowPtr)	
+minimizeWindow	nodesnim/thirdparty/sdl2.html#minimizeWindow,WindowPtr	sdl2: minimizeWindow(window: WindowPtr)	
+restoreWindow	nodesnim/thirdparty/sdl2.html#restoreWindow,WindowPtr	sdl2: restoreWindow(window: WindowPtr)	
+destroyWindow	nodesnim/thirdparty/sdl2.html#destroyWindow,WindowPtr	sdl2: destroyWindow(window: WindowPtr)	
+isScreenSaverEnabled	nodesnim/thirdparty/sdl2.html#isScreenSaverEnabled	sdl2: isScreenSaverEnabled(): Bool32	
+enableScreenSaver	nodesnim/thirdparty/sdl2.html#enableScreenSaver	sdl2: enableScreenSaver()	
+disableScreenSaver	nodesnim/thirdparty/sdl2.html#disableScreenSaver	sdl2: disableScreenSaver()	
+getTicks	nodesnim/thirdparty/sdl2.html#getTicks	sdl2: getTicks(): uint32	
+getPerformanceCounter	nodesnim/thirdparty/sdl2.html#getPerformanceCounter	sdl2: getPerformanceCounter(): uint64	
+getPerformanceFrequency	nodesnim/thirdparty/sdl2.html#getPerformanceFrequency	sdl2: getPerformanceFrequency(): uint64	
+delay	nodesnim/thirdparty/sdl2.html#delay,uint32	sdl2: delay(ms: uint32)	
+addTimer	nodesnim/thirdparty/sdl2.html#addTimer,uint32,TimerCallback,pointer	sdl2: addTimer(interval: uint32; callback: TimerCallback; param: pointer): TimerID	
+removeTimer	nodesnim/thirdparty/sdl2.html#removeTimer,TimerID	sdl2: removeTimer(id: TimerID): Bool32	
+glLoadLibrary	nodesnim/thirdparty/sdl2.html#glLoadLibrary,cstring	sdl2: glLoadLibrary(path: cstring): SDL_Return	
+glGetProcAddress	nodesnim/thirdparty/sdl2.html#glGetProcAddress,cstring	sdl2: glGetProcAddress(procedure: cstring): pointer	
+glUnloadLibrary	nodesnim/thirdparty/sdl2.html#glUnloadLibrary	sdl2: glUnloadLibrary()	
+glExtensionSupported	nodesnim/thirdparty/sdl2.html#glExtensionSupported,cstring	sdl2: glExtensionSupported(extension: cstring): bool	
+glSetAttribute	nodesnim/thirdparty/sdl2.html#glSetAttribute,GLattr,cint	sdl2: glSetAttribute(attr: GLattr; value: cint): cint	
+glGetAttribute	nodesnim/thirdparty/sdl2.html#glGetAttribute,GLattr,cint	sdl2: glGetAttribute(attr: GLattr; value: var cint): cint	
+glCreateContext	nodesnim/thirdparty/sdl2.html#glCreateContext,WindowPtr	sdl2: glCreateContext(window: WindowPtr): GlContextPtr	
+glMakeCurrent	nodesnim/thirdparty/sdl2.html#glMakeCurrent,WindowPtr,GlContextPtr	sdl2: glMakeCurrent(window: WindowPtr; context: GlContextPtr): cint	
+glGetCurrentWindow	nodesnim/thirdparty/sdl2.html#glGetCurrentWindow	sdl2: glGetCurrentWindow(): WindowPtr	
+glGetCurrentContext	nodesnim/thirdparty/sdl2.html#glGetCurrentContext	sdl2: glGetCurrentContext(): GlContextPtr	
+glGetDrawableSize	nodesnim/thirdparty/sdl2.html#glGetDrawableSize,WindowPtr,cint,cint	sdl2: glGetDrawableSize(window: WindowPtr; w, h: var cint)	
+glSetSwapInterval	nodesnim/thirdparty/sdl2.html#glSetSwapInterval,cint	sdl2: glSetSwapInterval(interval: cint): cint	
+glGetSwapInterval	nodesnim/thirdparty/sdl2.html#glGetSwapInterval	sdl2: glGetSwapInterval(): cint	
+glSwapWindow	nodesnim/thirdparty/sdl2.html#glSwapWindow,WindowPtr	sdl2: glSwapWindow(window: WindowPtr)	
+glDeleteContext	nodesnim/thirdparty/sdl2.html#glDeleteContext,GlContextPtr	sdl2: glDeleteContext(context: GlContextPtr)	
+VulkanInstance	nodesnim/thirdparty/sdl2.html#VulkanInstance	sdl2: VulkanInstance	
+VulkanSurface	nodesnim/thirdparty/sdl2.html#VulkanSurface	sdl2: VulkanSurface	
+vulkanLoadLibrary	nodesnim/thirdparty/sdl2.html#vulkanLoadLibrary,cstring	sdl2: vulkanLoadLibrary(path: cstring): cint	
+vulkanGetVkGetInstanceProcAddr	nodesnim/thirdparty/sdl2.html#vulkanGetVkGetInstanceProcAddr	sdl2: vulkanGetVkGetInstanceProcAddr(): pointer	
+vulkanUnloadLibrary	nodesnim/thirdparty/sdl2.html#vulkanUnloadLibrary	sdl2: vulkanUnloadLibrary()	
+vulkanGetInstanceExtensions	nodesnim/thirdparty/sdl2.html#vulkanGetInstanceExtensions,WindowPtr,ptr.cuint,cstringArray	sdl2: vulkanGetInstanceExtensions(window: WindowPtr; pCount: ptr cuint;\n                            pNames: cstringArray): Bool32	
+vulkanCreateSurface	nodesnim/thirdparty/sdl2.html#vulkanCreateSurface,WindowPtr,VulkanInstance,ptr.VulkanSurface	sdl2: vulkanCreateSurface(window: WindowPtr; instance: VulkanInstance;\n                    surface: ptr VulkanSurface): Bool32	
+vulkanGetDrawableSize	nodesnim/thirdparty/sdl2.html#vulkanGetDrawableSize,WindowPtr,ptr.cint,ptr.cint	sdl2: vulkanGetDrawableSize(window: WindowPtr; w, h: ptr cint)	
+getKeyboardFocus	nodesnim/thirdparty/sdl2.html#getKeyboardFocus	sdl2: getKeyboardFocus(): WindowPtr	
+getKeyboardState	nodesnim/thirdparty/sdl2.html#getKeyboardState,ptr.int	sdl2: getKeyboardState(numkeys: ptr int = nil): ptr array[0 .. SDL_NUM_SCANCODES.int, uint8]	
+getModState	nodesnim/thirdparty/sdl2.html#getModState	sdl2: getModState(): Keymod	
+setModState	nodesnim/thirdparty/sdl2.html#setModState,Keymod	sdl2: setModState(state: Keymod)	
+getKeyFromScancode	nodesnim/thirdparty/sdl2.html#getKeyFromScancode,Scancode	sdl2: getKeyFromScancode(scancode: Scancode): cint	
+getScancodeFromKey	nodesnim/thirdparty/sdl2.html#getScancodeFromKey,cint	sdl2: getScancodeFromKey(key: cint): Scancode	
+getScancodeName	nodesnim/thirdparty/sdl2.html#getScancodeName,Scancode	sdl2: getScancodeName(scancode: Scancode): cstring	
+getScancodeFromName	nodesnim/thirdparty/sdl2.html#getScancodeFromName,cstring	sdl2: getScancodeFromName(name: cstring): Scancode	
+getKeyName	nodesnim/thirdparty/sdl2.html#getKeyName,cint	sdl2: getKeyName(key: cint): cstring	
+getKeyFromName	nodesnim/thirdparty/sdl2.html#getKeyFromName,cstring	sdl2: getKeyFromName(name: cstring): cint	
+startTextInput	nodesnim/thirdparty/sdl2.html#startTextInput	sdl2: startTextInput()	
+isTextInputActive	nodesnim/thirdparty/sdl2.html#isTextInputActive	sdl2: isTextInputActive(): bool	
+stopTextInput	nodesnim/thirdparty/sdl2.html#stopTextInput	sdl2: stopTextInput()	
+setTextInputRect	nodesnim/thirdparty/sdl2.html#setTextInputRect,ptr.Rect	sdl2: setTextInputRect(rect: ptr Rect)	
+hasScreenKeyboardSupport	nodesnim/thirdparty/sdl2.html#hasScreenKeyboardSupport	sdl2: hasScreenKeyboardSupport(): bool	
+isScreenKeyboardShown	nodesnim/thirdparty/sdl2.html#isScreenKeyboardShown,WindowPtr	sdl2: isScreenKeyboardShown(window: WindowPtr): bool	
+getMouseFocus	nodesnim/thirdparty/sdl2.html#getMouseFocus	sdl2: getMouseFocus(): WindowPtr	
+getMouseState	nodesnim/thirdparty/sdl2.html#getMouseState,cint,cint	sdl2: getMouseState(x, y: var cint): uint8	
+getMouseState	nodesnim/thirdparty/sdl2.html#getMouseState,ptr.cint,ptr.cint	sdl2: getMouseState(x, y: ptr cint): uint8	
+getRelativeMouseState	nodesnim/thirdparty/sdl2.html#getRelativeMouseState,cint,cint	sdl2: getRelativeMouseState(x, y: var cint): uint8	
+warpMouseInWindow	nodesnim/thirdparty/sdl2.html#warpMouseInWindow,WindowPtr,cint,cint	sdl2: warpMouseInWindow(window: WindowPtr; x, y: cint)	
+setRelativeMouseMode	nodesnim/thirdparty/sdl2.html#setRelativeMouseMode,Bool32	sdl2: setRelativeMouseMode(enabled: Bool32): SDL_Return	
+captureMouse	nodesnim/thirdparty/sdl2.html#captureMouse,Bool32	sdl2: captureMouse(enabled: Bool32): SDL_Return	
+getRelativeMouseMode	nodesnim/thirdparty/sdl2.html#getRelativeMouseMode	sdl2: getRelativeMouseMode(): Bool32	
+createCursor	nodesnim/thirdparty/sdl2.html#createCursor,ptr.uint8,ptr.uint8,cint,cint,cint,cint	sdl2: createCursor(data, mask: ptr uint8; w, h, hot_x, hot_y: cint): CursorPtr	
+createColorCursor	nodesnim/thirdparty/sdl2.html#createColorCursor,SurfacePtr,cint,cint	sdl2: createColorCursor(surface: SurfacePtr; hot_x, hot_y: cint): CursorPtr	
+SDL_SYSTEM_CURSOR_ARROW	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_ARROW	SystemCursor.SDL_SYSTEM_CURSOR_ARROW	
+SDL_SYSTEM_CURSOR_IBEAM	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_IBEAM	SystemCursor.SDL_SYSTEM_CURSOR_IBEAM	
+SDL_SYSTEM_CURSOR_WAIT	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_WAIT	SystemCursor.SDL_SYSTEM_CURSOR_WAIT	
+SDL_SYSTEM_CURSOR_CROSSHAIR	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_CROSSHAIR	SystemCursor.SDL_SYSTEM_CURSOR_CROSSHAIR	
+SDL_SYSTEM_CURSOR_WAITARROW	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_WAITARROW	SystemCursor.SDL_SYSTEM_CURSOR_WAITARROW	
+SDL_SYSTEM_CURSOR_SIZENWSE	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_SIZENWSE	SystemCursor.SDL_SYSTEM_CURSOR_SIZENWSE	
+SDL_SYSTEM_CURSOR_SIZENESW	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_SIZENESW	SystemCursor.SDL_SYSTEM_CURSOR_SIZENESW	
+SDL_SYSTEM_CURSOR_SIZEWE	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_SIZEWE	SystemCursor.SDL_SYSTEM_CURSOR_SIZEWE	
+SDL_SYSTEM_CURSOR_SIZENS	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_SIZENS	SystemCursor.SDL_SYSTEM_CURSOR_SIZENS	
+SDL_SYSTEM_CURSOR_SIZEALL	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_SIZEALL	SystemCursor.SDL_SYSTEM_CURSOR_SIZEALL	
+SDL_SYSTEM_CURSOR_NO	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_NO	SystemCursor.SDL_SYSTEM_CURSOR_NO	
+SDL_SYSTEM_CURSOR_HAND	nodesnim/thirdparty/sdl2.html#SDL_SYSTEM_CURSOR_HAND	SystemCursor.SDL_SYSTEM_CURSOR_HAND	
+SystemCursor	nodesnim/thirdparty/sdl2.html#SystemCursor	sdl2: SystemCursor	
+createSystemCursor	nodesnim/thirdparty/sdl2.html#createSystemCursor,SystemCursor	sdl2: createSystemCursor(c: SystemCursor): CursorPtr	
+setCursor	nodesnim/thirdparty/sdl2.html#setCursor,CursorPtr	sdl2: setCursor(cursor: CursorPtr)	
+getCursor	nodesnim/thirdparty/sdl2.html#getCursor	sdl2: getCursor(): CursorPtr	
+freeCursor	nodesnim/thirdparty/sdl2.html#freeCursor,CursorPtr	sdl2: freeCursor(cursor: CursorPtr)	
+showCursor	nodesnim/thirdparty/sdl2.html#showCursor,bool	sdl2: showCursor(toggle: bool): Bool32	
+pumpEvents	nodesnim/thirdparty/sdl2.html#pumpEvents	sdl2: pumpEvents()	
+peepEvents	nodesnim/thirdparty/sdl2.html#peepEvents,ptr.Event,cint,Eventaction,uint32,uint32	sdl2: peepEvents(events: ptr Event; numevents: cint; action: Eventaction; minType: uint32;\n           maxType: uint32): cint	
+hasEvent	nodesnim/thirdparty/sdl2.html#hasEvent,uint32	sdl2: hasEvent(kind: uint32): Bool32	
+hasEvents	nodesnim/thirdparty/sdl2.html#hasEvents,uint32,uint32	sdl2: hasEvents(minType: uint32; maxType: uint32): Bool32	
+flushEvent	nodesnim/thirdparty/sdl2.html#flushEvent,uint32	sdl2: flushEvent(kind: uint32)	
+flushEvents	nodesnim/thirdparty/sdl2.html#flushEvents,uint32,uint32	sdl2: flushEvents(minType: uint32; maxType: uint32)	
+pollEvent	nodesnim/thirdparty/sdl2.html#pollEvent,Event	sdl2: pollEvent(event: var Event): Bool32	
+waitEvent	nodesnim/thirdparty/sdl2.html#waitEvent,Event	sdl2: waitEvent(event: var Event): Bool32	
+waitEventTimeout	nodesnim/thirdparty/sdl2.html#waitEventTimeout,Event,cint	sdl2: waitEventTimeout(event: var Event; timeout: cint): Bool32	
+pushEvent	nodesnim/thirdparty/sdl2.html#pushEvent,ptr.Event	sdl2: pushEvent(event: ptr Event): cint	
+setEventFilter	nodesnim/thirdparty/sdl2.html#setEventFilter,EventFilter,pointer	sdl2: setEventFilter(filter: EventFilter; userdata: pointer)	
+getEventFilter	nodesnim/thirdparty/sdl2.html#getEventFilter,EventFilter,pointer	sdl2: getEventFilter(filter: var EventFilter; userdata: var pointer): Bool32	
+addEventWatch	nodesnim/thirdparty/sdl2.html#addEventWatch,EventFilter,pointer	sdl2: addEventWatch(filter: EventFilter; userdata: pointer)	
+delEventWatch	nodesnim/thirdparty/sdl2.html#delEventWatch,EventFilter,pointer	sdl2: delEventWatch(filter: EventFilter; userdata: pointer)	
+filterEvents	nodesnim/thirdparty/sdl2.html#filterEvents,EventFilter,pointer	sdl2: filterEvents(filter: EventFilter; userdata: pointer)	
+eventState	nodesnim/thirdparty/sdl2.html#eventState,EventType,cint	sdl2: eventState(kind: EventType; state: cint): uint8	
+registerEvents	nodesnim/thirdparty/sdl2.html#registerEvents,cint	sdl2: registerEvents(numevents: cint): uint32	
+setError	nodesnim/thirdparty/sdl2.html#setError,cstring	sdl2: setError(fmt: cstring)	
+getError	nodesnim/thirdparty/sdl2.html#getError	sdl2: getError(): cstring	
+clearError	nodesnim/thirdparty/sdl2.html#clearError	sdl2: clearError()	
+getPixelFormatName	nodesnim/thirdparty/sdl2.html#getPixelFormatName,uint32	sdl2: getPixelFormatName(format: uint32): cstring	
+pixelFormatEnumToMasks	nodesnim/thirdparty/sdl2.html#pixelFormatEnumToMasks,uint32,cint,uint32,uint32,uint32,uint32	sdl2: pixelFormatEnumToMasks(format: uint32; bpp: var cint;\n                       Rmask, Gmask, Bmask, Amask: var uint32): bool	
+masksToPixelFormatEnum	nodesnim/thirdparty/sdl2.html#masksToPixelFormatEnum,cint,uint32,uint32,uint32,uint32	sdl2: masksToPixelFormatEnum(bpp: cint; Rmask, Gmask, Bmask, Amask: uint32): uint32	
+allocFormat	nodesnim/thirdparty/sdl2.html#allocFormat,uint32	sdl2: allocFormat(pixelFormat: uint32): ptr PixelFormat	
+freeFormat	nodesnim/thirdparty/sdl2.html#freeFormat,ptr.PixelFormat	sdl2: freeFormat(format: ptr PixelFormat)	
+allocPalette	nodesnim/thirdparty/sdl2.html#allocPalette,cint	sdl2: allocPalette(numColors: cint): ptr Palette	
+setPixelFormatPalette	nodesnim/thirdparty/sdl2.html#setPixelFormatPalette,ptr.PixelFormat,ptr.Palette	sdl2: setPixelFormatPalette(format: ptr PixelFormat; palette: ptr Palette): cint	
+setPaletteColors	nodesnim/thirdparty/sdl2.html#setPaletteColors,ptr.Palette,ptr.Color,cint,cint	sdl2: setPaletteColors(palette: ptr Palette; colors: ptr Color; first, numColors: cint): SDL_Return	
+freePalette	nodesnim/thirdparty/sdl2.html#freePalette,ptr.Palette	sdl2: freePalette(palette: ptr Palette)	
+mapRGB	nodesnim/thirdparty/sdl2.html#mapRGB,ptr.PixelFormat,uint8,uint8,uint8	sdl2: mapRGB(format: ptr PixelFormat; r, g, b: uint8): uint32	
+mapRGBA	nodesnim/thirdparty/sdl2.html#mapRGBA,ptr.PixelFormat,uint8,uint8,uint8,uint8	sdl2: mapRGBA(format: ptr PixelFormat; r, g, b, a: uint8): uint32	
+getRGB	nodesnim/thirdparty/sdl2.html#getRGB,uint32,ptr.PixelFormat,uint8,uint8,uint8	sdl2: getRGB(pixel: uint32; format: ptr PixelFormat; r, g, b: var uint8)	
+getRGBA	nodesnim/thirdparty/sdl2.html#getRGBA,uint32,ptr.PixelFormat,uint8,uint8,uint8,uint8	sdl2: getRGBA(pixel: uint32; format: ptr PixelFormat; r, g, b, a: var uint8)	
+calculateGammaRamp	nodesnim/thirdparty/sdl2.html#calculateGammaRamp,cfloat,ptr.uint16	sdl2: calculateGammaRamp(gamma: cfloat; ramp: ptr uint16)	
+setClipboardText	nodesnim/thirdparty/sdl2.html#setClipboardText,cstring	sdl2: setClipboardText(text: cstring): cint	
+getClipboardText	nodesnim/thirdparty/sdl2.html#getClipboardText	sdl2: getClipboardText(): cstring	
+hasClipboardText	nodesnim/thirdparty/sdl2.html#hasClipboardText	sdl2: hasClipboardText(): Bool32	
+freeClipboardText	nodesnim/thirdparty/sdl2.html#freeClipboardText,cstring	sdl2: freeClipboardText(text: cstring)	
+getNumTouchFingers	nodesnim/thirdparty/sdl2.html#getNumTouchFingers,TouchID	sdl2: getNumTouchFingers(id: TouchID): cint	
+getTouchFinger	nodesnim/thirdparty/sdl2.html#getTouchFinger,TouchID,cint	sdl2: getTouchFinger(id: TouchID; index: cint): ptr Finger	
+SDL_QUERY	nodesnim/thirdparty/sdl2.html#SDL_QUERY	sdl2: SDL_QUERY	
+SDL_IGNORE	nodesnim/thirdparty/sdl2.html#SDL_IGNORE	sdl2: SDL_IGNORE	
+SDL_DISABLE	nodesnim/thirdparty/sdl2.html#SDL_DISABLE	sdl2: SDL_DISABLE	
+SDL_ENABLE	nodesnim/thirdparty/sdl2.html#SDL_ENABLE	sdl2: SDL_ENABLE	
+getEventState	nodesnim/thirdparty/sdl2.html#getEventState,EventType	sdl2: getEventState(kind: EventType): uint8	
+SDL_BUTTON	nodesnim/thirdparty/sdl2.html#SDL_BUTTON.t,uint8	sdl2: SDL_BUTTON(x: uint8): uint8	
+BUTTON_LEFT	nodesnim/thirdparty/sdl2.html#BUTTON_LEFT	sdl2: BUTTON_LEFT	
+BUTTON_MIDDLE	nodesnim/thirdparty/sdl2.html#BUTTON_MIDDLE	sdl2: BUTTON_MIDDLE	
+BUTTON_RIGHT	nodesnim/thirdparty/sdl2.html#BUTTON_RIGHT	sdl2: BUTTON_RIGHT	
+BUTTON_X1	nodesnim/thirdparty/sdl2.html#BUTTON_X1	sdl2: BUTTON_X1	
+BUTTON_X2	nodesnim/thirdparty/sdl2.html#BUTTON_X2	sdl2: BUTTON_X2	
+BUTTON_LMASK	nodesnim/thirdparty/sdl2.html#BUTTON_LMASK	sdl2: BUTTON_LMASK	
+BUTTON_MMASK	nodesnim/thirdparty/sdl2.html#BUTTON_MMASK	sdl2: BUTTON_MMASK	
+BUTTON_RMASK	nodesnim/thirdparty/sdl2.html#BUTTON_RMASK	sdl2: BUTTON_RMASK	
+BUTTON_X1MASK	nodesnim/thirdparty/sdl2.html#BUTTON_X1MASK	sdl2: BUTTON_X1MASK	
+BUTTON_X2MASK	nodesnim/thirdparty/sdl2.html#BUTTON_X2MASK	sdl2: BUTTON_X2MASK	
+SDL_TOUCH_MOUSEID	nodesnim/thirdparty/sdl2.html#SDL_TOUCH_MOUSEID	sdl2: SDL_TOUCH_MOUSEID	
+createRGBSurface	nodesnim/thirdparty/sdl2.html#createRGBSurface,int32,int32,int32	sdl2: createRGBSurface(width, height, depth: int32): SurfacePtr	
+getSize	nodesnim/thirdparty/sdl2.html#getSize,WindowPtr	sdl2: getSize(window: WindowPtr): Point	
+destroyTexture	nodesnim/thirdparty/sdl2.html#destroyTexture,TexturePtr	sdl2: destroyTexture(texture: TexturePtr)	
+destroyRenderer	nodesnim/thirdparty/sdl2.html#destroyRenderer,RendererPtr	sdl2: destroyRenderer(renderer: RendererPtr)	
+destroy	nodesnim/thirdparty/sdl2.html#destroy,WindowPtr	sdl2: destroy(window: WindowPtr)	
+destroy	nodesnim/thirdparty/sdl2.html#destroy,CursorPtr	sdl2: destroy(cursor: CursorPtr)	
+destroy	nodesnim/thirdparty/sdl2.html#destroy,SurfacePtr	sdl2: destroy(surface: SurfacePtr)	
+destroy	nodesnim/thirdparty/sdl2.html#destroy,ptr.PixelFormat	sdl2: destroy(format: ptr PixelFormat)	
+destroy	nodesnim/thirdparty/sdl2.html#destroy,ptr.Palette	sdl2: destroy(palette: ptr Palette)	
+blitSurface	nodesnim/thirdparty/sdl2.html#blitSurface,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: blitSurface(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+blitScaled	nodesnim/thirdparty/sdl2.html#blitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: blitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+loadBMP	nodesnim/thirdparty/sdl2.html#loadBMP,string	sdl2: loadBMP(file: string): SurfacePtr	
+saveBMP	nodesnim/thirdparty/sdl2.html#saveBMP,SurfacePtr,string	sdl2: saveBMP(surface: SurfacePtr; file: string): SDL_Return	
+color	nodesnim/thirdparty/sdl2.html#color,range[],range[],range[],range[]	sdl2: color(r, g, b, a: range[0 .. 255]): Color	
+rect	nodesnim/thirdparty/sdl2.html#rect,cint,cint	sdl2: rect(x, y: cint; w = cint(0); h = cint(0)): Rect	
+point	nodesnim/thirdparty/sdl2.html#point,T,T	sdl2: point[T: SomeNumber](x, y: T): Point	
+contains	nodesnim/thirdparty/sdl2.html#contains,Rect,Point	sdl2: contains(some: Rect; point: Point): bool	
+HINT_RENDER_SCALE_QUALITY	nodesnim/thirdparty/sdl2.html#HINT_RENDER_SCALE_QUALITY	sdl2: HINT_RENDER_SCALE_QUALITY	
+setHint	nodesnim/thirdparty/sdl2.html#setHint,cstring,cstring	sdl2: setHint(name: cstring; value: cstring): bool	
+setHintWithPriority	nodesnim/thirdparty/sdl2.html#setHintWithPriority,cstring,cstring,cint	sdl2: setHintWithPriority(name: cstring; value: cstring; priority: cint): bool	
+getHint	nodesnim/thirdparty/sdl2.html#getHint,cstring	sdl2: getHint(name: cstring): cstring	
+size	nodesnim/thirdparty/sdl2.html#size,RWopsPtr	sdl2: size(ctx: RWopsPtr): int64	
+seek	nodesnim/thirdparty/sdl2.html#seek,RWopsPtr,int64,cint	sdl2: seek(ctx: RWopsPtr; offset: int64; whence: cint): int64	
+read	nodesnim/thirdparty/sdl2.html#read,RWopsPtr,pointer,csize_t,csize_t	sdl2: read(ctx: RWopsPtr; `ptr`: pointer; size, maxnum: csize_t): csize_t	
+write	nodesnim/thirdparty/sdl2.html#write,RWopsPtr,pointer,csize_t,csize_t	sdl2: write(ctx: RWopsPtr; `ptr`: pointer; size, num: csize_t): csize_t	
+close	nodesnim/thirdparty/sdl2.html#close,RWopsPtr	sdl2: close(ctx: RWopsPtr): cint	
+defaultEvent	nodesnim/thirdparty/sdl2.html#defaultEvent	sdl2: defaultEvent	

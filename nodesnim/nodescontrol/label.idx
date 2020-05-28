@@ -1,0 +1,9 @@
+LabelObj	nodesnim/nodescontrol/label.html#LabelObj	label: LabelObj	
+LabelPtr	nodesnim/nodescontrol/label.html#LabelPtr	label: LabelPtr	
+Label	nodesnim/nodescontrol/label.html#Label,string,LabelObj	label: Label(name: string; variable: var LabelObj): LabelPtr	
+Label	nodesnim/nodescontrol/label.html#Label,LabelObj	label: Label(obj: var LabelObj): LabelPtr	
+draw	nodesnim/nodescontrol/label.html#draw.e,LabelPtr,GLfloat,GLfloat	label: draw(self: LabelPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/label.html#duplicate.e,LabelPtr,LabelObj	label: duplicate(self: LabelPtr; obj: var LabelObj): LabelPtr	
+setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelPtr,AnchorRef	label: setTextAlign(self: LabelPtr; align: AnchorRef)	
+setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelPtr,float,float,float,float	label: setTextAlign(self: LabelPtr; x1, y1, x2, y2: float)	
+setText	nodesnim/nodescontrol/label.html#setText.e,LabelPtr,string	label: setText(self: LabelPtr; value: string)	

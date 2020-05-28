@@ -1,0 +1,9 @@
+SpriteObj	nodesnim/nodes2d/sprite.html#SpriteObj	sprite: SpriteObj	
+SpritePtr	nodesnim/nodes2d/sprite.html#SpritePtr	sprite: SpritePtr	
+Sprite	nodesnim/nodes2d/sprite.html#Sprite,string,SpriteObj	sprite: Sprite(name: string; variable: var SpriteObj): SpritePtr	
+Sprite	nodesnim/nodes2d/sprite.html#Sprite,SpriteObj	sprite: Sprite(obj: var SpriteObj): SpritePtr	
+draw	nodesnim/nodes2d/sprite.html#draw.e,SpritePtr,GLfloat,GLfloat	sprite: draw(self: SpritePtr; w, h: GLfloat)	
+duplicate	nodesnim/nodes2d/sprite.html#duplicate.e,SpritePtr,SpriteObj	sprite: duplicate(self: SpritePtr; obj: var SpriteObj): SpritePtr	
+getGlobalMousePosition	nodesnim/nodes2d/sprite.html#getGlobalMousePosition.e,SpritePtr	sprite: getGlobalMousePosition(self: SpritePtr): Vector2Ref	
+loadTexture	nodesnim/nodes2d/sprite.html#loadTexture.e,SpritePtr,cstring	sprite: loadTexture(self: SpritePtr; file: cstring; mode = GL_RGB)	
+setTexture	nodesnim/nodes2d/sprite.html#setTexture.e,SpritePtr,GlTextureObj	sprite: setTexture(self: SpritePtr; texture: GlTextureObj)	

@@ -1,0 +1,9 @@
+HBoxObj	nodesnim/nodescontrol/hbox.html#HBoxObj	hbox: HBoxObj	
+HBoxPtr	nodesnim/nodescontrol/hbox.html#HBoxPtr	hbox: HBoxPtr	
+HBox	nodesnim/nodescontrol/hbox.html#HBox,string,HBoxObj	hbox: HBox(name: string; variable: var HBoxObj): HBoxPtr	
+HBox	nodesnim/nodescontrol/hbox.html#HBox,HBoxObj	hbox: HBox(obj: var HBoxObj): HBoxPtr	
+getChildSize	nodesnim/nodescontrol/hbox.html#getChildSize.e,HBoxPtr	hbox: getChildSize(self: HBoxPtr): Vector2Ref	
+addChild	nodesnim/nodescontrol/hbox.html#addChild.e,HBoxPtr,NodePtr	hbox: addChild(self: HBoxPtr; child: NodePtr)	
+draw	nodesnim/nodescontrol/hbox.html#draw.e,HBoxPtr,GLfloat,GLfloat	hbox: draw(self: HBoxPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/hbox.html#duplicate.e,HBoxPtr,HBoxObj	hbox: duplicate(self: HBoxPtr; obj: var HBoxObj): HBoxPtr	
+resize	nodesnim/nodescontrol/hbox.html#resize.e,HBoxPtr,GLfloat,GLfloat	hbox: resize(self: HBoxPtr; w, h: GLfloat)	

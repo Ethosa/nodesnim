@@ -1,0 +1,7 @@
+ButtonObj	nodesnim/nodescontrol/button.html#ButtonObj	button: ButtonObj	
+ButtonPtr	nodesnim/nodescontrol/button.html#ButtonPtr	button: ButtonPtr	
+Button	nodesnim/nodescontrol/button.html#Button,string,ButtonObj	button: Button(name: string; variable: var ButtonObj): ButtonPtr	
+Button	nodesnim/nodescontrol/button.html#Button,ButtonObj	button: Button(obj: var ButtonObj): ButtonPtr	
+draw	nodesnim/nodescontrol/button.html#draw.e,ButtonPtr,GLfloat,GLfloat	button: draw(self: ButtonPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/button.html#duplicate.e,ButtonPtr,ButtonObj	button: duplicate(self: ButtonPtr; obj: var ButtonObj): ButtonPtr	
+handle	nodesnim/nodescontrol/button.html#handle.e,ButtonPtr,InputEvent,NodePtr	button: handle(self: ButtonPtr; event: InputEvent; mouse_on: var NodePtr)	
