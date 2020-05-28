@@ -181,7 +181,7 @@ method handle*(self: ScrollPtr, event: InputEvent, mouse_on: var NodePtr) =
   procCall self.ControlPtr.handle(event, mouse_on)
 
   let
-    mouse_in = Rect2(self.global_position, Vector2(self.viewport_w, self.viewport_h)).hasPoint(event.x, event.y)
+    mouse_in = Rect2(self.global_position, Vector2(self.viewport_w, self.viewport_h)).contains(event.x, event.y)
     thumb_h = self.viewport_h * (self.viewport_h / self.rect_size.y)
     thumb_w = self.viewport_w * (self.viewport_w / self.rect_size.x)
     thumb_x = self.viewport_w * (self.viewport_x / self.rect_size.x)
@@ -191,13 +191,13 @@ method handle*(self: ScrollPtr, event: InputEvent, mouse_on: var NodePtr) =
         self.global_position.y + thumb_y,
         self.thumb_width,
         thumb_h
-      ).hasPoint(event.x, event.y)
+      ).contains(event.x, event.y)
     mouse_in_x = Rect2(
         self.global_position.x + thumb_x,
         self.global_position.y + self.viewport_h - self.thumb_height,
         thumb_w,
         self.thumb_height
-      ).hasPoint(event.x, event.y)
+      ).contains(event.x, event.y)
 
   if mouse_in:  # Keyboard movement
     if event.kind == KEYBOARD:

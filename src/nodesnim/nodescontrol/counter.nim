@@ -119,10 +119,10 @@ method handle*(self: CounterPtr, event: InputEvent, mouse_on: var NodePtr) =
   let
     first_button = Rect2(
       self.global_position.x + self.rect_size.x - 20, self.global_position.y,
-      20, 8).hasPoint(last_event.x, last_event.y)
+      20, 8).contains(last_event.x, last_event.y)
     second_button = Rect2(
       self.global_position.x + self.rect_size.x - 20, self.global_position.y + self.rect_size.y-8,
-      20, 8).hasPoint(last_event.x, last_event.y)
+      20, 8).contains(last_event.x, last_event.y)
 
   if first_button and self.pressed:
     self.changeValue(self.value+1)

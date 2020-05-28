@@ -19,23 +19,23 @@ proc Rect2*(left_top, width_height: Vector2Ref): Rect2Ref =
   )
 
 
-proc hasPoint*(self: Rect2Ref, x, y: float): bool {.inline.} =
+proc contains*(self: Rect2Ref, x, y: float): bool {.inline.} =
   self.x <= x and self.x+self.w >= x and self.y <= y and self.y+self.h >= y
 
-proc hasPoint*(self: Rect2Ref, vector: Vector2Ref): bool {.inline.} =
-  self.hasPoint(vector.x, vector.y)
+proc contains*(self: Rect2Ref, vector: Vector2Ref): bool {.inline.} =
+  self.contains(vector.x, vector.y)
 
 proc intersects*(self, other: Rect2Ref): bool =
-  ((self.hasPoint(other.x, other.y) or
-   self.hasPoint(other.x+other.w, other.y)) or
-   (self.hasPoint(other.x, other.y+other.h) or
-   self.hasPoint(other.x+other.w, other.y+other.h)))
+  ((self.contains(other.x, other.y) or
+   self.contains(other.x+other.w, other.y)) or
+   (self.contains(other.x, other.y+other.h) or
+   self.contains(other.x+other.w, other.y+other.h)))
 
 proc contains*(self, other: Rect2Ref): bool =
-  (self.hasPoint(other.x, other.y) and
-   self.hasPoint(other.x+other.w, other.y) and
-   self.hasPoint(other.x, other.y+other.h) and
-   self.hasPoint(other.x+other.w, other.y+other.h))
+  (self.contains(other.x, other.y) and
+   self.contains(other.x+other.w, other.y) and
+   self.contains(other.x, other.y+other.h) and
+   self.contains(other.x+other.w, other.y+other.h))
 
 proc clamp*(a, b, c: float): float =
   if a < b:

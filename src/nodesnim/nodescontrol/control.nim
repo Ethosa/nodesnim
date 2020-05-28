@@ -116,7 +116,7 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
   if self.mousemode == MOUSEMODE_IGNORE:
     return
   let
-    hasmouse = Rect2(self.global_position, self.rect_size).hasPoint(event.x, event.y)
+    hasmouse = Rect2(self.global_position, self.rect_size).contains(event.x, event.y)
     click = mouse_pressed and event.kind == MOUSE
   if mouse_on == nil and hasmouse:
     mouse_on = self

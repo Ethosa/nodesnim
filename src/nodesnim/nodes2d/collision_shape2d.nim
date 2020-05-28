@@ -129,7 +129,7 @@ method isCollide*(self: CollisionShape2DPtr, x, y: float): bool =
     return false
   case self.shape_type
   of COLLISION_SHAPE_2D_RECTANGLE:
-    Rect2(self.global_position, self.rect_size).hasPoint(x, y)
+    Rect2(self.global_position, self.rect_size).contains(x, y)
   of COLLISION_SHAPE_2D_CIRCLE:
     let
       dx = x - self.x1
@@ -143,7 +143,7 @@ method isCollide*(self: CollisionShape2DPtr, vec2: Vector2Ref): bool =
     return false
   case self.shape_type
   of COLLISION_SHAPE_2D_RECTANGLE:
-    Rect2(self.global_position, self.rect_size).hasPoint(vec2)
+    Rect2(self.global_position, self.rect_size).contains(vec2)
   of COLLISION_SHAPE_2D_CIRCLE:
     let
       dx = vec2.x - self.x1
