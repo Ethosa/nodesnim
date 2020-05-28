@@ -19,6 +19,7 @@ import
 
   nodesnim/core/vector2,
   nodesnim/core/rect2,
+  nodesnim/core/circle2,
   nodesnim/core/enums,
   nodesnim/core/anchor,
   nodesnim/core/color,
@@ -68,7 +69,7 @@ export
   # Main
   window, environment,
   # Core
-  vector2, rect2, enums, anchor, color, exceptions, input, image, color_text,
+  vector2, rect2, circle2, enums, anchor, color, exceptions, input, image, color_text,
   audio_stream, animation,
   # Default nodes
   node, scene, canvas, audio_stream_player,
