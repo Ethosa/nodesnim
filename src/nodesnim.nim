@@ -42,6 +42,7 @@ import
   nodesnim/nodescontrol/popup,
   nodesnim/nodescontrol/texture_button,
   nodesnim/nodescontrol/texture_progress_bar,
+  nodesnim/nodescontrol/counter,
 
   nodesnim/nodes2d/node2d,
   nodesnim/nodes2d/sprite,
@@ -61,6 +62,6 @@ export
   # Control nodes
   control, color_rect, texture_rect, label, button, box, hbox, vbox, grid_box, edittext,
   rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup,
-  texture_button, texture_progress_bar,
+  texture_button, texture_progress_bar, counter,
   # 2D nodes
   node2d, sprite, animated_sprite, ysort
