@@ -14,10 +14,8 @@ proc Rect2*(x, y, w, h: float): Rect2Ref =
 
 proc Rect2*(left_top, width_height: Vector2Ref): Rect2Ref =
   Rect2Ref(
-    x: left_top.x,
-    y: left_top.y,
-    w: width_height.x,
-    h: width_height.y
+    x: left_top.x, y: left_top.y,
+    w: width_height.x, h: width_height.y
   )
 
 
@@ -28,16 +26,30 @@ proc hasPoint*(self: Rect2Ref, vector: Vector2Ref): bool {.inline.} =
   self.hasPoint(vector.x, vector.y)
 
 proc intersects*(self, other: Rect2Ref): bool =
-  (self.hasPoint(other.x, other.y) or
-   self.hasPoint(other.x+other.w, other.y) or
-   self.hasPoint(other.x, other.y+other.h) or
-   self.hasPoint(other.x+other.w, other.y+other.h))
+  ((self.hasPoint(other.x, other.y) or
+   self.hasPoint(other.x+other.w, other.y)) or
+   (self.hasPoint(other.x, other.y+other.h) or
+   self.hasPoint(other.x+other.w, other.y+other.h)))
 
 proc contains*(self, other: Rect2Ref): bool =
   (self.hasPoint(other.x, other.y) and
    self.hasPoint(other.x+other.w, other.y) and
    self.hasPoint(other.x, other.y+other.h) and
    self.hasPoint(other.x+other.w, other.y+other.h))
+
+proc clamp*(a, b, c: float): float =
+  if a < b:
+    b
+  elif a > c:
+    c
+  else:
+    a
+
+proc isCollideWithCircle*(self: Rect2Ref, x, y, r: float): bool =
+  let
+    dx = clamp(x, self.x, self.x+self.w) - x
+    dy = clamp(y, self.y, self.y+self.h) - y
+  dx*dx + dy*dy <= r*r
 
 
 # --- Operators --- #

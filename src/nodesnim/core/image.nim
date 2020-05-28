@@ -7,7 +7,11 @@ import
   ../core/vector2
 
 
-discard image.init()
+when defined(debug):
+  import logging
+  debug "result of `init()` is ", image.init()
+else:
+  discard image.init()
 
 
 type

@@ -3,3 +3,4 @@ nimblecache/
 htmldocs/
 
 *.exe
+*.log

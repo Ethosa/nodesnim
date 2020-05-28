@@ -183,6 +183,15 @@ method getPauseMode*(self: NodePtr): PauseMode {.base.} =
     current = current.parent
     result = current.pausemode
 
+method isCollide*(self: NodePtr, x, y: float): bool {.base.} =
+  false
+
+method isCollide*(self: NodePtr, vec2: Vector2Ref): bool {.base.} =
+  false
+
+method isCollide*(self, other: NodePtr): bool {.base.} =
+  false
+
 method isParentOf*(self, other: NodePtr): bool {.base, inline.} =
   other in self.children
 

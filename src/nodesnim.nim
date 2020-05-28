@@ -1,3 +1,15 @@
+when defined(debug):
+  import logging
+
+  var console_logger = newConsoleLogger(fmtStr="[$time]::$levelname - ")
+  var file_logger = newFileLogger("logs.log", fmtStr="[$date at $time]::$levelname - ")
+
+  addHandler(console_logger)
+  addHandler(file_logger)
+
+  info("Compiled in debug mode.")
+
+
 import
   nodesnim/thirdparty/opengl,
   nodesnim/thirdparty/opengl/glut,
@@ -47,7 +59,8 @@ import
   nodesnim/nodes2d/node2d,
   nodesnim/nodes2d/sprite,
   nodesnim/nodes2d/animated_sprite,
-  nodesnim/nodes2d/ysort
+  nodesnim/nodes2d/ysort,
+  nodesnim/nodes2d/collision_shape2d
 
 export
   # Third party
@@ -64,4 +77,4 @@ export
   rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup,
   texture_button, texture_progress_bar, counter,
   # 2D nodes
-  node2d, sprite, animated_sprite, ysort
+  node2d, sprite, animated_sprite, ysort, collision_shape2d

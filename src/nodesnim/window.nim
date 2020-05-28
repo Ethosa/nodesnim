@@ -13,11 +13,19 @@ import
   environment,
   os
 
+when defined(debug):
+  import logging
 
 var
   cmdLine {.importc: "cmdLine".}: array[0..255, cstring]
   cmdCount {.importc: "cmdCount".}: cint
+
+when defined(debug):
+  debug("Try to load OpenGL ...")
 loadExtensions()  # Load OpenGL extensions.
+
+when defined(debug):
+  debug("Try to load freeGLUT ...")
 glutInit(addr cmdCount, addr cmdLine) # Initializ glut lib.
 glutInitDisplayMode(GLUT_DOUBLE)
 
@@ -240,7 +248,10 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   # Set up window.
   glutInitWindowSize(w, h)
   glutInitWindowPosition(100, 100)
-  discard glutCreateWindow(title)
+  when defined(debug):
+    debug("result of `glutCreateWindow` is ", glutCreateWindow(title))
+  else:
+    discard glutCreateWindow(title)
 
   # Set up OpenGL
   let (r, g, b, a) = env.color.toFloatTuple()
