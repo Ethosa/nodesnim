@@ -74,6 +74,9 @@
 
 </details>
 
+# Debug mode
+For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. `nim c -r -d:debug main.nim`.
+
 # Export
 Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.
 
