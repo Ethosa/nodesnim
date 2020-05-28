@@ -18,7 +18,7 @@ func clrtext*(text: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool
   ## - `color` is a text color.
   ## - `underline` is a text underline.
   runnableExamples:
-    import color
+    import nodesnim/core/color
     var
       text = clrtext"hello"
       text1 = clrtext("hello", Color(1, 0.6, 1))
@@ -35,7 +35,7 @@ func clrchar*(c: char, color: ColorRef = Color(1f, 1f, 1f), underline: bool = fa
   ## - `color` is a char color.
   ## - `underline` is a char underline.
   runnableExamples:
-    import color
+    import nodesnim/core/color
     var
       c = clrchar's'
       c1 = clrchar('s', Color(1f, 1f, 1f), underline=true)
@@ -50,7 +50,7 @@ proc setColor*(self: ColorTextRef, fromc, toc: int, value: ColorRef) =
   ## - `toc` - to char position.
   ## - `value` - new color.
   runnableExamples:
-    import color
+    import nodesnim/core/color
     var
       text = clrtext"hello world"
       clr = Color(1, 0.6, 1)
@@ -65,7 +65,7 @@ proc setColor*(self: ColorTextRef, value: ColorRef) =
   ## Arguments:
   ## - `value` - new color.
   runnableExamples:
-    import color
+    import nodesnim/core/color
     var
       text = clrtext"hello world"
       clr = Color(1, 0.6, 0.8)
@@ -81,7 +81,7 @@ proc setColor*(self: ColorTextRef, index: int, value: ColorRef) =
   ## - `index` - char position.
   ## - `value` - new color.
   runnableExamples:
-    import color
+    import nodesnim/core/color
     var
       text = clrtext"hello world"
       clr = Color(1, 0.6, 1)
