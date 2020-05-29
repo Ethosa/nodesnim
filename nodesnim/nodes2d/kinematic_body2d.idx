@@ -5,5 +5,6 @@ KinematicBody2D	nodesnim/nodes2d/kinematic_body2d.html#KinematicBody2D,Kinematic
 addChild	nodesnim/nodes2d/kinematic_body2d.html#addChild.e,KinematicBody2DPtr,CollisionShape2DPtr	kinematic_body2d: addChild(self: KinematicBody2DPtr; other: CollisionShape2DPtr)	
 getCollideCount	nodesnim/nodes2d/kinematic_body2d.html#getCollideCount.e,KinematicBody2DPtr	kinematic_body2d: getCollideCount(self: KinematicBody2DPtr): int	
 draw	nodesnim/nodes2d/kinematic_body2d.html#draw.e,KinematicBody2DPtr,GLfloat,GLfloat	kinematic_body2d: draw(self: KinematicBody2DPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodes2d/kinematic_body2d.html#duplicate.e,KinematicBody2DPtr,KinematicBody2DObj	kinematic_body2d: duplicate(self: KinematicBody2DPtr; obj: var KinematicBody2DObj): KinematicBody2DPtr	
 isCollide	nodesnim/nodes2d/kinematic_body2d.html#isCollide.e,KinematicBody2DPtr	kinematic_body2d: isCollide(self: KinematicBody2DPtr): bool	
 moveAndCollide	nodesnim/nodes2d/kinematic_body2d.html#moveAndCollide.e,KinematicBody2DPtr,Vector2Ref	kinematic_body2d: moveAndCollide(self: KinematicBody2DPtr; vel: Vector2Ref)	

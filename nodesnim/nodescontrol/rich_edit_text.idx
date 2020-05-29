@@ -4,6 +4,10 @@ RichEditText	nodesnim/nodescontrol/rich_edit_text.html#RichEditText,string,RichE
 RichEditText	nodesnim/nodescontrol/rich_edit_text.html#RichEditText,RichEditTextObj	rich_edit_text: RichEditText(obj: var RichEditTextObj): RichEditTextPtr	
 getTextSize	nodesnim/nodescontrol/rich_edit_text.html#getTextSize.e,RichEditTextPtr	rich_edit_text: getTextSize(self: RichEditTextPtr): Vector2Ref	
 getLine	nodesnim/nodescontrol/rich_edit_text.html#getLine.e,RichEditTextPtr	rich_edit_text: getLine(self: RichEditTextPtr): int	
+getCharPositionUnderMouse	nodesnim/nodescontrol/rich_edit_text.html#getCharPositionUnderMouse.e,RichEditTextPtr	rich_edit_text: getCharPositionUnderMouse(self: RichEditTextPtr): int	
+getCharUnderMouse	nodesnim/nodescontrol/rich_edit_text.html#getCharUnderMouse.e,RichEditTextPtr	rich_edit_text: getCharUnderMouse(self: RichEditTextPtr): ColorCharRef	
+getWordPositionUnderMouse	nodesnim/nodescontrol/rich_edit_text.html#getWordPositionUnderMouse.e,RichEditTextPtr	rich_edit_text: getWordPositionUnderMouse(self: RichEditTextPtr): tuple[startpos, endpos: int]	
+getWordUnderMouse	nodesnim/nodescontrol/rich_edit_text.html#getWordUnderMouse.e,RichEditTextPtr	rich_edit_text: getWordUnderMouse(self: RichEditTextPtr): ColorTextRef	
 draw	nodesnim/nodescontrol/rich_edit_text.html#draw.e,RichEditTextPtr,GLfloat,GLfloat	rich_edit_text: draw(self: RichEditTextPtr; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/rich_edit_text.html#duplicate.e,RichEditTextPtr,RichEditTextObj	rich_edit_text: duplicate(self: RichEditTextPtr; obj: var RichEditTextObj): RichEditTextPtr	
 handle	nodesnim/nodescontrol/rich_edit_text.html#handle.e,RichEditTextPtr,InputEvent,NodePtr	rich_edit_text: handle(self: RichEditTextPtr; event: InputEvent; mouse_on: var NodePtr)	

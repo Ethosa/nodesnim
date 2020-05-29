@@ -144,6 +144,14 @@ function main() {
     title="getTextSize(self: EditTextPtr): Vector2Ref"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#getLine.e%2CEditTextPtr"
     title="getLine(self: EditTextPtr): int"><wbr />get<wbr />Line<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#getCharPositionUnderMouse.e%2CEditTextPtr"
+    title="getCharPositionUnderMouse(self: EditTextPtr): int"><wbr />get<wbr />Char<wbr />Position<wbr />Under<wbr />Mouse<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#getCharUnderMouse.e%2CEditTextPtr"
+    title="getCharUnderMouse(self: EditTextPtr): char"><wbr />get<wbr />Char<wbr />Under<wbr />Mouse<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#getWordPositionUnderMouse.e%2CEditTextPtr"
+    title="getWordPositionUnderMouse(self: EditTextPtr): tuple[startpos, endpos: int]"><wbr />get<wbr />Word<wbr />Position<wbr />Under<wbr />Mouse<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#getWordUnderMouse.e%2CEditTextPtr"
+    title="getWordUnderMouse(self: EditTextPtr): string"><wbr />get<wbr />Word<wbr />Under<wbr />Mouse<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CEditTextPtr%2CGLfloat%2CGLfloat"
     title="draw(self: EditTextPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CEditTextPtr%2CEditTextObj"
@@ -261,6 +269,35 @@ Returns text size.
 Returns current caret line.
 
 </dd>
+<a id="getCharPositionUnderMouse.e,EditTextPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getCharPositionUnderMouse.e%2CEditTextPtr"><span class="Identifier">getCharPositionUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Returns char position under mouse.
+
+</dd>
+<a id="getCharUnderMouse.e,EditTextPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getCharUnderMouse.e%2CEditTextPtr"><span class="Identifier">getCharUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">char</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Returns char under mouse
+
+</dd>
+<a id="getWordPositionUnderMouse.e,EditTextPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getWordPositionUnderMouse.e%2CEditTextPtr"><span class="Identifier">getWordPositionUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">startpos</span><span class="Other">,</span> <span class="Identifier">endpos</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Returns words under mouse. Returns (-1, -1), if under mouse no founds words.
+
+</dd>
+<a id="getWordUnderMouse.e,EditTextPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getWordUnderMouse.e%2CEditTextPtr"><span class="Identifier">getWordUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Returns words under mouse.
+
+</dd>
 <a id="draw.e,EditTextPtr,GLfloat,GLfloat"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CEditTextPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -316,7 +353,7 @@ Changes EditText text.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 14:35:33 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 17:05:25 UTC</small>
       </div>
     </div>
   </div>
