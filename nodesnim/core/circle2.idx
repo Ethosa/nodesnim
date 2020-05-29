@@ -5,4 +5,5 @@ Circle2	nodesnim/core/circle2.html#Circle2,Vector2Ref,float	circle2: Circle2(vec
 contains	nodesnim/core/circle2.html#contains,Circle2Ref,float,float	circle2: contains(self: Circle2Ref; x, y: float): bool	
 contains	nodesnim/core/circle2.html#contains,Circle2Ref,Vector2Ref	circle2: contains(self: Circle2Ref; vec2: Vector2Ref): bool	
 contains	nodesnim/core/circle2.html#contains,Circle2Ref,Circle2Ref	circle2: contains(self, other: Circle2Ref): bool	
+contains	nodesnim/core/circle2.html#contains,Circle2Ref,Vector2Ref,Vector2Ref	circle2: contains(self: Circle2Ref; a, b: Vector2Ref): bool	
 `$`	nodesnim/core/circle2.html#$,Circle2Ref	circle2: `$`(self: Circle2Ref): string	

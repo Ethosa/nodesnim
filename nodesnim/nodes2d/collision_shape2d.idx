@@ -5,6 +5,7 @@ CollisionShape2D	nodesnim/nodes2d/collision_shape2d.html#CollisionShape2D,string
 CollisionShape2D	nodesnim/nodes2d/collision_shape2d.html#CollisionShape2D,CollisionShape2DObj	collision_shape2d: CollisionShape2D(obj: var CollisionShape2DObj): CollisionShape2DPtr	
 setShapeTypeRect	nodesnim/nodes2d/collision_shape2d.html#setShapeTypeRect.e,CollisionShape2DPtr	collision_shape2d: setShapeTypeRect(self: CollisionShape2DPtr)	
 setShapeTypeCircle	nodesnim/nodes2d/collision_shape2d.html#setShapeTypeCircle.e,CollisionShape2DPtr,float,float,float	collision_shape2d: setShapeTypeCircle(self: CollisionShape2DPtr; cx, cy, radius: float)	
+setShapeTypePolygon	nodesnim/nodes2d/collision_shape2d.html#setShapeTypePolygon.e,CollisionShape2DPtr,varargs[Vector2Ref]	collision_shape2d: setShapeTypePolygon(self: CollisionShape2DPtr; positions: varargs[Vector2Ref])	
 draw	nodesnim/nodes2d/collision_shape2d.html#draw.e,CollisionShape2DPtr,GLfloat,GLfloat	collision_shape2d: draw(self: CollisionShape2DPtr; w, h: GLfloat)	
 duplicate	nodesnim/nodes2d/collision_shape2d.html#duplicate.e,CollisionShape2DPtr,CollisionShape2DObj	collision_shape2d: duplicate(self: CollisionShape2DPtr; obj: var CollisionShape2DObj): CollisionShape2DPtr	
 getGlobalMousePosition	nodesnim/nodes2d/collision_shape2d.html#getGlobalMousePosition.e,CollisionShape2DPtr	collision_shape2d: getGlobalMousePosition(self: CollisionShape2DPtr): Vector2Ref	

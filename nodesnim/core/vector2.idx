@@ -20,6 +20,7 @@ distance	nodesnim/core/vector2.html#distance,Vector2Ref,Vector2Ref	vector2: dist
 distance	nodesnim/core/vector2.html#distance,Vector2Ref,float,float	vector2: distance(a: Vector2Ref; x, y: float): float	
 directionTo	nodesnim/core/vector2.html#directionTo,Vector2Ref,Vector2Ref	vector2: directionTo(a, b: Vector2Ref): Vector2Ref	
 directionTo	nodesnim/core/vector2.html#directionTo,Vector2Ref,float,float	vector2: directionTo(a: Vector2Ref; x, y: float): Vector2Ref	
+intersects	nodesnim/core/vector2.html#intersects,Vector2Ref,Vector2Ref,Vector2Ref,Vector2Ref	vector2: intersects(a, b, c, d: Vector2Ref): bool	
 `+`	nodesnim/core/vector2.html#+,Vector2Ref,Vector2Ref	vector2: `+`(a, b: Vector2Ref): Vector2Ref	
 `-`	nodesnim/core/vector2.html#-,Vector2Ref,Vector2Ref	vector2: `-`(a, b: Vector2Ref): Vector2Ref	
 `/`	nodesnim/core/vector2.html#/,Vector2Ref,Vector2Ref	vector2: `/`(a, b: Vector2Ref): Vector2Ref	

@@ -125,10 +125,12 @@ function main() {
     title="contains(self: Rect2Ref; x, y: float): bool"><wbr />contains<span class="attachedType">Rect2Ref</span></a></li>
   <li><a class="reference" href="#contains%2CRect2Ref%2CVector2Ref"
     title="contains(self: Rect2Ref; vector: Vector2Ref): bool"><wbr />contains<span class="attachedType">Rect2Ref</span></a></li>
-  <li><a class="reference" href="#intersects%2CRect2Ref%2CRect2Ref"
-    title="intersects(self, other: Rect2Ref): bool"><wbr />intersects<span class="attachedType">Rect2Ref</span></a></li>
   <li><a class="reference" href="#contains%2CRect2Ref%2CRect2Ref"
     title="contains(self, other: Rect2Ref): bool"><wbr />contains<span class="attachedType">Rect2Ref</span></a></li>
+  <li><a class="reference" href="#intersects%2CRect2Ref%2CRect2Ref"
+    title="intersects(self, other: Rect2Ref): bool"><wbr />intersects<span class="attachedType">Rect2Ref</span></a></li>
+  <li><a class="reference" href="#contains%2CRect2Ref%2CVector2Ref%2CVector2Ref"
+    title="contains(self: Rect2Ref; a, b: Vector2Ref): bool"><wbr />contains<span class="attachedType">Rect2Ref</span></a></li>
   <li><a class="reference" href="#clamp%2Cfloat%2Cfloat%2Cfloat"
     title="clamp(a, b, c: float): float"><wbr />clamp<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#isCollideWithCircle%2CRect2Ref%2Cfloat%2Cfloat%2Cfloat"
@@ -203,6 +205,13 @@ function main() {
 
 
 </dd>
+<a id="contains,Rect2Ref,Rect2Ref"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CRect2Ref%2CRect2Ref"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="rect2.html#Rect2Ref"><span class="Identifier">Rect2Ref</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="intersects,Rect2Ref,Rect2Ref"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CRect2Ref%2CRect2Ref"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="rect2.html#Rect2Ref"><span class="Identifier">Rect2Ref</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -210,8 +219,8 @@ function main() {
 
 
 </dd>
-<a id="contains,Rect2Ref,Rect2Ref"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CRect2Ref%2CRect2Ref"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="rect2.html#Rect2Ref"><span class="Identifier">Rect2Ref</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="contains,Rect2Ref,Vector2Ref,Vector2Ref"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CRect2Ref%2CVector2Ref%2CVector2Ref"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rect2.html#Rect2Ref"><span class="Identifier">Rect2Ref</span></a><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -248,7 +257,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 06:28:51 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 14:35:11 UTC</small>
       </div>
     </div>
   </div>

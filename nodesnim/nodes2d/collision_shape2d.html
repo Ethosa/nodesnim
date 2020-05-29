@@ -108,11 +108,13 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#CollisionShape2DType"
     title="CollisionShape2DType {.size: 1, pure.} = enum
-  COLLISION_SHAPE_2D_RECTANGLE, COLLISION_SHAPE_2D_CIRCLE"><wbr />Collision<wbr />Shape2DType<span class="attachedType"></span></a></li>
+  COLLISION_SHAPE_2D_RECTANGLE, COLLISION_SHAPE_2D_CIRCLE,
+  COLLISION_SHAPE_2D_POLYGON"><wbr />Collision<wbr />Shape2DType<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#CollisionShape2DObj"
     title="CollisionShape2DObj = object of Node2DObj
   disable*: bool
   x1*, y1*, radius*: float
+  polygon*: seq[Vector2Ref]
   shape_type*: CollisionShape2DType"><wbr />Collision<wbr />Shape2DObj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#CollisionShape2DPtr"
     title="CollisionShape2DPtr = ptr CollisionShape2DObj"><wbr />Collision<wbr />Shape2DPtr<span class="attachedType"></span></a></li>
@@ -136,6 +138,8 @@ function main() {
     title="setShapeTypeRect(self: CollisionShape2DPtr)"><wbr />set<wbr />Shape<wbr />Type<wbr />Rect<span class="attachedType">CollisionShape2DPtr</span></a></li>
   <li><a class="reference" href="#setShapeTypeCircle.e%2CCollisionShape2DPtr%2Cfloat%2Cfloat%2Cfloat"
     title="setShapeTypeCircle(self: CollisionShape2DPtr; cx, cy, radius: float)"><wbr />set<wbr />Shape<wbr />Type<wbr />Circle<span class="attachedType">CollisionShape2DPtr</span></a></li>
+  <li><a class="reference" href="#setShapeTypePolygon.e%2CCollisionShape2DPtr%2Cvarargs%5BVector2Ref%5D"
+    title="setShapeTypePolygon(self: CollisionShape2DPtr; positions: varargs[Vector2Ref])"><wbr />set<wbr />Shape<wbr />Type<wbr />Polygon<span class="attachedType">CollisionShape2DPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CCollisionShape2DPtr%2CGLfloat%2CGLfloat"
     title="draw(self: CollisionShape2DPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">CollisionShape2DPtr</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CCollisionShape2DPtr%2CCollisionShape2DObj"
@@ -162,14 +166,15 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="node2d.html">node2d</a>
+<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/circle2.html">../core/circle2</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="node2d.html">node2d</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <a id="CollisionShape2DType"></a>
 <dt><pre><a href="collision_shape2d.html#CollisionShape2DType"><span class="Identifier">CollisionShape2DType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">pure</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">COLLISION_SHAPE_2D_RECTANGLE</span><span class="Other">,</span> <span class="Identifier">COLLISION_SHAPE_2D_CIRCLE</span></pre></dt>
+  <span class="Identifier">COLLISION_SHAPE_2D_RECTANGLE</span><span class="Other">,</span> <span class="Identifier">COLLISION_SHAPE_2D_CIRCLE</span><span class="Other">,</span>
+  <span class="Identifier">COLLISION_SHAPE_2D_POLYGON</span></pre></dt>
 <dd>
 
 
@@ -179,6 +184,7 @@ function main() {
 <dt><pre><a href="collision_shape2d.html#CollisionShape2DObj"><span class="Identifier">CollisionShape2DObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="node2d.html#Node2DObj"><span class="Identifier">Node2DObj</span></a>
   <span class="Identifier">disable</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">x1</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">radius</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
+  <span class="Identifier">polygon</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">]</span>
   <span class="Identifier">shape_type</span><span class="Operator">*</span><span class="Other">:</span> <a href="collision_shape2d.html#CollisionShape2DType"><span class="Identifier">CollisionShape2DType</span></a>
 </pre></dt>
 <dd>
@@ -257,6 +263,19 @@ Changes shape type to <tt class="docutils literal"><span class="pre">circle</spa
 
 
 </dd>
+<a id="setShapeTypePolygon.e,CollisionShape2DPtr,varargs[Vector2Ref]"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setShapeTypePolygon.e%2CCollisionShape2DPtr%2Cvarargs%5BVector2Ref%5D"><span class="Identifier">setShapeTypePolygon</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="collision_shape2d.html#CollisionShape2DPtr"><span class="Identifier">CollisionShape2DPtr</span></a><span class="Other">;</span>
+                          <span class="Identifier">positions</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">]</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Changes shape type to <tt class="docutils literal"><span class="pre">polygon</span></tt>.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">positions</span></tt> is a varargs of polygon positions. Should be more than 2.</li>
+</ul>
+
+
+</dd>
 <a id="draw.e,CollisionShape2DPtr,GLfloat,GLfloat"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CCollisionShape2DPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="collision_shape2d.html#CollisionShape2DPtr"><span class="Identifier">CollisionShape2DPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -317,7 +336,7 @@ Checks collision with other CollisionShape2D object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 06:29:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 14:36:00 UTC</small>
       </div>
     </div>
   </div>
