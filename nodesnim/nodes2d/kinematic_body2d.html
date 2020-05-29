@@ -130,10 +130,14 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#addChild.e%2CKinematicBody2DPtr%2CCollisionShape2DPtr"
     title="addChild(self: KinematicBody2DPtr; other: CollisionShape2DPtr)"><wbr />add<wbr />Child<span class="attachedType">KinematicBody2DPtr</span></a></li>
+  <li><a class="reference" href="#getCollideCount.e%2CKinematicBody2DPtr"
+    title="getCollideCount(self: KinematicBody2DPtr): int"><wbr />get<wbr />Collide<wbr />Count<span class="attachedType">KinematicBody2DPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CKinematicBody2DPtr%2CGLfloat%2CGLfloat"
     title="draw(self: KinematicBody2DPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">KinematicBody2DPtr</span></a></li>
+  <li><a class="reference" href="#isCollide.e%2CKinematicBody2DPtr"
+    title="isCollide(self: KinematicBody2DPtr): bool"><wbr />is<wbr />Collide<span class="attachedType">KinematicBody2DPtr</span></a></li>
   <li><a class="reference" href="#moveAndCollide.e%2CKinematicBody2DPtr%2CVector2Ref"
-    title="moveAndCollide(self: KinematicBody2DPtr; vel: Vector2Ref): bool"><wbr />move<wbr />And<wbr />Collide<span class="attachedType">KinematicBody2DPtr</span></a></li>
+    title="moveAndCollide(self: KinematicBody2DPtr; vel: Vector2Ref)"><wbr />move<wbr />And<wbr />Collide<span class="attachedType">KinematicBody2DPtr</span></a></li>
 
   </ul>
 </li>
@@ -218,7 +222,15 @@ function main() {
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+Adss collision to the KinematicBody2D. This method should be called one time.
 
+</dd>
+<a id="getCollideCount.e,KinematicBody2DPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getCollideCount.e%2CKinematicBody2DPtr"><span class="Identifier">getCollideCount</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="kinematic_body2d.html#KinematicBody2DPtr"><span class="Identifier">KinematicBody2DPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Checks collision count.
 
 </dd>
 <a id="draw.e,KinematicBody2DPtr,GLfloat,GLfloat"></a>
@@ -228,8 +240,16 @@ function main() {
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
+<a id="isCollide.e,KinematicBody2DPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#isCollide.e%2CKinematicBody2DPtr"><span class="Identifier">isCollide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="kinematic_body2d.html#KinematicBody2DPtr"><span class="Identifier">KinematicBody2DPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Checks any collision and return <tt class="docutils literal"><span class="pre">true</span></tt>, when collide with any collision shape.
+
+</dd>
 <a id="moveAndCollide.e,KinematicBody2DPtr,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#moveAndCollide.e%2CKinematicBody2DPtr%2CVector2Ref"><span class="Identifier">moveAndCollide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="kinematic_body2d.html#KinematicBody2DPtr"><span class="Identifier">KinematicBody2DPtr</span></a><span class="Other">;</span> <span class="Identifier">vel</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">method</span> <a href="#moveAndCollide.e%2CKinematicBody2DPtr%2CVector2Ref"><span class="Identifier">moveAndCollide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="kinematic_body2d.html#KinematicBody2DPtr"><span class="Identifier">KinematicBody2DPtr</span></a><span class="Other">;</span> <span class="Identifier">vel</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -246,7 +266,7 @@ Moves and checks collision
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 05:03:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 06:29:40 UTC</small>
       </div>
     </div>
   </div>
