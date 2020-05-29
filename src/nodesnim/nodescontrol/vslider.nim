@@ -40,6 +40,7 @@ proc VSlider*(name: string, variable: var VSliderObj): VSliderPtr =
   variable.thumb_color = Color(0.7, 0.7, 0.7)
   variable.max_value = 100
   variable.value = 0
+  variable.kind = VSLIDER_NODE
 
 proc VSlider*(obj: var VSliderObj): VSliderPtr {.inline.} =
   ## Creates a new VSlider pointer with default node name "VSlider".

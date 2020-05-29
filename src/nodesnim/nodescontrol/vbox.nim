@@ -36,6 +36,7 @@ proc VBox*(name: string, variable: var VBoxObj): VBoxPtr =
   variable.rect_size.y = 40
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   variable.separator = 4f
+  variable.kind = VBOX_NODE
 
 proc VBox*(obj: var VBoxObj): VBoxPtr {.inline.} =
   ## Creates a new VBox pointer with default node name "VBox".

@@ -38,6 +38,7 @@ proc TextureProgressBar*(name: string, variable: var TextureProgressBarObj): Tex
   variable.back_texture = GlTextureObj()
   variable.max_value = 100
   variable.value = 0
+  variable.kind = TEXTURE_PROGRESS_BAR_NODE
 
 proc TextureProgressBar*(obj: var TextureProgressBarObj): TextureProgressBarPtr {.inline.} =
   ## Creates a new TextureProgressBar pointer with default node name "TextureProgressBar".

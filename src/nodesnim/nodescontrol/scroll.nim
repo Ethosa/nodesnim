@@ -50,6 +50,7 @@ proc Scroll*(name: string, variable: var ScrollObj): ScrollPtr =
   variable.thumb_y_has_mouse = false
   variable.thumb_x_has_mouse = false
   variable.mousemode = MOUSEMODE_IGNORE
+  variable.kind = SCROLL_NODE
 
 proc Scroll*(obj: var ScrollObj): ScrollPtr {.inline.} =
   ## Creates a new Scroll pointer with default name "Scroll".

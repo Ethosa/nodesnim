@@ -47,6 +47,7 @@ proc Counter*(name: string, variable: var CounterObj): CounterPtr =
   variable.label.mousemode = MOUSEMODE_IGNORE
   variable.label.parent = result
   variable.background_color = Color(0x212121ff)
+  variable.kind = COUNTER_NODE
 
 proc Counter*(obj: var CounterObj): CounterPtr {.inline.} =
   ## Creates a new Counterpointer with default node name "Counter".

@@ -34,6 +34,7 @@ proc Popup*(name: string, variable: var PopupObj): PopupPtr =
   variable.rect_size.x = 160
   variable.rect_size.y = 160
   variable.visible = false
+  variable.kind = POPUP_NODE
 
 proc Popup*(obj: var PopupObj): PopupPtr {.inline.} =
   ## Creates a new Popup pointer with default node name "Popup".

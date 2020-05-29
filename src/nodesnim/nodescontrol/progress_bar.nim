@@ -38,6 +38,7 @@ proc ProgressBar*(name: string, variable: var ProgressBarObj): ProgressBarPtr =
   variable.progress_color = Color(0.5, 0.5, 0.5)
   variable.max_value = 100
   variable.value = 0
+  variable.kind = PROGRESS_BAR
 
 proc ProgressBar*(obj: var ProgressBarObj): ProgressBarPtr {.inline.} =
   ## Creates a new ProgressBar pointer with default node name "ProgressBar".

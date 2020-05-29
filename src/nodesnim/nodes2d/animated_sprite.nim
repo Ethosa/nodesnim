@@ -43,6 +43,7 @@ proc AnimatedSprite*(name: string, variable: var AnimatedSpriteObj): AnimatedSpr
   variable.animation = "default"
   variable.paused = true
   variable.reversed = false
+  variable.kind = ANIMATED_SPRITE_NODE
 
 proc AnimatedSprite*(obj: var AnimatedSpriteObj): AnimatedSpritePtr {.inline.} =
   ## Creates a new AnimatedSprite pointer with default node name "AnimatedSprite".

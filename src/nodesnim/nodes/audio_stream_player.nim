@@ -31,6 +31,7 @@ proc AudioStreamPlayer*(name: string, variable: var AudioStreamPlayerObj): Audio
   variable.pausemode = PAUSE
   variable.paused = false
   variable.volume = 64
+  variable.kind = AUDIO_STREAM_PLAYER_NODE
 
 proc AudioStreamPlayer*(variable: var AudioStreamPlayerObj): AudioStreamPlayerPtr {.inline.} =
   ## Creates a new AudioStreamPlayer pointer width default name "AudioStreamPlayer".

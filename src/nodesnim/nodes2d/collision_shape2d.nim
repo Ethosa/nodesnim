@@ -48,6 +48,7 @@ proc CollisionShape2D*(name: string, variable: var CollisionShape2DObj): Collisi
   variable.x1 = 0
   variable.y1 = 0
   variable.radius = 20
+  variable.kind = COLLISION_SHAPE_2D_NODE
 
 proc CollisionShape2D*(obj: var CollisionShape2DObj): CollisionShape2DPtr {.inline.} =
   ## Creates a new CollisionShape2D pointer with deffault node name "CollisionShape2D".
@@ -173,8 +174,8 @@ method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
       of COLLISION_SHAPE_2D_CIRCLE:
         let
           sradii = self.radius + other.radius
-          dx = other.x1 - self.x1
-          dy = other.y1 - self.y1
+          dx = (other.global_position.x + other.x1) - (self.global_position.x + self.x1)
+          dy = (other.global_position.y + other.y1) - (self.global_position.y + self.y1)
         return dx*dx + dy*dy <= sradii*sradii
       of COLLISION_SHAPE_2D_RECTANGLE:
         return Rect2(other.global_position, other.rect_size).isCollideWithCircle(

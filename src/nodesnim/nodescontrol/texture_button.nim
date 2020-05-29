@@ -63,6 +63,7 @@ proc TextureButton*(name: string, variable: var TextureButtonObj): TextureButton
   variable.hover_background_texture = GlTextureObj()
   variable.press_background_texture = GlTextureObj()
   variable.on_click = proc(x, y: float) = discard
+  variable.kind = TEXTURE_BUTTON_NODE
 
 proc TextureButton*(obj: var TextureButtonObj): TextureButtonPtr {.inline.} =
   ## Creates a new TextureButton node pointer with default node name "TextureButton".

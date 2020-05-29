@@ -9,6 +9,7 @@ import
   ../core/vector2,
   ../core/color,
   ../core/anchor,
+  ../core/enums,
 
   node
 
@@ -49,6 +50,7 @@ proc Canvas*(name: string, variable: var CanvasObj): CanvasPtr =
   nodepattern(CanvasObj)
   variable.rect_size.x = 40
   variable.rect_size.y = 40
+  variable.kind = CANVAS_NODE
 
 proc Canvas*(variable: var CanvasObj): CanvasPtr {.inline.} =
   ## Creates a new Canvas pointer with default name "Canvas".

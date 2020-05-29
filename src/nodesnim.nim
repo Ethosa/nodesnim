@@ -61,7 +61,8 @@ import
   nodesnim/nodes2d/sprite,
   nodesnim/nodes2d/animated_sprite,
   nodesnim/nodes2d/ysort,
-  nodesnim/nodes2d/collision_shape2d
+  nodesnim/nodes2d/collision_shape2d,
+  nodesnim/nodes2d/kinematic_body2d
 
 export
   # Third party
@@ -78,4 +79,4 @@ export
   rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup,
   texture_button, texture_progress_bar, counter,
   # 2D nodes
-  node2d, sprite, animated_sprite, ysort, collision_shape2d
+  node2d, sprite, animated_sprite, ysort, collision_shape2d, kinematic_body2d

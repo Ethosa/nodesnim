@@ -61,6 +61,7 @@ proc Control*(name: string, variable: var ControlObj): ControlPtr =
       ctrl = Control("Control", ctrl_obj)
   nodepattern(ControlObj)
   controlpattern()
+  variable.kind = CONTROL_NODE
 
 proc Control*(obj: var ControlObj): ControlPtr {.inline.} =
   ## Creates a new Control pointer with deffault node name "Control".

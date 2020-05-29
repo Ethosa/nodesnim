@@ -32,3 +32,4 @@
 30. [Use YSort node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test30.nim)
 31. [Use Counter node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test31.nim)
 32. [Use CollisionShape2D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test32.nim)
+33. [Use KinematicBody2D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test33.nim)

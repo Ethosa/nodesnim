@@ -40,6 +40,7 @@ proc Slider*(name: string, variable: var SliderObj): SliderPtr =
   variable.thumb_color = Color(0.7, 0.7, 0.7)
   variable.max_value = 100
   variable.value = 0
+  variable.kind = SLIDER_NODE
 
 proc Slider*(obj: var SliderObj): SliderPtr {.inline.} =
   ## Creates a new Slider pointer with default node name "Slider".

@@ -14,6 +14,7 @@ import
 
 type
   NodeObj* = object of RootObj
+    kind*: NodeKind
     visible*: bool
     is_ready*: bool
     can_use_anchor*: bool
@@ -57,6 +58,7 @@ template nodepattern*(nodetype: untyped): untyped =
 proc Node*(name: string, variable: var NodeObj): NodePtr =
   ## Creates a new Node pointer.
   nodepattern(NodeObj)
+  variable.kind = NODE_NODE
 
 proc Node*(variable: var NodeObj): NodePtr {.inline.} =
   Node("Node", variable)
@@ -182,6 +184,12 @@ method getPauseMode*(self: NodePtr): PauseMode {.base.} =
   while result == INHERIT and current.parent != nil:
     current = current.parent
     result = current.pausemode
+
+method getRootNode*(self: NodePtr): NodePtr {.base.} =
+  ## Gets root node.
+  result = self
+  while result.parent != nil:
+    result = result.parent
 
 method isCollide*(self: NodePtr, x, y: float): bool {.base.} =
   false

@@ -59,6 +59,7 @@ proc RichEditText*(name: string, variable: var RichEditTextObj): RichEditTextPtr
   variable.blit_speed = 0.05
   variable.blit_time = 0f
   variable.on_edit = proc(key: string) = discard
+  variable.kind = RICH_EDIT_TEXT_NODE
 
 proc RichEditText*(obj: var RichEditTextObj): RichEditTextPtr {.inline.} =
   ## Creates a new RichEditText pointer with default node name "RichEditText".

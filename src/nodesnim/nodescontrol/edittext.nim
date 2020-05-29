@@ -63,6 +63,7 @@ proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
   variable.blit_speed = 0.05
   variable.blit_time = 0f
   variable.on_edit = proc(key: string) = discard
+  variable.kind = EDIT_TEXT_NODE
 
 proc EditText*(obj: var EditTextObj): EditTextPtr {.inline.} =
   ## Creates a new EditText pointer with default name "EditText".

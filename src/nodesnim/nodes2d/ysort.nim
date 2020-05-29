@@ -32,6 +32,7 @@ proc YSort*(name: string, variable: var YSortObj): YSortPtr =
   nodepattern(YSortObj)
   node2dpattern()
   variable.for_all_childs = false
+  variable.kind = YSORT_NODE
 
 proc YSort*(obj: var YSortObj): YSortPtr {.inline.} =
   ## Creates a new YSort pointer with deffault node name "YSort".

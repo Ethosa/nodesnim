@@ -40,6 +40,7 @@ proc VProgressBar*(name: string, variable: var VProgressBarObj): VProgressBarPtr
   variable.thumb_color = Color(0.7, 0.7, 0.7)
   variable.max_value = 100
   variable.value = 0
+  variable.kind = VPROGRESS_BAR_NODE
 
 proc VProgressBar*(obj: var VProgressBarObj): VProgressBarPtr {.inline.} =
   ## Creates a new VProgressBar pointer with default node name "VProgressBar".

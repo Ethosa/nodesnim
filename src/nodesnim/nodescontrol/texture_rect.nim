@@ -44,6 +44,7 @@ proc TextureRect*(name: string, variable: var TextureRectObj): TextureRectPtr =
   variable.texture_size = Vector2()
   variable.texture_anchor = Anchor(0, 0, 0, 0)
   variable.texture_filter = Color(1f, 1f, 1f)
+  variable.kind = TEXTURE_RECT_NODE
 
 proc TextureRect*(obj: var TextureRectObj): TextureRectPtr {.inline.} =
   ## Creates a new TextureRect pointer with default name "TextureRect".

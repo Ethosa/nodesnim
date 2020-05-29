@@ -47,6 +47,7 @@ proc Label*(name: string, variable: var LabelObj): LabelPtr =
   variable.spacing = 2
   variable.text_align = Anchor(0, 0, 0, 0)
   variable.color = Color(1f, 1f, 1f)
+  variable.kind = LABEL_NODE
 
 proc Label*(obj: var LabelObj): LabelPtr {.inline.} =
   ## Creates a new Labelpointer with default node name "Label".

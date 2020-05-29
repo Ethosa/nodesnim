@@ -36,6 +36,7 @@ proc Node2D*(name: string, variable: var Node2DObj): Node2DPtr =
       node = Node2D("Node2D", node_obj)
   nodepattern(Node2DObj)
   node2dpattern()
+  variable.kind = NODE2D_NODE
 
 proc Node2D*(obj: var Node2DObj): Node2DPtr {.inline.} =
   ## Creates a new Node2D pointer with deffault node name "Node2D".

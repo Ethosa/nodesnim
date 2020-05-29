@@ -72,6 +72,7 @@
    -  [AnimatedSprite](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/animated_sprite.html)
    -  [YSort](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/ysort.html)
    -  [CollisionShape2D](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/collision_shape2d.html)
+   -  [KinematicBody2D](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/kinematic_body2d.html)
 
 </details>
 

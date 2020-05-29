@@ -36,6 +36,7 @@ proc HBox*(name: string, variable: var HBoxObj): HBoxPtr =
   variable.rect_size.y = 40
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   variable.separator = 4f
+  variable.kind = HBOX_NODE
 
 proc HBox*(obj: var HBoxObj): HBoxPtr {.inline.} =
   ## Creates a new HBox pointer with default node name "HBox".

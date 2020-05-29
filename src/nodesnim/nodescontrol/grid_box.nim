@@ -38,6 +38,7 @@ proc GridBox*(name: string, variable: var GridBoxObj): GridBoxPtr =
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   variable.separator = 4f
   variable.row = 2
+  variable.kind = GRID_BOX_NODE
 
 proc GridBox*(obj: var GridBoxObj): GridBoxPtr {.inline.} =
   ## Creates a new GridBox pointer with defalut node name "GridBox".

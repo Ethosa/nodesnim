@@ -34,6 +34,7 @@ proc Box*(name: string, variable: var BoxObj): BoxPtr =
   variable.rect_size.x = 40
   variable.rect_size.y = 40
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+  variable.kind = BOX_NODE
 
 proc Box*(obj: var BoxObj): BoxPtr {.inline.} =
   ## Creates a new Box pointer with default name "Box"

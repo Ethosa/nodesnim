@@ -45,6 +45,7 @@ proc RichLabel*(name: string, variable: var RichLabelObj): RichLabelPtr =
   variable.size = 12
   variable.spacing = 2
   variable.text_align = Anchor(0, 0, 0, 0)
+  variable.kind = RICH_LABEL_NODE
 
 proc RichLabel*(obj: var RichLabelObj): RichLabelPtr {.inline.} =
   ## Creates a new RichLabel pointer with default node name "RichLabel".

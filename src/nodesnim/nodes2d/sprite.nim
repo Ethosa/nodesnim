@@ -37,6 +37,7 @@ proc Sprite*(name: string, variable: var SpriteObj): SpritePtr =
   node2dpattern()
   variable.texture = GlTextureObj()
   variable.filter = Color(1f, 1f, 1f)
+  variable.kind = SPRITE_NODE
 
 proc Sprite*(obj: var SpriteObj): SpritePtr {.inline.} =
   ## Creates a new Sprite pointer with deffault node name "Sprite".

@@ -62,6 +62,7 @@ proc Button*(name: string, variable: var ButtonObj): ButtonPtr =
   variable.hover_background_color = Color(0x505050ff)
   variable.press_background_color = Color(0x595959ff)
   variable.on_click = proc(x, y: float) = discard
+  variable.kind = BUTTON_NODE
 
 proc Button*(obj: var ButtonObj): ButtonPtr {.inline.} =
   ## Creates a new Button node pointer with default node name "Button".

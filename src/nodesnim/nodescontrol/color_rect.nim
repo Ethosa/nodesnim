@@ -34,6 +34,7 @@ proc ColorRect*(name: string, variable: var ColorRectObj): ColorRectPtr =
   variable.color = Color(1f, 1f, 1f)
   variable.rect_size.x = 40
   variable.rect_size.y = 40
+  variable.kind = COLOR_RECT_NODE
 
 proc ColorRect*(obj: var ColorRectObj): ColorRectPtr {.inline.} =
   ## Creates a new ColorRect pointer with default node name "ColorRect".
