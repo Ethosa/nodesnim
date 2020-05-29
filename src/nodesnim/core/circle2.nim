@@ -1,6 +1,7 @@
 # author: Ethosa
 ## Provides Circle2 type.
 import
+  math,
   vector2
 {.used.}
 
@@ -50,6 +51,34 @@ proc contains*(self, other: Circle2Ref): bool =
     dy = other.y - self.y
     r = other.r + self.r
   dx*dx + dy*dy <= r*r
+
+proc contains*(self: Circle2Ref, a, b: Vector2Ref): bool =
+  let
+    dx = b.x - a.x
+    dy = b.y - a.y
+    d = sqrt(dx*dx + dy*dy)
+  if d == 0:
+    return false
+
+  let
+    nx = dx/d
+    ny = dy/d
+    mx = a.x - self.x
+    my = a.y - self.y
+    b = mx*nx + my*ny
+    c = mx*mx + my*my - self.r*self.r
+  if c > 0 and b > 0:
+    return false
+
+  var discr = b*b - c
+  if discr < 0:
+    return false
+
+  discr = sqrt(discr)
+  let tmin = if -b - discr > 0: -b - discr else: 0
+  if tmin > d:
+    return false
+  return true
 
 
 # --- Operators --- #

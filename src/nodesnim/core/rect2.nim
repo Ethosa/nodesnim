@@ -25,17 +25,31 @@ proc contains*(self: Rect2Ref, x, y: float): bool {.inline.} =
 proc contains*(self: Rect2Ref, vector: Vector2Ref): bool {.inline.} =
   self.contains(vector.x, vector.y)
 
-proc intersects*(self, other: Rect2Ref): bool =
-  ((self.contains(other.x, other.y) or
-   self.contains(other.x+other.w, other.y)) or
-   (self.contains(other.x, other.y+other.h) or
-   self.contains(other.x+other.w, other.y+other.h)))
-
 proc contains*(self, other: Rect2Ref): bool =
   (self.contains(other.x, other.y) and
    self.contains(other.x+other.w, other.y) and
    self.contains(other.x, other.y+other.h) and
    self.contains(other.x+other.w, other.y+other.h))
+
+proc intersects*(self, other: Rect2Ref): bool =
+  if self.w > other.w and self.h > other.h:
+    (self.contains(other.x, other.y) or
+     self.contains(other.x, other.y+other.h) or
+     self.contains(other.x+other.w, other.y) or
+     self.contains(other.x+other.w, other.y+other.h))
+  else:
+    (other.contains(self.x, self.y) or
+     other.contains(self.x, self.y+self.h) or
+     other.contains(self.x+other.w, self.y) or
+     other.contains(self.x+other.w, self.y+self.h))
+
+proc contains*(self: Rect2Ref, a, b: Vector2Ref): bool =
+  let
+    left = intersects(a, b, Vector2(self.x, self.y), Vector2(self.x, self.y+self.h))
+    right = intersects(a, b, Vector2(self.x+self.w, self.y), Vector2(self.x+self.w, self.y+self.h))
+    top = intersects(a, b, Vector2(self.x, self.y), Vector2(self.x+self.w, self.y))
+    bottom = intersects(a, b, Vector2(self.x, self.y+self.h), Vector2(self.x+self.w, self.y+self.h))
+  return left or right or bottom or top
 
 proc clamp*(a, b, c: float): float =
   if a < b:

@@ -78,6 +78,12 @@ proc directionTo*(a: Vector2Ref, x, y: float): Vector2Ref =
   result = Vector2(x - a.x, y - a.y)
   result.normalize()
 
+proc intersects*(a, b, c, d: Vector2Ref): bool =
+  let
+    uA = ((d.x-c.x)*(a.y-c.y) - (d.y-c.y)*(a.x-c.x)) / ((d.y-c.y)*(b.x-a.x) - (d.x-c.x)*(b.y-a.y))
+    uB = ((b.x-a.x)*(a.y-c.y) - (b.y-a.y)*(a.x-c.x)) / ((d.y-c.y)*(b.x-a.x) - (d.x-c.x)*(b.y-a.y))
+  return uA >= 0 and uA <= 1 and uB >= 0 and uB <= 1
+
 
 # --- Operators --- #
 proc `+`*(a, b: Vector2Ref): Vector2Ref =

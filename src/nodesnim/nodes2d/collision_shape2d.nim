@@ -8,6 +8,7 @@ import
   ../core/anchor,
   ../core/input,
   ../core/enums,
+  ../core/circle2,
 
   ../nodes/node,
   node2d
@@ -21,10 +22,12 @@ when defined(debug):
 type
   CollisionShape2DType* {.size: sizeof(int8), pure.} = enum
     COLLISION_SHAPE_2D_RECTANGLE,
-    COLLISION_SHAPE_2D_CIRCLE
+    COLLISION_SHAPE_2D_CIRCLE,
+    COLLISION_SHAPE_2D_POLYGON
   CollisionShape2DObj* = object of Node2DObj
     disable*: bool
     x1*, y1*, radius*: float
+    polygon*: seq[Vector2Ref]
     shape_type*: CollisionShape2DType
   CollisionShape2DPtr* = ptr CollisionShape2DObj
 
@@ -48,6 +51,7 @@ proc CollisionShape2D*(name: string, variable: var CollisionShape2DObj): Collisi
   variable.x1 = 0
   variable.y1 = 0
   variable.radius = 20
+  variable.polygon = @[]
   variable.kind = COLLISION_SHAPE_2D_NODE
 
 proc CollisionShape2D*(obj: var CollisionShape2DObj): CollisionShape2DPtr {.inline.} =
@@ -78,6 +82,19 @@ method setShapeTypeCircle*(self: CollisionShape2DPtr, cx, cy, radius: float) {.b
   self.y1 = cy
   self.radius = radius
 
+method setShapeTypePolygon*(self: CollisionShape2DPtr, positions: varargs[Vector2Ref]) {.base.} =
+  ## Changes shape type to `polygon`.
+  ##
+  ## Arguments:
+  ## - `positions` is a varargs of polygon positions. Should be more than 2.
+  self.shape_type = COLLISION_SHAPE_2D_POLYGON
+  if positions.len() < 3:
+    return
+
+  self.polygon = @[]
+  for i in positions:
+    self.polygon.add(i)
+
 method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
@@ -105,10 +122,15 @@ method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
       glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
     of COLLISION_SHAPE_2D_CIRCLE:
       glBegin(GL_TRIANGLE_FAN)
-      glVertex2f(x + self.x1, y - self.y1)
+      glVertex3f(x + self.x1, y - self.y1, self.z_index_global)
       for i in 0..180:
         let angle = PI2*i.float/180f
-        glVertex2f(x + self.x1 + self.radius*cos(angle), y - self.y1 - self.radius*sin(angle))
+        glVertex3f(x + self.x1 + self.radius*cos(angle), y - self.y1 - self.radius*sin(angle), self.z_index_global)
+      glEnd()
+    of COLLISION_SHAPE_2D_POLYGON:
+      glBegin(GL_POLYGON)
+      for vec2 in self.polygon:
+        glVertex3f(x + vec2.x, y - vec2.y, self.z_index_global)
       glEnd()
 
 method duplicate*(self: CollisionShape2DPtr, obj: var CollisionShape2DObj): CollisionShape2DPtr {.base.} =
@@ -131,12 +153,25 @@ method isCollide*(self: CollisionShape2DPtr, x, y: float): bool =
     return false
   case self.shape_type
   of COLLISION_SHAPE_2D_RECTANGLE:
-    Rect2(self.global_position, self.rect_size).contains(x, y)
+    return Rect2(self.global_position, self.rect_size).contains(x, y)
   of COLLISION_SHAPE_2D_CIRCLE:
     let
       dx = x - self.x1
       dy = y - self.y1
     return dx*dx + dy*dy <= self.radius*self.radius
+  of COLLISION_SHAPE_2D_POLYGON:
+    result = false
+    var next = 1
+    let length = self.polygon.len()
+
+    for i in 0..<length:
+      inc next
+      if next == length: next = 0
+      let
+        a = self.polygon[i] + self.global_position
+        b = self.polygon[next] + self.global_position
+      if ((a.y >= y and b.y < y) or (a.y < y and b.y >= y)) and (x < (b.x-a.x)*(y-a.y) / (b.y-a.y)+a.x):
+        result = not result
 
 method isCollide*(self: CollisionShape2DPtr, vec2: Vector2Ref): bool =
   ## Checks collision with point.
@@ -145,12 +180,25 @@ method isCollide*(self: CollisionShape2DPtr, vec2: Vector2Ref): bool =
     return false
   case self.shape_type
   of COLLISION_SHAPE_2D_RECTANGLE:
-    Rect2(self.global_position, self.rect_size).contains(vec2)
+    return Rect2(self.global_position, self.rect_size).contains(vec2)
   of COLLISION_SHAPE_2D_CIRCLE:
     let
       dx = vec2.x - self.x1
       dy = vec2.y - self.y1
     return dx*dx + dy*dy <= self.radius*self.radius
+  of COLLISION_SHAPE_2D_POLYGON:
+    result = false
+    var next = 1
+    let length = self.polygon.len()
+
+    for i in 0..<length:
+      inc next
+      if next == length: next = 0
+      let
+        a = self.polygon[i] + self.global_position
+        b = self.polygon[next] + self.global_position
+      if ((a.y >= vec2.y and b.y < vec2.y) or (a.y < vec2.y and b.y >= vec2.y)) and (vec2.x < (b.x-a.x)*(vec2.y-a.y) / (b.y-a.y)+a.x):
+        result = not result
 
 method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
   ## Checks collision with other CollisionShape2D object.
@@ -164,11 +212,25 @@ method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
   of COLLISION_SHAPE_2D_RECTANGLE:
     case other.shape_type:
       of COLLISION_SHAPE_2D_RECTANGLE:
-        return Rect2(self.global_position, self.rect_size).intersects(Rect2(other.global_position, other.rect_size))
+        return Rect2(other.global_position, other.rect_size).intersects(Rect2(self.global_position, self.rect_size))
       of COLLISION_SHAPE_2D_CIRCLE:
         return Rect2(self.global_position, self.rect_size).isCollideWithCircle(
           other.global_position.x + other.x1,
           other.global_position.y + other.y1, other.radius)
+      of COLLISION_SHAPE_2D_POLYGON:
+        var
+          rect = Rect2(self.global_position, self.rect_size)
+          next = 1
+        let length = other.polygon.len()
+
+        for i in 0..<length:
+          inc next
+          if next == length: next = 0
+          let
+            a = other.polygon[i] + other.global_position
+            b = other.polygon[next] + other.global_position
+          if rect.contains(a, b):
+            return true
   of COLLISION_SHAPE_2D_CIRCLE:
     case other.shape_type:
       of COLLISION_SHAPE_2D_CIRCLE:
@@ -181,3 +243,71 @@ method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
         return Rect2(other.global_position, other.rect_size).isCollideWithCircle(
           self.global_position.x + self.x1,
           self.global_position.y + self.y1, self.radius)
+      of COLLISION_SHAPE_2D_POLYGON:
+        var
+          circle = Circle2(self.global_position.x + self.x1, self.global_position.y + self.y1, self.radius)
+          next = 1
+        let length = other.polygon.len()
+
+        for i in 0..<length:
+          inc next
+          if next == length: next = 0
+          let
+            a = other.polygon[i] + other.global_position
+            b = other.polygon[next] + other.global_position
+          if circle.contains(a, b):
+            return true
+        return false
+  of COLLISION_SHAPE_2D_POLYGON:
+    case other.shape_type:
+      of COLLISION_SHAPE_2D_RECTANGLE:
+        var
+          rect = Rect2(other.global_position, other.rect_size)
+          next = 1
+        let length = self.polygon.len()
+
+        for i in 0..<length:
+          inc next
+          if next == length: next = 0
+          let
+            a = self.polygon[i] + self.global_position
+            b = self.polygon[next] + self.global_position
+          if rect.contains(a, b):
+            return true
+      of COLLISION_SHAPE_2D_POLYGON:
+        let
+          length = self.polygon.len()
+          otherlength = other.polygon.len()
+        var next = 0
+
+        for i in 0..<length:
+          inc next
+          if next == length: next = 0
+          let
+            a = self.polygon[i] + self.global_position
+            b = self.polygon[next] + self.global_position
+
+          var othernext = 0
+          for i in 0..<otherlength:
+            inc othernext
+            if othernext == otherlength: othernext = 0
+            let
+              c = other.polygon[i] + other.global_position
+              d = other.polygon[othernext] + other.global_position
+            if intersects(a, b, c, d):
+              return true
+      of COLLISION_SHAPE_2D_CIRCLE:
+        var
+          circle = Circle2(other.global_position.x + other.x1, other.global_position.y + other.y1, other.radius)
+          next = 1
+        let length = self.polygon.len()
+
+        for i in 0..<length:
+          inc next
+          if next == length: next = 0
+          let
+            a = self.polygon[i] + self.global_position
+            b = self.polygon[next] + self.global_position
+          if circle.contains(a, b):
+            return true
+        return false

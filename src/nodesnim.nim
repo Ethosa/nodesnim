@@ -20,6 +20,7 @@ import
   nodesnim/core/vector2,
   nodesnim/core/rect2,
   nodesnim/core/circle2,
+  nodesnim/core/polygon2,
   nodesnim/core/enums,
   nodesnim/core/anchor,
   nodesnim/core/color,

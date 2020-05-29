@@ -37,6 +37,7 @@
    -  [Rect2](https://ethosa.github.io/nodesnim/nodesnim/core/rect2.html)
    -  [Vector2](https://ethosa.github.io/nodesnim/nodesnim/core/vector2.html)
    -  [Circle2](https://ethosa.github.io/nodesnim/nodesnim/core/circle2.html)
+   -  [Polygon2](https://ethosa.github.io/nodesnim/nodesnim/core/polygon2.html)
    -  [AudioStream](https://ethosa.github.io/nodesnim/nodesnim/core/audio_stream.html)
    -  [Animation](https://ethosa.github.io/nodesnim/nodesnim/core/animation.html)
 -  Default nodes
