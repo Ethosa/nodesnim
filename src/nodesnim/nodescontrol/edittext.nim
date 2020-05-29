@@ -91,6 +91,7 @@ method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
   if result.y > 0:
     result.y -= self.spacing
 
+
 method getLine*(self: EditTextPtr): int {.base.} =
   ## Returns current caret line.
   var
@@ -106,6 +107,84 @@ method getLine*(self: EditTextPtr): int {.base.} =
     inc l
     inc caret_pos
   return l
+
+
+method getCharPositionUnderMouse*(self: EditTextPtr): int {.base.} =
+  ## Returns char position under mouse.
+  let
+    size = self.getTextSize()
+    pos = Vector2Ref(x: last_event.x, y: last_event.y) - self.global_position
+  if pos.y > size.y:
+    return self.text.len()
+  else:
+    var
+      res = Vector2()
+      caret_pos = 0
+      current_pos = 0
+    for line in self.text.splitLines():  # get text height
+      var x: float = 0f
+      current_pos = 0
+      res.y += self.spacing + self.size
+      for c in line:
+        x += self.font.glutBitmapWidth(c.int).float
+        inc caret_pos
+        inc current_pos
+        if res.y >= pos.y:
+          if current_pos < line.len() and x <= pos.x:
+            continue
+          return caret_pos
+      inc caret_pos
+      if x > res.x:
+        res.x = x
+
+
+method getCharUnderMouse*(self: EditTextPtr): char {.base.} =
+  ## Returns char under mouse
+  return self.text[self.getCharPositionUnderMouse()]
+
+
+method getWordPositionUnderMouse*(self: EditTextPtr): tuple[startpos, endpos: int] {.base.} =
+  ## Returns words under mouse.
+  ## Returns (-1, -1), if under mouse no founds words.
+  var caret = self.getCharPositionUnderMouse()
+  if caret == self.text.len():
+    return (-1, -1)
+
+  if self.text.len() > 0 and self.text[caret] != ' ':
+    # Left
+    var i = caret
+    while self.text[i] != ' ':
+      dec i
+      if i < 0:
+        break
+    if i > 0:
+      if self.text[i] == ' ':
+        i += 1
+      result.startpos = i
+    else:
+      result.startpos = 0
+    # Right
+    i = caret
+    while self.text[i] != ' ':
+      inc i
+      if i > self.text.len()-1:
+        break
+    if i < self.text.len():
+      if self.text[i] == ' ':
+        i -= 1
+      result.endpos = i
+    else:
+      result.endpos = self.text.len()-1
+  else:
+    return (-1, -1)
+
+
+method getWordUnderMouse*(self: EditTextPtr): string {.base.} =
+  ## Returns words under mouse.
+  let (s, e) = self.getWordPositionUnderMouse()
+  if self.text.len() > 0:
+    return self.text[s..e]
+
 
 method draw*(self: EditTextPtr, w, h: GLfloat) =
   ## This method uses in the `window.nim`
@@ -174,6 +253,7 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
+
 method duplicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =
   ## Duplicates EditText object and create a new EditText pointer.
   obj = self[]
@@ -190,36 +270,7 @@ method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
     glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
 
   if event.kind == MOUSE and event.pressed:
-    let
-      size = self.getTextSize()
-      pos = Vector2Ref(x: event.x, y: event.y) - self.global_position
-    if pos.y > size.y:
-      self.caret_position = self.text.len()
-    else:
-      var
-        res = Vector2()
-        caret_pos = 0
-        current_pos = 0
-        stop = false
-      for line in self.text.splitLines():  # get text height
-        var x: float = 0f
-        current_pos = 0
-        res.y += self.spacing + self.size
-        for c in line:
-          x += self.font.glutBitmapWidth(c.int).float
-          inc caret_pos
-          inc current_pos
-          if res.y >= pos.y:
-            if current_pos < line.len() and x <= pos.x:
-              continue
-            stop = true
-            self.caret_position = caret_pos
-            break
-        if stop:
-          break
-        inc caret_pos
-        if x > res.x:
-          res.x = x
+    self.caret_position = self.getCharPositionUnderMouse()
 
   if self.focused:
     if event.kind == KEYBOARD:
@@ -254,13 +305,16 @@ method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
           self.caret_position += 1
           self.on_edit(event.key)
 
+
 method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
   ## Changes text align.
   self.text_align = align
 
+
 method setTextAlign*(self: EditTextPtr, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
+
 
 method setText*(self: EditTextPtr, value: string) {.base.} =
   ## Changes EditText text.

@@ -102,6 +102,84 @@ method getLine*(self: RichEditTextPtr): int {.base.} =
     inc caret_pos
   return l
 
+
+method getCharPositionUnderMouse*(self: RichEditTextPtr): int {.base.} =
+  ## Returns char position under mouse.
+  let
+    size = self.getTextSize()
+    pos = Vector2Ref(x: last_event.x, y: last_event.y) - self.global_position
+  if pos.y > size.y:
+    return self.text.len()
+  else:
+    var
+      res = Vector2()
+      caret_pos = 0
+      current_pos = 0
+    for line in self.text.splitLines():  # get text height
+      var x: float = 0f
+      current_pos = 0
+      res.y += self.spacing + self.size
+      for c in line.chars:
+        x += self.font.glutBitmapWidth(c.c.int).float
+        inc caret_pos
+        inc current_pos
+        if res.y >= pos.y:
+          if current_pos < line.len() and x <= pos.x:
+            continue
+          return caret_pos
+      inc caret_pos
+      if x > res.x:
+        res.x = x
+
+
+method getCharUnderMouse*(self: RichEditTextPtr): ColorCharRef {.base.} =
+  ## Returns char under mouse
+  return self.text[self.getCharPositionUnderMouse()]
+
+
+method getWordPositionUnderMouse*(self: RichEditTextPtr): tuple[startpos, endpos: int] {.base.} =
+  ## Returns words under mouse.
+  ## Returns (-1, -1), if under mouse no founds words.
+  var caret = self.getCharPositionUnderMouse()
+  if caret == self.text.len():
+    return (-1, -1)
+
+  if self.text.len() > 0 and self.text[caret].c != ' ':
+    # Left
+    var i = caret
+    while self.text[i].c != ' ':
+      dec i
+      if i < 0:
+        break
+    if i > 0:
+      if self.text[i].c == ' ':
+        i += 1
+      result.startpos = i
+    else:
+      result.startpos = 0
+    # Right
+    i = caret
+    while self.text[i].c != ' ':
+      inc i
+      if i > self.text.len()-1:
+        break
+    if i < self.text.len():
+      if self.text[i].c == ' ':
+        i -= 1
+      result.endpos = i
+    else:
+      result.endpos = self.text.len()-1
+  else:
+    return (-1, -1)
+
+
+method getWordUnderMouse*(self: RichEditTextPtr): ColorTextRef {.base.} =
+  ## Returns words under mouse.
+  let (s, e) = self.getWordPositionUnderMouse()
+  if self.text.len() > 0:
+    return self.text[s..e]
+
+
 method draw*(self: RichEditTextPtr, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   self.calcGlobalPosition()
@@ -147,7 +225,7 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
         glColor4f(c.color.r, c.color.g, c.color.b, c.color.a)
         glRasterPos2f(tx, ty)  # set char position
         if c.underline:
-          glRectf(tx, ty+self.size, tx+cw, 1)
+          glRectf(tx, ty-1, tx+cw, ty-2)
         self.font.glutBitmapCharacter(c.c.int)  # render char
 
         inc char_num
@@ -166,6 +244,7 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
+
 method duplicate*(self: RichEditTextPtr, obj: var RichEditTextObj): RichEditTextPtr {.base.} =
   ## Duplicates RichEditText and create a new RichEditText pointer.
   obj = self[]
@@ -182,36 +261,7 @@ method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) 
     glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
 
   if event.kind == MOUSE and event.pressed:
-    let
-      size = self.getTextSize()
-      pos = Vector2Ref(x: event.x, y: event.y) - self.global_position
-    if pos.y > size.y:
-      self.caret_position = self.text.len()
-    else:
-      var
-        res = Vector2()
-        caret_pos = 0
-        current_pos = 0
-        stop = false
-      for line in self.text.splitLines():  # get text height
-        var x: float = 0f
-        current_pos = 0
-        res.y += self.spacing + self.size
-        for c in line.chars:
-          x += self.font.glutBitmapWidth(c.c.int).float
-          inc caret_pos
-          inc current_pos
-          if res.y >= pos.y:
-            if current_pos < line.len() and x <= pos.x:
-              continue
-            stop = true
-            self.caret_position = caret_pos
-            break
-        if stop:
-          break
-        inc caret_pos
-        if x > res.x:
-          res.x = x
+    self.caret_position = self.getCharPositionUnderMouse()
 
   if self.focused:
     if event.kind == KEYBOARD:

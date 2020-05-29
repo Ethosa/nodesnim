@@ -87,6 +87,12 @@ method draw*(self: KinematicBody2DPtr, w, h: GLfloat) =
     self.position = self.timed_position
 
 
+method duplicate*(self: KinematicBody2DPtr, obj: var KinematicBody2DObj): KinematicBody2DPtr {.base.} =
+  ## Duplicates KinematicBody2D and create a new KinematicBody2D pointer.
+  obj = self[]
+  obj.addr
+
+
 method isCollide*(self: KinematicBody2DPtr): bool {.base.} =
   ## Checks any collision and return `true`, when collide with any collision shape.
   result = false

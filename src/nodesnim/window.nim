@@ -267,6 +267,8 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
 
 proc windowLaunch* =
   ## Start main window loop.
+  when defined(debug):
+    info("launch window ...")
   glutDisplayFunc(display)
   glutIdleFunc(display)
   glutReshapeFunc(reshape)
@@ -281,5 +283,7 @@ proc windowLaunch* =
   if main_scene == nil:
     raise newException(MainSceneNotLoadedError, "Main scene is not indicated!")
   changeScene(main_scene.name)
+  when defined(debug):
+    info("window launched")
   glutMainLoop()
   current_scene.exit()
