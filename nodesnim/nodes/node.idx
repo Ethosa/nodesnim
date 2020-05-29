@@ -18,6 +18,7 @@ getNode	nodesnim/nodes/node.html#getNode.e,NodePtr,string	node: getNode(self: No
 getPath	nodesnim/nodes/node.html#getPath.e,NodePtr	node: getPath(self: NodePtr): string	
 getParent	nodesnim/nodes/node.html#getParent.e,NodePtr	node: getParent(self: NodePtr): NodePtr	
 getPauseMode	nodesnim/nodes/node.html#getPauseMode.e,NodePtr	node: getPauseMode(self: NodePtr): PauseMode	
+getRootNode	nodesnim/nodes/node.html#getRootNode.e,NodePtr	node: getRootNode(self: NodePtr): NodePtr	
 isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,float,float	node: isCollide(self: NodePtr; x, y: float): bool	
 isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,Vector2Ref	node: isCollide(self: NodePtr; vec2: Vector2Ref): bool	
 isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,NodePtr	node: isCollide(self, other: NodePtr): bool	

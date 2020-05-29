@@ -108,6 +108,7 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#NodeObj"
     title="NodeObj = object of RootObj
+  kind*: NodeKind
   visible*: bool
   is_ready*: bool
   can_use_anchor*: bool
@@ -176,6 +177,8 @@ function main() {
     title="getParent(self: NodePtr): NodePtr"><wbr />get<wbr />Parent<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#getPauseMode.e%2CNodePtr"
     title="getPauseMode(self: NodePtr): PauseMode"><wbr />get<wbr />Pause<wbr />Mode<span class="attachedType">NodePtr</span></a></li>
+  <li><a class="reference" href="#getRootNode.e%2CNodePtr"
+    title="getRootNode(self: NodePtr): NodePtr"><wbr />get<wbr />Root<wbr />Node<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#isCollide.e%2CNodePtr%2Cfloat%2Cfloat"
     title="isCollide(self: NodePtr; x, y: float): bool"><wbr />is<wbr />Collide<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#isCollide.e%2CNodePtr%2CVector2Ref"
@@ -243,6 +246,7 @@ function main() {
 <dl class="item">
 <a id="NodeObj"></a>
 <dt><pre><a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeKind"><span class="Identifier">NodeKind</span></a>
   <span class="Identifier">visible</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">is_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">can_use_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
@@ -412,6 +416,13 @@ Returns node parent.
 <dd>
 
 Calculates pause mode
+
+</dd>
+<a id="getRootNode.e,NodePtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getRootNode.e%2CNodePtr"><span class="Identifier">getRootNode</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Gets root node.
 
 </dd>
 <a id="isCollide.e,NodePtr,float,float"></a>
@@ -604,7 +615,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-28 17:33:39 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-29 05:00:55 UTC</small>
       </div>
     </div>
   </div>
