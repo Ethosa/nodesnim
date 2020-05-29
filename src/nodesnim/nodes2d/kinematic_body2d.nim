@@ -73,9 +73,7 @@ method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref): bool {.base.}
   ## Moves and checks collision
   result = false
   if self.has_collision:
-    var
-      scene = self.getRootNode()
-      v = Vector2().directionTo(vel)
+    var scene = self.getRootNode()
     self.move(vel)
     self.calcGlobalPosition()
     self.collision_node.calcGlobalPosition()

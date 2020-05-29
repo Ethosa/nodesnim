@@ -7,6 +7,7 @@ import
   ../core/rect2,
   ../core/anchor,
   ../core/input,
+  ../core/enums,
   ../core/color,
 
   ../nodes/node,

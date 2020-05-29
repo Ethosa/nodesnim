@@ -8,6 +8,7 @@ import
   ../core/anchor,
   ../core/input,
   ../core/color,
+  ../core/enums,
 
   ../nodes/node,
   control

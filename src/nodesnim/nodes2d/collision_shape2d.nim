@@ -1,7 +1,6 @@
 # author: Ethosa
 ## It provides collision shapes.
 import
-  math,
   ../thirdparty/opengl,
 
   ../core/vector2,
@@ -15,6 +14,7 @@ import
 
 
 when defined(debug):
+  import math
   const PI2 = PI*2
 
 
