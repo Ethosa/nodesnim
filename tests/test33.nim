@@ -40,7 +40,7 @@ body.process =
         direction = body.global_position.directionTo(mouse_pos)
         speed = 3f
       if distance >= 5:
-        discard body.moveAndCollide(direction*speed)
+        body.moveAndCollide(direction*speed)
 
 
 main.addChild(shape1)

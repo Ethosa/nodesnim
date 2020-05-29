@@ -50,10 +50,28 @@ proc KinematicBody2D*(obj: var KinematicBody2DObj): KinematicBody2DPtr {.inline.
 
 
 method addChild*(self: KinematicBody2DPtr, other: CollisionShape2DPtr) {.base.} =
+  ## Adss collision to the KinematicBody2D.
+  ## This method should be called one time.
   self.children.add(other)
   other.parent = self
   self.has_collision = true
   self.collision_node = other
+
+
+method getCollideCount*(self: KinematicBody2DPtr): int {.base.} =
+  ## Checks collision count.
+  result = 0
+  if self.has_collision:
+    var scene = self.getRootNode()
+    self.calcGlobalPosition()
+    self.collision_node.calcGlobalPosition()
+
+    for node in scene.getChildIter():
+      if node.kind == COLLISION_SHAPE_2D_NODE:
+        if node == self.collision_node:
+          continue
+        if self.collision_node.isCollide(node.CollisionShape2DPtr):
+          inc result
 
 
 method draw*(self: KinematicBody2DPtr, w, h: GLfloat) =
@@ -69,9 +87,25 @@ method draw*(self: KinematicBody2DPtr, w, h: GLfloat) =
     self.position = self.timed_position
 
 
-method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref): bool {.base.} =
-  ## Moves and checks collision
+method isCollide*(self: KinematicBody2DPtr): bool {.base.} =
+  ## Checks any collision and return `true`, when collide with any collision shape.
   result = false
+  if self.has_collision:
+    var scene = self.getRootNode()
+    self.calcGlobalPosition()
+    self.collision_node.calcGlobalPosition()
+
+    for node in scene.getChildIter():
+      if node.kind == COLLISION_SHAPE_2D_NODE:
+        if node == self.collision_node:
+          continue
+        if self.collision_node.isCollide(node.CollisionShape2DPtr):
+          result = true
+          break
+
+
+method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref) {.base.} =
+  ## Moves and checks collision
   if self.has_collision:
     var scene = self.getRootNode()
     self.move(vel)
@@ -83,7 +117,6 @@ method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref): bool {.base.}
         if node == self.collision_node:
           continue
         if self.collision_node.isCollide(node.CollisionShape2DPtr):
-          result = true
           self.move(-vel.x, 0)
           self.calcGlobalPosition()
           self.collision_node.calcGlobalPosition()
