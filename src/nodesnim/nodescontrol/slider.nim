@@ -19,6 +19,8 @@ type
     max_value*, value*: uint
     progress_color*: ColorRef
     thumb_color*: ColorRef
+
+    on_changed*: proc(new_value: uint): void
   SliderPtr* = ptr SliderObj
 
 
@@ -41,6 +43,7 @@ proc Slider*(name: string, variable: var SliderObj): SliderPtr =
   variable.thumb_color = Color(0.7, 0.7, 0.7)
   variable.max_value = 100
   variable.value = 0
+  variable.on_changed = proc(v: uint) = discard
   variable.kind = SLIDER_NODE
 
 proc Slider*(obj: var SliderObj): SliderPtr {.inline.} =
@@ -107,8 +110,10 @@ method handle*(self: SliderPtr, event: InputEvent, mouse_on: var NodePtr) =
   ## Handles user input. This uses in the `window.nim`.
   procCall self.ControlPtr.handle(event, mouse_on)
 
-  if self.pressed:
+  if self.focused and self.pressed:
     let
       value = normalize(1f - ((self.global_position.x + self.rect_size.x - event.x) / self.rect_size.x), 0, 1)
       progress_value = (value * self.max_value.float).uint32
+    if progress_value != self.value:
+      self.on_changed(progress_value)
     self.setProgress(progress_value)
