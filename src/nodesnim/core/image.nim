@@ -9,9 +9,8 @@ import
 
 when defined(debug):
   import logging
-  debug "result of `init()` is ", image.init()
-else:
-  discard image.init()
+
+discard image.init()
 
 
 type
@@ -20,7 +19,7 @@ type
     size*: Vector2Ref
 
 
-proc load*(file: cstring, size: var Vector2Ref, mode: Glenum = GL_RGB): Gluint =
+proc load*(file: cstring, x, y: var float, mode: Glenum = GL_RGB): Gluint =
   ## Loads image from file and returns texture ID.
   ##
   ## Arguments:
@@ -31,10 +30,8 @@ proc load*(file: cstring, size: var Vector2Ref, mode: Glenum = GL_RGB): Gluint =
   when defined(debug):
     if surface == nil:
       error("image \"", file, "\" not loaded!")
-    elif size == nil:
-      error("size is nil! maybe you mean: var size = Vector2()?")
-  size.x = surface.w.float
-  size.y = surface.h.float
+  x = surface.w.float
+  y = surface.h.float
 
 
   # OpenGL:
@@ -61,7 +58,8 @@ proc load*(file: cstring, mode: Glenum = GL_RGB): GlTextureObj =
   ## Arguments:
   ## - `file` - image path.
   var
-    size: Vector2Ref = Vector2Ref()
+    x: float = 0f
+    y: float = 0f
     textureid: Gluint
-  textureid = load(file, size, mode)
-  GlTextureObj(texture: textureid, size: size)
+  textureid = load(file, x, y, mode)
+  GlTextureObj(texture: textureid, size: Vector2(x, y))

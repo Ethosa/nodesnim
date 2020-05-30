@@ -103,6 +103,14 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
       glTexCoord2f(1, 0)
       glVertex2f(x2, y1)
     elif self.texture_mode == TEXTURE_CROP:
+      if self.texture_size.x < self.rect_size.x:
+        let q = self.rect_size.x / self.texture_size.x
+        self.texture_size.x *= q
+        self.texture_size.y *= q
+      if self.texture_size.y < self.rect_size.y:
+        let q = self.rect_size.y / self.texture_size.y
+        self.texture_size.x *= q
+        self.texture_size.y *= q
       let
         x1 = self.rect_size.x / self.texture_size.x
         y1 = self.rect_size.y / self.texture_size.y
@@ -135,9 +143,11 @@ method loadTexture*(self: TextureRectPtr, file: cstring) {.base.} =
   ##
   ## Arguments:
   ## - `file` is an image file path.
-  var size: Vector2Ref = Vector2Ref()
-  self.texture = load(file, size)
-  self.texture_size = size
+  var
+    x: float = 0f
+    y: float = 0f
+  self.texture = load(file, x, y)
+  self.texture_size = Vector2(x, y)
 
 method setTexture*(self: TextureRectPtr, gltexture: GlTextureObj) {.base.} =
   ## Changes texture.

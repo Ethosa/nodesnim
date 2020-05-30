@@ -11,8 +11,7 @@ import
   nodes/scene,
 
   environment,
-  os,
-  unicode
+  os
 
 when defined(debug):
   import logging
