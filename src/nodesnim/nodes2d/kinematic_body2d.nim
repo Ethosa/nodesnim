@@ -112,6 +112,9 @@ method isCollide*(self: KinematicBody2DPtr): bool {.base.} =
 
 method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref) {.base.} =
   ## Moves and checks collision
+  ##
+  ## Arguments:
+  ## - `vel` is a velocity vector.
   if self.has_collision:
     var scene = self.getRootNode()
     self.move(vel)

@@ -89,6 +89,12 @@ const
   K_HOME* = 106
   K_END* = 107
   K_INSERT* = 108
+  K_SHIFT* = 112
+  K_RIGHT_SHIFT* = 113
+  K_CTRL* = 114
+  K_RIGHT_CTRL* = 115
+  K_ALT* = 116
+  K_RIGHT_ALT* = 117
   K_DELETE* = 127
 
 

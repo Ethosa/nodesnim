@@ -70,6 +70,7 @@ method setShapeTypeRect*(self: CollisionShape2DPtr) {.base.} =
   ## Changes shape type to `circle`.
   self.shape_type = COLLISION_SHAPE_2D_RECTANGLE
 
+
 method setShapeTypeCircle*(self: CollisionShape2DPtr, cx, cy, radius: float) {.base.} =
   ## Changes shape type to `rectangle`.
   ##
@@ -81,6 +82,7 @@ method setShapeTypeCircle*(self: CollisionShape2DPtr, cx, cy, radius: float) {.b
   self.x1 = cx
   self.y1 = cy
   self.radius = radius
+
 
 method setShapeTypePolygon*(self: CollisionShape2DPtr, positions: varargs[Vector2Ref]) {.base.} =
   ## Changes shape type to `polygon`.
@@ -94,6 +96,7 @@ method setShapeTypePolygon*(self: CollisionShape2DPtr, positions: varargs[Vector
   self.polygon = @[]
   for i in positions:
     self.polygon.add(i)
+
 
 method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
@@ -133,14 +136,17 @@ method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
         glVertex3f(x + vec2.x, y - vec2.y, self.z_index_global)
       glEnd()
 
+
 method duplicate*(self: CollisionShape2DPtr, obj: var CollisionShape2DObj): CollisionShape2DPtr {.base.} =
   ## Duplicates CollisionShape2D object and create a new CollisionShape2D pointer.
   obj = self[]
   obj.addr
 
+
 method getGlobalMousePosition*(self: CollisionShape2DPtr): Vector2Ref {.inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
+
 
 method isCollide*(self: CollisionShape2DPtr, x, y: float): bool =
   ## Checks collision with point.
@@ -200,14 +206,18 @@ method isCollide*(self: CollisionShape2DPtr, vec2: Vector2Ref): bool =
       if ((a.y >= vec2.y and b.y < vec2.y) or (a.y < vec2.y and b.y >= vec2.y)) and (vec2.x < (b.x-a.x)*(vec2.y-a.y) / (b.y-a.y)+a.x):
         result = not result
 
+
 method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
   ## Checks collision with other CollisionShape2D object.
   self.calcGlobalPosition()
   other.calcGlobalPosition()
+
+  # Return false, if collision shape is disabled.
   if self.disable:
     return false
   elif other.disable:
     return false
+
   case self.shape_type
   of COLLISION_SHAPE_2D_RECTANGLE:
     case other.shape_type:

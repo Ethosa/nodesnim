@@ -176,7 +176,7 @@ method getWordPositionUnderMouse*(self: RichEditTextPtr): tuple[startpos, endpos
 method getWordUnderMouse*(self: RichEditTextPtr): ColorTextRef {.base.} =
   ## Returns words under mouse.
   let (s, e) = self.getWordPositionUnderMouse()
-  if self.text.len() > 0:
+  if self.text.len() > 0 and s > -1:
     return self.text[s..e]
 
 
