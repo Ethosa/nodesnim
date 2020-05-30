@@ -1,8 +1,7 @@
 AudioStreamPlayerObj	nodesnim/nodes/audio_stream_player.html#AudioStreamPlayerObj	audio_stream_player: AudioStreamPlayerObj	
 AudioStreamPlayerPtr	nodesnim/nodes/audio_stream_player.html#AudioStreamPlayerPtr	audio_stream_player: AudioStreamPlayerPtr	
-AudioStreamPlayer	nodesnim/nodes/audio_stream_player.html#AudioStreamPlayer,string,AudioStreamPlayerObj	audio_stream_player: AudioStreamPlayer(name: string; variable: var AudioStreamPlayerObj): AudioStreamPlayerPtr	
-AudioStreamPlayer	nodesnim/nodes/audio_stream_player.html#AudioStreamPlayer,AudioStreamPlayerObj	audio_stream_player: AudioStreamPlayer(variable: var AudioStreamPlayerObj): AudioStreamPlayerPtr	
-duplicate	nodesnim/nodes/audio_stream_player.html#duplicate.e,AudioStreamPlayerPtr,AudioStreamPlayerObj	audio_stream_player: duplicate(self: AudioStreamPlayerPtr; obj: var AudioStreamPlayerObj): AudioStreamPlayerPtr	
+AudioStreamPlayer	nodesnim/nodes/audio_stream_player.html#AudioStreamPlayer,string	audio_stream_player: AudioStreamPlayer(name: string = &quot;AudioStreamPlayer&quot;): AudioStreamPlayerPtr	
+duplicate	nodesnim/nodes/audio_stream_player.html#duplicate.e,AudioStreamPlayerPtr	audio_stream_player: duplicate(self: AudioStreamPlayerPtr): AudioStreamPlayerPtr	
 pause	nodesnim/nodes/audio_stream_player.html#pause.e,AudioStreamPlayerPtr	audio_stream_player: pause(self: AudioStreamPlayerPtr)	
 play	nodesnim/nodes/audio_stream_player.html#play.e,AudioStreamPlayerPtr	audio_stream_player: play(self: AudioStreamPlayerPtr)	
 resume	nodesnim/nodes/audio_stream_player.html#resume.e,AudioStreamPlayerPtr	audio_stream_player: resume(self: AudioStreamPlayerPtr)	

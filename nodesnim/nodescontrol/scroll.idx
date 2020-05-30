@@ -1,9 +1,8 @@
 ScrollObj	nodesnim/nodescontrol/scroll.html#ScrollObj	scroll: ScrollObj	
 ScrollPtr	nodesnim/nodescontrol/scroll.html#ScrollPtr	scroll: ScrollPtr	
-Scroll	nodesnim/nodescontrol/scroll.html#Scroll,string,ScrollObj	scroll: Scroll(name: string; variable: var ScrollObj): ScrollPtr	
-Scroll	nodesnim/nodescontrol/scroll.html#Scroll,ScrollObj	scroll: Scroll(obj: var ScrollObj): ScrollPtr	
+Scroll	nodesnim/nodescontrol/scroll.html#Scroll,string	scroll: Scroll(name: string = &quot;Scroll&quot;): ScrollPtr	
 addChild	nodesnim/nodescontrol/scroll.html#addChild.e,ScrollPtr,NodePtr	scroll: addChild(self: ScrollPtr; other: NodePtr)	
-duplicate	nodesnim/nodescontrol/scroll.html#duplicate.e,ScrollPtr,ScrollObj	scroll: duplicate(self: ScrollPtr; obj: var ScrollObj): ScrollPtr	
+duplicate	nodesnim/nodescontrol/scroll.html#duplicate.e,ScrollPtr	scroll: duplicate(self: ScrollPtr): ScrollPtr	
 resize	nodesnim/nodescontrol/scroll.html#resize.e,ScrollPtr,GLfloat,GLfloat	scroll: resize(canvas: ScrollPtr; w, h: GLfloat)	
 draw	nodesnim/nodescontrol/scroll.html#draw.e,ScrollPtr,GLfloat,GLfloat	scroll: draw(self: ScrollPtr; w, h: GLfloat)	
 draw2stage	nodesnim/nodescontrol/scroll.html#draw2stage.e,ScrollPtr,GLfloat,GLfloat	scroll: draw2stage(self: ScrollPtr; w, h: GLfloat)	

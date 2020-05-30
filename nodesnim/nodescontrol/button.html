@@ -125,10 +125,8 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Button%2Cstring%2CButtonObj"
-    title="Button(name: string; variable: var ButtonObj): ButtonPtr"><wbr />Button<span class="attachedType">ButtonPtr</span></a></li>
-  <li><a class="reference" href="#Button%2CButtonObj"
-    title="Button(obj: var ButtonObj): ButtonPtr"><wbr />Button<span class="attachedType">ButtonObj</span></a></li>
+      <li><a class="reference" href="#Button%2Cstring"
+    title="Button(name: string = &quot;Button&quot;): ButtonPtr"><wbr />Button<span class="attachedType">ButtonPtr</span></a></li>
 
   </ul>
 </li>
@@ -137,8 +135,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CButtonPtr%2CGLfloat%2CGLfloat"
     title="draw(self: ButtonPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">ButtonPtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CButtonPtr%2CButtonObj"
-    title="duplicate(self: ButtonPtr; obj: var ButtonObj): ButtonPtr"><wbr />duplicate<span class="attachedType">ButtonPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CButtonPtr"
+    title="duplicate(self: ButtonPtr): ButtonPtr"><wbr />duplicate<span class="attachedType">ButtonPtr</span></a></li>
   <li><a class="reference" href="#handle.e%2CButtonPtr%2CInputEvent%2CNodePtr"
     title="handle(self: ButtonPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">ButtonPtr</span></a></li>
 
@@ -189,35 +187,17 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="Button,string,ButtonObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Button%2Cstring%2CButtonObj"><span class="Identifier">Button</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="button.html#ButtonObj"><span class="Identifier">ButtonObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="Button,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#Button%2Cstring"><span class="Identifier">Button</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;Button&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new Button node pointer.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
-<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ButtonObj variable.</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">my_button_obj</span><span class="Other">:</span> <span class="Identifier">ButtonObj</span>
-  <span class="Identifier">my_button</span> <span class="Other">=</span> <span class="Identifier">Button</span><span class="Other">(</span><span class="StringLit">&quot;Button&quot;</span><span class="Other">,</span> <span class="Identifier">my_button_obj</span><span class="Other">)</span></pre>
-
-</dd>
-<a id="Button,ButtonObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Button%2CButtonObj"><span class="Identifier">Button</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="button.html#ButtonObj"><span class="Identifier">ButtonObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Creates a new Button node pointer with default node name &quot;Button&quot;.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ButtonObj variable.</li>
-</ul>
-
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">my_button_obj</span><span class="Other">:</span> <span class="Identifier">ButtonObj</span>
-  <span class="Identifier">my_button</span> <span class="Other">=</span> <span class="Identifier">Button</span><span class="Other">(</span><span class="Identifier">my_button_obj</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">my_button</span> <span class="Other">=</span> <span class="Identifier">Button</span><span class="Other">(</span><span class="StringLit">&quot;Button&quot;</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -233,9 +213,8 @@ function main() {
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="duplicate.e,ButtonPtr,ButtonObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CButtonPtr%2CButtonObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="button.html#ButtonObj"><span class="Identifier">ButtonObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,ButtonPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CButtonPtr"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Duplicates Button object and creates a new Button node pointer.
@@ -259,7 +238,7 @@ Handles user input. This uses in the <tt class="docutils literal"><span class="p
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-30 10:24:18 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-30 14:01:18 UTC</small>
       </div>
     </div>
   </div>

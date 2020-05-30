@@ -1,5 +1,5 @@
 YSortObj	nodesnim/nodes2d/ysort.html#YSortObj	ysort: YSortObj	
 YSortPtr	nodesnim/nodes2d/ysort.html#YSortPtr	ysort: YSortPtr	
-YSort	nodesnim/nodes2d/ysort.html#YSort,string,YSortObj	ysort: YSort(name: string; variable: var YSortObj): YSortPtr	
-YSort	nodesnim/nodes2d/ysort.html#YSort,YSortObj	ysort: YSort(obj: var YSortObj): YSortPtr	
+YSort	nodesnim/nodes2d/ysort.html#YSort,string	ysort: YSort(name: string = &quot;YSort&quot;): YSortPtr	
 draw	nodesnim/nodes2d/ysort.html#draw.e,YSortPtr,GLfloat,GLfloat	ysort: draw(self: YSortPtr; w, h: GLfloat)	
+duplicate	nodesnim/nodes2d/ysort.html#duplicate.e,YSortPtr	ysort: duplicate(self: YSortPtr): YSortPtr	

@@ -1,12 +1,11 @@
 GridBoxObj	nodesnim/nodescontrol/grid_box.html#GridBoxObj	grid_box: GridBoxObj	
 GridBoxPtr	nodesnim/nodescontrol/grid_box.html#GridBoxPtr	grid_box: GridBoxPtr	
-GridBox	nodesnim/nodescontrol/grid_box.html#GridBox,string,GridBoxObj	grid_box: GridBox(name: string; variable: var GridBoxObj): GridBoxPtr	
-GridBox	nodesnim/nodescontrol/grid_box.html#GridBox,GridBoxObj	grid_box: GridBox(obj: var GridBoxObj): GridBoxPtr	
+GridBox	nodesnim/nodescontrol/grid_box.html#GridBox,string	grid_box: GridBox(name: string = &quot;GridBox&quot;): GridBoxPtr	
 getMaxChildSize	nodesnim/nodescontrol/grid_box.html#getMaxChildSize.e,GridBoxPtr	grid_box: getMaxChildSize(self: GridBoxPtr): Vector2Ref	
 getChildSize	nodesnim/nodescontrol/grid_box.html#getChildSize.e,GridBoxPtr	grid_box: getChildSize(self: GridBoxPtr): Vector2Ref	
 addChild	nodesnim/nodescontrol/grid_box.html#addChild.e,GridBoxPtr,NodePtr	grid_box: addChild(self: GridBoxPtr; child: NodePtr)	
 draw	nodesnim/nodescontrol/grid_box.html#draw.e,GridBoxPtr,GLfloat,GLfloat	grid_box: draw(self: GridBoxPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/grid_box.html#duplicate.e,GridBoxPtr,GridBoxObj	grid_box: duplicate(self: GridBoxPtr; obj: var GridBoxObj): GridBoxPtr	
+duplicate	nodesnim/nodescontrol/grid_box.html#duplicate.e,GridBoxPtr	grid_box: duplicate(self: GridBoxPtr): GridBoxPtr	
 resize	nodesnim/nodescontrol/grid_box.html#resize.e,GridBoxPtr,GLfloat,GLfloat	grid_box: resize(self: GridBoxPtr; w, h: GLfloat)	
 setRow	nodesnim/nodescontrol/grid_box.html#setRow.e,GridBoxPtr,int	grid_box: setRow(self: GridBoxPtr; row: int)	
 setSeparator	nodesnim/nodescontrol/grid_box.html#setSeparator.e,GridBoxPtr,float	grid_box: setSeparator(self: GridBoxPtr; separator: float)	

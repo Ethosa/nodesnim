@@ -1,11 +1,10 @@
 BoxObj	nodesnim/nodescontrol/box.html#BoxObj	box: BoxObj	
 BoxPtr	nodesnim/nodescontrol/box.html#BoxPtr	box: BoxPtr	
-Box	nodesnim/nodescontrol/box.html#Box,string,BoxObj	box: Box(name: string; variable: var BoxObj): BoxPtr	
-Box	nodesnim/nodescontrol/box.html#Box,BoxObj	box: Box(obj: var BoxObj): BoxPtr	
+Box	nodesnim/nodescontrol/box.html#Box,string	box: Box(name: string = &quot;Box&quot;): BoxPtr	
 getChildSize	nodesnim/nodescontrol/box.html#getChildSize.e,BoxPtr	box: getChildSize(self: BoxPtr): Vector2Ref	
 addChild	nodesnim/nodescontrol/box.html#addChild.e,BoxPtr,NodePtr	box: addChild(self: BoxPtr; child: NodePtr)	
 draw	nodesnim/nodescontrol/box.html#draw.e,BoxPtr,GLfloat,GLfloat	box: draw(self: BoxPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/box.html#duplicate.e,BoxPtr,BoxObj	box: duplicate(self: BoxPtr; obj: var BoxObj): BoxPtr	
+duplicate	nodesnim/nodescontrol/box.html#duplicate.e,BoxPtr	box: duplicate(self: BoxPtr): BoxPtr	
 resize	nodesnim/nodescontrol/box.html#resize.e,BoxPtr,GLfloat,GLfloat	box: resize(self: BoxPtr; w, h: GLfloat)	
 setChildAnchor	nodesnim/nodescontrol/box.html#setChildAnchor.e,BoxPtr,AnchorRef	box: setChildAnchor(self: BoxPtr; anchor: AnchorRef)	
 setChildAnchor	nodesnim/nodescontrol/box.html#setChildAnchor.e,BoxPtr,float,float,float,float	box: setChildAnchor(self: BoxPtr; x1, y1, x2, y2: float)	

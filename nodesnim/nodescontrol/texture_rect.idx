@@ -1,9 +1,8 @@
 TextureRectObj	nodesnim/nodescontrol/texture_rect.html#TextureRectObj	texture_rect: TextureRectObj	
 TextureRectPtr	nodesnim/nodescontrol/texture_rect.html#TextureRectPtr	texture_rect: TextureRectPtr	
-TextureRect	nodesnim/nodescontrol/texture_rect.html#TextureRect,string,TextureRectObj	texture_rect: TextureRect(name: string; variable: var TextureRectObj): TextureRectPtr	
-TextureRect	nodesnim/nodescontrol/texture_rect.html#TextureRect,TextureRectObj	texture_rect: TextureRect(obj: var TextureRectObj): TextureRectPtr	
+TextureRect	nodesnim/nodescontrol/texture_rect.html#TextureRect,string	texture_rect: TextureRect(name: string = &quot;TextureRect&quot;): TextureRectPtr	
 draw	nodesnim/nodescontrol/texture_rect.html#draw.e,TextureRectPtr,GLfloat,GLfloat	texture_rect: draw(self: TextureRectPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/texture_rect.html#duplicate.e,TextureRectPtr,TextureRectObj	texture_rect: duplicate(self: TextureRectPtr; obj: var TextureRectObj): TextureRectPtr	
+duplicate	nodesnim/nodescontrol/texture_rect.html#duplicate.e,TextureRectPtr	texture_rect: duplicate(self: TextureRectPtr): TextureRectPtr	
 loadTexture	nodesnim/nodescontrol/texture_rect.html#loadTexture.e,TextureRectPtr,cstring	texture_rect: loadTexture(self: TextureRectPtr; file: cstring)	
 setTexture	nodesnim/nodescontrol/texture_rect.html#setTexture.e,TextureRectPtr,GlTextureObj	texture_rect: setTexture(self: TextureRectPtr; gltexture: GlTextureObj)	
 setTextureFilter	nodesnim/nodescontrol/texture_rect.html#setTextureFilter.e,TextureRectPtr,ColorRef	texture_rect: setTextureFilter(self: TextureRectPtr; color: ColorRef)	

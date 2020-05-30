@@ -1,9 +1,8 @@
 SceneObj	nodesnim/nodes/scene.html#SceneObj	scene: SceneObj	
 ScenePtr	nodesnim/nodes/scene.html#ScenePtr	scene: ScenePtr	
-Scene	nodesnim/nodes/scene.html#Scene,string,SceneObj	scene: Scene(name: string; variable: var SceneObj): ScenePtr	
-Scene	nodesnim/nodes/scene.html#Scene,SceneObj	scene: Scene(variable: var SceneObj): ScenePtr	
+Scene	nodesnim/nodes/scene.html#Scene,string	scene: Scene(name: string = &quot;Scene&quot;): ScenePtr	
 drawScene	nodesnim/nodes/scene.html#drawScene.e,ScenePtr,GLfloat,GLfloat,bool	scene: drawScene(scene: ScenePtr; w, h: GLfloat; paused: bool)	
-duplicate	nodesnim/nodes/scene.html#duplicate.e,ScenePtr,SceneObj	scene: duplicate(self: ScenePtr; obj: var SceneObj): ScenePtr	
+duplicate	nodesnim/nodes/scene.html#duplicate.e,ScenePtr	scene: duplicate(self: ScenePtr): ScenePtr	
 enter	nodesnim/nodes/scene.html#enter.e,ScenePtr	scene: enter(scene: ScenePtr)	
 exit	nodesnim/nodes/scene.html#exit.e,ScenePtr	scene: exit(scene: ScenePtr)	
 handleScene	nodesnim/nodes/scene.html#handleScene.e,ScenePtr,InputEvent,NodePtr,bool	scene: handleScene(scene: ScenePtr; event: InputEvent; mouse_on: var NodePtr; paused: bool)	
