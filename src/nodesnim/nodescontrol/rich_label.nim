@@ -25,17 +25,16 @@ type
     text_align*: AnchorRef  ## Text align.
   RichLabelPtr* = ptr RichLabelObj
 
+var labels:seq[RichLabelObj] = @[]
 
-proc RichLabel*(name: string, variable: var RichLabelObj): RichLabelPtr =
+proc RichLabel*(name: string = "RichLabel"): RichLabelPtr =
   ## Creates a new RichLabel pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a RichLabelObj variable.
   runnableExamples:
-    var
-      textobj: RichLabelObj
-      text = RichLabel("RichLabel", textobj)
+    var text = RichLabel("RichLabel")
+  var variable: RichLabelObj
   nodepattern(RichLabelObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -46,17 +45,8 @@ proc RichLabel*(name: string, variable: var RichLabelObj): RichLabelPtr =
   variable.spacing = 2
   variable.text_align = Anchor(0, 0, 0, 0)
   variable.kind = RICH_LABEL_NODE
-
-proc RichLabel*(obj: var RichLabelObj): RichLabelPtr {.inline.} =
-  ## Creates a new RichLabel pointer with default node name "RichLabel".
-  ##
-  ## Arguments:
-  ## - `variable` is a RichLabelObj variable.
-  runnableExamples:
-    var
-      textobj: RichLabelObj
-      text = RichLabel(textobj)
-  RichLabel("RichLabel", obj)
+  labels.add(variable)
+  return addr labels[^1]
 
 
 method draw*(self: RichLabelPtr, w, h: GLfloat) =
@@ -108,10 +98,11 @@ method draw*(self: RichLabelPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: RichLabelPtr, obj: var RichLabelObj): RichLabelPtr {.base.} =
+method duplicate*(self: RichLabelPtr): RichLabelPtr {.base.} =
   ## Duplicates Richlabel object and create a new RichLabel pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  labels.add(obj)
+  return addr labels[^1]
 
 method setTextAlign*(self: RichLabelPtr, align: AnchorRef) {.base.} =
   ## Changes text alignment.

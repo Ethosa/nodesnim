@@ -33,17 +33,16 @@ type
     on_click*: proc(x, y: float): void  ## This called, when user clicks on button.
   TextureButtonPtr* = ptr TextureButtonObj
 
+var buttons: seq[TextureButtonObj] = @[]
 
-proc TextureButton*(name: string, variable: var TextureButtonObj): TextureButtonPtr =
+proc TextureButton*(name: string = "TextureButton"): TextureButtonPtr =
   ## Creates a new TextureButton node pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a TextureButtonObj variable.
   runnableExamples:
-    var
-      my_button_obj: TextureButtonObj
-      my_button = TextureButton("TextureButton", my_button_obj)
+    var my_button = TextureButton("TextureButton")
+  var variable: TextureButtonObj
   nodepattern(TextureButtonObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -64,17 +63,8 @@ proc TextureButton*(name: string, variable: var TextureButtonObj): TextureButton
   variable.press_background_texture = GlTextureObj()
   variable.on_click = proc(x, y: float) = discard
   variable.kind = TEXTURE_BUTTON_NODE
-
-proc TextureButton*(obj: var TextureButtonObj): TextureButtonPtr {.inline.} =
-  ## Creates a new TextureButton node pointer with default node name "TextureButton".
-  ##
-  ## Arguments:
-  ## - `variable` is a TextureButtonObj variable.
-  runnableExamples:
-    var
-      my_button_obj: TextureButtonObj
-      my_button = TextureButton(my_button_obj)
-  TextureButton("TextureButton", obj)
+  buttons.add(variable)
+  return addr buttons[^1]
 
 
 method draw*(self: TextureButtonPtr, w, h: GLfloat) =
@@ -118,10 +108,11 @@ method draw*(self: TextureButtonPtr, w, h: GLfloat) =
 
   procCall self.LabelPtr.draw(w, h)
 
-method duplicate*(self: TextureButtonPtr, obj: var TextureButtonObj): TextureButtonPtr {.base.} =
+method duplicate*(self: TextureButtonPtr): TextureButtonPtr {.base.} =
   ## Duplicates TextureButton object and creates a new TextureButton node pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  buttons.add(obj)
+  return addr buttons[^1]
 
 method handle*(self: TextureButtonPtr, event: InputEvent, mouse_on: var NodePtr) =
   ## Handles user input. This uses in the `window.nim`.

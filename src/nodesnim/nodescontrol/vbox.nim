@@ -19,17 +19,16 @@ type
     separator*: float
   VBoxPtr* = ptr VBoxObj
 
+var boxes: seq[VBoxObj]
 
-proc VBox*(name: string, variable: var VBoxObj): VBoxPtr =
+proc VBox*(name: string = "VBox"): VBoxPtr =
   ## Creates a new VBox pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a VBoxObj variable.
   runnableExamples:
-    var
-      boxobj: VBoxObj
-      box = VBox("VBox", boxobj)
+    var box = VBox("VBox")
+  var variable: VBoxObj
   nodepattern(VBoxObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -37,17 +36,8 @@ proc VBox*(name: string, variable: var VBoxObj): VBoxPtr =
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   variable.separator = 4f
   variable.kind = VBOX_NODE
-
-proc VBox*(obj: var VBoxObj): VBoxPtr {.inline.} =
-  ## Creates a new VBox pointer with default node name "VBox".
-  ##
-  ## Arguments:
-  ## - `variable` is a VBoxObj variable.
-  runnableExamples:
-    var
-      boxobj: VBoxObj
-      box = VBox(boxobj)
-  VBox("VBox", obj)
+  boxes.add(variable)
+  return addr boxes[^1]
 
 
 method getChildSize*(self: VBoxPtr): Vector2Ref =
@@ -91,10 +81,11 @@ method draw*(self: VBoxPtr, w, h: GLfloat) =
     y += child.rect_size.y + self.separator
   procCall self.ControlPtr.draw(w, h)
 
-method duplicate*(self: VBoxPtr, obj: var VBoxObj): VBoxPtr {.base.} =
+method duplicate*(self: VBoxPtr): VBoxPtr {.base.} =
   ## Duplicate VBox object and create a new VBox pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  boxes.add(obj)
+  return addr boxes[^1]
 
 method resize*(self: VBoxPtr, w, h: GLfloat) =
   ## Resizes VBox, if available.

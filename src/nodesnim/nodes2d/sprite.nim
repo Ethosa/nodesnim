@@ -22,33 +22,25 @@ type
   SpritePtr* = ptr SpriteObj
 
 
+var sprites: seq[SpriteObj] = @[]
 
-proc Sprite*(name: string, variable: var SpriteObj): SpritePtr =
+
+proc Sprite*(name: string = "Sprite"): SpritePtr =
   ## Creates a new Sprite pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a SpriteObj variable.
   runnableExamples:
-    var
-      node_obj: SpriteObj
-      node = Sprite("Sprite", node_obj)
+    var node = Sprite("Sprite")
+  var variable: SpriteObj
   nodepattern(SpriteObj)
   node2dpattern()
   variable.texture = GlTextureObj()
   variable.filter = Color(1f, 1f, 1f)
   variable.kind = SPRITE_NODE
+  sprites.add(variable)
+  return addr sprites[^1]
 
-proc Sprite*(obj: var SpriteObj): SpritePtr {.inline.} =
-  ## Creates a new Sprite pointer with deffault node name "Sprite".
-  ##
-  ## Arguments:
-  ## - `variable` is a SpriteObj variable.
-  runnableExamples:
-    var
-      node_obj: SpriteObj
-      node = Sprite(node_obj)
-  Sprite("Sprite", obj)
 
 method draw*(self: SpritePtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
@@ -91,10 +83,11 @@ method draw*(self: SpritePtr, w, h: GLfloat) =
   else:
     self.rect_size = Vector2()
 
-method duplicate*(self: SpritePtr, obj: var SpriteObj): SpritePtr {.base.} =
+method duplicate*(self: SpritePtr): SpritePtr {.base.} =
   ## Duplicates Sprite object and create a new Sprite pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  sprites.add(obj)
+  return addr sprites[^1]
 
 method getGlobalMousePosition*(self: SpritePtr): Vector2Ref {.inline.} =
   ## Returns mouse position.

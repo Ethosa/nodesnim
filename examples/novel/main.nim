@@ -4,16 +4,13 @@ import nodesnim
 Window("Novel game", 1280, 720)
 
 var
-  main_obj: SceneObj
-  main = Scene("Main", main_obj)
+  main = Scene("Main")
 
-  button_obj: ButtonObj
-  button = Button("New game", button_obj)
+  button = Button("New game")
 
 
   # Game scene
-  game_scene_obj: SceneObj
-  game_scene = Scene("Game", game_scene_obj)
+  game_scene = Scene("Game")
 
   # Backgrounds:
   night = load("assets/night.jpg")
@@ -21,20 +18,15 @@ var
   # Charapters:
   akiko_default = load("assets/test.png", GL_RGBA)
 
-  name_charapter_obj: LabelObj
-  name_charapter = Label(name_charapter_obj)
+  name_charapter = Label()
 
-  dialog_text_obj: RichLabelObj
-  dialog_text = RichLabel(dialog_text_obj)
+  dialog_text = RichLabel()
 
-  background_image_obj: TextureRectObj
-  background_image = TextureRect(background_image_obj)
+  background_image = TextureRect()
 
-  foreground_rect_obj: ColorRectObj
-  foreground_rect = ColorRect(foreground_rect_obj)
+  foreground_rect = ColorRect()
 
-  charapter_obj: TextureRectObj
-  charapter = TextureRect("Charapter", charapter_obj)
+  charapter = TextureRect("Charapter")
 
   dialog = @[
     ("Me", "H-Hey .. ?", false),

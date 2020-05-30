@@ -19,17 +19,16 @@ type
     separator*: float
   HBoxPtr* = ptr HBoxObj
 
+var boxes: seq[HBoxObj] = @[]
 
-proc HBox*(name: string, variable: var HBoxObj): HBoxPtr =
+proc HBox*(name: string = "HBox"): HBoxPtr =
   ## Creates a new HBox pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a HBoxObj variable.
   runnableExamples:
-    var
-      gridobj: HBoxObj
-      grid = HBox("HBox", gridobj)
+    var grid = HBox("HBox")
+  var variable: HBoxObj
   nodepattern(HBoxObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -37,17 +36,8 @@ proc HBox*(name: string, variable: var HBoxObj): HBoxPtr =
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   variable.separator = 4f
   variable.kind = HBOX_NODE
-
-proc HBox*(obj: var HBoxObj): HBoxPtr {.inline.} =
-  ## Creates a new HBox pointer with default node name "HBox".
-  ##
-  ## Arguments:
-  ## - `variable` is a HBoxObj variable.
-  runnableExamples:
-    var
-      gridobj: HBoxObj
-      grid = HBox(gridobj)
-  HBox("HBox", obj)
+  boxes.add(variable)
+  return addr boxes[^1]
 
 
 method getChildSize*(self: HBoxPtr): Vector2Ref =
@@ -90,10 +80,11 @@ method draw*(self: HBoxPtr, w, h: GLfloat) =
     x += child.rect_size.x + self.separator
   procCall self.ControlPtr.draw(w, h)
 
-method duplicate*(self: HBoxPtr, obj: var HBoxObj): HBoxPtr {.base.} =
+method duplicate*(self: HBoxPtr): HBoxPtr {.base.} =
   ## Duplicates HBox object and create a new HBox pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  boxes.add(obj)
+  return addr boxes[^1]
 
 method resize*(self: HBoxPtr, w, h: GLfloat) =
   ## Resizes HBox, if `w` and `h` not less than child size.

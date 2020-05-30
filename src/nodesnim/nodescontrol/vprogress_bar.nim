@@ -21,17 +21,16 @@ type
     thumb_color*: ColorRef
   VProgressBarPtr* = ptr VProgressBarObj
 
+var bars: seq[VProgressBarObj] = @[]
 
-proc VProgressBar*(name: string, variable: var VProgressBarObj): VProgressBarPtr =
+proc VProgressBar*(name: string = "VProgressBar"): VProgressBarPtr =
   ## Creates a new VProgressBar pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a VProgressBarObj variable.
   runnableExamples:
-    var
-      progressobj: VProgressBarObj
-      progress = VProgressBar("VProgressBar", progressobj)
+    var progress = VProgressBar("VProgressBar")
+  var variable: VProgressBarObj
   nodepattern(VProgressBarObj)
   controlpattern()
   variable.background_color = Color(1f, 1f, 1f)
@@ -42,17 +41,8 @@ proc VProgressBar*(name: string, variable: var VProgressBarObj): VProgressBarPtr
   variable.max_value = 100
   variable.value = 0
   variable.kind = VPROGRESS_BAR_NODE
-
-proc VProgressBar*(obj: var VProgressBarObj): VProgressBarPtr {.inline.} =
-  ## Creates a new VProgressBar pointer with default node name "VProgressBar".
-  ##
-  ## Arguments:
-  ## - `variable` is a VProgressBarObj variable.
-  runnableExamples:
-    var
-      progressobj: VProgressBarObj
-      progress = VProgressBar(progressobj)
-  VProgressBar("VProgressBar", obj)
+  bars.add(variable)
+  return addr bars[^1]
 
 
 method draw*(self: VProgressBarPtr, w, h: GLfloat) =
@@ -75,10 +65,11 @@ method draw*(self: VProgressBarPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: VProgressBarPtr, obj: var VProgressBarObj): VProgressBarPtr {.base.} =
+method duplicate*(self: VProgressBarPtr): VProgressBarPtr {.base.} =
   ## Duplicates VProgressBar object and create a new VProgressBar pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  bars.add(obj)
+  return addr bars[^1]
 
 method setMaxValue*(self: VProgressBarPtr, value: uint) {.base.} =
   ## Changes max value.

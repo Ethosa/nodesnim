@@ -5,14 +5,11 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  sliderobj: SliderObj
-  slider = Slider(sliderobj)
+  slider = Slider()
 
-  vsliderobj: VSliderObj
-  vslider = VSlider(vsliderobj)
+  vslider = VSlider()
 
 main.addChild(slider)
 main.addChild(vslider)

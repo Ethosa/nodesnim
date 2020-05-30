@@ -5,11 +5,9 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  switchobj: SwitchObj
-  switch = Switch(switchobj)
+  switch = Switch()
 
 main.addChild(switch)
 switch.move(128, 64)

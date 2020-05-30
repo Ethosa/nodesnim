@@ -5,32 +5,18 @@ import nodesnim
 Window("scroll")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  scrollobj: ScrollObj
-  scroll = Scroll(scrollobj)
+  scroll = Scroll()
 
-  grid_boxobj: GridBoxObj     # Create a GridBoxObj.
-  grid_box = GridBox(grid_boxobj)  # Create pointer to the GridBoxObj.
+  grid_box = GridBox()
 
-  redobj: ColorRectObj
-  red = ColorRect(redobj)  # #ff6699
-
-  pinkobj: ColorRectObj
-  pink = ColorRect(pinkobj)  #ff64ff
-
-  orangeobj: ColorRectObj
-  orange = ColorRect(orangeobj)  # #ffaa00
-
-  mangoobj: ColorRectObj
-  mango = ColorRect(mangoobj)  # #ffcc33
-
-  yellowobj: ColorRectObj
-  yellow = ColorRect(yellowobj)  # #ffcc66
-
-  red2obj: ColorRectObj
-  red2 = ColorRect(red2obj)  # #ff6655
+  red = ColorRect()  # #ff6699
+  pink = ColorRect()  #ff64ff
+  orange = ColorRect()  # #ffaa00
+  mango = ColorRect()  # #ffcc33
+  yellow = ColorRect()  # #ffcc66
+  red2 = ColorRect()  # #ff6655
 
 
 red.color = Color(0xff6699ff'u32)

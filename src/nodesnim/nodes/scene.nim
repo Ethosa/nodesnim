@@ -12,21 +12,18 @@ type
   ScenePtr* = ptr SceneObj
 
 
-proc Scene*(name: string, variable: var SceneObj): ScenePtr =
+var scenes: seq[SceneObj] = @[]
+
+proc Scene*(name: string = "Scene"): ScenePtr =
   ## Creates a new Scene pointer.
   ##
   ## Arguments:
   ## - `name` is a scene name.
-  ## - `variable` is a SceneObj object.
+  var variable: SceneObj
   nodepattern(SceneObj)
   variable.pausemode = PAUSE
-
-proc Scene*(variable: var SceneObj): ScenePtr {.inline.} =
-  ## Creates a new Scene pointer with default scene name "Scene".
-  ##
-  ## Arguments:
-  ## - `variable` is a SceneObj object.
-  Scene("Scene", variable)
+  scenes.add(variable)
+  return addr scenes[^1]
 
 
 method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
@@ -47,10 +44,11 @@ method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
     if child.visible:
       child.draw2stage(w, h)
 
-method duplicate*(self: ScenePtr, obj: var SceneObj): ScenePtr {.base.} =
+method duplicate*(self: ScenePtr): ScenePtr {.base.} =
   ## Duplicates Scene object and create a new Scene pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  scenes.add(obj)
+  return addr scenes[^1]
 
 method enter*(scene: ScenePtr) {.base.} =
   ## This called when scene was changed.

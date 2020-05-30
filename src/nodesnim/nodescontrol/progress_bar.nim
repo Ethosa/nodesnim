@@ -20,17 +20,16 @@ type
     progress_color*: ColorRef
   ProgressBarPtr* = ptr ProgressBarObj
 
+var bars: seq[ProgressBarObj] = @[]
 
-proc ProgressBar*(name: string, variable: var ProgressBarObj): ProgressBarPtr =
+proc ProgressBar*(name: string = "ProgressBar"): ProgressBarPtr =
   ## Creates a new ProgressBar pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a ProgressBarObj variable.
   runnableExamples:
-    var
-      pobj: ProgressBarObj
-      p = ProgressBar("ProgressBar", pobj)
+    var p = ProgressBar("ProgressBar")
+  var variable: ProgressBarObj
   nodepattern(ProgressBarObj)
   controlpattern()
   variable.background_color = Color(1f, 1f, 1f)
@@ -40,17 +39,8 @@ proc ProgressBar*(name: string, variable: var ProgressBarObj): ProgressBarPtr =
   variable.max_value = 100
   variable.value = 0
   variable.kind = PROGRESS_BAR_NODE
-
-proc ProgressBar*(obj: var ProgressBarObj): ProgressBarPtr {.inline.} =
-  ## Creates a new ProgressBar pointer with default node name "ProgressBar".
-  ##
-  ## Arguments:
-  ## - `variable` is a ProgressBarObj variable.
-  runnableExamples:
-    var
-      pobj: ProgressBarObj
-      p = ProgressBar(pobj)
-  ProgressBar("ProgressBar", obj)
+  bars.add(variable)
+  return addr bars[^1]
 
 
 method draw*(self: ProgressBarPtr, w, h: GLfloat) =
@@ -73,10 +63,11 @@ method draw*(self: ProgressBarPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: ProgressBarPtr, obj: var ProgressBarObj): ProgressBarPtr {.base.} =
+method duplicate*(self: ProgressBarPtr): ProgressBarPtr {.base.} =
   ## Duplicates ProgressBar object and create a new ProgressBar pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  bars.add(obj)
+  return addr bars[^1]
 
 method setMaxValue*(self: ProgressBarPtr, value: uint) {.base.} =
   ## Changes max value.

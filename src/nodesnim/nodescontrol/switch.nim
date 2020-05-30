@@ -23,17 +23,16 @@ type
     on_toggle*: proc(toggled: bool): void  ## This called when switch toggled.
   SwitchPtr* = ptr SwitchObj
 
+var switchs: seq[SwitchObj]
 
-proc Switch*(name: string, variable: var SwitchObj): SwitchPtr =
+proc Switch*(name: string = "Switch"): SwitchPtr =
   ## Creates a new Switch pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a SwitchObj variable
   runnableExamples:
-    var
-      colorrect1_obj: SwitchObj
-      colorrect1 = Switch("Switch", colorrect1_obj)
+    var colorrect1 = Switch("Switch")
+  var variable: SwitchObj
   nodepattern(SwitchObj)
   controlpattern()
   variable.color_disable = Color(0.4, 0.4, 0.4)
@@ -44,18 +43,9 @@ proc Switch*(name: string, variable: var SwitchObj): SwitchPtr =
   variable.rect_size.x = 50
   variable.rect_size.y = 20
   variable.on_toggle = proc(toggled: bool) = discard
-  variable.kind = COLOR_RECT_NODE
-
-proc Switch*(obj: var SwitchObj): SwitchPtr {.inline.} =
-  ## Creates a new Switch pointer with default node name "Switch".
-  ##
-  ## Arguments:
-  ## - `variable` is a SwitchObj variable
-  runnableExamples:
-    var
-      colorrect1_obj: SwitchObj
-      colorrect1 = Switch(colorrect1_obj)
-  Switch("Switch", obj)
+  variable.kind = SWITCH_NODE
+  switchs.add(variable)
+  return addr switchs[^1]
 
 
 method draw*(self: SwitchPtr, w, h: GLfloat) =
@@ -81,10 +71,11 @@ method draw*(self: SwitchPtr, w, h: GLfloat) =
     self.press(last_event.x, last_event.y)
 
 
-method duplicate*(self: SwitchPtr, obj: var SwitchObj): SwitchPtr {.base.} =
+method duplicate*(self: SwitchPtr): SwitchPtr {.base.} =
   ## Duplicates Switch object and create a new Switch pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  switchs.add(obj)
+  return addr switchs[^1]
 
 
 method handle*(self: SwitchPtr, event: InputEvent, mouse_on: var NodePtr) =

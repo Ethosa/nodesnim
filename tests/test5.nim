@@ -5,14 +5,10 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  colorrectobj: ColorRectObj
-  colorrect = ColorRect(colorrectobj)
-
-  colorrect1obj: ColorRectObj
-  colorrect1 = ColorRect(colorrect1obj)
+  colorrect = ColorRect()
+  colorrect1 = ColorRect()
 
 main.addChild(colorrect)
 colorrect.addChild(colorrect1)

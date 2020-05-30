@@ -8,9 +8,7 @@ Window(
   360             # Window height
 )
 
-var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)  # Create pointer to Scene object.
+var main = Scene("Main")  # Create pointer to Scene object.
 
 
 addScene(main)        # Add new scene in window.

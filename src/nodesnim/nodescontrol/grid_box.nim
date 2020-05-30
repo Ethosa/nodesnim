@@ -20,17 +20,16 @@ type
     row*: int
   GridBoxPtr* = ptr GridBoxObj
 
+var boxes: seq[GridBoxObj]
 
-proc GridBox*(name: string, variable: var GridBoxObj): GridBoxPtr =
+proc GridBox*(name: string = "GridBox"): GridBoxPtr =
   ## Creates a new GridBox pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a GridBoxObj variable.
   runnableExamples:
-    var
-      gridobj: GridBoxObj
-      grid = GridBox("GridBox", gridobj)
+    var grid = GridBox("GridBox")
+  var variable: GridBoxObj
   nodepattern(GridBoxObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -39,17 +38,8 @@ proc GridBox*(name: string, variable: var GridBoxObj): GridBoxPtr =
   variable.separator = 4f
   variable.row = 2
   variable.kind = GRID_BOX_NODE
-
-proc GridBox*(obj: var GridBoxObj): GridBoxPtr {.inline.} =
-  ## Creates a new GridBox pointer with defalut node name "GridBox".
-  ##
-  ## Arguments:
-  ## - `variable` is a GridBoxObj variable.
-  runnableExamples:
-    var
-      gridobj: GridBoxObj
-      grid = GridBox("GridBox", gridobj)
-  GridBox("GridBox", obj)
+  boxes.add(variable)
+  return addr boxes[^1]
 
 
 method getMaxChildSize*(self: GridBoxPtr): Vector2Ref {.base.} =
@@ -121,10 +111,11 @@ method draw*(self: GridBoxPtr, w, h: GLfloat) =
       x += maxsize.x + self.separator
   procCall self.ControlPtr.draw(w, h)
 
-method duplicate*(self: GridBoxPtr, obj: var GridBoxObj): GridBoxPtr {.base.} =
+method duplicate*(self: GridBoxPtr): GridBoxPtr {.base.} =
   ## Duplicates GridBox object and create a new GridBox pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  boxes.add(obj)
+  return addr boxes[^1]
 
 method resize*(self: GridBoxPtr, w, h: GLfloat) =
   ## Resizes GridBox.

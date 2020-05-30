@@ -18,32 +18,22 @@ type
     for_all_childs*: bool  # if true, sorts z_index of all childs
   YSortPtr* = ptr YSortObj
 
+var ysortes: seq[YSortObj]
 
-proc YSort*(name: string, variable: var YSortObj): YSortPtr =
+proc YSort*(name: string = "YSort"): YSortPtr =
   ## Creates a new YSort pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a YSortObj variable.
   runnableExamples:
-    var
-      node_obj: YSortObj
-      node = YSort("YSort", node_obj)
+    var node = YSort("YSort")
+  var variable: YSortObj
   nodepattern(YSortObj)
   node2dpattern()
   variable.for_all_childs = false
   variable.kind = YSORT_NODE
-
-proc YSort*(obj: var YSortObj): YSortPtr {.inline.} =
-  ## Creates a new YSort pointer with deffault node name "YSort".
-  ##
-  ## Arguments:
-  ## - `variable` is a YSortObj variable.
-  runnableExamples:
-    var
-      node_obj: YSortObj
-      node = YSort(node_obj)
-  YSort("YSort", obj)
+  ysortes.add(variable)
+  return addr ysortes[^1]
 
 
 template childsiter() =
@@ -86,3 +76,8 @@ method draw*(self: YSortPtr, w, h: GLfloat) =
   for i in 0..childs.high:
     childs[i].z_index = i.float
 
+method duplicate*(self: YSortPtr): YSortPtr {.base.} =
+  ## Duplicates YSort object and create a new YSort pointer.
+  var obj = self[]
+  ysortes.add(obj)
+  return addr ysortes[^1]

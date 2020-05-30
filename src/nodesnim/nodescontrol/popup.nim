@@ -18,17 +18,16 @@ type
   PopupObj* = object of ControlPtr
   PopupPtr* = ptr PopupObj
 
+var popups: seq[PopupObj] = @[]
 
-proc Popup*(name: string, variable: var PopupObj): PopupPtr =
+proc Popup*(name: string = "Popup"): PopupPtr =
   ## Creates a new Popup pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a PopupObj variable.
   runnableExamples:
-    var
-      pobj: PopupObj
-      p = Popup("Popup", pobj)
+    var p = Popup("Popup")
+  var variable: PopupObj
   nodepattern(PopupObj)
   controlpattern()
   variable.background_color = Color(0x212121ff)
@@ -36,17 +35,8 @@ proc Popup*(name: string, variable: var PopupObj): PopupPtr =
   variable.rect_size.y = 160
   variable.visible = false
   variable.kind = POPUP_NODE
-
-proc Popup*(obj: var PopupObj): PopupPtr {.inline.} =
-  ## Creates a new Popup pointer with default node name "Popup".
-  ##
-  ## Arguments:
-  ## - `variable` is a PopupObj variable.
-  runnableExamples:
-    var
-      pobj: PopupObj
-      p = Popup(pobj)
-  Popup("Popup", obj)
+  popups.add(variable)
+  return addr popups[^1]
 
 
 template recalc =
@@ -89,7 +79,8 @@ method draw*(self: PopupPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: PopupPtr, obj: var PopupObj): PopupPtr {.base.} =
+method duplicate*(self: PopupPtr): PopupPtr {.base.} =
   ## Duplicates Popup object and create a new Popup pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  popups.add(obj)
+  return addr popups[^1]

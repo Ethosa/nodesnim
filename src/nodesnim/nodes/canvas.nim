@@ -36,32 +36,23 @@ type
   CanvasPtr* = ptr CanvasObj
 
 
-proc Canvas*(name: string, variable: var CanvasObj): CanvasPtr =
+var canvases: seq[CanvasObj] = @[]
+
+proc Canvas*(name: string = "Canvas"): CanvasPtr =
   ## Creates a new Canvas pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a CanvasObj variable
   runnableExamples:
-    var
-      canvas1_obj: CanvasObj
-      canvas1 = Canvas("Canvas", canvas1_obj)
+    var canvas1 = Canvas("Canvas")
   ## Creates a new Canvas pointer.
+  var variable: CanvasObj
   nodepattern(CanvasObj)
   variable.rect_size.x = 40
   variable.rect_size.y = 40
   variable.kind = CANVAS_NODE
-
-proc Canvas*(variable: var CanvasObj): CanvasPtr {.inline.} =
-  ## Creates a new Canvas pointer with default name "Canvas".
-  ##
-  ## Arguments:
-  ## - `variable` is a CanvasObj variable
-  runnableExamples:
-    var
-      canvas1_obj: CanvasObj
-      canvas1 = Canvas(canvas1_obj)
-  Canvas("Canvas", variable)
+  canvases.add(variable)
+  return addr canvases[^1]
 
 
 proc calculateX(canvas: CanvasPtr, x, gx: GLfloat): GLfloat =
@@ -117,10 +108,11 @@ method draw*(canvas: CanvasPtr, w, h: GLfloat) =
           canvas.calculateY(y - cmd.y1 - cmd.points[i+1], y))
       glEnd()
 
-method duplicate*(self: CanvasPtr, obj: var CanvasObj): CanvasPtr {.base.} =
+method duplicate*(self: CanvasPtr): CanvasPtr {.base.} =
   ## Duplicates Canvas object and create a new Canvas pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  canvases.add(obj)
+  return addr canvases[^1]
 
 method circle*(canvas: CanvasPtr, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
   ## Draws a circle in the canvas.

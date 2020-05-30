@@ -5,11 +5,9 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  edittextobj: EditTextObj
-  edittext = EditText(edittextobj)
+  edittext = EditText()
 
 main.addChild(edittext)
 

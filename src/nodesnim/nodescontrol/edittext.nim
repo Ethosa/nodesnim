@@ -34,17 +34,16 @@ type
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
   EditTextPtr* = ptr EditTextObj
 
+var editors: seq[EditTextObj] = @[]
 
-proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
+proc EditText*(name: string = "EditText"): EditTextPtr =
   ## Creates a new EditText pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a EditTextObj variable.
   runnableExamples:
-    var
-      editobj: EditTextObj
-      edit = EditText("EditText", editobj)
+    var edit = EditText("EditText")
+  var variable: EditTextObj
   nodepattern(EditTextObj)
   controlpattern()
   variable.rect_size.x = 64
@@ -64,18 +63,8 @@ proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
   variable.blit_time = 0f
   variable.on_edit = proc(key: string) = discard
   variable.kind = EDIT_TEXT_NODE
-
-proc EditText*(obj: var EditTextObj): EditTextPtr {.inline.} =
-  ## Creates a new EditText pointer with default name "EditText".
-  ##
-  ## Arguments:
-  ## - `name` is a node name.
-  ## - `variable` is a EditTextObj variable.
-  runnableExamples:
-    var
-      editobj: EditTextObj
-      edit = EditText(editobj)
-  EditText("EditText", obj)
+  editors.add(variable)
+  return addr editors[^1]
 
 
 method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
@@ -254,10 +243,11 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
     self.press(last_event.x, last_event.y)
 
 
-method duplicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =
+method duplicate*(self: EditTextPtr): EditTextPtr {.base.} =
   ## Duplicates EditText object and create a new EditText pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  editors.add(obj)
+  return addr editors[^1]
 
 
 method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =

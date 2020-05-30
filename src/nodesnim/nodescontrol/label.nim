@@ -26,17 +26,16 @@ type
     text_align*: AnchorRef  ## Text align.
   LabelPtr* = ptr LabelObj
 
+var labels: seq[LabelObj] = @[]
 
-proc Label*(name: string, variable: var LabelObj): LabelPtr =
+proc Label*(name: string = "Label"): LabelPtr =
   ## Creates a new Label pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a LabelObj variable.
   runnableExamples:
-    var
-      textobj: LabelObj
-      text = Label("Label", textobj)
+    var text = Label("Label")
+  var variable: LabelObj
   nodepattern(LabelObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -48,17 +47,8 @@ proc Label*(name: string, variable: var LabelObj): LabelPtr =
   variable.text_align = Anchor(0, 0, 0, 0)
   variable.color = Color(1f, 1f, 1f)
   variable.kind = LABEL_NODE
-
-proc Label*(obj: var LabelObj): LabelPtr {.inline.} =
-  ## Creates a new Labelpointer with default node name "Label".
-  ##
-  ## Arguments:
-  ## - `variable` is a LabelObj variable.
-  runnableExamples:
-    var
-      textobj: LabelObj
-      text = Label(textobj)
-  Label("Label", obj)
+  labels.add(variable)
+  return addr labels[^1]
 
 
 method draw*(self: LabelPtr, w, h: GLfloat) =
@@ -108,10 +98,11 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: LabelPtr, obj: var LabelObj): LabelPtr {.base.} =
+method duplicate*(self: LabelPtr): LabelPtr {.base.} =
   ## Duplicates Label object and create a new Label pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  labels.add(obj)
+  return addr labels[^1]
 
 method setTextAlign*(self: LabelPtr, align: AnchorRef) {.base.} =
   ## Changes text alignment.

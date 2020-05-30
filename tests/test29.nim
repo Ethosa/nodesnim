@@ -5,11 +5,9 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  progressbarobj: TextureProgressBarObj
-  progressbar = TextureProgressBar(progressbarobj)
+  progressbar = TextureProgressBar()
 
   back = load("assets/texture_progress_0.png", GL_RGBA)
   progress = load("assets/texture_progress_1.png", GL_RGBA)

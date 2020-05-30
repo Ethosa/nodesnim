@@ -24,18 +24,16 @@ type
     animations*: AnimationArray[GlTextureObj]
   AnimatedSpritePtr* = ptr AnimatedSpriteObj
 
+var animations: seq[AnimatedSpriteObj] = @[]
 
-
-proc AnimatedSprite*(name: string, variable: var AnimatedSpriteObj): AnimatedSpritePtr =
+proc AnimatedSprite*(name: string = "AnimatedSprite"): AnimatedSpritePtr =
   ## Creates a new AnimatedSprite pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a AnimatedSpriteObj variable.
   runnableExamples:
-    var
-      node_obj: AnimatedSpriteObj
-      node = AnimatedSprite("AnimatedSprite", node_obj)
+    var node = AnimatedSprite("AnimatedSprite")
+  var variable: AnimatedSpriteObj
   nodepattern(AnimatedSpriteObj)
   node2dpattern()
   variable.filter = Color(1f, 1f, 1f)
@@ -44,17 +42,8 @@ proc AnimatedSprite*(name: string, variable: var AnimatedSpriteObj): AnimatedSpr
   variable.paused = true
   variable.reversed = false
   variable.kind = ANIMATED_SPRITE_NODE
-
-proc AnimatedSprite*(obj: var AnimatedSpriteObj): AnimatedSpritePtr {.inline.} =
-  ## Creates a new AnimatedSprite pointer with default node name "AnimatedSprite".
-  ##
-  ## Arguments:
-  ## - `variable` is a AnimatedSpriteObj variable.
-  runnableExamples:
-    var
-      node_obj: AnimatedSpriteObj
-      node = AnimatedSprite(node_obj)
-  AnimatedSprite("AnimatedSprite", obj)
+  animations.add(variable)
+  return addr animations[^1]
 
 method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
@@ -123,10 +112,11 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
           self.animations[self.animation].frame += 1
 
 
-method duplicate*(self: AnimatedSpritePtr, obj: var AnimatedSpriteObj): AnimatedSpritePtr {.base.} =
+method duplicate*(self: AnimatedSpritePtr): AnimatedSpritePtr {.base.} =
   ## Duplicates AnimatedSprite object and create a new AnimatedSprite pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  animations.add(obj)
+  return addr animations[^1]
 
 method getGlobalMousePosition*(self: AnimatedSpritePtr): Vector2Ref {.inline.} =
   ## Returns mouse position.

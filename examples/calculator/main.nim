@@ -5,54 +5,34 @@ import strutils
 Window("Calc")
 
 var
-  main_obj: SceneObj
-  main = Scene("Main", main_obj)
+  main = Scene("Main")
 
   first: string = ""
   second: string = ""
   sign: string = ""
 
-  vbox_obj: VBoxObj
-  vbox = VBox(vbox_obj)
+  vbox = VBox()
 
-  result_obj: LabelObj
-  result = Label("Result", result_obj)
+  result = Label("Result")
 
-  buttons_obj: GridBoxObj
-  buttons = GridBox("Buttons", buttons_obj)
+  buttons = GridBox("Buttons")
 
-  button_7_obj: ButtonObj
-  button_8_obj: ButtonObj
-  button_9_obj: ButtonObj
-  button_4_obj: ButtonObj
-  button_5_obj: ButtonObj
-  button_6_obj: ButtonObj
-  button_1_obj: ButtonObj
-  button_2_obj: ButtonObj
-  button_3_obj: ButtonObj
-  button_0_obj: ButtonObj
-  button_00_obj: ButtonObj
-  button_add_obj: ButtonObj
-  button_sub_obj: ButtonObj
-  button_mul_obj: ButtonObj
-  button_div_obj: ButtonObj
-  button_eq_obj: ButtonObj
-  button_7 = Button("Button 7", button_7_obj)
-  button_8 = Button("Button 8", button_8_obj)
-  button_9 = Button("Button 9", button_9_obj)
-  button_4 = Button("Button 4", button_4_obj)
-  button_5 = Button("Button 5", button_5_obj)
-  button_6 = Button("Button 6", button_6_obj)
-  button_1 = Button("Button 1", button_1_obj)
-  button_2 = Button("Button 2", button_2_obj)
-  button_3 = Button("Button 3", button_3_obj)
-  button_0 = Button("Button 0", button_0_obj)
-  button_00 = Button("Button 00", button_00_obj)
-  button_add = Button("Button +", button_add_obj)
-  button_sub = Button("Button -", button_sub_obj)
-  button_mul = Button("Button *", button_mul_obj)
-  button_div = Button("Button /", button_div_obj)
-  button_eq = Button("Button =", button_eq_obj)
+  button_7 = Button("Button 7")
+  button_8 = Button("Button 8")
+  button_9 = Button("Button 9")
+  button_4 = Button("Button 4")
+  button_5 = Button("Button 5")
+  button_6 = Button("Button 6")
+  button_1 = Button("Button 1")
+  button_2 = Button("Button 2")
+  button_3 = Button("Button 3")
+  button_0 = Button("Button 0")
+  button_00 = Button("Button 00")
+  button_add = Button("Button +")
+  button_sub = Button("Button -")
+  button_mul = Button("Button *")
+  button_div = Button("Button /")
+  button_eq = Button("Button =")
 
 main.addChild(vbox)
 vbox.addChild(result)

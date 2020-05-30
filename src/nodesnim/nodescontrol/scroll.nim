@@ -24,17 +24,16 @@ type
     back_color*: ColorRef
   ScrollPtr* = ptr ScrollObj
 
+var scrolls: seq[ScrollObj] = @[]
 
-proc Scroll*(name: string, variable: var ScrollObj): ScrollPtr =
+proc Scroll*(name: string = "Scroll"): ScrollPtr =
   ## Creates a new Scroll pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a ScrollObj variable.
   runnableExamples:
-    var
-      scobj: ScrollObj
-      sc = Scroll("Scroll", scobj)
+    var sc = Scroll("Scroll")
+  var variable: ScrollObj
   nodepattern(ScrollObj)
   controlpattern()
   variable.rect_size.x = 256
@@ -51,17 +50,8 @@ proc Scroll*(name: string, variable: var ScrollObj): ScrollPtr =
   variable.thumb_x_has_mouse = false
   variable.mousemode = MOUSEMODE_IGNORE
   variable.kind = SCROLL_NODE
-
-proc Scroll*(obj: var ScrollObj): ScrollPtr {.inline.} =
-  ## Creates a new Scroll pointer with default name "Scroll".
-  ##
-  ## Arguments:
-  ## - `variable` is a ScrollObj variable.
-  runnableExamples:
-    var
-      scobj: ScrollObj
-      sc = Scroll(scobj)
-  Scroll("Scroll", obj)
+  scrolls.add(variable)
+  return addr scrolls[^1]
 
 
 method addChild*(self: ScrollPtr, other: NodePtr) =
@@ -74,10 +64,11 @@ method addChild*(self: ScrollPtr, other: NodePtr) =
     other.parent = self
 
 
-method duplicate*(self: ScrollPtr, obj: var ScrollObj): ScrollPtr {.base.} =
+method duplicate*(self: ScrollPtr): ScrollPtr {.base.} =
   ## Duplicates Scroll object and create a new Scroll pointer.
-  obj = self[]
-  obj.addr
+  var obj = self[]
+  scrolls.add(obj)
+  return addr scrolls[^1]
 
 
 method resize*(canvas: ScrollPtr, w, h: GLfloat) =
