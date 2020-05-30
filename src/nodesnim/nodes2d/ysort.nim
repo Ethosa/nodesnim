@@ -46,6 +46,23 @@ proc YSort*(obj: var YSortObj): YSortPtr {.inline.} =
   YSort("YSort", obj)
 
 
+template childsiter() =
+  child.calcGlobalPosition()
+  var i = 0
+  let y = child.global_position.y + child.rect_size.y
+
+  if childs.len() == 0:
+    childs.add(child)
+    continue
+
+  for c in childs:
+    if c.global_position.y + c.rect_size.y > y:
+      childs.insert(child, i)
+      break
+    inc i
+  if child notin childs:
+    childs.add(child)
+
 method draw*(self: YSortPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
@@ -62,41 +79,10 @@ method draw*(self: YSortPtr, w, h: GLfloat) =
 
   if self.for_all_childs:
     for child in self.getChildIter():
-      child.calcGlobalPosition()
-      var i = 0
-      let y = child.global_position.y + child.rect_size.y
-
-      if childs.len() == 0:
-        childs.add(child)
-        continue
-
-      for c in childs:
-        if c.global_position.y + c.rect_size.y > y:
-          childs.insert(child, i)
-          break
-        else:
-          childs.add(child)
-          break
-        inc i
+      childsiter()
   else:
     for child in self.children:
-      child.calcGlobalPosition()
-      var i = 0
-      let y = child.global_position.y + child.rect_size.y
-
-      if childs.len() == 0:
-        childs.add(child)
-        continue
-
-      for c in childs:
-        let y1 = c.global_position.y + c.rect_size.y
-        if y1 > y:
-          childs.insert(child, i)
-          break
-        else:
-          childs.add(child)
-          break
-        inc i
+      childsiter()
   for i in 0..childs.high:
     childs[i].z_index = i.float
 
