@@ -5,7 +5,7 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
   progressbar = ProgressBar()
 
