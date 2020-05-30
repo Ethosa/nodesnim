@@ -9,6 +9,7 @@ import
   ../core/input,
   ../core/enums,
   ../core/circle2,
+  ../core/polygon2,
 
   ../nodes/node,
   node2d
@@ -230,17 +231,9 @@ method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
       of COLLISION_SHAPE_2D_POLYGON:
         var
           rect = Rect2(self.global_position, self.rect_size)
-          next = 1
-        let length = other.polygon.len()
-
-        for i in 0..<length:
-          inc next
-          if next == length: next = 0
-          let
-            a = other.polygon[i] + other.global_position
-            b = other.polygon[next] + other.global_position
-          if rect.contains(a, b):
-            return true
+          a = Polygon2(other.polygon)
+        a.move(other.global_position)
+        return a.intersects(rect)
   of COLLISION_SHAPE_2D_CIRCLE:
     case other.shape_type:
       of COLLISION_SHAPE_2D_CIRCLE:
@@ -256,68 +249,27 @@ method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
       of COLLISION_SHAPE_2D_POLYGON:
         var
           circle = Circle2(self.global_position.x + self.x1, self.global_position.y + self.y1, self.radius)
-          next = 1
-        let length = other.polygon.len()
-
-        for i in 0..<length:
-          inc next
-          if next == length: next = 0
-          let
-            a = other.polygon[i] + other.global_position
-            b = other.polygon[next] + other.global_position
-          if circle.contains(a, b):
-            return true
-        return false
+          a = Polygon2(other.polygon)
+        a.move(other.global_position)
+        return a.intersects(circle)
   of COLLISION_SHAPE_2D_POLYGON:
     case other.shape_type:
       of COLLISION_SHAPE_2D_RECTANGLE:
         var
           rect = Rect2(other.global_position, other.rect_size)
-          next = 1
-        let length = self.polygon.len()
-
-        for i in 0..<length:
-          inc next
-          if next == length: next = 0
-          let
-            a = self.polygon[i] + self.global_position
-            b = self.polygon[next] + self.global_position
-          if rect.contains(a, b):
-            return true
+          a = Polygon2(self.polygon)
+        a.move(self.global_position)
+        return a.intersects(rect)
       of COLLISION_SHAPE_2D_POLYGON:
-        let
-          length = self.polygon.len()
-          otherlength = other.polygon.len()
-        var next = 0
-
-        for i in 0..<length:
-          inc next
-          if next == length: next = 0
-          let
-            a = self.polygon[i] + self.global_position
-            b = self.polygon[next] + self.global_position
-
-          var othernext = 0
-          for i in 0..<otherlength:
-            inc othernext
-            if othernext == otherlength: othernext = 0
-            let
-              c = other.polygon[i] + other.global_position
-              d = other.polygon[othernext] + other.global_position
-            if intersects(a, b, c, d):
-              return true
+        var
+          a = Polygon2(self.polygon)
+          b = Polygon2(other.polygon)
+        a.move(self.global_position)
+        b.move(other.global_position)
+        return a.intersects(b)
       of COLLISION_SHAPE_2D_CIRCLE:
         var
           circle = Circle2(other.global_position.x + other.x1, other.global_position.y + other.y1, other.radius)
-          next = 1
-        let length = self.polygon.len()
-
-        for i in 0..<length:
-          inc next
-          if next == length: next = 0
-          let
-            a = self.polygon[i] + self.global_position
-            b = self.polygon[next] + self.global_position
-          if circle.contains(a, b):
-            return true
-        return false
+          a = Polygon2(self.polygon)
+        a.move(self.global_position)
+        return a.intersects(circle)

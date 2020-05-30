@@ -1,7 +1,9 @@
 # author: Ethosa
 ## Provides primitive 2d polygon.
 import
-  vector2
+  vector2,
+  rect2,
+  circle2
 {.used.}
 
 
@@ -75,3 +77,36 @@ proc intersects*(self, other: Polygon2Ref): bool =
         d = other.positions[othernext]
       if intersects(a, b, c, d):
         return true
+
+proc intersects*(self: Polygon2Ref, r: Rect2Ref): bool =
+  ## Returns true, if rect intersect with polygon.
+  var next = 1
+  let length = self.positions.len()
+
+  for i in 0..<length:
+    inc next
+    if next == length: next = 0
+    let
+      a = self.positions[i]
+      b = self.positions[next]
+    if r.contains(a, b):
+      return true
+
+proc intersects*(self: Polygon2Ref, circle: Circle2Ref): bool =
+  ## Returns true, if circle intersect with polygon.
+  var next = 1
+  let length = self.positions.len()
+
+  for i in 0..<length:
+    inc next
+    if next == length: next = 0
+    let
+      a = self.positions[i]
+      b = self.positions[next]
+    if circle.contains(a, b):
+      return true
+
+proc move*(self: Polygon2Ref, vec2: Vector2Ref) =
+  ## Moves polygon.
+  for i in 0..self.positions.high:
+    self.positions[i] += vec2

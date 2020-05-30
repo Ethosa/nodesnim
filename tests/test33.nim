@@ -1,4 +1,4 @@
-# --- Test 32. use KinematicBody2D node. --- #
+# --- Test 33. use KinematicBody2D node. --- #
 # Please, compile with `--define:debug` or with `-d:debug` for see collision shapes.
 import nodesnim
 
