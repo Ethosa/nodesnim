@@ -7,13 +7,11 @@ Window("hello world")
 var
   main = Scene("Main")
 
-  vbox = VBox(vboxobj)  # Create pointer to the VBox.
+  vbox = VBox()  # Create pointer to the VBox.
 
-  red = ColorRect(redobj)  # #ff6699
-
-  pink = ColorRect(pinkobj)  #ff64ff
-
-  orange = ColorRect(orangeobj)  # #ffaa00
+  red = ColorRect()  # #ff6699
+  pink = ColorRect()  #ff64ff
+  orange = ColorRect()  # #ffaa00
 
 
 red.color = Color(0xff6699ff'u32)
