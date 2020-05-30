@@ -67,6 +67,7 @@
    -  [TextureButton](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_button.html)
    -  [TextureProgressBar](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_progress_bar.html)
    -  [Counter](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/counter.html)
+   -  [Switch](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/switch.html)
 -  2D nodes
    -  [Node2D](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html)
    -  [Sprite](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html)
