@@ -11,7 +11,7 @@
 <h4>Stable version - 0.0.1</h4>
 </div>
 
-# Install
+## Install
 1. Install this repo
    -  `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
 2. Download OpenGL, SDL2_image, SDL2_mixer and freeglut Runtime binaries for your OS
@@ -20,7 +20,7 @@
    -  [SDL2_mixer](https://www.libsdl.org/projects/SDL_mixer/)
 3. Put Runtime binaries in the `.nimble/bin/` folder
 
-# Features
+## Features
 - Godot-like node system.
 
 <details>
@@ -78,10 +78,10 @@
 
 </details>
 
-# Debug mode
+## Debug mode
 For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. `nim c -r -d:debug main.nim`.
 
-# Export
+## Export
 Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.
 
 -   CrossPlatform export for Windows (tested on Windows 7 x64 and Windows 10 x64)
@@ -89,7 +89,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
     -   put Runtime binaries in the folder with the program.
 
 
-# F.A.Q
+## F.A.Q
 *Q*: Where I can see examples?  
 *A*: You can see this in the [`tests`](https://github.com/Ethosa/nodesnim/blob/master/tests) or [`examples`](https://github.com/Ethosa/nodesnim/blob/master/examples) folder.
 
