@@ -53,6 +53,12 @@ K_PAGE_DOWN	nodesnim/core/input.html#K_PAGE_DOWN	input: K_PAGE_DOWN
 K_HOME	nodesnim/core/input.html#K_HOME	input: K_HOME	
 K_END	nodesnim/core/input.html#K_END	input: K_END	
 K_INSERT	nodesnim/core/input.html#K_INSERT	input: K_INSERT	
+K_SHIFT	nodesnim/core/input.html#K_SHIFT	input: K_SHIFT	
+K_RIGHT_SHIFT	nodesnim/core/input.html#K_RIGHT_SHIFT	input: K_RIGHT_SHIFT	
+K_CTRL	nodesnim/core/input.html#K_CTRL	input: K_CTRL	
+K_RIGHT_CTRL	nodesnim/core/input.html#K_RIGHT_CTRL	input: K_RIGHT_CTRL	
+K_ALT	nodesnim/core/input.html#K_ALT	input: K_ALT	
+K_RIGHT_ALT	nodesnim/core/input.html#K_RIGHT_ALT	input: K_RIGHT_ALT	
 K_DELETE	nodesnim/core/input.html#K_DELETE	input: K_DELETE	
 pressed_keys	nodesnim/core/input.html#pressed_keys	input: pressed_keys	
 pressed_keys_ints	nodesnim/core/input.html#pressed_keys_ints	input: pressed_keys_ints	
