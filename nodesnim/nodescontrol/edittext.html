@@ -156,12 +156,18 @@ function main() {
     title="duplicate(self: EditTextPtr): EditTextPtr"><wbr />duplicate<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#handle.e%2CEditTextPtr%2CInputEvent%2CNodePtr"
     title="handle(self: EditTextPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#setHintColor.e%2CEditTextPtr%2CColorRef"
+    title="setHintColor(self: EditTextPtr; value: ColorRef)"><wbr />set<wbr />Hint<wbr />Color<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#setHintText.e%2CEditTextPtr%2Cstring"
+    title="setHintText(self: EditTextPtr; value: string)"><wbr />set<wbr />Hint<wbr />Text<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#setText.e%2CEditTextPtr%2Cstring"
+    title="setText(self: EditTextPtr; value: string)"><wbr />set<wbr />Text<span class="attachedType">EditTextPtr</span></a></li>
+  <li><a class="reference" href="#setTextColor.e%2CEditTextPtr%2CColorRef"
+    title="setTextColor(self: EditTextPtr; value: ColorRef)"><wbr />set<wbr />Text<wbr />Color<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CEditTextPtr%2CAnchorRef"
     title="setTextAlign(self: EditTextPtr; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">EditTextPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CEditTextPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextAlign(self: EditTextPtr; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">EditTextPtr</span></a></li>
-  <li><a class="reference" href="#setText.e%2CEditTextPtr%2Cstring"
-    title="setText(self: EditTextPtr; value: string)"><wbr />set<wbr />Text<span class="attachedType">EditTextPtr</span></a></li>
 
   </ul>
 </li>
@@ -299,6 +305,34 @@ Duplicates EditText object and create a new EditText pointer.
 Handles user input. Thi uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
+<a id="setHintColor.e,EditTextPtr,ColorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setHintColor.e%2CEditTextPtr%2CColorRef"><span class="Identifier">setHintColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes EditText hint color.
+
+</dd>
+<a id="setHintText.e,EditTextPtr,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setHintText.e%2CEditTextPtr%2Cstring"><span class="Identifier">setHintText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes EditText hint text.
+
+</dd>
+<a id="setText.e,EditTextPtr,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CEditTextPtr%2Cstring"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes EditText text.
+
+</dd>
+<a id="setTextColor.e,EditTextPtr,ColorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextColor.e%2CEditTextPtr%2CColorRef"><span class="Identifier">setTextColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes EditText text color.
+
+</dd>
 <a id="setTextAlign.e,EditTextPtr,AnchorRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CEditTextPtr%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -313,13 +347,6 @@ Changes text align.
 Changes text align.
 
 </dd>
-<a id="setText.e,EditTextPtr,string"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CEditTextPtr%2Cstring"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="edittext.html#EditTextPtr"><span class="Identifier">EditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-Changes EditText text.
-
-</dd>
 
 </dl></div>
 
@@ -330,7 +357,7 @@ Changes EditText text.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 13:27:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 13:45:04 UTC</small>
       </div>
     </div>
   </div>

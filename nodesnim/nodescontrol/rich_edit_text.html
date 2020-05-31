@@ -154,12 +154,14 @@ function main() {
     title="duplicate(self: RichEditTextPtr): RichEditTextPtr"><wbr />duplicate<span class="attachedType">RichEditTextPtr</span></a></li>
   <li><a class="reference" href="#handle.e%2CRichEditTextPtr%2CInputEvent%2CNodePtr"
     title="handle(self: RichEditTextPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">RichEditTextPtr</span></a></li>
+  <li><a class="reference" href="#setHintText.e%2CRichEditTextPtr%2CColorTextRef"
+    title="setHintText(self: RichEditTextPtr; value: ColorTextRef)"><wbr />set<wbr />Hint<wbr />Text<span class="attachedType">RichEditTextPtr</span></a></li>
+  <li><a class="reference" href="#setText.e%2CRichEditTextPtr%2CColorTextRef"
+    title="setText(self: RichEditTextPtr; value: ColorTextRef)"><wbr />set<wbr />Text<span class="attachedType">RichEditTextPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CRichEditTextPtr%2CAnchorRef"
     title="setTextAlign(self: RichEditTextPtr; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">RichEditTextPtr</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CRichEditTextPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextAlign(self: RichEditTextPtr; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#setText.e%2CRichEditTextPtr%2CColorTextRef"
-    title="setText(self: RichEditTextPtr; value: ColorTextRef)"><wbr />set<wbr />Text<span class="attachedType">RichEditTextPtr</span></a></li>
 
   </ul>
 </li>
@@ -298,6 +300,21 @@ Duplicates RichEditText and create a new RichEditText pointer.
 Handles user input. This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
+<a id="setHintText.e,RichEditTextPtr,ColorTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setHintText.e%2CRichEditTextPtr%2CColorTextRef"><span class="Identifier">setHintText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="../core/color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes RichEditText text.
+
+</dd>
+<a id="setText.e,RichEditTextPtr,ColorTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CRichEditTextPtr%2CColorTextRef"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="../core/color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes RichEditText text.
+
+</dd>
 <a id="setTextAlign.e,RichEditTextPtr,AnchorRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CRichEditTextPtr%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -314,13 +331,6 @@ Changes text align.
 Changes text align.
 
 </dd>
-<a id="setText.e,RichEditTextPtr,ColorTextRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CRichEditTextPtr%2CColorTextRef"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="../core/color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-Changes RichEditText text.
-
-</dd>
 
 </dl></div>
 
@@ -331,7 +341,7 @@ Changes RichEditText text.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 13:27:07 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 13:45:08 UTC</small>
       </div>
     </div>
   </div>

@@ -10,6 +10,7 @@ getWordUnderMouse	nodesnim/nodescontrol/rich_edit_text.html#getWordUnderMouse.e,
 draw	nodesnim/nodescontrol/rich_edit_text.html#draw.e,RichEditTextPtr,GLfloat,GLfloat	rich_edit_text: draw(self: RichEditTextPtr; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/rich_edit_text.html#duplicate.e,RichEditTextPtr	rich_edit_text: duplicate(self: RichEditTextPtr): RichEditTextPtr	
 handle	nodesnim/nodescontrol/rich_edit_text.html#handle.e,RichEditTextPtr,InputEvent,NodePtr	rich_edit_text: handle(self: RichEditTextPtr; event: InputEvent; mouse_on: var NodePtr)	
+setHintText	nodesnim/nodescontrol/rich_edit_text.html#setHintText.e,RichEditTextPtr,ColorTextRef	rich_edit_text: setHintText(self: RichEditTextPtr; value: ColorTextRef)	
+setText	nodesnim/nodescontrol/rich_edit_text.html#setText.e,RichEditTextPtr,ColorTextRef	rich_edit_text: setText(self: RichEditTextPtr; value: ColorTextRef)	
 setTextAlign	nodesnim/nodescontrol/rich_edit_text.html#setTextAlign.e,RichEditTextPtr,AnchorRef	rich_edit_text: setTextAlign(self: RichEditTextPtr; align: AnchorRef)	
 setTextAlign	nodesnim/nodescontrol/rich_edit_text.html#setTextAlign.e,RichEditTextPtr,float,float,float,float	rich_edit_text: setTextAlign(self: RichEditTextPtr; x1, y1, x2, y2: float)	
-setText	nodesnim/nodescontrol/rich_edit_text.html#setText.e,RichEditTextPtr,ColorTextRef	rich_edit_text: setText(self: RichEditTextPtr; value: ColorTextRef)	
