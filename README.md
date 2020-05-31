@@ -22,6 +22,24 @@
 
 ## Features
 - Godot-like node system.
+- Simple usage
+  ```nim
+  import nodesnim
+
+  Window("Hello, world!")
+
+  var
+   scene = Scene("Main")
+   hello = Label()
+
+  hello.setText("Hello, world!")
+  hello.setSizeAnchor(1, 1)
+  hello.setTextAlign(0.5, 0.5, 0.5, 0.5)
+  scene.addChild(hello)
+
+  addMainScene(scene)
+  windowLaunch()
+  ```
 
 <details>
   <summary>Now available</summary>
