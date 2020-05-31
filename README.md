@@ -7,8 +7,8 @@
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Latest version - 0.0.2</h4>
-<h4>Stable version - 0.0.1</h4>
+<h4>Latest version - 0.0.3</h4>
+<h4>Stable version - 0.0.2</h4>
 </div>
 
 ## Install
@@ -113,7 +113,3 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 *Q*: Where can I read the docs?  
 *A*: You can read docs [here](https://ethosa.github.io/nodesnim/nodesnim.html)
-
-<div align="center">
-  Copyright 2020 Ethosa
-</div>
