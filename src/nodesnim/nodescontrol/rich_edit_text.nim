@@ -287,6 +287,14 @@ method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) 
           self.caret_position += 1
           self.on_edit(event.key)
 
+method setHintText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
+  ## Changes RichEditText text.
+  self.hint_text = value
+
+method setText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
+  ## Changes RichEditText text.
+  self.text = value
+
 method setTextAlign*(self: RichEditTextPtr, align: AnchorRef) {.base.} =
   ## Changes text align.
   self.text_align = align
@@ -294,7 +302,3 @@ method setTextAlign*(self: RichEditTextPtr, align: AnchorRef) {.base.} =
 method setTextAlign*(self: RichEditTextPtr, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
-
-method setText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
-  ## Changes RichEditText text.
-  self.text = value

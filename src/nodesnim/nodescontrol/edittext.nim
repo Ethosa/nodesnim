@@ -296,6 +296,26 @@ method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
           self.on_edit(event.key)
 
 
+method setHintColor*(self: EditTextPtr, value: ColorRef) {.base.} =
+  ## Changes EditText hint color.
+  self.hint_color = value
+
+
+method setHintText*(self: EditTextPtr, value: string) {.base.} =
+  ## Changes EditText hint text.
+  self.hint_text = value
+
+
+method setText*(self: EditTextPtr, value: string) {.base.} =
+  ## Changes EditText text.
+  self.text = value
+
+
+method setTextColor*(self: EditTextPtr, value: ColorRef) {.base.} =
+  ## Changes EditText text color.
+  self.color = value
+
+
 method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
   ## Changes text align.
   self.text_align = align
@@ -304,8 +324,3 @@ method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
 method setTextAlign*(self: EditTextPtr, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
-
-
-method setText*(self: EditTextPtr, value: string) {.base.} =
-  ## Changes EditText text.
-  self.text = value

@@ -28,7 +28,7 @@ type
 
 var labels: seq[LabelObj] = @[]
 
-proc Label*(name: string = "Label"): LabelPtr =
+proc Label*(name: string = "Label", text: string = ""): LabelPtr =
   ## Creates a new Label pointer.
   ##
   ## Arguments:
@@ -40,7 +40,7 @@ proc Label*(name: string = "Label"): LabelPtr =
   controlpattern()
   variable.rect_size.x = 40
   variable.rect_size.y = 40
-  variable.text = ""
+  variable.text = text
   variable.font = GLUT_BITMAP_HELVETICA_12
   variable.size = 12
   variable.spacing = 2
