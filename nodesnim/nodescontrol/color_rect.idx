@@ -3,3 +3,4 @@ ColorRectPtr	nodesnim/nodescontrol/color_rect.html#ColorRectPtr	color_rect: Colo
 ColorRect	nodesnim/nodescontrol/color_rect.html#ColorRect,string	color_rect: ColorRect(name: string = &quot;ColorRect&quot;): ColorRectPtr	
 draw	nodesnim/nodescontrol/color_rect.html#draw.e,ColorRectPtr,GLfloat,GLfloat	color_rect: draw(self: ColorRectPtr; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/color_rect.html#duplicate.e,ColorRectPtr	color_rect: duplicate(self: ColorRectPtr): ColorRectPtr	
+setColor	nodesnim/nodescontrol/color_rect.html#setColor.e,ColorRectPtr,ColorRef	color_rect: setColor(self: ColorRectPtr; color: ColorRef)	

@@ -129,6 +129,8 @@ function main() {
     title="draw(self: ColorRectPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">ColorRectPtr</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CColorRectPtr"
     title="duplicate(self: ColorRectPtr): ColorRectPtr"><wbr />duplicate<span class="attachedType">ColorRectPtr</span></a></li>
+  <li><a class="reference" href="#setColor.e%2CColorRectPtr%2CColorRef"
+    title="setColor(self: ColorRectPtr; color: ColorRef)"><wbr />set<wbr />Color<span class="attachedType">ColorRectPtr</span></a></li>
 
   </ul>
 </li>
@@ -202,6 +204,17 @@ this method uses in the <tt class="docutils literal"><span class="pre">window.ni
 Duplicates ColorRect object and create a new ColorRect pointer.
 
 </dd>
+<a id="setColor.e,ColorRectPtr,ColorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setColor.e%2CColorRectPtr%2CColorRef"><span class="Identifier">setColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Changes ColorRect color.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt> is a new color.</li>
+</ul>
+
+
+</dd>
 
 </dl></div>
 
@@ -212,7 +225,7 @@ Duplicates ColorRect object and create a new ColorRect pointer.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 04:25:56 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 06:52:27 UTC</small>
       </div>
     </div>
   </div>

@@ -37,3 +37,5 @@ setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodePtr,Vector2Ref	node: 
 setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodePtr,float,float	node: setSizeAnchor(self: NodePtr; x, y: float)	
 show	nodesnim/nodes/node.html#show.e,NodePtr	node: show(self: NodePtr)	
 delete	nodesnim/nodes/node.html#delete.e,NodePtr	node: delete(self: NodePtr)	
+Examples	node.html#examples	  Examples	
+`@`	nodesnim/nodes/node.html#@.m,NodePtr,untyped,untyped	node: `@`(node: NodePtr; event_name, code: untyped): untyped	
