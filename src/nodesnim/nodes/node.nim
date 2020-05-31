@@ -313,16 +313,19 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
   ## - `node` is an any node pointer.
   ## - `event_name` is an event name, e.g.: process.
   ## - `code` is the proc code.
-  runnableExamples:
-    var
-      smth_node = Node("Simple node")
-
-    smth_node@ready:
-      echo "node is ready!"
-
-    smth_node@input(event):
-      if event.isInputEventMouseButton():
-        echo event
+  ##
+  ## ## Examples
+  ## .. code-block:: nim
+  ##
+  ##    var
+  ##      smth_node = Node("Simple node")
+  ##
+  ##    smth_node@ready:
+  ##      echo "node is ready!"
+  ##
+  ##    smth_node@input(event):
+  ##      if event.isInputEventMouseButton():
+  ##        echo event
   var ename: string
   # Gets event name.
   if event_name.kind == nnkIdent:
