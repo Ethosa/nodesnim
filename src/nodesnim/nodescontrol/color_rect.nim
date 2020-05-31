@@ -58,3 +58,10 @@ method duplicate*(self: ColorRectPtr): ColorRectPtr {.base.} =
   var obj = self[]
   rects.add(obj)
   return addr rects[^1]
+
+method setColor*(self: ColorRectPtr, color: ColorRef) {.base.} =
+  ## Changes ColorRect color.
+  ##
+  ## Arguments:
+  ## - `color` is a new color.
+  self.color = color

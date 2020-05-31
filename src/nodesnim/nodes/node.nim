@@ -300,3 +300,82 @@ method delete*(self: NodePtr) {.base.} =
   ## Deletes current node.
   if self.parent != nil:
     self.parent.removeChild(self)
+
+
+# --- Macros --- #
+import
+  macros
+
+macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
+  ## It provides a convenient wrapper for the event handler.
+  ##
+  ## Arguments:
+  ## - `node` is an any node pointer.
+  ## - `event_name` is an event name, e.g.: process.
+  ## - `code` is the proc code.
+  runnableExamples:
+    var
+      node = Node("Simple node")
+
+    node@ready:
+      echo "node is ready!"
+
+    node@input(event):
+      if event.isInputEventMouseButton():
+        echo event
+  var ename: string
+  # Gets event name.
+  if event_name.kind == nnkIdent:
+    ename = $event_name
+  elif event_name.kind == nnkCall:
+    ename = $event_name[0]
+
+  case ename
+  of "process", "ready", "enter", "exit", "focus", "unfocus":
+    result = quote do:
+      `node`.`event_name` =
+        proc(): void =
+          `code`
+
+  of "on_click", "mouse_exit", "mouse_enter", "click", "release", "press":
+    var
+      name = event_name[0]
+      x = event_name[1]
+      y = event_name[2]
+
+    result = quote do:
+      `node`.`name` =
+        proc(`x`, `y`: float) =
+          `code`
+
+  of "input":
+    var
+      name = event_name[0]
+      arg = event_name[1]
+
+    result = quote do:
+      `node`.`name` =
+        proc(`arg`: InputEvent) =
+          `code`
+
+  of "on_toggle":
+    var
+      name = event_name[0]
+      arg = event_name[1]
+
+    result = quote do:
+      `node`.`name` =
+        proc(`arg`: bool) =
+          `code`
+
+  of "on_changed":
+    var
+      name = event_name[0]
+      arg = event_name[1]
+
+    result = quote do:
+      `node`.`name` =
+        proc(`arg`: uint) =
+          `code`
+  else:
+    discard

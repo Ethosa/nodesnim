@@ -44,7 +44,7 @@ proc Button*(name: string = "Button"): ButtonPtr =
   var variable: ButtonObj
   nodepattern(ButtonObj)
   controlpattern()
-  variable.rect_size.x = 40
+  variable.rect_size.x = 160
   variable.rect_size.y = 40
   variable.text = ""
   variable.font = GLUT_BITMAP_HELVETICA_12
