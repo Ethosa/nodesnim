@@ -315,12 +315,12 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
   ## - `code` is the proc code.
   runnableExamples:
     var
-      node = Node("Simple node")
+      smth_node = Node("Simple node")
 
-    node@ready:
+    smth_node@ready:
       echo "node is ready!"
 
-    node@input(event):
+    smth_node@input(event):
       if event.isInputEventMouseButton():
         echo event
   var ename: string
