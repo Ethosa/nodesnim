@@ -4,6 +4,7 @@ current_scene	nodesnim/window.html#current_scene	window: current_scene
 scenes	nodesnim/window.html#scenes	window: scenes	
 paused	nodesnim/window.html#paused	window: paused	
 addScene	nodesnim/window.html#addScene,ScenePtr	window: addScene(scene: ScenePtr)	
+addMainScene	nodesnim/window.html#addMainScene,ScenePtr	window: addMainScene(scene: ScenePtr)	
 changeScene	nodesnim/window.html#changeScene,string	window: changeScene(name: string): bool	
 setMainScene	nodesnim/window.html#setMainScene,string	window: setMainScene(name: string)	
 setTitle	nodesnim/window.html#setTitle,cstring	window: setTitle(title: cstring)	
