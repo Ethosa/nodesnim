@@ -207,6 +207,15 @@ proc addScene*(scene: ScenePtr) =
   if scene notin scenes:
     scenes.add(scene)
 
+proc addMainScene*(scene: ScenePtr) =
+  ## Adds a new scene in the app and set it mark it as main scene.
+  ##
+  ## Arguents:
+  ## - `scene` - pointer to the Scene object.
+  if scene notin scenes:
+    scenes.add(scene)
+  main_scene = scene
+
 proc changeScene*(name: string): bool {.discardable.} =
   ## Changes current scene.
   ##

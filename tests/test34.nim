@@ -17,6 +17,5 @@ switch.on_toggle =
     echo toggled
 
 
-addScene(main)
-setMainScene("Main")
+addMainScene(main)
 windowLaunch()
