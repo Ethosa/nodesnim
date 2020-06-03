@@ -23,16 +23,17 @@ type
     on_changed*: proc(new_value: uint): void
   VSliderPtr* = ptr VSliderObj
 
-var sliders: seq[VSliderObj] = @[]
 
-proc VSlider*(name: string = "VSlider"): VSliderPtr =
+proc VSlider*(name: string, variable: var VSliderObj): VSliderPtr =
   ## Creates a new VSlider pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a VSliderObj variable.
   runnableExamples:
-    var slider = VSlider("VSlider")
-  var variable: VSliderObj
+    var
+      sliderobj: VSliderObj
+      slider = VSlider("VSlider", sliderobj)
   nodepattern(VSliderObj)
   controlpattern()
   variable.background_color = Color(1f, 1f, 1f)
@@ -44,8 +45,17 @@ proc VSlider*(name: string = "VSlider"): VSliderPtr =
   variable.value = 0
   variable.on_changed = proc(v: uint) = discard
   variable.kind = VSLIDER_NODE
-  sliders.add(variable)
-  return addr sliders[^1]
+
+proc VSlider*(obj: var VSliderObj): VSliderPtr {.inline.} =
+  ## Creates a new VSlider pointer with default node name "VSlider".
+  ##
+  ## Arguments:
+  ## - `variable` is a VSliderObj variable.
+  runnableExamples:
+    var
+      sliderobj: VSliderObj
+      slider = VSlider(sliderobj)
+  VSlider("VSlider", obj)
 
 
 method draw*(self: VSliderPtr, w, h: GLfloat) =
@@ -72,11 +82,10 @@ method draw*(self: VSliderPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: VSliderPtr): VSliderPtr {.base.} =
+method duplicate*(self: VSliderPtr, obj: var VSliderObj): VSliderPtr {.base.} =
   ## Duplicates VSlider object and create a new VSlider pointer.
-  var obj = self[]
-  sliders.add(obj)
-  return addr sliders[^1]
+  obj = self[]
+  obj.addr
 
 method setMaxValue*(self: VSliderPtr, value: uint) {.base.} =
   ## Changes max value, if it not less than progress.

@@ -5,9 +5,11 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  texturerect = TextureRect()
+  texturerectobj: TextureRectObj
+  texturerect = TextureRect(texturerectobj)
 
 main.addChild(texturerect)
 

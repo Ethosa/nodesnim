@@ -33,17 +33,17 @@ type
   CollisionShape2DPtr* = ptr CollisionShape2DObj
 
 
-var shapes: seq[CollisionShape2DObj] = @[]
 
-
-proc CollisionShape2D*(name: string = "CollisionShape2D"): CollisionShape2DPtr =
+proc CollisionShape2D*(name: string, variable: var CollisionShape2DObj): CollisionShape2DPtr =
   ## Creates a new CollisionShape2D pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a CollisionShape2DObj variable.
   runnableExamples:
-    var node = CollisionShape2D("CollisionShape2D")
-  var variable: CollisionShape2DObj
+    var
+      node_obj: CollisionShape2DObj
+      node = CollisionShape2D("CollisionShape2D", node_obj)
   nodepattern(CollisionShape2DObj)
   node2dpattern()
   variable.rect_size.x = 40
@@ -54,8 +54,17 @@ proc CollisionShape2D*(name: string = "CollisionShape2D"): CollisionShape2DPtr =
   variable.radius = 20
   variable.polygon = @[]
   variable.kind = COLLISION_SHAPE_2D_NODE
-  shapes.add(variable)
-  return addr shapes[^1]
+
+proc CollisionShape2D*(obj: var CollisionShape2DObj): CollisionShape2DPtr {.inline.} =
+  ## Creates a new CollisionShape2D pointer with deffault node name "CollisionShape2D".
+  ##
+  ## Arguments:
+  ## - `variable` is a CollisionShape2DObj variable.
+  runnableExamples:
+    var
+      node_obj: CollisionShape2DObj
+      node = CollisionShape2D(node_obj)
+  CollisionShape2D("CollisionShape2D", obj)
 
 
 method setShapeTypeRect*(self: CollisionShape2DPtr) {.base.} =
@@ -129,11 +138,10 @@ method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
       glEnd()
 
 
-method duplicate*(self: CollisionShape2DPtr): CollisionShape2DPtr {.base.} =
+method duplicate*(self: CollisionShape2DPtr, obj: var CollisionShape2DObj): CollisionShape2DPtr {.base.} =
   ## Duplicates CollisionShape2D object and create a new CollisionShape2D pointer.
-  var obj = self[]
-  shapes.add(obj)
-  return addr shapes[^1]
+  obj = self[]
+  obj.addr
 
 
 method getGlobalMousePosition*(self: CollisionShape2DPtr): Vector2Ref {.inline.} =

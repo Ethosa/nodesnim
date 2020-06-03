@@ -22,24 +22,31 @@ type
   KinematicBody2DPtr* = ptr KinematicBody2DObj
 
 
-var bodies: seq[KinematicBody2DObj] = @[]
-
-
-proc KinematicBody2D*(name: string = "KinematicBody2D"): KinematicBody2DPtr =
+proc KinematicBody2D*(name: string, variable: var KinematicBody2DObj): KinematicBody2DPtr =
   ## Creates a new KinematicBody2D pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
   ## - `variable` is a KinematicBody2DObj variable.
   runnableExamples:
-    var node = KinematicBody2D("KinematicBody2D")
-  var variable: KinematicBody2DObj
+    var
+      node_obj: KinematicBody2DObj
+      node = KinematicBody2D("KinematicBody2D", node_obj)
   nodepattern(KinematicBody2DObj)
   node2dpattern()
   variable.has_collision = false
   variable.kind = KINEMATIC_BODY_2D_NODE
-  bodies.add(variable)
-  return addr bodies[^1]
+
+proc KinematicBody2D*(obj: var KinematicBody2DObj): KinematicBody2DPtr {.inline.} =
+  ## Creates a new KinematicBody2D pointer with deffault node name "KinematicBody2D".
+  ##
+  ## Arguments:
+  ## - `variable` is a KinematicBody2DObj variable.
+  runnableExamples:
+    var
+      node_obj: KinematicBody2DObj
+      node = KinematicBody2D(node_obj)
+  KinematicBody2D("KinematicBody2D", obj)
 
 
 method addChild*(self: KinematicBody2DPtr, other: CollisionShape2DPtr) {.base.} =
@@ -80,11 +87,10 @@ method draw*(self: KinematicBody2DPtr, w, h: GLfloat) =
     self.position = self.timed_position
 
 
-method duplicate*(self: KinematicBody2DPtr): KinematicBody2DPtr {.base.} =
+method duplicate*(self: KinematicBody2DPtr, obj: var KinematicBody2DObj): KinematicBody2DPtr {.base.} =
   ## Duplicates KinematicBody2D and create a new KinematicBody2D pointer.
-  var obj = self[]
-  bodies.add(obj)
-  return addr bodies[^1]
+  obj = self[]
+  obj.addr
 
 
 method isCollide*(self: KinematicBody2DPtr): bool {.base.} =

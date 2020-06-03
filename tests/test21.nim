@@ -5,11 +5,14 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  progressbar = ProgressBar()
+  progressbarobj: ProgressBarObj
+  progressbar = ProgressBar(progressbarobj)
 
-  vprogressbar = VProgressBar()
+  vprogressbarobj: VProgressBarObj
+  vprogressbar = VProgressBar(vprogressbarobj)
 
 main.addChild(progressbar)
 main.addChild(vprogressbar)

@@ -7,11 +7,17 @@ Window("hello world")
 
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  shape1 = CollisionShape2D()
-  shape2 = CollisionShape2D()
-  shape3 = CollisionShape2D()
+  shape1_obj: CollisionShape2DObj
+  shape1 = CollisionShape2D(shape1_obj)
+
+  shape2_obj: CollisionShape2DObj
+  shape2 = CollisionShape2D(shape2_obj)
+
+  shape3_obj: CollisionShape2DObj
+  shape3 = CollisionShape2D(shape3_obj)
 
 
 shape1.move(100, 100)

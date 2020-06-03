@@ -5,15 +5,20 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  hbox = HBox()  # Create pointer to the HBox.
+  hboxobj: HBoxObj     # Create a HBoxObj.
+  hbox = HBox(hboxobj)  # Create pointer to the HBoxObj.
 
-  red = ColorRect()  # #ff6699
+  redobj: ColorRectObj
+  red = ColorRect(redobj)  # #ff6699
 
-  pink = ColorRect()  #ff64ff
+  pinkobj: ColorRectObj
+  pink = ColorRect(pinkobj)  #ff64ff
 
-  orange = ColorRect()  # #ffaa00
+  orangeobj: ColorRectObj
+  orange = ColorRect(orangeobj)  # #ffaa00
 
 
 red.color = Color(0xff6699ff'u32)

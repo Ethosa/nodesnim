@@ -32,16 +32,17 @@ type
     on_click*: proc(x, y: float): void  ## This called, when user clicks on button.
   ButtonPtr* = ptr ButtonObj
 
-var buttons: seq[ButtonObj] = @[]
 
-proc Button*(name: string = "Button"): ButtonPtr =
+proc Button*(name: string, variable: var ButtonObj): ButtonPtr =
   ## Creates a new Button node pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a ButtonObj variable.
   runnableExamples:
-    var my_button = Button("Button")
-  var variable: ButtonObj
+    var
+      my_button_obj: ButtonObj
+      my_button = Button("Button", my_button_obj)
   nodepattern(ButtonObj)
   controlpattern()
   variable.rect_size.x = 160
@@ -62,8 +63,17 @@ proc Button*(name: string = "Button"): ButtonPtr =
   variable.press_background_color = Color(0x595959ff)
   variable.on_click = proc(x, y: float) = discard
   variable.kind = BUTTON_NODE
-  buttons.add(variable)
-  return addr buttons[^1]
+
+proc Button*(obj: var ButtonObj): ButtonPtr {.inline.} =
+  ## Creates a new Button node pointer with default node name "Button".
+  ##
+  ## Arguments:
+  ## - `variable` is a ButtonObj variable.
+  runnableExamples:
+    var
+      my_button_obj: ButtonObj
+      my_button = Button(my_button_obj)
+  Button("Button", obj)
 
 
 method draw*(self: ButtonPtr, w, h: GLfloat) =
@@ -90,11 +100,10 @@ method draw*(self: ButtonPtr, w, h: GLfloat) =
   glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
   procCall self.LabelPtr.draw(w, h)
 
-method duplicate*(self: ButtonPtr): ButtonPtr {.base.} =
+method duplicate*(self: ButtonPtr, obj: var ButtonObj): ButtonPtr {.base.} =
   ## Duplicates Button object and creates a new Button node pointer.
-  var obj = self[]
-  buttons.add(obj)
-  return addr buttons[^1]
+  obj = self[]
+  obj.addr
 
 method handle*(self: ButtonPtr, event: InputEvent, mouse_on: var NodePtr) =
   ## Handles user input. This uses in the `window.nim`.

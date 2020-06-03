@@ -19,24 +19,34 @@ type
     color*: ColorRef
   ColorRectPtr* = ptr ColorRectObj
 
-var rects: seq[ColorRectObj] = @[]
 
-proc ColorRect*(name: string = "ColorRect"): ColorRectPtr =
+proc ColorRect*(name: string, variable: var ColorRectObj): ColorRectPtr =
   ## Creates a new ColorRect pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a ColorRectObj variable
   runnableExamples:
-    var colorrect1 = ColorRect("ColorRect")
-  var variable: ColorRectObj
+    var
+      colorrect1_obj: ColorRectObj
+      colorrect1 = ColorRect("ColorRect", colorrect1_obj)
   nodepattern(ColorRectObj)
   controlpattern()
   variable.color = Color(1f, 1f, 1f)
   variable.rect_size.x = 40
   variable.rect_size.y = 40
   variable.kind = COLOR_RECT_NODE
-  rects.add(variable)
-  return addr rects[^1]
+
+proc ColorRect*(obj: var ColorRectObj): ColorRectPtr {.inline.} =
+  ## Creates a new ColorRect pointer with default node name "ColorRect".
+  ##
+  ## Arguments:
+  ## - `variable` is a ColorRectObj variable
+  runnableExamples:
+    var
+      colorrect1_obj: ColorRectObj
+      colorrect1 = ColorRect(colorrect1_obj)
+  ColorRect("ColorRect", obj)
 
 
 method draw*(self: ColorRectPtr, w, h: GLfloat) =
@@ -53,15 +63,7 @@ method draw*(self: ColorRectPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: ColorRectPtr): ColorRectPtr {.base.} =
+method duplicate*(self: ColorRectPtr, obj: var ColorRectObj): ColorRectPtr {.base.} =
   ## Duplicates ColorRect object and create a new ColorRect pointer.
-  var obj = self[]
-  rects.add(obj)
-  return addr rects[^1]
-
-method setColor*(self: ColorRectPtr, color: ColorRef) {.base.} =
-  ## Changes ColorRect color.
-  ##
-  ## Arguments:
-  ## - `color` is a new color.
-  self.color = color
+  obj = self[]
+  obj.addr

@@ -5,12 +5,17 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
-  second = Scene("Second scene")
+  mainobj: SceneObj
+  secondobj: SceneObj
 
-  lightblue = ColorRect()
+  main = Scene("Main", mainobj)
+  second = Scene("Second scene", secondobj)
 
-  violet = ColorRect()
+  colorrectobj: ColorRectObj
+  lightblue = ColorRect(colorrectobj)
+
+  colorrect1obj: ColorRectObj
+  violet = ColorRect(colorrect1obj)
 
 
 Input.addKeyAction("change_scene", K_SPACE)

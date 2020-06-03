@@ -32,16 +32,17 @@ type
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
   RichEditTextPtr* = ptr RichEditTextObj
 
-var editors: seq[RichEditTextObj] = @[]
 
-proc RichEditText*(name: string = "RichEditText"): RichEditTextPtr =
+proc RichEditText*(name: string, variable: var RichEditTextObj): RichEditTextPtr =
   ## Creates a new RichEditText pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a RichEditTextObj variable.
   runnableExamples:
-    var text = RichEditText("RichEditText")
-  var variable: RichEditTextObj
+    var
+      textobj: RichEditTextObj
+      text = RichEditText("RichEditText", textobj)
   nodepattern(RichEditTextObj)
   controlpattern()
   variable.rect_size.x = 64
@@ -59,8 +60,17 @@ proc RichEditText*(name: string = "RichEditText"): RichEditTextPtr =
   variable.blit_time = 0f
   variable.on_edit = proc(key: string) = discard
   variable.kind = RICH_EDIT_TEXT_NODE
-  editors.add(variable)
-  return addr editors[^1]
+
+proc RichEditText*(obj: var RichEditTextObj): RichEditTextPtr {.inline.} =
+  ## Creates a new RichEditText pointer with default node name "RichEditText".
+  ##
+  ## Arguments:
+  ## - `variable` is a RichEditTextObj variable.
+  runnableExamples:
+    var
+      textobj: RichEditTextObj
+      text = RichEditText(textobj)
+  RichEditText("RichEditText", obj)
 
 
 method getTextSize*(self: RichEditTextPtr): Vector2Ref {.base.} =
@@ -235,11 +245,10 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
     self.press(last_event.x, last_event.y)
 
 
-method duplicate*(self: RichEditTextPtr): RichEditTextPtr {.base.} =
+method duplicate*(self: RichEditTextPtr, obj: var RichEditTextObj): RichEditTextPtr {.base.} =
   ## Duplicates RichEditText and create a new RichEditText pointer.
-  var obj = self[]
-  editors.add(obj)
-  return addr editors[^1]
+  obj = self[]
+  obj.addr
 
 
 method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
@@ -287,14 +296,6 @@ method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) 
           self.caret_position += 1
           self.on_edit(event.key)
 
-method setHintText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
-  ## Changes RichEditText text.
-  self.hint_text = value
-
-method setText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
-  ## Changes RichEditText text.
-  self.text = value
-
 method setTextAlign*(self: RichEditTextPtr, align: AnchorRef) {.base.} =
   ## Changes text align.
   self.text_align = align
@@ -302,3 +303,7 @@ method setTextAlign*(self: RichEditTextPtr, align: AnchorRef) {.base.} =
 method setTextAlign*(self: RichEditTextPtr, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
+
+method setText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
+  ## Changes RichEditText text.
+  self.text = value

@@ -5,9 +5,11 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  counter = Counter()
+  counterobj: CounterObj
+  counter = Counter(counterobj)
 
 main.addChild(counter)
 counter.move(128, 64)

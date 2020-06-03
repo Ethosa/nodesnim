@@ -5,15 +5,20 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  popup = Popup()  # Create Popup node pointer.
+  popupobj: PopupObj
+  popup = Popup(popupobj)  # Create Popup node pointer.
 
-  box = VBox()
+  boxobj: VBoxObj
+  box = VBox(boxobj)
 
-  label = Label()
+  labelobj: LabelObj
+  label = Label(labelobj)
 
-  smthnode = Node()
+  smthnodeobj: NodeObj
+  smthnode = Node(smthnodeobj)
 
 
 label.setText("Hello")

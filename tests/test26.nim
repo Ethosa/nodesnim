@@ -5,9 +5,11 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  sprite = Sprite()
+  spriteobj: SpriteObj
+  sprite = Sprite(spriteobj)
 
   icon = load("assets/smile.png", GL_RGBA)
 

@@ -32,7 +32,6 @@ type
     unfocus*: proc(): void                 ## This called when the Control node loses focus.
   ControlPtr* = ptr ControlObj
 
-var controls: seq[ControlObj] = @[]
 
 template controlpattern*: untyped =
   variable.hovered = false
@@ -50,19 +49,30 @@ template controlpattern*: untyped =
   variable.focus = proc() = discard
   variable.unfocus = proc() = discard
 
-proc Control*(name: string = "Control"): ControlPtr =
+proc Control*(name: string, variable: var ControlObj): ControlPtr =
   ## Creates a new Control pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a ControlObj variable.
   runnableExamples:
-    var ctrl = Control("Control")
-  var variable: ControlObj
+    var
+      ctrl_obj: ControlObj
+      ctrl = Control("Control", ctrl_obj)
   nodepattern(ControlObj)
   controlpattern()
   variable.kind = CONTROL_NODE
-  controls.add(variable)
-  return addr controls[^1]
+
+proc Control*(obj: var ControlObj): ControlPtr {.inline.} =
+  ## Creates a new Control pointer with deffault node name "Control".
+  ##
+  ## Arguments:
+  ## - `variable` is a ControlObj variable.
+  runnableExamples:
+    var
+      ctrl_obj: ControlObj
+      ctrl = Control(ctrl_obj)
+  Control("Control", obj)
 
 
 method calcPositionAnchor*(self: ControlPtr) =
@@ -92,11 +102,10 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: ControlPtr): ControlPtr {.base.} =
+method duplicate*(self: ControlPtr, obj: var ControlObj): ControlPtr {.base.} =
   ## Duplicates Control object and create a new Control pointer.
-  var obj = self[]
-  controls.add(obj)
-  return addr controls[^1]
+  obj = self[]
+  obj.addr
 
 method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base, inline.} =
   ## Returns mouse position.

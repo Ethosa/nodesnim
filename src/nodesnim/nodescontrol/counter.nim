@@ -21,18 +21,20 @@ type
     as_int*: bool  ## if true, then use integer representation.
     min_value*, value*, max_value*: float
     label*: LabelPtr
+    label_obj*: LabelObj
   CounterPtr* = ptr CounterObj
 
-var counters: seq[CounterObj] = @[]
 
-proc Counter*(name: string = "Counter"): CounterPtr =
+proc Counter*(name: string, variable: var CounterObj): CounterPtr =
   ## Creates a new Counter pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a CounterObj variable.
   runnableExamples:
-    var c = Counter("Counter")
-  var variable: CounterObj
+    var
+      cobj: CounterObj
+      c = Counter("Counter", cobj)
   nodepattern(CounterObj)
   controlpattern()
   variable.rect_size.x = 90
@@ -41,13 +43,22 @@ proc Counter*(name: string = "Counter"): CounterPtr =
   variable.value = 0
   variable.max_value = 10
   variable.as_int = true
-  variable.label = Label()
+  variable.label = Label(variable.label_obj)
   variable.label.mousemode = MOUSEMODE_IGNORE
   variable.label.parent = result
   variable.background_color = Color(0x212121ff)
   variable.kind = COUNTER_NODE
-  counters.add(variable)
-  return addr counters[^1]
+
+proc Counter*(obj: var CounterObj): CounterPtr {.inline.} =
+  ## Creates a new Counterpointer with default node name "Counter".
+  ##
+  ## Arguments:
+  ## - `variable` is a CounterObj variable.
+  runnableExamples:
+    var
+      cobj: CounterObj
+      c = Counter(cobj)
+  Counter("Counter", obj)
 
 
 method changeValue*(self: CounterPtr, value: float) {.base.} =
@@ -97,11 +108,10 @@ method draw*(self: CounterPtr, w, h: GLfloat) =
     self.press(last_event.x, last_event.y)
 
 
-method duplicate*(self: CounterPtr): CounterPtr {.base.} =
+method duplicate*(self: CounterPtr, obj: var CounterObj): CounterPtr {.base.} =
   ## Duplicates Counter object and create a new Counter pointer.
-  var obj = self[]
-  counters.add(obj)
-  return addr counters[^1]
+  obj = self[]
+  obj.addr
 
 
 method handle*(self: CounterPtr, event: InputEvent, mouse_on: var NodePtr) =

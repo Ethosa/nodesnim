@@ -34,16 +34,17 @@ type
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
   EditTextPtr* = ptr EditTextObj
 
-var editors: seq[EditTextObj] = @[]
 
-proc EditText*(name: string = "EditText"): EditTextPtr =
+proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
   ## Creates a new EditText pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a EditTextObj variable.
   runnableExamples:
-    var edit = EditText("EditText")
-  var variable: EditTextObj
+    var
+      editobj: EditTextObj
+      edit = EditText("EditText", editobj)
   nodepattern(EditTextObj)
   controlpattern()
   variable.rect_size.x = 64
@@ -63,8 +64,18 @@ proc EditText*(name: string = "EditText"): EditTextPtr =
   variable.blit_time = 0f
   variable.on_edit = proc(key: string) = discard
   variable.kind = EDIT_TEXT_NODE
-  editors.add(variable)
-  return addr editors[^1]
+
+proc EditText*(obj: var EditTextObj): EditTextPtr {.inline.} =
+  ## Creates a new EditText pointer with default name "EditText".
+  ##
+  ## Arguments:
+  ## - `name` is a node name.
+  ## - `variable` is a EditTextObj variable.
+  runnableExamples:
+    var
+      editobj: EditTextObj
+      edit = EditText(editobj)
+  EditText("EditText", obj)
 
 
 method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
@@ -243,11 +254,10 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
     self.press(last_event.x, last_event.y)
 
 
-method duplicate*(self: EditTextPtr): EditTextPtr {.base.} =
+method duplicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =
   ## Duplicates EditText object and create a new EditText pointer.
-  var obj = self[]
-  editors.add(obj)
-  return addr editors[^1]
+  obj = self[]
+  obj.addr
 
 
 method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
@@ -296,26 +306,6 @@ method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
           self.on_edit(event.key)
 
 
-method setHintColor*(self: EditTextPtr, value: ColorRef) {.base.} =
-  ## Changes EditText hint color.
-  self.hint_color = value
-
-
-method setHintText*(self: EditTextPtr, value: string) {.base.} =
-  ## Changes EditText hint text.
-  self.hint_text = value
-
-
-method setText*(self: EditTextPtr, value: string) {.base.} =
-  ## Changes EditText text.
-  self.text = value
-
-
-method setTextColor*(self: EditTextPtr, value: ColorRef) {.base.} =
-  ## Changes EditText text color.
-  self.color = value
-
-
 method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
   ## Changes text align.
   self.text_align = align
@@ -324,3 +314,8 @@ method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
 method setTextAlign*(self: EditTextPtr, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
+
+
+method setText*(self: EditTextPtr, value: string) {.base.} =
+  ## Changes EditText text.
+  self.text = value

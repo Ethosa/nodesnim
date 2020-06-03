@@ -15,9 +15,11 @@ type
 
 
 var
-  main = Scene("Main")
+  main_obj: SceneObj
+  main = Scene("Main", main_obj)
 
-  canvas = Canvas("Canvas")
+  canvas_obj: CanvasObj
+  canvas = Canvas("Canvas", canvas_obj)
 
   snake = Snake(
     dir: Vector2(),
@@ -42,7 +44,7 @@ canvas.process =
       snake.dir = Vector2(-40, 0)
     elif Input.isActionJustPressed("right"):
       snake.dir = Vector2(40, 0)
-    if time < 10:
+    if time < 120:
       inc time
       return
     canvas.resize(main.rect_size.x, main.rect_size.y)

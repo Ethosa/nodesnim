@@ -20,16 +20,17 @@ type
     progress_texture*, back_texture*: GlTextureObj
   TextureProgressBarPtr* = ptr TextureProgressBarObj
 
-var bars: seq[TextureProgressBarObj] = @[]
 
-proc TextureProgressBar*(name: string = "TextureProgressBar"): TextureProgressBarPtr =
+proc TextureProgressBar*(name: string, variable: var TextureProgressBarObj): TextureProgressBarPtr =
   ## Creates a new TextureProgressBar pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a TextureProgressBarObj variable.
   runnableExamples:
-    var p = TextureProgressBar("TextureProgressBar")
-  var variable: TextureProgressBarObj
+    var
+      pobj: TextureProgressBarObj
+      p = TextureProgressBar("TextureProgressBar", pobj)
   nodepattern(TextureProgressBarObj)
   controlpattern()
   variable.rect_size.x = 120
@@ -39,8 +40,17 @@ proc TextureProgressBar*(name: string = "TextureProgressBar"): TextureProgressBa
   variable.max_value = 100
   variable.value = 0
   variable.kind = TEXTURE_PROGRESS_BAR_NODE
-  bars.add(variable)
-  return addr bars[^1]
+
+proc TextureProgressBar*(obj: var TextureProgressBarObj): TextureProgressBarPtr {.inline.} =
+  ## Creates a new TextureProgressBar pointer with default node name "TextureProgressBar".
+  ##
+  ## Arguments:
+  ## - `variable` is a TextureProgressBarObj variable.
+  runnableExamples:
+    var
+      pobj: TextureProgressBarObj
+      p = TextureProgressBar(pobj)
+  TextureProgressBar("TextureProgressBar", obj)
 
 
 method draw*(self: TextureProgressBarPtr, w, h: GLfloat) =
@@ -97,11 +107,10 @@ method draw*(self: TextureProgressBarPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: TextureProgressBarPtr): TextureProgressBarPtr {.base.} =
+method duplicate*(self: TextureProgressBarPtr, obj: var TextureProgressBarObj): TextureProgressBarPtr {.base.} =
   ## Duplicates TextureProgressBar object and create a new TextureProgressBar pointer.
-  var obj = self[]
-  bars.add(obj)
-  return addr bars[^1]
+  obj = self[]
+  obj.addr
 
 method setMaxValue*(self: TextureProgressBarPtr, value: uint) {.base.} =
   ## Changes max value.

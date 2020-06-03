@@ -24,16 +24,17 @@ type
     texture_filter*: ColorRef
   TextureRectPtr* = ptr TextureRectObj
 
-var rects: seq[TextureRectObj] = @[]
 
-proc TextureRect*(name: string = "TextureRect"): TextureRectPtr =
+proc TextureRect*(name: string, variable: var TextureRectObj): TextureRectPtr =
   ## Creates a new TextureRect pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a TextureRectObj variable.
   runnableExamples:
-    var texture = TextureRect("TextureRect")
-  var variable: TextureRectObj
+    var
+      textureobj: TextureRectObj
+      texture = TextureRect("TextureRect", textureobj)
   nodepattern(TextureRectObj)
   controlpattern()
   variable.rect_size.x = 40
@@ -44,8 +45,18 @@ proc TextureRect*(name: string = "TextureRect"): TextureRectPtr =
   variable.texture_anchor = Anchor(0, 0, 0, 0)
   variable.texture_filter = Color(1f, 1f, 1f)
   variable.kind = TEXTURE_RECT_NODE
-  rects.add(variable)
-  return addr rects[^1]
+
+proc TextureRect*(obj: var TextureRectObj): TextureRectPtr {.inline.} =
+  ## Creates a new TextureRect pointer with default name "TextureRect".
+  ##
+  ## Arguments:
+  ## - `variable` is a TextureRectObj variable.
+  runnableExamples:
+    var
+      textureobj: TextureRectObj
+      texture = TextureRect(textureobj)
+  TextureRect("TextureRect", obj)
+
 
 
 method draw*(self: TextureRectPtr, w, h: GLfloat) =
@@ -122,11 +133,10 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: TextureRectPtr): TextureRectPtr {.base.} =
+method duplicate*(self: TextureRectPtr, obj: var TextureRectObj): TextureRectPtr {.base.} =
   ## Duplicates TextureRect and create a new TextureRect pointer.
-  var obj = self[]
-  rects.add(obj)
-  return addr rects[^1]
+  obj = self[]
+  obj.addr
 
 method loadTexture*(self: TextureRectPtr, file: cstring) {.base.} =
   ## Loads texture from file.

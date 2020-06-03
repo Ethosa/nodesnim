@@ -17,31 +17,38 @@ type
   AudioStreamPlayerPtr* = ptr AudioStreamPlayerObj
 
 
-var players: seq[AudioStreamPlayerObj] = @[]
-
-
-proc AudioStreamPlayer*(name: string = "AudioStreamPlayer"): AudioStreamPlayerPtr =
+proc AudioStreamPlayer*(name: string, variable: var AudioStreamPlayerObj): AudioStreamPlayerPtr =
   ## Creates a new AudioStreamPlayer pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is an AudioStreamPlayerObj variable
   runnableExamples:
-    var audio = AudioStreamPlayer("AudioStreamPlayer")
-  var variable: AudioStreamPlayerObj
+    var
+      audio_obj: AudioStreamPlayerObj
+      audio = AudioStreamPlayer("AudioStreamPlayer", audio_obj)
   nodepattern(AudioStreamPlayerObj)
   variable.pausemode = PAUSE
   variable.paused = false
   variable.volume = 64
   variable.kind = AUDIO_STREAM_PLAYER_NODE
-  players.add(variable)
-  return addr players[^1]
+
+proc AudioStreamPlayer*(variable: var AudioStreamPlayerObj): AudioStreamPlayerPtr {.inline.} =
+  ## Creates a new AudioStreamPlayer pointer width default name "AudioStreamPlayer".
+  ##
+  ## Arguments:
+  ## - `variable` is an AudioStreamPlayerObj variable
+  runnableExamples:
+    var
+      audio_obj:  AudioStreamPlayerObj
+      audio =  AudioStreamPlayer(audio_obj)
+  AudioStreamPlayer("AudioStreamPlayer", variable)
 
 
-method duplicate*(self: AudioStreamPlayerPtr): AudioStreamPlayerPtr {.base.} =
+method duplicate*(self: AudioStreamPlayerPtr, obj: var AudioStreamPlayerObj): AudioStreamPlayerPtr {.base.} =
   ## Duplicates AudioStreamPlayer object and create a new AudioStreamPlayer pointer.
-  var obj = self[]
-  players.add(obj)
-  return addr players[^1]
+  obj = self[]
+  obj.addr
 
 method pause*(self: AudioStreamPlayerPtr) {.base.} =
   ## Pauses stream.

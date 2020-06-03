@@ -23,16 +23,17 @@ type
     on_changed*: proc(new_value: uint): void
   SliderPtr* = ptr SliderObj
 
-var sliders: seq[SliderObj] = @[]
 
-proc Slider*(name: string = "Slider"): SliderPtr =
+proc Slider*(name: string, variable: var SliderObj): SliderPtr =
   ## Creates a new Slider pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a SliderObj variable.
   runnableExamples:
-    var sc = Slider("Slider")
-  var variable: SliderObj
+    var
+      scobj: SliderObj
+      sc = Slider("Slider", scobj)
   nodepattern(SliderObj)
   controlpattern()
   variable.background_color = Color(1f, 1f, 1f)
@@ -44,8 +45,17 @@ proc Slider*(name: string = "Slider"): SliderPtr =
   variable.value = 0
   variable.on_changed = proc(v: uint) = discard
   variable.kind = SLIDER_NODE
-  sliders.add(variable)
-  return addr sliders[^1]
+
+proc Slider*(obj: var SliderObj): SliderPtr {.inline.} =
+  ## Creates a new Slider pointer with default node name "Slider".
+  ##
+  ## Arguments:
+  ## - `variable` is a SliderObj variable.
+  runnableExamples:
+    var
+      scobj: SliderObj
+      sc = Slider(scobj)
+  Slider("Slider", obj)
 
 
 method draw*(self: SliderPtr, w, h: GLfloat) =
@@ -72,11 +82,10 @@ method draw*(self: SliderPtr, w, h: GLfloat) =
   if self.pressed:
     self.press(last_event.x, last_event.y)
 
-method duplicate*(self: SliderPtr): SliderPtr {.base.} =
+method duplicate*(self: SliderPtr, obj: var SliderObj): SliderPtr {.base.} =
   ## Duplicates Sider object and create a new Slider pointer.
-  var obj = self[]
-  sliders.add(obj)
-  return addr sliders[^1]
+  obj = self[]
+  obj.addr
 
 method setMaxValue*(self: SliderPtr, value: uint) {.base.} =
   ## Changes max value.

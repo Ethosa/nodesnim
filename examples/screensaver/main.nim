@@ -7,11 +7,13 @@ Window("ScreenSaver", 720, 480)
 
 
 var
-  main = Scene("Main")
+  main_obj: SceneObj
+  main = Scene("Main", main_obj)
 
   img = load("img.png", GL_RGBA)
 
-  sprite = Sprite()
+  spriteobj: SpriteObj
+  sprite = Sprite(spriteobj)
 
   direction = Vector2()
   speed = 3f

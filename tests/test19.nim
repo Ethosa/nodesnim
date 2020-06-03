@@ -7,9 +7,11 @@ import
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  label = RichEditText()
+  labelobj: RichEditTextObj
+  label = RichEditText(labelobj)
 
 main.addChild(label)
 

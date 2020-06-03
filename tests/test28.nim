@@ -5,9 +5,11 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  sprite = AnimatedSprite()
+  spriteobj: AnimatedSpriteObj
+  sprite = AnimatedSprite(spriteobj)
 
   img0 = load("assets/anim/0.jpg")
   img1 = load("assets/anim/1.jpg")

@@ -5,8 +5,10 @@ import nodesnim
 Window("test35")
 
 var
-  main = Scene("Main")
-  node = Button()
+  mainscene: SceneObj
+  main = Scene("Main", mainscene)
+  btn: ButtonObj
+  node = Button(btn)
 
 node.setText("Hello")
 node.setAnchor(0.5, 0.5, 0.5, 0.5)

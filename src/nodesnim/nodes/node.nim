@@ -38,9 +38,6 @@ type
   NodePtr* = ptr NodeObj
 
 
-var nodes: seq[NodeObj] = @[]
-
-
 template nodepattern*(nodetype: untyped): untyped =
   ## This used in childs of the NodeObj.
   variable = `nodetype`(
@@ -56,14 +53,15 @@ template nodepattern*(nodetype: untyped): untyped =
     anchor: Anchor(0, 0, 0, 0), size_anchor: Vector2(), can_use_anchor: false,
     can_use_size_anchor: false, z_index: 0f, z_index_global: 0f, relative_z_index: true
   )
+  result = variable.addr
 
-proc Node*(name: string = "Node"): NodePtr =
+proc Node*(name: string, variable: var NodeObj): NodePtr =
   ## Creates a new Node pointer.
-  var variable: NodeObj
   nodepattern(NodeObj)
   variable.kind = NODE_NODE
-  nodes.add(variable)
-  return addr nodes[^1]
+
+proc Node*(variable: var NodeObj): NodePtr {.inline.} =
+  Node("Node", variable)
 
 
 method addChild*(self: NodePtr, child: NodePtr) {.base.} =
@@ -100,11 +98,10 @@ method draw2stage*(self: NodePtr, w, h: GLfloat) {.base.} =
   ## This used in the Window object.
   discard
 
-method duplicate*(self: NodePtr): NodePtr {.base.} =
+method duplicate*(self: NodePtr, obj: var NodeObj): NodePtr {.base.} =
   ## Duplicates Node object and create a new Node pointer.
-  var obj = self[]
-  nodes.add(obj)
-  return addr nodes[^1]
+  obj = self[]
+  obj.addr
 
 method getChild*(self: NodePtr, index: int): NodePtr {.base.} =
   ## Returns child at `index` position, if available.

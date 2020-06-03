@@ -18,24 +18,34 @@ type
     child_anchor*: AnchorRef
   BoxPtr* = ptr BoxObj
 
-var boxes: seq[BoxObj] = @[]
 
-proc Box*(name: string = "Box"): BoxPtr =
+proc Box*(name: string, variable: var BoxObj): BoxPtr =
   ## Creates a new Box pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a BoxObj variable.
   runnableExamples:
-    var box1 = Box("My box")
-  var variable: BoxObj
+    var
+      box1_obj: BoxObj
+      box1 = Box("My box", box1_obj)
   nodepattern(BoxObj)
   controlpattern()
   variable.rect_size.x = 40
   variable.rect_size.y = 40
   variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   variable.kind = BOX_NODE
-  boxes.add(variable)
-  return addr boxes[^1]
+
+proc Box*(obj: var BoxObj): BoxPtr {.inline.} =
+  ## Creates a new Box pointer with default name "Box"
+  ##
+  ## Arguments:
+  ## - `obj` is a BoxObj variable.
+  runnableExamples:
+    var
+      box1_obj: BoxObj
+      box1 = Box(box1_obj)
+  Box("Box", obj)
 
 
 method getChildSize*(self: BoxPtr): Vector2Ref {.base.} =
@@ -75,11 +85,13 @@ method draw*(self: BoxPtr, w, h: GLfloat) =
     child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
   procCall self.ControlPtr.draw(w, h)
 
-method duplicate*(self: BoxPtr): BoxPtr {.base.} =
-  ## Duplicates Box pointer. 
-  var obj = self[]
-  boxes.add(obj)
-  return addr boxes[^1]
+method duplicate*(self: BoxPtr, obj: var BoxObj): BoxPtr {.base.} =
+  ## Duplicates Box pointer.
+  ##
+  ## Arguments:
+  ## - `obj` is BoxObj variable.
+  obj = self[]
+  obj.addr
 
 method resize*(self: BoxPtr, w, h: GLfloat) =
   ## Resizes Box node.

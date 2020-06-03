@@ -20,27 +20,34 @@ type
   Node2DPtr* = ptr Node2DObj
 
 
-var nodes2d: seq[Node2DObj] = @[]
-
-
 template node2dpattern*: untyped =
   variable.centered = true
   variable.timed_position = Vector2()
 
-proc Node2D*(name: string = "Node2D"): Node2DPtr =
+proc Node2D*(name: string, variable: var Node2DObj): Node2DPtr =
   ## Creates a new Node2D pointer.
   ##
   ## Arguments:
   ## - `name` is a node name.
+  ## - `variable` is a Node2DObj variable.
   runnableExamples:
-    var node = Node2D("Node2D")
-  var variable: Node2DObj
+    var
+      node_obj: Node2DObj
+      node = Node2D("Node2D", node_obj)
   nodepattern(Node2DObj)
   node2dpattern()
   variable.kind = NODE2D_NODE
-  nodes2d.add(variable)
-  return addr nodes2d[^1]
 
+proc Node2D*(obj: var Node2DObj): Node2DPtr {.inline.} =
+  ## Creates a new Node2D pointer with deffault node name "Node2D".
+  ##
+  ## Arguments:
+  ## - `variable` is a Node2DObj variable.
+  runnableExamples:
+    var
+      node_obj: Node2DObj
+      node = Node2D(node_obj)
+  Node2D("Node2D", obj)
 
 method draw*(self: Node2DPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
@@ -68,11 +75,10 @@ method move*(self: Node2DPtr, vec2: Vector2Ref) =
   self.timed_position = self.position
 
 
-method duplicate*(self: Node2DPtr): Node2DPtr {.base.} =
+method duplicate*(self: Node2DPtr, obj: var Node2DObj): Node2DPtr {.base.} =
   ## Duplicates Node2D object and create a new Node2D pointer.
-  var obj = self[]
-  nodes2d.add(obj)
-  return addr nodes2d[^1]
+  obj = self[]
+  obj.addr
 
 
 method getGlobalMousePosition*(self: Node2DPtr): Vector2Ref {.base, inline.} =

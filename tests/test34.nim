@@ -5,9 +5,11 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  switch = Switch()
+  switchobj: SwitchObj
+  switch = Switch(switchobj)
 
 main.addChild(switch)
 switch.move(128, 64)
@@ -17,5 +19,6 @@ switch.on_toggle =
     echo toggled
 
 
-addMainScene(main)
+addScene(main)
+setMainScene("Main")
 windowLaunch()

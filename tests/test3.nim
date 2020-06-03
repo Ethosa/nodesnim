@@ -5,9 +5,11 @@ import nodesnim
 Window("newwindow")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  node = Node("My node")
+  nodeobj: NodeObj
+  node = Node("My node", nodeobj)
 
 main.addChild(node)
 

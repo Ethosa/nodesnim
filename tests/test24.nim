@@ -5,14 +5,17 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
   stream1 = loadAudio("assets/vug_ost_Weh.ogg")
   stream2 = loadAudio("assets/vug_ost_Movement.ogg")
 
-  audio = AudioStreamPlayer()
+  audio_obj: AudioStreamPlayerObj
+  audio = AudioStreamPlayer(audio_obj)
 
-  audio1 = AudioStreamPlayer()
+  audio_obj1: AudioStreamPlayerObj
+  audio1 = AudioStreamPlayer(audio_obj1)
 
 audio.stream = stream1
 audio.setVolume(64)

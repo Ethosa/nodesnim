@@ -5,9 +5,11 @@ import nodesnim
 Window("hello world")
 
 var
-  main = Scene("Main")
+  mainobj: SceneObj
+  main = Scene("Main", mainobj)
 
-  button = TextureButton()
+  buttonobj: TextureButtonObj
+  button = TextureButton(buttonobj)
 
   norm_texture = load("assets/button_normal.png", GL_RGBA)
   hover_texture = load("assets/button_hover.png", GL_RGBA)
