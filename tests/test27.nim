@@ -26,8 +26,8 @@ button.setNormalTexture(norm_texture)
 button.setHoverTexture(hover_texture)
 button.setPressTexture(press_texture)
 
-button.on_click =
-  proc(x, y: float) =  # This called when user clicks on the button
+button.on_touch =
+  proc(self: TextureButtonPtr, x, y: float) =  # This called when user clicks on the button
     button.text = "Clicked in " & $x & ", " & $y & " position."
 
 

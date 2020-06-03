@@ -30,7 +30,7 @@ type
     hover_color*: ColorRef   ## text color, when button hovered.
     press_color*: ColorRef   ## text color, when button pressed.
 
-    on_click*: proc(x, y: float): void  ## This called, when user clicks on button.
+    on_touch*: proc(self: TextureButtonPtr, x, y: float): void  ## This called, when user clicks on button.
   TextureButtonPtr* = ptr TextureButtonObj
 
 
@@ -62,7 +62,7 @@ proc TextureButton*(name: string, variable: var TextureButtonObj): TextureButton
   variable.normal_background_texture = GlTextureObj()
   variable.hover_background_texture = GlTextureObj()
   variable.press_background_texture = GlTextureObj()
-  variable.on_click = proc(x, y: float) = discard
+  variable.on_touch = proc(self: TextureButtonPtr, x, y: float) = discard
   variable.kind = TEXTURE_BUTTON_NODE
 
 proc TextureButton*(obj: var TextureButtonObj): TextureButtonPtr {.inline.} =
@@ -129,9 +129,9 @@ method handle*(self: TextureButtonPtr, event: InputEvent, mouse_on: var NodePtr)
 
   if self.hovered:
     if event.kind == MOUSE and self.action_mask == 1 and mouse_pressed and self.button_mask == event.button_index:
-      self.on_click(event.x, event.y)
+      self.on_touch(self, event.x, event.y)
     elif event.kind == MOUSE and self.action_mask == 0 and not mouse_pressed and self.button_mask == event.button_index:
-      self.on_click(event.x, event.y)
+      self.on_touch(self, event.x, event.y)
 
 method setNormalTexture*(self: TextureButtonPtr, texture: GlTextureObj) {.base.} =
   ## Changes button texture, when it not pressed and not hovered.

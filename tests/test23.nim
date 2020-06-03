@@ -33,8 +33,8 @@ main.addChild(smthnode)
 
 
 Input.addKeyAction("space", K_SPACE)
-smthnode.process =
-  proc() =
+smthnode.on_process =
+  proc(self: NodePtr) =
     if Input.isActionJustPressed("space"):
       if popup.visible:
         popup.hide()

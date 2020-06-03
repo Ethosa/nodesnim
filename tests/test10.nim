@@ -18,8 +18,8 @@ button.resize(256, 64)
 button.setAnchor(0.5, 0.5, 0.5, 0.5)
 
 
-button.on_click =
-  proc(x, y: float) =  # This called when user clicks on the button
+button.on_touch =
+  proc(self: ButtonPtr, x, y: float) =  # This called when user clicks on the button
     button.text = "Clicked in " & $x & ", " & $y & " position."
 
 

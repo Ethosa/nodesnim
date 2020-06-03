@@ -87,7 +87,7 @@ method draw*(self: PopupPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: PopupPtr, obj: var PopupObj): PopupPtr {.base.} =
   ## Duplicates Popup object and create a new Popup pointer.

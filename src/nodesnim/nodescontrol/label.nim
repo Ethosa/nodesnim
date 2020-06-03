@@ -106,7 +106,7 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: LabelPtr, obj: var LabelObj): LabelPtr {.base.} =
   ## Duplicates Label object and create a new Label pointer.

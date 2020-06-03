@@ -27,14 +27,14 @@ violet.color = Color(0xccaaffff'u32)
 lightblue.color = Color(0xaaccffff'u32)
 lightblue.setAnchor(0.5, 0.5, 0.5, 0.5)
 
-violet.process =
-  proc() =
+violet.on_process =
+  proc(self: NodePtr) =
     if Input.isActionJustPressed("change_scene"):
       echo "bye from main scene :("
       changeScene("Second scene")  # This function changes current scene.
 
-lightblue.process =
-  proc() =
+lightblue.on_process =
+  proc(self: NodePtr) =
     if Input.isActionJustPressed("change_scene"):
       echo "bye from second scene :("
       changeScene("Main")

@@ -23,13 +23,13 @@ type
     mousemode*: MouseMode
     background_color*: ColorRef
 
-    mouse_enter*: proc(x, y: float): void  ## This called when the mouse enters the Control node.
-    mouse_exit*: proc(x, y: float): void   ## This called when the mouse exit from the Control node.
-    click*: proc(x, y: float): void        ## This called when the user clicks on the Control node.
-    press*: proc(x, y: float): void        ## This called when the user holds on the mouse on the Control node.
-    release*: proc(x, y: float): void      ## This called when the user no more holds on the mouse.
-    focus*: proc(): void                   ## This called when the Control node gets focus.
-    unfocus*: proc(): void                 ## This called when the Control node loses focus.
+    on_mouse_enter*: proc(self: ControlPtr, x, y: float): void  ## This called when the mouse enters the Control node.
+    on_mouse_exit*: proc(self: ControlPtr, x, y: float): void   ## This called when the mouse exit from the Control node.
+    on_click*: proc(self: ControlPtr, x, y: float): void        ## This called when the user clicks on the Control node.
+    on_press*: proc(self: ControlPtr, x, y: float): void        ## This called when the user holds on the mouse on the Control node.
+    on_release*: proc(self: ControlPtr, x, y: float): void      ## This called when the user no more holds on the mouse.
+    on_focus*: proc(self: ControlPtr): void                   ## This called when the Control node gets focus.
+    on_unfocus*: proc(self: ControlPtr): void                 ## This called when the Control node loses focus.
   ControlPtr* = ptr ControlObj
 
 
@@ -41,13 +41,13 @@ template controlpattern*: untyped =
   variable.mousemode = MOUSEMODE_SEE
   variable.background_color = Color()
 
-  variable.mouse_enter = proc(x, y: float) = discard
-  variable.mouse_exit = proc(x, y: float) = discard
-  variable.click = proc(x, y: float) = discard
-  variable.press = proc(x, y: float) = discard
-  variable.release = proc(x, y: float) = discard
-  variable.focus = proc() = discard
-  variable.unfocus = proc() = discard
+  variable.on_mouse_enter = proc(self: ControlPtr, x, y: float) = discard
+  variable.on_mouse_exit = proc(self: ControlPtr, x, y: float) = discard
+  variable.on_click = proc(self: ControlPtr, x, y: float) = discard
+  variable.on_press = proc(self: ControlPtr, x, y: float) = discard
+  variable.on_release = proc(self: ControlPtr, x, y: float) = discard
+  variable.on_focus = proc(self: ControlPtr) = discard
+  variable.on_unfocus = proc(self: ControlPtr) = discard
 
 proc Control*(name: string, variable: var ControlObj): ControlPtr =
   ## Creates a new Control pointer.
@@ -100,7 +100,7 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: ControlPtr, obj: var ControlObj): ControlPtr {.base.} =
   ## Duplicates Control object and create a new Control pointer.
@@ -123,27 +123,27 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
     mouse_on = self
     # Hover
     if not self.hovered:
-      self.mouse_enter(event.x, event.y)
+      self.on_mouse_enter(self, event.x, event.y)
       self.hovered = true
     # Focus
     if not self.focused and click:
       self.focused = true
-      self.focus()
+      self.on_focus(self)
     # Click
     if mouse_pressed and not self.pressed:
       self.pressed = true
-      self.click(event.x, event.y)
+      self.on_click(self, event.x, event.y)
   elif not hasmouse or mouse_on != self:
     if not mouse_pressed and self.hovered:
-      self.mouse_exit(event.x, event.y)
+      self.on_mouse_exit(self, event.x, event.y)
       self.hovered = false
     # Unfocus
     if self.focused and click:
-      self.unfocus()
+      self.on_unfocus(self)
       self.focused = false
   if not mouse_pressed and self.pressed:
     self.pressed = false
-    self.release(event.x, event.y)
+    self.on_release(self, event.x, event.y)
 
 method setBackgroundColor*(self: ControlPtr, color: ColorRef) {.base.} =
   ## Changes Control background color.

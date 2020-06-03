@@ -131,7 +131,7 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: TextureRectPtr, obj: var TextureRectObj): TextureRectPtr {.base.} =
   ## Duplicates TextureRect and create a new TextureRect pointer.

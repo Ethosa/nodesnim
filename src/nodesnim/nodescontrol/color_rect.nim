@@ -61,7 +61,7 @@ method draw*(self: ColorRectPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: ColorRectPtr, obj: var ColorRectObj): ColorRectPtr {.base.} =
   ## Duplicates ColorRect object and create a new ColorRect pointer.

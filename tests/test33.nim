@@ -37,8 +37,8 @@ shape4.setShapeTypePolygon(Vector2(0, 0), Vector2(150, 65), Vector2(25, 150))
 
 
 Input.addButtonAction("left", BUTTON_LEFT)
-body.process =
-  proc() =
+body.on_process =
+  proc(self: NodePtr) =
     if Input.isActionPressed("left"):
       let
         mouse_pos = body.getGlobalMousePosition()

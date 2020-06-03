@@ -29,7 +29,7 @@ type
     hover_color*: ColorRef   ## text color, when button hovered.
     press_color*: ColorRef   ## text color, when button pressed.
 
-    on_click*: proc(x, y: float): void  ## This called, when user clicks on button.
+    on_touch*: proc(self: ButtonPtr, x, y: float): void  ## This called, when user clicks on button.
   ButtonPtr* = ptr ButtonObj
 
 
@@ -61,7 +61,7 @@ proc Button*(name: string, variable: var ButtonObj): ButtonPtr =
   variable.normal_background_color = Color(0x444444ff)
   variable.hover_background_color = Color(0x505050ff)
   variable.press_background_color = Color(0x595959ff)
-  variable.on_click = proc(x, y: float) = discard
+  variable.on_touch = proc(self: ButtonPtr, x, y: float) = discard
   variable.kind = BUTTON_NODE
 
 proc Button*(obj: var ButtonObj): ButtonPtr {.inline.} =
@@ -111,6 +111,6 @@ method handle*(self: ButtonPtr, event: InputEvent, mouse_on: var NodePtr) =
 
   if self.hovered:
     if event.kind == MOUSE and self.action_mask == 1 and mouse_pressed and self.button_mask == event.button_index:
-      self.on_click(event.x, event.y)
+      self.on_touch(self, event.x, event.y)
     elif event.kind == MOUSE and self.action_mask == 0 and not mouse_pressed and self.button_mask == event.button_index:
-      self.on_click(event.x, event.y)
+      self.on_touch(self, event.x, event.y)

@@ -30,11 +30,11 @@ type
     anchor*: AnchorRef               ## Node anchor.
     parent*: NodePtr                 ## Node parent.
     children*: seq[NodePtr]          ## Node children.
-    enter*: proc()                   ## This called when scene changed.
-    exit*: proc()                    ## This called when exit from the scene.
-    input*: proc(event: InputEvent)  ## This called on user input.
-    ready*: proc()                   ## This called when the scene changed and the `enter` was called.
-    process*: proc()                 ## This called every frame.
+    on_enter*: proc(self: NodePtr)                   ## This called when scene changed.
+    on_exit*: proc(self: NodePtr)                    ## This called when exit from the scene.
+    on_input*: proc(self: NodePtr, event: InputEvent)  ## This called on user input.
+    on_ready*: proc(self: NodePtr)                   ## This called when the scene changed and the `enter` was called.
+    on_process*: proc(self: NodePtr)                 ## This called every frame.
   NodePtr* = ptr NodeObj
 
 
@@ -44,11 +44,11 @@ template nodepattern*(nodetype: untyped): untyped =
     name: name, position: Vector2(), children: @[],
     global_position: Vector2(),
     rect_size: Vector2(),
-    ready: proc() = discard,
-    process: proc() = discard,
-    input: proc(event: InputEvent) = discard,
-    enter: proc() = discard,
-    exit: proc() = discard,
+    on_ready: proc(self: NodePtr) = discard,
+    on_process: proc(self: NodePtr) = discard,
+    on_input: proc(self: NodePtr, event: InputEvent) = discard,
+    on_enter: proc(self: NodePtr) = discard,
+    on_exit: proc(self: NodePtr) = discard,
     is_ready: false, pausemode: INHERIT, visible: true,
     anchor: Anchor(0, 0, 0, 0), size_anchor: Vector2(), can_use_anchor: false,
     can_use_size_anchor: false, z_index: 0f, z_index_global: 0f, relative_z_index: true
@@ -71,6 +71,15 @@ method addChild*(self: NodePtr, child: NodePtr) {.base.} =
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
+
+
+method addChilds*(self: NodePtr, childs: varargs[NodePtr]) {.base.} =
+  ## Adds new child in current node.
+  ##
+  ## Arguments:
+  ## - `child`: other node.
+  for node in childs:
+    self.addChild(node)
 
 method calcGlobalPosition*(self: NodePtr) {.base.} =
   ## Returns global node position.
@@ -331,51 +340,79 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
     ename = $event_name[0]
 
   case ename
-  of "process", "ready", "enter", "exit", "focus", "unfocus":
-    result = quote do:
-      `node`.`event_name` =
-        proc(): void =
-          `code`
-
-  of "on_click", "mouse_exit", "mouse_enter", "click", "release", "press":
+  of "on_process", "on_ready", "on_enter", "on_exit":
     var
       name = event_name[0]
-      x = event_name[1]
-      y = event_name[2]
+      self = event_name[1]
+    result = quote do:
+      `node`.`name` =
+        proc(`self`: NodePtr): void =
+          `code`
+
+  of "on_focus", "on_unfocus":
+    var
+      name = event_name[0]
+      self = event_name[1]
+    result = quote do:
+      `node`.`name` =
+        proc(`self`: ControlPtr): void =
+          `code`
+
+  of "on_touch":
+    var
+      name = event_name[0]
+      self = event_name[1]
+      x = event_name[2]
+      y = event_name[3]
 
     result = quote do:
       `node`.`name` =
-        proc(`x`, `y`: float) =
+        proc(`self`: ButtonPtr, `x`, `y`: float) =
           `code`
 
-  of "input":
+  of "on_mouse_exit", "on_mouse_enter", "on_click", "on_release", "on_press":
     var
       name = event_name[0]
-      arg = event_name[1]
+      self = event_name[1]
+      x = event_name[2]
+      y = event_name[3]
 
     result = quote do:
       `node`.`name` =
-        proc(`arg`: InputEvent) =
+        proc(`self`: ControlPtr, `x`, `y`: float) =
+          `code`
+
+  of "on_input":
+    var
+      name = event_name[0]
+      self = event_name[1]
+      arg = event_name[2]
+
+    result = quote do:
+      `node`.`name` =
+        proc(`self`: NodePtr, `arg`: InputEvent) =
           `code`
 
   of "on_toggle":
     var
       name = event_name[0]
-      arg = event_name[1]
+      self = event_name[1]
+      arg = event_name[2]
 
     result = quote do:
       `node`.`name` =
-        proc(`arg`: bool) =
+        proc(`self`: SwitchPtr, `arg`: bool) =
           `code`
 
   of "on_changed":
     var
       name = event_name[0]
-      arg = event_name[1]
+      self = event_name[1]
+      arg = event_name[2]
 
     result = quote do:
       `node`.`name` =
-        proc(`arg`: uint) =
+        proc(`self`: SliderPtr, `arg`: uint) =
           `code`
   else:
     discard

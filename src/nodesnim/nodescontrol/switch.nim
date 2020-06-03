@@ -20,7 +20,7 @@ type
     color_enable*, color_disable*: ColorRef
     back_enable*, back_disable*: ColorRef
 
-    on_toggle*: proc(toggled: bool): void  ## This called when switch toggled.
+    on_toggle*: proc(self: SwitchPtr, toggled: bool): void  ## This called when switch toggled.
   SwitchPtr* = ptr SwitchObj
 
 
@@ -43,7 +43,7 @@ proc Switch*(name: string, variable: var SwitchObj): SwitchPtr =
   variable.value = false
   variable.rect_size.x = 50
   variable.rect_size.y = 20
-  variable.on_toggle = proc(toggled: bool) = discard
+  variable.on_toggle = proc(self: SwitchPtr, toggled: bool) = discard
   variable.kind = COLOR_RECT_NODE
 
 proc Switch*(obj: var SwitchObj): SwitchPtr {.inline.} =
@@ -78,7 +78,7 @@ method draw*(self: SwitchPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 
 method duplicate*(self: SwitchPtr, obj: var SwitchObj): SwitchPtr {.base.} =
@@ -93,7 +93,7 @@ method handle*(self: SwitchPtr, event: InputEvent, mouse_on: var NodePtr) =
 
   if self.hovered and event.kind == MOUSE and event.pressed:
     self.value = not self.value
-    self.on_toggle(self.value)
+    self.on_toggle(self, self.value)
 
 
 method toggle*(self: SwitchPtr) {.base.} =

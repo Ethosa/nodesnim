@@ -105,7 +105,7 @@ method draw*(self: CounterPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 
 method duplicate*(self: CounterPtr, obj: var CounterObj): CounterPtr {.base.} =

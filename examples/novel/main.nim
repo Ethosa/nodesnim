@@ -69,21 +69,21 @@ name_charapter.setTextAlign(0.1, 0.5, 0.1, 0.5)
 
 game_scene.addChild(foreground_rect)
 foreground_rect.setSizeAnchor(1, 1)
-foreground_rect.ready =
-  proc() =
-    foreground_rect.color = Color(0x0e1317ff)
-foreground_rect.process =
-  proc() =
-    if foreground_rect.color.a > 0f:
-      foreground_rect.color.a -= 0.001
-foreground_rect.input =
-  proc(event: InputEvent) =
-    if event.isInputEventMouseButton() and not event.pressed:
-      inc stage
-      if stage < dialog.len():
-        name_charapter.setText(dialog[stage][0])
-        dialog_text.setText(clrtext(dialog[stage][1]))
-        charapter.visible = dialog[stage][2]
+
+foreground_rect@on_ready(self):
+  foreground_rect.color = Color(0x0e1317ff)
+
+foreground_rect@on_process(self):
+  if foreground_rect.color.a > 0f:
+    foreground_rect.color.a -= 0.001
+
+foreground_rect@on_input(self, event):
+  if event.isInputEventMouseButton() and not event.pressed:
+    inc stage
+    if stage < dialog.len():
+      name_charapter.setText(dialog[stage][0])
+      dialog_text.setText(clrtext(dialog[stage][1]))
+      charapter.visible = dialog[stage][2]
 
 
 
@@ -91,8 +91,8 @@ main.addChild(button)
 button.text = "New game"
 button.resize(128, 32)
 button.setAnchor(0.5, 0.5, 0.5, 0.5)
-button.on_click =
-  proc(x, y: float) =
+button.on_touch =
+  proc(self: ButtonPtr, x, y: float) =
     changeScene("Game")
 
 

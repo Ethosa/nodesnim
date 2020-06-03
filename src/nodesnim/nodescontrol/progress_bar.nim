@@ -71,7 +71,7 @@ method draw*(self: ProgressBarPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: ProgressBarPtr, obj: var ProgressBarObj): ProgressBarPtr {.base.} =
   ## Duplicates ProgressBar object and create a new ProgressBar pointer.

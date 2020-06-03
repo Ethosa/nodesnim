@@ -17,8 +17,8 @@ main.addChild(label)
 
 label.setSizeAnchor(1, 1)
 
-label.process =
-  proc() =
+label.on_process =
+  proc(self: NodePtr) =
     label.text.setColor(Color(1f, 1f, 1f))
     label.text.setUnderline(false)
 

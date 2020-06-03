@@ -22,8 +22,8 @@ Input.addButtonAction("click", BUTTON_LEFT)
 Input.addButtonAction("release", BUTTON_RIGHT)
 
 
-node.process =
-  proc() =  # This called every frame.
+node.on_process =
+  proc(self: NodePtr) =  # This called every frame.
     if Input.isActionPressed("forward"):  # returns true, when user press "w"
       echo "forward"
     if Input.isActionPressed("backward"):  # returns true, when user press "s"
@@ -39,8 +39,8 @@ node.process =
     if Input.isActionReleased("release"):  # returns true, when the user no more press on the right button.
       echo "release!"
 
-node.input =
-  proc(event: InputEvent) =  # This called only on user input.
+node.on_input =
+  proc(self: NodePtr, event: InputEvent) =  # This called only on user input.
     if event.isInputEventMouseButton() and event.pressed:
       echo "hi"
 

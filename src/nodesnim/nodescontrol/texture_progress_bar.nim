@@ -105,7 +105,7 @@ method draw*(self: TextureProgressBarPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: TextureProgressBarPtr, obj: var TextureProgressBarObj): TextureProgressBarPtr {.base.} =
   ## Duplicates TextureProgressBar object and create a new TextureProgressBar pointer.

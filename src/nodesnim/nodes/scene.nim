@@ -37,9 +37,9 @@ method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
       continue
     if child.visible:
       if not child.is_ready:
-        child.ready()
+        child.on_ready(child)
         child.is_ready = true
-      child.process()
+      child.on_process(child)
       child.draw(w, h)
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
@@ -55,13 +55,13 @@ method duplicate*(self: ScenePtr, obj: var SceneObj): ScenePtr {.base.} =
 method enter*(scene: ScenePtr) {.base.} =
   ## This called when scene was changed.
   for child in scene.getChildIter():
-    child.enter()
+    child.on_enter(child)
     child.is_ready = false
 
 method exit*(scene: ScenePtr) {.base.} =
   ## This called when scene was changed.
   for child in scene.getChildIter():
-    child.enter()
+    child.on_enter(child)
     child.is_ready = false
 
 method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, paused: bool) {.base.} =
@@ -72,7 +72,7 @@ method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, p
       continue
     if childs[i].visible:
       childs[i].handle(event, mouse_on)
-      childs[i].input(event)
+      childs[i].on_input(childs[i], event)
 
 method reAnchorScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
   ## Recalculates node positions.

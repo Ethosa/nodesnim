@@ -106,7 +106,7 @@ method draw*(self: RichLabelPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: RichLabelPtr, obj: var RichLabelObj): RichLabelPtr {.base.} =
   ## Duplicates Richlabel object and create a new RichLabel pointer.

@@ -73,7 +73,7 @@ method draw*(self: VProgressBarPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: VProgressBarPtr, obj: var VProgressBarObj): VProgressBarPtr {.base.} =
   ## Duplicates VProgressBar object and create a new VProgressBar pointer.

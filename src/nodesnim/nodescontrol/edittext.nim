@@ -251,7 +251,7 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 
 method duplicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =

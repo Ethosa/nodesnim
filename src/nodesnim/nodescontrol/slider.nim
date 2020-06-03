@@ -20,7 +20,7 @@ type
     progress_color*: ColorRef
     thumb_color*: ColorRef
 
-    on_changed*: proc(new_value: uint): void
+    on_changed*: proc(self: SliderPtr, new_value: uint): void
   SliderPtr* = ptr SliderObj
 
 
@@ -43,7 +43,7 @@ proc Slider*(name: string, variable: var SliderObj): SliderPtr =
   variable.thumb_color = Color(0.7, 0.7, 0.7)
   variable.max_value = 100
   variable.value = 0
-  variable.on_changed = proc(v: uint) = discard
+  variable.on_changed = proc(self: SliderPtr, v: uint) = discard
   variable.kind = SLIDER_NODE
 
 proc Slider*(obj: var SliderObj): SliderPtr {.inline.} =
@@ -80,7 +80,7 @@ method draw*(self: SliderPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: SliderPtr, obj: var SliderObj): SliderPtr {.base.} =
   ## Duplicates Sider object and create a new Slider pointer.
@@ -115,5 +115,5 @@ method handle*(self: SliderPtr, event: InputEvent, mouse_on: var NodePtr) =
       value = normalize(1f - ((self.global_position.x + self.rect_size.x - event.x) / self.rect_size.x), 0, 1)
       progress_value = (value * self.max_value.float).uint32
     if progress_value != self.value:
-      self.on_changed(progress_value)
+      self.on_changed(self, progress_value)
     self.setProgress(progress_value)

@@ -242,7 +242,7 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
 
   # Press
   if self.pressed:
-    self.press(last_event.x, last_event.y)
+    self.on_press(self, last_event.x, last_event.y)
 
 
 method duplicate*(self: RichEditTextPtr, obj: var RichEditTextObj): RichEditTextPtr {.base.} =

@@ -15,7 +15,7 @@ main.addChild(switch)
 switch.move(128, 64)
 
 switch.on_toggle =
-  proc(toggled: bool) =  # this called when the user toggles switch.
+  proc(self: SwitchPtr, toggled: bool) =  # this called when the user toggles switch.
     echo toggled
 
 
