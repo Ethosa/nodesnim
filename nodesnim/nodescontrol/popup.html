@@ -116,8 +116,10 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Popup%2Cstring"
-    title="Popup(name: string = &quot;Popup&quot;): PopupPtr"><wbr />Popup<span class="attachedType">PopupPtr</span></a></li>
+      <li><a class="reference" href="#Popup%2Cstring%2CPopupObj"
+    title="Popup(name: string; variable: var PopupObj): PopupPtr"><wbr />Popup<span class="attachedType">PopupPtr</span></a></li>
+  <li><a class="reference" href="#Popup%2CPopupObj"
+    title="Popup(obj: var PopupObj): PopupPtr"><wbr />Popup<span class="attachedType">PopupObj</span></a></li>
 
   </ul>
 </li>
@@ -132,8 +134,8 @@ function main() {
     title="calcPositionAnchor(self: PopupPtr)"><wbr />calc<wbr />Position<wbr />Anchor<span class="attachedType">PopupPtr</span></a></li>
   <li><a class="reference" href="#draw.e%2CPopupPtr%2CGLfloat%2CGLfloat"
     title="draw(self: PopupPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">PopupPtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CPopupPtr"
-    title="duplicate(self: PopupPtr): PopupPtr"><wbr />duplicate<span class="attachedType">PopupPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CPopupPtr%2CPopupObj"
+    title="duplicate(self: PopupPtr; obj: var PopupObj): PopupPtr"><wbr />duplicate<span class="attachedType">PopupPtr</span></a></li>
 
   </ul>
 </li>
@@ -172,17 +174,35 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="Popup,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Popup%2Cstring"><span class="Identifier">Popup</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;Popup&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="popup.html#PopupPtr"><span class="Identifier">PopupPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="Popup,string,PopupObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#Popup%2Cstring%2CPopupObj"><span class="Identifier">Popup</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="popup.html#PopupObj"><span class="Identifier">PopupObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="popup.html#PopupPtr"><span class="Identifier">PopupPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new Popup pointer.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a PopupObj variable.</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">p</span> <span class="Other">=</span> <span class="Identifier">Popup</span><span class="Other">(</span><span class="StringLit">&quot;Popup&quot;</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">pobj</span><span class="Other">:</span> <span class="Identifier">PopupObj</span>
+  <span class="Identifier">p</span> <span class="Other">=</span> <span class="Identifier">Popup</span><span class="Other">(</span><span class="StringLit">&quot;Popup&quot;</span><span class="Other">,</span> <span class="Identifier">pobj</span><span class="Other">)</span></pre>
+
+</dd>
+<a id="Popup,PopupObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#Popup%2CPopupObj"><span class="Identifier">Popup</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="popup.html#PopupObj"><span class="Identifier">PopupObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="popup.html#PopupPtr"><span class="Identifier">PopupPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Creates a new Popup pointer with default node name &quot;Popup&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a PopupObj variable.</li>
+</ul>
+
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">pobj</span><span class="Other">:</span> <span class="Identifier">PopupObj</span>
+  <span class="Identifier">p</span> <span class="Other">=</span> <span class="Identifier">Popup</span><span class="Other">(</span><span class="Identifier">pobj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -219,8 +239,8 @@ This uses in the <tt class="docutils literal"><span class="pre">scene.nim</span>
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="duplicate.e,PopupPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CPopupPtr"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="popup.html#PopupPtr"><span class="Identifier">PopupPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="popup.html#PopupPtr"><span class="Identifier">PopupPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,PopupPtr,PopupObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CPopupPtr%2CPopupObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="popup.html#PopupPtr"><span class="Identifier">PopupPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="popup.html#PopupObj"><span class="Identifier">PopupObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="popup.html#PopupPtr"><span class="Identifier">PopupPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Duplicates Popup object and create a new Popup pointer.
@@ -236,7 +256,7 @@ Duplicates Popup object and create a new Popup pointer.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 13:45:17 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 15:29:18 UTC</small>
       </div>
     </div>
   </div>

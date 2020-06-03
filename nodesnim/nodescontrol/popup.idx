@@ -1,8 +1,9 @@
 PopupObj	nodesnim/nodescontrol/popup.html#PopupObj	popup: PopupObj	
 PopupPtr	nodesnim/nodescontrol/popup.html#PopupPtr	popup: PopupPtr	
-Popup	nodesnim/nodescontrol/popup.html#Popup,string	popup: Popup(name: string = &quot;Popup&quot;): PopupPtr	
+Popup	nodesnim/nodescontrol/popup.html#Popup,string,PopupObj	popup: Popup(name: string; variable: var PopupObj): PopupPtr	
+Popup	nodesnim/nodescontrol/popup.html#Popup,PopupObj	popup: Popup(obj: var PopupObj): PopupPtr	
 hide	nodesnim/nodescontrol/popup.html#hide.e,PopupPtr	popup: hide(self: PopupPtr)	
 show	nodesnim/nodescontrol/popup.html#show.e,PopupPtr	popup: show(self: PopupPtr)	
 calcPositionAnchor	nodesnim/nodescontrol/popup.html#calcPositionAnchor.e,PopupPtr	popup: calcPositionAnchor(self: PopupPtr)	
 draw	nodesnim/nodescontrol/popup.html#draw.e,PopupPtr,GLfloat,GLfloat	popup: draw(self: PopupPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/popup.html#duplicate.e,PopupPtr	popup: duplicate(self: PopupPtr): PopupPtr	
+duplicate	nodesnim/nodescontrol/popup.html#duplicate.e,PopupPtr,PopupObj	popup: duplicate(self: PopupPtr; obj: var PopupObj): PopupPtr	

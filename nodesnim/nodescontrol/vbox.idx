@@ -1,8 +1,9 @@
 VBoxObj	nodesnim/nodescontrol/vbox.html#VBoxObj	vbox: VBoxObj	
 VBoxPtr	nodesnim/nodescontrol/vbox.html#VBoxPtr	vbox: VBoxPtr	
-VBox	nodesnim/nodescontrol/vbox.html#VBox,string	vbox: VBox(name: string = &quot;VBox&quot;): VBoxPtr	
+VBox	nodesnim/nodescontrol/vbox.html#VBox,string,VBoxObj	vbox: VBox(name: string; variable: var VBoxObj): VBoxPtr	
+VBox	nodesnim/nodescontrol/vbox.html#VBox,VBoxObj	vbox: VBox(obj: var VBoxObj): VBoxPtr	
 getChildSize	nodesnim/nodescontrol/vbox.html#getChildSize.e,VBoxPtr	vbox: getChildSize(self: VBoxPtr): Vector2Ref	
 addChild	nodesnim/nodescontrol/vbox.html#addChild.e,VBoxPtr,NodePtr	vbox: addChild(self: VBoxPtr; child: NodePtr)	
 draw	nodesnim/nodescontrol/vbox.html#draw.e,VBoxPtr,GLfloat,GLfloat	vbox: draw(self: VBoxPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/vbox.html#duplicate.e,VBoxPtr	vbox: duplicate(self: VBoxPtr): VBoxPtr	
+duplicate	nodesnim/nodescontrol/vbox.html#duplicate.e,VBoxPtr,VBoxObj	vbox: duplicate(self: VBoxPtr; obj: var VBoxObj): VBoxPtr	
 resize	nodesnim/nodescontrol/vbox.html#resize.e,VBoxPtr,GLfloat,GLfloat	vbox: resize(self: VBoxPtr; w, h: GLfloat)	

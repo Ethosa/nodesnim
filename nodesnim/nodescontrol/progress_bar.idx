@@ -1,8 +1,9 @@
 ProgressBarObj	nodesnim/nodescontrol/progress_bar.html#ProgressBarObj	progress_bar: ProgressBarObj	
 ProgressBarPtr	nodesnim/nodescontrol/progress_bar.html#ProgressBarPtr	progress_bar: ProgressBarPtr	
-ProgressBar	nodesnim/nodescontrol/progress_bar.html#ProgressBar,string	progress_bar: ProgressBar(name: string = &quot;ProgressBar&quot;): ProgressBarPtr	
+ProgressBar	nodesnim/nodescontrol/progress_bar.html#ProgressBar,string,ProgressBarObj	progress_bar: ProgressBar(name: string; variable: var ProgressBarObj): ProgressBarPtr	
+ProgressBar	nodesnim/nodescontrol/progress_bar.html#ProgressBar,ProgressBarObj	progress_bar: ProgressBar(obj: var ProgressBarObj): ProgressBarPtr	
 draw	nodesnim/nodescontrol/progress_bar.html#draw.e,ProgressBarPtr,GLfloat,GLfloat	progress_bar: draw(self: ProgressBarPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/progress_bar.html#duplicate.e,ProgressBarPtr	progress_bar: duplicate(self: ProgressBarPtr): ProgressBarPtr	
+duplicate	nodesnim/nodescontrol/progress_bar.html#duplicate.e,ProgressBarPtr,ProgressBarObj	progress_bar: duplicate(self: ProgressBarPtr; obj: var ProgressBarObj): ProgressBarPtr	
 setMaxValue	nodesnim/nodescontrol/progress_bar.html#setMaxValue.e,ProgressBarPtr,uint	progress_bar: setMaxValue(self: ProgressBarPtr; value: uint)	
 setProgress	nodesnim/nodescontrol/progress_bar.html#setProgress.e,ProgressBarPtr,uint	progress_bar: setProgress(self: ProgressBarPtr; value: uint)	
 setProgressColor	nodesnim/nodescontrol/progress_bar.html#setProgressColor.e,ProgressBarPtr,ColorRef	progress_bar: setProgressColor(self: ProgressBarPtr; color: ColorRef)	

@@ -117,8 +117,10 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#ColorRect%2Cstring"
-    title="ColorRect(name: string = &quot;ColorRect&quot;): ColorRectPtr"><wbr />Color<wbr />Rect<span class="attachedType">ColorRectPtr</span></a></li>
+      <li><a class="reference" href="#ColorRect%2Cstring%2CColorRectObj"
+    title="ColorRect(name: string; variable: var ColorRectObj): ColorRectPtr"><wbr />Color<wbr />Rect<span class="attachedType">ColorRectPtr</span></a></li>
+  <li><a class="reference" href="#ColorRect%2CColorRectObj"
+    title="ColorRect(obj: var ColorRectObj): ColorRectPtr"><wbr />Color<wbr />Rect<span class="attachedType">ColorRectObj</span></a></li>
 
   </ul>
 </li>
@@ -127,10 +129,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CColorRectPtr%2CGLfloat%2CGLfloat"
     title="draw(self: ColorRectPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">ColorRectPtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CColorRectPtr"
-    title="duplicate(self: ColorRectPtr): ColorRectPtr"><wbr />duplicate<span class="attachedType">ColorRectPtr</span></a></li>
-  <li><a class="reference" href="#setColor.e%2CColorRectPtr%2CColorRef"
-    title="setColor(self: ColorRectPtr; color: ColorRef)"><wbr />set<wbr />Color<span class="attachedType">ColorRectPtr</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CColorRectPtr%2CColorRectObj"
+    title="duplicate(self: ColorRectPtr; obj: var ColorRectObj): ColorRectPtr"><wbr />duplicate<span class="attachedType">ColorRectPtr</span></a></li>
 
   </ul>
 </li>
@@ -171,17 +171,36 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="ColorRect,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#ColorRect%2Cstring"><span class="Identifier">ColorRect</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;ColorRect&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="ColorRect,string,ColorRectObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#ColorRect%2Cstring%2CColorRectObj"><span class="Identifier">ColorRect</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="color_rect.html#ColorRectObj"><span class="Identifier">ColorRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new ColorRect pointer.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
+<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ColorRectObj variable</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">colorrect1</span> <span class="Other">=</span> <span class="Identifier">ColorRect</span><span class="Other">(</span><span class="StringLit">&quot;ColorRect&quot;</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">colorrect1_obj</span><span class="Other">:</span> <span class="Identifier">ColorRectObj</span>
+  <span class="Identifier">colorrect1</span> <span class="Other">=</span> <span class="Identifier">ColorRect</span><span class="Other">(</span><span class="StringLit">&quot;ColorRect&quot;</span><span class="Other">,</span> <span class="Identifier">colorrect1_obj</span><span class="Other">)</span></pre>
+
+</dd>
+<a id="ColorRect,ColorRectObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#ColorRect%2CColorRectObj"><span class="Identifier">ColorRect</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="color_rect.html#ColorRectObj"><span class="Identifier">ColorRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Creates a new ColorRect pointer with default node name &quot;ColorRect&quot;.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ColorRectObj variable</li>
+</ul>
+
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">colorrect1_obj</span><span class="Other">:</span> <span class="Identifier">ColorRectObj</span>
+  <span class="Identifier">colorrect1</span> <span class="Other">=</span> <span class="Identifier">ColorRect</span><span class="Other">(</span><span class="Identifier">colorrect1_obj</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -197,22 +216,12 @@ function main() {
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="duplicate.e,ColorRectPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CColorRectPtr"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,ColorRectPtr,ColorRectObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CColorRectPtr%2CColorRectObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="color_rect.html#ColorRectObj"><span class="Identifier">ColorRectObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Duplicates ColorRect object and create a new ColorRect pointer.
-
-</dd>
-<a id="setColor.e,ColorRectPtr,ColorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setColor.e%2CColorRectPtr%2CColorRef"><span class="Identifier">setColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color_rect.html#ColorRectPtr"><span class="Identifier">ColorRectPtr</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Changes ColorRect color.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt> is a new color.</li>
-</ul>
-
 
 </dd>
 
@@ -225,7 +234,7 @@ Duplicates ColorRect object and create a new ColorRect pointer.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-05-31 13:44:51 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 15:28:53 UTC</small>
       </div>
     </div>
   </div>

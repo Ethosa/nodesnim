@@ -1,10 +1,11 @@
 ControlObj	nodesnim/nodescontrol/control.html#ControlObj	control: ControlObj	
 ControlPtr	nodesnim/nodescontrol/control.html#ControlPtr	control: ControlPtr	
 controlpattern	nodesnim/nodescontrol/control.html#controlpattern.t	control: controlpattern(): untyped	
-Control	nodesnim/nodescontrol/control.html#Control,string	control: Control(name: string = &quot;Control&quot;): ControlPtr	
+Control	nodesnim/nodescontrol/control.html#Control,string,ControlObj	control: Control(name: string; variable: var ControlObj): ControlPtr	
+Control	nodesnim/nodescontrol/control.html#Control,ControlObj	control: Control(obj: var ControlObj): ControlPtr	
 calcPositionAnchor	nodesnim/nodescontrol/control.html#calcPositionAnchor.e,ControlPtr	control: calcPositionAnchor(self: ControlPtr)	
 draw	nodesnim/nodescontrol/control.html#draw.e,ControlPtr,GLfloat,GLfloat	control: draw(self: ControlPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/control.html#duplicate.e,ControlPtr	control: duplicate(self: ControlPtr): ControlPtr	
+duplicate	nodesnim/nodescontrol/control.html#duplicate.e,ControlPtr,ControlObj	control: duplicate(self: ControlPtr; obj: var ControlObj): ControlPtr	
 getGlobalMousePosition	nodesnim/nodescontrol/control.html#getGlobalMousePosition.e,ControlPtr	control: getGlobalMousePosition(self: ControlPtr): Vector2Ref	
 handle	nodesnim/nodescontrol/control.html#handle.e,ControlPtr,InputEvent,NodePtr	control: handle(self: ControlPtr; event: InputEvent; mouse_on: var NodePtr)	
 setBackgroundColor	nodesnim/nodescontrol/control.html#setBackgroundColor.e,ControlPtr,ColorRef	control: setBackgroundColor(self: ControlPtr; color: ColorRef)	
