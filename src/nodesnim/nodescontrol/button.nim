@@ -78,7 +78,6 @@ proc Button*(obj: var ButtonObj): ButtonPtr {.inline.} =
 
 method draw*(self: ButtonPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

@@ -82,7 +82,6 @@ proc calculateY(canvas: CanvasPtr, y, gy: GLfloat): GLfloat =
 
 method draw*(canvas: CanvasPtr, w, h: GLfloat) =
   ## This uses in the `window.nim`.
-  canvas.calcGlobalPosition()
   let
     x = -w/2 + canvas.global_position.x
     y = h/2 - canvas.global_position.y

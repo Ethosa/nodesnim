@@ -182,7 +182,6 @@ method getWordUnderMouse*(self: RichEditTextPtr): ColorTextRef {.base.} =
 
 method draw*(self: RichEditTextPtr, w, h: GLfloat) =
   ## This uses in the `window.nim`.
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

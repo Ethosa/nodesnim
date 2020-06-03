@@ -73,7 +73,6 @@ method changeValue*(self: CounterPtr, value: float) {.base.} =
 
 method draw*(self: CounterPtr, w, h: GLfloat) =
   ## This uses in the `window.nim`.
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

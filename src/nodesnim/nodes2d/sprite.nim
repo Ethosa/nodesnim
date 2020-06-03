@@ -63,7 +63,6 @@ method draw*(self: SpritePtr, w, h: GLfloat) =
   else:
     self.position = self.timed_position
 
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

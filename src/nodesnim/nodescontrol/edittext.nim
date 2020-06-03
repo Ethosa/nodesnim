@@ -188,7 +188,6 @@ method getWordUnderMouse*(self: EditTextPtr): string {.base.} =
 
 method draw*(self: EditTextPtr, w, h: GLfloat) =
   ## This method uses in the `window.nim`
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

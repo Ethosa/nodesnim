@@ -51,7 +51,6 @@ proc ColorRect*(obj: var ColorRectObj): ColorRectPtr {.inline.} =
 
 method draw*(self: ColorRectPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

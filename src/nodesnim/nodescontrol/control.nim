@@ -90,7 +90,6 @@ method calcPositionAnchor*(self: ControlPtr) =
 method draw*(self: ControlPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

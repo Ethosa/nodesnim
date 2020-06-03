@@ -36,9 +36,10 @@ method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
     if paused and child.getPauseMode() != PROCESS:
       continue
     if child.visible:
+      child.calcGlobalPosition()
       if child.global_position.x > w or child.global_position.y > h:
         continue
-      elif child.global_position.x - child.rect_size.x < 0f or child.global_position.y - child.rect_size.y < 0f:
+      elif child.global_position.x < 0 - child.rect_size.x or child.global_position.y < 0 - child.rect_size.y:
         continue
       if not child.is_ready:
         child.on_ready(child)

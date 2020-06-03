@@ -52,8 +52,6 @@ proc Node2D*(obj: var Node2DObj): Node2DPtr {.inline.} =
 method draw*(self: Node2DPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  self.calcGlobalPosition()
-
   self.position = self.timed_position
 
   if self.centered:

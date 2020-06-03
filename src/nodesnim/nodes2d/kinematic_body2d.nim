@@ -77,8 +77,6 @@ method getCollideCount*(self: KinematicBody2DPtr): int {.base.} =
 method draw*(self: KinematicBody2DPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  self.calcGlobalPosition()
-
   self.position = self.timed_position
 
   if self.centered:

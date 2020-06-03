@@ -60,7 +60,6 @@ proc Switch*(obj: var SwitchObj): SwitchPtr {.inline.} =
 
 method draw*(self: SwitchPtr, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

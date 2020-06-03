@@ -61,7 +61,6 @@ proc RichLabel*(obj: var RichLabelObj): RichLabelPtr {.inline.} =
 
 method draw*(self: RichLabelPtr, w, h: GLfloat) =
   ## This uses in the `window.nim`.
-  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

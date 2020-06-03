@@ -109,8 +109,6 @@ method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
   else:
     self.position = self.timed_position
 
-  self.calcGlobalPosition()
-
   # debug draw
   when defined(debug):
     let
