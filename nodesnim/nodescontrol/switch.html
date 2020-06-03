@@ -111,7 +111,7 @@ function main() {
   value*: bool
   color_enable*, color_disable*: ColorRef
   back_enable*, back_disable*: ColorRef
-  on_toggle*: proc (toggled: bool): void ## This called when switch toggled."><wbr />Switch<wbr />Obj<span class="attachedType"></span></a></li>
+  on_toggle*: proc (self: SwitchPtr; toggled: bool): void ## This called when switch toggled."><wbr />Switch<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#SwitchPtr"
     title="SwitchPtr = ptr SwitchObj"><wbr />Switch<wbr />Ptr<span class="attachedType"></span></a></li>
 
@@ -162,7 +162,7 @@ function main() {
   <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">color_enable</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">color_disable</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">back_enable</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">back_disable</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
-  <span class="Identifier">on_toggle</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">toggled</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when switch toggled.</span>
+  <span class="Identifier">on_toggle</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="switch.html#SwitchPtr"><span class="Identifier">SwitchPtr</span></a><span class="Other">;</span> <span class="Identifier">toggled</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when switch toggled.</span>
   </pre></dt>
 <dd>
 
@@ -258,7 +258,7 @@ Toggles value.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 15:33:30 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 16:45:56 UTC</small>
       </div>
     </div>
   </div>

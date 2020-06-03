@@ -111,7 +111,7 @@ function main() {
   max_value*, value*: uint
   progress_color*: ColorRef
   thumb_color*: ColorRef
-  on_changed*: proc (new_value: uint): void"><wbr />VSlider<wbr />Obj<span class="attachedType"></span></a></li>
+  on_changed*: proc (self: VSliderPtr; new_value: uint): void"><wbr />VSlider<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#VSliderPtr"
     title="VSliderPtr = ptr VSliderObj"><wbr />VSlider<wbr />Ptr<span class="attachedType"></span></a></li>
 
@@ -166,7 +166,7 @@ function main() {
   <span class="Identifier">max_value</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">uint</span>
   <span class="Identifier">progress_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">thumb_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
-  <span class="Identifier">on_changed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">new_value</span><span class="Other">:</span> <span class="Identifier">uint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span>
+  <span class="Identifier">on_changed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vslider.html#VSliderPtr"><span class="Identifier">VSliderPtr</span></a><span class="Other">;</span> <span class="Identifier">new_value</span><span class="Other">:</span> <span class="Identifier">uint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span>
 </pre></dt>
 <dd>
 
@@ -276,7 +276,7 @@ handles user input. This uses in the <tt class="docutils literal"><span class="p
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 15:33:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 16:45:47 UTC</small>
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@ nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nod
 Node	nodesnim/nodes/node.html#Node,string,NodeObj	node: Node(name: string; variable: var NodeObj): NodePtr	
 Node	nodesnim/nodes/node.html#Node,NodeObj	node: Node(variable: var NodeObj): NodePtr	
 addChild	nodesnim/nodes/node.html#addChild.e,NodePtr,NodePtr	node: addChild(self: NodePtr; child: NodePtr)	
+addChilds	nodesnim/nodes/node.html#addChilds.e,NodePtr,varargs[NodePtr]	node: addChilds(self: NodePtr; childs: varargs[NodePtr])	
 calcGlobalPosition	nodesnim/nodes/node.html#calcGlobalPosition.e,NodePtr	node: calcGlobalPosition(self: NodePtr)	
 calcPositionAnchor	nodesnim/nodes/node.html#calcPositionAnchor.e,NodePtr	node: calcPositionAnchor(self: NodePtr)	
 draw	nodesnim/nodes/node.html#draw.e,NodePtr,GLfloat,GLfloat	node: draw(self: NodePtr; w, h: GLfloat)	

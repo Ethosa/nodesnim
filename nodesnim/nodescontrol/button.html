@@ -116,7 +116,7 @@ function main() {
   normal_color*: ColorRef      ## text color, whenwhen button is not pressed and not hovered.
   hover_color*: ColorRef       ## text color, when button hovered.
   press_color*: ColorRef       ## text color, when button pressed.
-  on_click*: proc (x, y: float): void ## This called, when user clicks on button."><wbr />Button<wbr />Obj<span class="attachedType"></span></a></li>
+  on_touch*: proc (self: ButtonPtr; x, y: float): void ## This called, when user clicks on button."><wbr />Button<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ButtonPtr"
     title="ButtonPtr = ptr ButtonObj"><wbr />Button<wbr />Ptr<span class="attachedType"></span></a></li>
 
@@ -170,7 +170,7 @@ function main() {
   <span class="Identifier">normal_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>      <span class="Comment">## text color, whenwhen button is not pressed and not hovered.</span>
   <span class="Identifier">hover_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>       <span class="Comment">## text color, when button hovered.</span>
   <span class="Identifier">press_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>       <span class="Comment">## text color, when button pressed.</span>
-  <span class="Identifier">on_click</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called, when user clicks on button.</span>
+  <span class="Identifier">on_touch</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="button.html#ButtonPtr"><span class="Identifier">ButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called, when user clicks on button.</span>
   </pre></dt>
 <dd>
 
@@ -259,7 +259,7 @@ Handles user input. This uses in the <tt class="docutils literal"><span class="p
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 15:33:00 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 16:45:27 UTC</small>
       </div>
     </div>
   </div>

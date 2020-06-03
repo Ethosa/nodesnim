@@ -125,11 +125,11 @@ function main() {
   anchor*: AnchorRef           ## Node anchor.
   parent*: NodePtr             ## Node parent.
   children*: seq[NodePtr]      ## Node children.
-  enter*: proc ()               ## This called when scene changed.
-  exit*: proc ()                ## This called when exit from the scene.
-  input*: proc (event: InputEvent) ## This called on user input.
-  ready*: proc ()               ## This called when the scene changed and the `enter` was called.
-  process*: proc ()             ## This called every frame."><wbr />Node<wbr />Obj<span class="attachedType"></span></a></li>
+  on_enter*: proc (self: NodePtr) ## This called when scene changed.
+  on_exit*: proc (self: NodePtr) ## This called when exit from the scene.
+  on_input*: proc (self: NodePtr; event: InputEvent) ## This called on user input.
+  on_ready*: proc (self: NodePtr) ## This called when the scene changed and the `enter` was called.
+  on_process*: proc (self: NodePtr) ## This called every frame."><wbr />Node<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#NodePtr"
     title="NodePtr = ptr NodeObj"><wbr />Node<wbr />Ptr<span class="attachedType"></span></a></li>
 
@@ -150,6 +150,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#addChild.e%2CNodePtr%2CNodePtr"
     title="addChild(self: NodePtr; child: NodePtr)"><wbr />add<wbr />Child<span class="attachedType">NodePtr</span></a></li>
+  <li><a class="reference" href="#addChilds.e%2CNodePtr%2Cvarargs%5BNodePtr%5D"
+    title="addChilds(self: NodePtr; childs: varargs[NodePtr])"><wbr />add<wbr />Childs<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#calcGlobalPosition.e%2CNodePtr"
     title="calcGlobalPosition(self: NodePtr)"><wbr />calc<wbr />Global<wbr />Position<span class="attachedType">NodePtr</span></a></li>
   <li><a class="reference" href="#calcPositionAnchor.e%2CNodePtr"
@@ -271,11 +273,11 @@ function main() {
   <span class="Identifier">anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>           <span class="Comment">## Node anchor.</span>
   <span class="Identifier">parent</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a>             <span class="Comment">## Node parent.</span>
   <span class="Identifier">children</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">]</span>      <span class="Comment">## Node children.</span>
-  <span class="Identifier">enter</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span>               <span class="Comment">## This called when scene changed.</span>
-  <span class="Identifier">exit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span>                <span class="Comment">## This called when exit from the scene.</span>
-  <span class="Identifier">input</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span> <span class="Comment">## This called on user input.</span>
-  <span class="Identifier">ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span>               <span class="Comment">## This called when the scene changed and the `enter` was called.</span>
-  <span class="Identifier">process</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Other">)</span>             <span class="Comment">## This called every frame.</span>
+  <span class="Identifier">on_enter</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span class="Comment">## This called when scene changed.</span>
+  <span class="Identifier">on_exit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span class="Comment">## This called when exit from the scene.</span>
+  <span class="Identifier">on_input</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span> <span class="Comment">## This called on user input.</span>
+  <span class="Identifier">on_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span class="Comment">## This called when the scene changed and the `enter` was called.</span>
+  <span class="Identifier">on_process</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span class="Comment">## This called every frame.</span>
   </pre></dt>
 <dd>
 
@@ -315,6 +317,17 @@ Creates a new Node pointer.
 <dl class="item">
 <a id="addChild.e,NodePtr,NodePtr"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#addChild.e%2CNodePtr%2CNodePtr"><span class="Identifier">addChild</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">child</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Adds new child in current node.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">child</span></tt>: other node.</li>
+</ul>
+
+
+</dd>
+<a id="addChilds.e,NodePtr,varargs[NodePtr]"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#addChilds.e%2CNodePtr%2Cvarargs%5BNodePtr%5D"><span class="Identifier">addChilds</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">;</span> <span class="Identifier">childs</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">]</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Adds new child in current node.</p>
@@ -651,7 +664,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 15:32:45 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-03 16:45:12 UTC</small>
       </div>
     </div>
   </div>
