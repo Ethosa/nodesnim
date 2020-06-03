@@ -29,8 +29,10 @@
   Window("Hello, world!")
 
   var
-   scene = Scene("Main")
-   hello = Label()
+    scene_obj: SceneObj
+    scene = Scene("Main", scene_obj)
+    label_obj: LabelObj
+    hello = Label(label_obj)
 
   hello.setText("Hello, world!")
   hello.setSizeAnchor(1, 1)
