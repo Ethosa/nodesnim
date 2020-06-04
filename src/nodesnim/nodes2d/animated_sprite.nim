@@ -82,6 +82,13 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
   if frame >= 0 and frame < frames_count:
     var texture = self.animations[self.animation].frames[frame]
     if texture.texture > 0:
+      if self.centered:
+        glTranslatef(x + (self.rect_size.x / 2), y - (self.rect_size.y / 2), self.z_index_global)
+        self.position = self.rect_size / 2
+      else:
+        glTranslatef(x, y, self.z_index_global)
+        self.position = Vector2()
+      glRotatef(self.rotation, 0, 0, 1)
       glColor4f(self.filter.r, self.filter.g, self.filter.b, self.filter.a)
 
       glEnable(GL_TEXTURE_2D)
@@ -90,17 +97,23 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
 
       glBegin(GL_QUADS)
       glTexCoord2f(0, 0)
-      glVertex3f(x, y, self.z_index_global)
+      glVertex3f(-self.position.x, self.position.y, self.z_index_global)
       glTexCoord2f(0, 1)
-      glVertex3f(x, y - self.rect_size.y, self.z_index_global)
+      glVertex3f(-self.position.x, self.position.y - self.rect_size.y, self.z_index_global)
       glTexCoord2f(1, 1)
-      glVertex3f(x + self.rect_size.x, y - self.rect_size.y, self.z_index_global)
+      glVertex3f(-self.position.x + self.rect_size.x, self.position.y - self.rect_size.y, self.z_index_global)
       glTexCoord2f(1, 0)
-      glVertex3f(x + self.rect_size.x, y, self.z_index_global)
+      glVertex3f(-self.position.x + self.rect_size.x, self.position.y, self.z_index_global)
       glEnd()
-
       glDisable(GL_DEPTH_TEST)
       glDisable(GL_TEXTURE_2D)
+      glRotatef(-self.rotation, 0, 0, 1)
+      if self.centered:
+        glTranslatef(-x - (self.rect_size.x / 2), -y + (self.rect_size.y / 2), -self.z_index_global)
+        self.position = self.timed_position - self.rect_size/2
+      else:
+        glTranslatef(-x, -y, -self.z_index_global)
+        self.position = self.timed_position
     else:
       self.rect_size = Vector2()
 

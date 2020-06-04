@@ -16,6 +16,8 @@ import
 type
   Node2DObj* = object of CanvasObj
     centered*: bool
+    rotation*: float
+    scale*: Vector2Ref
     timed_position*: Vector2Ref
   Node2DPtr* = ptr Node2DObj
 
@@ -36,6 +38,8 @@ proc Node2D*(name: string, variable: var Node2DObj): Node2DPtr =
       node = Node2D("Node2D", node_obj)
   nodepattern(Node2DObj)
   node2dpattern()
+  variable.scale = Vector2(1, 1)
+  variable.rotation = 0f
   variable.kind = NODE2D_NODE
 
 proc Node2D*(obj: var Node2DObj): Node2DPtr {.inline.} =
