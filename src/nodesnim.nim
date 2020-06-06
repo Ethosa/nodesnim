@@ -31,6 +31,7 @@ import
   nodesnim/core/color_text,
   nodesnim/core/audio_stream,
   nodesnim/core/animation,
+  nodesnim/core/nodes_os,
 
   nodesnim/nodes/node,
   nodesnim/nodes/scene,

@@ -9,7 +9,7 @@ discard mixer.openAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024)
 
 
 type
-  AudioStreamRef* = ref object
+  AudioStreamRef* = ref object of RootObj
     chunk*: ptr Chunk
     channel*: cint
     loop*: bool

@@ -14,7 +14,7 @@ discard image.init()
 
 
 type
-  GlTextureObj* = object
+  GlTextureObj* = object of RootObj
     texture*: Gluint
     size*: Vector2Ref
 
