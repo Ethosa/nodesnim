@@ -83,11 +83,23 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
     -   put Runtime binaries in the folder with the program.
 
 ## Screenshots
-[![Hello world example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/1.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/hello_world)  
-[![Calculator example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/2.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/calculator)  
-[![Snake game example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/3.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/novel)  
-[![Screensaver example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/4.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/snake)  
-[![Novel game example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/5.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/screensaver)
+<div align="center">
+  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/hello_world">
+    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/1.png" width="380" height="220" alt="Hello world example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/calculator">
+    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/2.png" width="380" height="220" alt="Calculator example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/snake">
+    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/3.png" width="380" height="220" alt="Snake game example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/screensaver">
+    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/4.png" width="380" height="220" alt="Screensaver example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/novel">
+    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/5.png" width="380" height="220" alt="Novel game example">
+  </a>
+</div>
 
 
 ## F.A.Q
