@@ -14,7 +14,8 @@ import
 
 type
   Camera2DObj* = object of Node2DObj
-    current*: bool
+    current*, smooth*: bool
+    smooth_speed*: float
     target*: NodePtr
     limit*: AnchorRef
   Camera2DPtr* = ptr Camera2DObj
@@ -37,6 +38,8 @@ proc Camera2D*(name: string, variable: var Camera2DObj): Camera2DPtr =
   node2dpattern()
   variable.limit = Anchor(-100000, -100000, 100000, 100000)
   variable.current = false
+  variable.smooth = false
+  variable.smooth_speed = 0.1
   variable.kind = CAMERA_2D_NODE
   nodes.add(result)
 
@@ -50,6 +53,24 @@ proc Camera2D*(obj: var Camera2DObj): Camera2DPtr {.inline.} =
       node_obj: Camera2DObj
       node = Camera2D(node_obj)
   Camera2D("Camera2D", obj)
+
+
+method changeTarget*(self: Camera2DPtr, target: NodePtr) {.base.} =
+  ## Changes camera target (without camera position.)
+  self.target = target
+
+
+method changeSmoothSpeed*(self: Camera2DPtr, speed: float) {.base.} =
+  ## Changes camera smooth speed.
+  ##
+  ## Arguments:
+  ## - `speed` is a smooth speed. The closer to 0, the smoother the camera. The default is 0.1.
+  self.smooth_speed = speed
+
+
+method disableSmooth*(self: Camera2DPtr) {.base.} =
+  ## Disables smooth mode.
+  self.smooth = false
 
 
 method draw*(self: Camera2DPtr, w, h: GLfloat) =
@@ -68,8 +89,25 @@ method draw*(self: Camera2DPtr, w, h: GLfloat) =
       x = self.target.position.x
       y = self.target.position.y
 
-    root.position.x = if x+w/2 < self.limit.x1: root.position.x elif x-w/2 > self.limit.x2: root.position.x else: -(x - w/2)
-    root.position.y = if y+h/2 < self.limit.y1: root.position.y elif y-h/2 > self.limit.y2: root.position.y else: -(y - h/2)
+    if self.smooth:
+      if x-w/2 > self.limit.x1 and x+w/2 < self.limit.x2:
+        let dx = (root.position.x - w/2) + x
+        root.position.x -= dx*self.smooth_speed
+      if y-h/2 > self.limit.y1 and y+h/2 < self.limit.y2:
+        let dy = (root.position.y - h/2) + y
+        root.position.y -= dy*self.smooth_speed
+    else:
+      root.position.x = if x-w/2 < self.limit.x1: root.position.x elif x+w/2 > self.limit.x2: root.position.x else: -(x - w/2)
+      root.position.y = if y+h/2 < self.limit.y1: root.position.y elif y+h/2 > self.limit.y2: root.position.y else: -(y - h/2)
+
+
+method enableSmooth*(self: Camera2DPtr, speed: float = 0.1) {.base.} =
+  ## Enables camera smooth mode.
+  ##
+  ## Arguments:
+  ## - `speed` is a smooth speed. The closer to 0, the smoother the camera. The default is 0.1.
+  self.smooth = true
+  self.smooth_speed = speed
 
 
 method setCurrent*(self: Camera2DPtr) {.base.} =
@@ -78,14 +116,20 @@ method setCurrent*(self: Camera2DPtr) {.base.} =
     c.current = false
   self.current = true
 
+
 method setLimit*(self: Camera2DPtr, x1, y1, x2, y2: float) {.base.} =
   ## Change camera limit.
   self.limit = Anchor(x1, y1, x2, y2)
+
 
 method setLimit*(self: Camera2DPtr, limit: AnchorRef) {.base.} =
   ## Changes camera limit.
   self.limit = limit
 
+
 method setTarget*(self: Camera2DPtr, target: NodePtr) {.base.} =
   ## Changes camera target node.
   self.target = target
+  var root = self.getRootNode()
+  self.position = target.global_position
+  self.position -= root.rect_size / 2

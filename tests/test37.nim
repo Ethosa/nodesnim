@@ -31,8 +31,9 @@ body.addChild(camera)
 
 sprite1.move(0, 400)
 camera.setTarget(body)
-camera.setLimit(-400, -256, 400, 256)
+camera.setLimit(-600, -400, 600, 400)
 camera.setCurrent()
+camera.enableSmooth()
 
 
 
