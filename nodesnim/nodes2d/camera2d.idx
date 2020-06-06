@@ -1,0 +1,9 @@
+Camera2DObj	nodesnim/nodes2d/camera2d.html#Camera2DObj	camera2d: Camera2DObj	
+Camera2DPtr	nodesnim/nodes2d/camera2d.html#Camera2DPtr	camera2d: Camera2DPtr	
+Camera2D	nodesnim/nodes2d/camera2d.html#Camera2D,string,Camera2DObj	camera2d: Camera2D(name: string; variable: var Camera2DObj): Camera2DPtr	
+Camera2D	nodesnim/nodes2d/camera2d.html#Camera2D,Camera2DObj	camera2d: Camera2D(obj: var Camera2DObj): Camera2DPtr	
+draw	nodesnim/nodes2d/camera2d.html#draw.e,Camera2DPtr,GLfloat,GLfloat	camera2d: draw(self: Camera2DPtr; w, h: GLfloat)	
+setCurrent	nodesnim/nodes2d/camera2d.html#setCurrent.e,Camera2DPtr	camera2d: setCurrent(self: Camera2DPtr)	
+setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DPtr,float,float,float,float	camera2d: setLimit(self: Camera2DPtr; x1, y1, x2, y2: float)	
+setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DPtr,AnchorRef	camera2d: setLimit(self: Camera2DPtr; limit: AnchorRef)	
+setTarget	nodesnim/nodes2d/camera2d.html#setTarget.e,Camera2DPtr,NodePtr	camera2d: setTarget(self: Camera2DPtr; target: NodePtr)	
