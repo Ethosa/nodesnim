@@ -72,7 +72,6 @@ This section contains links to documentation for all nodes.
 
 
 
-
 ## Debug mode
 For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. `nim c -r -d:debug main.nim`.
 
@@ -83,6 +82,13 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
     -   `nim c -d:mingw -d:release --opt:speed --noNimblePath file.nim`
     -   put Runtime binaries in the folder with the program.
 
+## Screenshots
+[![Hello world example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/1.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/hello_world)  
+[![Calculator example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/2.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/calculator)  
+[![Snake game example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/3.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/novel)  
+[![Screensaver example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/4.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/snake)  
+[![Novel game example](https://github.com/Ethosa/nodesnim/blob/master/screenshots/5.png)](https://github.com/Ethosa/nodesnim/blob/master/examples/screensaver)
+
 
 ## F.A.Q
 *Q*: Where can I see examples?  
@@ -90,6 +96,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 *Q*: Where can I read the docs?  
 *A*: You can read docs [here](https://ethosa.github.io/nodesnim/nodesnim.html)
+
 
 
 [Anchor]:https://ethosa.github.io/nodesnim/nodesnim/core/anchor.html
