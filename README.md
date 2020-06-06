@@ -43,61 +43,34 @@
   windowLaunch()
   ```
 
-<details>
-  <summary>Now available</summary>
+## Now available
+|Core                  |Default nodes                |Control nodes                  |2D Nodes                    |
+|:--:                  |:--:                         |:--:                           |  :--:                      |
+|[Anchor][Anchor]      |[Node][Node]                 |[Control][Control]             |[Node2D][Node2D]            |
+|[Color][Color]        |[Canvas][Canvas]             |[ColorRect][ColorRect]         |[Sprite][Sprite]            |
+|[ColorText][ColorText]|[Scene][Scene]               |[TextureRect][TextureRect]     |[AnimatedSprite][asprite]   |
+|[Enums][Enums]        |[AudioStreamPlayer][ASPlayer]|[Label][Label]                 |[YSort][YSort]              |
+|[Exceptions][except]  |                             |[Button][Button]               |[CollisionShape2D][cshape2d]|
+|[Image][Image]        |                             |[EditText][EditText]           |[Camera2D][Camera2D]        |
+|[Input][Input]        |                             |[RichLabel][RichLabel]         |                            |
+|[Rect2][Rect2]        |                             |[RichEditText][RichEditText]   |                            |
+|[Vector2][Vector2]    |                             |[Box][Box]                     |                            |
+|[Circle2][Circle2]    |                             |[HBox][HBox]                   |                            |
+|[Polygon2][Polygon2]  |                             |[VBox][VBox]                   |                            |
+|[AudioStream][astream]|                             |[GridBox][GridBox]             |                            |
+|[Animation][Animation]|                             |[Scroll][Scroll]               |                            |
+|                      |                             |[ProgressBar][ProgressBar]     |                            |
+|                      |                             |[Slider][Slider]               |                            |
+|                      |                             |[VProgressBar][VProgressBar]   |                            |
+|                      |                             |[VSlider][VSlider]             |                            |
+|                      |                             |[Popup][Popup]                 |                            |
+|                      |                             |[TextureButton][TextureButton] |                            |
+|                      |                             |[TextureProgressBar][tprogress]|                            |
+|                      |                             |[Counter][Counter]             |                            |
+|                      |                             |[Switch][Switch]               |                            |
 
--  Core
-   -  [Anchor](https://ethosa.github.io/nodesnim/nodesnim/core/anchor.html)
-   -  [Color](https://ethosa.github.io/nodesnim/nodesnim/core/color.html)
-   -  [ColorText](https://ethosa.github.io/nodesnim/nodesnim/core/color_text.html)
-   -  [Enums](https://ethosa.github.io/nodesnim/nodesnim/core/enums.html)
-   -  [Exceptions](https://ethosa.github.io/nodesnim/nodesnim/core/exceptions.html)
-   -  [Image](https://ethosa.github.io/nodesnim/nodesnim/core/image.html)
-   -  [Input](https://ethosa.github.io/nodesnim/nodesnim/core/input.html)
-   -  [Rect2](https://ethosa.github.io/nodesnim/nodesnim/core/rect2.html)
-   -  [Vector2](https://ethosa.github.io/nodesnim/nodesnim/core/vector2.html)
-   -  [Circle2](https://ethosa.github.io/nodesnim/nodesnim/core/circle2.html)
-   -  [Polygon2](https://ethosa.github.io/nodesnim/nodesnim/core/polygon2.html)
-   -  [AudioStream](https://ethosa.github.io/nodesnim/nodesnim/core/audio_stream.html)
-   -  [Animation](https://ethosa.github.io/nodesnim/nodesnim/core/animation.html)
--  Default nodes
-   -  [Node](https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html)
-   -  [Canvas](https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html)
-   -  [Scene](https://ethosa.github.io/nodesnim/nodesnim/nodes/scene.html)
-   -  [AudioStreamPlayer](https://ethosa.github.io/nodesnim/nodesnim/nodes/audio_stream_player.html)
--  Control nodes
-   -  [Control](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/control.html)
-   -  [ColorRect](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/color_rect.html)
-   -  [TextureRect](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_rect.html)
-   -  [Label](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/label.html)
-   -  [Button](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/button.html)
-   -  [EditText](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/edittext.html)
-   -  [RichLabel](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/rich_label.html)
-   -  [RichEditText](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/rich_edit_text.html)
-   -  [Box](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/box.html)
-   -  [HBox](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/hbox.html)
-   -  [VBox](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vbox.html)
-   -  [GridBox](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/grid_box.html)
-   -  [Scroll](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/scroll.html)
-   -  [ProgressBar](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/progress_bar.html)
-   -  [Slider](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/slider.html)
-   -  [VProgressBar](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vprogress_bar.html)
-   -  [VSlider](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vslider.html)
-   -  [Popup](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/popup.html)
-   -  [TextureButton](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_button.html)
-   -  [TextureProgressBar](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_progress_bar.html)
-   -  [Counter](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/counter.html)
-   -  [Switch](https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/switch.html)
--  2D nodes
-   -  [Node2D](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html)
-   -  [Sprite](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html)
-   -  [AnimatedSprite](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/animated_sprite.html)
-   -  [YSort](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/ysort.html)
-   -  [CollisionShape2D](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/collision_shape2d.html)
-   -  [KinematicBody2D](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/kinematic_body2d.html)
-   -  [Camera2D](https://ethosa.github.io/nodesnim/nodesnim/nodes2d/camera2d.html)
 
-</details>
+
 
 ## Debug mode
 For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. `nim c -r -d:debug main.nim`.
@@ -116,3 +89,55 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 *Q*: Where can I read the docs?  
 *A*: You can read docs [here](https://ethosa.github.io/nodesnim/nodesnim.html)
+
+
+[Anchor]:https://ethosa.github.io/nodesnim/nodesnim/core/anchor.html
+[Color]:https://ethosa.github.io/nodesnim/nodesnim/core/color.html
+[ColorText]:https://ethosa.github.io/nodesnim/nodesnim/core/color_text.html
+[Enums]:https://ethosa.github.io/nodesnim/nodesnim/core/enums.html
+[except]:https://ethosa.github.io/nodesnim/nodesnim/core/exceptions.html
+[Image]:https://ethosa.github.io/nodesnim/nodesnim/core/image.html
+[Input]:https://ethosa.github.io/nodesnim/nodesnim/core/input.html
+[Rect2]:https://ethosa.github.io/nodesnim/nodesnim/core/rect2.html
+[Vector2]:https://ethosa.github.io/nodesnim/nodesnim/core/vector2.html
+[Circle2]:https://ethosa.github.io/nodesnim/nodesnim/core/circle2.html
+[Polygon2]:https://ethosa.github.io/nodesnim/nodesnim/core/polygon2.html
+[astream]:https://ethosa.github.io/nodesnim/nodesnim/core/audio_stream.html
+[Animation]:https://ethosa.github.io/nodesnim/nodesnim/core/animation.html
+
+[Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
+[Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
+[Scene]:https://ethosa.github.io/nodesnim/nodesnim/nodes/scene.html
+[ASPlayer]:https://ethosa.github.io/nodesnim/nodesnim/nodes/audio_stream_player.html
+
+[Control]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/control.html
+[ColorRect]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/color_rect.html
+[TextureRect]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_rect.html
+[Label]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/label.html
+[Button]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/button.html
+[EditText]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/edittext.html
+[RichLabel]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/rich_label.html
+[RichEditText]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/rich_edit_text.html
+[Box]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/box.html
+[HBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/hbox.html
+[VBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vbox.html
+[GridBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/grid_box.html
+[Scroll]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/scroll.html
+[ProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/progress_bar.html
+[Slider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/slider.html
+[VProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vprogress_bar.html
+[VSlider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vslider.html
+[Popup]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/popup.html
+[TextureButton]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_button.html
+[tprogress]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_progress_bar.html
+[Counter]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/counter.html
+[Switch]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/switch.html
+
+[Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
+[Sprite]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html
+[asprite]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/animated_sprite.html
+[YSort]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/ysort.html
+[cshape2d]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/collision_shape2d.html
+[KinematicBody2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/kinematic_body2d.html
+[Camera2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/camera2d.html
+[Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
