@@ -44,30 +44,31 @@
   ```
 
 ## Now available
-|Core                  |Default nodes                |Control nodes                  |2D Nodes                    |
-|:--:                  |:--:                         |:--:                           |  :--:                      |
-|[Anchor][Anchor]      |[Node][Node]                 |[Control][Control]             |[Node2D][Node2D]            |
-|[Color][Color]        |[Canvas][Canvas]             |[ColorRect][ColorRect]         |[Sprite][Sprite]            |
-|[ColorText][ColorText]|[Scene][Scene]               |[TextureRect][TextureRect]     |[AnimatedSprite][asprite]   |
-|[Enums][Enums]        |[AudioStreamPlayer][ASPlayer]|[Label][Label]                 |[YSort][YSort]              |
-|[Exceptions][except]  |                             |[Button][Button]               |[CollisionShape2D][cshape2d]|
-|[Image][Image]        |                             |[EditText][EditText]           |[Camera2D][Camera2D]        |
-|[Input][Input]        |                             |[RichLabel][RichLabel]         |                            |
-|[Rect2][Rect2]        |                             |[RichEditText][RichEditText]   |                            |
-|[Vector2][Vector2]    |                             |[Box][Box]                     |                            |
-|[Circle2][Circle2]    |                             |[HBox][HBox]                   |                            |
-|[Polygon2][Polygon2]  |                             |[VBox][VBox]                   |                            |
-|[AudioStream][astream]|                             |[GridBox][GridBox]             |                            |
-|[Animation][Animation]|                             |[Scroll][Scroll]               |                            |
-|                      |                             |[ProgressBar][ProgressBar]     |                            |
-|                      |                             |[Slider][Slider]               |                            |
-|                      |                             |[VProgressBar][VProgressBar]   |                            |
-|                      |                             |[VSlider][VSlider]             |                            |
-|                      |                             |[Popup][Popup]                 |                            |
-|                      |                             |[TextureButton][TextureButton] |                            |
-|                      |                             |[TextureProgressBar][tprogress]|                            |
-|                      |                             |[Counter][Counter]             |                            |
-|                      |                             |[Switch][Switch]               |                            |
+This section contains links to documentation for all nodes.
+|Core                |Default nodes             |Control nodes                  |2D Nodes                    |
+|:--:                |:--:                      |:--:                           |  :--:                      |
+|[Anchor][Anchor]    |[Node][Node]              |[Control][Control]             |[Node2D][Node2D]            |
+|[Color][Color]      |[Canvas][Canvas]          |[ColorRect][ColorRect]         |[Sprite][Sprite]            |
+|[ColorText][clrtext]|[Scene][Scene]            |[TextureRect][TextureRect]     |[AnimatedSprite][asprite]   |
+|[Enums][Enums]      |[AudioStreamPlayer][aplay]|[Label][Label]                 |[YSort][YSort]              |
+|[Exceptions][except]|                          |[Button][Button]               |[CollisionShape2D][cshape2d]|
+|[Image][Image]      |                          |[EditText][EditText]           |[Camera2D][Camera2D]        |
+|[Input][Input]      |                          |[RichLabel][RichLabel]         |                            |
+|[Rect2][Rect2]      |                          |[RichEditText][RichEditText]   |                            |
+|[Vector2][Vector2]  |                          |[Box][Box]                     |                            |
+|[Circle2][Circle2]  |                          |[HBox][HBox]                   |                            |
+|[Polygon2][Polygon2]|                          |[VBox][VBox]                   |                            |
+|[AudioStream][astrm]|                          |[GridBox][GridBox]             |                            |
+|[Animation][anim]   |                          |[Scroll][Scroll]               |                            |
+|                    |                          |[ProgressBar][ProgressBar]     |                            |
+|                    |                          |[Slider][Slider]               |                            |
+|                    |                          |[VProgressBar][VProgressBar]   |                            |
+|                    |                          |[VSlider][VSlider]             |                            |
+|                    |                          |[Popup][Popup]                 |                            |
+|                    |                          |[TextureButton][TextureButton] |                            |
+|                    |                          |[TextureProgressBar][tprogress]|                            |
+|                    |                          |[Counter][Counter]             |                            |
+|                    |                          |[Switch][Switch]               |                            |
 
 
 
@@ -93,7 +94,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 [Anchor]:https://ethosa.github.io/nodesnim/nodesnim/core/anchor.html
 [Color]:https://ethosa.github.io/nodesnim/nodesnim/core/color.html
-[ColorText]:https://ethosa.github.io/nodesnim/nodesnim/core/color_text.html
+[clrtext]:https://ethosa.github.io/nodesnim/nodesnim/core/color_text.html
 [Enums]:https://ethosa.github.io/nodesnim/nodesnim/core/enums.html
 [except]:https://ethosa.github.io/nodesnim/nodesnim/core/exceptions.html
 [Image]:https://ethosa.github.io/nodesnim/nodesnim/core/image.html
@@ -102,13 +103,13 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Vector2]:https://ethosa.github.io/nodesnim/nodesnim/core/vector2.html
 [Circle2]:https://ethosa.github.io/nodesnim/nodesnim/core/circle2.html
 [Polygon2]:https://ethosa.github.io/nodesnim/nodesnim/core/polygon2.html
-[astream]:https://ethosa.github.io/nodesnim/nodesnim/core/audio_stream.html
-[Animation]:https://ethosa.github.io/nodesnim/nodesnim/core/animation.html
+[astrm]:https://ethosa.github.io/nodesnim/nodesnim/core/audio_stream.html
+[anim]:https://ethosa.github.io/nodesnim/nodesnim/core/animation.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
 [Scene]:https://ethosa.github.io/nodesnim/nodesnim/nodes/scene.html
-[ASPlayer]:https://ethosa.github.io/nodesnim/nodesnim/nodes/audio_stream_player.html
+[aplay]:https://ethosa.github.io/nodesnim/nodesnim/nodes/audio_stream_player.html
 
 [Control]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/control.html
 [ColorRect]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/color_rect.html
