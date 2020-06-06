@@ -20,9 +20,11 @@ var
   cmdLine {.importc: "cmdLine".}: array[0..255, cstring]
   cmdCount {.importc: "cmdCount".}: cint
 
-when defined(debug):
-  debug("Try to load OpenGL ...")
-loadExtensions()  # Load OpenGL extensions.
+
+when not defined(ios) or not defined(android):
+  when defined(debug):
+    debug("Try to load OpenGL ...")
+  loadExtensions()  # Load OpenGL extensions.
 
 when defined(debug):
   debug("Try to load freeGLUT ...")

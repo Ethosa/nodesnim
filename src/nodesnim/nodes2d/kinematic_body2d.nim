@@ -113,10 +113,10 @@ method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref) {.base.} =
   ##
   ## Arguments:
   ## - `vel` is a velocity vector.
+  self.move(vel)
+  self.calcGlobalPosition()
   if self.has_collision:
     var scene = self.getRootNode()
-    self.move(vel)
-    self.calcGlobalPosition()
     self.collision_node.calcGlobalPosition()
 
     for node in scene.getChildIter():
