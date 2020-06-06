@@ -83,16 +83,16 @@ method draw*(self: TextureButtonPtr, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
     texture =
-      if self.pressed:
+      if self.pressed and self.focused:
         self.press_background_texture
-      elif self.hovered:
+      elif self.hovered and not mouse_pressed:
         self.hover_background_texture
       else:
         self.normal_background_texture
   self.color =
-    if self.pressed:
+    if self.pressed and self.focused:
       self.press_color
-    elif self.hovered:
+    elif self.hovered and not mouse_pressed:
       self.hover_color
     else:
       self.normal_color
@@ -126,7 +126,7 @@ method handle*(self: TextureButtonPtr, event: InputEvent, mouse_on: var NodePtr)
   ## Handles user input. This uses in the `window.nim`.
   procCall self.ControlPtr.handle(event, mouse_on)
 
-  if self.hovered:
+  if self.hovered and self.focused:
     if event.kind == MOUSE and self.action_mask == 1 and mouse_pressed and self.button_mask == event.button_index:
       self.on_touch(self, event.x, event.y)
     elif event.kind == MOUSE and self.action_mask == 0 and not mouse_pressed and self.button_mask == event.button_index:

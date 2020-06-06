@@ -74,7 +74,8 @@ proc number(self: ButtonPtr, x, y: float) =
     second &= self.text
 
 proc on_sign(self: ButtonPtr, x, y: float) =
-  sign = self.text
+  if first != "":
+    sign = self.text
 
 
 button_7.text = "7"
