@@ -13,3 +13,24 @@ angleTo	nodesnim/core/vector3.html#angleTo,Vector3Obj,Vector3Obj	vector3: angleT
 normalize	nodesnim/core/vector3.html#normalize,Vector3Obj	vector3: normalize(a: var Vector3Obj)	
 normalized	nodesnim/core/vector3.html#normalized,Vector3Obj	vector3: normalized(a: Vector3Obj): Vector3Obj	
 len	nodesnim/core/vector3.html#len,Vector3Obj	vector3: len(a: Vector3Obj): float	
+`$`	nodesnim/core/vector3.html#$,Vector3Obj	vector3: `$`(a: Vector3Obj): string	
+`+`	nodesnim/core/vector3.html#+,Vector3Obj,Vector3Obj	vector3: `+`(a, b: Vector3Obj): Vector3Obj	
+`-`	nodesnim/core/vector3.html#-,Vector3Obj,Vector3Obj	vector3: `-`(a, b: Vector3Obj): Vector3Obj	
+`*`	nodesnim/core/vector3.html#*,Vector3Obj,Vector3Obj	vector3: `*`(a, b: Vector3Obj): Vector3Obj	
+`/`	nodesnim/core/vector3.html#/,Vector3Obj,Vector3Obj	vector3: `/`(a, b: Vector3Obj): Vector3Obj	
+`+`	nodesnim/core/vector3.html#+,Vector3Obj,float	vector3: `+`(a: Vector3Obj; b: float): Vector3Obj	
+`-`	nodesnim/core/vector3.html#-,Vector3Obj,float	vector3: `-`(a: Vector3Obj; b: float): Vector3Obj	
+`*`	nodesnim/core/vector3.html#*,Vector3Obj,float	vector3: `*`(a: Vector3Obj; b: float): Vector3Obj	
+`/`	nodesnim/core/vector3.html#/,Vector3Obj,float	vector3: `/`(a: Vector3Obj; b: float): Vector3Obj	
+`+=`	nodesnim/core/vector3.html#+=,Vector3Obj,Vector3Obj	vector3: `+=`(a: var Vector3Obj; b: Vector3Obj)	
+`-=`	nodesnim/core/vector3.html#-=,Vector3Obj,Vector3Obj	vector3: `-=`(a: var Vector3Obj; b: Vector3Obj)	
+`*=`	nodesnim/core/vector3.html#*=,Vector3Obj,Vector3Obj	vector3: `*=`(a: var Vector3Obj; b: Vector3Obj)	
+`/=`	nodesnim/core/vector3.html#/=,Vector3Obj,Vector3Obj	vector3: `/=`(a: var Vector3Obj; b: Vector3Obj)	
+`+=`	nodesnim/core/vector3.html#+=,Vector3Obj,float	vector3: `+=`(a: var Vector3Obj; b: float)	
+`-=`	nodesnim/core/vector3.html#-=,Vector3Obj,float	vector3: `-=`(a: var Vector3Obj; b: float)	
+`*=`	nodesnim/core/vector3.html#*=,Vector3Obj,float	vector3: `*=`(a: var Vector3Obj; b: float)	
+`/=`	nodesnim/core/vector3.html#/=,Vector3Obj,float	vector3: `/=`(a: var Vector3Obj; b: float)	
+`==`	nodesnim/core/vector3.html#==,Vector3Obj,Vector3Obj	vector3: `==`(a, b: Vector3Obj): bool	
+`&gt;`	nodesnim/core/vector3.html#>,Vector3Obj,Vector3Obj	vector3: `&gt;`(a, b: Vector3Obj): bool	
+`&gt;=`	nodesnim/core/vector3.html#>=,Vector3Obj,Vector3Obj	vector3: `&gt;=`(a, b: Vector3Obj): bool	
+`&lt;=`	nodesnim/core/vector3.html#<=,Vector3Obj,Vector3Obj	vector3: `&lt;=`(a, b: Vector3Obj): bool	
