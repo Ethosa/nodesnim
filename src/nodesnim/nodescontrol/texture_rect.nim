@@ -75,7 +75,8 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
     glBindTexture(GL_TEXTURE_2D, self.texture)
 
     glBegin(GL_QUADS)
-    if self.texture_mode == TEXTURE_FILL_XY:
+    case self.texture_mode
+    of TEXTURE_FILL_XY:
       glTexCoord2f(0, 0)
       glVertex2f(x, y)
       glTexCoord2f(0, 1)
@@ -84,7 +85,7 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
       glVertex2f(x + self.rect_size.x, y - self.rect_size.y)
       glTexCoord2f(1, 0)
       glVertex2f(x + self.rect_size.x, y)
-    elif self.texture_mode == TEXTURE_KEEP_ASPECT_RATIO:
+    of TEXTURE_KEEP_ASPECT_RATIO:
       let
         w = self.rect_size.x / self.texture_size.x
         h = self.rect_size.y / self.texture_size.y
@@ -101,7 +102,7 @@ method draw*(self: TextureRectPtr, w, h: GLfloat) =
       glVertex2f(x2, y2)
       glTexCoord2f(1, 0)
       glVertex2f(x2, y1)
-    elif self.texture_mode == TEXTURE_CROP:
+    of TEXTURE_CROP:
       if self.texture_size.x < self.rect_size.x:
         let q = self.rect_size.x / self.texture_size.x
         self.texture_size.x *= q

@@ -282,9 +282,10 @@ proc windowLaunch* =
     info("launch window ...")
   glutDisplayFunc(display)
   glutIdleFunc(display)
-  glutReshapeFunc(reshape)
+  when not defined(android) and not defined(ios):
+    glutReshapeFunc(reshape)
+    glutMouseWheelFunc(wheel)
   glutMouseFunc(mouse)
-  glutMouseWheelFunc(wheel)
   glutKeyboardFunc(keyboardpress)
   glutKeyboardUpFunc(keyboardup)
   glutSpecialFunc(keyboardspecialpress)
