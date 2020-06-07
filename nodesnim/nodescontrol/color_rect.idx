@@ -1,6 +1,5 @@
 ColorRectObj	nodesnim/nodescontrol/color_rect.html#ColorRectObj	color_rect: ColorRectObj	
-ColorRectPtr	nodesnim/nodescontrol/color_rect.html#ColorRectPtr	color_rect: ColorRectPtr	
-ColorRect	nodesnim/nodescontrol/color_rect.html#ColorRect,string,ColorRectObj	color_rect: ColorRect(name: string; variable: var ColorRectObj): ColorRectPtr	
-ColorRect	nodesnim/nodescontrol/color_rect.html#ColorRect,ColorRectObj	color_rect: ColorRect(obj: var ColorRectObj): ColorRectPtr	
-draw	nodesnim/nodescontrol/color_rect.html#draw.e,ColorRectPtr,GLfloat,GLfloat	color_rect: draw(self: ColorRectPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/color_rect.html#duplicate.e,ColorRectPtr,ColorRectObj	color_rect: duplicate(self: ColorRectPtr; obj: var ColorRectObj): ColorRectPtr	
+ColorRectRef	nodesnim/nodescontrol/color_rect.html#ColorRectRef	color_rect: ColorRectRef	
+ColorRect	nodesnim/nodescontrol/color_rect.html#ColorRect,string	color_rect: ColorRect(name: string = &quot;ColorRect&quot;): ColorRectRef	
+draw	nodesnim/nodescontrol/color_rect.html#draw.e,ColorRectRef,GLfloat,GLfloat	color_rect: draw(self: ColorRectRef; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/color_rect.html#duplicate.e,ColorRectRef	color_rect: duplicate(self: ColorRectRef): ColorRectRef	

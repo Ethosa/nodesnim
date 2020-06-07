@@ -116,37 +116,35 @@ function main() {
   normal_color*: ColorRef      ## text color, whenwhen button is not pressed and not hovered.
   hover_color*: ColorRef       ## text color, when button hovered.
   press_color*: ColorRef       ## text color, when button pressed.
-  on_touch*: proc (self: TextureButtonPtr; x, y: float): void ## This called, when user clicks on button."><wbr />Texture<wbr />Button<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#TextureButtonPtr"
-    title="TextureButtonPtr = ptr TextureButtonObj"><wbr />Texture<wbr />Button<wbr />Ptr<span class="attachedType"></span></a></li>
+  on_touch*: proc (self: TextureButtonRef; x, y: float): void ## This called, when user clicks on button."><wbr />Texture<wbr />Button<wbr />Obj<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#TextureButtonRef"
+    title="TextureButtonRef = ref TextureButtonObj"><wbr />Texture<wbr />Button<wbr />Ref<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#TextureButton%2Cstring%2CTextureButtonObj"
-    title="TextureButton(name: string; variable: var TextureButtonObj): TextureButtonPtr"><wbr />Texture<wbr />Button<span class="attachedType">TextureButtonPtr</span></a></li>
-  <li><a class="reference" href="#TextureButton%2CTextureButtonObj"
-    title="TextureButton(obj: var TextureButtonObj): TextureButtonPtr"><wbr />Texture<wbr />Button<span class="attachedType">TextureButtonObj</span></a></li>
+      <li><a class="reference" href="#TextureButton%2Cstring"
+    title="TextureButton(name: string = &quot;TextureButton&quot;): TextureButtonRef"><wbr />Texture<wbr />Button<span class="attachedType">TextureButtonRef</span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#draw.e%2CTextureButtonPtr%2CGLfloat%2CGLfloat"
-    title="draw(self: TextureButtonPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">TextureButtonPtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CTextureButtonPtr%2CTextureButtonObj"
-    title="duplicate(self: TextureButtonPtr; obj: var TextureButtonObj): TextureButtonPtr"><wbr />duplicate<span class="attachedType">TextureButtonPtr</span></a></li>
-  <li><a class="reference" href="#handle.e%2CTextureButtonPtr%2CInputEvent%2CNodePtr"
-    title="handle(self: TextureButtonPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">TextureButtonPtr</span></a></li>
-  <li><a class="reference" href="#setNormalTexture.e%2CTextureButtonPtr%2CGlTextureObj"
-    title="setNormalTexture(self: TextureButtonPtr; texture: GlTextureObj)"><wbr />set<wbr />Normal<wbr />Texture<span class="attachedType">TextureButtonPtr</span></a></li>
-  <li><a class="reference" href="#setHoverTexture.e%2CTextureButtonPtr%2CGlTextureObj"
-    title="setHoverTexture(self: TextureButtonPtr; texture: GlTextureObj)"><wbr />set<wbr />Hover<wbr />Texture<span class="attachedType">TextureButtonPtr</span></a></li>
-  <li><a class="reference" href="#setPressTexture.e%2CTextureButtonPtr%2CGlTextureObj"
-    title="setPressTexture(self: TextureButtonPtr; texture: GlTextureObj)"><wbr />set<wbr />Press<wbr />Texture<span class="attachedType">TextureButtonPtr</span></a></li>
+      <li><a class="reference" href="#draw.e%2CTextureButtonRef%2CGLfloat%2CGLfloat"
+    title="draw(self: TextureButtonRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">TextureButtonRef</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CTextureButtonRef"
+    title="duplicate(self: TextureButtonRef): TextureButtonRef"><wbr />duplicate<span class="attachedType">TextureButtonRef</span></a></li>
+  <li><a class="reference" href="#handle.e%2CTextureButtonRef%2CInputEvent%2CNodeRef"
+    title="handle(self: TextureButtonRef; event: InputEvent; mouse_on: var NodeRef)"><wbr />handle<span class="attachedType">TextureButtonRef</span></a></li>
+  <li><a class="reference" href="#setNormalTexture.e%2CTextureButtonRef%2CGlTextureObj"
+    title="setNormalTexture(self: TextureButtonRef; texture: GlTextureObj)"><wbr />set<wbr />Normal<wbr />Texture<span class="attachedType">TextureButtonRef</span></a></li>
+  <li><a class="reference" href="#setHoverTexture.e%2CTextureButtonRef%2CGlTextureObj"
+    title="setHoverTexture(self: TextureButtonRef; texture: GlTextureObj)"><wbr />set<wbr />Hover<wbr />Texture<span class="attachedType">TextureButtonRef</span></a></li>
+  <li><a class="reference" href="#setPressTexture.e%2CTextureButtonRef%2CGlTextureObj"
+    title="setPressTexture(self: TextureButtonRef; texture: GlTextureObj)"><wbr />set<wbr />Press<wbr />Texture<span class="attachedType">TextureButtonRef</span></a></li>
 
   </ul>
 </li>
@@ -176,15 +174,15 @@ function main() {
   <span class="Identifier">normal_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>      <span class="Comment">## text color, whenwhen button is not pressed and not hovered.</span>
   <span class="Identifier">hover_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>       <span class="Comment">## text color, when button hovered.</span>
   <span class="Identifier">press_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>       <span class="Comment">## text color, when button pressed.</span>
-  <span class="Identifier">on_touch</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called, when user clicks on button.</span>
+  <span class="Identifier">on_touch</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called, when user clicks on button.</span>
   </pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="TextureButtonPtr"></a>
-<dt><pre><a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="texture_button.html#TextureButtonObj"><span class="Identifier">TextureButtonObj</span></a></pre></dt>
+<a id="TextureButtonRef"></a>
+<dt><pre><a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="texture_button.html#TextureButtonObj"><span class="Identifier">TextureButtonObj</span></a></pre></dt>
 <dd>
 
 
@@ -195,37 +193,18 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="TextureButton,string,TextureButtonObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#TextureButton%2Cstring%2CTextureButtonObj"><span class="Identifier">TextureButton</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="texture_button.html#TextureButtonObj"><span class="Identifier">TextureButtonObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Creates a new TextureButton node pointer.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
-<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a TextureButtonObj variable.</li>
-</ul>
-
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">my_button_obj</span><span class="Other">:</span> <span class="Identifier">TextureButtonObj</span>
-  <span class="Identifier">my_button</span> <span class="Other">=</span> <span class="Identifier">TextureButton</span><span class="Other">(</span><span class="StringLit">&quot;TextureButton&quot;</span><span class="Other">,</span> <span class="Identifier">my_button_obj</span><span class="Other">)</span></pre>
-
-</dd>
-<a id="TextureButton,TextureButtonObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#TextureButton%2CTextureButtonObj"><span class="Identifier">TextureButton</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="texture_button.html#TextureButtonObj"><span class="Identifier">TextureButtonObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="TextureButton,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#TextureButton%2Cstring"><span class="Identifier">TextureButton</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;TextureButton&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Creates a new TextureButton node pointer with default node name &quot;TextureButton&quot;.</p>
+<p>Creates a new TextureButton node.</p>
 <p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a TextureButtonObj variable.</li>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">my_button_obj</span><span class="Other">:</span> <span class="Identifier">TextureButtonObj</span>
-  <span class="Identifier">my_button</span> <span class="Other">=</span> <span class="Identifier">TextureButton</span><span class="Other">(</span><span class="Identifier">my_button_obj</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">my_button</span> <span class="Other">=</span> <span class="Identifier">TextureButton</span><span class="Other">(</span><span class="StringLit">&quot;TextureButton&quot;</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -233,48 +212,47 @@ function main() {
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
-<a id="draw.e,TextureButtonPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CTextureButtonPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+<a id="draw.e,TextureButtonRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CTextureButtonRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="duplicate.e,TextureButtonPtr,TextureButtonObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CTextureButtonPtr%2CTextureButtonObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="texture_button.html#TextureButtonObj"><span class="Identifier">TextureButtonObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,TextureButtonRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CTextureButtonRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Duplicates TextureButton object and creates a new TextureButton node pointer.
+Duplicates TextureButton object and creates a new TextureButton node.
 
 </dd>
-<a id="handle.e,TextureButtonPtr,InputEvent,NodePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CTextureButtonPtr%2CInputEvent%2CNodePtr"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../nodes/node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="handle.e,TextureButtonRef,InputEvent,NodeRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CTextureButtonRef%2CInputEvent%2CNodeRef"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Handles user input. This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="setNormalTexture.e,TextureButtonPtr,GlTextureObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setNormalTexture.e%2CTextureButtonPtr%2CGlTextureObj"><span class="Identifier">setNormalTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="setNormalTexture.e,TextureButtonRef,GlTextureObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setNormalTexture.e%2CTextureButtonRef%2CGlTextureObj"><span class="Identifier">setNormalTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes button texture, when it not pressed and not hovered.
 
 </dd>
-<a id="setHoverTexture.e,TextureButtonPtr,GlTextureObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setHoverTexture.e%2CTextureButtonPtr%2CGlTextureObj"><span class="Identifier">setHoverTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="setHoverTexture.e,TextureButtonRef,GlTextureObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setHoverTexture.e%2CTextureButtonRef%2CGlTextureObj"><span class="Identifier">setHoverTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes button texture, when it hovered.
 
 </dd>
-<a id="setPressTexture.e,TextureButtonPtr,GlTextureObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setPressTexture.e%2CTextureButtonPtr%2CGlTextureObj"><span class="Identifier">setPressTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonPtr"><span class="Identifier">TextureButtonPtr</span></a><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="setPressTexture.e,TextureButtonRef,GlTextureObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setPressTexture.e%2CTextureButtonRef%2CGlTextureObj"><span class="Identifier">setPressTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_button.html#TextureButtonRef"><span class="Identifier">TextureButtonRef</span></a><span class="Other">;</span> <span class="Identifier">texture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -291,7 +269,7 @@ Changes button texture, when it pressed.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 07:42:13 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 17:07:06 UTC</small>
       </div>
     </div>
   </div>

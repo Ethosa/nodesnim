@@ -1,43 +1,42 @@
 NodeObj	nodesnim/nodes/node.html#NodeObj	node: NodeObj	
-NodePtr	nodesnim/nodes/node.html#NodePtr	node: NodePtr	
+NodeRef	nodesnim/nodes/node.html#NodeRef	node: NodeRef	
 nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nodetype: untyped): untyped	
-Node	nodesnim/nodes/node.html#Node,string,NodeObj	node: Node(name: string; variable: var NodeObj): NodePtr	
-Node	nodesnim/nodes/node.html#Node,NodeObj	node: Node(variable: var NodeObj): NodePtr	
-addChild	nodesnim/nodes/node.html#addChild.e,NodePtr,NodePtr	node: addChild(self: NodePtr; child: NodePtr)	
-addChilds	nodesnim/nodes/node.html#addChilds.e,NodePtr,varargs[NodePtr]	node: addChilds(self: NodePtr; childs: varargs[NodePtr])	
-calcGlobalPosition	nodesnim/nodes/node.html#calcGlobalPosition.e,NodePtr	node: calcGlobalPosition(self: NodePtr)	
-calcPositionAnchor	nodesnim/nodes/node.html#calcPositionAnchor.e,NodePtr	node: calcPositionAnchor(self: NodePtr)	
-draw	nodesnim/nodes/node.html#draw.e,NodePtr,GLfloat,GLfloat	node: draw(self: NodePtr; w, h: GLfloat)	
-draw2stage	nodesnim/nodes/node.html#draw2stage.e,NodePtr,GLfloat,GLfloat	node: draw2stage(self: NodePtr; w, h: GLfloat)	
-duplicate	nodesnim/nodes/node.html#duplicate.e,NodePtr,NodeObj	node: duplicate(self: NodePtr; obj: var NodeObj): NodePtr	
-getChild	nodesnim/nodes/node.html#getChild.e,NodePtr,int	node: getChild(self: NodePtr; index: int): NodePtr	
-getChildCount	nodesnim/nodes/node.html#getChildCount.e,NodePtr	node: getChildCount(self: NodePtr): int	
-getChildIndex	nodesnim/nodes/node.html#getChildIndex.e,NodePtr,string	node: getChildIndex(self: NodePtr; name: string): int	
-getChildIndex	nodesnim/nodes/node.html#getChildIndex.e,NodePtr,NodePtr	node: getChildIndex(self: NodePtr; child: NodePtr): int	
-getChildIter	nodesnim/nodes/node.html#getChildIter.e,NodePtr	node: getChildIter(self: NodePtr): seq[NodePtr]	
-getNode	nodesnim/nodes/node.html#getNode.e,NodePtr,string	node: getNode(self: NodePtr; path: string): NodePtr	
-getPath	nodesnim/nodes/node.html#getPath.e,NodePtr	node: getPath(self: NodePtr): string	
-getParent	nodesnim/nodes/node.html#getParent.e,NodePtr	node: getParent(self: NodePtr): NodePtr	
-getPauseMode	nodesnim/nodes/node.html#getPauseMode.e,NodePtr	node: getPauseMode(self: NodePtr): PauseMode	
-getRootNode	nodesnim/nodes/node.html#getRootNode.e,NodePtr	node: getRootNode(self: NodePtr): NodePtr	
-isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,float,float	node: isCollide(self: NodePtr; x, y: float): bool	
-isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,Vector2Ref	node: isCollide(self: NodePtr; vec2: Vector2Ref): bool	
-isCollide	nodesnim/nodes/node.html#isCollide.e,NodePtr,NodePtr	node: isCollide(self, other: NodePtr): bool	
-isParentOf	nodesnim/nodes/node.html#isParentOf.e,NodePtr,NodePtr	node: isParentOf(self, other: NodePtr): bool	
-handle	nodesnim/nodes/node.html#handle.e,NodePtr,InputEvent,NodePtr	node: handle(self: NodePtr; event: InputEvent; mouse_on: var NodePtr)	
-hasNode	nodesnim/nodes/node.html#hasNode.e,NodePtr,string	node: hasNode(self: NodePtr; name: string): bool	
-hasNode	nodesnim/nodes/node.html#hasNode.e,NodePtr,NodePtr	node: hasNode(self: NodePtr; other: NodePtr): bool	
-hasParent	nodesnim/nodes/node.html#hasParent.e,NodePtr	node: hasParent(self: NodePtr): bool	
-hide	nodesnim/nodes/node.html#hide.e,NodePtr	node: hide(self: NodePtr)	
-move	nodesnim/nodes/node.html#move.e,NodePtr,float,float	node: move(self: NodePtr; x, y: float)	
-move	nodesnim/nodes/node.html#move.e,NodePtr,Vector2Ref	node: move(self: NodePtr; vec2: Vector2Ref)	
-removeChild	nodesnim/nodes/node.html#removeChild.e,NodePtr,int	node: removeChild(self: NodePtr; index: int)	
-removeChild	nodesnim/nodes/node.html#removeChild.e,NodePtr,NodePtr	node: removeChild(self: NodePtr; other: NodePtr)	
-setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodePtr,AnchorRef	node: setAnchor(self: NodePtr; anchor: AnchorRef)	
-setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodePtr,float,float,float,float	node: setAnchor(self: NodePtr; x1, y1, x2, y2: float)	
-setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodePtr,Vector2Ref	node: setSizeAnchor(self: NodePtr; anchor: Vector2Ref)	
-setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodePtr,float,float	node: setSizeAnchor(self: NodePtr; x, y: float)	
-show	nodesnim/nodes/node.html#show.e,NodePtr	node: show(self: NodePtr)	
-delete	nodesnim/nodes/node.html#delete.e,NodePtr	node: delete(self: NodePtr)	
+Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&quot;): NodeRef	
+addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
+addChilds	nodesnim/nodes/node.html#addChilds.e,NodeRef,varargs[NodeRef]	node: addChilds(self: NodeRef; childs: varargs[NodeRef])	
+calcGlobalPosition	nodesnim/nodes/node.html#calcGlobalPosition.e,NodeRef	node: calcGlobalPosition(self: NodeRef)	
+calcPositionAnchor	nodesnim/nodes/node.html#calcPositionAnchor.e,NodeRef	node: calcPositionAnchor(self: NodeRef)	
+draw	nodesnim/nodes/node.html#draw.e,NodeRef,GLfloat,GLfloat	node: draw(self: NodeRef; w, h: GLfloat)	
+draw2stage	nodesnim/nodes/node.html#draw2stage.e,NodeRef,GLfloat,GLfloat	node: draw2stage(self: NodeRef; w, h: GLfloat)	
+duplicate	nodesnim/nodes/node.html#duplicate.e,NodeRef	node: duplicate(self: NodeRef): NodeRef	
+getChild	nodesnim/nodes/node.html#getChild.e,NodeRef,int	node: getChild(self: NodeRef; index: int): NodeRef	
+getChildCount	nodesnim/nodes/node.html#getChildCount.e,NodeRef	node: getChildCount(self: NodeRef): int	
+getChildIndex	nodesnim/nodes/node.html#getChildIndex.e,NodeRef,string	node: getChildIndex(self: NodeRef; name: string): int	
+getChildIndex	nodesnim/nodes/node.html#getChildIndex.e,NodeRef,NodeRef	node: getChildIndex(self: NodeRef; child: NodeRef): int	
+getChildIter	nodesnim/nodes/node.html#getChildIter.e,NodeRef	node: getChildIter(self: NodeRef): seq[NodeRef]	
+getNode	nodesnim/nodes/node.html#getNode.e,NodeRef,string	node: getNode(self: NodeRef; path: string): NodeRef	
+getPath	nodesnim/nodes/node.html#getPath.e,NodeRef	node: getPath(self: NodeRef): string	
+getParent	nodesnim/nodes/node.html#getParent.e,NodeRef	node: getParent(self: NodeRef): NodeRef	
+getPauseMode	nodesnim/nodes/node.html#getPauseMode.e,NodeRef	node: getPauseMode(self: NodeRef): PauseMode	
+getRootNode	nodesnim/nodes/node.html#getRootNode.e,NodeRef	node: getRootNode(self: NodeRef): NodeRef	
+isCollide	nodesnim/nodes/node.html#isCollide.e,NodeRef,float,float	node: isCollide(self: NodeRef; x, y: float): bool	
+isCollide	nodesnim/nodes/node.html#isCollide.e,NodeRef,Vector2Ref	node: isCollide(self: NodeRef; vec2: Vector2Ref): bool	
+isCollide	nodesnim/nodes/node.html#isCollide.e,NodeRef,NodeRef	node: isCollide(self, other: NodeRef): bool	
+isParentOf	nodesnim/nodes/node.html#isParentOf.e,NodeRef,NodeRef	node: isParentOf(self, other: NodeRef): bool	
+handle	nodesnim/nodes/node.html#handle.e,NodeRef,InputEvent,NodeRef	node: handle(self: NodeRef; event: InputEvent; mouse_on: var NodeRef)	
+hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,string	node: hasNode(self: NodeRef; name: string): bool	
+hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,NodeRef	node: hasNode(self: NodeRef; other: NodeRef): bool	
+hasParent	nodesnim/nodes/node.html#hasParent.e,NodeRef	node: hasParent(self: NodeRef): bool	
+hide	nodesnim/nodes/node.html#hide.e,NodeRef	node: hide(self: NodeRef)	
+move	nodesnim/nodes/node.html#move.e,NodeRef,float,float	node: move(self: NodeRef; x, y: float)	
+move	nodesnim/nodes/node.html#move.e,NodeRef,Vector2Ref	node: move(self: NodeRef; vec2: Vector2Ref)	
+removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,int	node: removeChild(self: NodeRef; index: int)	
+removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,NodeRef	node: removeChild(self: NodeRef; other: NodeRef)	
+setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodeRef,AnchorRef	node: setAnchor(self: NodeRef; anchor: AnchorRef)	
+setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodeRef,float,float,float,float	node: setAnchor(self: NodeRef; x1, y1, x2, y2: float)	
+setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodeRef,Vector2Ref	node: setSizeAnchor(self: NodeRef; anchor: Vector2Ref)	
+setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodeRef,float,float	node: setSizeAnchor(self: NodeRef; x, y: float)	
+show	nodesnim/nodes/node.html#show.e,NodeRef	node: show(self: NodeRef)	
+delete	nodesnim/nodes/node.html#delete.e,NodeRef	node: delete(self: NodeRef)	
 Examples	node.html#examples	  Examples	
-`@`	nodesnim/nodes/node.html#@.m,NodePtr,untyped,untyped	node: `@`(node: NodePtr; event_name, code: untyped): untyped	
+`@`	nodesnim/nodes/node.html#@.m,NodeRef,untyped,untyped	node: `@`(node: NodeRef; event_name, code: untyped): untyped	

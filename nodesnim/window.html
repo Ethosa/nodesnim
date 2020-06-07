@@ -109,11 +109,11 @@ function main() {
       <li><a class="reference" href="#env"
     title="env: EnvironmentRef = newEnvironment()"><wbr />env<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#main_scene"
-    title="main_scene: ScenePtr = nil"><wbr />main_<wbr />scene<span class="attachedType"></span></a></li>
+    title="main_scene: SceneRef = nil"><wbr />main_<wbr />scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#current_scene"
-    title="current_scene: ScenePtr = nil"><wbr />current_<wbr />scene<span class="attachedType"></span></a></li>
+    title="current_scene: SceneRef = nil"><wbr />current_<wbr />scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#scenes"
-    title="scenes: seq[ScenePtr] = @[]"><wbr />scenes<span class="attachedType"></span></a></li>
+    title="scenes: seq[SceneRef] = @[]"><wbr />scenes<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#paused"
     title="paused: bool = false"><wbr />paused<span class="attachedType"></span></a></li>
 
@@ -122,10 +122,10 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#addScene%2CScenePtr"
-    title="addScene(scene: ScenePtr)"><wbr />add<wbr />Scene<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#addMainScene%2CScenePtr"
-    title="addMainScene(scene: ScenePtr)"><wbr />add<wbr />Main<wbr />Scene<span class="attachedType"></span></a></li>
+      <li><a class="reference" href="#addScene%2CSceneRef"
+    title="addScene(scene: SceneRef)"><wbr />add<wbr />Scene<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#addMainScene%2CSceneRef"
+    title="addMainScene(scene: SceneRef)"><wbr />add<wbr />Main<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#changeScene%2Cstring"
     title="changeScene(name: string): bool"><wbr />change<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#setMainScene%2Cstring"
@@ -163,21 +163,21 @@ function main() {
 
 </dd>
 <a id="main_scene"></a>
-<dt><pre><a href="window.html#main_scene"><span class="Identifier">main_scene</span></a><span class="Other">:</span> <a href="nodes/scene.html#ScenePtr"><span class="Identifier">ScenePtr</span></a> <span class="Other">=</span> <span class="Keyword">nil</span></pre></dt>
+<dt><pre><a href="window.html#main_scene"><span class="Identifier">main_scene</span></a><span class="Other">:</span> <a href="nodes/scene.html#SceneRef"><span class="Identifier">SceneRef</span></a> <span class="Other">=</span> <span class="Keyword">nil</span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="current_scene"></a>
-<dt><pre><a href="window.html#current_scene"><span class="Identifier">current_scene</span></a><span class="Other">:</span> <a href="nodes/scene.html#ScenePtr"><span class="Identifier">ScenePtr</span></a> <span class="Other">=</span> <span class="Keyword">nil</span></pre></dt>
+<dt><pre><a href="window.html#current_scene"><span class="Identifier">current_scene</span></a><span class="Other">:</span> <a href="nodes/scene.html#SceneRef"><span class="Identifier">SceneRef</span></a> <span class="Other">=</span> <span class="Keyword">nil</span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="scenes"></a>
-<dt><pre><a href="window.html#scenes"><span class="Identifier">scenes</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="nodes/scene.html#ScenePtr"><span class="Identifier">ScenePtr</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
+<dt><pre><a href="window.html#scenes"><span class="Identifier">scenes</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="nodes/scene.html#SceneRef"><span class="Identifier">SceneRef</span></a><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
 <dd>
 
 
@@ -195,8 +195,8 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="addScene,ScenePtr"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#addScene%2CScenePtr"><span class="Identifier">addScene</span></a><span class="Other">(</span><span class="Identifier">scene</span><span class="Other">:</span> <a href="nodes/scene.html#ScenePtr"><span class="Identifier">ScenePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="addScene,SceneRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#addScene%2CSceneRef"><span class="Identifier">addScene</span></a><span class="Other">(</span><span class="Identifier">scene</span><span class="Other">:</span> <a href="nodes/scene.html#SceneRef"><span class="Identifier">SceneRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Adds a new scenes in app.</p>
@@ -206,8 +206,8 @@ function main() {
 
 
 </dd>
-<a id="addMainScene,ScenePtr"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#addMainScene%2CScenePtr"><span class="Identifier">addMainScene</span></a><span class="Other">(</span><span class="Identifier">scene</span><span class="Other">:</span> <a href="nodes/scene.html#ScenePtr"><span class="Identifier">ScenePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="addMainScene,SceneRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#addMainScene%2CSceneRef"><span class="Identifier">addMainScene</span></a><span class="Other">(</span><span class="Identifier">scene</span><span class="Other">:</span> <a href="nodes/scene.html#SceneRef"><span class="Identifier">SceneRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Adds a new scene in the app and set it mark it as main scene.</p>
@@ -277,7 +277,7 @@ Start main window loop.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 07:41:32 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 17:06:27 UTC</small>
       </div>
     </div>
   </div>

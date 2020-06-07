@@ -1,8 +1,7 @@
 SwitchObj	nodesnim/nodescontrol/switch.html#SwitchObj	switch: SwitchObj	
-SwitchPtr	nodesnim/nodescontrol/switch.html#SwitchPtr	switch: SwitchPtr	
-Switch	nodesnim/nodescontrol/switch.html#Switch,string,SwitchObj	switch: Switch(name: string; variable: var SwitchObj): SwitchPtr	
-Switch	nodesnim/nodescontrol/switch.html#Switch,SwitchObj	switch: Switch(obj: var SwitchObj): SwitchPtr	
-draw	nodesnim/nodescontrol/switch.html#draw.e,SwitchPtr,GLfloat,GLfloat	switch: draw(self: SwitchPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/switch.html#duplicate.e,SwitchPtr,SwitchObj	switch: duplicate(self: SwitchPtr; obj: var SwitchObj): SwitchPtr	
-handle	nodesnim/nodescontrol/switch.html#handle.e,SwitchPtr,InputEvent,NodePtr	switch: handle(self: SwitchPtr; event: InputEvent; mouse_on: var NodePtr)	
-toggle	nodesnim/nodescontrol/switch.html#toggle.e,SwitchPtr	switch: toggle(self: SwitchPtr)	
+SwitchRef	nodesnim/nodescontrol/switch.html#SwitchRef	switch: SwitchRef	
+Switch	nodesnim/nodescontrol/switch.html#Switch,string	switch: Switch(name: string = &quot;Switch&quot;): SwitchRef	
+draw	nodesnim/nodescontrol/switch.html#draw.e,SwitchRef,GLfloat,GLfloat	switch: draw(self: SwitchRef; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/switch.html#duplicate.e,SwitchRef	switch: duplicate(self: SwitchRef): SwitchRef	
+handle	nodesnim/nodescontrol/switch.html#handle.e,SwitchRef,InputEvent,NodeRef	switch: handle(self: SwitchRef; event: InputEvent; mouse_on: var NodeRef)	
+toggle	nodesnim/nodescontrol/switch.html#toggle.e,SwitchRef	switch: toggle(self: SwitchRef)	

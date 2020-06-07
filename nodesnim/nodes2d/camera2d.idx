@@ -1,13 +1,13 @@
 Camera2DObj	nodesnim/nodes2d/camera2d.html#Camera2DObj	camera2d: Camera2DObj	
-Camera2DPtr	nodesnim/nodes2d/camera2d.html#Camera2DPtr	camera2d: Camera2DPtr	
-Camera2D	nodesnim/nodes2d/camera2d.html#Camera2D,string,Camera2DObj	camera2d: Camera2D(name: string; variable: var Camera2DObj): Camera2DPtr	
-Camera2D	nodesnim/nodes2d/camera2d.html#Camera2D,Camera2DObj	camera2d: Camera2D(obj: var Camera2DObj): Camera2DPtr	
-changeTarget	nodesnim/nodes2d/camera2d.html#changeTarget.e,Camera2DPtr,NodePtr	camera2d: changeTarget(self: Camera2DPtr; target: NodePtr)	
-changeSmoothSpeed	nodesnim/nodes2d/camera2d.html#changeSmoothSpeed.e,Camera2DPtr,float	camera2d: changeSmoothSpeed(self: Camera2DPtr; speed: float)	
-disableSmooth	nodesnim/nodes2d/camera2d.html#disableSmooth.e,Camera2DPtr	camera2d: disableSmooth(self: Camera2DPtr)	
-draw	nodesnim/nodes2d/camera2d.html#draw.e,Camera2DPtr,GLfloat,GLfloat	camera2d: draw(self: Camera2DPtr; w, h: GLfloat)	
-enableSmooth	nodesnim/nodes2d/camera2d.html#enableSmooth.e,Camera2DPtr,float	camera2d: enableSmooth(self: Camera2DPtr; speed: float = 0.1)	
-setCurrent	nodesnim/nodes2d/camera2d.html#setCurrent.e,Camera2DPtr	camera2d: setCurrent(self: Camera2DPtr)	
-setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DPtr,float,float,float,float	camera2d: setLimit(self: Camera2DPtr; x1, y1, x2, y2: float)	
-setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DPtr,AnchorRef	camera2d: setLimit(self: Camera2DPtr; limit: AnchorRef)	
-setTarget	nodesnim/nodes2d/camera2d.html#setTarget.e,Camera2DPtr,NodePtr	camera2d: setTarget(self: Camera2DPtr; target: NodePtr)	
+Camera2DRef	nodesnim/nodes2d/camera2d.html#Camera2DRef	camera2d: Camera2DRef	
+Camera2D	nodesnim/nodes2d/camera2d.html#Camera2D,string	camera2d: Camera2D(name: string = &quot;Camera2D&quot;): Camera2DRef	
+changeTarget	nodesnim/nodes2d/camera2d.html#changeTarget.e,Camera2DRef,NodeRef	camera2d: changeTarget(self: Camera2DRef; target: NodeRef)	
+changeSmoothSpeed	nodesnim/nodes2d/camera2d.html#changeSmoothSpeed.e,Camera2DRef,float	camera2d: changeSmoothSpeed(self: Camera2DRef; speed: float)	
+disableSmooth	nodesnim/nodes2d/camera2d.html#disableSmooth.e,Camera2DRef	camera2d: disableSmooth(self: Camera2DRef)	
+draw	nodesnim/nodes2d/camera2d.html#draw.e,Camera2DRef,GLfloat,GLfloat	camera2d: draw(self: Camera2DRef; w, h: GLfloat)	
+duplicate	nodesnim/nodes2d/camera2d.html#duplicate.e,Camera2DRef	camera2d: duplicate(self: Camera2DRef): Camera2DRef	
+enableSmooth	nodesnim/nodes2d/camera2d.html#enableSmooth.e,Camera2DRef,float	camera2d: enableSmooth(self: Camera2DRef; speed: float = 0.1)	
+setCurrent	nodesnim/nodes2d/camera2d.html#setCurrent.e,Camera2DRef	camera2d: setCurrent(self: Camera2DRef)	
+setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DRef,float,float,float,float	camera2d: setLimit(self: Camera2DRef; x1, y1, x2, y2: float)	
+setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DRef,AnchorRef	camera2d: setLimit(self: Camera2DRef; limit: AnchorRef)	
+setTarget	nodesnim/nodes2d/camera2d.html#setTarget.e,Camera2DRef,NodeRef	camera2d: setTarget(self: Camera2DRef; target: NodeRef)	

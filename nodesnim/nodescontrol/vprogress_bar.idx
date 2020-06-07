@@ -1,9 +1,8 @@
 VProgressBarObj	nodesnim/nodescontrol/vprogress_bar.html#VProgressBarObj	vprogress_bar: VProgressBarObj	
-VProgressBarPtr	nodesnim/nodescontrol/vprogress_bar.html#VProgressBarPtr	vprogress_bar: VProgressBarPtr	
-VProgressBar	nodesnim/nodescontrol/vprogress_bar.html#VProgressBar,string,VProgressBarObj	vprogress_bar: VProgressBar(name: string; variable: var VProgressBarObj): VProgressBarPtr	
-VProgressBar	nodesnim/nodescontrol/vprogress_bar.html#VProgressBar,VProgressBarObj	vprogress_bar: VProgressBar(obj: var VProgressBarObj): VProgressBarPtr	
-draw	nodesnim/nodescontrol/vprogress_bar.html#draw.e,VProgressBarPtr,GLfloat,GLfloat	vprogress_bar: draw(self: VProgressBarPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/vprogress_bar.html#duplicate.e,VProgressBarPtr,VProgressBarObj	vprogress_bar: duplicate(self: VProgressBarPtr; obj: var VProgressBarObj): VProgressBarPtr	
-setMaxValue	nodesnim/nodescontrol/vprogress_bar.html#setMaxValue.e,VProgressBarPtr,uint	vprogress_bar: setMaxValue(self: VProgressBarPtr; value: uint)	
-setProgress	nodesnim/nodescontrol/vprogress_bar.html#setProgress.e,VProgressBarPtr,uint	vprogress_bar: setProgress(self: VProgressBarPtr; value: uint)	
-setProgressColor	nodesnim/nodescontrol/vprogress_bar.html#setProgressColor.e,VProgressBarPtr,ColorRef	vprogress_bar: setProgressColor(self: VProgressBarPtr; color: ColorRef)	
+VProgressBarRef	nodesnim/nodescontrol/vprogress_bar.html#VProgressBarRef	vprogress_bar: VProgressBarRef	
+VProgressBar	nodesnim/nodescontrol/vprogress_bar.html#VProgressBar,string	vprogress_bar: VProgressBar(name: string = &quot;VProgressBar&quot;): VProgressBarRef	
+draw	nodesnim/nodescontrol/vprogress_bar.html#draw.e,VProgressBarRef,GLfloat,GLfloat	vprogress_bar: draw(self: VProgressBarRef; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/vprogress_bar.html#duplicate.e,VProgressBarRef	vprogress_bar: duplicate(self: VProgressBarRef): VProgressBarRef	
+setMaxValue	nodesnim/nodescontrol/vprogress_bar.html#setMaxValue.e,VProgressBarRef,uint	vprogress_bar: setMaxValue(self: VProgressBarRef; value: uint)	
+setProgress	nodesnim/nodescontrol/vprogress_bar.html#setProgress.e,VProgressBarRef,uint	vprogress_bar: setProgress(self: VProgressBarRef; value: uint)	
+setProgressColor	nodesnim/nodescontrol/vprogress_bar.html#setProgressColor.e,VProgressBarRef,ColorRef	vprogress_bar: setProgressColor(self: VProgressBarRef; color: ColorRef)	

@@ -1,10 +1,9 @@
 SceneObj	nodesnim/nodes/scene.html#SceneObj	scene: SceneObj	
-ScenePtr	nodesnim/nodes/scene.html#ScenePtr	scene: ScenePtr	
-Scene	nodesnim/nodes/scene.html#Scene,string,SceneObj	scene: Scene(name: string; variable: var SceneObj): ScenePtr	
-Scene	nodesnim/nodes/scene.html#Scene,SceneObj	scene: Scene(variable: var SceneObj): ScenePtr	
-drawScene	nodesnim/nodes/scene.html#drawScene.e,ScenePtr,GLfloat,GLfloat,bool	scene: drawScene(scene: ScenePtr; w, h: GLfloat; paused: bool)	
-duplicate	nodesnim/nodes/scene.html#duplicate.e,ScenePtr,SceneObj	scene: duplicate(self: ScenePtr; obj: var SceneObj): ScenePtr	
-enter	nodesnim/nodes/scene.html#enter.e,ScenePtr	scene: enter(scene: ScenePtr)	
-exit	nodesnim/nodes/scene.html#exit.e,ScenePtr	scene: exit(scene: ScenePtr)	
-handleScene	nodesnim/nodes/scene.html#handleScene.e,ScenePtr,InputEvent,NodePtr,bool	scene: handleScene(scene: ScenePtr; event: InputEvent; mouse_on: var NodePtr; paused: bool)	
-reAnchorScene	nodesnim/nodes/scene.html#reAnchorScene.e,ScenePtr,GLfloat,GLfloat,bool	scene: reAnchorScene(scene: ScenePtr; w, h: GLfloat; paused: bool)	
+SceneRef	nodesnim/nodes/scene.html#SceneRef	scene: SceneRef	
+Scene	nodesnim/nodes/scene.html#Scene,string	scene: Scene(name: string = &quot;Scene&quot;): SceneRef	
+drawScene	nodesnim/nodes/scene.html#drawScene.e,SceneRef,GLfloat,GLfloat,bool	scene: drawScene(scene: SceneRef; w, h: GLfloat; paused: bool)	
+duplicate	nodesnim/nodes/scene.html#duplicate.e,SceneRef	scene: duplicate(self: SceneRef): SceneRef	
+enter	nodesnim/nodes/scene.html#enter.e,SceneRef	scene: enter(scene: SceneRef)	
+exit	nodesnim/nodes/scene.html#exit.e,SceneRef	scene: exit(scene: SceneRef)	
+handleScene	nodesnim/nodes/scene.html#handleScene.e,SceneRef,InputEvent,NodeRef,bool	scene: handleScene(scene: SceneRef; event: InputEvent; mouse_on: var NodeRef; paused: bool)	
+reAnchorScene	nodesnim/nodes/scene.html#reAnchorScene.e,SceneRef,GLfloat,GLfloat,bool	scene: reAnchorScene(scene: SceneRef; w, h: GLfloat; paused: bool)	

@@ -109,34 +109,32 @@ function main() {
       <li><a class="reference" href="#VBoxObj"
     title="VBoxObj = object of BoxObj
   separator*: float"><wbr />VBox<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#VBoxPtr"
-    title="VBoxPtr = ptr VBoxObj"><wbr />VBox<wbr />Ptr<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#VBoxRef"
+    title="VBoxRef = ref VBoxObj"><wbr />VBox<wbr />Ref<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#VBox%2Cstring%2CVBoxObj"
-    title="VBox(name: string; variable: var VBoxObj): VBoxPtr"><wbr />VBox<span class="attachedType">VBoxPtr</span></a></li>
-  <li><a class="reference" href="#VBox%2CVBoxObj"
-    title="VBox(obj: var VBoxObj): VBoxPtr"><wbr />VBox<span class="attachedType">VBoxObj</span></a></li>
+      <li><a class="reference" href="#VBox%2Cstring"
+    title="VBox(name: string = &quot;VBox&quot;): VBoxRef"><wbr />VBox<span class="attachedType">VBoxRef</span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#getChildSize.e%2CVBoxPtr"
-    title="getChildSize(self: VBoxPtr): Vector2Ref"><wbr />get<wbr />Child<wbr />Size<span class="attachedType">VBoxPtr</span></a></li>
-  <li><a class="reference" href="#addChild.e%2CVBoxPtr%2CNodePtr"
-    title="addChild(self: VBoxPtr; child: NodePtr)"><wbr />add<wbr />Child<span class="attachedType">VBoxPtr</span></a></li>
-  <li><a class="reference" href="#draw.e%2CVBoxPtr%2CGLfloat%2CGLfloat"
-    title="draw(self: VBoxPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">VBoxPtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CVBoxPtr%2CVBoxObj"
-    title="duplicate(self: VBoxPtr; obj: var VBoxObj): VBoxPtr"><wbr />duplicate<span class="attachedType">VBoxPtr</span></a></li>
-  <li><a class="reference" href="#resize.e%2CVBoxPtr%2CGLfloat%2CGLfloat"
-    title="resize(self: VBoxPtr; w, h: GLfloat)"><wbr />resize<span class="attachedType">VBoxPtr</span></a></li>
+      <li><a class="reference" href="#getChildSize.e%2CVBoxRef"
+    title="getChildSize(self: VBoxRef): Vector2Ref"><wbr />get<wbr />Child<wbr />Size<span class="attachedType">VBoxRef</span></a></li>
+  <li><a class="reference" href="#addChild.e%2CVBoxRef%2CNodeRef"
+    title="addChild(self: VBoxRef; child: NodeRef)"><wbr />add<wbr />Child<span class="attachedType">VBoxRef</span></a></li>
+  <li><a class="reference" href="#draw.e%2CVBoxRef%2CGLfloat%2CGLfloat"
+    title="draw(self: VBoxRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">VBoxRef</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CVBoxRef"
+    title="duplicate(self: VBoxRef): VBoxRef"><wbr />duplicate<span class="attachedType">VBoxRef</span></a></li>
+  <li><a class="reference" href="#resize.e%2CVBoxRef%2CGLfloat%2CGLfloat"
+    title="resize(self: VBoxRef; w, h: GLfloat)"><wbr />resize<span class="attachedType">VBoxRef</span></a></li>
 
   </ul>
 </li>
@@ -165,8 +163,8 @@ function main() {
 
 
 </dd>
-<a id="VBoxPtr"></a>
-<dt><pre><a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="vbox.html#VBoxObj"><span class="Identifier">VBoxObj</span></a></pre></dt>
+<a id="VBoxRef"></a>
+<dt><pre><a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="vbox.html#VBoxObj"><span class="Identifier">VBoxObj</span></a></pre></dt>
 <dd>
 
 
@@ -177,35 +175,17 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="VBox,string,VBoxObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#VBox%2Cstring%2CVBoxObj"><span class="Identifier">VBox</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="vbox.html#VBoxObj"><span class="Identifier">VBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="VBox,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#VBox%2Cstring"><span class="Identifier">VBox</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;VBox&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Creates a new VBox pointer.</p>
+<p>Creates a new VBox.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
-<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a VBoxObj variable.</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">boxobj</span><span class="Other">:</span> <span class="Identifier">VBoxObj</span>
-  <span class="Identifier">box</span> <span class="Other">=</span> <span class="Identifier">VBox</span><span class="Other">(</span><span class="StringLit">&quot;VBox&quot;</span><span class="Other">,</span> <span class="Identifier">boxobj</span><span class="Other">)</span></pre>
-
-</dd>
-<a id="VBox,VBoxObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#VBox%2CVBoxObj"><span class="Identifier">VBox</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="vbox.html#VBoxObj"><span class="Identifier">VBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Creates a new VBox pointer with default node name &quot;VBox&quot;.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a VBoxObj variable.</li>
-</ul>
-
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">boxobj</span><span class="Other">:</span> <span class="Identifier">VBoxObj</span>
-  <span class="Identifier">box</span> <span class="Other">=</span> <span class="Identifier">VBox</span><span class="Other">(</span><span class="Identifier">boxobj</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">box</span> <span class="Other">=</span> <span class="Identifier">VBox</span><span class="Other">(</span><span class="StringLit">&quot;VBox&quot;</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -213,15 +193,15 @@ function main() {
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
-<a id="getChildSize.e,VBoxPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getChildSize.e%2CVBoxPtr"><span class="Identifier">getChildSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="getChildSize.e,VBoxRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getChildSize.e%2CVBoxRef"><span class="Identifier">getChildSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns size of all children.
 
 </dd>
-<a id="addChild.e,VBoxPtr,NodePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#addChild.e%2CVBoxPtr%2CNodePtr"><span class="Identifier">addChild</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">child</span><span class="Other">:</span> <a href="../nodes/node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="addChild.e,VBoxRef,NodeRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#addChild.e%2CVBoxRef%2CNodeRef"><span class="Identifier">addChild</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a><span class="Other">;</span> <span class="Identifier">child</span><span class="Other">:</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Adds new child in current node.</p>
@@ -231,23 +211,23 @@ Returns size of all children.
 
 
 </dd>
-<a id="draw.e,VBoxPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CVBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+<a id="draw.e,VBoxRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CVBoxRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
                                       <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="duplicate.e,VBoxPtr,VBoxObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CVBoxPtr%2CVBoxObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="vbox.html#VBoxObj"><span class="Identifier">VBoxObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,VBoxRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CVBoxRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Duplicate VBox object and create a new VBox pointer.
+Duplicate VBox object and create a new VBox.
 
 </dd>
-<a id="resize.e,VBoxPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CVBoxPtr%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxPtr"><span class="Identifier">VBoxPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="resize.e,VBoxRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CVBoxRef%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="vbox.html#VBoxRef"><span class="Identifier">VBoxRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Resizes VBox, if available.</p>
@@ -268,7 +248,7 @@ Duplicate VBox object and create a new VBox pointer.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 07:41:53 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 17:06:47 UTC</small>
       </div>
     </div>
   </div>

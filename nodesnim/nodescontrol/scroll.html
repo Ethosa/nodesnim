@@ -114,40 +114,38 @@ function main() {
   viewport_x*, viewport_y*: float
   thumb_color*: ColorRef
   back_color*: ColorRef"><wbr />Scroll<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#ScrollPtr"
-    title="ScrollPtr = ptr ScrollObj"><wbr />Scroll<wbr />Ptr<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#ScrollRef"
+    title="ScrollRef = ref ScrollObj"><wbr />Scroll<wbr />Ref<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Scroll%2Cstring%2CScrollObj"
-    title="Scroll(name: string; variable: var ScrollObj): ScrollPtr"><wbr />Scroll<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#Scroll%2CScrollObj"
-    title="Scroll(obj: var ScrollObj): ScrollPtr"><wbr />Scroll<span class="attachedType">ScrollObj</span></a></li>
+      <li><a class="reference" href="#Scroll%2Cstring"
+    title="Scroll(name: string = &quot;Scroll&quot;): ScrollRef"><wbr />Scroll<span class="attachedType">ScrollRef</span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#addChild.e%2CScrollPtr%2CNodePtr"
-    title="addChild(self: ScrollPtr; other: NodePtr)"><wbr />add<wbr />Child<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CScrollPtr%2CScrollObj"
-    title="duplicate(self: ScrollPtr; obj: var ScrollObj): ScrollPtr"><wbr />duplicate<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#resize.e%2CScrollPtr%2CGLfloat%2CGLfloat"
-    title="resize(canvas: ScrollPtr; w, h: GLfloat)"><wbr />resize<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#draw.e%2CScrollPtr%2CGLfloat%2CGLfloat"
-    title="draw(self: ScrollPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#draw2stage.e%2CScrollPtr%2CGLfloat%2CGLfloat"
-    title="draw2stage(self: ScrollPtr; w, h: GLfloat)"><wbr />draw2stage<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#scrollBy.e%2CScrollPtr%2Cfloat%2Cfloat"
-    title="scrollBy(self: ScrollPtr; x, y: float)"><wbr />scroll<wbr />By<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#scrollTo.e%2CScrollPtr%2Cfloat%2Cfloat"
-    title="scrollTo(self: ScrollPtr; x, y: float)"><wbr />scroll<wbr />To<span class="attachedType">ScrollPtr</span></a></li>
-  <li><a class="reference" href="#handle.e%2CScrollPtr%2CInputEvent%2CNodePtr"
-    title="handle(self: ScrollPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">ScrollPtr</span></a></li>
+      <li><a class="reference" href="#addChild.e%2CScrollRef%2CNodeRef"
+    title="addChild(self: ScrollRef; other: NodeRef)"><wbr />add<wbr />Child<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CScrollRef"
+    title="duplicate(self: ScrollRef): ScrollRef"><wbr />duplicate<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#resize.e%2CScrollRef%2CGLfloat%2CGLfloat"
+    title="resize(canvas: ScrollRef; w, h: GLfloat)"><wbr />resize<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#draw.e%2CScrollRef%2CGLfloat%2CGLfloat"
+    title="draw(self: ScrollRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#draw2stage.e%2CScrollRef%2CGLfloat%2CGLfloat"
+    title="draw2stage(self: ScrollRef; w, h: GLfloat)"><wbr />draw2stage<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#scrollBy.e%2CScrollRef%2Cfloat%2Cfloat"
+    title="scrollBy(self: ScrollRef; x, y: float)"><wbr />scroll<wbr />By<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#scrollTo.e%2CScrollRef%2Cfloat%2Cfloat"
+    title="scrollTo(self: ScrollRef; x, y: float)"><wbr />scroll<wbr />To<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#handle.e%2CScrollRef%2CInputEvent%2CNodeRef"
+    title="handle(self: ScrollRef; event: InputEvent; mouse_on: var NodeRef)"><wbr />handle<span class="attachedType">ScrollRef</span></a></li>
 
   </ul>
 </li>
@@ -181,8 +179,8 @@ function main() {
 
 
 </dd>
-<a id="ScrollPtr"></a>
-<dt><pre><a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="scroll.html#ScrollObj"><span class="Identifier">ScrollObj</span></a></pre></dt>
+<a id="ScrollRef"></a>
+<dt><pre><a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="scroll.html#ScrollObj"><span class="Identifier">ScrollObj</span></a></pre></dt>
 <dd>
 
 
@@ -193,35 +191,17 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="Scroll,string,ScrollObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Scroll%2Cstring%2CScrollObj"><span class="Identifier">Scroll</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="scroll.html#ScrollObj"><span class="Identifier">ScrollObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="Scroll,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#Scroll%2Cstring"><span class="Identifier">Scroll</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;Scroll&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Creates a new Scroll pointer.</p>
+<p>Creates a new Scroll.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
-<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ScrollObj variable.</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">scobj</span><span class="Other">:</span> <span class="Identifier">ScrollObj</span>
-  <span class="Identifier">sc</span> <span class="Other">=</span> <span class="Identifier">Scroll</span><span class="Other">(</span><span class="StringLit">&quot;Scroll&quot;</span><span class="Other">,</span> <span class="Identifier">scobj</span><span class="Other">)</span></pre>
-
-</dd>
-<a id="Scroll,ScrollObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Scroll%2CScrollObj"><span class="Identifier">Scroll</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="scroll.html#ScrollObj"><span class="Identifier">ScrollObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Creates a new Scroll pointer with default name &quot;Scroll&quot;.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a ScrollObj variable.</li>
-</ul>
-
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">scobj</span><span class="Other">:</span> <span class="Identifier">ScrollObj</span>
-  <span class="Identifier">sc</span> <span class="Other">=</span> <span class="Identifier">Scroll</span><span class="Other">(</span><span class="Identifier">scobj</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">sc</span> <span class="Other">=</span> <span class="Identifier">Scroll</span><span class="Other">(</span><span class="StringLit">&quot;Scroll&quot;</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -229,8 +209,8 @@ function main() {
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
-<a id="addChild.e,ScrollPtr,NodePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#addChild.e%2CScrollPtr%2CNodePtr"><span class="Identifier">addChild</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="../nodes/node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="addChild.e,ScrollRef,NodeRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#addChild.e%2CScrollRef%2CNodeRef"><span class="Identifier">addChild</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Adds a new node in Scroll.</p>
@@ -240,16 +220,15 @@ function main() {
 
 
 </dd>
-<a id="duplicate.e,ScrollPtr,ScrollObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CScrollPtr%2CScrollObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="scroll.html#ScrollObj"><span class="Identifier">ScrollObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,ScrollRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CScrollRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Duplicates Scroll object and create a new Scroll pointer.
+Duplicates Scroll object and create a new Scroll.
 
 </dd>
-<a id="resize.e,ScrollPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CScrollPtr%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="resize.e,ScrollRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CScrollRef%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Resizes scroll.</p>
@@ -260,37 +239,37 @@ Duplicates Scroll object and create a new Scroll pointer.
 
 
 </dd>
-<a id="draw.e,ScrollPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CScrollPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+<a id="draw.e,ScrollRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CScrollRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
                                         <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="draw2stage.e,ScrollPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw2stage.e%2CScrollPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw2stage</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="draw2stage.e,ScrollRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#draw2stage.e%2CScrollRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw2stage</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="scrollBy.e,ScrollPtr,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#scrollBy.e%2CScrollPtr%2Cfloat%2Cfloat"><span class="Identifier">scrollBy</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="scrollBy.e,ScrollRef,float,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#scrollBy.e%2CScrollRef%2Cfloat%2Cfloat"><span class="Identifier">scrollBy</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Scrolls by <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>, if available.
 
 </dd>
-<a id="scrollTo.e,ScrollPtr,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#scrollTo.e%2CScrollPtr%2Cfloat%2Cfloat"><span class="Identifier">scrollTo</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="scrollTo.e,ScrollRef,float,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#scrollTo.e%2CScrollRef%2Cfloat%2Cfloat"><span class="Identifier">scrollTo</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Scrolls to <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> position.
 
 </dd>
-<a id="handle.e,ScrollPtr,InputEvent,NodePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CScrollPtr%2CInputEvent%2CNodePtr"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollPtr"><span class="Identifier">ScrollPtr</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../nodes/node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="handle.e,ScrollRef,InputEvent,NodeRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CScrollRef%2CInputEvent%2CNodeRef"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -307,7 +286,7 @@ handles user input. This uses in the <tt class="docutils literal"><span class="p
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 07:42:02 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 17:06:55 UTC</small>
       </div>
     </div>
   </div>

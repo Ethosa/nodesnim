@@ -112,44 +112,42 @@ function main() {
   filter*: ColorRef
   animation*: string
   animations*: AnimationArray[GlTextureObj]"><wbr />Animated<wbr />Sprite<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#AnimatedSpritePtr"
-    title="AnimatedSpritePtr = ptr AnimatedSpriteObj"><wbr />Animated<wbr />Sprite<wbr />Ptr<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#AnimatedSpriteRef"
+    title="AnimatedSpriteRef = ref AnimatedSpriteObj"><wbr />Animated<wbr />Sprite<wbr />Ref<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#AnimatedSprite%2Cstring%2CAnimatedSpriteObj"
-    title="AnimatedSprite(name: string; variable: var AnimatedSpriteObj): AnimatedSpritePtr"><wbr />Animated<wbr />Sprite<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#AnimatedSprite%2CAnimatedSpriteObj"
-    title="AnimatedSprite(obj: var AnimatedSpriteObj): AnimatedSpritePtr"><wbr />Animated<wbr />Sprite<span class="attachedType">AnimatedSpriteObj</span></a></li>
+      <li><a class="reference" href="#AnimatedSprite%2Cstring"
+    title="AnimatedSprite(name: string = &quot;AnimatedSprite&quot;): AnimatedSpriteRef"><wbr />Animated<wbr />Sprite<span class="attachedType">AnimatedSpriteRef</span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#draw.e%2CAnimatedSpritePtr%2CGLfloat%2CGLfloat"
-    title="draw(self: AnimatedSpritePtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CAnimatedSpritePtr%2CAnimatedSpriteObj"
-    title="duplicate(self: AnimatedSpritePtr; obj: var AnimatedSpriteObj): AnimatedSpritePtr"><wbr />duplicate<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#getGlobalMousePosition.e%2CAnimatedSpritePtr"
-    title="getGlobalMousePosition(self: AnimatedSpritePtr): Vector2Ref"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#addAnimation.e%2CAnimatedSpritePtr%2Cstring%2Cfloat"
-    title="addAnimation(self: AnimatedSpritePtr; name: string; speed: float = 2.0&apos;f32)"><wbr />add<wbr />Animation<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#addFrame.e%2CAnimatedSpritePtr%2Cstring%2CGlTextureObj"
-    title="addFrame(self: AnimatedSpritePtr; name: string; frame: GlTextureObj)"><wbr />add<wbr />Frame<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#removeAnimation.e%2CAnimatedSpritePtr%2Cstring"
-    title="removeAnimation(self: AnimatedSpritePtr; name: string)"><wbr />remove<wbr />Animation<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#pause.e%2CAnimatedSpritePtr"
-    title="pause(self: AnimatedSpritePtr)"><wbr />pause<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#play.e%2CAnimatedSpritePtr%2Cstring%2Cbool"
-    title="play(self: AnimatedSpritePtr; name: string = &quot;&quot;; backward: bool = false)"><wbr />play<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#resume.e%2CAnimatedSpritePtr"
-    title="resume(self: AnimatedSpritePtr)"><wbr />resume<span class="attachedType">AnimatedSpritePtr</span></a></li>
-  <li><a class="reference" href="#setSpeed.e%2CAnimatedSpritePtr%2Cstring%2Cfloat"
-    title="setSpeed(self: AnimatedSpritePtr; name: string = &quot;&quot;; speed: float = 2.0&apos;f32)"><wbr />set<wbr />Speed<span class="attachedType">AnimatedSpritePtr</span></a></li>
+      <li><a class="reference" href="#draw.e%2CAnimatedSpriteRef%2CGLfloat%2CGLfloat"
+    title="draw(self: AnimatedSpriteRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CAnimatedSpriteRef"
+    title="duplicate(self: AnimatedSpriteRef): AnimatedSpriteRef"><wbr />duplicate<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#getGlobalMousePosition.e%2CAnimatedSpriteRef"
+    title="getGlobalMousePosition(self: AnimatedSpriteRef): Vector2Ref"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#addAnimation.e%2CAnimatedSpriteRef%2Cstring%2Cfloat"
+    title="addAnimation(self: AnimatedSpriteRef; name: string; speed: float = 2.0&apos;f32)"><wbr />add<wbr />Animation<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#addFrame.e%2CAnimatedSpriteRef%2Cstring%2CGlTextureObj"
+    title="addFrame(self: AnimatedSpriteRef; name: string; frame: GlTextureObj)"><wbr />add<wbr />Frame<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#removeAnimation.e%2CAnimatedSpriteRef%2Cstring"
+    title="removeAnimation(self: AnimatedSpriteRef; name: string)"><wbr />remove<wbr />Animation<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#pause.e%2CAnimatedSpriteRef"
+    title="pause(self: AnimatedSpriteRef)"><wbr />pause<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#play.e%2CAnimatedSpriteRef%2Cstring%2Cbool"
+    title="play(self: AnimatedSpriteRef; name: string = &quot;&quot;; backward: bool = false)"><wbr />play<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#resume.e%2CAnimatedSpriteRef"
+    title="resume(self: AnimatedSpriteRef)"><wbr />resume<span class="attachedType">AnimatedSpriteRef</span></a></li>
+  <li><a class="reference" href="#setSpeed.e%2CAnimatedSpriteRef%2Cstring%2Cfloat"
+    title="setSpeed(self: AnimatedSpriteRef; name: string = &quot;&quot;; speed: float = 2.0&apos;f32)"><wbr />set<wbr />Speed<span class="attachedType">AnimatedSpriteRef</span></a></li>
 
   </ul>
 </li>
@@ -181,8 +179,8 @@ function main() {
 
 
 </dd>
-<a id="AnimatedSpritePtr"></a>
-<dt><pre><a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="animated_sprite.html#AnimatedSpriteObj"><span class="Identifier">AnimatedSpriteObj</span></a></pre></dt>
+<a id="AnimatedSpriteRef"></a>
+<dt><pre><a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="animated_sprite.html#AnimatedSpriteObj"><span class="Identifier">AnimatedSpriteObj</span></a></pre></dt>
 <dd>
 
 
@@ -193,37 +191,18 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="AnimatedSprite,string,AnimatedSpriteObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#AnimatedSprite%2Cstring%2CAnimatedSpriteObj"><span class="Identifier">AnimatedSprite</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="animated_sprite.html#AnimatedSpriteObj"><span class="Identifier">AnimatedSpriteObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="AnimatedSprite,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#AnimatedSprite%2Cstring"><span class="Identifier">AnimatedSprite</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;AnimatedSprite&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Creates a new AnimatedSprite pointer.</p>
+<p>Creates a new AnimatedSprite.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
-<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a AnimatedSpriteObj variable.</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">node_obj</span><span class="Other">:</span> <span class="Identifier">AnimatedSpriteObj</span>
-  <span class="Identifier">node</span> <span class="Other">=</span> <span class="Identifier">AnimatedSprite</span><span class="Other">(</span><span class="StringLit">&quot;AnimatedSprite&quot;</span><span class="Other">,</span> <span class="Identifier">node_obj</span><span class="Other">)</span></pre>
-
-</dd>
-<a id="AnimatedSprite,AnimatedSpriteObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#AnimatedSprite%2CAnimatedSpriteObj"><span class="Identifier">AnimatedSprite</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="animated_sprite.html#AnimatedSpriteObj"><span class="Identifier">AnimatedSpriteObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Creates a new AnimatedSprite pointer with default node name &quot;AnimatedSprite&quot;.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a AnimatedSpriteObj variable.</li>
-</ul>
-
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">node_obj</span><span class="Other">:</span> <span class="Identifier">AnimatedSpriteObj</span>
-  <span class="Identifier">node</span> <span class="Other">=</span> <span class="Identifier">AnimatedSprite</span><span class="Other">(</span><span class="Identifier">node_obj</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">node</span> <span class="Other">=</span> <span class="Identifier">AnimatedSprite</span><span class="Other">(</span><span class="StringLit">&quot;AnimatedSprite&quot;</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -231,31 +210,31 @@ function main() {
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
-<a id="draw.e,AnimatedSpritePtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CAnimatedSpritePtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="draw.e,AnimatedSpriteRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CAnimatedSpriteRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="duplicate.e,AnimatedSpritePtr,AnimatedSpriteObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CAnimatedSpritePtr%2CAnimatedSpriteObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="animated_sprite.html#AnimatedSpriteObj"><span class="Identifier">AnimatedSpriteObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,AnimatedSpriteRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CAnimatedSpriteRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Duplicates AnimatedSprite object and create a new AnimatedSprite pointer.
+Duplicates AnimatedSprite object and create a new AnimatedSprite.
 
 </dd>
-<a id="getGlobalMousePosition.e,AnimatedSpritePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getGlobalMousePosition.e%2CAnimatedSpritePtr"><span class="Identifier">getGlobalMousePosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span>
+<a id="getGlobalMousePosition.e,AnimatedSpriteRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getGlobalMousePosition.e%2CAnimatedSpriteRef"><span class="Identifier">getGlobalMousePosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns mouse position.
 
 </dd>
-<a id="addAnimation.e,AnimatedSpritePtr,string,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#addAnimation.e%2CAnimatedSpritePtr%2Cstring%2Cfloat"><span class="Identifier">addAnimation</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">speed</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">2.0'f32</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="addAnimation.e,AnimatedSpriteRef,string,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#addAnimation.e%2CAnimatedSpriteRef%2Cstring%2Cfloat"><span class="Identifier">addAnimation</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">speed</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">2.0'f32</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -267,8 +246,8 @@ Returns mouse position.
 
 
 </dd>
-<a id="addFrame.e,AnimatedSpritePtr,string,GlTextureObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#addFrame.e%2CAnimatedSpritePtr%2Cstring%2CGlTextureObj"><span class="Identifier">addFrame</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">frame</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="addFrame.e,AnimatedSpriteRef,string,GlTextureObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#addFrame.e%2CAnimatedSpriteRef%2Cstring%2CGlTextureObj"><span class="Identifier">addFrame</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">frame</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -279,8 +258,8 @@ Returns mouse position.
 
 
 </dd>
-<a id="removeAnimation.e,AnimatedSpritePtr,string"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#removeAnimation.e%2CAnimatedSpritePtr%2Cstring"><span class="Identifier">removeAnimation</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="removeAnimation.e,AnimatedSpriteRef,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#removeAnimation.e%2CAnimatedSpriteRef%2Cstring"><span class="Identifier">removeAnimation</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -291,15 +270,15 @@ Returns mouse position.
 
 
 </dd>
-<a id="pause.e,AnimatedSpritePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#pause.e%2CAnimatedSpritePtr"><span class="Identifier">pause</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="pause.e,AnimatedSpriteRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#pause.e%2CAnimatedSpriteRef"><span class="Identifier">pause</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Stops animation.
 
 </dd>
-<a id="play.e,AnimatedSpritePtr,string,bool"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#play.e%2CAnimatedSpritePtr%2Cstring%2Cbool"><span class="Identifier">play</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">backward</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="play.e,AnimatedSpriteRef,string,bool"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#play.e%2CAnimatedSpriteRef%2Cstring%2Cbool"><span class="Identifier">play</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">backward</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -311,15 +290,15 @@ Stops animation.
 
 
 </dd>
-<a id="resume.e,AnimatedSpritePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#resume.e%2CAnimatedSpritePtr"><span class="Identifier">resume</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="resume.e,AnimatedSpriteRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#resume.e%2CAnimatedSpriteRef"><span class="Identifier">resume</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Resumes animation.
 
 </dd>
-<a id="setSpeed.e,AnimatedSpritePtr,string,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setSpeed.e%2CAnimatedSpritePtr%2Cstring%2Cfloat"><span class="Identifier">setSpeed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpritePtr"><span class="Identifier">AnimatedSpritePtr</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">speed</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">2.0'f32</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+<a id="setSpeed.e,AnimatedSpriteRef,string,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setSpeed.e%2CAnimatedSpriteRef%2Cstring%2Cfloat"><span class="Identifier">setSpeed</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animated_sprite.html#AnimatedSpriteRef"><span class="Identifier">AnimatedSpriteRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;&quot;</span><span class="Other">;</span> <span class="Identifier">speed</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">2.0'f32</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -341,7 +320,7 @@ Resumes animation.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 07:42:25 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 17:07:17 UTC</small>
       </div>
     </div>
   </div>

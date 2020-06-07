@@ -1,9 +1,8 @@
 RichLabelObj	nodesnim/nodescontrol/rich_label.html#RichLabelObj	rich_label: RichLabelObj	
-RichLabelPtr	nodesnim/nodescontrol/rich_label.html#RichLabelPtr	rich_label: RichLabelPtr	
-RichLabel	nodesnim/nodescontrol/rich_label.html#RichLabel,string,RichLabelObj	rich_label: RichLabel(name: string; variable: var RichLabelObj): RichLabelPtr	
-RichLabel	nodesnim/nodescontrol/rich_label.html#RichLabel,RichLabelObj	rich_label: RichLabel(obj: var RichLabelObj): RichLabelPtr	
-draw	nodesnim/nodescontrol/rich_label.html#draw.e,RichLabelPtr,GLfloat,GLfloat	rich_label: draw(self: RichLabelPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/rich_label.html#duplicate.e,RichLabelPtr,RichLabelObj	rich_label: duplicate(self: RichLabelPtr; obj: var RichLabelObj): RichLabelPtr	
-setTextAlign	nodesnim/nodescontrol/rich_label.html#setTextAlign.e,RichLabelPtr,AnchorRef	rich_label: setTextAlign(self: RichLabelPtr; align: AnchorRef)	
-setTextAlign	nodesnim/nodescontrol/rich_label.html#setTextAlign.e,RichLabelPtr,float,float,float,float	rich_label: setTextAlign(self: RichLabelPtr; x1, y1, x2, y2: float)	
-setText	nodesnim/nodescontrol/rich_label.html#setText.e,RichLabelPtr,ColorTextRef	rich_label: setText(self: RichLabelPtr; value: ColorTextRef)	
+RichLabelRef	nodesnim/nodescontrol/rich_label.html#RichLabelRef	rich_label: RichLabelRef	
+RichLabel	nodesnim/nodescontrol/rich_label.html#RichLabel,string	rich_label: RichLabel(name: string = &quot;Richlabel&quot;): RichLabelRef	
+draw	nodesnim/nodescontrol/rich_label.html#draw.e,RichLabelRef,GLfloat,GLfloat	rich_label: draw(self: RichLabelRef; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/rich_label.html#duplicate.e,RichLabelRef	rich_label: duplicate(self: RichLabelRef): RichLabelRef	
+setTextAlign	nodesnim/nodescontrol/rich_label.html#setTextAlign.e,RichLabelRef,AnchorRef	rich_label: setTextAlign(self: RichLabelRef; align: AnchorRef)	
+setTextAlign	nodesnim/nodescontrol/rich_label.html#setTextAlign.e,RichLabelRef,float,float,float,float	rich_label: setTextAlign(self: RichLabelRef; x1, y1, x2, y2: float)	
+setText	nodesnim/nodescontrol/rich_label.html#setText.e,RichLabelRef,ColorTextRef	rich_label: setText(self: RichLabelRef; value: ColorTextRef)	

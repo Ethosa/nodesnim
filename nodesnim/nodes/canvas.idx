@@ -1,14 +1,13 @@
 DrawCommandType	nodesnim/nodes/canvas.html#DrawCommandType	canvas: DrawCommandType	
 DrawCommand	nodesnim/nodes/canvas.html#DrawCommand	canvas: DrawCommand	
 CanvasObj	nodesnim/nodes/canvas.html#CanvasObj	canvas: CanvasObj	
-CanvasPtr	nodesnim/nodes/canvas.html#CanvasPtr	canvas: CanvasPtr	
-Canvas	nodesnim/nodes/canvas.html#Canvas,string,CanvasObj	canvas: Canvas(name: string; variable: var CanvasObj): CanvasPtr	
-Canvas	nodesnim/nodes/canvas.html#Canvas,CanvasObj	canvas: Canvas(variable: var CanvasObj): CanvasPtr	
-draw	nodesnim/nodes/canvas.html#draw.e,CanvasPtr,GLfloat,GLfloat	canvas: draw(canvas: CanvasPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodes/canvas.html#duplicate.e,CanvasPtr,CanvasObj	canvas: duplicate(self: CanvasPtr; obj: var CanvasObj): CanvasPtr	
-circle	nodesnim/nodes/canvas.html#circle.e,CanvasPtr,GLfloat,GLfloat,GLfloat,ColorRef,int	canvas: circle(canvas: CanvasPtr; x, y, radius: GLfloat; color: ColorRef; quality: int = 100)	
-point	nodesnim/nodes/canvas.html#point.e,CanvasPtr,GLfloat,GLfloat,ColorRef	canvas: point(canvas: CanvasPtr; x, y: GLfloat; color: ColorRef)	
-line	nodesnim/nodes/canvas.html#line.e,CanvasPtr,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: line(canvas: CanvasPtr; x1, y1, x2, y2: GLfloat; color: ColorRef)	
-rect	nodesnim/nodes/canvas.html#rect.e,CanvasPtr,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: rect(canvas: CanvasPtr; x1, y1, x2, y2: GLfloat; color: ColorRef)	
-fill	nodesnim/nodes/canvas.html#fill.e,CanvasPtr,ColorRef	canvas: fill(canvas: CanvasPtr; color: ColorRef)	
-resize	nodesnim/nodes/canvas.html#resize.e,CanvasPtr,GLfloat,GLfloat	canvas: resize(canvas: CanvasPtr; w, h: GLfloat)	
+CanvasRef	nodesnim/nodes/canvas.html#CanvasRef	canvas: CanvasRef	
+Canvas	nodesnim/nodes/canvas.html#Canvas,string	canvas: Canvas(name: string = &quot;Canvas&quot;): CanvasRef	
+draw	nodesnim/nodes/canvas.html#draw.e,CanvasRef,GLfloat,GLfloat	canvas: draw(canvas: CanvasRef; w, h: GLfloat)	
+duplicate	nodesnim/nodes/canvas.html#duplicate.e,CanvasRef	canvas: duplicate(self: CanvasRef): CanvasRef	
+circle	nodesnim/nodes/canvas.html#circle.e,CanvasRef,GLfloat,GLfloat,GLfloat,ColorRef,int	canvas: circle(canvas: CanvasRef; x, y, radius: GLfloat; color: ColorRef; quality: int = 100)	
+point	nodesnim/nodes/canvas.html#point.e,CanvasRef,GLfloat,GLfloat,ColorRef	canvas: point(canvas: CanvasRef; x, y: GLfloat; color: ColorRef)	
+line	nodesnim/nodes/canvas.html#line.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: line(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
+rect	nodesnim/nodes/canvas.html#rect.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
+fill	nodesnim/nodes/canvas.html#fill.e,CanvasRef,ColorRef	canvas: fill(canvas: CanvasRef; color: ColorRef)	
+resize	nodesnim/nodes/canvas.html#resize.e,CanvasRef,GLfloat,GLfloat	canvas: resize(canvas: CanvasRef; w, h: GLfloat)	

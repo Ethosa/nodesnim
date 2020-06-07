@@ -107,7 +107,7 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#RichEditTextObj"
-    title="RichEditTextObj = object of ControlPtr
+    title="RichEditTextObj = object of ControlRef
   blit_caret*: bool
   blit_speed*: float
   blit_time*: float
@@ -120,48 +120,46 @@ function main() {
   caret_color*: ColorRef
   text_align*: AnchorRef       ## Text align.
   on_edit*: proc (pressed_key: string): void ## This called when user press any key."><wbr />Rich<wbr />Edit<wbr />Text<wbr />Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#RichEditTextPtr"
-    title="RichEditTextPtr = ptr RichEditTextObj"><wbr />Rich<wbr />Edit<wbr />Text<wbr />Ptr<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#RichEditTextRef"
+    title="RichEditTextRef = ref RichEditTextObj"><wbr />Rich<wbr />Edit<wbr />Text<wbr />Ref<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#RichEditText%2Cstring%2CRichEditTextObj"
-    title="RichEditText(name: string; variable: var RichEditTextObj): RichEditTextPtr"><wbr />Rich<wbr />Edit<wbr />Text<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#RichEditText%2CRichEditTextObj"
-    title="RichEditText(obj: var RichEditTextObj): RichEditTextPtr"><wbr />Rich<wbr />Edit<wbr />Text<span class="attachedType">RichEditTextObj</span></a></li>
+      <li><a class="reference" href="#RichEditText%2Cstring"
+    title="RichEditText(name: string = &quot;RichEditText&quot;): RichEditTextRef"><wbr />Rich<wbr />Edit<wbr />Text<span class="attachedType">RichEditTextRef</span></a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#getTextSize.e%2CRichEditTextPtr"
-    title="getTextSize(self: RichEditTextPtr): Vector2Ref"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#getLine.e%2CRichEditTextPtr"
-    title="getLine(self: RichEditTextPtr): int"><wbr />get<wbr />Line<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#getCharPositionUnderMouse.e%2CRichEditTextPtr"
-    title="getCharPositionUnderMouse(self: RichEditTextPtr): int"><wbr />get<wbr />Char<wbr />Position<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#getCharUnderMouse.e%2CRichEditTextPtr"
-    title="getCharUnderMouse(self: RichEditTextPtr): ColorCharRef"><wbr />get<wbr />Char<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#getWordPositionUnderMouse.e%2CRichEditTextPtr"
-    title="getWordPositionUnderMouse(self: RichEditTextPtr): tuple[startpos, endpos: int]"><wbr />get<wbr />Word<wbr />Position<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#getWordUnderMouse.e%2CRichEditTextPtr"
-    title="getWordUnderMouse(self: RichEditTextPtr): ColorTextRef"><wbr />get<wbr />Word<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#draw.e%2CRichEditTextPtr%2CGLfloat%2CGLfloat"
-    title="draw(self: RichEditTextPtr; w, h: GLfloat)"><wbr />draw<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#duplicate.e%2CRichEditTextPtr%2CRichEditTextObj"
-    title="duplicate(self: RichEditTextPtr; obj: var RichEditTextObj): RichEditTextPtr"><wbr />duplicate<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#handle.e%2CRichEditTextPtr%2CInputEvent%2CNodePtr"
-    title="handle(self: RichEditTextPtr; event: InputEvent; mouse_on: var NodePtr)"><wbr />handle<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#setTextAlign.e%2CRichEditTextPtr%2CAnchorRef"
-    title="setTextAlign(self: RichEditTextPtr; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#setTextAlign.e%2CRichEditTextPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="setTextAlign(self: RichEditTextPtr; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">RichEditTextPtr</span></a></li>
-  <li><a class="reference" href="#setText.e%2CRichEditTextPtr%2CColorTextRef"
-    title="setText(self: RichEditTextPtr; value: ColorTextRef)"><wbr />set<wbr />Text<span class="attachedType">RichEditTextPtr</span></a></li>
+      <li><a class="reference" href="#getTextSize.e%2CRichEditTextRef"
+    title="getTextSize(self: RichEditTextRef): Vector2Ref"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#getLine.e%2CRichEditTextRef"
+    title="getLine(self: RichEditTextRef): int"><wbr />get<wbr />Line<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#getCharPositionUnderMouse.e%2CRichEditTextRef"
+    title="getCharPositionUnderMouse(self: RichEditTextRef): int"><wbr />get<wbr />Char<wbr />Position<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#getCharUnderMouse.e%2CRichEditTextRef"
+    title="getCharUnderMouse(self: RichEditTextRef): ColorCharRef"><wbr />get<wbr />Char<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#getWordPositionUnderMouse.e%2CRichEditTextRef"
+    title="getWordPositionUnderMouse(self: RichEditTextRef): tuple[startpos, endpos: int]"><wbr />get<wbr />Word<wbr />Position<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#getWordUnderMouse.e%2CRichEditTextRef"
+    title="getWordUnderMouse(self: RichEditTextRef): ColorTextRef"><wbr />get<wbr />Word<wbr />Under<wbr />Mouse<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#draw.e%2CRichEditTextRef%2CGLfloat%2CGLfloat"
+    title="draw(self: RichEditTextRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#duplicate.e%2CRichEditTextRef"
+    title="duplicate(self: RichEditTextRef): RichEditTextRef"><wbr />duplicate<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#handle.e%2CRichEditTextRef%2CInputEvent%2CNodeRef"
+    title="handle(self: RichEditTextRef; event: InputEvent; mouse_on: var NodeRef)"><wbr />handle<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#setTextAlign.e%2CRichEditTextRef%2CAnchorRef"
+    title="setTextAlign(self: RichEditTextRef; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#setTextAlign.e%2CRichEditTextRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
+    title="setTextAlign(self: RichEditTextRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">RichEditTextRef</span></a></li>
+  <li><a class="reference" href="#setText.e%2CRichEditTextRef%2CColorTextRef"
+    title="setText(self: RichEditTextRef; value: ColorTextRef)"><wbr />set<wbr />Text<span class="attachedType">RichEditTextRef</span></a></li>
 
   </ul>
 </li>
@@ -182,7 +180,7 @@ function main() {
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <a id="RichEditTextObj"></a>
-<dt><pre><a href="rich_edit_text.html#RichEditTextObj"><span class="Identifier">RichEditTextObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="control.html#ControlPtr"><span class="Identifier">ControlPtr</span></a>
+<dt><pre><a href="rich_edit_text.html#RichEditTextObj"><span class="Identifier">RichEditTextObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a>
   <span class="Identifier">blit_caret</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">blit_speed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
   <span class="Identifier">blit_time</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
@@ -201,8 +199,8 @@ function main() {
 
 
 </dd>
-<a id="RichEditTextPtr"></a>
-<dt><pre><a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a> <span class="Other">=</span> <span class="Keyword">ptr</span> <a href="rich_edit_text.html#RichEditTextObj"><span class="Identifier">RichEditTextObj</span></a></pre></dt>
+<a id="RichEditTextRef"></a>
+<dt><pre><a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="rich_edit_text.html#RichEditTextObj"><span class="Identifier">RichEditTextObj</span></a></pre></dt>
 <dd>
 
 
@@ -213,37 +211,17 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="RichEditText,string,RichEditTextObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#RichEditText%2Cstring%2CRichEditTextObj"><span class="Identifier">RichEditText</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">variable</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="rich_edit_text.html#RichEditTextObj"><span class="Identifier">RichEditTextObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="RichEditText,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#RichEditText%2Cstring"><span class="Identifier">RichEditText</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;RichEditText&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Creates a new RichEditText pointer.</p>
+<p>Creates a new RichEditText.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
-<li><tt class="docutils literal"><span class="pre">variable</span></tt> is a RichEditTextObj variable.</li>
 </ul>
 
 <p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">textobj</span><span class="Other">:</span> <span class="Identifier">RichEditTextObj</span>
-  <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">RichEditText</span><span class="Other">(</span><span class="StringLit">&quot;RichEditText&quot;</span><span class="Other">,</span> <span class="Identifier">textobj</span><span class="Other">)</span></pre>
-
-</dd>
-<a id="RichEditText,RichEditTextObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#RichEditText%2CRichEditTextObj"><span class="Identifier">RichEditText</span></a><span class="Other">(</span><span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="rich_edit_text.html#RichEditTextObj"><span class="Identifier">RichEditTextObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Creates a new RichEditText pointer with default node name &quot;RichEditText&quot;.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">variable</span></tt> is a RichEditTextObj variable.</li>
-</ul>
-
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">textobj</span><span class="Other">:</span> <span class="Identifier">RichEditTextObj</span>
-  <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">RichEditText</span><span class="Other">(</span><span class="Identifier">textobj</span><span class="Other">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">RichEditText</span><span class="Other">(</span><span class="StringLit">&quot;RichEditText&quot;</span><span class="Other">)</span></pre>
 
 </dd>
 
@@ -251,94 +229,93 @@ function main() {
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
-<a id="getTextSize.e,RichEditTextPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getTextSize.e%2CRichEditTextPtr"><span class="Identifier">getTextSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="getTextSize.e,RichEditTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getTextSize.e%2CRichEditTextRef"><span class="Identifier">getTextSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns text size.
 
 </dd>
-<a id="getLine.e,RichEditTextPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getLine.e%2CRichEditTextPtr"><span class="Identifier">getLine</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="getLine.e,RichEditTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getLine.e%2CRichEditTextRef"><span class="Identifier">getLine</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns current caret line.
 
 </dd>
-<a id="getCharPositionUnderMouse.e,RichEditTextPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getCharPositionUnderMouse.e%2CRichEditTextPtr"><span class="Identifier">getCharPositionUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="getCharPositionUnderMouse.e,RichEditTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getCharPositionUnderMouse.e%2CRichEditTextRef"><span class="Identifier">getCharPositionUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns char position under mouse.
 
 </dd>
-<a id="getCharUnderMouse.e,RichEditTextPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getCharUnderMouse.e%2CRichEditTextPtr"><span class="Identifier">getCharUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/color_text.html#ColorCharRef"><span class="Identifier">ColorCharRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="getCharUnderMouse.e,RichEditTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getCharUnderMouse.e%2CRichEditTextRef"><span class="Identifier">getCharUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/color_text.html#ColorCharRef"><span class="Identifier">ColorCharRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns char under mouse
 
 </dd>
-<a id="getWordPositionUnderMouse.e,RichEditTextPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getWordPositionUnderMouse.e%2CRichEditTextPtr"><span class="Identifier">getWordPositionUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
+<a id="getWordPositionUnderMouse.e,RichEditTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getWordPositionUnderMouse.e%2CRichEditTextRef"><span class="Identifier">getWordPositionUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span>
     <span class="Identifier">startpos</span><span class="Other">,</span> <span class="Identifier">endpos</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns words under mouse. Returns (-1, -1), if under mouse no founds words.
 
 </dd>
-<a id="getWordUnderMouse.e,RichEditTextPtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getWordUnderMouse.e%2CRichEditTextPtr"><span class="Identifier">getWordUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="getWordUnderMouse.e,RichEditTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getWordUnderMouse.e%2CRichEditTextRef"><span class="Identifier">getWordUnderMouse</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns words under mouse.
 
 </dd>
-<a id="draw.e,RichEditTextPtr,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CRichEditTextPtr%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+<a id="draw.e,RichEditTextRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CRichEditTextRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="duplicate.e,RichEditTextPtr,RichEditTextObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CRichEditTextPtr%2CRichEditTextObj"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="rich_edit_text.html#RichEditTextObj"><span class="Identifier">RichEditTextObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="duplicate.e,RichEditTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CRichEditTextRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Duplicates RichEditText and create a new RichEditText pointer.
+Duplicates RichEditText and create a new RichEditText.
 
 </dd>
-<a id="handle.e,RichEditTextPtr,InputEvent,NodePtr"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CRichEditTextPtr%2CInputEvent%2CNodePtr"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../nodes/node.html#NodePtr"><span class="Identifier">NodePtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="handle.e,RichEditTextRef,InputEvent,NodeRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CRichEditTextRef%2CInputEvent%2CNodeRef"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Handles user input. This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="setTextAlign.e,RichEditTextPtr,AnchorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CRichEditTextPtr%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="setTextAlign.e,RichEditTextRef,AnchorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CRichEditTextRef%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes text align.
 
 </dd>
-<a id="setTextAlign.e,RichEditTextPtr,float,float,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CRichEditTextPtr%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="setTextAlign.e,RichEditTextRef,float,float,float,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CRichEditTextRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes text align.
 
 </dd>
-<a id="setText.e,RichEditTextPtr,ColorTextRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CRichEditTextPtr%2CColorTextRef"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextPtr"><span class="Identifier">RichEditTextPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="../core/color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setText.e,RichEditTextRef,ColorTextRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CRichEditTextRef%2CColorTextRef"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rich_edit_text.html#RichEditTextRef"><span class="Identifier">RichEditTextRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="../core/color_text.html#ColorTextRef"><span class="Identifier">ColorTextRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes RichEditText text.
@@ -354,7 +331,7 @@ Changes RichEditText text.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 07:42:01 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 17:06:54 UTC</small>
       </div>
     </div>
   </div>

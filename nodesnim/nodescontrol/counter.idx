@@ -1,10 +1,9 @@
 CounterObj	nodesnim/nodescontrol/counter.html#CounterObj	counter: CounterObj	
-CounterPtr	nodesnim/nodescontrol/counter.html#CounterPtr	counter: CounterPtr	
-Counter	nodesnim/nodescontrol/counter.html#Counter,string,CounterObj	counter: Counter(name: string; variable: var CounterObj): CounterPtr	
-Counter	nodesnim/nodescontrol/counter.html#Counter,CounterObj	counter: Counter(obj: var CounterObj): CounterPtr	
-changeValue	nodesnim/nodescontrol/counter.html#changeValue.e,CounterPtr,float	counter: changeValue(self: CounterPtr; value: float)	
-draw	nodesnim/nodescontrol/counter.html#draw.e,CounterPtr,GLfloat,GLfloat	counter: draw(self: CounterPtr; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/counter.html#duplicate.e,CounterPtr,CounterObj	counter: duplicate(self: CounterPtr; obj: var CounterObj): CounterPtr	
-handle	nodesnim/nodescontrol/counter.html#handle.e,CounterPtr,InputEvent,NodePtr	counter: handle(self: CounterPtr; event: InputEvent; mouse_on: var NodePtr)	
-setMaxValue	nodesnim/nodescontrol/counter.html#setMaxValue.e,CounterPtr,float	counter: setMaxValue(self: CounterPtr; value: float)	
-setMinValue	nodesnim/nodescontrol/counter.html#setMinValue.e,CounterPtr,float	counter: setMinValue(self: CounterPtr; value: float)	
+CounterRef	nodesnim/nodescontrol/counter.html#CounterRef	counter: CounterRef	
+Counter	nodesnim/nodescontrol/counter.html#Counter,string	counter: Counter(name: string = &quot;Counter&quot;): CounterRef	
+changeValue	nodesnim/nodescontrol/counter.html#changeValue.e,CounterRef,float	counter: changeValue(self: CounterRef; value: float)	
+draw	nodesnim/nodescontrol/counter.html#draw.e,CounterRef,GLfloat,GLfloat	counter: draw(self: CounterRef; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/counter.html#duplicate.e,CounterRef	counter: duplicate(self: CounterRef): CounterRef	
+handle	nodesnim/nodescontrol/counter.html#handle.e,CounterRef,InputEvent,NodeRef	counter: handle(self: CounterRef; event: InputEvent; mouse_on: var NodeRef)	
+setMaxValue	nodesnim/nodescontrol/counter.html#setMaxValue.e,CounterRef,float	counter: setMaxValue(self: CounterRef; value: float)	
+setMinValue	nodesnim/nodescontrol/counter.html#setMinValue.e,CounterRef,float	counter: setMinValue(self: CounterRef; value: float)	
