@@ -1,4 +1,5 @@
 LibName	nodesnim/thirdparty/sdl2.html#LibName	sdl2: LibName	
+csize_t_const	nodesnim/thirdparty/sdl2.html#csize_t_const	sdl2: csize_t_const	
 Scancode	nodesnim/thirdparty/sdl2.html#Scancode	sdl2: Scancode	
 K_UNKNOWN	nodesnim/thirdparty/sdl2.html#K_UNKNOWN	sdl2: K_UNKNOWN	
 K_BACKSPACE	nodesnim/thirdparty/sdl2.html#K_BACKSPACE	sdl2: K_BACKSPACE	
@@ -675,13 +676,13 @@ readLE32	nodesnim/thirdparty/sdl2.html#readLE32,RWopsPtr	sdl2: readLE32(src: RWo
 readBE32	nodesnim/thirdparty/sdl2.html#readBE32,RWopsPtr	sdl2: readBE32(src: RWopsPtr): uint32	
 readLE64	nodesnim/thirdparty/sdl2.html#readLE64,RWopsPtr	sdl2: readLE64(src: RWopsPtr): uint64	
 readBE64	nodesnim/thirdparty/sdl2.html#readBE64,RWopsPtr	sdl2: readBE64(src: RWopsPtr): uint64	
-writeU8	nodesnim/thirdparty/sdl2.html#writeU8,RWopsPtr,uint8	sdl2: writeU8(dst: RWopsPtr; value: uint8): csize_t	
-writeLE16	nodesnim/thirdparty/sdl2.html#writeLE16,RWopsPtr,uint16	sdl2: writeLE16(dst: RWopsPtr; value: uint16): csize_t	
-writeBE16	nodesnim/thirdparty/sdl2.html#writeBE16,RWopsPtr,uint16	sdl2: writeBE16(dst: RWopsPtr; value: uint16): csize_t	
-writeLE32	nodesnim/thirdparty/sdl2.html#writeLE32,RWopsPtr,uint32	sdl2: writeLE32(dst: RWopsPtr; value: uint32): csize_t	
-writeBE32	nodesnim/thirdparty/sdl2.html#writeBE32,RWopsPtr,uint32	sdl2: writeBE32(dst: RWopsPtr; value: uint32): csize_t	
-writeLE64	nodesnim/thirdparty/sdl2.html#writeLE64,RWopsPtr,uint64	sdl2: writeLE64(dst: RWopsPtr; value: uint64): csize_t	
-writeBE64	nodesnim/thirdparty/sdl2.html#writeBE64,RWopsPtr,uint64	sdl2: writeBE64(dst: RWopsPtr; value: uint64): csize_t	
+writeU8	nodesnim/thirdparty/sdl2.html#writeU8,RWopsPtr,uint8	sdl2: writeU8(dst: RWopsPtr; value: uint8): csize_t_const	
+writeLE16	nodesnim/thirdparty/sdl2.html#writeLE16,RWopsPtr,uint16	sdl2: writeLE16(dst: RWopsPtr; value: uint16): csize_t_const	
+writeBE16	nodesnim/thirdparty/sdl2.html#writeBE16,RWopsPtr,uint16	sdl2: writeBE16(dst: RWopsPtr; value: uint16): csize_t_const	
+writeLE32	nodesnim/thirdparty/sdl2.html#writeLE32,RWopsPtr,uint32	sdl2: writeLE32(dst: RWopsPtr; value: uint32): csize_t_const	
+writeBE32	nodesnim/thirdparty/sdl2.html#writeBE32,RWopsPtr,uint32	sdl2: writeBE32(dst: RWopsPtr; value: uint32): csize_t_const	
+writeLE64	nodesnim/thirdparty/sdl2.html#writeLE64,RWopsPtr,uint64	sdl2: writeLE64(dst: RWopsPtr; value: uint64): csize_t_const	
+writeBE64	nodesnim/thirdparty/sdl2.html#writeBE64,RWopsPtr,uint64	sdl2: writeBE64(dst: RWopsPtr; value: uint64): csize_t_const	
 showMessageBox	nodesnim/thirdparty/sdl2.html#showMessageBox,ptr.MessageBoxData,cint	sdl2: showMessageBox(messageboxdata: ptr MessageBoxData; buttonid: var cint): cint	
 showSimpleMessageBox	nodesnim/thirdparty/sdl2.html#showSimpleMessageBox,uint32,cstring,cstring,WindowPtr	sdl2: showSimpleMessageBox(flags: uint32; title, message: cstring; window: WindowPtr): cint	
 getNumVideoDrivers	nodesnim/thirdparty/sdl2.html#getNumVideoDrivers	sdl2: getNumVideoDrivers(): cint	
@@ -863,7 +864,7 @@ setHintWithPriority	nodesnim/thirdparty/sdl2.html#setHintWithPriority,cstring,cs
 getHint	nodesnim/thirdparty/sdl2.html#getHint,cstring	sdl2: getHint(name: cstring): cstring	
 size	nodesnim/thirdparty/sdl2.html#size,RWopsPtr	sdl2: size(ctx: RWopsPtr): int64	
 seek	nodesnim/thirdparty/sdl2.html#seek,RWopsPtr,int64,cint	sdl2: seek(ctx: RWopsPtr; offset: int64; whence: cint): int64	
-read	nodesnim/thirdparty/sdl2.html#read,RWopsPtr,pointer,csize_t,csize_t	sdl2: read(ctx: RWopsPtr; `ptr`: pointer; size, maxnum: csize_t): csize_t	
-write	nodesnim/thirdparty/sdl2.html#write,RWopsPtr,pointer,csize_t,csize_t	sdl2: write(ctx: RWopsPtr; `ptr`: pointer; size, num: csize_t): csize_t	
+read	nodesnim/thirdparty/sdl2.html#read,RWopsPtr,pointer,csize_t_const,csize_t_const	sdl2: read(ctx: RWopsPtr; `ptr`: pointer; size, maxnum: csize_t_const): csize_t_const	
+write	nodesnim/thirdparty/sdl2.html#write,RWopsPtr,pointer,csize_t_const,csize_t_const	sdl2: write(ctx: RWopsPtr; `ptr`: pointer; size, num: csize_t_const): csize_t_const	
 close	nodesnim/thirdparty/sdl2.html#close,RWopsPtr	sdl2: close(ctx: RWopsPtr): cint	
 defaultEvent	nodesnim/thirdparty/sdl2.html#defaultEvent	sdl2: defaultEvent	

@@ -100,7 +100,9 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Scancode"
+      <li><a class="reference" href="#csize_t_const"
+    title="csize_t_const = csize_t"><wbr />csize_<wbr />t_<wbr />const<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#Scancode"
     title="Scancode {.size: 4.} = enum
   SDL_SCANCODE_UNKNOWN = 0, SDL_SCANCODE_A = 4, SDL_SCANCODE_B = 5, SDL_SCANCODE_C = 6,
   SDL_SCANCODE_D = 7, SDL_SCANCODE_E = 8, SDL_SCANCODE_F = 9, SDL_SCANCODE_G = 10,
@@ -599,10 +601,11 @@ function main() {
   size*: proc (context: RWopsPtr): int64 {.cdecl, tags: [], raises: [].}
   seek*: proc (context: RWopsPtr; offset: int64; whence: cint): int64 {.cdecl, tags: [],
       raises: [].}
-  read*: proc (context: RWopsPtr; destination: pointer; size, maxnum: csize_t): csize_t {.
+  read*: proc (context: RWopsPtr; destination: pointer; size, maxnum: csize_t_const): csize_t_const {.
       cdecl, tags: [ReadIOEffect], raises: [].}
-  write*: proc (context: RWopsPtr; source: pointer; size: csize_t; num: csize_t): csize_t {.
-      cdecl, tags: [WriteIOEffect], raises: [].}
+  write*: proc (context: RWopsPtr; source: pointer; size: csize_t_const;
+              num: csize_t_const): csize_t_const {.cdecl, tags: [WriteIOEffect],
+      raises: [].}
   close*: proc (context: RWopsPtr): cint {.cdecl, tags: [WriteIOEffect].}
   kind*: cint
   mem*: Mem"><wbr />RWops<span class="attachedType"></span></a></li>
@@ -1800,19 +1803,19 @@ function main() {
   <li><a class="reference" href="#readBE64%2CRWopsPtr"
     title="readBE64(src: RWopsPtr): uint64"><wbr />read<wbr />BE64<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#writeU8%2CRWopsPtr%2Cuint8"
-    title="writeU8(dst: RWopsPtr; value: uint8): csize_t"><wbr />write<wbr />U8<span class="attachedType">RWopsPtr</span></a></li>
+    title="writeU8(dst: RWopsPtr; value: uint8): csize_t_const"><wbr />write<wbr />U8<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#writeLE16%2CRWopsPtr%2Cuint16"
-    title="writeLE16(dst: RWopsPtr; value: uint16): csize_t"><wbr />write<wbr />LE16<span class="attachedType">RWopsPtr</span></a></li>
+    title="writeLE16(dst: RWopsPtr; value: uint16): csize_t_const"><wbr />write<wbr />LE16<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#writeBE16%2CRWopsPtr%2Cuint16"
-    title="writeBE16(dst: RWopsPtr; value: uint16): csize_t"><wbr />write<wbr />BE16<span class="attachedType">RWopsPtr</span></a></li>
+    title="writeBE16(dst: RWopsPtr; value: uint16): csize_t_const"><wbr />write<wbr />BE16<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#writeLE32%2CRWopsPtr%2Cuint32"
-    title="writeLE32(dst: RWopsPtr; value: uint32): csize_t"><wbr />write<wbr />LE32<span class="attachedType">RWopsPtr</span></a></li>
+    title="writeLE32(dst: RWopsPtr; value: uint32): csize_t_const"><wbr />write<wbr />LE32<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#writeBE32%2CRWopsPtr%2Cuint32"
-    title="writeBE32(dst: RWopsPtr; value: uint32): csize_t"><wbr />write<wbr />BE32<span class="attachedType">RWopsPtr</span></a></li>
+    title="writeBE32(dst: RWopsPtr; value: uint32): csize_t_const"><wbr />write<wbr />BE32<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#writeLE64%2CRWopsPtr%2Cuint64"
-    title="writeLE64(dst: RWopsPtr; value: uint64): csize_t"><wbr />write<wbr />LE64<span class="attachedType">RWopsPtr</span></a></li>
+    title="writeLE64(dst: RWopsPtr; value: uint64): csize_t_const"><wbr />write<wbr />LE64<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#writeBE64%2CRWopsPtr%2Cuint64"
-    title="writeBE64(dst: RWopsPtr; value: uint64): csize_t"><wbr />write<wbr />BE64<span class="attachedType">RWopsPtr</span></a></li>
+    title="writeBE64(dst: RWopsPtr; value: uint64): csize_t_const"><wbr />write<wbr />BE64<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#showMessageBox%2Cptr.MessageBoxData%2Ccint"
     title="showMessageBox(messageboxdata: ptr MessageBoxData; buttonid: var cint): cint"><wbr />show<wbr />Message<wbr />Box<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#showSimpleMessageBox%2Cuint32%2Ccstring%2Ccstring%2CWindowPtr"
@@ -2116,10 +2119,10 @@ function main() {
     title="size(ctx: RWopsPtr): int64"><wbr />size<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#seek%2CRWopsPtr%2Cint64%2Ccint"
     title="seek(ctx: RWopsPtr; offset: int64; whence: cint): int64"><wbr />seek<span class="attachedType">RWopsPtr</span></a></li>
-  <li><a class="reference" href="#read%2CRWopsPtr%2Cpointer%2Ccsize_t%2Ccsize_t"
-    title="read(ctx: RWopsPtr; `ptr`: pointer; size, maxnum: csize_t): csize_t"><wbr />read<span class="attachedType">RWopsPtr</span></a></li>
-  <li><a class="reference" href="#write%2CRWopsPtr%2Cpointer%2Ccsize_t%2Ccsize_t"
-    title="write(ctx: RWopsPtr; `ptr`: pointer; size, num: csize_t): csize_t"><wbr />write<span class="attachedType">RWopsPtr</span></a></li>
+  <li><a class="reference" href="#read%2CRWopsPtr%2Cpointer%2Ccsize_t_const%2Ccsize_t_const"
+    title="read(ctx: RWopsPtr; `ptr`: pointer; size, maxnum: csize_t_const): csize_t_const"><wbr />read<span class="attachedType">RWopsPtr</span></a></li>
+  <li><a class="reference" href="#write%2CRWopsPtr%2Cpointer%2Ccsize_t_const%2Ccsize_t_const"
+    title="write(ctx: RWopsPtr; `ptr`: pointer; size, num: csize_t_const): csize_t_const"><wbr />write<span class="attachedType">RWopsPtr</span></a></li>
   <li><a class="reference" href="#close%2CRWopsPtr"
     title="close(ctx: RWopsPtr): cint"><wbr />close<span class="attachedType">RWopsPtr</span></a></li>
 
@@ -2198,6 +2201,13 @@ function main() {
   <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
+<a id="csize_t_const"></a>
+<dt><pre><a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span class="Other">=</span> <span class="Identifier">csize_t</span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="Scancode"></a>
 <dt><pre><a href="sdl2.html#Scancode"><span class="Identifier">Scancode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">SDL_SCANCODE_UNKNOWN</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">SDL_SCANCODE_A</span> <span class="Other">=</span> <span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">SDL_SCANCODE_B</span> <span class="Other">=</span> <span class="DecNumber">5</span><span class="Other">,</span> <span class="Identifier">SDL_SCANCODE_C</span> <span class="Other">=</span> <span class="DecNumber">6</span><span class="Other">,</span>
@@ -3182,10 +3192,11 @@ couldnt find SDL_BlitMap ?
   <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span>
   <span class="Identifier">seek</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">offset</span><span class="Other">:</span> <span class="Identifier">int64</span><span class="Other">;</span> <span class="Identifier">whence</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int64</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
       <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span>
-  <span class="Identifier">read</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+  <span class="Identifier">read</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">destination</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
       <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span>
-  <span class="Identifier">write</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">source</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">;</span> <span class="Identifier">num</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-      <span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteIOEffect</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span>
+  <span class="Identifier">write</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">source</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a><span class="Other">;</span>
+              <span class="Identifier">num</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteIOEffect</span><span class="Other">]</span><span class="Other">,</span>
+      <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span>
   <span class="Identifier">close</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">context</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">mem</span><span class="Operator">*</span><span class="Other">:</span> <a href="sdl2.html#Mem"><span class="Identifier">Mem</span></a>
@@ -7367,49 +7378,49 @@ a default &quot;initialized&quot; Event
 
 </dd>
 <a id="writeU8,RWopsPtr,uint8"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#writeU8%2CRWopsPtr%2Cuint8"><span class="Identifier">writeU8</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteU8&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#writeU8%2CRWopsPtr%2Cuint8"><span class="Identifier">writeU8</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteU8&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="writeLE16,RWopsPtr,uint16"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#writeLE16%2CRWopsPtr%2Cuint16"><span class="Identifier">writeLE16</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE16&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#writeLE16%2CRWopsPtr%2Cuint16"><span class="Identifier">writeLE16</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE16&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="writeBE16,RWopsPtr,uint16"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#writeBE16%2CRWopsPtr%2Cuint16"><span class="Identifier">writeBE16</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE16&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#writeBE16%2CRWopsPtr%2Cuint16"><span class="Identifier">writeBE16</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE16&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="writeLE32,RWopsPtr,uint32"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#writeLE32%2CRWopsPtr%2Cuint32"><span class="Identifier">writeLE32</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE32&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#writeLE32%2CRWopsPtr%2Cuint32"><span class="Identifier">writeLE32</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE32&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="writeBE32,RWopsPtr,uint32"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#writeBE32%2CRWopsPtr%2Cuint32"><span class="Identifier">writeBE32</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE32&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#writeBE32%2CRWopsPtr%2Cuint32"><span class="Identifier">writeBE32</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE32&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="writeLE64,RWopsPtr,uint64"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#writeLE64%2CRWopsPtr%2Cuint64"><span class="Identifier">writeLE64</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE64&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#writeLE64%2CRWopsPtr%2Cuint64"><span class="Identifier">writeLE64</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteLE64&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="writeBE64,RWopsPtr,uint64"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#writeBE64%2CRWopsPtr%2Cuint64"><span class="Identifier">writeBE64</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE64&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#writeBE64%2CRWopsPtr%2Cuint64"><span class="Identifier">writeBE64</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint64</span><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_WriteBE64&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -8514,17 +8525,17 @@ Calculate a 256 entry gamma ramp for a gamma value.
 
 
 </dd>
-<a id="read,RWopsPtr,pointer,csize_t,csize_t"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#read%2CRWopsPtr%2Cpointer%2Ccsize_t%2Ccsize_t"><span class="Identifier">read</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Other">`</span><span class="Keyword">ptr</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="read,RWopsPtr,pointer,csize_t_const,csize_t_const"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#read%2CRWopsPtr%2Cpointer%2Ccsize_t_const%2Ccsize_t_const"><span class="Identifier">read</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Other">`</span><span class="Keyword">ptr</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">maxnum</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="write,RWopsPtr,pointer,csize_t,csize_t"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#write%2CRWopsPtr%2Cpointer%2Ccsize_t%2Ccsize_t"><span class="Identifier">write</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Other">`</span><span class="Keyword">ptr</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">num</span><span class="Other">:</span> <span class="Identifier">csize_t</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">csize_t</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="write,RWopsPtr,pointer,csize_t_const,csize_t_const"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#write%2CRWopsPtr%2Cpointer%2Ccsize_t_const%2Ccsize_t_const"><span class="Identifier">write</span></a><span class="Other">(</span><span class="Identifier">ctx</span><span class="Other">:</span> <a href="sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Other">`</span><span class="Keyword">ptr</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">,</span> <span class="Identifier">num</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a><span class="Other">)</span><span class="Other">:</span> <a href="sdl2.html#csize_t_const"><span class="Identifier">csize_t_const</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WriteIOEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -8732,7 +8743,7 @@ Calculate a 256 entry gamma ramp for a gamma value.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-06 16:18:03 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 07:06:33 UTC</small>
       </div>
     </div>
   </div>
