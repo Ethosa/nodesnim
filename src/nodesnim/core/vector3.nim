@@ -33,7 +33,9 @@ proc Vector3*(): Vector3Obj {.inline.} =
 
 proc abs*(a: var Vector3Obj) =
   runnableExamples:
-    var vec3 = abs(Vector3(-1, -2, -3))
+    var
+      vec3 = Vector3(-1, -2, -3)
+      vec3_1 = abs(vec3)
     assert vec3.x == 1
     assert vec3.y == 2
     assert vec3.z == 3
