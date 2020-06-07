@@ -17,51 +17,36 @@ import
 
 
 type
-  CounterObj* = object of ControlPtr
+  CounterObj* = object of ControlRef
     as_int*: bool  ## if true, then use integer representation.
     min_value*, value*, max_value*: float
-    label*: LabelPtr
-    label_obj*: LabelObj
-  CounterPtr* = ptr CounterObj
+    label*: LabelRef
+  CounterRef* = ref CounterObj
 
 
-proc Counter*(name: string, variable: var CounterObj): CounterPtr =
-  ## Creates a new Counter pointer.
+proc Counter*(name: string = "Counter"): CounterRef =
+  ## Creates a new Counter.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a CounterObj variable.
   runnableExamples:
-    var
-      cobj: CounterObj
-      c = Counter("Counter", cobj)
-  nodepattern(CounterObj)
+    var c = Counter("Counter")
+  nodepattern(CounterRef)
   controlpattern()
-  variable.rect_size.x = 90
-  variable.rect_size.y = 25
-  variable.min_value = 0
-  variable.value = 0
-  variable.max_value = 10
-  variable.as_int = true
-  variable.label = Label(variable.label_obj)
-  variable.label.mousemode = MOUSEMODE_IGNORE
-  variable.label.parent = result
-  variable.background_color = Color(0x212121ff)
-  variable.kind = COUNTER_NODE
-
-proc Counter*(obj: var CounterObj): CounterPtr {.inline.} =
-  ## Creates a new Counterpointer with default node name "Counter".
-  ##
-  ## Arguments:
-  ## - `variable` is a CounterObj variable.
-  runnableExamples:
-    var
-      cobj: CounterObj
-      c = Counter(cobj)
-  Counter("Counter", obj)
+  result.rect_size.x = 90
+  result.rect_size.y = 25
+  result.min_value = 0
+  result.value = 0
+  result.max_value = 10
+  result.as_int = true
+  result.label = Label()
+  result.label.mousemode = MOUSEMODE_IGNORE
+  result.label.parent = result
+  result.background_color = Color(0x212121ff)
+  result.kind = COUNTER_NODE
 
 
-method changeValue*(self: CounterPtr, value: float) {.base.} =
+method changeValue*(self: CounterRef, value: float) {.base.} =
   ## Changes value, if it more than `min_value` and less than `max_value`.
   if value > self.max_value:
     self.value = self.max_value
@@ -71,7 +56,7 @@ method changeValue*(self: CounterPtr, value: float) {.base.} =
     self.value = value
 
 
-method draw*(self: CounterPtr, w, h: GLfloat) =
+method draw*(self: CounterRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -80,6 +65,7 @@ method draw*(self: CounterPtr, w, h: GLfloat) =
   glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
   glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
 
+  self.label.calcGlobalPosition()
   self.label.resize(self.rect_size.x - 40, self.rect_size.y)
   self.label.setTextAlign(0.5, 0.5, 0.5, 0.5)
   if self.as_int:
@@ -107,14 +93,13 @@ method draw*(self: CounterPtr, w, h: GLfloat) =
     self.on_press(self, last_event.x, last_event.y)
 
 
-method duplicate*(self: CounterPtr, obj: var CounterObj): CounterPtr {.base.} =
-  ## Duplicates Counter object and create a new Counter pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: CounterRef): CounterRef {.base.} =
+  ## Duplicates Counter object and create a new Counter.
+  self.deepCopy()
 
 
-method handle*(self: CounterPtr, event: InputEvent, mouse_on: var NodePtr) =
-  procCall self.ControlPtr.handle(event, mouse_on)
+method handle*(self: CounterRef, event: InputEvent, mouse_on: var NodeRef) =
+  procCall self.ControlRef.handle(event, mouse_on)
 
   let
     first_button = Rect2(
@@ -135,12 +120,12 @@ method handle*(self: CounterPtr, event: InputEvent, mouse_on: var NodePtr) =
     else:
       self.changeValue(self.value - event.xrel*0.01)
 
-method setMaxValue*(self: CounterPtr, value: float) {.base.} =
+method setMaxValue*(self: CounterRef, value: float) {.base.} =
   ## Changes max value, if it more then current `value`.
   if value > self.value:
     self.max_value = value
 
-method setMinValue*(self: CounterPtr, value: float) {.base.} =
+method setMinValue*(self: CounterRef, value: float) {.base.} =
   ## Changes max value, if it less then current `value`.
   if value < self.value:
     self.min_value = value

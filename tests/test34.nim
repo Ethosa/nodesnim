@@ -5,17 +5,15 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  switchobj: SwitchObj
-  switch = Switch(switchobj)
+  switch = Switch()
 
 main.addChild(switch)
 switch.move(128, 64)
 
 switch.on_toggle =
-  proc(self: SwitchPtr, toggled: bool) =  # this called when the user toggles switch.
+  proc(self: SwitchRef, toggled: bool) =  # this called when the user toggles switch.
     echo toggled
 
 

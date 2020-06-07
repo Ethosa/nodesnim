@@ -9,27 +9,19 @@ import
 
 type
   SceneObj* {.final.} = object of NodeObj
-  ScenePtr* = ptr SceneObj
+  SceneRef* = ref SceneObj
 
 
-proc Scene*(name: string, variable: var SceneObj): ScenePtr =
-  ## Creates a new Scene pointer.
+proc Scene*(name: string = "Scene"): SceneRef =
+  ## Creates a new Scene.
   ##
   ## Arguments:
   ## - `name` is a scene name.
-  ## - `variable` is a SceneObj object.
-  nodepattern(SceneObj)
-  variable.pausemode = PAUSE
-
-proc Scene*(variable: var SceneObj): ScenePtr {.inline.} =
-  ## Creates a new Scene pointer with default scene name "Scene".
-  ##
-  ## Arguments:
-  ## - `variable` is a SceneObj object.
-  Scene("Scene", variable)
+  nodepattern(SceneRef)
+  result.pausemode = PAUSE
 
 
-method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
+method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
   ## Draws scene
   ## This used in the window.nim.
   for child in scene.getChildIter():
@@ -48,24 +40,23 @@ method drawScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
     if child.visible:
       child.draw2stage(w, h)
 
-method duplicate*(self: ScenePtr, obj: var SceneObj): ScenePtr {.base.} =
-  ## Duplicates Scene object and create a new Scene pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: SceneRef): SceneRef {.base.} =
+  ## Duplicates Scene object and create a new Scene.
+  self.deepCopy()
 
-method enter*(scene: ScenePtr) {.base.} =
+method enter*(scene: SceneRef) {.base.} =
   ## This called when scene was changed.
   for child in scene.getChildIter():
     child.on_enter(child)
     child.is_ready = false
 
-method exit*(scene: ScenePtr) {.base.} =
+method exit*(scene: SceneRef) {.base.} =
   ## This called when scene was changed.
   for child in scene.getChildIter():
     child.on_enter(child)
     child.is_ready = false
 
-method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, paused: bool) {.base.} =
+method handleScene*(scene: SceneRef, event: InputEvent, mouse_on: var NodeRef, paused: bool) {.base.} =
   ## Handles user input. This called on any input.
   var childs = scene.getChildIter()
   for i in countdown(childs.len()-1, 0):
@@ -75,7 +66,7 @@ method handleScene*(scene: ScenePtr, event: InputEvent, mouse_on: var NodePtr, p
       childs[i].handle(event, mouse_on)
       childs[i].on_input(childs[i], event)
 
-method reAnchorScene*(scene: ScenePtr, w, h: GLfloat, paused: bool) {.base.} =
+method reAnchorScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
   ## Recalculates node positions.
   scene.rect_size.x = w
   scene.rect_size.y = h

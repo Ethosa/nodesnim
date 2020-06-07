@@ -30,54 +30,40 @@ type
     hover_color*: ColorRef   ## text color, when button hovered.
     press_color*: ColorRef   ## text color, when button pressed.
 
-    on_touch*: proc(self: TextureButtonPtr, x, y: float): void  ## This called, when user clicks on button.
-  TextureButtonPtr* = ptr TextureButtonObj
+    on_touch*: proc(self: TextureButtonRef, x, y: float): void  ## This called, when user clicks on button.
+  TextureButtonRef* = ref TextureButtonObj
 
 
-proc TextureButton*(name: string, variable: var TextureButtonObj): TextureButtonPtr =
-  ## Creates a new TextureButton node pointer.
+proc TextureButton*(name: string = "TextureButton"): TextureButtonRef =
+  ## Creates a new TextureButton node.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a TextureButtonObj variable.
   runnableExamples:
-    var
-      my_button_obj: TextureButtonObj
-      my_button = TextureButton("TextureButton", my_button_obj)
-  nodepattern(TextureButtonObj)
+    var my_button = TextureButton("TextureButton")
+  nodepattern(TextureButtonRef)
   controlpattern()
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.text = ""
-  variable.font = GLUT_BITMAP_HELVETICA_12
-  variable.size = 12
-  variable.spacing = 2
-  variable.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
-  variable.color = Color(1f, 1f, 1f)
-  variable.normal_color = Color(1f, 1f, 1f)
-  variable.hover_color = Color(1f, 1f, 1f)
-  variable.press_color = Color(1f, 1f, 1f)
-  variable.button_mask = BUTTON_LEFT
-  variable.action_mask = BUTTON_RELEASE
-  variable.normal_background_texture = GlTextureObj()
-  variable.hover_background_texture = GlTextureObj()
-  variable.press_background_texture = GlTextureObj()
-  variable.on_touch = proc(self: TextureButtonPtr, x, y: float) = discard
-  variable.kind = TEXTURE_BUTTON_NODE
-
-proc TextureButton*(obj: var TextureButtonObj): TextureButtonPtr {.inline.} =
-  ## Creates a new TextureButton node pointer with default node name "TextureButton".
-  ##
-  ## Arguments:
-  ## - `variable` is a TextureButtonObj variable.
-  runnableExamples:
-    var
-      my_button_obj: TextureButtonObj
-      my_button = TextureButton(my_button_obj)
-  TextureButton("TextureButton", obj)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.text = ""
+  result.font = GLUT_BITMAP_HELVETICA_12
+  result.size = 12
+  result.spacing = 2
+  result.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
+  result.color = Color(1f, 1f, 1f)
+  result.normal_color = Color(1f, 1f, 1f)
+  result.hover_color = Color(1f, 1f, 1f)
+  result.press_color = Color(1f, 1f, 1f)
+  result.button_mask = BUTTON_LEFT
+  result.action_mask = BUTTON_RELEASE
+  result.normal_background_texture = GlTextureObj()
+  result.hover_background_texture = GlTextureObj()
+  result.press_background_texture = GlTextureObj()
+  result.on_touch = proc(self: TextureButtonRef, x, y: float) = discard
+  result.kind = TEXTURE_BUTTON_NODE
 
 
-method draw*(self: TextureButtonPtr, w, h: GLfloat) =
+method draw*(self: TextureButtonRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -115,16 +101,15 @@ method draw*(self: TextureButtonPtr, w, h: GLfloat) =
 
     glDisable(GL_TEXTURE_2D)
 
-  procCall self.LabelPtr.draw(w, h)
+  procCall self.LabelRef.draw(w, h)
 
-method duplicate*(self: TextureButtonPtr, obj: var TextureButtonObj): TextureButtonPtr {.base.} =
-  ## Duplicates TextureButton object and creates a new TextureButton node pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: TextureButtonRef): TextureButtonRef {.base.} =
+  ## Duplicates TextureButton object and creates a new TextureButton node.
+  self.deepCopy()
 
-method handle*(self: TextureButtonPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: TextureButtonRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. This uses in the `window.nim`.
-  procCall self.ControlPtr.handle(event, mouse_on)
+  procCall self.ControlRef.handle(event, mouse_on)
 
   if self.hovered and self.focused:
     if event.kind == MOUSE and self.action_mask == 1 and mouse_pressed and self.button_mask == event.button_index:
@@ -132,14 +117,14 @@ method handle*(self: TextureButtonPtr, event: InputEvent, mouse_on: var NodePtr)
     elif event.kind == MOUSE and self.action_mask == 0 and not mouse_pressed and self.button_mask == event.button_index:
       self.on_touch(self, event.x, event.y)
 
-method setNormalTexture*(self: TextureButtonPtr, texture: GlTextureObj) {.base.} =
+method setNormalTexture*(self: TextureButtonRef, texture: GlTextureObj) {.base.} =
   ## Changes button texture, when it not pressed and not hovered.
   self.normal_background_texture = texture
 
-method setHoverTexture*(self: TextureButtonPtr, texture: GlTextureObj) {.base.} =
+method setHoverTexture*(self: TextureButtonRef, texture: GlTextureObj) {.base.} =
   ## Changes button texture, when it hovered.
   self.hover_background_texture = texture
 
-method setPressTexture*(self: TextureButtonPtr, texture: GlTextureObj) {.base.} =
+method setPressTexture*(self: TextureButtonRef, texture: GlTextureObj) {.base.} =
   ## Changes button texture, when it pressed.
   self.press_background_texture = texture

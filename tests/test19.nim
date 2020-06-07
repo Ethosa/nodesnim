@@ -7,26 +7,24 @@ import
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  labelobj: RichEditTextObj
-  label = RichEditText(labelobj)
+  label = RichEditText()
 
 main.addChild(label)
 
 label.setSizeAnchor(1, 1)
 
 label.on_process =
-  proc(self: NodePtr) =
+  proc(self: NodeRef) =
     label.text.setColor(Color(1f, 1f, 1f))
     label.text.setUnderline(false)
 
     # Nim highlight
-    var start_position = ($label.text).find("Nim")
+    var start_position = ($label.text).find("nim")
     while start_position > -1:
       label.text.setColor(start_position, start_position+2, Color(0xaa99ffff'u32))
-      start_position = ($label.text).find("Nim", start_position+2)
+      start_position = ($label.text).find("nim", start_position+2)
 
     # word underline
     if label.text.len() > 0:

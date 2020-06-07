@@ -15,50 +15,36 @@ import
 
 
 type
-  SliderObj* = object of ControlPtr
+  SliderObj* = object of ControlRef
     max_value*, value*: uint
     progress_color*: ColorRef
     thumb_color*: ColorRef
 
-    on_changed*: proc(self: SliderPtr, new_value: uint): void
-  SliderPtr* = ptr SliderObj
+    on_changed*: proc(self: SliderRef, new_value: uint): void
+  SliderRef* = ref SliderObj
 
 
-proc Slider*(name: string, variable: var SliderObj): SliderPtr =
-  ## Creates a new Slider pointer.
+proc Slider*(name: string = "Slider"): SliderRef =
+  ## Creates a new Slider.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a SliderObj variable.
   runnableExamples:
-    var
-      scobj: SliderObj
-      sc = Slider("Slider", scobj)
-  nodepattern(SliderObj)
+    var sc = Slider("Slider")
+  nodepattern(SliderRef)
   controlpattern()
-  variable.background_color = Color(1f, 1f, 1f)
-  variable.rect_size.x = 120
-  variable.rect_size.y = 40
-  variable.progress_color = Color(0.5, 0.5, 0.5)
-  variable.thumb_color = Color(0.7, 0.7, 0.7)
-  variable.max_value = 100
-  variable.value = 0
-  variable.on_changed = proc(self: SliderPtr, v: uint) = discard
-  variable.kind = SLIDER_NODE
-
-proc Slider*(obj: var SliderObj): SliderPtr {.inline.} =
-  ## Creates a new Slider pointer with default node name "Slider".
-  ##
-  ## Arguments:
-  ## - `variable` is a SliderObj variable.
-  runnableExamples:
-    var
-      scobj: SliderObj
-      sc = Slider(scobj)
-  Slider("Slider", obj)
+  result.background_color = Color(1f, 1f, 1f)
+  result.rect_size.x = 120
+  result.rect_size.y = 40
+  result.progress_color = Color(0.5, 0.5, 0.5)
+  result.thumb_color = Color(0.7, 0.7, 0.7)
+  result.max_value = 100
+  result.value = 0
+  result.on_changed = proc(self: SliderRef, v: uint) = discard
+  result.kind = SLIDER_NODE
 
 
-method draw*(self: SliderPtr, w, h: GLfloat) =
+method draw*(self: SliderRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -81,33 +67,32 @@ method draw*(self: SliderPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: SliderPtr, obj: var SliderObj): SliderPtr {.base.} =
-  ## Duplicates Sider object and create a new Slider pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: SliderRef): SliderRef {.base.} =
+  ## Duplicates Sider object and create a new Slider.
+  self.deepCopy()
 
-method setMaxValue*(self: SliderPtr, value: uint) {.base.} =
+method setMaxValue*(self: SliderRef, value: uint) {.base.} =
   ## Changes max value.
   if value > self.value:
     self.max_value = value
   else:
     self.max_value = self.value
 
-method setProgress*(self: SliderPtr, value: uint) {.base.} =
+method setProgress*(self: SliderRef, value: uint) {.base.} =
   ## Changes progress.
   if value > self.max_value:
     self.value = self.max_value
   else:
     self.value = value
 
-method setProgressColor*(self: SliderPtr, color: ColorRef) {.base.} =
+method setProgressColor*(self: SliderRef, color: ColorRef) {.base.} =
   ## Changes progress color.
   ## For change background color use `setBackgroundColor` method.
   self.progress_color = color
 
-method handle*(self: SliderPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: SliderRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. This uses in the `window.nim`.
-  procCall self.ControlPtr.handle(event, mouse_on)
+  procCall self.ControlRef.handle(event, mouse_on)
 
   if self.focused and self.pressed:
     let

@@ -29,54 +29,40 @@ type
     hover_color*: ColorRef   ## text color, when button hovered.
     press_color*: ColorRef   ## text color, when button pressed.
 
-    on_touch*: proc(self: ButtonPtr, x, y: float): void  ## This called, when user clicks on button.
-  ButtonPtr* = ptr ButtonObj
+    on_touch*: proc(self: ButtonRef, x, y: float): void  ## This called, when user clicks on button.
+  ButtonRef* = ref ButtonObj
 
 
-proc Button*(name: string, variable: var ButtonObj): ButtonPtr =
-  ## Creates a new Button node pointer.
+proc Button*(name: string = "Button"): ButtonRef =
+  ## Creates a new Button node.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a ButtonObj variable.
   runnableExamples:
-    var
-      my_button_obj: ButtonObj
-      my_button = Button("Button", my_button_obj)
-  nodepattern(ButtonObj)
+    var my_button = Button("Button")
+  nodepattern(ButtonRef)
   controlpattern()
-  variable.rect_size.x = 160
-  variable.rect_size.y = 40
-  variable.text = ""
-  variable.font = GLUT_BITMAP_HELVETICA_12
-  variable.size = 12
-  variable.spacing = 2
-  variable.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
-  variable.color = Color(1f, 1f, 1f)
-  variable.normal_color = Color(1f, 1f, 1f)
-  variable.hover_color = Color(1f, 1f, 1f)
-  variable.press_color = Color(1f, 1f, 1f)
-  variable.button_mask = BUTTON_LEFT
-  variable.action_mask = BUTTON_RELEASE
-  variable.normal_background_color = Color(0x444444ff)
-  variable.hover_background_color = Color(0x505050ff)
-  variable.press_background_color = Color(0x595959ff)
-  variable.on_touch = proc(self: ButtonPtr, x, y: float) = discard
-  variable.kind = BUTTON_NODE
-
-proc Button*(obj: var ButtonObj): ButtonPtr {.inline.} =
-  ## Creates a new Button node pointer with default node name "Button".
-  ##
-  ## Arguments:
-  ## - `variable` is a ButtonObj variable.
-  runnableExamples:
-    var
-      my_button_obj: ButtonObj
-      my_button = Button(my_button_obj)
-  Button("Button", obj)
+  result.rect_size.x = 160
+  result.rect_size.y = 40
+  result.text = ""
+  result.font = GLUT_BITMAP_HELVETICA_12
+  result.size = 12
+  result.spacing = 2
+  result.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
+  result.color = Color(1f, 1f, 1f)
+  result.normal_color = Color(1f, 1f, 1f)
+  result.hover_color = Color(1f, 1f, 1f)
+  result.press_color = Color(1f, 1f, 1f)
+  result.button_mask = BUTTON_LEFT
+  result.action_mask = BUTTON_RELEASE
+  result.normal_background_color = Color(0x444444ff)
+  result.hover_background_color = Color(0x505050ff)
+  result.press_background_color = Color(0x595959ff)
+  result.on_touch = proc(self: ButtonRef, x, y: float) = discard
+  result.kind = BUTTON_NODE
 
 
-method draw*(self: ButtonPtr, w, h: GLfloat) =
+method draw*(self: ButtonRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -97,16 +83,15 @@ method draw*(self: ButtonPtr, w, h: GLfloat) =
       self.normal_color
   glColor4f(color.r, color.g, color.b, color.a)
   glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
-  procCall self.LabelPtr.draw(w, h)
+  procCall self.LabelRef.draw(w, h)
 
-method duplicate*(self: ButtonPtr, obj: var ButtonObj): ButtonPtr {.base.} =
+method duplicate*(self: ButtonRef, obj: var ButtonObj): ButtonRef {.base.} =
   ## Duplicates Button object and creates a new Button node pointer.
-  obj = self[]
-  obj.addr
+  self.deepCopy()
 
-method handle*(self: ButtonPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: ButtonRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. This uses in the `window.nim`.
-  procCall self.ControlPtr.handle(event, mouse_on)
+  procCall self.ControlRef.handle(event, mouse_on)
 
   if self.hovered and self.focused:
     if event.kind == MOUSE and self.action_mask == 1 and mouse_pressed and self.button_mask == event.button_index:

@@ -19,38 +19,25 @@ type
   SpriteObj* = object of Node2DObj
     filter*: ColorRef
     texture*: GlTextureObj
-  SpritePtr* = ptr SpriteObj
+  SpriteRef* = ref SpriteObj
 
 
 
-proc Sprite*(name: string, variable: var SpriteObj): SpritePtr =
-  ## Creates a new Sprite pointer.
+proc Sprite*(name: string = "Sprite"): SpriteRef =
+  ## Creates a new Sprite.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a SpriteObj variable.
   runnableExamples:
-    var
-      node_obj: SpriteObj
-      node = Sprite("Sprite", node_obj)
-  nodepattern(SpriteObj)
+    var node = Sprite("Sprite")
+  nodepattern(SpriteRef)
   node2dpattern()
-  variable.texture = GlTextureObj()
-  variable.filter = Color(1f, 1f, 1f)
-  variable.kind = SPRITE_NODE
+  result.texture = GlTextureObj()
+  result.filter = Color(1f, 1f, 1f)
+  result.kind = SPRITE_NODE
 
-proc Sprite*(obj: var SpriteObj): SpritePtr {.inline.} =
-  ## Creates a new Sprite pointer with deffault node name "Sprite".
-  ##
-  ## Arguments:
-  ## - `variable` is a SpriteObj variable.
-  runnableExamples:
-    var
-      node_obj: SpriteObj
-      node = Sprite(node_obj)
-  Sprite("Sprite", obj)
 
-method draw*(self: SpritePtr, w, h: GLfloat) =
+method draw*(self: SpriteRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   if self.texture.texture > 0:
@@ -104,16 +91,15 @@ method draw*(self: SpritePtr, w, h: GLfloat) =
   else:
     self.rect_size = Vector2()
 
-method duplicate*(self: SpritePtr, obj: var SpriteObj): SpritePtr {.base.} =
-  ## Duplicates Sprite object and create a new Sprite pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: SpriteRef): SpriteRef {.base.} =
+  ## Duplicates Sprite object and create a new Sprite.
+  self.deepCopy()
 
-method getGlobalMousePosition*(self: SpritePtr): Vector2Ref {.inline.} =
+method getGlobalMousePosition*(self: SpriteRef): Vector2Ref {.inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
 
-method loadTexture*(self: SpritePtr, file: cstring, mode = GL_RGB) {.base.} =
+method loadTexture*(self: SpriteRef, file: cstring, mode = GL_RGB) {.base.} =
   ## Loads a new texture from file.
   ##
   ## Arguments:
@@ -121,7 +107,7 @@ method loadTexture*(self: SpritePtr, file: cstring, mode = GL_RGB) {.base.} =
   ## - `mode` is a GLenum. can be GL_RGB or GL_RGBA.
   self.texture = load(file, mode)
 
-method setTexture*(self: SpritePtr, texture: GlTextureObj) {.base.} =
+method setTexture*(self: SpriteRef, texture: GlTextureObj) {.base.} =
   ## Loads a new texture from file.
   ##
   ## Arguments:

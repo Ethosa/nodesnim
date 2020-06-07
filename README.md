@@ -7,8 +7,8 @@
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Latest version - 0.0.3</h4>
-<h4>Stable version - 0.0.2</h4>
+<h4>Latest version - 0.0.4</h4>
+<h4>Stable version - 0.0.3</h4>
 </div>
 
 ## Install
@@ -29,10 +29,8 @@
   Window("Hello, world!")
 
   var
-    scene_obj: SceneObj
-    scene = Scene("Main", scene_obj)
-    label_obj: LabelObj
-    hello = Label(label_obj)
+    scene = Scene("Main")
+    hello = Label()
 
   hello.setText("Hello, world!")
   hello.setSizeAnchor(1, 1)

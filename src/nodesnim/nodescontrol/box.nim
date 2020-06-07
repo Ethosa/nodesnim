@@ -14,41 +14,27 @@ import
 
 
 type
-  BoxObj* = object of ControlPtr
+  BoxObj* = object of ControlRef
     child_anchor*: AnchorRef
-  BoxPtr* = ptr BoxObj
+  BoxRef* = ref BoxObj
 
 
-proc Box*(name: string, variable: var BoxObj): BoxPtr =
-  ## Creates a new Box pointer.
+proc Box*(name: string = "Box"): BoxRef =
+  ## Creates a new Box.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a BoxObj variable.
   runnableExamples:
-    var
-      box1_obj: BoxObj
-      box1 = Box("My box", box1_obj)
-  nodepattern(BoxObj)
+    var box1 = Box("My box")
+  nodepattern(BoxRef)
   controlpattern()
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
-  variable.kind = BOX_NODE
-
-proc Box*(obj: var BoxObj): BoxPtr {.inline.} =
-  ## Creates a new Box pointer with default name "Box"
-  ##
-  ## Arguments:
-  ## - `obj` is a BoxObj variable.
-  runnableExamples:
-    var
-      box1_obj: BoxObj
-      box1 = Box(box1_obj)
-  Box("Box", obj)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+  result.kind = BOX_NODE
 
 
-method getChildSize*(self: BoxPtr): Vector2Ref {.base.} =
+method getChildSize*(self: BoxRef): Vector2Ref {.base.} =
   ## Returns Vector2 of the minimal size of the box pointer.
   var
     x = 0f
@@ -58,7 +44,7 @@ method getChildSize*(self: BoxPtr): Vector2Ref {.base.} =
     y += child.rect_size.y
   Vector2(x, y)
 
-method addChild*(self: BoxPtr, child: NodePtr) =
+method addChild*(self: BoxRef, child: NodeRef) =
   ## Adds new child in current node.
   ##
   ## Arguments:
@@ -71,7 +57,7 @@ method addChild*(self: BoxPtr, child: NodePtr) =
     self.rect_size.y = child.rect_size.y
 
 
-method draw*(self: BoxPtr, w, h: GLfloat) =
+method draw*(self: BoxRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -83,17 +69,13 @@ method draw*(self: BoxPtr, w, h: GLfloat) =
   for child in self.children:
     child.position.x = self.rect_size.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
     child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
-  procCall self.ControlPtr.draw(w, h)
+  procCall self.ControlRef.draw(w, h)
 
-method duplicate*(self: BoxPtr, obj: var BoxObj): BoxPtr {.base.} =
-  ## Duplicates Box pointer.
-  ##
-  ## Arguments:
-  ## - `obj` is BoxObj variable.
-  obj = self[]
-  obj.addr
+method duplicate*(self: BoxRef): BoxRef {.base.} =
+  ## Duplicates Box.
+  self.deepCopy()
 
-method resize*(self: BoxPtr, w, h: GLfloat) =
+method resize*(self: BoxRef, w, h: GLfloat) =
   ## Resizes Box node.
   ##
   ## Arguments:
@@ -109,14 +91,14 @@ method resize*(self: BoxPtr, w, h: GLfloat) =
   self.can_use_anchor = false
   self.can_use_size_anchor = false
 
-method setChildAnchor*(self: BoxPtr, anchor: AnchorRef) {.base.} =
+method setChildAnchor*(self: BoxRef, anchor: AnchorRef) {.base.} =
   ## Changes child anchor.
   ##
   ## Arguments:
   ## - `anchor` - Anchor object.
   self.child_anchor = anchor
 
-method setChildAnchor*(self: BoxPtr, x1, y1, x2, y2: float) {.base.} =
+method setChildAnchor*(self: BoxRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes child anchor.
   ##
   ## Arguments:

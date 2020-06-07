@@ -5,11 +5,9 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  labelobj: RichLabelObj
-  label = RichLabel(labelobj)
+  label = RichLabel()
 
 main.addChild(label)
 

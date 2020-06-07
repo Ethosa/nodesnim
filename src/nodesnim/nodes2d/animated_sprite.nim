@@ -22,41 +22,28 @@ type
     filter*: ColorRef
     animation*: string
     animations*: AnimationArray[GlTextureObj]
-  AnimatedSpritePtr* = ptr AnimatedSpriteObj
+  AnimatedSpriteRef* = ref AnimatedSpriteObj
 
 
 
-proc AnimatedSprite*(name: string, variable: var AnimatedSpriteObj): AnimatedSpritePtr =
-  ## Creates a new AnimatedSprite pointer.
+proc AnimatedSprite*(name: string = "AnimatedSprite"): AnimatedSpriteRef =
+  ## Creates a new AnimatedSprite.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a AnimatedSpriteObj variable.
   runnableExamples:
-    var
-      node_obj: AnimatedSpriteObj
-      node = AnimatedSprite("AnimatedSprite", node_obj)
-  nodepattern(AnimatedSpriteObj)
+    var node = AnimatedSprite("AnimatedSprite")
+  nodepattern(AnimatedSpriteRef)
   node2dpattern()
-  variable.filter = Color(1f, 1f, 1f)
-  variable.animations = @[Animation[GlTextureObj]("default", 2f)]
-  variable.animation = "default"
-  variable.paused = true
-  variable.reversed = false
-  variable.kind = ANIMATED_SPRITE_NODE
+  result.filter = Color(1f, 1f, 1f)
+  result.animations = @[Animation[GlTextureObj]("default", 2f)]
+  result.animation = "default"
+  result.paused = true
+  result.reversed = false
+  result.kind = ANIMATED_SPRITE_NODE
 
-proc AnimatedSprite*(obj: var AnimatedSpriteObj): AnimatedSpritePtr {.inline.} =
-  ## Creates a new AnimatedSprite pointer with default node name "AnimatedSprite".
-  ##
-  ## Arguments:
-  ## - `variable` is a AnimatedSpriteObj variable.
-  runnableExamples:
-    var
-      node_obj: AnimatedSpriteObj
-      node = AnimatedSprite(node_obj)
-  AnimatedSprite("AnimatedSprite", obj)
 
-method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
+method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   let
@@ -135,16 +122,15 @@ method draw*(self: AnimatedSpritePtr, w, h: GLfloat) =
           self.animations[self.animation].frame += 1
 
 
-method duplicate*(self: AnimatedSpritePtr, obj: var AnimatedSpriteObj): AnimatedSpritePtr {.base.} =
-  ## Duplicates AnimatedSprite object and create a new AnimatedSprite pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: AnimatedSpriteRef): AnimatedSpriteRef {.base.} =
+  ## Duplicates AnimatedSprite object and create a new AnimatedSprite.
+  self.deepCopy()
 
-method getGlobalMousePosition*(self: AnimatedSpritePtr): Vector2Ref {.inline.} =
+method getGlobalMousePosition*(self: AnimatedSpriteRef): Vector2Ref {.inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
 
-method addAnimation*(self: AnimatedSpritePtr, name: string, speed: float = 2f) {.base.} =
+method addAnimation*(self: AnimatedSpriteRef, name: string, speed: float = 2f) {.base.} =
   ## Adds a new animation to the AnimatedSprite animations.
   ##
   ## Arguments:
@@ -154,14 +140,14 @@ method addAnimation*(self: AnimatedSpritePtr, name: string, speed: float = 2f) {
   if newanim notin self.animations:
     self.animations.add(newanim)
 
-method addFrame*(self: AnimatedSpritePtr, name: string, frame: GlTextureObj) {.base.} =
+method addFrame*(self: AnimatedSpriteRef, name: string, frame: GlTextureObj) {.base.} =
   ## Adds a new frame in the animation.
   ##
   ## Arguments:
   ## - `name` is an animation name.
   self.animations[name].addFrame(frame)
 
-method removeAnimation*(self: AnimatedSpritePtr, name: string) {.base.} =
+method removeAnimation*(self: AnimatedSpriteRef, name: string) {.base.} =
   ## Deletes animation from the AnimatedSprite animations.
   ## If `name` is a current animation name, then animation will not delete.
   ##
@@ -174,11 +160,11 @@ method removeAnimation*(self: AnimatedSpritePtr, name: string) {.base.} =
       self.animations.delete(i)
       break
 
-method pause*(self: AnimatedSpritePtr) {.base.} =
+method pause*(self: AnimatedSpriteRef) {.base.} =
   ## Stops animation.
   self.paused = true
 
-method play*(self: AnimatedSpritePtr, name: string = "", backward: bool = false) {.base.} =
+method play*(self: AnimatedSpriteRef, name: string = "", backward: bool = false) {.base.} =
   ## Plays animation.
   ##
   ## Arguments:
@@ -194,11 +180,11 @@ method play*(self: AnimatedSpritePtr, name: string = "", backward: bool = false)
     self.animations[self.animation].frame = 0
   self.paused = false
 
-method resume*(self: AnimatedSpritePtr) {.base.} =
+method resume*(self: AnimatedSpriteRef) {.base.} =
   ## Resumes animation.
   self.paused = false
 
-method setSpeed*(self: AnimatedSpritePtr, name: string = "", speed: float = 2f) {.base.} =
+method setSpeed*(self: AnimatedSpriteRef, name: string = "", speed: float = 2f) {.base.} =
   ## Changes animation speed.
   ## If `name` is "" then changes the speed of the current animation.
   ##

@@ -15,41 +15,27 @@ import
 
 
 type
-  ColorRectObj* = object of ControlPtr
+  ColorRectObj* = object of ControlRef
     color*: ColorRef
-  ColorRectPtr* = ptr ColorRectObj
+  ColorRectRef* = ref ColorRectObj
 
 
-proc ColorRect*(name: string, variable: var ColorRectObj): ColorRectPtr =
-  ## Creates a new ColorRect pointer.
+proc ColorRect*(name: string = "ColorRect"): ColorRectRef =
+  ## Creates a new ColorRect.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a ColorRectObj variable
   runnableExamples:
-    var
-      colorrect1_obj: ColorRectObj
-      colorrect1 = ColorRect("ColorRect", colorrect1_obj)
-  nodepattern(ColorRectObj)
+    var colorrect1 = ColorRect("ColorRect")
+  nodepattern(ColorRectRef)
   controlpattern()
-  variable.color = Color(1f, 1f, 1f)
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.kind = COLOR_RECT_NODE
-
-proc ColorRect*(obj: var ColorRectObj): ColorRectPtr {.inline.} =
-  ## Creates a new ColorRect pointer with default node name "ColorRect".
-  ##
-  ## Arguments:
-  ## - `variable` is a ColorRectObj variable
-  runnableExamples:
-    var
-      colorrect1_obj: ColorRectObj
-      colorrect1 = ColorRect(colorrect1_obj)
-  ColorRect("ColorRect", obj)
+  result.color = Color(1f, 1f, 1f)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.kind = COLOR_RECT_NODE
 
 
-method draw*(self: ColorRectPtr, w, h: GLfloat) =
+method draw*(self: ColorRectRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -62,7 +48,6 @@ method draw*(self: ColorRectPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: ColorRectPtr, obj: var ColorRectObj): ColorRectPtr {.base.} =
-  ## Duplicates ColorRect object and create a new ColorRect pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: ColorRectRef): ColorRectRef {.base.} =
+  ## Duplicates ColorRect object and create a new ColorRect.
+  self.deepCopy()

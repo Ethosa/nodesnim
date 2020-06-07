@@ -35,15 +35,15 @@ glutInitDisplayMode(GLUT_DOUBLE)
 var
   env*: EnvironmentRef = newEnvironment()
   width, height: cint
-  main_scene*: ScenePtr = nil
-  current_scene*: ScenePtr = nil
-  scenes*: seq[ScenePtr] = @[]
+  main_scene*: SceneRef = nil
+  current_scene*: SceneRef = nil
+  scenes*: seq[SceneRef] = @[]
   paused*: bool = false
 
 
 # --- Callbacks --- #
 var
-  mouse_on: NodePtr = nil
+  mouse_on: NodeRef = nil
   window_created: bool = false
 
 proc display {.cdecl.} =
@@ -201,7 +201,7 @@ proc motion(x, y: cint) {.cdecl.} =
 
 
 # ---- Public ---- #
-proc addScene*(scene: ScenePtr) =
+proc addScene*(scene: SceneRef) =
   ## Adds a new scenes in app.
   ##
   ## Arguments:
@@ -209,7 +209,7 @@ proc addScene*(scene: ScenePtr) =
   if scene notin scenes:
     scenes.add(scene)
 
-proc addMainScene*(scene: ScenePtr) =
+proc addMainScene*(scene: SceneRef) =
   ## Adds a new scene in the app and set it mark it as main scene.
   ##
   ## Arguents:

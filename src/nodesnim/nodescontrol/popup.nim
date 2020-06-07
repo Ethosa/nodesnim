@@ -15,38 +15,24 @@ import
 
 
 type
-  PopupObj* = object of ControlPtr
-  PopupPtr* = ptr PopupObj
+  PopupObj* = object of ControlRef
+  PopupRef* = ref PopupObj
 
 
-proc Popup*(name: string, variable: var PopupObj): PopupPtr =
-  ## Creates a new Popup pointer.
+proc Popup*(name: string = "Popup"): PopupRef =
+  ## Creates a new Popup.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a PopupObj variable.
   runnableExamples:
-    var
-      pobj: PopupObj
-      p = Popup("Popup", pobj)
-  nodepattern(PopupObj)
+    var p = Popup("Popup")
+  nodepattern(PopupRef)
   controlpattern()
-  variable.background_color = Color(0x212121ff)
-  variable.rect_size.x = 160
-  variable.rect_size.y = 160
-  variable.visible = false
-  variable.kind = POPUP_NODE
-
-proc Popup*(obj: var PopupObj): PopupPtr {.inline.} =
-  ## Creates a new Popup pointer with default node name "Popup".
-  ##
-  ## Arguments:
-  ## - `variable` is a PopupObj variable.
-  runnableExamples:
-    var
-      pobj: PopupObj
-      p = Popup(pobj)
-  Popup("Popup", obj)
+  result.background_color = Color(0x212121ff)
+  result.rect_size.x = 160
+  result.rect_size.y = 160
+  result.visible = false
+  result.kind = POPUP_NODE
 
 
 template recalc =
@@ -57,25 +43,25 @@ template recalc =
       child.visible = true
 
 
-method hide*(self: PopupPtr) =
+method hide*(self: PopupRef) =
   ## Hides popup.
   {.warning[LockLevel]: off.}
   self.visible = false
   recalc()
 
-method show*(self: PopupPtr) =
+method show*(self: PopupRef) =
   ## Shws popup.
   {.warning[LockLevel]: off.}
   self.visible = true
   recalc()
 
-method calcPositionAnchor*(self: PopupPtr) =
+method calcPositionAnchor*(self: PopupRef) =
   ## This uses in the `scene.nim`.
   {.warning[LockLevel]: off.}
-  procCall self.ControlPtr.calcPositionAnchor()
+  procCall self.ControlRef.calcPositionAnchor()
   recalc()
 
-method draw*(self: PopupPtr, w, h: GLfloat) =
+method draw*(self: PopupRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -88,7 +74,6 @@ method draw*(self: PopupPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: PopupPtr, obj: var PopupObj): PopupPtr {.base.} =
-  ## Duplicates Popup object and create a new Popup pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: PopupRef): PopupRef {.base.} =
+  ## Duplicates Popup object and create a new Popup.
+  self.deepCopy()

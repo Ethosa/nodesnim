@@ -15,11 +15,9 @@ type
 
 
 var
-  main_obj: SceneObj
-  main = Scene("Main", main_obj)
+  main = Scene("Main")
 
-  canvas_obj: CanvasObj
-  canvas = Canvas("Canvas", canvas_obj)
+  canvas = Canvas("Canvas")
 
   snake = Snake(
     dir: Vector2(),

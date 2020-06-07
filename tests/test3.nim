@@ -5,11 +5,9 @@ import nodesnim
 Window("newwindow")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  nodeobj: NodeObj
-  node = Node("My node", nodeobj)
+  node = Node("My node")
 
 main.addChild(node)
 
@@ -23,7 +21,7 @@ Input.addButtonAction("release", BUTTON_RIGHT)
 
 
 node.on_process =
-  proc(self: NodePtr) =  # This called every frame.
+  proc(self: NodeRef) =  # This called every frame.
     if Input.isActionPressed("forward"):  # returns true, when user press "w"
       echo "forward"
     if Input.isActionPressed("backward"):  # returns true, when user press "s"
@@ -40,7 +38,7 @@ node.on_process =
       echo "release!"
 
 node.on_input =
-  proc(self: NodePtr, event: InputEvent) =  # This called only on user input.
+  proc(self: NodeRef, event: InputEvent) =  # This called only on user input.
     if event.isInputEventMouseButton() and event.pressed:
       echo "hi"
 

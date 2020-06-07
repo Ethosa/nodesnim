@@ -18,41 +18,27 @@ type
   GridBoxObj* = object of BoxObj
     separator*: float
     row*: int
-  GridBoxPtr* = ptr GridBoxObj
+  GridBoxRef* = ref GridBoxObj
 
 
-proc GridBox*(name: string, variable: var GridBoxObj): GridBoxPtr =
-  ## Creates a new GridBox pointer.
+proc GridBox*(name: string = "GridBox"): GridBoxRef =
+  ## Creates a new GridBox.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a GridBoxObj variable.
   runnableExamples:
-    var
-      gridobj: GridBoxObj
-      grid = GridBox("GridBox", gridobj)
-  nodepattern(GridBoxObj)
+    var grid = GridBox("GridBox")
+  nodepattern(GridBoxRef)
   controlpattern()
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
-  variable.separator = 4f
-  variable.row = 2
-  variable.kind = GRID_BOX_NODE
-
-proc GridBox*(obj: var GridBoxObj): GridBoxPtr {.inline.} =
-  ## Creates a new GridBox pointer with defalut node name "GridBox".
-  ##
-  ## Arguments:
-  ## - `variable` is a GridBoxObj variable.
-  runnableExamples:
-    var
-      gridobj: GridBoxObj
-      grid = GridBox("GridBox", gridobj)
-  GridBox("GridBox", obj)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+  result.separator = 4f
+  result.row = 2
+  result.kind = GRID_BOX_NODE
 
 
-method getMaxChildSize*(self: GridBoxPtr): Vector2Ref {.base.} =
+method getMaxChildSize*(self: GridBoxRef): Vector2Ref {.base.} =
   result = Vector2()
   for child in self.children:
     if child.rect_size.x > result.x:
@@ -60,7 +46,7 @@ method getMaxChildSize*(self: GridBoxPtr): Vector2Ref {.base.} =
     if child.rect_size.y > result.y:
       result.y = child.rect_size.y
 
-method getChildSize*(self: GridBoxPtr): Vector2Ref =
+method getChildSize*(self: GridBoxRef): Vector2Ref =
   ## Returns size with all childs.
   var
     row = 0
@@ -80,7 +66,7 @@ method getChildSize*(self: GridBoxPtr): Vector2Ref =
     w += self.separator * (self.row.float - 1)
   Vector2(w, y)
 
-method addChild*(self: GridBoxPtr, child: NodePtr) =
+method addChild*(self: GridBoxRef, child: NodeRef) =
   ## Adds new child in current node.
   ##
   ## Arguments:
@@ -90,7 +76,7 @@ method addChild*(self: GridBoxPtr, child: NodePtr) =
   self.rect_size = self.getChildSize()
 
 
-method draw*(self: GridBoxPtr, w, h: GLfloat) =
+method draw*(self: GridBoxRef, w, h: GLfloat) =
   ## This method uses in the `window.nim`.
   let
     x1 = -w/2 + self.global_position.x
@@ -119,14 +105,13 @@ method draw*(self: GridBoxPtr, w, h: GLfloat) =
       child.position.x = x + maxsize.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
       child.position.y = y + maxsize.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
       x += maxsize.x + self.separator
-  procCall self.ControlPtr.draw(w, h)
+  procCall self.ControlRef.draw(w, h)
 
-method duplicate*(self: GridBoxPtr, obj: var GridBoxObj): GridBoxPtr {.base.} =
-  ## Duplicates GridBox object and create a new GridBox pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: GridBoxRef): GridBoxRef {.base.} =
+  ## Duplicates GridBox object and create a new GridBox.
+  self.deepCopy()
 
-method resize*(self: GridBoxPtr, w, h: GLfloat) =
+method resize*(self: GridBoxRef, w, h: GLfloat) =
   ## Resizes GridBox.
   ##
   ## Arguments:
@@ -142,12 +127,12 @@ method resize*(self: GridBoxPtr, w, h: GLfloat) =
   self.can_use_anchor = false
   self.can_use_size_anchor = false
 
-method setRow*(self: GridBoxPtr, row: int) {.base.} =
+method setRow*(self: GridBoxRef, row: int) {.base.} =
   ## Changes gridBox row count.
   self.row = row
   self.rect_size = self.getChildSize()
 
-method setSeparator*(self: GridBoxPtr, separator: float) {.base.} =
+method setSeparator*(self: GridBoxRef, separator: float) {.base.} =
   ## Changes separator between child nodes.
   self.separator = separator
   self.rect_size = self.getChildSize()

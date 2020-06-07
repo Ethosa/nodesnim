@@ -17,7 +17,7 @@ import
 
 
 type
-  RichEditTextObj* = object of ControlPtr
+  RichEditTextObj* = object of ControlRef
     blit_caret*: bool
     blit_speed*: float
     blit_time*: float
@@ -30,50 +30,36 @@ type
     caret_color*: ColorRef
     text_align*: AnchorRef  ## Text align.
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
-  RichEditTextPtr* = ptr RichEditTextObj
+  RichEditTextRef* = ref RichEditTextObj
 
 
-proc RichEditText*(name: string, variable: var RichEditTextObj): RichEditTextPtr =
-  ## Creates a new RichEditText pointer.
+proc RichEditText*(name: string = "RichEditText"): RichEditTextRef =
+  ## Creates a new RichEditText.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a RichEditTextObj variable.
   runnableExamples:
-    var
-      textobj: RichEditTextObj
-      text = RichEditText("RichEditText", textobj)
-  nodepattern(RichEditTextObj)
+    var text = RichEditText("RichEditText")
+  nodepattern(RichEditTextRef)
   controlpattern()
-  variable.rect_size.x = 64
-  variable.rect_size.y = 32
-  variable.text = clrtext""
-  variable.font = GLUT_BITMAP_HELVETICA_12
-  variable.size = 12
-  variable.spacing = 2
-  variable.text_align = Anchor(0, 0, 0, 0)
-  variable.hint_text = clrtext("Edit text ...", Color(0.8, 0.8, 0.8))
-  variable.caret_position = 0
-  variable.blit_caret = true
-  variable.caret_color = Color(1f, 1f, 1f, 0.7)
-  variable.blit_speed = 0.05
-  variable.blit_time = 0f
-  variable.on_edit = proc(key: string) = discard
-  variable.kind = RICH_EDIT_TEXT_NODE
-
-proc RichEditText*(obj: var RichEditTextObj): RichEditTextPtr {.inline.} =
-  ## Creates a new RichEditText pointer with default node name "RichEditText".
-  ##
-  ## Arguments:
-  ## - `variable` is a RichEditTextObj variable.
-  runnableExamples:
-    var
-      textobj: RichEditTextObj
-      text = RichEditText(textobj)
-  RichEditText("RichEditText", obj)
+  result.rect_size.x = 64
+  result.rect_size.y = 32
+  result.text = clrtext""
+  result.font = GLUT_BITMAP_HELVETICA_12
+  result.size = 12
+  result.spacing = 2
+  result.text_align = Anchor(0, 0, 0, 0)
+  result.hint_text = clrtext("Edit text ...", Color(0.8, 0.8, 0.8))
+  result.caret_position = 0
+  result.blit_caret = true
+  result.caret_color = Color(1f, 1f, 1f, 0.7)
+  result.blit_speed = 0.05
+  result.blit_time = 0f
+  result.on_edit = proc(key: string) = discard
+  result.kind = RICH_EDIT_TEXT_NODE
 
 
-method getTextSize*(self: RichEditTextPtr): Vector2Ref {.base.} =
+method getTextSize*(self: RichEditTextRef): Vector2Ref {.base.} =
   ## Returns text size.
   result = Vector2()
   for line in self.text.splitLines():  # get text height
@@ -86,7 +72,7 @@ method getTextSize*(self: RichEditTextPtr): Vector2Ref {.base.} =
   if result.y > 0:
     result.y -= self.spacing
 
-method getLine*(self: RichEditTextPtr): int {.base.} =
+method getLine*(self: RichEditTextRef): int {.base.} =
   ## Returns current caret line.
   var
     caret_pos = 0
@@ -103,7 +89,7 @@ method getLine*(self: RichEditTextPtr): int {.base.} =
   return l
 
 
-method getCharPositionUnderMouse*(self: RichEditTextPtr): int {.base.} =
+method getCharPositionUnderMouse*(self: RichEditTextRef): int {.base.} =
   ## Returns char position under mouse.
   let
     size = self.getTextSize()
@@ -132,12 +118,12 @@ method getCharPositionUnderMouse*(self: RichEditTextPtr): int {.base.} =
         res.x = x
 
 
-method getCharUnderMouse*(self: RichEditTextPtr): ColorCharRef {.base.} =
+method getCharUnderMouse*(self: RichEditTextRef): ColorCharRef {.base.} =
   ## Returns char under mouse
   return self.text[self.getCharPositionUnderMouse()]
 
 
-method getWordPositionUnderMouse*(self: RichEditTextPtr): tuple[startpos, endpos: int] {.base.} =
+method getWordPositionUnderMouse*(self: RichEditTextRef): tuple[startpos, endpos: int] {.base.} =
   ## Returns words under mouse.
   ## Returns (-1, -1), if under mouse no founds words.
   var caret = self.getCharPositionUnderMouse()
@@ -173,14 +159,14 @@ method getWordPositionUnderMouse*(self: RichEditTextPtr): tuple[startpos, endpos
     return (-1, -1)
 
 
-method getWordUnderMouse*(self: RichEditTextPtr): ColorTextRef {.base.} =
+method getWordUnderMouse*(self: RichEditTextRef): ColorTextRef {.base.} =
   ## Returns words under mouse.
   let (s, e) = self.getWordPositionUnderMouse()
   if self.text.len() > 0 and s > -1:
     return self.text[s..e]
 
 
-method draw*(self: RichEditTextPtr, w, h: GLfloat) =
+method draw*(self: RichEditTextRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -244,15 +230,14 @@ method draw*(self: RichEditTextPtr, w, h: GLfloat) =
     self.on_press(self, last_event.x, last_event.y)
 
 
-method duplicate*(self: RichEditTextPtr, obj: var RichEditTextObj): RichEditTextPtr {.base.} =
-  ## Duplicates RichEditText and create a new RichEditText pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: RichEditTextRef): RichEditTextRef {.base.} =
+  ## Duplicates RichEditText and create a new RichEditText.
+  self.deepCopy()
 
 
-method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: RichEditTextRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. This uses in the `window.nim`.
-  procCall self.ControlPtr.handle(event, mouse_on)
+  procCall self.ControlRef.handle(event, mouse_on)
 
   if self.hovered:  # Change cursor, if need
     glutSetCursor(GLUT_CURSOR_TEXT)
@@ -295,14 +280,14 @@ method handle*(self: RichEditTextPtr, event: InputEvent, mouse_on: var NodePtr) 
           self.caret_position += 1
           self.on_edit(event.key)
 
-method setTextAlign*(self: RichEditTextPtr, align: AnchorRef) {.base.} =
+method setTextAlign*(self: RichEditTextRef, align: AnchorRef) {.base.} =
   ## Changes text align.
   self.text_align = align
 
-method setTextAlign*(self: RichEditTextPtr, x1, y1, x2, y2: float) {.base.} =
+method setTextAlign*(self: RichEditTextRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
 
-method setText*(self: RichEditTextPtr, value: ColorTextRef) {.base.} =
+method setText*(self: RichEditTextRef, value: ColorTextRef) {.base.} =
   ## Changes RichEditText text.
   self.text = value

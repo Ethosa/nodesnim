@@ -18,38 +18,24 @@ import
 type
   KinematicBody2DObj* = object of Node2DObj
     has_collision*: bool
-    collision_node*: CollisionShape2DPtr
-  KinematicBody2DPtr* = ptr KinematicBody2DObj
+    collision_node*: CollisionShape2DRef
+  KinematicBody2DRef* = ref KinematicBody2DObj
 
 
-proc KinematicBody2D*(name: string, variable: var KinematicBody2DObj): KinematicBody2DPtr =
-  ## Creates a new KinematicBody2D pointer.
+proc KinematicBody2D*(name: string = "KinematicBody2D"): KinematicBody2DRef =
+  ## Creates a new KinematicBody2D.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a KinematicBody2DObj variable.
   runnableExamples:
-    var
-      node_obj: KinematicBody2DObj
-      node = KinematicBody2D("KinematicBody2D", node_obj)
-  nodepattern(KinematicBody2DObj)
+    var node = KinematicBody2D("KinematicBody2D")
+  nodepattern(KinematicBody2DRef)
   node2dpattern()
-  variable.has_collision = false
-  variable.kind = KINEMATIC_BODY_2D_NODE
-
-proc KinematicBody2D*(obj: var KinematicBody2DObj): KinematicBody2DPtr {.inline.} =
-  ## Creates a new KinematicBody2D pointer with deffault node name "KinematicBody2D".
-  ##
-  ## Arguments:
-  ## - `variable` is a KinematicBody2DObj variable.
-  runnableExamples:
-    var
-      node_obj: KinematicBody2DObj
-      node = KinematicBody2D(node_obj)
-  KinematicBody2D("KinematicBody2D", obj)
+  result.has_collision = false
+  result.kind = KINEMATIC_BODY_2D_NODE
 
 
-method addChild*(self: KinematicBody2DPtr, other: CollisionShape2DPtr) {.base.} =
+method addChild*(self: KinematicBody2DRef, other: CollisionShape2DRef) {.base.} =
   ## Adss collision to the KinematicBody2D.
   ## This method should be called one time.
   self.children.add(other)
@@ -58,7 +44,7 @@ method addChild*(self: KinematicBody2DPtr, other: CollisionShape2DPtr) {.base.} 
   self.collision_node = other
 
 
-method getCollideCount*(self: KinematicBody2DPtr): int {.base.} =
+method getCollideCount*(self: KinematicBody2DRef): int {.base.} =
   ## Checks collision count.
   result = 0
   if self.has_collision:
@@ -70,11 +56,11 @@ method getCollideCount*(self: KinematicBody2DPtr): int {.base.} =
       if node.kind == COLLISION_SHAPE_2D_NODE:
         if node == self.collision_node:
           continue
-        if self.collision_node.isCollide(node.CollisionShape2DPtr):
+        if self.collision_node.isCollide(node.CollisionShape2DRef):
           inc result
 
 
-method draw*(self: KinematicBody2DPtr, w, h: GLfloat) =
+method draw*(self: KinematicBody2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   self.position = self.timed_position
@@ -85,13 +71,12 @@ method draw*(self: KinematicBody2DPtr, w, h: GLfloat) =
     self.position = self.timed_position
 
 
-method duplicate*(self: KinematicBody2DPtr, obj: var KinematicBody2DObj): KinematicBody2DPtr {.base.} =
+method duplicate*(self: KinematicBody2DRef): KinematicBody2DRef {.base.} =
   ## Duplicates KinematicBody2D and create a new KinematicBody2D pointer.
-  obj = self[]
-  obj.addr
+  self.deepCopy()
 
 
-method isCollide*(self: KinematicBody2DPtr): bool {.base.} =
+method isCollide*(self: KinematicBody2DRef): bool {.base.} =
   ## Checks any collision and return `true`, when collide with any collision shape.
   result = false
   if self.has_collision:
@@ -103,12 +88,12 @@ method isCollide*(self: KinematicBody2DPtr): bool {.base.} =
       if node.kind == COLLISION_SHAPE_2D_NODE:
         if node == self.collision_node:
           continue
-        if self.collision_node.isCollide(node.CollisionShape2DPtr):
+        if self.collision_node.isCollide(node.CollisionShape2DRef):
           result = true
           break
 
 
-method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref) {.base.} =
+method moveAndCollide*(self: KinematicBody2DRef, vel: Vector2Ref) {.base.} =
   ## Moves and checks collision
   ##
   ## Arguments:
@@ -123,17 +108,17 @@ method moveAndCollide*(self: KinematicBody2DPtr, vel: Vector2Ref) {.base.} =
       if node.kind == COLLISION_SHAPE_2D_NODE:
         if node == self.collision_node:
           continue
-        if self.collision_node.isCollide(node.CollisionShape2DPtr):
+        if self.collision_node.isCollide(node.CollisionShape2DRef):
           self.move(-vel.x, 0)
           self.calcGlobalPosition()
           self.collision_node.calcGlobalPosition()
 
-          if self.collision_node.isCollide(node.CollisionShape2DPtr):
+          if self.collision_node.isCollide(node.CollisionShape2DRef):
             self.move(vel.x, -vel.y)
             self.calcGlobalPosition()
             self.collision_node.calcGlobalPosition()
 
-          if self.collision_node.isCollide(node.CollisionShape2DPtr):
+          if self.collision_node.isCollide(node.CollisionShape2DRef):
             self.move(-vel.x, 0)
             self.calcGlobalPosition()
             self.collision_node.calcGlobalPosition()

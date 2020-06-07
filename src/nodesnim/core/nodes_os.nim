@@ -1,13 +1,10 @@
 # author: Ethosa
 import os
+{.used.}
 
-
-when defined(windows):
-    const home_folder* = getHomeDir() / "AppData" / "Roaming"
-else:
-    const home_folder* = getHomeDir()
 
 const
+  home_folder* = getHomeDir()
   nodesnim_folder* = home_folder / "NodesNim"
   saves_folder* = "NodesNim" / "saves"
 

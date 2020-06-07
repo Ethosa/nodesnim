@@ -5,11 +5,9 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  buttonobj: ButtonObj
-  button = Button(buttonobj)
+  button = Button()
 
 main.addChild(button)
 
@@ -19,7 +17,7 @@ button.setAnchor(0.5, 0.5, 0.5, 0.5)
 
 
 button.on_touch =
-  proc(self: ButtonPtr, x, y: float) =  # This called when user clicks on the button
+  proc(self: ButtonRef, x, y: float) =  # This called when user clicks on the button
     button.text = "Clicked in " & $x & ", " & $y & " position."
 
 

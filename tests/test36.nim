@@ -5,11 +5,9 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  spriteobj: SpriteObj
-  sprite = Sprite(spriteobj)
+  sprite = Sprite()
 
 main.addChild(sprite)
 

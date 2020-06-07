@@ -5,20 +5,15 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  popupobj: PopupObj
-  popup = Popup(popupobj)  # Create Popup node pointer.
+  popup = Popup()  # Create Popup node pointer.
 
-  boxobj: VBoxObj
-  box = VBox(boxobj)
+  box = VBox()
 
-  labelobj: LabelObj
-  label = Label(labelobj)
+  label = Label()
 
-  smthnodeobj: NodeObj
-  smthnode = Node(smthnodeobj)
+  smthnode = Node()
 
 
 label.setText("Hello")
@@ -34,7 +29,7 @@ main.addChild(smthnode)
 
 Input.addKeyAction("space", K_SPACE)
 smthnode.on_process =
-  proc(self: NodePtr) =
+  proc(self: NodeRef) =
     if Input.isActionJustPressed("space"):
       if popup.visible:
         popup.hide()

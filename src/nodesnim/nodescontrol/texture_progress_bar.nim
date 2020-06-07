@@ -15,45 +15,31 @@ import
 
 
 type
-  TextureProgressBarObj* = object of ControlPtr
+  TextureProgressBarObj* = object of ControlRef
     max_value*, value*: uint
     progress_texture*, back_texture*: GlTextureObj
-  TextureProgressBarPtr* = ptr TextureProgressBarObj
+  TextureProgressBarRef* = ref TextureProgressBarObj
 
 
-proc TextureProgressBar*(name: string, variable: var TextureProgressBarObj): TextureProgressBarPtr =
-  ## Creates a new TextureProgressBar pointer.
+proc TextureProgressBar*(name: string = "TextureProgressBar"): TextureProgressBarRef =
+  ## Creates a new TextureProgressBar.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a TextureProgressBarObj variable.
   runnableExamples:
-    var
-      pobj: TextureProgressBarObj
-      p = TextureProgressBar("TextureProgressBar", pobj)
-  nodepattern(TextureProgressBarObj)
+    var p = TextureProgressBar("TextureProgressBar")
+  nodepattern(TextureProgressBarRef)
   controlpattern()
-  variable.rect_size.x = 120
-  variable.rect_size.y = 40
-  variable.progress_texture = GlTextureObj()
-  variable.back_texture = GlTextureObj()
-  variable.max_value = 100
-  variable.value = 0
-  variable.kind = TEXTURE_PROGRESS_BAR_NODE
-
-proc TextureProgressBar*(obj: var TextureProgressBarObj): TextureProgressBarPtr {.inline.} =
-  ## Creates a new TextureProgressBar pointer with default node name "TextureProgressBar".
-  ##
-  ## Arguments:
-  ## - `variable` is a TextureProgressBarObj variable.
-  runnableExamples:
-    var
-      pobj: TextureProgressBarObj
-      p = TextureProgressBar(pobj)
-  TextureProgressBar("TextureProgressBar", obj)
+  result.rect_size.x = 120
+  result.rect_size.y = 40
+  result.progress_texture = GlTextureObj()
+  result.back_texture = GlTextureObj()
+  result.max_value = 100
+  result.value = 0
+  result.kind = TEXTURE_PROGRESS_BAR_NODE
 
 
-method draw*(self: TextureProgressBarPtr, w, h: GLfloat) =
+method draw*(self: TextureProgressBarRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -106,29 +92,28 @@ method draw*(self: TextureProgressBarPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: TextureProgressBarPtr, obj: var TextureProgressBarObj): TextureProgressBarPtr {.base.} =
-  ## Duplicates TextureProgressBar object and create a new TextureProgressBar pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: TextureProgressBarRef): TextureProgressBarRef {.base.} =
+  ## Duplicates TextureProgressBar object and create a new TextureProgressBar.
+  self.deepCopy()
 
-method setMaxValue*(self: TextureProgressBarPtr, value: uint) {.base.} =
+method setMaxValue*(self: TextureProgressBarRef, value: uint) {.base.} =
   ## Changes max value.
   if value > self.value:
     self.max_value = value
   else:
     self.max_value = self.value
 
-method setProgress*(self: TextureProgressBarPtr, value: uint) {.base.} =
+method setProgress*(self: TextureProgressBarRef, value: uint) {.base.} =
   ## Changes progress.
   if value > self.max_value:
     self.value = self.max_value
   else:
     self.value = value
 
-method setProgressTexture*(self: TextureProgressBarPtr, texture: GlTextureObj) {.base.} =
+method setProgressTexture*(self: TextureProgressBarRef, texture: GlTextureObj) {.base.} =
   ## Changes progress texture.
   self.progress_texture = texture
 
-method setBackgroundTexture*(self: TextureProgressBarPtr, texture: GlTextureObj) {.base.} =
+method setBackgroundTexture*(self: TextureProgressBarRef, texture: GlTextureObj) {.base.} =
   ## Changes background progress texture.
   self.back_texture = texture

@@ -17,40 +17,26 @@ import
 type
   HBoxObj* = object of BoxObj
     separator*: float
-  HBoxPtr* = ptr HBoxObj
+  HBoxRef* = ref HBoxObj
 
 
-proc HBox*(name: string, variable: var HBoxObj): HBoxPtr =
-  ## Creates a new HBox pointer.
+proc HBox*(name: string = "HBox"): HBoxRef =
+  ## Creates a new HBox.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a HBoxObj variable.
   runnableExamples:
-    var
-      gridobj: HBoxObj
-      grid = HBox("HBox", gridobj)
-  nodepattern(HBoxObj)
+    var grid = HBox("HBox")
+  nodepattern(HBoxRef)
   controlpattern()
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
-  variable.separator = 4f
-  variable.kind = HBOX_NODE
-
-proc HBox*(obj: var HBoxObj): HBoxPtr {.inline.} =
-  ## Creates a new HBox pointer with default node name "HBox".
-  ##
-  ## Arguments:
-  ## - `variable` is a HBoxObj variable.
-  runnableExamples:
-    var
-      gridobj: HBoxObj
-      grid = HBox(gridobj)
-  HBox("HBox", obj)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+  result.separator = 4f
+  result.kind = HBOX_NODE
 
 
-method getChildSize*(self: HBoxPtr): Vector2Ref =
+method getChildSize*(self: HBoxRef): Vector2Ref =
   var
     x = 0f
     y = 0f
@@ -62,7 +48,7 @@ method getChildSize*(self: HBoxPtr): Vector2Ref =
     x -= self.separator
   Vector2(x, y)
 
-method addChild*(self: HBoxPtr, child: NodePtr) =
+method addChild*(self: HBoxRef, child: NodeRef) =
   ## Adds new child in current node.
   ##
   ## Arguments:
@@ -72,7 +58,7 @@ method addChild*(self: HBoxPtr, child: NodePtr) =
   self.rect_size = self.getChildSize()
 
 
-method draw*(self: HBoxPtr, w, h: GLfloat) =
+method draw*(self: HBoxRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x1 = -w/2 + self.global_position.x
@@ -88,14 +74,13 @@ method draw*(self: HBoxPtr, w, h: GLfloat) =
     child.position.x = x
     child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
     x += child.rect_size.x + self.separator
-  procCall self.ControlPtr.draw(w, h)
+  procCall self.ControlRef.draw(w, h)
 
-method duplicate*(self: HBoxPtr, obj: var HBoxObj): HBoxPtr {.base.} =
-  ## Duplicates HBox object and create a new HBox pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: HBoxRef): HBoxRef {.base.} =
+  ## Duplicates HBox object and create a new HBox.
+  self.deepCopy()
 
-method resize*(self: HBoxPtr, w, h: GLfloat) =
+method resize*(self: HBoxRef, w, h: GLfloat) =
   ## Resizes HBox, if `w` and `h` not less than child size.
   ##
   ## Arguments:

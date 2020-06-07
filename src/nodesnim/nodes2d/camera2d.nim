@@ -16,51 +16,37 @@ type
   Camera2DObj* = object of Node2DObj
     current*, smooth*: bool
     smooth_speed*: float
-    target*: NodePtr
+    target*: NodeRef
     limit*: AnchorRef
-  Camera2DPtr* = ptr Camera2DObj
+  Camera2DRef* = ref Camera2DObj
 
 
-var nodes: seq[Camera2DPtr] = @[]
+var nodes: seq[Camera2DRef] = @[]
 
 
-proc Camera2D*(name: string, variable: var Camera2DObj): Camera2DPtr =
-  ## Creates a new Camera2D pointer.
+proc Camera2D*(name: string = "Camera2D"): Camera2DRef =
+  ## Creates a new Camera2D.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a Camera2DObj variable.
   runnableExamples:
-    var
-      node_obj: Camera2DObj
-      node = Camera2D("Camera2D", node_obj)
-  nodepattern(Camera2DObj)
+    var node = Camera2D("Camera2D")
+  nodepattern(Camera2DRef)
   node2dpattern()
-  variable.limit = Anchor(-100000, -100000, 100000, 100000)
-  variable.current = false
-  variable.smooth = false
-  variable.smooth_speed = 0.1
-  variable.kind = CAMERA_2D_NODE
+  result.limit = Anchor(-100000, -100000, 100000, 100000)
+  result.current = false
+  result.smooth = false
+  result.smooth_speed = 0.1
+  result.kind = CAMERA_2D_NODE
   nodes.add(result)
 
-proc Camera2D*(obj: var Camera2DObj): Camera2DPtr {.inline.} =
-  ## Creates a new Camera2D pointer with deffault node name "Camera2D".
-  ##
-  ## Arguments:
-  ## - `variable` is a Camera2DObj variable.
-  runnableExamples:
-    var
-      node_obj: Camera2DObj
-      node = Camera2D(node_obj)
-  Camera2D("Camera2D", obj)
 
-
-method changeTarget*(self: Camera2DPtr, target: NodePtr) {.base.} =
+method changeTarget*(self: Camera2DRef, target: NodeRef) {.base.} =
   ## Changes camera target (without camera position.)
   self.target = target
 
 
-method changeSmoothSpeed*(self: Camera2DPtr, speed: float) {.base.} =
+method changeSmoothSpeed*(self: Camera2DRef, speed: float) {.base.} =
   ## Changes camera smooth speed.
   ##
   ## Arguments:
@@ -68,12 +54,12 @@ method changeSmoothSpeed*(self: Camera2DPtr, speed: float) {.base.} =
   self.smooth_speed = speed
 
 
-method disableSmooth*(self: Camera2DPtr) {.base.} =
+method disableSmooth*(self: Camera2DRef) {.base.} =
   ## Disables smooth mode.
   self.smooth = false
 
 
-method draw*(self: Camera2DPtr, w, h: GLfloat) =
+method draw*(self: Camera2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   self.position = self.timed_position
@@ -101,7 +87,12 @@ method draw*(self: Camera2DPtr, w, h: GLfloat) =
       root.position.y = if y+h/2 < self.limit.y1: root.position.y elif y+h/2 > self.limit.y2: root.position.y else: -(y - h/2)
 
 
-method enableSmooth*(self: Camera2DPtr, speed: float = 0.1) {.base.} =
+method duplicate*(self: Camera2DRef): Camera2DRef {.base.} =
+  ## Duplicates Camera2D and create a new Camera2D object.
+  self.deepCopy()
+
+
+method enableSmooth*(self: Camera2DRef, speed: float = 0.1) {.base.} =
   ## Enables camera smooth mode.
   ##
   ## Arguments:
@@ -110,24 +101,24 @@ method enableSmooth*(self: Camera2DPtr, speed: float = 0.1) {.base.} =
   self.smooth_speed = speed
 
 
-method setCurrent*(self: Camera2DPtr) {.base.} =
+method setCurrent*(self: Camera2DRef) {.base.} =
   ## Changes the current camera. It also automatically disable other cameras.
   for c in nodes:
     c.current = false
   self.current = true
 
 
-method setLimit*(self: Camera2DPtr, x1, y1, x2, y2: float) {.base.} =
+method setLimit*(self: Camera2DRef, x1, y1, x2, y2: float) {.base.} =
   ## Change camera limit.
   self.limit = Anchor(x1, y1, x2, y2)
 
 
-method setLimit*(self: Camera2DPtr, limit: AnchorRef) {.base.} =
+method setLimit*(self: Camera2DRef, limit: AnchorRef) {.base.} =
   ## Changes camera limit.
   self.limit = limit
 
 
-method setTarget*(self: Camera2DPtr, target: NodePtr) {.base.} =
+method setTarget*(self: Camera2DRef, target: NodeRef) {.base.} =
   ## Changes camera target node.
   self.target = target
   var root = self.getRootNode()

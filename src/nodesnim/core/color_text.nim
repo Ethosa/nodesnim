@@ -133,7 +133,7 @@ proc splitLines*(x: ColorTextRef): seq[ColorTextRef] =
   ## Creates a new seq of ColorTextRef.
   result = @[clrtext("")]
   for c in x.chars:
-    if c.c.int != 13:
+    if c.c.int != 13 and c.c != '\n':
       result[^1].chars.add(c)
     else:
       result.add(clrtext(""))

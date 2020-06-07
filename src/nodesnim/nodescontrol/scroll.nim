@@ -22,49 +22,35 @@ type
     viewport_x*, viewport_y*: float
     thumb_color*: ColorRef
     back_color*: ColorRef
-  ScrollPtr* = ptr ScrollObj
+  ScrollRef* = ref ScrollObj
 
 
-proc Scroll*(name: string, variable: var ScrollObj): ScrollPtr =
-  ## Creates a new Scroll pointer.
+proc Scroll*(name: string = "Scroll"): ScrollRef =
+  ## Creates a new Scroll.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a ScrollObj variable.
   runnableExamples:
-    var
-      scobj: ScrollObj
-      sc = Scroll("Scroll", scobj)
-  nodepattern(ScrollObj)
+    var sc = Scroll("Scroll")
+  nodepattern(ScrollRef)
   controlpattern()
-  variable.rect_size.x = 256
-  variable.rect_size.y = 256
-  variable.viewport_h = 256
-  variable.viewport_w = 256
-  variable.viewport_x = 0
-  variable.viewport_y = 0
-  variable.thumb_width = 8
-  variable.thumb_height = 8
-  variable.back_color = Color(0, 0, 0, 128)
-  variable.thumb_color = Color(0, 0, 0, 128)
-  variable.thumb_y_has_mouse = false
-  variable.thumb_x_has_mouse = false
-  variable.mousemode = MOUSEMODE_IGNORE
-  variable.kind = SCROLL_NODE
-
-proc Scroll*(obj: var ScrollObj): ScrollPtr {.inline.} =
-  ## Creates a new Scroll pointer with default name "Scroll".
-  ##
-  ## Arguments:
-  ## - `variable` is a ScrollObj variable.
-  runnableExamples:
-    var
-      scobj: ScrollObj
-      sc = Scroll(scobj)
-  Scroll("Scroll", obj)
+  result.rect_size.x = 256
+  result.rect_size.y = 256
+  result.viewport_h = 256
+  result.viewport_w = 256
+  result.viewport_x = 0
+  result.viewport_y = 0
+  result.thumb_width = 8
+  result.thumb_height = 8
+  result.back_color = Color(0, 0, 0, 128)
+  result.thumb_color = Color(0, 0, 0, 128)
+  result.thumb_y_has_mouse = false
+  result.thumb_x_has_mouse = false
+  result.mousemode = MOUSEMODE_IGNORE
+  result.kind = SCROLL_NODE
 
 
-method addChild*(self: ScrollPtr, other: NodePtr) =
+method addChild*(self: ScrollRef, other: NodeRef) =
   ## Adds a new node in Scroll.
   ##
   ## Arguments:
@@ -74,13 +60,12 @@ method addChild*(self: ScrollPtr, other: NodePtr) =
     other.parent = self
 
 
-method duplicate*(self: ScrollPtr, obj: var ScrollObj): ScrollPtr {.base.} =
-  ## Duplicates Scroll object and create a new Scroll pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: ScrollRef): ScrollRef {.base.} =
+  ## Duplicates Scroll object and create a new Scroll.
+  self.deepCopy()
 
 
-method resize*(canvas: ScrollPtr, w, h: GLfloat) =
+method resize*(canvas: ScrollRef, w, h: GLfloat) =
   ## Resizes scroll.
   ##
   ## Arguments:
@@ -90,7 +75,7 @@ method resize*(canvas: ScrollPtr, w, h: GLfloat) =
   canvas.rect_size.y = h
 
 
-method draw*(self: ScrollPtr, w, h: GLfloat) =
+method draw*(self: ScrollRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -104,7 +89,7 @@ method draw*(self: ScrollPtr, w, h: GLfloat) =
     self.on_press(self, last_event.x, last_event.y)
 
 
-method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
+method draw2stage*(self: ScrollRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -142,7 +127,7 @@ method draw2stage*(self: ScrollPtr, w, h: GLfloat) =
       glRectf(x + thumb_x, y - self.viewport_h + self.thumb_height, x + thumb_x + thumb_w, y-self.viewport_h)
 
 
-method scrollBy*(self: ScrollPtr, x, y: float) {.base.} =
+method scrollBy*(self: ScrollRef, x, y: float) {.base.} =
   ## Scrolls by `x` and `y`, if available.
   if x + self.viewport_x + self.viewport_w < self.rect_size.x and x + self.viewport_x > 0:
     self.viewport_x += x
@@ -159,7 +144,7 @@ method scrollBy*(self: ScrollPtr, x, y: float) {.base.} =
     self.viewport_y = self.rect_size.y - self.viewport_h
 
 
-method scrollTo*(self: ScrollPtr, x, y: float) {.base.} =
+method scrollTo*(self: ScrollRef, x, y: float) {.base.} =
   ## Scrolls to `x` and `y` position.
   if x + self.viewport_w < self.rect_size.x and x > 0:
     self.viewport_x = x
@@ -176,9 +161,9 @@ method scrollTo*(self: ScrollPtr, x, y: float) {.base.} =
     self.viewport_y = self.rect_size.y - self.viewport_h
 
 
-method handle*(self: ScrollPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: ScrollRef, event: InputEvent, mouse_on: var NodeRef) =
   ## handles user input. This uses in the `window.nim`.
-  procCall self.ControlPtr.handle(event, mouse_on)
+  procCall self.ControlRef.handle(event, mouse_on)
 
   let
     mouse_in = Rect2(self.global_position, Vector2(self.viewport_w, self.viewport_h)).contains(event.x, event.y)

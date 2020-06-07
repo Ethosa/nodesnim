@@ -5,11 +5,9 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  buttonobj: TextureButtonObj
-  button = TextureButton(buttonobj)
+  button = TextureButton()
 
   norm_texture = load("assets/button_normal.png", GL_RGBA)
   hover_texture = load("assets/button_hover.png", GL_RGBA)
@@ -27,7 +25,7 @@ button.setHoverTexture(hover_texture)
 button.setPressTexture(press_texture)
 
 button.on_touch =
-  proc(self: TextureButtonPtr, x, y: float) =  # This called when user clicks on the button
+  proc(self: TextureButtonRef, x, y: float) =  # This called when user clicks on the button
     button.text = "Clicked in " & $x & ", " & $y & " position."
 
 

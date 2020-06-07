@@ -17,51 +17,37 @@ import
 
 
 type
-  LabelObj* = object of ControlPtr
+  LabelObj* = object of ControlRef
     font*: pointer          ## Glut font data.
     spacing*: float         ## Font spacing.
     size*: float            ## Font size.
     text*: string           ## Label text.
     color*: ColorRef        ## Text color.
     text_align*: AnchorRef  ## Text align.
-  LabelPtr* = ptr LabelObj
+  LabelRef* = ref LabelObj
 
 
-proc Label*(name: string, variable: var LabelObj): LabelPtr =
-  ## Creates a new Label pointer.
+proc Label*(name: string = "Label"): LabelRef =
+  ## Creates a new Label.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a LabelObj variable.
   runnableExamples:
-    var
-      textobj: LabelObj
-      text = Label("Label", textobj)
-  nodepattern(LabelObj)
+    var text = Label("Label")
+  nodepattern(LabelRef)
   controlpattern()
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.text = ""
-  variable.font = GLUT_BITMAP_HELVETICA_12
-  variable.size = 12
-  variable.spacing = 2
-  variable.text_align = Anchor(0, 0, 0, 0)
-  variable.color = Color(1f, 1f, 1f)
-  variable.kind = LABEL_NODE
-
-proc Label*(obj: var LabelObj): LabelPtr {.inline.} =
-  ## Creates a new Labelpointer with default node name "Label".
-  ##
-  ## Arguments:
-  ## - `variable` is a LabelObj variable.
-  runnableExamples:
-    var
-      textobj: LabelObj
-      text = Label(textobj)
-  Label("Label", obj)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.text = ""
+  result.font = GLUT_BITMAP_HELVETICA_12
+  result.size = 12
+  result.spacing = 2
+  result.text_align = Anchor(0, 0, 0, 0)
+  result.color = Color(1f, 1f, 1f)
+  result.kind = LABEL_NODE
 
 
-method draw*(self: LabelPtr, w, h: GLfloat) =
+method draw*(self: LabelRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -107,19 +93,18 @@ method draw*(self: LabelPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: LabelPtr, obj: var LabelObj): LabelPtr {.base.} =
-  ## Duplicates Label object and create a new Label pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: LabelRef): LabelRef {.base.} =
+  ## Duplicates Label object and create a new Label.
+  self.deepCopy()
 
-method setTextAlign*(self: LabelPtr, align: AnchorRef) {.base.} =
+method setTextAlign*(self: LabelRef, align: AnchorRef) {.base.} =
   ## Changes text alignment.
   self.text_align = align
 
-method setTextAlign*(self: LabelPtr, x1, y1, x2, y2: float) {.base.} =
+method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes text alignment.
   self.text_align = Anchor(x1, y1, x2, y2)
 
-method setText*(self: LabelPtr, value: string) {.base.} =
+method setText*(self: LabelRef, value: string) {.base.} =
   ## Changes Label text.
   self.text = value

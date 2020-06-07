@@ -28,43 +28,39 @@ type
     rect_size*: Vector2Ref           ## Node size.
     size_anchor*: Vector2Ref         ## Node size anchor.
     anchor*: AnchorRef               ## Node anchor.
-    parent*: NodePtr                 ## Node parent.
-    children*: seq[NodePtr]          ## Node children.
-    on_enter*: proc(self: NodePtr)                   ## This called when scene changed.
-    on_exit*: proc(self: NodePtr)                    ## This called when exit from the scene.
-    on_input*: proc(self: NodePtr, event: InputEvent)  ## This called on user input.
-    on_ready*: proc(self: NodePtr)                   ## This called when the scene changed and the `enter` was called.
-    on_process*: proc(self: NodePtr)                 ## This called every frame.
-  NodePtr* = ptr NodeObj
+    parent*: NodeRef                 ## Node parent.
+    children*: seq[NodeRef]          ## Node children.
+    on_enter*: proc(self: NodeRef)                   ## This called when scene changed.
+    on_exit*: proc(self: NodeRef)                    ## This called when exit from the scene.
+    on_input*: proc(self: NodeRef, event: InputEvent)  ## This called on user input.
+    on_ready*: proc(self: NodeRef)                   ## This called when the scene changed and the `enter` was called.
+    on_process*: proc(self: NodeRef)                 ## This called every frame.
+  NodeRef* = ref NodeObj
 
 
 template nodepattern*(nodetype: untyped): untyped =
   ## This used in childs of the NodeObj.
-  variable = `nodetype`(
+  result = `nodetype`(
     name: name, position: Vector2(), children: @[],
     global_position: Vector2(),
     rect_size: Vector2(),
-    on_ready: proc(self: NodePtr) = discard,
-    on_process: proc(self: NodePtr) = discard,
-    on_input: proc(self: NodePtr, event: InputEvent) = discard,
-    on_enter: proc(self: NodePtr) = discard,
-    on_exit: proc(self: NodePtr) = discard,
+    on_ready: proc(self: NodeRef) = discard,
+    on_process: proc(self: NodeRef) = discard,
+    on_input: proc(self: NodeRef, event: InputEvent) = discard,
+    on_enter: proc(self: NodeRef) = discard,
+    on_exit: proc(self: NodeRef) = discard,
     is_ready: false, pausemode: INHERIT, visible: true,
     anchor: Anchor(0, 0, 0, 0), size_anchor: Vector2(), can_use_anchor: false,
     can_use_size_anchor: false, z_index: 0f, z_index_global: 0f, relative_z_index: true
   )
-  result = variable.addr
 
-proc Node*(name: string, variable: var NodeObj): NodePtr =
-  ## Creates a new Node pointer.
-  nodepattern(NodeObj)
-  variable.kind = NODE_NODE
-
-proc Node*(variable: var NodeObj): NodePtr {.inline.} =
-  Node("Node", variable)
+proc Node*(name: string = "Node"): NodeRef =
+  ## Creates a new Node.
+  nodepattern(NodeRef)
+  result.kind = NODE_NODE
 
 
-method addChild*(self: NodePtr, child: NodePtr) {.base.} =
+method addChild*(self: NodeRef, child: NodeRef) {.base.} =
   ## Adds new child in current node.
   ##
   ## Arguments:
@@ -73,7 +69,7 @@ method addChild*(self: NodePtr, child: NodePtr) {.base.} =
   child.parent = self
 
 
-method addChilds*(self: NodePtr, childs: varargs[NodePtr]) {.base.} =
+method addChilds*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
   ## Adds new child in current node.
   ##
   ## Arguments:
@@ -81,10 +77,10 @@ method addChilds*(self: NodePtr, childs: varargs[NodePtr]) {.base.} =
   for node in childs:
     self.addChild(node)
 
-method calcGlobalPosition*(self: NodePtr) {.base.} =
+method calcGlobalPosition*(self: NodeRef) {.base.} =
   ## Returns global node position.
   self.global_position = self.position
-  var current: NodePtr = self
+  var current: NodeRef = self
   self.z_index_global = self.z_index
   while current.parent != nil:
     current = current.parent
@@ -92,38 +88,37 @@ method calcGlobalPosition*(self: NodePtr) {.base.} =
     if self.relative_z_index:
       self.z_index_global += current.z_index
 
-method calcPositionAnchor*(self: NodePtr) {.base.} =
+method calcPositionAnchor*(self: NodeRef) {.base.} =
   ## Calculates node position with anchor.
   ## This used in the Window object.
   discard
 
-method draw*(self: NodePtr, w, h: GLfloat) {.base.} =
+method draw*(self: NodeRef, w, h: GLfloat) {.base.} =
   ## Draws node.
   ## This used in the Window object.
   discard
 
-method draw2stage*(self: NodePtr, w, h: GLfloat) {.base.} =
+method draw2stage*(self: NodeRef, w, h: GLfloat) {.base.} =
   ## Draws node.
   ## This used in the Window object.
   discard
 
-method duplicate*(self: NodePtr, obj: var NodeObj): NodePtr {.base.} =
-  ## Duplicates Node object and create a new Node pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: NodeRef): NodeRef {.base.} =
+  ## Duplicates Node object and create a new Node.
+  self.deepCopy()
 
-method getChild*(self: NodePtr, index: int): NodePtr {.base.} =
+method getChild*(self: NodeRef, index: int): NodeRef {.base.} =
   ## Returns child at `index` position, if available.
   ##
   ## Arguments:
   ## - `index`: child index.
   self.children[index]
 
-method getChildCount*(self: NodePtr): int {.base, inline.} =
+method getChildCount*(self: NodeRef): int {.base, inline.} =
   ## Returns child count.
   self.children.len()
 
-method getChildIndex*(self: NodePtr, name: string): int {.base.} =
+method getChildIndex*(self: NodeRef, name: string): int {.base.} =
   ## Returns `child` index or -1, if another node is not the child.
   var i = 0
   for node in self.children:
@@ -132,7 +127,7 @@ method getChildIndex*(self: NodePtr, name: string): int {.base.} =
     inc i
   return -1
 
-method getChildIndex*(self: NodePtr, child: NodePtr): int {.base.} =
+method getChildIndex*(self: NodeRef, child: NodeRef): int {.base.} =
   ## Returns `child` index or -1, if another node is not the child.
   var i = 0
   for node in self.children:
@@ -141,7 +136,7 @@ method getChildIndex*(self: NodePtr, child: NodePtr): int {.base.} =
     inc i
   return -1
 
-method getChildIter*(self: NodePtr): seq[NodePtr] {.base.} =
+method getChildIter*(self: NodeRef): seq[NodeRef] {.base.} =
   ## Returns all children iter.
   result = @[]
   for child in self.children:
@@ -152,11 +147,11 @@ method getChildIter*(self: NodePtr): seq[NodePtr] {.base.} =
         if node notin result:
           result.add(node)
 
-method getNode*(self: NodePtr, path: string): NodePtr {.base.} =
+method getNode*(self: NodeRef, path: string): NodeRef {.base.} =
   ## Returns child by `path`
   var
     p = path.split("/")
-    current: NodePtr = self
+    current: NodeRef = self
 
   for name in p:
     if current == nil:
@@ -174,7 +169,7 @@ method getNode*(self: NodePtr, path: string): NodePtr {.base.} =
           break
   return current
 
-method getPath*(self: NodePtr): string {.base.} =
+method getPath*(self: NodeRef): string {.base.} =
   ## Returns node path.
   var current = self
   result = current.name
@@ -182,11 +177,11 @@ method getPath*(self: NodePtr): string {.base.} =
     current = current.parent
     result = current.name & "/" & result
 
-method getParent*(self: NodePtr): NodePtr {.base.} =
+method getParent*(self: NodeRef): NodeRef {.base.} =
   ## Returns node parent.
   self.parent
 
-method getPauseMode*(self: NodePtr): PauseMode {.base.} =
+method getPauseMode*(self: NodeRef): PauseMode {.base.} =
   ## Calculates pause mode
   result = self.pausemode
   var current = self
@@ -194,51 +189,51 @@ method getPauseMode*(self: NodePtr): PauseMode {.base.} =
     current = current.parent
     result = current.pausemode
 
-method getRootNode*(self: NodePtr): NodePtr {.base.} =
+method getRootNode*(self: NodeRef): NodeRef {.base.} =
   ## Gets root node.
   result = self
   while result.parent != nil:
     result = result.parent
 
-method isCollide*(self: NodePtr, x, y: float): bool {.base.} =
+method isCollide*(self: NodeRef, x, y: float): bool {.base.} =
   false
 
-method isCollide*(self: NodePtr, vec2: Vector2Ref): bool {.base.} =
+method isCollide*(self: NodeRef, vec2: Vector2Ref): bool {.base.} =
   false
 
-method isCollide*(self, other: NodePtr): bool {.base.} =
+method isCollide*(self, other: NodeRef): bool {.base.} =
   false
 
-method isParentOf*(self, other: NodePtr): bool {.base, inline.} =
+method isParentOf*(self, other: NodeRef): bool {.base, inline.} =
   other in self.children
 
-method handle*(self: NodePtr, event: InputEvent, mouse_on: var NodePtr) {.base.} =
+method handle*(self: NodeRef, event: InputEvent, mouse_on: var NodeRef) {.base.} =
   ## Handles user input.
   ## This used in the Window object.
   discard
 
-method hasNode*(self: NodePtr, name: string): bool {.base.} =
+method hasNode*(self: NodeRef, name: string): bool {.base.} =
   ## Returns true, if a node with name `name` in children.
   ##
   ## Arguments:
   ## - `name`: node name.
   self.getChildIndex(name) != -1
 
-method hasNode*(self: NodePtr, other: NodePtr): bool {.base.} =
+method hasNode*(self: NodeRef, other: NodeRef): bool {.base.} =
   ## Returns true, if `other` in self children.
   ##
   ## Arguments:
   ## - `other`: other node.
   self.getChildIndex(other) != -1
 
-method hasParent*(self: NodePtr): bool {.base, inline.} =
+method hasParent*(self: NodeRef): bool {.base, inline.} =
   ## Returns true, when node has parent.
   self.parent != nil
 
-method hide*(self: NodePtr) {.base.} =
+method hide*(self: NodeRef) {.base.} =
   self.visible = false
 
-method move*(self: NodePtr, x, y: float) {.base, inline.} =
+method move*(self: NodeRef, x, y: float) {.base, inline.} =
   ## Adds `x` and` y` to the node position.
   ##
   ## Arguments:
@@ -248,7 +243,7 @@ method move*(self: NodePtr, x, y: float) {.base, inline.} =
   self.can_use_anchor = false
   self.can_use_size_anchor = false
 
-method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
+method move*(self: NodeRef, vec2: Vector2Ref) {.base, inline.} =
   ## Adds `vec2` to the node position.
   ##
   ## Arguments:
@@ -257,7 +252,7 @@ method move*(self: NodePtr, vec2: Vector2Ref) {.base, inline.} =
   self.can_use_anchor = false
   self.can_use_size_anchor = false
 
-method removeChild*(self: NodePtr, index: int) {.base.} =
+method removeChild*(self: NodeRef, index: int) {.base.} =
   ## Removes node child at a specific position.
   ##
   ## Arguments:
@@ -265,7 +260,7 @@ method removeChild*(self: NodePtr, index: int) {.base.} =
   self.children[index].parent = nil
   self.children.delete(index)
 
-method removeChild*(self: NodePtr, other: NodePtr) {.base.} =
+method removeChild*(self: NodeRef, other: NodeRef) {.base.} =
   ## Removes another node from `self`, if `other` in `self` children.
   ##
   ## Arguments:
@@ -274,7 +269,7 @@ method removeChild*(self: NodePtr, other: NodePtr) {.base.} =
   if index != -1:
     self.removeChild(index)
 
-method setAnchor*(self: NodePtr, anchor: AnchorRef) {.base.} =
+method setAnchor*(self: NodeRef, anchor: AnchorRef) {.base.} =
   ## Changes node anchor.
   ##
   ## Arguments:
@@ -282,7 +277,7 @@ method setAnchor*(self: NodePtr, anchor: AnchorRef) {.base.} =
   self.anchor = anchor
   self.can_use_anchor = true
 
-method setAnchor*(self: NodePtr, x1, y1, x2, y2: float) {.base.} =
+method setAnchor*(self: NodeRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes node anchor.
   ##
   ## Arguments:
@@ -291,18 +286,18 @@ method setAnchor*(self: NodePtr, x1, y1, x2, y2: float) {.base.} =
   self.anchor = Anchor(x1, y1, x2, y2)
   self.can_use_anchor = true
 
-method setSizeAnchor*(self: NodePtr, anchor: Vector2Ref) {.base.} =
+method setSizeAnchor*(self: NodeRef, anchor: Vector2Ref) {.base.} =
   self.size_anchor = anchor
   self.can_use_size_anchor = true
 
-method setSizeAnchor*(self: NodePtr, x, y: float) {.base.} =
+method setSizeAnchor*(self: NodeRef, x, y: float) {.base.} =
   self.size_anchor = Vector2(x, y)
   self.can_use_size_anchor = true
 
-method show*(self: NodePtr) {.base.} =
+method show*(self: NodeRef) {.base.} =
   self.visible = true
 
-method delete*(self: NodePtr) {.base.} =
+method delete*(self: NodeRef) {.base.} =
   ## Deletes current node.
   if self.parent != nil:
     self.parent.removeChild(self)
@@ -312,7 +307,7 @@ method delete*(self: NodePtr) {.base.} =
 import
   macros
 
-macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
+macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
   ## It provides a convenient wrapper for the event handler.
   ##
   ## Arguments:
@@ -346,7 +341,7 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
       self = event_name[1]
     result = quote do:
       `node`.`name` =
-        proc(`self`: NodePtr): void =
+        proc(`self`: NodeRef): void =
           `code`
 
   of "on_focus", "on_unfocus":
@@ -355,7 +350,7 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
       self = event_name[1]
     result = quote do:
       `node`.`name` =
-        proc(`self`: ControlPtr): void =
+        proc(`self`: ControlRef): void =
           `code`
 
   of "on_touch":
@@ -367,7 +362,7 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
 
     result = quote do:
       `node`.`name` =
-        proc(`self`: ButtonPtr, `x`, `y`: float) =
+        proc(`self`: ButtonRef, `x`, `y`: float) =
           `code`
 
   of "on_mouse_exit", "on_mouse_enter", "on_click", "on_release", "on_press":
@@ -379,7 +374,7 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
 
     result = quote do:
       `node`.`name` =
-        proc(`self`: ControlPtr, `x`, `y`: float) =
+        proc(`self`: ControlRef, `x`, `y`: float) =
           `code`
 
   of "on_input":
@@ -390,7 +385,7 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
 
     result = quote do:
       `node`.`name` =
-        proc(`self`: NodePtr, `arg`: InputEvent) =
+        proc(`self`: NodeRef, `arg`: InputEvent) =
           `code`
 
   of "on_toggle":
@@ -401,7 +396,7 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
 
     result = quote do:
       `node`.`name` =
-        proc(`self`: SwitchPtr, `arg`: bool) =
+        proc(`self`: SwitchRef, `arg`: bool) =
           `code`
 
   of "on_changed":
@@ -412,7 +407,7 @@ macro `@`*(node: NodePtr, event_name, code: untyped): untyped =
 
     result = quote do:
       `node`.`name` =
-        proc(`self`: SliderPtr, `arg`: uint) =
+        proc(`self`: SliderRef, `arg`: uint) =
           `code`
   else:
     discard

@@ -15,45 +15,31 @@ import
 
 
 type
-  ProgressBarObj* = object of ControlPtr
+  ProgressBarObj* = object of ControlRef
     max_value*, value*: uint
     progress_color*: ColorRef
-  ProgressBarPtr* = ptr ProgressBarObj
+  ProgressBarRef* = ref ProgressBarObj
 
 
-proc ProgressBar*(name: string, variable: var ProgressBarObj): ProgressBarPtr =
-  ## Creates a new ProgressBar pointer.
+proc ProgressBar*(name: string = "ProgressBar"): ProgressBarRef =
+  ## Creates a new ProgressBar.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a ProgressBarObj variable.
   runnableExamples:
-    var
-      pobj: ProgressBarObj
-      p = ProgressBar("ProgressBar", pobj)
-  nodepattern(ProgressBarObj)
+    var p = ProgressBar("ProgressBar")
+  nodepattern(ProgressBarRef)
   controlpattern()
-  variable.background_color = Color(1f, 1f, 1f)
-  variable.rect_size.x = 120
-  variable.rect_size.y = 40
-  variable.progress_color = Color(0.5, 0.5, 0.5)
-  variable.max_value = 100
-  variable.value = 0
-  variable.kind = PROGRESS_BAR_NODE
-
-proc ProgressBar*(obj: var ProgressBarObj): ProgressBarPtr {.inline.} =
-  ## Creates a new ProgressBar pointer with default node name "ProgressBar".
-  ##
-  ## Arguments:
-  ## - `variable` is a ProgressBarObj variable.
-  runnableExamples:
-    var
-      pobj: ProgressBarObj
-      p = ProgressBar(pobj)
-  ProgressBar("ProgressBar", obj)
+  result.background_color = Color(1f, 1f, 1f)
+  result.rect_size.x = 120
+  result.rect_size.y = 40
+  result.progress_color = Color(0.5, 0.5, 0.5)
+  result.max_value = 100
+  result.value = 0
+  result.kind = PROGRESS_BAR_NODE
 
 
-method draw*(self: ProgressBarPtr, w, h: GLfloat) =
+method draw*(self: ProgressBarRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -72,26 +58,25 @@ method draw*(self: ProgressBarPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: ProgressBarPtr, obj: var ProgressBarObj): ProgressBarPtr {.base.} =
-  ## Duplicates ProgressBar object and create a new ProgressBar pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: ProgressBarRef): ProgressBarRef {.base.} =
+  ## Duplicates ProgressBar object and create a new ProgressBar.
+  self.deepCopy()
 
-method setMaxValue*(self: ProgressBarPtr, value: uint) {.base.} =
+method setMaxValue*(self: ProgressBarRef, value: uint) {.base.} =
   ## Changes max value.
   if value > self.value:
     self.max_value = value
   else:
     self.max_value = self.value
 
-method setProgress*(self: ProgressBarPtr, value: uint) {.base.} =
+method setProgress*(self: ProgressBarRef, value: uint) {.base.} =
   ## Changes progress.
   if value > self.max_value:
     self.value = self.max_value
   else:
     self.value = value
 
-method setProgressColor*(self: ProgressBarPtr, color: ColorRef) {.base.} =
+method setProgressColor*(self: ProgressBarRef, color: ColorRef) {.base.} =
   ## Changes progress color.
   ## For change background color use `setBackgroundColor` method.
   self.progress_color = color

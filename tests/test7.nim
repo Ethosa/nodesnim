@@ -5,17 +5,12 @@ import nodesnim
 Window("hello world")
 
 var
-  mainobj: SceneObj
-  secondobj: SceneObj
+  main = Scene("Main")
+  second = Scene("Second scene")
 
-  main = Scene("Main", mainobj)
-  second = Scene("Second scene", secondobj)
+  lightblue = ColorRect()
 
-  colorrectobj: ColorRectObj
-  lightblue = ColorRect(colorrectobj)
-
-  colorrect1obj: ColorRectObj
-  violet = ColorRect(colorrect1obj)
+  violet = ColorRect()
 
 
 Input.addKeyAction("change_scene", K_SPACE)
@@ -28,13 +23,13 @@ lightblue.color = Color(0xaaccffff'u32)
 lightblue.setAnchor(0.5, 0.5, 0.5, 0.5)
 
 violet.on_process =
-  proc(self: NodePtr) =
+  proc(self: NodeRef) =
     if Input.isActionJustPressed("change_scene"):
       echo "bye from main scene :("
       changeScene("Second scene")  # This function changes current scene.
 
 lightblue.on_process =
-  proc(self: NodePtr) =
+  proc(self: NodeRef) =
     if Input.isActionJustPressed("change_scene"):
       echo "bye from second scene :("
       changeScene("Main")

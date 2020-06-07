@@ -33,45 +33,30 @@ type
 
   CanvasObj* = object of NodeObj
     commands*: seq[DrawCommand]
-  CanvasPtr* = ptr CanvasObj
+  CanvasRef* = ref CanvasObj
 
 
-proc Canvas*(name: string, variable: var CanvasObj): CanvasPtr =
-  ## Creates a new Canvas pointer.
+proc Canvas*(name: string = "Canvas"): CanvasRef =
+  ## Creates a new Canvas.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a CanvasObj variable
   runnableExamples:
-    var
-      canvas1_obj: CanvasObj
-      canvas1 = Canvas("Canvas", canvas1_obj)
-  ## Creates a new Canvas pointer.
-  nodepattern(CanvasObj)
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.kind = CANVAS_NODE
-
-proc Canvas*(variable: var CanvasObj): CanvasPtr {.inline.} =
-  ## Creates a new Canvas pointer with default name "Canvas".
-  ##
-  ## Arguments:
-  ## - `variable` is a CanvasObj variable
-  runnableExamples:
-    var
-      canvas1_obj: CanvasObj
-      canvas1 = Canvas(canvas1_obj)
-  Canvas("Canvas", variable)
+    var canvas1 = Canvas("Canvas")
+  nodepattern(CanvasRef)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.kind = CANVAS_NODE
 
 
-proc calculateX(canvas: CanvasPtr, x, gx: GLfloat): GLfloat =
+proc calculateX(canvas: CanvasRef, x, gx: GLfloat): GLfloat =
   if x > canvas.rect_size.x + gx:
     canvas.rect_size.x + gx
   elif x < gx:
     gx
   else:
     x
-proc calculateY(canvas: CanvasPtr, y, gy: GLfloat): GLfloat =
+proc calculateY(canvas: CanvasRef, y, gy: GLfloat): GLfloat =
   if y < gy - canvas.rect_size.y:
     gy - canvas.rect_size.y
   elif y > gy:
@@ -80,7 +65,7 @@ proc calculateY(canvas: CanvasPtr, y, gy: GLfloat): GLfloat =
     y
 
 
-method draw*(canvas: CanvasPtr, w, h: GLfloat) =
+method draw*(canvas: CanvasRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + canvas.global_position.x
@@ -116,12 +101,11 @@ method draw*(canvas: CanvasPtr, w, h: GLfloat) =
           canvas.calculateY(y - cmd.y1 - cmd.points[i+1], y))
       glEnd()
 
-method duplicate*(self: CanvasPtr, obj: var CanvasObj): CanvasPtr {.base.} =
-  ## Duplicates Canvas object and create a new Canvas pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: CanvasRef): CanvasRef {.base.} =
+  ## Duplicates Canvas object and create a new Canvas.
+  self.deepCopy()
 
-method circle*(canvas: CanvasPtr, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
+method circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
   ## Draws a circle in the canvas.
   ##
   ## Arguments:
@@ -137,7 +121,7 @@ method circle*(canvas: CanvasPtr, x, y, radius: GLfloat, color: ColorRef, qualit
     pnts.add(radius*sin(angle))
   canvas.commands.add(DrawCommand(kind: CIRCLE, x1: x, y1: y, color: color, points: pnts))
 
-method point*(canvas: CanvasPtr, x, y: GLfloat, color: ColorRef) {.base.} =
+method point*(canvas: CanvasRef, x, y: GLfloat, color: ColorRef) {.base.} =
   ## Draws a point in the canvas.
   ##
   ## Arguments:
@@ -146,7 +130,7 @@ method point*(canvas: CanvasPtr, x, y: GLfloat, color: ColorRef) {.base.} =
   ## - `color` - point color.
   canvas.commands.add(DrawCommand(kind: POINT, x1: x, y1: y, color: color))
 
-method line*(canvas: CanvasPtr, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
+method line*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
   ## Draws a line in the canvas.
   ##
   ## Arguments:
@@ -157,7 +141,7 @@ method line*(canvas: CanvasPtr, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base
   ## - `color` - line color.
   canvas.commands.add(DrawCommand(kind: LINE, x1: x1, y1: y1, x2: x2, y2: y2, color: color))
 
-method rect*(canvas: CanvasPtr, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
+method rect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
   ## Draws a line in the canvas.
   ##
   ## Arguments:
@@ -170,11 +154,11 @@ method rect*(canvas: CanvasPtr, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base
     DrawCommand(kind: RECT, x1: x1, y1: y1, x2: x2, y2: y2, color: color)
   )
 
-method fill*(canvas: CanvasPtr, color: ColorRef) {.base.} =
+method fill*(canvas: CanvasRef, color: ColorRef) {.base.} =
   ## Fills canvas.
   canvas.commands = @[DrawCommand(kind: FILL, x1: 0, y1: 0, color: color)]
 
-method resize*(canvas: CanvasPtr, w, h: GLfloat) {.base.} =
+method resize*(canvas: CanvasRef, w, h: GLfloat) {.base.} =
   ## Resizes canvas.
   ##
   ## Arguments:

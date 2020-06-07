@@ -8,11 +8,9 @@ Window(
   360             # Window height
 )
 
-var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)  # Create pointer to Scene object.
+var main = Scene("Main")  # Create a new Scene object.
 
 
 addScene(main)        # Add new scene in window.
 setMainScene("Main")  # Set main scene.
-windowLaunch()         # Start main loop.
+windowLaunch()        # Start main loop.

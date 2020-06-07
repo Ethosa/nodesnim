@@ -16,34 +16,20 @@ import
 type
   YSortObj* = object of Node2DObj
     for_all_childs*: bool  # if true, sorts z_index of all childs
-  YSortPtr* = ptr YSortObj
+  YSortRef* = ref YSortObj
 
 
-proc YSort*(name: string, variable: var YSortObj): YSortPtr =
-  ## Creates a new YSort pointer.
+proc YSort*(name: string = "YSort"): YSortRef =
+  ## Creates a new YSort.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a YSortObj variable.
   runnableExamples:
-    var
-      node_obj: YSortObj
-      node = YSort("YSort", node_obj)
-  nodepattern(YSortObj)
+    var node = YSort("YSort")
+  nodepattern(YSortRef)
   node2dpattern()
-  variable.for_all_childs = false
-  variable.kind = YSORT_NODE
-
-proc YSort*(obj: var YSortObj): YSortPtr {.inline.} =
-  ## Creates a new YSort pointer with deffault node name "YSort".
-  ##
-  ## Arguments:
-  ## - `variable` is a YSortObj variable.
-  runnableExamples:
-    var
-      node_obj: YSortObj
-      node = YSort(node_obj)
-  YSort("YSort", obj)
+  result.for_all_childs = false
+  result.kind = YSORT_NODE
 
 
 template childsiter() =
@@ -63,7 +49,7 @@ template childsiter() =
   if child notin childs:
     childs.add(child)
 
-method draw*(self: YSortPtr, w, h: GLfloat) =
+method draw*(self: YSortRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   self.position = self.timed_position
@@ -73,7 +59,7 @@ method draw*(self: YSortPtr, w, h: GLfloat) =
   else:
     self.position = self.timed_position
   
-  var childs: seq[NodePtr] = @[]
+  var childs: seq[NodeRef] = @[]
 
   if self.for_all_childs:
     for child in self.getChildIter():
@@ -84,3 +70,6 @@ method draw*(self: YSortPtr, w, h: GLfloat) =
   for i in 0..childs.high:
     childs[i].z_index = i.float
 
+method duplicate*(self: YSortRef): YSortRef {.base.} =
+  ## Duplicates YSort and create a new YSort object.
+  self.deepCopy()

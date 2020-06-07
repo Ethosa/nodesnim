@@ -15,50 +15,36 @@ import
 
 
 type
-  VSliderObj* = object of ControlPtr
+  VSliderObj* = object of ControlRef
     max_value*, value*: uint
     progress_color*: ColorRef
     thumb_color*: ColorRef
 
-    on_changed*: proc(self: VSliderPtr, new_value: uint): void
-  VSliderPtr* = ptr VSliderObj
+    on_changed*: proc(self: VSliderRef, new_value: uint): void
+  VSliderRef* = ref VSliderObj
 
 
-proc VSlider*(name: string, variable: var VSliderObj): VSliderPtr =
-  ## Creates a new VSlider pointer.
+proc VSlider*(name: string = "VSlider"): VSliderRef =
+  ## Creates a new VSlider.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a VSliderObj variable.
   runnableExamples:
-    var
-      sliderobj: VSliderObj
-      slider = VSlider("VSlider", sliderobj)
-  nodepattern(VSliderObj)
+    var slider = VSlider("VSlider")
+  nodepattern(VSliderRef)
   controlpattern()
-  variable.background_color = Color(1f, 1f, 1f)
-  variable.rect_size.x = 40
-  variable.rect_size.y = 120
-  variable.progress_color = Color(0.5, 0.5, 0.5)
-  variable.thumb_color = Color(0.7, 0.7, 0.7)
-  variable.max_value = 100
-  variable.value = 0
-  variable.on_changed = proc(self: VSliderPtr, v: uint) = discard
-  variable.kind = VSLIDER_NODE
-
-proc VSlider*(obj: var VSliderObj): VSliderPtr {.inline.} =
-  ## Creates a new VSlider pointer with default node name "VSlider".
-  ##
-  ## Arguments:
-  ## - `variable` is a VSliderObj variable.
-  runnableExamples:
-    var
-      sliderobj: VSliderObj
-      slider = VSlider(sliderobj)
-  VSlider("VSlider", obj)
+  result.background_color = Color(1f, 1f, 1f)
+  result.rect_size.x = 40
+  result.rect_size.y = 120
+  result.progress_color = Color(0.5, 0.5, 0.5)
+  result.thumb_color = Color(0.7, 0.7, 0.7)
+  result.max_value = 100
+  result.value = 0
+  result.on_changed = proc(self: VSliderRef, v: uint) = discard
+  result.kind = VSLIDER_NODE
 
 
-method draw*(self: VSliderPtr, w, h: GLfloat) =
+method draw*(self: VSliderRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -81,33 +67,32 @@ method draw*(self: VSliderPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: VSliderPtr, obj: var VSliderObj): VSliderPtr {.base.} =
-  ## Duplicates VSlider object and create a new VSlider pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: VSliderRef): VSliderRef {.base.} =
+  ## Duplicates VSlider object and create a new VSlider.
+  self.deepCopy()
 
-method setMaxValue*(self: VSliderPtr, value: uint) {.base.} =
+method setMaxValue*(self: VSliderRef, value: uint) {.base.} =
   ## Changes max value, if it not less than progress.
   if value > self.value:
     self.max_value = value
   else:
     self.max_value = self.value
 
-method setProgress*(self: VSliderPtr, value: uint) {.base.} =
+method setProgress*(self: VSliderRef, value: uint) {.base.} =
   ## Changes progress, if it not more than max value.
   if value > self.max_value:
     self.value = self.max_value
   else:
     self.value = value
 
-method setProgressColor*(self: VSliderPtr, color: ColorRef) {.base.} =
+method setProgressColor*(self: VSliderRef, color: ColorRef) {.base.} =
   ## Changes progress color.
   ## For change background color use `setBackgroundColor` method.
   self.progress_color = color
 
-method handle*(self: VSliderPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: VSliderRef, event: InputEvent, mouse_on: var NodeRef) =
   ## handles user input. This uses in the `window.nim`.
-  procCall self.ControlPtr.handle(event, mouse_on)
+  procCall self.ControlRef.handle(event, mouse_on)
 
   if self.focused and self.pressed:
     let

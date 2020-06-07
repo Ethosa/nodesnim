@@ -30,49 +30,35 @@ type
     x1*, y1*, radius*: float
     polygon*: seq[Vector2Ref]
     shape_type*: CollisionShape2DType
-  CollisionShape2DPtr* = ptr CollisionShape2DObj
+  CollisionShape2DRef* = ref CollisionShape2DObj
 
 
 
-proc CollisionShape2D*(name: string, variable: var CollisionShape2DObj): CollisionShape2DPtr =
-  ## Creates a new CollisionShape2D pointer.
+proc CollisionShape2D*(name: string = "CollisionShape2D"): CollisionShape2DRef =
+  ## Creates a new CollisionShape2D.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a CollisionShape2DObj variable.
   runnableExamples:
-    var
-      node_obj: CollisionShape2DObj
-      node = CollisionShape2D("CollisionShape2D", node_obj)
-  nodepattern(CollisionShape2DObj)
+    var node = CollisionShape2D("CollisionShape2D")
+  nodepattern(CollisionShape2DRef)
   node2dpattern()
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.disable = false
-  variable.x1 = 0
-  variable.y1 = 0
-  variable.radius = 20
-  variable.polygon = @[]
-  variable.kind = COLLISION_SHAPE_2D_NODE
-
-proc CollisionShape2D*(obj: var CollisionShape2DObj): CollisionShape2DPtr {.inline.} =
-  ## Creates a new CollisionShape2D pointer with deffault node name "CollisionShape2D".
-  ##
-  ## Arguments:
-  ## - `variable` is a CollisionShape2DObj variable.
-  runnableExamples:
-    var
-      node_obj: CollisionShape2DObj
-      node = CollisionShape2D(node_obj)
-  CollisionShape2D("CollisionShape2D", obj)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.disable = false
+  result.x1 = 0
+  result.y1 = 0
+  result.radius = 20
+  result.polygon = @[]
+  result.kind = COLLISION_SHAPE_2D_NODE
 
 
-method setShapeTypeRect*(self: CollisionShape2DPtr) {.base.} =
+method setShapeTypeRect*(self: CollisionShape2DRef) {.base.} =
   ## Changes shape type to `circle`.
   self.shape_type = COLLISION_SHAPE_2D_RECTANGLE
 
 
-method setShapeTypeCircle*(self: CollisionShape2DPtr, cx, cy, radius: float) {.base.} =
+method setShapeTypeCircle*(self: CollisionShape2DRef, cx, cy, radius: float) {.base.} =
   ## Changes shape type to `rectangle`.
   ##
   ## Arguments:
@@ -85,7 +71,7 @@ method setShapeTypeCircle*(self: CollisionShape2DPtr, cx, cy, radius: float) {.b
   self.radius = radius
 
 
-method setShapeTypePolygon*(self: CollisionShape2DPtr, positions: varargs[Vector2Ref]) {.base.} =
+method setShapeTypePolygon*(self: CollisionShape2DRef, positions: varargs[Vector2Ref]) {.base.} =
   ## Changes shape type to `polygon`.
   ##
   ## Arguments:
@@ -99,7 +85,7 @@ method setShapeTypePolygon*(self: CollisionShape2DPtr, positions: varargs[Vector
     self.polygon.add(i)
 
 
-method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
+method draw*(self: CollisionShape2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   # Recalculate position.
@@ -136,18 +122,17 @@ method draw*(self: CollisionShape2DPtr, w, h: GLfloat) =
       glEnd()
 
 
-method duplicate*(self: CollisionShape2DPtr, obj: var CollisionShape2DObj): CollisionShape2DPtr {.base.} =
-  ## Duplicates CollisionShape2D object and create a new CollisionShape2D pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: CollisionShape2DRef): CollisionShape2DRef {.base.} =
+  ## Duplicates CollisionShape2D object and create a new CollisionShape2D.
+  self.deepCopy()
 
 
-method getGlobalMousePosition*(self: CollisionShape2DPtr): Vector2Ref {.inline.} =
+method getGlobalMousePosition*(self: CollisionShape2DRef): Vector2Ref {.inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
 
 
-method isCollide*(self: CollisionShape2DPtr, x, y: float): bool =
+method isCollide*(self: CollisionShape2DRef, x, y: float): bool =
   ## Checks collision with point.
   ##
   ## Arguments:
@@ -178,7 +163,7 @@ method isCollide*(self: CollisionShape2DPtr, x, y: float): bool =
       if ((a.y >= y and b.y < y) or (a.y < y and b.y >= y)) and (x < (b.x-a.x)*(y-a.y) / (b.y-a.y)+a.x):
         result = not result
 
-method isCollide*(self: CollisionShape2DPtr, vec2: Vector2Ref): bool =
+method isCollide*(self: CollisionShape2DRef, vec2: Vector2Ref): bool =
   ## Checks collision with point.
   self.calcGlobalPosition()
   if self.disable:
@@ -206,7 +191,7 @@ method isCollide*(self: CollisionShape2DPtr, vec2: Vector2Ref): bool =
         result = not result
 
 
-method isCollide*(self, other: CollisionShape2DPtr): bool {.base.} =
+method isCollide*(self, other: CollisionShape2DRef): bool {.base.} =
   ## Checks collision with other CollisionShape2D object.
   self.calcGlobalPosition()
   other.calcGlobalPosition()

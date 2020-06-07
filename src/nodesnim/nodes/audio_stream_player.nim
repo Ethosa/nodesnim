@@ -14,60 +14,45 @@ type
     paused*: bool
     volume*: cint
     stream*: AudioStreamRef
-  AudioStreamPlayerPtr* = ptr AudioStreamPlayerObj
+  AudioStreamPlayerRef* = ref AudioStreamPlayerObj
 
 
-proc AudioStreamPlayer*(name: string, variable: var AudioStreamPlayerObj): AudioStreamPlayerPtr =
-  ## Creates a new AudioStreamPlayer pointer.
+proc AudioStreamPlayer*(name: string = "AudioStreamPlayer"): AudioStreamPlayerRef =
+  ## Creates a new AudioStreamPlayer.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is an AudioStreamPlayerObj variable
   runnableExamples:
-    var
-      audio_obj: AudioStreamPlayerObj
-      audio = AudioStreamPlayer("AudioStreamPlayer", audio_obj)
-  nodepattern(AudioStreamPlayerObj)
-  variable.pausemode = PAUSE
-  variable.paused = false
-  variable.volume = 64
-  variable.kind = AUDIO_STREAM_PLAYER_NODE
-
-proc AudioStreamPlayer*(variable: var AudioStreamPlayerObj): AudioStreamPlayerPtr {.inline.} =
-  ## Creates a new AudioStreamPlayer pointer width default name "AudioStreamPlayer".
-  ##
-  ## Arguments:
-  ## - `variable` is an AudioStreamPlayerObj variable
-  runnableExamples:
-    var
-      audio_obj:  AudioStreamPlayerObj
-      audio =  AudioStreamPlayer(audio_obj)
-  AudioStreamPlayer("AudioStreamPlayer", variable)
+    var audio = AudioStreamPlayer("AudioStreamPlayer")
+  nodepattern(AudioStreamPlayerRef)
+  result.pausemode = PAUSE
+  result.paused = false
+  result.volume = 64
+  result.kind = AUDIO_STREAM_PLAYER_NODE
 
 
-method duplicate*(self: AudioStreamPlayerPtr, obj: var AudioStreamPlayerObj): AudioStreamPlayerPtr {.base.} =
+method duplicate*(self: AudioStreamPlayerRef): AudioStreamPlayerRef {.base.} =
   ## Duplicates AudioStreamPlayer object and create a new AudioStreamPlayer pointer.
-  obj = self[]
-  obj.addr
+  self.deepCopy()
 
-method pause*(self: AudioStreamPlayerPtr) {.base.} =
+method pause*(self: AudioStreamPlayerRef) {.base.} =
   ## Pauses stream.
   if playing(self.stream.channel) > -1:
     pause(self.stream.channel)
 
-method play*(self: AudioStreamPlayerPtr) {.base.} =
+method play*(self: AudioStreamPlayerRef) {.base.} =
   ## Play stream.
   discard playChannel(
     self.stream.channel, self.stream.chunk,
     if self.stream.loop: -1 else: 1
   )
 
-method resume*(self: AudioStreamPlayerPtr) {.base.} =
+method resume*(self: AudioStreamPlayerRef) {.base.} =
   ## Resume stream.
   if paused(self.stream.channel) > -1:
     resume(self.stream.channel)
 
-method setVolume*(self: AudioStreamPlayerPtr, value: cint) {.base.} =
+method setVolume*(self: AudioStreamPlayerRef, value: cint) {.base.} =
   ## Changes stream volume.
   ##
   ## Arguments:

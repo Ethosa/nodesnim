@@ -19,41 +19,28 @@ type
     rotation*: float
     scale*: Vector2Ref
     timed_position*: Vector2Ref
-  Node2DPtr* = ptr Node2DObj
+  Node2DRef* = ref Node2DObj
 
 
 template node2dpattern*: untyped =
-  variable.centered = true
-  variable.timed_position = Vector2()
+  result.centered = true
+  result.timed_position = Vector2()
 
-proc Node2D*(name: string, variable: var Node2DObj): Node2DPtr =
-  ## Creates a new Node2D pointer.
+proc Node2D*(name: string = "Node2D"): Node2DRef =
+  ## Creates a new Node2D.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a Node2DObj variable.
   runnableExamples:
-    var
-      node_obj: Node2DObj
-      node = Node2D("Node2D", node_obj)
-  nodepattern(Node2DObj)
+    var node = Node2D("Node2D")
+  nodepattern(Node2DRef)
   node2dpattern()
-  variable.scale = Vector2(1, 1)
-  variable.rotation = 0f
-  variable.kind = NODE2D_NODE
+  result.scale = Vector2(1, 1)
+  result.rotation = 0f
+  result.kind = NODE2D_NODE
 
-proc Node2D*(obj: var Node2DObj): Node2DPtr {.inline.} =
-  ## Creates a new Node2D pointer with deffault node name "Node2D".
-  ##
-  ## Arguments:
-  ## - `variable` is a Node2DObj variable.
-  runnableExamples:
-    var
-      node_obj: Node2DObj
-      node = Node2D(node_obj)
-  Node2D("Node2D", obj)
 
-method draw*(self: Node2DPtr, w, h: GLfloat) =
+method draw*(self: Node2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   self.position = self.timed_position
@@ -64,30 +51,29 @@ method draw*(self: Node2DPtr, w, h: GLfloat) =
     self.position = self.timed_position
 
 
-method move*(self: Node2DPtr, x, y: float) =
+method move*(self: Node2DRef, x, y: float) =
   ## Moves Node2D object by `x` and `y`.
   self.position.x += x
   self.position.y += y
   self.timed_position = self.position
 
 
-method move*(self: Node2DPtr, vec2: Vector2Ref) =
+method move*(self: Node2DRef, vec2: Vector2Ref) =
   ## Moves Node2D object by `vec2`.
   self.position += vec2
   self.timed_position = self.position
 
 
-method duplicate*(self: Node2DPtr, obj: var Node2DObj): Node2DPtr {.base.} =
-  ## Duplicates Node2D object and create a new Node2D pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: Node2DRef): Node2DRef {.base.} =
+  ## Duplicates Node2D object and create a new Node2D.
+  self.deepCopy()
 
 
-method getGlobalMousePosition*(self: Node2DPtr): Vector2Ref {.base, inline.} =
+method getGlobalMousePosition*(self: Node2DRef): Vector2Ref {.base, inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
 
 
-method setZIndex*(self: Node2DPtr, z_index: int) {.base.} =
+method setZIndex*(self: Node2DRef, z_index: int) {.base.} =
   ## Changes Z index.
   self.z_index = z_index.float

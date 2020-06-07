@@ -6,20 +6,15 @@ Window("hello world")
 
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  body_obj: KinematicBody2DObj
-  body = KinematicBody2D(body_obj)
+  body = KinematicBody2D()
 
-  sprite_obj: SpriteObj
-  sprite = Sprite(sprite_obj)
+  sprite = Sprite()
 
-  sprite1_obj: SpriteObj
-  sprite1 = Sprite(sprite1_obj)
+  sprite1 = Sprite()
 
-  cameraobj: Camera2DObj
-  camera = Camera2D(cameraobj)
+  camera = Camera2D()
 
   img = load("assets/anim/2.jpg")
   img1 = load("assets/anim/4.jpg")
@@ -39,7 +34,7 @@ camera.enableSmooth()
 
 Input.addButtonAction("left", BUTTON_LEFT)
 body.on_process =
-  proc(self: NodePtr) =
+  proc(self: NodeRef) =
     if Input.isActionPressed("left"):
       let
         mouse_pos = body.getGlobalMousePosition()

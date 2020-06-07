@@ -23,59 +23,45 @@ type
     mousemode*: MouseMode
     background_color*: ColorRef
 
-    on_mouse_enter*: proc(self: ControlPtr, x, y: float): void  ## This called when the mouse enters the Control node.
-    on_mouse_exit*: proc(self: ControlPtr, x, y: float): void   ## This called when the mouse exit from the Control node.
-    on_click*: proc(self: ControlPtr, x, y: float): void        ## This called when the user clicks on the Control node.
-    on_press*: proc(self: ControlPtr, x, y: float): void        ## This called when the user holds on the mouse on the Control node.
-    on_release*: proc(self: ControlPtr, x, y: float): void      ## This called when the user no more holds on the mouse.
-    on_focus*: proc(self: ControlPtr): void                   ## This called when the Control node gets focus.
-    on_unfocus*: proc(self: ControlPtr): void                 ## This called when the Control node loses focus.
-  ControlPtr* = ptr ControlObj
+    on_mouse_enter*: proc(self: ControlRef, x, y: float): void  ## This called when the mouse enters the Control node.
+    on_mouse_exit*: proc(self: ControlRef, x, y: float): void   ## This called when the mouse exit from the Control node.
+    on_click*: proc(self: ControlRef, x, y: float): void        ## This called when the user clicks on the Control node.
+    on_press*: proc(self: ControlRef, x, y: float): void        ## This called when the user holds on the mouse on the Control node.
+    on_release*: proc(self: ControlRef, x, y: float): void      ## This called when the user no more holds on the mouse.
+    on_focus*: proc(self: ControlRef): void                   ## This called when the Control node gets focus.
+    on_unfocus*: proc(self: ControlRef): void                 ## This called when the Control node loses focus.
+  ControlRef* = ref ControlObj
 
 
 template controlpattern*: untyped =
-  variable.hovered = false
-  variable.focused = false
-  variable.pressed = false
+  result.hovered = false
+  result.focused = false
+  result.pressed = false
 
-  variable.mousemode = MOUSEMODE_SEE
-  variable.background_color = Color()
+  result.mousemode = MOUSEMODE_SEE
+  result.background_color = Color()
 
-  variable.on_mouse_enter = proc(self: ControlPtr, x, y: float) = discard
-  variable.on_mouse_exit = proc(self: ControlPtr, x, y: float) = discard
-  variable.on_click = proc(self: ControlPtr, x, y: float) = discard
-  variable.on_press = proc(self: ControlPtr, x, y: float) = discard
-  variable.on_release = proc(self: ControlPtr, x, y: float) = discard
-  variable.on_focus = proc(self: ControlPtr) = discard
-  variable.on_unfocus = proc(self: ControlPtr) = discard
+  result.on_mouse_enter = proc(self: ControlRef, x, y: float) = discard
+  result.on_mouse_exit = proc(self: ControlRef, x, y: float) = discard
+  result.on_click = proc(self: ControlRef, x, y: float) = discard
+  result.on_press = proc(self: ControlRef, x, y: float) = discard
+  result.on_release = proc(self: ControlRef, x, y: float) = discard
+  result.on_focus = proc(self: ControlRef) = discard
+  result.on_unfocus = proc(self: ControlRef) = discard
 
-proc Control*(name: string, variable: var ControlObj): ControlPtr =
-  ## Creates a new Control pointer.
+proc Control*(name: string = "Control"): ControlRef =
+  ## Creates a new Control.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a ControlObj variable.
   runnableExamples:
-    var
-      ctrl_obj: ControlObj
-      ctrl = Control("Control", ctrl_obj)
-  nodepattern(ControlObj)
+    var ctrl = Control("Control")
+  nodepattern(ControlRef)
   controlpattern()
-  variable.kind = CONTROL_NODE
-
-proc Control*(obj: var ControlObj): ControlPtr {.inline.} =
-  ## Creates a new Control pointer with deffault node name "Control".
-  ##
-  ## Arguments:
-  ## - `variable` is a ControlObj variable.
-  runnableExamples:
-    var
-      ctrl_obj: ControlObj
-      ctrl = Control(ctrl_obj)
-  Control("Control", obj)
+  result.kind = CONTROL_NODE
 
 
-method calcPositionAnchor*(self: ControlPtr) =
+method calcPositionAnchor*(self: ControlRef) =
   ## Calculates node position. This uses in the `scene.nim`.
   if self.parent != nil:
     if self.can_use_size_anchor:
@@ -87,7 +73,7 @@ method calcPositionAnchor*(self: ControlPtr) =
       self.position.x = self.parent.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
       self.position.y = self.parent.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
 
-method draw*(self: ControlPtr, w, h: GLfloat) =
+method draw*(self: ControlRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   let
@@ -101,16 +87,15 @@ method draw*(self: ControlPtr, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
-method duplicate*(self: ControlPtr, obj: var ControlObj): ControlPtr {.base.} =
-  ## Duplicates Control object and create a new Control pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: ControlRef): ControlRef {.base.} =
+  ## Duplicates Control object and create a new Control.
+  self.deepCopy()
 
-method getGlobalMousePosition*(self: ControlPtr): Vector2Ref {.base, inline.} =
+method getGlobalMousePosition*(self: ControlRef): Vector2Ref {.base, inline.} =
   ## Returns mouse position.
   Vector2Ref(x: last_event.x, y: last_event.y)
 
-method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. This uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   if self.mousemode == MOUSEMODE_IGNORE:
@@ -144,6 +129,6 @@ method handle*(self: ControlPtr, event: InputEvent, mouse_on: var NodePtr) =
     self.pressed = false
     self.on_release(self, event.x, event.y)
 
-method setBackgroundColor*(self: ControlPtr, color: ColorRef) {.base.} =
+method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
   ## Changes Control background color.
   self.background_color = color

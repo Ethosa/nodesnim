@@ -5,26 +5,15 @@ import nodesnim
 Window("hello world", 1024, 640)
 
 var
-  mainobj: SceneObj
-  main = Scene("Main", mainobj)
+  main = Scene("Main")
 
-  ysortobj: YsortObj
-  ysort = Ysort(ysortobj)
+  ysort = Ysort()
 
-  sprite0obj: SpriteObj
-  sprite0 = Sprite("0", sprite0obj)
-
-  sprite1obj: SpriteObj
-  sprite1 = Sprite("1", sprite1obj)
-
-  sprite2obj: SpriteObj
-  sprite2 = Sprite("2", sprite2obj)
-
-  sprite3obj: SpriteObj
-  sprite3 = Sprite("3", sprite3obj)
-
-  sprite4obj: SpriteObj
-  sprite4 = Sprite("4", sprite4obj)
+  sprite0 = Sprite("0")
+  sprite1 = Sprite("1")
+  sprite2 = Sprite("2")
+  sprite3 = Sprite("3")
+  sprite4 = Sprite("4")
 
   img0 = load("assets/anim/2.jpg")
 
@@ -48,11 +37,7 @@ sprite3.move(160, 160)
 sprite2.move(192, 192)
 sprite1.move(224, 224)
 
-ysort.addChild(sprite0)
-ysort.addChild(sprite1)
-ysort.addChild(sprite2)
-ysort.addChild(sprite3)
-ysort.addChild(sprite4)
+ysort.addChilds(sprite0, sprite1, sprite2, sprite3, sprite4)
 
 
 main.addChild(ysort)

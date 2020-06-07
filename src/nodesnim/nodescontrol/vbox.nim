@@ -17,40 +17,26 @@ import
 type
   VBoxObj* = object of BoxObj
     separator*: float
-  VBoxPtr* = ptr VBoxObj
+  VBoxRef* = ref VBoxObj
 
 
-proc VBox*(name: string, variable: var VBoxObj): VBoxPtr =
-  ## Creates a new VBox pointer.
+proc VBox*(name: string = "VBox"): VBoxRef =
+  ## Creates a new VBox.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a VBoxObj variable.
   runnableExamples:
-    var
-      boxobj: VBoxObj
-      box = VBox("VBox", boxobj)
-  nodepattern(VBoxObj)
+    var box = VBox("VBox")
+  nodepattern(VBoxRef)
   controlpattern()
-  variable.rect_size.x = 40
-  variable.rect_size.y = 40
-  variable.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
-  variable.separator = 4f
-  variable.kind = VBOX_NODE
-
-proc VBox*(obj: var VBoxObj): VBoxPtr {.inline.} =
-  ## Creates a new VBox pointer with default node name "VBox".
-  ##
-  ## Arguments:
-  ## - `variable` is a VBoxObj variable.
-  runnableExamples:
-    var
-      boxobj: VBoxObj
-      box = VBox(boxobj)
-  VBox("VBox", obj)
+  result.rect_size.x = 40
+  result.rect_size.y = 40
+  result.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
+  result.separator = 4f
+  result.kind = VBOX_NODE
 
 
-method getChildSize*(self: VBoxPtr): Vector2Ref =
+method getChildSize*(self: VBoxRef): Vector2Ref =
   ## Returns size of all children.
   var
     x = 0f
@@ -63,7 +49,7 @@ method getChildSize*(self: VBoxPtr): Vector2Ref =
     y -= self.separator
   Vector2(x, y)
 
-method addChild*(self: VBoxPtr, child: NodePtr) =
+method addChild*(self: VBoxRef, child: NodeRef) =
   ## Adds new child in current node.
   ##
   ## Arguments:
@@ -73,7 +59,7 @@ method addChild*(self: VBoxPtr, child: NodePtr) =
   self.rect_size = self.getChildSize()
 
 
-method draw*(self: VBoxPtr, w, h: GLfloat) =
+method draw*(self: VBoxRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + self.global_position.x
@@ -89,14 +75,13 @@ method draw*(self: VBoxPtr, w, h: GLfloat) =
     child.position.x = self.rect_size.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
     child.position.y = y
     y += child.rect_size.y + self.separator
-  procCall self.ControlPtr.draw(w, h)
+  procCall self.ControlRef.draw(w, h)
 
-method duplicate*(self: VBoxPtr, obj: var VBoxObj): VBoxPtr {.base.} =
-  ## Duplicate VBox object and create a new VBox pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: VBoxRef): VBoxRef {.base.} =
+  ## Duplicate VBox object and create a new VBox.
+  self.deepCopy()
 
-method resize*(self: VBoxPtr, w, h: GLfloat) =
+method resize*(self: VBoxRef, w, h: GLfloat) =
   ## Resizes VBox, if available.
   ##
   ## Arguments:

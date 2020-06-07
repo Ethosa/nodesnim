@@ -17,7 +17,7 @@ import
 
 
 type
-  EditTextObj* = object of ControlPtr
+  EditTextObj* = object of ControlRef
     blit_caret*: bool
     blit_speed*: float
     blit_time*: float
@@ -32,53 +32,38 @@ type
     caret_color*: ColorRef
     text_align*: AnchorRef  ## Text align.
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
-  EditTextPtr* = ptr EditTextObj
+  EditTextRef* = ref EditTextObj
 
 
-proc EditText*(name: string, variable: var EditTextObj): EditTextPtr =
-  ## Creates a new EditText pointer.
+proc EditText*(name: string = "EditText"): EditTextRef =
+  ## Creates a new EditText.
   ##
   ## Arguments:
   ## - `name` is a node name.
-  ## - `variable` is a EditTextObj variable.
   runnableExamples:
-    var
-      editobj: EditTextObj
-      edit = EditText("EditText", editobj)
-  nodepattern(EditTextObj)
+    var edit = EditText("EditText")
+  nodepattern(EditTextRef)
   controlpattern()
-  variable.rect_size.x = 64
-  variable.rect_size.y = 32
-  variable.text = ""
-  variable.font = GLUT_BITMAP_HELVETICA_12
-  variable.size = 12
-  variable.spacing = 2
-  variable.text_align = Anchor(0, 0, 0, 0)
-  variable.color = Color(1f, 1f, 1f)
-  variable.hint_color = Color(0.8, 0.8, 0.8)
-  variable.hint_text = "Edit text ..."
-  variable.caret_position = 0
-  variable.blit_caret = true
-  variable.caret_color = Color(1f, 1f, 1f, 0.7)
-  variable.blit_speed = 0.05
-  variable.blit_time = 0f
-  variable.on_edit = proc(key: string) = discard
-  variable.kind = EDIT_TEXT_NODE
-
-proc EditText*(obj: var EditTextObj): EditTextPtr {.inline.} =
-  ## Creates a new EditText pointer with default name "EditText".
-  ##
-  ## Arguments:
-  ## - `name` is a node name.
-  ## - `variable` is a EditTextObj variable.
-  runnableExamples:
-    var
-      editobj: EditTextObj
-      edit = EditText(editobj)
-  EditText("EditText", obj)
+  result.rect_size.x = 64
+  result.rect_size.y = 32
+  result.text = ""
+  result.font = GLUT_BITMAP_HELVETICA_12
+  result.size = 12
+  result.spacing = 2
+  result.text_align = Anchor(0, 0, 0, 0)
+  result.color = Color(1f, 1f, 1f)
+  result.hint_color = Color(0.8, 0.8, 0.8)
+  result.hint_text = "Edit text ..."
+  result.caret_position = 0
+  result.blit_caret = true
+  result.caret_color = Color(1f, 1f, 1f, 0.7)
+  result.blit_speed = 0.05
+  result.blit_time = 0f
+  result.on_edit = proc(key: string) = discard
+  result.kind = EDIT_TEXT_NODE
 
 
-method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
+method getTextSize*(self: EditTextRef): Vector2Ref {.base.} =
   ## Returns text size.
   result = Vector2()
   for line in self.text.splitLines():  # get text height
@@ -92,7 +77,7 @@ method getTextSize*(self: EditTextPtr): Vector2Ref {.base.} =
     result.y -= self.spacing
 
 
-method getLine*(self: EditTextPtr): int {.base.} =
+method getLine*(self: EditTextRef): int {.base.} =
   ## Returns current caret line.
   var
     caret_pos = 0
@@ -109,7 +94,7 @@ method getLine*(self: EditTextPtr): int {.base.} =
   return l
 
 
-method getCharPositionUnderMouse*(self: EditTextPtr): int {.base.} =
+method getCharPositionUnderMouse*(self: EditTextRef): int {.base.} =
   ## Returns char position under mouse.
   let
     size = self.getTextSize()
@@ -138,12 +123,12 @@ method getCharPositionUnderMouse*(self: EditTextPtr): int {.base.} =
         res.x = x
 
 
-method getCharUnderMouse*(self: EditTextPtr): char {.base.} =
+method getCharUnderMouse*(self: EditTextRef): char {.base.} =
   ## Returns char under mouse
   return self.text[self.getCharPositionUnderMouse()]
 
 
-method getWordPositionUnderMouse*(self: EditTextPtr): tuple[startpos, endpos: int] {.base.} =
+method getWordPositionUnderMouse*(self: EditTextRef): tuple[startpos, endpos: int] {.base.} =
   ## Returns words under mouse.
   ## Returns (-1, -1), if under mouse no founds words.
   var caret = self.getCharPositionUnderMouse()
@@ -179,14 +164,14 @@ method getWordPositionUnderMouse*(self: EditTextPtr): tuple[startpos, endpos: in
     return (-1, -1)
 
 
-method getWordUnderMouse*(self: EditTextPtr): string {.base.} =
+method getWordUnderMouse*(self: EditTextRef): string {.base.} =
   ## Returns words under mouse.
   let (s, e) = self.getWordPositionUnderMouse()
   if self.text.len() > 0 and s > -1:
     return self.text[s..e]
 
 
-method draw*(self: EditTextPtr, w, h: GLfloat) =
+method draw*(self: EditTextRef, w, h: GLfloat) =
   ## This method uses in the `window.nim`
   let
     x = -w/2 + self.global_position.x
@@ -253,15 +238,14 @@ method draw*(self: EditTextPtr, w, h: GLfloat) =
     self.on_press(self, last_event.x, last_event.y)
 
 
-method duplicate*(self: EditTextPtr, obj: var EditTextObj): EditTextPtr {.base.} =
-  ## Duplicates EditText object and create a new EditText pointer.
-  obj = self[]
-  obj.addr
+method duplicate*(self: EditTextRef): EditTextRef {.base.} =
+  ## Duplicates EditText object and create a new EditText.
+  self.deepCopy()
 
 
-method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
+method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. Thi uses in the `window.nim`.
-  procCall self.ControlPtr.handle(event, mouse_on)
+  procCall self.ControlRef.handle(event, mouse_on)
 
   if self.hovered:  # Change cursor, if need
     glutSetCursor(GLUT_CURSOR_TEXT)
@@ -305,16 +289,16 @@ method handle*(self: EditTextPtr, event: InputEvent, mouse_on: var NodePtr) =
           self.on_edit(event.key)
 
 
-method setTextAlign*(self: EditTextPtr, align: AnchorRef) {.base.} =
+method setTextAlign*(self: EditTextRef, align: AnchorRef) {.base.} =
   ## Changes text align.
   self.text_align = align
 
 
-method setTextAlign*(self: EditTextPtr, x1, y1, x2, y2: float) {.base.} =
+method setTextAlign*(self: EditTextRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes text align.
   self.text_align = Anchor(x1, y1, x2, y2)
 
 
-method setText*(self: EditTextPtr, value: string) {.base.} =
+method setText*(self: EditTextRef, value: string) {.base.} =
   ## Changes EditText text.
   self.text = value
