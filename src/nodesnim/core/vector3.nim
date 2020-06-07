@@ -71,3 +71,54 @@ proc len*(a: Vector3Obj): float =
     var vec3 = Vector3(1, 5, 7)
     echo vec3.len()
   sqrt(a.x*a.x + a.y*a.y + a.z*a.z)
+
+
+# --- Operators --- #
+proc `$`*(a: Vector3Obj): string =
+  "Vector3(x: " & $a.x & ", y: " & $a.y & ", z: " & $a.z & ")"
+
+
+proc `+`*(a, b: Vector3Obj): Vector3Obj =
+  Vector3Obj(x: a.x+b.x, y: a.y+b.y, z: a.z+b.z)
+proc `-`*(a, b: Vector3Obj): Vector3Obj =
+  Vector3Obj(x: a.x-b.x, y: a.y-b.y, z: a.z-b.z)
+proc `*`*(a, b: Vector3Obj): Vector3Obj =
+  Vector3Obj(x: a.x*b.x, y: a.y*b.y, z: a.z*b.z)
+proc `/`*(a, b: Vector3Obj): Vector3Obj =
+  Vector3Obj(x: a.x/b.x, y: a.y/b.y, z: a.z/b.z)
+
+proc `+`*(a: Vector3Obj, b: float): Vector3Obj =
+  Vector3Obj(x: a.x+b, y: a.y+b, z: a.z+b)
+proc `-`*(a: Vector3Obj, b: float): Vector3Obj =
+  Vector3Obj(x: a.x-b, y: a.y-b, z: a.z-b)
+proc `*`*(a: Vector3Obj, b: float): Vector3Obj =
+  Vector3Obj(x: a.x*b, y: a.y*b, z: a.z*b)
+proc `/`*(a: Vector3Obj, b: float): Vector3Obj =
+  Vector3Obj(x: a.x/b, y: a.y/b, z: a.z/b)
+
+proc `+=`*(a: var Vector3Obj, b: Vector3Obj) =
+  a = a + b
+proc `-=`*(a: var Vector3Obj, b: Vector3Obj) =
+  a = a - b
+proc `*=`*(a: var Vector3Obj, b: Vector3Obj) =
+  a = a * b
+proc `/=`*(a: var Vector3Obj, b: Vector3Obj) =
+  a = a / b
+
+proc `+=`*(a: var Vector3Obj, b: float) =
+  a = a + b
+proc `-=`*(a: var Vector3Obj, b: float) =
+  a = a - b
+proc `*=`*(a: var Vector3Obj, b: float) =
+  a = a * b
+proc `/=`*(a: var Vector3Obj, b: float) =
+  a = a / b
+
+proc `==`*(a, b: Vector3Obj): bool =
+  a.x == b.x and a.y == b.y and a.z == b.z
+proc `>`*(a, b: Vector3Obj): bool =
+  a.x > b.x and a.y > b.y and a.z > b.z
+proc `>=`*(a, b: Vector3Obj): bool =
+  a.x >= b.x and a.y >= b.y and a.z >= b.z
+proc `<=`*(a, b: Vector3Obj): bool =
+  a.x <= b.x and a.y <= b.y and a.z <= b.z

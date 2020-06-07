@@ -56,17 +56,20 @@ proc on_sign(self: ButtonRef, x, y: float) =
     sign = self.text
 
 
-button_7.text = "7"
-button_8.text = "8"
-button_9.text = "9"
-button_add.text = "+"
-button_4.text = "4"
-button_5.text = "5"
-button_6.text = "6"
-button_sub.text = "-"
 button_1.text = "1"
 button_2.text = "2"
 button_3.text = "3"
+button_4.text = "4"
+button_5.text = "5"
+button_6.text = "6"
+button_7.text = "7"
+button_8.text = "8"
+button_9.text = "9"
+button_0.text = "0"
+button_00.text = "00"
+
+button_sub.text = "-"
+button_add.text = "+"
 button_mul.text = "*"
 button_div.text = "/"
 
@@ -85,51 +88,45 @@ button_mul.on_touch = on_sign
 button_div.on_touch = on_sign
 
 
-button_0.text = "0"
-button_0.on_touch =
-  proc(self: ButtonRef, x, y: float) =
-    if sign == "" and first != "":
-      first &= "0"
-    elif sign != "/":
-      second &= "0"
+button_0@on_touch(self, x, y):
+  if sign == "" and first != "":
+    first &= "0"
+  elif sign != "/":
+    second &= "0"
 
-button_00.text = "00"
-button_00.on_touch =
-  proc(self: ButtonRef, x, y: float) =
-    if sign == "" and first != "":
-      first &= "00"
-    elif second != "":
-      second &= "00"
+button_00@on_touch(self, x, y):
+  if sign == "" and first != "":
+    first &= "00"
+  elif second != "":
+    second &= "00"
 
 
 button_eq.text = "="
-button_eq.on_touch =
-  proc(self: ButtonRef, x, y: float) =
-    first =
-      if sign == "+":
-        $(parseFloat(first) + parseFloat(second))
-      elif sign == "-":
-        $(parseFloat(first) - parseFloat(second))
-      elif sign == "*":
-        $(parseFloat(first) * parseFloat(second))
-      elif sign == "/":
-        $(parseFloat(first) / parseFloat(second))
-      else:
-        first
-    if sign != "":
-      second = ""
-      sign = ""
+button_eq@on_touch(self, x, y):
+  first =
+    if sign == "+":
+      $(parseFloat(first) + parseFloat(second))
+    elif sign == "-":
+      $(parseFloat(first) - parseFloat(second))
+    elif sign == "*":
+      $(parseFloat(first) * parseFloat(second))
+    elif sign == "/":
+      $(parseFloat(first) / parseFloat(second))
+    else:
+      first
+  if sign != "":
+    second = ""
+    sign = ""
 
 result.setTextAlign(1, 0, 1, 0)
 result.resize(160, 32)
-result.on_process =
-  proc(self: NodeRef) =
-    if sign == "":
-      result.text = first
-    elif second == "":
-      result.text = first & " " & sign
-    else:
-      result.text = first & " " & sign & " " & second
+result@on_process(self):
+  if sign == "":
+    result.text = first
+  elif second == "":
+    result.text = first & " " & sign
+  else:
+    result.text = first & " " & sign & " " & second
 
 
 addScene(main)
