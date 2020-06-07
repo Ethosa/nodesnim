@@ -31,17 +31,13 @@ proc Vector3*(): Vector3Obj {.inline.} =
   Vector3(0, 0, 0)
 
 
-proc abs*(a: var Vector3Obj) =
+proc abs*(a: Vector3Obj): Vector3Obj =
   runnableExamples:
-    var
-      vec3 = Vector3(-1, -2, -3)
-      vec3_1 = abs(vec3)
+    var vec3 = abs(Vector3(-1, -2, -3))
     assert vec3.x == 1
     assert vec3.y == 2
     assert vec3.z == 3
-  a.x = abs(a.x)
-  a.y = abs(a.y)
-  a.z = abs(a.z)
+  Vector3Obj(x: abs(a.x), y: abs(a.y), z: abs(a.z))
 
 proc cross*(a, b: Vector3Obj): float =
   a.x*b.x - a.y*b.y - a.z*b.z

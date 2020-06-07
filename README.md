@@ -58,7 +58,7 @@ This section contains links to documentation for all nodes.
 |[Polygon2][Polygon2]|                          |[VBox][VBox]                   |                            |
 |[AudioStream][astrm]|                          |[GridBox][GridBox]             |                            |
 |[Animation][anim]   |                          |[Scroll][Scroll]               |                            |
-|                    |                          |[ProgressBar][ProgressBar]     |                            |
+|[Vector3][Vector3]  |                          |[ProgressBar][ProgressBar]     |                            |
 |                    |                          |[Slider][Slider]               |                            |
 |                    |                          |[VProgressBar][VProgressBar]   |                            |
 |                    |                          |[VSlider][VSlider]             |                            |
@@ -122,6 +122,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Polygon2]:https://ethosa.github.io/nodesnim/nodesnim/core/polygon2.html
 [astrm]:https://ethosa.github.io/nodesnim/nodesnim/core/audio_stream.html
 [anim]:https://ethosa.github.io/nodesnim/nodesnim/core/animation.html
+[Vector3]:https://ethosa.github.io/nodesnim/nodesnim/core/vector3.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
