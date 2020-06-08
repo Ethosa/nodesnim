@@ -48,7 +48,7 @@ template controlpattern*: untyped =
   result.on_release = proc(self: ControlRef, x, y: float) = discard
   result.on_focus = proc(self: ControlRef) = discard
   result.on_unfocus = proc(self: ControlRef) = discard
-  result.node_type = NODE_TYPE_CONTROL
+  result.type_of_node = NODE_TYPE_CONTROL
 
 proc Control*(name: string = "Control"): ControlRef =
   ## Creates a new Control.

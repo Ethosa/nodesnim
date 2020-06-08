@@ -70,7 +70,8 @@ import
   nodesnim/nodes2d/kinematic_body2d,
   nodesnim/nodes2d/camera2d,
 
-  nodesnim/nodes3d/node3d
+  nodesnim/nodes3d/node3d,
+  nodesnim/nodes3d/geometry_instance
 
 export
   # Third party
@@ -89,4 +90,4 @@ export
   # 2D nodes
   node2d, sprite, animated_sprite, ysort, collision_shape2d, kinematic_body2d, camera2d,
   # 3D nodes
-  node3d
+  node3d, geometry_instance

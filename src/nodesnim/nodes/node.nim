@@ -15,7 +15,7 @@ import
 type
   NodeObj* = object of RootObj
     kind*: NodeKind
-    node_type*: NodeTypes
+    type_of_node*: NodeTypes
     visible*: bool
     is_ready*: bool
     can_use_anchor*: bool
@@ -54,6 +54,7 @@ template nodepattern*(nodetype: untyped): untyped =
     anchor: Anchor(0, 0, 0, 0), size_anchor: Vector2(), can_use_anchor: false,
     can_use_size_anchor: false, z_index: 0f, z_index_global: 0f, relative_z_index: true
   )
+  result.type_of_node = NODE_TYPE_DEFAULT
 
 proc Node*(name: string = "Node"): NodeRef =
   ## Creates a new Node.

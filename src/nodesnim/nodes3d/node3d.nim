@@ -1,7 +1,5 @@
 # author: Ethosa
 import
-  ../thirdparty/opengl,
-
   ../core/vector2,
   ../core/vector3,
   ../core/enums,
@@ -21,11 +19,11 @@ type
 template node3dpattern* =
   result.rotation = Vector3()
   result.translation = Vector3()
-  result.scale = Vector3()
+  result.scale = Vector3(1, 1, 1)
   result.global_rotation = Vector3()
   result.global_translation = Vector3()
-  result.global_scale = Vector3()
-  result.node_type = NODE_TYPE_3D
+  result.global_scale = Vector3(1, 1, 1)
+  result.type_of_node = NODE_TYPE_3D
 
 
 proc Node3D*(name: string = "Node3D"): Node3DRef =
@@ -48,7 +46,7 @@ method calcGlobalPosition3*(self: Node3DRef) =
 
   while current.parent != nil:
     current = current.parent
-    if current.node_type == NODE_TYPE_3D:
+    if current.type_of_node == NODE_TYPE_3D:
       self.global_translation += current.Node3DRef.translation
       self.global_rotation += current.Node3DRef.rotation
       self.global_scale += current.Node3DRef.scale
