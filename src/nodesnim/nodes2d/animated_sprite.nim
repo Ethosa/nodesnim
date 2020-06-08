@@ -51,7 +51,7 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
     frames_count = self.animations[self.animation].frames.len()
   if frame >= 0 and frame < frames_count:
     var texture = self.animations[self.animation].frames[frame]
-    if texture.texture > 0:
+    if texture.texture > 0'u32:
       self.rect_size = texture.size
 
   # Recalculate position.

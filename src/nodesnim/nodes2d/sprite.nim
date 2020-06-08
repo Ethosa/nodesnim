@@ -40,7 +40,7 @@ proc Sprite*(name: string = "Sprite"): SpriteRef =
 method draw*(self: SpriteRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  if self.texture.texture > 0:
+  if self.texture.texture > 0'u32:
     self.rect_size = self.texture.size
 
   # Recalculate position.
