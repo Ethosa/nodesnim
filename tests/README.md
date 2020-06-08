@@ -37,3 +37,4 @@
 35. [Event handlers with macros.](https://github.com/Ethosa/nodesnim/blob/master/tests/test35.nim)
 36. [Rotation.](https://github.com/Ethosa/nodesnim/blob/master/tests/test36.nim)
 37. [Use Camera2D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test37.nim)
+38. [Use Node3D.](https://github.com/Ethosa/nodesnim/blob/master/tests/test38.nim)

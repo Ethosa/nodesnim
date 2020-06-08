@@ -15,6 +15,7 @@ import
 type
   NodeObj* = object of RootObj
     kind*: NodeKind
+    node_type*: NodeTypes
     visible*: bool
     is_ready*: bool
     can_use_anchor*: bool
@@ -87,6 +88,10 @@ method calcGlobalPosition*(self: NodeRef) {.base.} =
     self.global_position += current.position
     if self.relative_z_index:
       self.z_index_global += current.z_index
+
+method calcGlobalPosition3*(self: NodeRef) {.base.} =
+  ## Uses in the 3D nodes.
+  discard
 
 method calcPositionAnchor*(self: NodeRef) {.base.} =
   ## Calculates node position with anchor.

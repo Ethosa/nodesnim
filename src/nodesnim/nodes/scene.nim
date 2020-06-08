@@ -29,6 +29,7 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
       continue
     if child.visible:
       child.calcGlobalPosition()
+      child.calcGlobalPosition3()
       if not child.is_ready:
         child.on_ready(child)
         child.is_ready = true

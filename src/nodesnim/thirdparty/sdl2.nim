@@ -27,7 +27,7 @@ else:
 when not defined(android) and not defined(ios):
   type csize_t_const* = csize_t
 else:
-  type csize_t_const* = size_t
+  type csize_t_const* = csize
 
 
 include sdl2/private/keycodes

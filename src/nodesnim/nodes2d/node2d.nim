@@ -25,6 +25,7 @@ type
 template node2dpattern*: untyped =
   result.centered = true
   result.timed_position = Vector2()
+  result.node_type = NODE_TYPE_2D
 
 proc Node2D*(name: string = "Node2D"): Node2DRef =
   ## Creates a new Node2D.

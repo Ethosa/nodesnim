@@ -45,4 +45,9 @@ type
     VBOX_NODE,
     VPROGRESS_BAR_NODE,
     VSLIDER_NODE,
-    NODE_3D
+    NODE3D_NODE
+  NodeTypes* {.pure.} = enum
+    NODE_TYPE_DEFAULT,
+    NODE_TYPE_CONTROL,
+    NODE_TYPE_2D,
+    NODE_TYPE_3D

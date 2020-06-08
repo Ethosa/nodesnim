@@ -48,30 +48,30 @@
 
 ## Now available
 This section contains links to documentation for all nodes.
-|Core                |Default nodes             |Control nodes                  |2D Nodes                    |
-|:--:                |:--:                      |:--:                           |  :--:                      |
-|[Anchor][Anchor]    |[Node][Node]              |[Control][Control]             |[Node2D][Node2D]            |
-|[Color][Color]      |[Canvas][Canvas]          |[ColorRect][ColorRect]         |[Sprite][Sprite]            |
-|[ColorText][clrtext]|[Scene][Scene]            |[TextureRect][TextureRect]     |[AnimatedSprite][asprite]   |
-|[Enums][Enums]      |[AudioStreamPlayer][aplay]|[Label][Label]                 |[YSort][YSort]              |
-|[Exceptions][except]|                          |[Button][Button]               |[CollisionShape2D][cshape2d]|
-|[Image][Image]      |                          |[EditText][EditText]           |[Camera2D][Camera2D]        |
-|[Input][Input]      |                          |[RichLabel][RichLabel]         |                            |
-|[Rect2][Rect2]      |                          |[RichEditText][RichEditText]   |                            |
-|[Vector2][Vector2]  |                          |[Box][Box]                     |                            |
-|[Circle2][Circle2]  |                          |[HBox][HBox]                   |                            |
-|[Polygon2][Polygon2]|                          |[VBox][VBox]                   |                            |
-|[AudioStream][astrm]|                          |[GridBox][GridBox]             |                            |
-|[Animation][anim]   |                          |[Scroll][Scroll]               |                            |
-|[Vector3][Vector3]  |                          |[ProgressBar][ProgressBar]     |                            |
-|                    |                          |[Slider][Slider]               |                            |
-|                    |                          |[VProgressBar][VProgressBar]   |                            |
-|                    |                          |[VSlider][VSlider]             |                            |
-|                    |                          |[Popup][Popup]                 |                            |
-|                    |                          |[TextureButton][TextureButton] |                            |
-|                    |                          |[TextureProgressBar][tprogress]|                            |
-|                    |                          |[Counter][Counter]             |                            |
-|                    |                          |[Switch][Switch]               |                            |
+|Core                |Default nodes             |Control nodes                  |2D Nodes                    |3D Nodes        |
+|:--:                |:--:                      |:--:                           |  :--:                      |:--:            |
+|[Anchor][Anchor]    |[Node][Node]              |[Control][Control]             |[Node2D][Node2D]            |[Node3D][Node3D]|
+|[Color][Color]      |[Canvas][Canvas]          |[ColorRect][ColorRect]         |[Sprite][Sprite]            |                |
+|[ColorText][clrtext]|[Scene][Scene]            |[TextureRect][TextureRect]     |[AnimatedSprite][asprite]   |                |
+|[Enums][Enums]      |[AudioStreamPlayer][aplay]|[Label][Label]                 |[YSort][YSort]              |                |
+|[Exceptions][except]|                          |[Button][Button]               |[CollisionShape2D][cshape2d]|                |
+|[Image][Image]      |                          |[EditText][EditText]           |[Camera2D][Camera2D]        |                |
+|[Input][Input]      |                          |[RichLabel][RichLabel]         |                            |                |
+|[Rect2][Rect2]      |                          |[RichEditText][RichEditText]   |                            |                |
+|[Vector2][Vector2]  |                          |[Box][Box]                     |                            |                |
+|[Circle2][Circle2]  |                          |[HBox][HBox]                   |                            |                |
+|[Polygon2][Polygon2]|                          |[VBox][VBox]                   |                            |                |
+|[AudioStream][astrm]|                          |[GridBox][GridBox]             |                            |                |
+|[Animation][anim]   |                          |[Scroll][Scroll]               |                            |                |
+|[Vector3][Vector3]  |                          |[ProgressBar][ProgressBar]     |                            |                |
+|                    |                          |[Slider][Slider]               |                            |                |
+|                    |                          |[VProgressBar][VProgressBar]   |                            |                |
+|                    |                          |[VSlider][VSlider]             |                            |                |
+|                    |                          |[Popup][Popup]                 |                            |                |
+|                    |                          |[TextureButton][TextureButton] |                            |                |
+|                    |                          |[TextureProgressBar][tprogress]|                            |                |
+|                    |                          |[Counter][Counter]             |                            |                |
+|                    |                          |[Switch][Switch]               |                            |                |
 
 
 
@@ -165,3 +165,5 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [KinematicBody2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/kinematic_body2d.html
 [Camera2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/camera2d.html
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
+
+[Node3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/node3d.html
