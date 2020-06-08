@@ -97,7 +97,7 @@ method handle*(self: VSliderRef, event: InputEvent, mouse_on: var NodeRef) =
   if self.focused and self.pressed:
     let
       value = normalize(((self.global_position.y + self.rect_size.y - event.y) / self.rect_size.y), 0, 1)
-      progress_value = (value * self.max_value.float).uint32
+      progress_value = (value * self.max_value.float).uint
     if progress_value != self.value:
       self.on_changed(self, progress_value)
     self.setProgress(progress_value)

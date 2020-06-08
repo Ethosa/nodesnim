@@ -97,7 +97,7 @@ method handle*(self: SliderRef, event: InputEvent, mouse_on: var NodeRef) =
   if self.focused and self.pressed:
     let
       value = normalize(1f - ((self.global_position.x + self.rect_size.x - event.x) / self.rect_size.x), 0, 1)
-      progress_value = (value * self.max_value.float).uint32
+      progress_value = (value * self.max_value.float).uint
     if progress_value != self.value:
       self.on_changed(self, progress_value)
     self.setProgress(progress_value)
