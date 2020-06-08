@@ -110,6 +110,7 @@ function main() {
       <li><a class="reference" href="#NodeObj"
     title="NodeObj = object of RootObj
   kind*: NodeKind
+  node_type*: NodeTypes
   visible*: bool
   is_ready*: bool
   can_use_anchor*: bool
@@ -152,6 +153,8 @@ function main() {
     title="addChilds(self: NodeRef; childs: varargs[NodeRef])"><wbr />add<wbr />Childs<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#calcGlobalPosition.e%2CNodeRef"
     title="calcGlobalPosition(self: NodeRef)"><wbr />calc<wbr />Global<wbr />Position<span class="attachedType">NodeRef</span></a></li>
+  <li><a class="reference" href="#calcGlobalPosition3.e%2CNodeRef"
+    title="calcGlobalPosition3(self: NodeRef)"><wbr />calc<wbr />Global<wbr />Position3<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#calcPositionAnchor.e%2CNodeRef"
     title="calcPositionAnchor(self: NodeRef)"><wbr />calc<wbr />Position<wbr />Anchor<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CNodeRef%2CGLfloat%2CGLfloat"
@@ -256,6 +259,7 @@ function main() {
 <a id="NodeObj"></a>
 <dt><pre><a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeKind"><span class="Identifier">NodeKind</span></a>
+  <span class="Identifier">node_type</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeTypes"><span class="Identifier">NodeTypes</span></a>
   <span class="Identifier">visible</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">is_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">can_use_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
@@ -333,6 +337,13 @@ Creates a new Node.
 <dd>
 
 Returns global node position.
+
+</dd>
+<a id="calcGlobalPosition3.e,NodeRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#calcGlobalPosition3.e%2CNodeRef"><span class="Identifier">calcGlobalPosition3</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Uses in the 3D nodes.
 
 </dd>
 <a id="calcPositionAnchor.e,NodeRef"></a>
@@ -655,7 +666,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-07 18:44:36 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-08 05:38:59 UTC</small>
       </div>
     </div>
   </div>

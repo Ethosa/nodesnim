@@ -5,6 +5,7 @@ Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&q
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
 addChilds	nodesnim/nodes/node.html#addChilds.e,NodeRef,varargs[NodeRef]	node: addChilds(self: NodeRef; childs: varargs[NodeRef])	
 calcGlobalPosition	nodesnim/nodes/node.html#calcGlobalPosition.e,NodeRef	node: calcGlobalPosition(self: NodeRef)	
+calcGlobalPosition3	nodesnim/nodes/node.html#calcGlobalPosition3.e,NodeRef	node: calcGlobalPosition3(self: NodeRef)	
 calcPositionAnchor	nodesnim/nodes/node.html#calcPositionAnchor.e,NodeRef	node: calcPositionAnchor(self: NodeRef)	
 draw	nodesnim/nodes/node.html#draw.e,NodeRef,GLfloat,GLfloat	node: draw(self: NodeRef; w, h: GLfloat)	
 draw2stage	nodesnim/nodes/node.html#draw2stage.e,NodeRef,GLfloat,GLfloat	node: draw2stage(self: NodeRef; w, h: GLfloat)	

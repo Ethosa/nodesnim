@@ -1,0 +1,20 @@
+Node3DObj	nodesnim/nodes3d/node3d.html#Node3DObj	node3d: Node3DObj	
+Node3DRef	nodesnim/nodes3d/node3d.html#Node3DRef	node3d: Node3DRef	
+node3dpattern	nodesnim/nodes3d/node3d.html#node3dpattern.t	node3d: node3dpattern()	
+Node3D	nodesnim/nodes3d/node3d.html#Node3D,string	node3d: Node3D(name: string = &quot;Node3D&quot;): Node3DRef	
+calcGlobalPosition3	nodesnim/nodes3d/node3d.html#calcGlobalPosition3.e,Node3DRef	node3d: calcGlobalPosition3(self: Node3DRef)	
+rotate	nodesnim/nodes3d/node3d.html#rotate.e,Node3DRef,float,float,float	node3d: rotate(self: Node3DRef; x, y, z: float)	
+rotate	nodesnim/nodes3d/node3d.html#rotate.e,Node3DRef,Vector3Obj	node3d: rotate(self: Node3DRef; xyz: Vector3Obj)	
+rotateX	nodesnim/nodes3d/node3d.html#rotateX.e,Node3DRef,float	node3d: rotateX(self: Node3DRef; x: float)	
+rotateY	nodesnim/nodes3d/node3d.html#rotateY.e,Node3DRef,float	node3d: rotateY(self: Node3DRef; y: float)	
+rotateZ	nodesnim/nodes3d/node3d.html#rotateZ.e,Node3DRef,float	node3d: rotateZ(self: Node3DRef; z: float)	
+translate	nodesnim/nodes3d/node3d.html#translate.e,Node3DRef,float,float,float	node3d: translate(self: Node3DRef; x, y, z: float)	
+translate	nodesnim/nodes3d/node3d.html#translate.e,Node3DRef,Vector3Obj	node3d: translate(self: Node3DRef; xyz: Vector3Obj)	
+translateX	nodesnim/nodes3d/node3d.html#translateX.e,Node3DRef,float	node3d: translateX(self: Node3DRef; x: float)	
+translateY	nodesnim/nodes3d/node3d.html#translateY.e,Node3DRef,float	node3d: translateY(self: Node3DRef; y: float)	
+translateZ	nodesnim/nodes3d/node3d.html#translateZ.e,Node3DRef,float	node3d: translateZ(self: Node3DRef; z: float)	
+transform	nodesnim/nodes3d/node3d.html#transform.e,Node3DRef,float,float,float	node3d: transform(self: Node3DRef; x, y, z: float)	
+transform	nodesnim/nodes3d/node3d.html#transform.e,Node3DRef,Vector3Obj	node3d: transform(self: Node3DRef; xyz: Vector3Obj)	
+transformX	nodesnim/nodes3d/node3d.html#transformX.e,Node3DRef,float	node3d: transformX(self: Node3DRef; x: float)	
+transformY	nodesnim/nodes3d/node3d.html#transformY.e,Node3DRef,float	node3d: transformY(self: Node3DRef; y: float)	
+transformZ	nodesnim/nodes3d/node3d.html#transformZ.e,Node3DRef,float	node3d: transformZ(self: Node3DRef; z: float)	
