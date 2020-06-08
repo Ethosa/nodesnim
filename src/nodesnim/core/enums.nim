@@ -17,6 +17,7 @@ type
     CANVAS_NODE,
     SCENE_NODE,
     AUDIO_STREAM_PLAYER_NODE,
+    # 2D nodes
     COLLISION_SHAPE_2D_NODE,
     YSORT_NODE,
     CAMERA_2D_NODE,
@@ -24,6 +25,7 @@ type
     ANIMATED_SPRITE_NODE,
     NODE2D_NODE,
     KINEMATIC_BODY_2D_NODE,
+    # Control nodes
     BOX_NODE,
     BUTTON_NODE,
     COLOR_RECT_NODE,
@@ -45,6 +47,8 @@ type
     VBOX_NODE,
     VPROGRESS_BAR_NODE,
     VSLIDER_NODE,
+    SUB_WINDOW_NODE,
+    # 3D nodes
     NODE3D_NODE,
     GEOMETRY_INSTANCE_NODE
   NodeTypes* {.pure.} = enum

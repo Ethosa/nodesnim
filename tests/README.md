@@ -39,3 +39,4 @@
 37. [Use Camera2D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test37.nim)
 38. [Use Node3D.](https://github.com/Ethosa/nodesnim/blob/master/tests/test38.nim)
 39. [Use GeometryInstance node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test39.nim)
+40. [Use SubWindow node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test40.nim)

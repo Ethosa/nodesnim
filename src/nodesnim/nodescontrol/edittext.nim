@@ -247,10 +247,11 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. Thi uses in the `window.nim`.
   procCall self.ControlRef.handle(event, mouse_on)
 
-  if self.hovered:  # Change cursor, if need
-    glutSetCursor(GLUT_CURSOR_TEXT)
-  else:
-    glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
+  when not defined(android) and not defined(ios):
+    if self.hovered:  # Change cursor, if need
+      glutSetCursor(GLUT_CURSOR_TEXT)
+    else:
+      glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
 
   if event.kind == MOUSE and event.pressed:
     self.caret_position = self.getCharPositionUnderMouse()

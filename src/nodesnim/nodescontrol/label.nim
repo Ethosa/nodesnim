@@ -93,6 +93,19 @@ method draw*(self: LabelRef, w, h: GLfloat) =
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
 
+method getTextSize*(self: LabelRef): Vector2Ref {.base.} =
+  ## Returns text size.
+  result = Vector2()
+  for line in self.text.splitLines():  # get text height
+    var x: float = 0f
+    for c in line:
+      x += self.font.glutBitmapWidth(c.int).float
+    if x > result.x:
+      result.x = x
+    result.y += self.spacing + self.size
+  if result.y > 0:
+    result.y -= self.spacing
+
 method duplicate*(self: LabelRef): LabelRef {.base.} =
   ## Duplicates Label object and create a new Label.
   self.deepCopy()
