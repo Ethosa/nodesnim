@@ -56,7 +56,6 @@ method addChild*(self: VBoxRef, child: NodeRef) =
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
-  self.rect_size = self.getChildSize()
 
 
 method draw*(self: VBoxRef, w, h: GLfloat) =

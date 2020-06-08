@@ -7,9 +7,6 @@ import
   ../core/vector2
 
 
-when defined(debug):
-  import logging
-
 discard image.init()
 
 
@@ -29,7 +26,7 @@ proc load*(file: cstring, x, y: var float, mode: Glenum = GL_RGB): Gluint =
     textureid: Gluint
   when defined(debug):
     if surface == nil:
-      error("image \"", file, "\" not loaded!")
+      echo("image \"", file, "\" not loaded!")
   x = surface.w.float
   y = surface.h.float
 

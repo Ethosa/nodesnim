@@ -198,12 +198,16 @@ method handle*(self: ScrollRef, event: InputEvent, mouse_on: var NodeRef) =
   if (mouse_in_y and mouse_pressed and event.kind == MOUSE) or self.thumb_y_has_mouse:
     self.thumb_y_has_mouse = true
     self.scrollBy(0, -event.yrel)
+    mouse_on = self
   if not mouse_pressed and self.thumb_y_has_mouse:
     self.thumb_y_has_mouse = false
+    mouse_on = nil
 
   # Mouse X
   if (mouse_in_x and mouse_pressed and event.kind == MOUSE) or self.thumb_x_has_mouse:
     self.thumb_x_has_mouse = true
     self.scrollBy(-event.xrel, 0)
+    mouse_on = self
   if not mouse_pressed and self.thumb_x_has_mouse:
     self.thumb_x_has_mouse = false
+    mouse_on = nil

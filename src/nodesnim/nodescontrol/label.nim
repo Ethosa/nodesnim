@@ -110,6 +110,11 @@ method duplicate*(self: LabelRef): LabelRef {.base.} =
   ## Duplicates Label object and create a new Label.
   self.deepCopy()
 
+method setFont*(self: LabelRef, font: pointer, size: float) {.base.} =
+  ## Changes font to other GLUT font.
+  self.font = font
+  self.size = size 
+
 method setTextAlign*(self: LabelRef, align: AnchorRef) {.base.} =
   ## Changes text alignment.
   self.text_align = align
@@ -117,6 +122,10 @@ method setTextAlign*(self: LabelRef, align: AnchorRef) {.base.} =
 method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes text alignment.
   self.text_align = Anchor(x1, y1, x2, y2)
+
+method setTextColor*(self: LabelRef, color: ColorRef) {.base.} =
+  ## Changes text color.
+  self.color = color
 
 method setText*(self: LabelRef, value: string) {.base.} =
   ## Changes Label text.
