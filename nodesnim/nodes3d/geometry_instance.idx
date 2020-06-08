@@ -1,0 +1,5 @@
+GeometryType	nodesnim/nodes3d/geometry_instance.html#GeometryType	geometry_instance: GeometryType	
+GeometryInstanceObj	nodesnim/nodes3d/geometry_instance.html#GeometryInstanceObj	geometry_instance: GeometryInstanceObj	
+GeometryInstanceRef	nodesnim/nodes3d/geometry_instance.html#GeometryInstanceRef	geometry_instance: GeometryInstanceRef	
+GeometryInstance	nodesnim/nodes3d/geometry_instance.html#GeometryInstance,string	geometry_instance: GeometryInstance(name: string = &quot;GeometryInstance&quot;): GeometryInstanceRef	
+draw	nodesnim/nodes3d/geometry_instance.html#draw.e,GeometryInstanceRef,GLfloat,GLfloat	geometry_instance: draw(self: GeometryInstanceRef; w, h: GLfloat)	
