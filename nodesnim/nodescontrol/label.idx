@@ -2,6 +2,7 @@ LabelObj	nodesnim/nodescontrol/label.html#LabelObj	label: LabelObj
 LabelRef	nodesnim/nodescontrol/label.html#LabelRef	label: LabelRef	
 Label	nodesnim/nodescontrol/label.html#Label,string	label: Label(name: string = &quot;Label&quot;): LabelRef	
 draw	nodesnim/nodescontrol/label.html#draw.e,LabelRef,GLfloat,GLfloat	label: draw(self: LabelRef; w, h: GLfloat)	
+getTextSize	nodesnim/nodescontrol/label.html#getTextSize.e,LabelRef	label: getTextSize(self: LabelRef): Vector2Ref	
 duplicate	nodesnim/nodescontrol/label.html#duplicate.e,LabelRef	label: duplicate(self: LabelRef): LabelRef	
 setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelRef,AnchorRef	label: setTextAlign(self: LabelRef; align: AnchorRef)	
 setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelRef,float,float,float,float	label: setTextAlign(self: LabelRef; x1, y1, x2, y2: float)	
