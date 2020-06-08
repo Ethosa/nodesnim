@@ -77,6 +77,10 @@ proc Color*(): ColorRef {.inline.} =
   ColorRef(r: 0, g: 0, b: 0, a: 0)
 
 
+proc getBrightness*(self: ColorRef): float =
+  (self.r + self.g + self.b) / 3f
+
+
 proc normalize*(n: float): uint32 {.inline.} =
   if n > 1.0:
     255'u32

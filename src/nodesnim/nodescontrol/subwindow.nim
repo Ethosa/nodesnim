@@ -244,12 +244,12 @@ method resize*(self: SubWindowRef, w, h: float) {.base.} =
     self.rect_size.y = h
 
 
-method setTitle*(self: SubWindowRef, title: string) {.base.} =
-  ## Changes subwindow title.
+method setBorderColor*(self: SubWindowRef, color: ColorRef) {.base.} =
+  ## Changes border color.
   ##
   ## Arguments:
-  ## - `title` is a new title.
-  self.title.setText(title)
+  ## - `color` is a new border color.
+  self.border_color = color
 
 
 method setIcon*(self: SubWindowRef, gltexture: GlTextureObj) {.base.} =
@@ -266,3 +266,19 @@ method setIcon*(self: SubWindowRef, file: cstring) {.base.} =
   ## Arguments:
   ## - `file` is an image file path.
   self.icon = load(file)
+
+
+method setTitleBarColor*(self: SubWindowRef, color: ColorRef) {.base.} =
+  ## Changes title bar color.
+  ##
+  ## Arguments:
+  ## - `color` is a new title bar color.
+  self.title_bar_color = color
+
+
+method setTitle*(self: SubWindowRef, title: string) {.base.} =
+  ## Changes subwindow title.
+  ##
+  ## Arguments:
+  ## - `title` is a new title.
+  self.title.setText(title)
