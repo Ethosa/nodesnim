@@ -128,6 +128,8 @@ function main() {
     title="Color(src: uint32): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#Color"
     title="Color(): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
+  <li><a class="reference" href="#getBrightness%2CColorRef"
+    title="getBrightness(self: ColorRef): float"><wbr />get<wbr />Brightness<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#normalize%2Cfloat"
     title="normalize(n: float): uint32"><wbr />normalize<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#normalize%2Cfloat%2Cfloat%2Cfloat"
@@ -275,6 +277,13 @@ Translate uint32 color to the Color object.
 <dd>
 
 Creates a new Color object with RGBA value (0, 0, 0, 0)
+
+</dd>
+<a id="getBrightness,ColorRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#getBrightness%2CColorRef"><span class="Identifier">getBrightness</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
 
 </dd>
 <a id="normalize,float"></a>
@@ -439,7 +448,7 @@ Converts Color object to uint32 without alpha-channel with <tt class="docutils l
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-08 12:04:33 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-08 12:25:10 UTC</small>
       </div>
     </div>
   </div>

@@ -143,12 +143,16 @@ function main() {
     title="open(self: SubWindowRef)"><wbr />open<span class="attachedType">SubWindowRef</span></a></li>
   <li><a class="reference" href="#resize.e%2CSubWindowRef%2Cfloat%2Cfloat"
     title="resize(self: SubWindowRef; w, h: float)"><wbr />resize<span class="attachedType">SubWindowRef</span></a></li>
-  <li><a class="reference" href="#setTitle.e%2CSubWindowRef%2Cstring"
-    title="setTitle(self: SubWindowRef; title: string)"><wbr />set<wbr />Title<span class="attachedType">SubWindowRef</span></a></li>
+  <li><a class="reference" href="#setBorderColor.e%2CSubWindowRef%2CColorRef"
+    title="setBorderColor(self: SubWindowRef; color: ColorRef)"><wbr />set<wbr />Border<wbr />Color<span class="attachedType">SubWindowRef</span></a></li>
   <li><a class="reference" href="#setIcon.e%2CSubWindowRef%2CGlTextureObj"
     title="setIcon(self: SubWindowRef; gltexture: GlTextureObj)"><wbr />set<wbr />Icon<span class="attachedType">SubWindowRef</span></a></li>
   <li><a class="reference" href="#setIcon.e%2CSubWindowRef%2Ccstring"
     title="setIcon(self: SubWindowRef; file: cstring)"><wbr />set<wbr />Icon<span class="attachedType">SubWindowRef</span></a></li>
+  <li><a class="reference" href="#setTitleBarColor.e%2CSubWindowRef%2CColorRef"
+    title="setTitleBarColor(self: SubWindowRef; color: ColorRef)"><wbr />set<wbr />Title<wbr />Bar<wbr />Color<span class="attachedType">SubWindowRef</span></a></li>
+  <li><a class="reference" href="#setTitle.e%2CSubWindowRef%2Cstring"
+    title="setTitle(self: SubWindowRef; title: string)"><wbr />set<wbr />Title<span class="attachedType">SubWindowRef</span></a></li>
 
   </ul>
 </li>
@@ -262,13 +266,13 @@ Opens the window. alias of show() method.
 
 
 </dd>
-<a id="setTitle.e,SubWindowRef,string"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTitle.e%2CSubWindowRef%2Cstring"><span class="Identifier">setTitle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="subwindow.html#SubWindowRef"><span class="Identifier">SubWindowRef</span></a><span class="Other">;</span> <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setBorderColor.e,SubWindowRef,ColorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setBorderColor.e%2CSubWindowRef%2CColorRef"><span class="Identifier">setBorderColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="subwindow.html#SubWindowRef"><span class="Identifier">SubWindowRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes subwindow title.</p>
+<p>Changes border color.</p>
 <p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">title</span></tt> is a new title.</li>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt> is a new border color.</li>
 </ul>
 
 
@@ -295,6 +299,29 @@ Opens the window. alias of show() method.
 
 
 </dd>
+<a id="setTitleBarColor.e,SubWindowRef,ColorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTitleBarColor.e%2CSubWindowRef%2CColorRef"><span class="Identifier">setTitleBarColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="subwindow.html#SubWindowRef"><span class="Identifier">SubWindowRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Changes title bar color.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt> is a new title bar color.</li>
+</ul>
+
+
+</dd>
+<a id="setTitle.e,SubWindowRef,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTitle.e%2CSubWindowRef%2Cstring"><span class="Identifier">setTitle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="subwindow.html#SubWindowRef"><span class="Identifier">SubWindowRef</span></a><span class="Other">;</span> <span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Changes subwindow title.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">title</span></tt> is a new title.</li>
+</ul>
+
+
+</dd>
 
 </dl></div>
 
@@ -305,7 +332,7 @@ Opens the window. alias of show() method.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-08 12:05:22 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-08 12:25:59 UTC</small>
       </div>
     </div>
   </div>
