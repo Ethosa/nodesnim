@@ -258,11 +258,10 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
 
   if self.focused:
     if event.kind == KEYBOARD:
-      if event.key_cint in pressed_keys_cints:  # Special chars
-        if event.key_cint == K_LEFT and self.caret_position > 0:
-          self.caret_position -= 1
-        elif event.key_cint == K_RIGHT and self.caret_position < self.text.len():
-          self.caret_position += 1
+      if event.key_cint == K_LEFT and self.caret_position > 0:
+        self.caret_position -= 1
+      elif event.key_cint == K_RIGHT and self.caret_position < self.text.len():
+        self.caret_position += 1
       elif event.key in pressed_keys:  # Normal chars
         if event.key_int == 8:  # Backspace
           if self.caret_position > 1 and self.caret_position < self.text.len():

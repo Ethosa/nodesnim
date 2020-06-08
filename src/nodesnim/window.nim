@@ -158,6 +158,7 @@ proc keyboardspecialpress(c: cint, x, y: cint) {.cdecl.} =
   if c < 0:
     return
   check(InputEventKeyboard, last_event.pressed, true)
+  last_event.key = $c
   last_event.key_cint = c
   last_event.x = x.float
   last_event.y = y.float
@@ -292,6 +293,8 @@ proc windowLaunch* =
   glutSpecialUpFunc(keyboardspecialup)
   glutMotionFunc(motion)
   glutPassiveMotionFunc(motion)
+  glutIgnoreKeyRepeat(K_SHIFT)
+  glutIgnoreKeyRepeat(K_RIGHT_SHIFT)
   if main_scene == nil:
     raise newException(MainSceneNotLoadedError, "Main scene is not indicated!")
   changeScene(main_scene.name)
