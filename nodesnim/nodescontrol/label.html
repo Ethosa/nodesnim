@@ -136,10 +136,14 @@ function main() {
     title="getTextSize(self: LabelRef): Vector2Ref"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CLabelRef"
     title="duplicate(self: LabelRef): LabelRef"><wbr />duplicate<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#setFont.e%2CLabelRef%2Cpointer%2Cfloat"
+    title="setFont(self: LabelRef; font: pointer; size: float)"><wbr />set<wbr />Font<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2CAnchorRef"
     title="setTextAlign(self: LabelRef; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextAlign(self: LabelRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#setTextColor.e%2CLabelRef%2CColorRef"
+    title="setTextColor(self: LabelRef; color: ColorRef)"><wbr />set<wbr />Text<wbr />Color<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setText.e%2CLabelRef%2Cstring"
     title="setText(self: LabelRef; value: string)"><wbr />set<wbr />Text<span class="attachedType">LabelRef</span></a></li>
 
@@ -227,6 +231,13 @@ Returns text size.
 Duplicates Label object and create a new Label.
 
 </dd>
+<a id="setFont.e,LabelRef,pointer,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setFont.e%2CLabelRef%2Cpointer%2Cfloat"><span class="Identifier">setFont</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes font to other GLUT font.
+
+</dd>
 <a id="setTextAlign.e,LabelRef,AnchorRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -239,6 +250,13 @@ Changes text alignment.
 <dd>
 
 Changes text alignment.
+
+</dd>
+<a id="setTextColor.e,LabelRef,ColorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextColor.e%2CLabelRef%2CColorRef"><span class="Identifier">setTextColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes text color.
 
 </dd>
 <a id="setText.e,LabelRef,string"></a>
@@ -258,7 +276,7 @@ Changes Label text.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-08 15:13:46 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-08 17:47:45 UTC</small>
       </div>
     </div>
   </div>

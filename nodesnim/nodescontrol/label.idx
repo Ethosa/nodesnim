@@ -4,6 +4,8 @@ Label	nodesnim/nodescontrol/label.html#Label,string	label: Label(name: string = 
 draw	nodesnim/nodescontrol/label.html#draw.e,LabelRef,GLfloat,GLfloat	label: draw(self: LabelRef; w, h: GLfloat)	
 getTextSize	nodesnim/nodescontrol/label.html#getTextSize.e,LabelRef	label: getTextSize(self: LabelRef): Vector2Ref	
 duplicate	nodesnim/nodescontrol/label.html#duplicate.e,LabelRef	label: duplicate(self: LabelRef): LabelRef	
+setFont	nodesnim/nodescontrol/label.html#setFont.e,LabelRef,pointer,float	label: setFont(self: LabelRef; font: pointer; size: float)	
 setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelRef,AnchorRef	label: setTextAlign(self: LabelRef; align: AnchorRef)	
 setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelRef,float,float,float,float	label: setTextAlign(self: LabelRef; x1, y1, x2, y2: float)	
+setTextColor	nodesnim/nodescontrol/label.html#setTextColor.e,LabelRef,ColorRef	label: setTextColor(self: LabelRef; color: ColorRef)	
 setText	nodesnim/nodescontrol/label.html#setText.e,LabelRef,string	label: setText(self: LabelRef; value: string)	
