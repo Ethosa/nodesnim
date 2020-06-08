@@ -73,6 +73,7 @@ This section contains links to documentation for all nodes.
 |                    |                          |[Counter][Counter]             |                            |                             |
 |                    |                          |[Switch][Switch]               |                            |                             |
 |                    |                          |[SubWindow][swindow]           |                            |                             |
+|                    |                          |[LineEdit][lineedit]           |                            |                             |
 
 
 
@@ -158,6 +159,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Counter]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/counter.html
 [Switch]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/switch.html
 [swindow]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/subwindow.html
+[lindeedit]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/lindeedit.html
 
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
 [Sprite]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html

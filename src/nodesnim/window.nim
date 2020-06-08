@@ -293,8 +293,6 @@ proc windowLaunch* =
   glutSpecialUpFunc(keyboardspecialup)
   glutMotionFunc(motion)
   glutPassiveMotionFunc(motion)
-  glutIgnoreKeyRepeat(K_SHIFT)
-  glutIgnoreKeyRepeat(K_RIGHT_SHIFT)
   if main_scene == nil:
     raise newException(MainSceneNotLoadedError, "Main scene is not indicated!")
   changeScene(main_scene.name)
