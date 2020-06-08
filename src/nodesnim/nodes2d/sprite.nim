@@ -55,7 +55,7 @@ method draw*(self: SpriteRef, w, h: GLfloat) =
     y = h/2 - self.global_position.y
 
   # Draw
-  if self.texture.texture > 0:
+  if self.texture.texture > 0'u32:
     if self.centered:
       glTranslatef(x + (self.rect_size.x / 2), y - (self.rect_size.y / 2), self.z_index_global)
       self.position = self.rect_size / 2

@@ -68,7 +68,7 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
   # Draw frame
   if frame >= 0 and frame < frames_count:
     var texture = self.animations[self.animation].frames[frame]
-    if texture.texture > 0:
+    if texture.texture > 0'u32:
       if self.centered:
         glTranslatef(x + (self.rect_size.x / 2), y - (self.rect_size.y / 2), self.z_index_global)
         self.position = self.rect_size / 2

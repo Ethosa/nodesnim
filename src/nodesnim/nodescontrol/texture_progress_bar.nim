@@ -54,7 +54,7 @@ method draw*(self: TextureProgressBarRef, w, h: GLfloat) =
     texture_w = self.value.float / self.max_value.float
     progress = self.rect_size.x * texture_w
   glColor4f(1f, 1f, 1f, 1f)
-  if self.back_texture.texture > 0:
+  if self.back_texture.texture > 0'u32:
     glEnable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, self.back_texture.texture)
 
@@ -71,7 +71,7 @@ method draw*(self: TextureProgressBarRef, w, h: GLfloat) =
 
     glDisable(GL_TEXTURE_2D)
 
-  if self.progress_texture.texture > 0:
+  if self.progress_texture.texture > 0'u32:
     glEnable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, self.progress_texture.texture)
 

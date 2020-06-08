@@ -56,7 +56,7 @@ method draw*(self: TextureRectRef, w, h: GLfloat) =
   glColor4f(self.texture_filter.r, self.texture_filter.g, self.texture_filter.b, self.texture_filter.a)
 
 
-  if self.texture > 0:
+  if self.texture > 0'u32:
     glEnable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, self.texture)
 

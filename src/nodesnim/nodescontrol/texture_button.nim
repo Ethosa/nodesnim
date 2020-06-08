@@ -84,7 +84,7 @@ method draw*(self: TextureButtonRef, w, h: GLfloat) =
       self.normal_color
 
   # Texture
-  if texture.texture > 0:
+  if texture.texture > 0'u32:
     glEnable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, texture.texture)
 
