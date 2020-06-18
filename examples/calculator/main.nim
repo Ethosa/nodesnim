@@ -51,8 +51,25 @@ proc number(self: ButtonRef, x, y: float) =
   else:
     second &= self.text
 
+proc equal(): string =
+  result =
+    if sign == "+":
+      $(parseFloat(first) + parseFloat(second))
+    elif sign == "-":
+      $(parseFloat(first) - parseFloat(second))
+    elif sign == "*":
+      $(parseFloat(first) * parseFloat(second))
+    elif sign == "/":
+      $(parseFloat(first) / parseFloat(second))
+    else:
+      first
+
 proc on_sign(self: ButtonRef, x, y: float) =
-  if first != "":
+  if sign != "" and second != "":
+    first = equal()
+    second = ""
+    sign = self.text
+  elif first != "":
     sign = self.text
 
 
@@ -91,7 +108,7 @@ button_div.on_touch = on_sign
 button_0@on_touch(self, x, y):
   if sign == "" and first != "":
     first &= "0"
-  elif sign != "/":
+  elif second != "":
     second &= "0"
 
 button_00@on_touch(self, x, y):
@@ -103,17 +120,7 @@ button_00@on_touch(self, x, y):
 
 button_eq.text = "="
 button_eq@on_touch(self, x, y):
-  first =
-    if sign == "+":
-      $(parseFloat(first) + parseFloat(second))
-    elif sign == "-":
-      $(parseFloat(first) - parseFloat(second))
-    elif sign == "*":
-      $(parseFloat(first) * parseFloat(second))
-    elif sign == "/":
-      $(parseFloat(first) / parseFloat(second))
-    else:
-      first
+  first = equal()
   if sign != "":
     second = ""
     sign = ""
