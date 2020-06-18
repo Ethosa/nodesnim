@@ -9,6 +9,7 @@
 
 <h4>Latest version - 0.0.4</h4>
 <h4>Stable version - 0.0.3</h4>
+<h5><a href="https://github.com/Ethosa/toshiko">Draft of the best version.</a></h5>
 </div>
 
 ## Install
