@@ -16,6 +16,8 @@ type
 
 var
   main = Scene("Main")
+  game_over = Scene("GameOverScene")
+  label_go = Label("GameOverLabel")
 
   canvas = Canvas("Canvas")
 
@@ -25,6 +27,14 @@ var
     size: Vector2(40, 40),
     food: Vector2(160, 160))
   time = 0
+
+
+game_over.addChild(label_go)
+
+label_go.text = "Game Over"
+label_go.setTextAlign(0.5, 0.5, 0.5, 0.5)
+label_go.setSizeAnchor(1, 1)
+
 
 Input.addKeyAction("forward", "w")
 Input.addKeyAction("backward", "s")
@@ -95,7 +105,8 @@ canvas@on_process(self):
     snake.body.add(snake.body[^1])
     snake.food.x = (rand(grid_size.x.int-1) * snake.size.x.int).float
     snake.food.y = (rand(grid_size.y.int-1) * snake.size.y.int).float
-
+  elif snake.body[0] in snake.body[1..^1]:
+    changeScene("GameOverScene")
   # draw
   for i in snake.body:
     canvas.rect(i.x, i.y, i.x+snake.size.x, i.y+snake.size.y, Color(1f, 1f, 1f))
@@ -112,6 +123,7 @@ canvas@on_process(self):
   time = 0
 
 
+addScene(game_over)
 main.addChild(canvas)
 addScene(main)
 setMainScene("Main")
