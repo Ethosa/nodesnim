@@ -58,6 +58,11 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
   result.kind = SUB_WINDOW_NODE
 
 
+method bringToFront*(self: SubWindowRef) {.base.} =
+  let par = self.parent
+  self.parent.removeChild(self)
+  par.addChild(self)
+
 method close*(self: SubWindowRef) {.base.} =
   ## Closes the window. alias of hide() method.
   self.hide()
@@ -167,8 +172,9 @@ method handle*(self: SubWindowRef, event: InputEvent, mouse_on: var NodeRef) =
     else:
       glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
 
-  if event.kind == MOUSE:
+  if event.kind == MOUSE and mouse_on == self:
     if event.pressed:
+      self.bringToFront()
       if left and top:
         self.left_taked = true
         self.top_taked = true
