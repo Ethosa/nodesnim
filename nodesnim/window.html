@@ -126,8 +126,8 @@ function main() {
     title="addScene(scene: SceneRef)"><wbr />add<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#addMainScene%2CSceneRef"
     title="addMainScene(scene: SceneRef)"><wbr />add<wbr />Main<wbr />Scene<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#changeScene%2Cstring"
-    title="changeScene(name: string): bool"><wbr />change<wbr />Scene<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#changeScene%2Cstring%2Cseq%5Btuple%5Bstring%2Cstring%5D%5D"
+    title="changeScene(name: string; extra: seq[tuple[k: string, v: string]] = @[]): bool"><wbr />change<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#setMainScene%2Cstring"
     title="setMainScene(name: string)"><wbr />set<wbr />Main<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#setTitle%2Ccstring"
@@ -217,9 +217,9 @@ function main() {
 
 
 </dd>
-<a id="changeScene,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#changeScene%2Cstring"><span class="Identifier">changeScene</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">discardable</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-                                   <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="changeScene,string,seq[tuple[string,string]]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#changeScene%2Cstring%2Cseq%5Btuple%5Bstring%2Cstring%5D%5D"><span class="Identifier">changeScene</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">extra</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">k</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">discardable</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Changes current scene.</p>
@@ -277,7 +277,7 @@ Start main window loop.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-06-19 15:13:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 07:03:17 UTC</small>
       </div>
     </div>
   </div>

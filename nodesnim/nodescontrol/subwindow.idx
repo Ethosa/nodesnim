@@ -1,6 +1,7 @@
 SubWindowObj	nodesnim/nodescontrol/subwindow.html#SubWindowObj	subwindow: SubWindowObj	
 SubWindowRef	nodesnim/nodescontrol/subwindow.html#SubWindowRef	subwindow: SubWindowRef	
 SubWindow	nodesnim/nodescontrol/subwindow.html#SubWindow,string	subwindow: SubWindow(name: string = &quot;SubWindow&quot;): SubWindowRef	
+bringToFront	nodesnim/nodescontrol/subwindow.html#bringToFront.e,SubWindowRef	subwindow: bringToFront(self: SubWindowRef)	
 close	nodesnim/nodescontrol/subwindow.html#close.e,SubWindowRef	subwindow: close(self: SubWindowRef)	
 draw	nodesnim/nodescontrol/subwindow.html#draw.e,SubWindowRef,GLfloat,GLfloat	subwindow: draw(self: SubWindowRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/subwindow.html#duplicate.e,SubWindowRef	subwindow: duplicate(self: SubWindowRef): SubWindowRef	
