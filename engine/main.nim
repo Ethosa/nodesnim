@@ -1,7 +1,8 @@
 # author: Ethosa
 import
   nodesnim,
-  scenes/projects
+  scenes/projects,
+  scenes/editor
 
 
 Window("NodesNim engine", 720, 480)
@@ -16,4 +17,5 @@ else:
 
 
 addMainScene(projects_scene)
+addScene(editor.editor_scene)
 windowLaunch()

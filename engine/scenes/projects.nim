@@ -1,7 +1,8 @@
 # author: Ethosa
 import
   os,
-  nodesnim
+  nodesnim,
+  editor
 
 
 var
@@ -64,13 +65,17 @@ project_template@on_process(self):
   else:
     s.color = Color(0x1d242aff)
 
+project_template@on_click(self, x, y):
+  changeScene("Editor", @[(k: "title", v: self.getNode("Title").LabelRef.text)])
+  glutReshapeWindow(1280, 720)
+
 
 
 proc init* =
   default_icon = load("assets/project_default_icon.jpg")
 
 proc addNewProject*(name: string) =
-  if not existsDir(nodesnim_folder / name):
+  if not dirExists(nodesnim_folder / name):
     # files and folders
     createDir(nodesnim_folder / name)
     createDir(nodesnim_folder / name / "assets")
@@ -94,13 +99,13 @@ proc loadProject*(name: string) =
     project_icon = load(nodesnim_folder / name / "icon.jpg")
   new_project.name = name
   new_project.getNode("Title").LabelRef.setText(name)
-  new_project.getNode("Icon").TextureRectRef.setTexture(project_icon)
+  new_project.getNode("Icon").TextureRectRef.setTexture(default_icon)
   projects_box.addChild(new_project)
 
 proc loadProjects* =
   for kind, path in walkDir(nodesnim_folder):
-    if existsDir(path) and path != nodesnim_folder / "saves":
+    if dirExists(path) and path != nodesnim_folder / "saves":
       loadProject(path.lastPathPart())
 
 proc hasProject*(name: string): bool =
-  existsDir(nodesnim_folder / name)
+  dirExists(nodesnim_folder / name)

@@ -9,6 +9,7 @@ import
 
 type
   SceneObj* {.final.} = object of NodeObj
+    data*: seq[tuple[k: string, v: string]]
   SceneRef* = ref SceneObj
 
 
@@ -19,6 +20,7 @@ proc Scene*(name: string = "Scene"): SceneRef =
   ## - `name` is a scene name.
   nodepattern(SceneRef)
   result.pausemode = PAUSE
+  result.data = @[]
 
 
 method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
@@ -47,12 +49,14 @@ method duplicate*(self: SceneRef): SceneRef {.base.} =
 
 method enter*(scene: SceneRef) {.base.} =
   ## This called when scene was changed.
+  scene.on_enter(scene)
   for child in scene.getChildIter():
     child.on_enter(child)
     child.is_ready = false
 
 method exit*(scene: SceneRef) {.base.} =
   ## This called when scene was changed.
+  scene.on_exit(scene)
   for child in scene.getChildIter():
     child.on_enter(child)
     child.is_ready = false

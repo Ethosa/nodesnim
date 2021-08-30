@@ -219,7 +219,7 @@ proc addMainScene*(scene: SceneRef) =
     scenes.add(scene)
   main_scene = scene
 
-proc changeScene*(name: string): bool {.discardable.} =
+proc changeScene*(name: string, extra: seq[tuple[k: string, v: string]] = @[]): bool {.discardable.} =
   ## Changes current scene.
   ##
   ## Arguments:
@@ -229,8 +229,10 @@ proc changeScene*(name: string): bool {.discardable.} =
     if scene.name == name:
       if current_scene != nil:
         current_scene.exit()
+        current_scene.data = @[]
       current_scene = nil
       current_scene = scene
+      current_scene.data = extra
       current_scene.enter()
       current_scene.reAnchorScene(width.GLfloat, height.GLfloat, paused)
       result = true
