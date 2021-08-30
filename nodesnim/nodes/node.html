@@ -113,14 +113,8 @@ function main() {
   type_of_node*: NodeTypes
   visible*: bool
   is_ready*: bool
-  can_use_anchor*: bool
-  can_use_size_anchor*: bool
-  relative_z_index*: bool      ## Uses in the Node2D
-  z_index*, z_index_global*: float ## Uses in the Node2D
   pausemode*: PauseMode        ## Pause mode, by default is INHERIT.
   name*: string                ## Node name.
-  size_anchor*: Vector2Ref     ## Node size anchor.
-  anchor*: AnchorRef           ## Node anchor.
   parent*: NodeRef             ## Node parent.
   children*: seq[NodeRef]      ## Node children.
   on_enter*: proc (self: NodeRef) ## This called when scene changed.
@@ -150,8 +144,6 @@ function main() {
     title="addChilds(self: NodeRef; childs: varargs[NodeRef])"><wbr />add<wbr />Childs<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#calcGlobalPosition3.e%2CNodeRef"
     title="calcGlobalPosition3(self: NodeRef)"><wbr />calc<wbr />Global<wbr />Position3<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#calcPositionAnchor.e%2CNodeRef"
-    title="calcPositionAnchor(self: NodeRef)"><wbr />calc<wbr />Position<wbr />Anchor<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CNodeRef%2CGLfloat%2CGLfloat"
     title="draw(self: NodeRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#draw2stage.e%2CNodeRef%2CGLfloat%2CGLfloat"
@@ -194,14 +186,6 @@ function main() {
     title="removeChild(self: NodeRef; index: int)"><wbr />remove<wbr />Child<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#removeChild.e%2CNodeRef%2CNodeRef"
     title="removeChild(self: NodeRef; other: NodeRef)"><wbr />remove<wbr />Child<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#setAnchor.e%2CNodeRef%2CAnchorRef"
-    title="setAnchor(self: NodeRef; anchor: AnchorRef)"><wbr />set<wbr />Anchor<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#setAnchor.e%2CNodeRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="setAnchor(self: NodeRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Anchor<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#setSizeAnchor.e%2CNodeRef%2CVector2Ref"
-    title="setSizeAnchor(self: NodeRef; anchor: Vector2Ref)"><wbr />set<wbr />Size<wbr />Anchor<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#setSizeAnchor.e%2CNodeRef%2Cfloat%2Cfloat"
-    title="setSizeAnchor(self: NodeRef; x, y: float)"><wbr />set<wbr />Size<wbr />Anchor<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#show.e%2CNodeRef"
     title="show(self: NodeRef)"><wbr />show<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#delete.e%2CNodeRef"
@@ -247,14 +231,8 @@ function main() {
   <span class="Identifier">type_of_node</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeTypes"><span class="Identifier">NodeTypes</span></a>
   <span class="Identifier">visible</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">is_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-  <span class="Identifier">can_use_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-  <span class="Identifier">can_use_size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-  <span class="Identifier">relative_z_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>      <span class="Comment">## Uses in the Node2D</span>
-  <span class="Identifier">z_index</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">z_index_global</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Comment">## Uses in the Node2D</span>
   <span class="Identifier">pausemode</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#PauseMode"><span class="Identifier">PauseMode</span></a>        <span class="Comment">## Pause mode, by default is INHERIT.</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>                <span class="Comment">## Node name.</span>
-  <span class="Identifier">size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>     <span class="Comment">## Node size anchor.</span>
-  <span class="Identifier">anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>           <span class="Comment">## Node anchor.</span>
   <span class="Identifier">parent</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a>             <span class="Comment">## Node parent.</span>
   <span class="Identifier">children</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">]</span>      <span class="Comment">## Node children.</span>
   <span class="Identifier">on_enter</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span class="Comment">## This called when scene changed.</span>
@@ -319,13 +297,6 @@ Creates a new Node.
 <dd>
 
 Uses in the 3D nodes.
-
-</dd>
-<a id="calcPositionAnchor.e,NodeRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#calcPositionAnchor.e%2CNodeRef"><span class="Identifier">calcPositionAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-Calculates node position with anchor. This used in the Window object.
 
 </dd>
 <a id="draw.e,NodeRef,GLfloat,GLfloat"></a>
@@ -497,43 +468,6 @@ Returns true, when node has parent.
 
 
 </dd>
-<a id="setAnchor.e,NodeRef,AnchorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setAnchor.e%2CNodeRef%2CAnchorRef"><span class="Identifier">setAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Changes node anchor.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">anchor</span></tt> - AnchorRef object.</li>
-</ul>
-
-
-</dd>
-<a id="setAnchor.e,NodeRef,float,float,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setAnchor.e%2CNodeRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Changes node anchor.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> and <tt class="docutils literal"><span class="pre">y1</span></tt> - anchor relative to the parent node.</li>
-<li><tt class="docutils literal"><span class="pre">x2</span></tt> and <tt class="docutils literal"><span class="pre">y2</span></tt> - anchor relative to this node.</li>
-</ul>
-
-
-</dd>
-<a id="setSizeAnchor.e,NodeRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setSizeAnchor.e%2CNodeRef%2CVector2Ref"><span class="Identifier">setSizeAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="setSizeAnchor.e,NodeRef,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setSizeAnchor.e%2CNodeRef%2Cfloat%2Cfloat"><span class="Identifier">setSizeAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
 <a id="show.e,NodeRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#show.e%2CNodeRef"><span class="Identifier">show</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -597,7 +531,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 12:58:38 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 14:35:14 UTC</small>
       </div>
     </div>
   </div>

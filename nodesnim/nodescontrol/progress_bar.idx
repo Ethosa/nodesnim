@@ -1,8 +1,9 @@
+ProgressBarType	nodesnim/nodescontrol/progress_bar.html#ProgressBarType	progress_bar: ProgressBarType	
 ProgressBarObj	nodesnim/nodescontrol/progress_bar.html#ProgressBarObj	progress_bar: ProgressBarObj	
 ProgressBarRef	nodesnim/nodescontrol/progress_bar.html#ProgressBarRef	progress_bar: ProgressBarRef	
 ProgressBar	nodesnim/nodescontrol/progress_bar.html#ProgressBar,string	progress_bar: ProgressBar(name: string = &quot;ProgressBar&quot;): ProgressBarRef	
 draw	nodesnim/nodescontrol/progress_bar.html#draw.e,ProgressBarRef,GLfloat,GLfloat	progress_bar: draw(self: ProgressBarRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/progress_bar.html#duplicate.e,ProgressBarRef	progress_bar: duplicate(self: ProgressBarRef): ProgressBarRef	
-setMaxValue	nodesnim/nodescontrol/progress_bar.html#setMaxValue.e,ProgressBarRef,uint	progress_bar: setMaxValue(self: ProgressBarRef; value: uint)	
-setProgress	nodesnim/nodescontrol/progress_bar.html#setProgress.e,ProgressBarRef,uint	progress_bar: setProgress(self: ProgressBarRef; value: uint)	
+setMaxValue	nodesnim/nodescontrol/progress_bar.html#setMaxValue.e,ProgressBarRef,float	progress_bar: setMaxValue(self: ProgressBarRef; value: float)	
+setProgress	nodesnim/nodescontrol/progress_bar.html#setProgress.e,ProgressBarRef,float	progress_bar: setProgress(self: ProgressBarRef; value: float)	
 setProgressColor	nodesnim/nodescontrol/progress_bar.html#setProgressColor.e,ProgressBarRef,ColorRef	progress_bar: setProgressColor(self: ProgressBarRef; color: ColorRef)	

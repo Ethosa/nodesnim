@@ -2,6 +2,7 @@ Node2DObj	nodesnim/nodes2d/node2d.html#Node2DObj	node2d: Node2DObj
 Node2DRef	nodesnim/nodes2d/node2d.html#Node2DRef	node2d: Node2DRef	
 node2dpattern	nodesnim/nodes2d/node2d.html#node2dpattern.t	node2d: node2dpattern(): untyped	
 Node2D	nodesnim/nodes2d/node2d.html#Node2D,string	node2d: Node2D(name: string = &quot;Node2D&quot;): Node2DRef	
+calcGlobalPosition	nodesnim/nodes2d/node2d.html#calcGlobalPosition.e,Node2DRef	node2d: calcGlobalPosition(self: Node2DRef)	
 draw	nodesnim/nodes2d/node2d.html#draw.e,Node2DRef,GLfloat,GLfloat	node2d: draw(self: Node2DRef; w, h: GLfloat)	
 move	nodesnim/nodes2d/node2d.html#move.e,Node2DRef,float,float	node2d: move(self: Node2DRef; x, y: float)	
 move	nodesnim/nodes2d/node2d.html#move.e,Node2DRef,Vector2Ref	node2d: move(self: Node2DRef; vec2: Vector2Ref)	

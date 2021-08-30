@@ -4,6 +4,7 @@ CanvasObj	nodesnim/nodes/canvas.html#CanvasObj	canvas: CanvasObj
 CanvasRef	nodesnim/nodes/canvas.html#CanvasRef	canvas: CanvasRef	
 Canvas	nodesnim/nodes/canvas.html#Canvas,string	canvas: Canvas(name: string = &quot;Canvas&quot;): CanvasRef	
 calcGlobalPosition	nodesnim/nodes/canvas.html#calcGlobalPosition.e,CanvasRef	canvas: calcGlobalPosition(self: CanvasRef)	
+calcPositionAnchor	nodesnim/nodes/canvas.html#calcPositionAnchor.e,CanvasRef	canvas: calcPositionAnchor(self: CanvasRef)	
 draw	nodesnim/nodes/canvas.html#draw.e,CanvasRef,GLfloat,GLfloat	canvas: draw(canvas: CanvasRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes/canvas.html#duplicate.e,CanvasRef	canvas: duplicate(self: CanvasRef): CanvasRef	
 move	nodesnim/nodes/canvas.html#move.e,CanvasRef,Vector2Ref	canvas: move(self: CanvasRef; vec2: Vector2Ref)	
@@ -14,3 +15,7 @@ line	nodesnim/nodes/canvas.html#line.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat
 rect	nodesnim/nodes/canvas.html#rect.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
 fill	nodesnim/nodes/canvas.html#fill.e,CanvasRef,ColorRef	canvas: fill(canvas: CanvasRef; color: ColorRef)	
 resize	nodesnim/nodes/canvas.html#resize.e,CanvasRef,GLfloat,GLfloat	canvas: resize(canvas: CanvasRef; w, h: GLfloat)	
+setAnchor	nodesnim/nodes/canvas.html#setAnchor.e,CanvasRef,AnchorRef	canvas: setAnchor(self: CanvasRef; anchor: AnchorRef)	
+setAnchor	nodesnim/nodes/canvas.html#setAnchor.e,CanvasRef,float,float,float,float	canvas: setAnchor(self: CanvasRef; x1, y1, x2, y2: float)	
+setSizeAnchor	nodesnim/nodes/canvas.html#setSizeAnchor.e,CanvasRef,Vector2Ref	canvas: setSizeAnchor(self: CanvasRef; anchor: Vector2Ref)	
+setSizeAnchor	nodesnim/nodes/canvas.html#setSizeAnchor.e,CanvasRef,float,float	canvas: setSizeAnchor(self: CanvasRef; x, y: float)	

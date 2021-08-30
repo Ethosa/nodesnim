@@ -5,7 +5,6 @@ Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&q
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
 addChilds	nodesnim/nodes/node.html#addChilds.e,NodeRef,varargs[NodeRef]	node: addChilds(self: NodeRef; childs: varargs[NodeRef])	
 calcGlobalPosition3	nodesnim/nodes/node.html#calcGlobalPosition3.e,NodeRef	node: calcGlobalPosition3(self: NodeRef)	
-calcPositionAnchor	nodesnim/nodes/node.html#calcPositionAnchor.e,NodeRef	node: calcPositionAnchor(self: NodeRef)	
 draw	nodesnim/nodes/node.html#draw.e,NodeRef,GLfloat,GLfloat	node: draw(self: NodeRef; w, h: GLfloat)	
 draw2stage	nodesnim/nodes/node.html#draw2stage.e,NodeRef,GLfloat,GLfloat	node: draw2stage(self: NodeRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes/node.html#duplicate.e,NodeRef	node: duplicate(self: NodeRef): NodeRef	
@@ -27,10 +26,6 @@ hasParent	nodesnim/nodes/node.html#hasParent.e,NodeRef	node: hasParent(self: Nod
 hide	nodesnim/nodes/node.html#hide.e,NodeRef	node: hide(self: NodeRef)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,int	node: removeChild(self: NodeRef; index: int)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,NodeRef	node: removeChild(self: NodeRef; other: NodeRef)	
-setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodeRef,AnchorRef	node: setAnchor(self: NodeRef; anchor: AnchorRef)	
-setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodeRef,float,float,float,float	node: setAnchor(self: NodeRef; x1, y1, x2, y2: float)	
-setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodeRef,Vector2Ref	node: setSizeAnchor(self: NodeRef; anchor: Vector2Ref)	
-setSizeAnchor	nodesnim/nodes/node.html#setSizeAnchor.e,NodeRef,float,float	node: setSizeAnchor(self: NodeRef; x, y: float)	
 show	nodesnim/nodes/node.html#show.e,NodeRef	node: show(self: NodeRef)	
 delete	nodesnim/nodes/node.html#delete.e,NodeRef	node: delete(self: NodeRef)	
 Examples	node.html#examples	  Examples	

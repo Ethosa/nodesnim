@@ -1,8 +1,0 @@
-VProgressBarObj	nodesnim/nodescontrol/vprogress_bar.html#VProgressBarObj	vprogress_bar: VProgressBarObj	
-VProgressBarRef	nodesnim/nodescontrol/vprogress_bar.html#VProgressBarRef	vprogress_bar: VProgressBarRef	
-VProgressBar	nodesnim/nodescontrol/vprogress_bar.html#VProgressBar,string	vprogress_bar: VProgressBar(name: string = &quot;VProgressBar&quot;): VProgressBarRef	
-draw	nodesnim/nodescontrol/vprogress_bar.html#draw.e,VProgressBarRef,GLfloat,GLfloat	vprogress_bar: draw(self: VProgressBarRef; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/vprogress_bar.html#duplicate.e,VProgressBarRef	vprogress_bar: duplicate(self: VProgressBarRef): VProgressBarRef	
-setMaxValue	nodesnim/nodescontrol/vprogress_bar.html#setMaxValue.e,VProgressBarRef,uint	vprogress_bar: setMaxValue(self: VProgressBarRef; value: uint)	
-setProgress	nodesnim/nodescontrol/vprogress_bar.html#setProgress.e,VProgressBarRef,uint	vprogress_bar: setProgress(self: VProgressBarRef; value: uint)	
-setProgressColor	nodesnim/nodescontrol/vprogress_bar.html#setProgressColor.e,VProgressBarRef,ColorRef	vprogress_bar: setProgressColor(self: VProgressBarRef; color: ColorRef)	
