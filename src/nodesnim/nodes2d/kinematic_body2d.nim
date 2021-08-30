@@ -11,6 +11,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../nodes/canvas,
   node2d,
   collision_shape2d
 
@@ -49,7 +50,7 @@ method getCollideCount*(self: KinematicBody2DRef): int {.base.} =
   result = 0
   if self.has_collision:
     var scene = self.getRootNode()
-    self.calcGlobalPosition()
+    self.CanvasRef.calcGlobalPosition()
     self.collision_node.calcGlobalPosition()
 
     for node in scene.getChildIter():

@@ -11,6 +11,7 @@ import
   ../core/color,
 
   ../nodes/node,
+  ../nodes/canvas,
   control
 
 
@@ -97,14 +98,14 @@ method draw2stage*(self: ScrollRef, w, h: GLfloat) =
 
   if self.children.len() > 0:
     var child = self.children[0]
-    self.resize(child.rect_size.x, child.rect_size.y)
+    self.resize(child.CanvasRef.rect_size.x, child.CanvasRef.rect_size.y)
     let
       thumb_h = self.viewport_h * (self.viewport_h / self.rect_size.y)
       thumb_w = self.viewport_w * (self.viewport_w / self.rect_size.x)
       thumb_x = self.viewport_w * (self.viewport_x / self.rect_size.x)
       thumb_y = self.viewport_h * (self.viewport_y / self.rect_size.y)
-    child.position.x = -self.viewport_x
-    child.position.y = -self.viewport_y
+    child.CanvasRef.position.x = -self.viewport_x
+    child.CanvasRef.position.y = -self.viewport_y
 
     # Vertical
     if self.viewport_h < self.rect_size.y:

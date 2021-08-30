@@ -12,6 +12,7 @@ import
   ../core/polygon2,
 
   ../nodes/node,
+  ../nodes/canvas,
   node2d
 
 
@@ -132,13 +133,13 @@ method getGlobalMousePosition*(self: CollisionShape2DRef): Vector2Ref {.inline.}
   Vector2Ref(x: last_event.x, y: last_event.y)
 
 
-method isCollide*(self: CollisionShape2DRef, x, y: float): bool =
+method isCollide*(self: CollisionShape2DRef, x, y: float): bool {.base.} =
   ## Checks collision with point.
   ##
   ## Arguments:
   ## - `x` is a point position at X axis.
   ## - `y` is a point position at Y axis.
-  self.calcGlobalPosition()
+  self.CanvasRef.calcGlobalPosition()
   if self.disable:
     return false
   case self.shape_type
@@ -163,7 +164,7 @@ method isCollide*(self: CollisionShape2DRef, x, y: float): bool =
       if ((a.y >= y and b.y < y) or (a.y < y and b.y >= y)) and (x < (b.x-a.x)*(y-a.y) / (b.y-a.y)+a.x):
         result = not result
 
-method isCollide*(self: CollisionShape2DRef, vec2: Vector2Ref): bool =
+method isCollide*(self: CollisionShape2DRef, vec2: Vector2Ref): bool {.base.} =
   ## Checks collision with point.
   self.calcGlobalPosition()
   if self.disable:

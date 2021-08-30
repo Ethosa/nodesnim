@@ -24,9 +24,6 @@ type
     z_index*, z_index_global*: float  ## Uses in the Node2D
     pausemode*: PauseMode            ## Pause mode, by default is INHERIT.
     name*: string                    ## Node name.
-    position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
-    global_position*: Vector2Ref     ## Node global position.
-    rect_size*: Vector2Ref           ## Node size.
     size_anchor*: Vector2Ref         ## Node size anchor.
     anchor*: AnchorRef               ## Node anchor.
     parent*: NodeRef                 ## Node parent.
@@ -42,9 +39,7 @@ type
 template nodepattern*(nodetype: untyped): untyped =
   ## This used in childs of the NodeObj.
   result = `nodetype`(
-    name: name, position: Vector2(), children: @[],
-    global_position: Vector2(),
-    rect_size: Vector2(),
+    name: name, children: @[],
     on_ready: proc(self: NodeRef) = discard,
     on_process: proc(self: NodeRef) = discard,
     on_input: proc(self: NodeRef, event: InputEvent) = discard,
@@ -78,17 +73,6 @@ method addChilds*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
   ## - `child`: other node.
   for node in childs:
     self.addChild(node)
-
-method calcGlobalPosition*(self: NodeRef) {.base.} =
-  ## Returns global node position.
-  self.global_position = self.position
-  var current: NodeRef = self
-  self.z_index_global = self.z_index
-  while current.parent != nil:
-    current = current.parent
-    self.global_position += current.position
-    if self.relative_z_index:
-      self.z_index_global += current.z_index
 
 method calcGlobalPosition3*(self: NodeRef) {.base.} =
   ## Uses in the 3D nodes.
@@ -201,15 +185,6 @@ method getRootNode*(self: NodeRef): NodeRef {.base.} =
   while result.parent != nil:
     result = result.parent
 
-method isCollide*(self: NodeRef, x, y: float): bool {.base.} =
-  false
-
-method isCollide*(self: NodeRef, vec2: Vector2Ref): bool {.base.} =
-  false
-
-method isCollide*(self, other: NodeRef): bool {.base.} =
-  false
-
 method isParentOf*(self, other: NodeRef): bool {.base, inline.} =
   other in self.children
 
@@ -238,25 +213,6 @@ method hasParent*(self: NodeRef): bool {.base, inline.} =
 
 method hide*(self: NodeRef) {.base.} =
   self.visible = false
-
-method move*(self: NodeRef, x, y: float) {.base, inline.} =
-  ## Adds `x` and` y` to the node position.
-  ##
-  ## Arguments:
-  ## - `x`: how much to add to the position on the X axis.
-  ## - `y`: how much to add to the position on the Y axis.
-  self.position += Vector2(x, y)
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
-
-method move*(self: NodeRef, vec2: Vector2Ref) {.base, inline.} =
-  ## Adds `vec2` to the node position.
-  ##
-  ## Arguments:
-  ## - `vec2`: how much to add to the position on the X,Y axes.
-  self.position += vec2
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
 
 method removeChild*(self: NodeRef, index: int) {.base.} =
   ## Removes node child at a specific position.

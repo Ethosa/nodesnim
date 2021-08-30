@@ -40,6 +40,9 @@ template controlpattern*: untyped =
 
   result.mousemode = MOUSEMODE_SEE
   result.background_color = Color()
+  result.rect_size = Vector2()
+  result.position = Vector2()
+  result.global_position = Vector2()
 
   result.on_mouse_enter = proc(self: ControlRef, x, y: float) = discard
   result.on_mouse_exit = proc(self: ControlRef, x, y: float) = discard
@@ -67,12 +70,12 @@ method calcPositionAnchor*(self: ControlRef) =
   if self.parent != nil:
     if self.can_use_size_anchor:
       if self.size_anchor.x > 0.0:
-        self.rect_size.x = self.parent.rect_size.x * self.size_anchor.x
+        self.rect_size.x = self.parent.CanvasRef.rect_size.x * self.size_anchor.x
       if self.size_anchor.y > 0.0:
-        self.rect_size.y = self.parent.rect_size.y * self.size_anchor.y
+        self.rect_size.y = self.parent.CanvasRef.rect_size.y * self.size_anchor.y
     if self.can_use_anchor:
-      self.position.x = self.parent.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
-      self.position.y = self.parent.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
+      self.position.x = self.parent.CanvasRef.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
+      self.position.y = self.parent.CanvasRef.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
 
 method draw*(self: ControlRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.

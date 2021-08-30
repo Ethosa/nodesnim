@@ -13,6 +13,7 @@ import
   ../core/image,
 
   ../nodes/node,
+  ../nodes/canvas,
   control,
   popup,
   label
@@ -78,14 +79,14 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
   glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
 
   for child in self.getChildIter():
-    child.calcGlobalPosition()
-    if child.global_position.x > self.global_position.x + self.rect_size.x:
+    child.CanvasRef.calcGlobalPosition()
+    if child.CanvasRef.global_position.x > self.global_position.x + self.rect_size.x:
       child.visible = false
-    elif child.global_position.y > self.global_position.y + self.rect_size.y:
+    elif child.CanvasRef.global_position.y > self.global_position.y + self.rect_size.y:
       child.visible = false
-    elif child.global_position.x + child.rect_size.x < self.global_position.x:
+    elif child.CanvasRef.global_position.x + child.CanvasRef.rect_size.x < self.global_position.x:
       child.visible = false
-    elif child.global_position.y + child.rect_size.y < self.global_position.y:
+    elif child.CanvasRef.global_position.y + child.CanvasRef.rect_size.y < self.global_position.y:
       child.visible = false
     else:
       child.visible = true

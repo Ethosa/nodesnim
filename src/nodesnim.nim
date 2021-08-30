@@ -33,6 +33,7 @@ import
   nodesnim/core/animation,
   nodesnim/core/nodes_os,
   nodesnim/core/vector3,
+  nodesnim/core/scene_builder,
 
   nodesnim/nodes/node,
   nodesnim/nodes/scene,
@@ -82,7 +83,7 @@ export
   window, environment,
   # Core
   vector2, rect2, circle2, enums, anchor, color, exceptions, input, image, color_text,
-  audio_stream, animation, nodes_os, vector3,
+  audio_stream, animation, nodes_os, vector3, scene_builder,
   # Default nodes
   node, scene, canvas, audio_stream_player,
   # Control nodes

@@ -2,13 +2,15 @@
 ## The Scene uses in the `window.nim`. It contains other nodes. Only one scene can work at a time.
 import
   node,
+  canvas,
   ../thirdparty/opengl,
   ../core/enums,
-  ../core/input
+  ../core/input,
+  ../core/vector2
 
 
 type
-  SceneObj* {.final.} = object of NodeObj
+  SceneObj* {.final.} = object of CanvasObj
     data*: seq[tuple[k: string, v: string]]
   SceneRef* = ref SceneObj
 
@@ -19,6 +21,9 @@ proc Scene*(name: string = "Scene"): SceneRef =
   ## Arguments:
   ## - `name` is a scene name.
   nodepattern(SceneRef)
+  result.rect_size = Vector2()
+  result.position = Vector2()
+  result.global_position = Vector2()
   result.pausemode = PAUSE
   result.data = @[]
 
@@ -30,7 +35,8 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
     if paused and child.getPauseMode() != PROCESS:
       continue
     if child.visible:
-      child.calcGlobalPosition()
+      if child.type_of_node == NODE_TYPE_CONTROL:
+        child.CanvasRef.calcGlobalPosition()
       child.calcGlobalPosition3()
       if not child.is_ready:
         child.on_ready(child)

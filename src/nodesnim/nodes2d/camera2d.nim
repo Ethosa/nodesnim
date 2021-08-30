@@ -9,6 +9,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../nodes/canvas,
   node2d
 
 
@@ -65,15 +66,15 @@ method draw*(self: Camera2DRef, w, h: GLfloat) =
   self.position = self.timed_position
 
   if self.centered:
-    self.position = self.timed_position - self.rect_size*2
+    self.CanvasRef.position = self.timed_position - self.rect_size*2
   else:
-    self.position = self.timed_position
+    self.CanvasRef.position = self.timed_position
 
   if self.target != nil and self.current:
-    var root = self.getRootNode()
+    var root = self.getRootNode().CanvasRef
     let
-      x = self.target.position.x
-      y = self.target.position.y
+      x = self.target.CanvasRef.position.x
+      y = self.target.CanvasRef.position.y
 
     if self.smooth:
       if x-w/2 > self.limit.x1 and x+w/2 < self.limit.x2:
@@ -121,6 +122,6 @@ method setLimit*(self: Camera2DRef, limit: AnchorRef) {.base.} =
 method setTarget*(self: Camera2DRef, target: NodeRef) {.base.} =
   ## Changes camera target node.
   self.target = target
-  var root = self.getRootNode()
-  self.position = target.global_position
-  self.position -= root.rect_size / 2
+  var root = self.getRootNode().CanvasRef
+  self.CanvasRef.position = target.CanvasRef.global_position
+  self.CanvasRef.position -= root.rect_size / 2

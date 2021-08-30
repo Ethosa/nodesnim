@@ -33,6 +33,10 @@ type
 
   CanvasObj* = object of NodeObj
     commands*: seq[DrawCommand]
+
+    position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
+    global_position*: Vector2Ref     ## Node global position.
+    rect_size*: Vector2Ref           ## Node size.
   CanvasRef* = ref CanvasObj
 
 
@@ -46,8 +50,22 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
   nodepattern(CanvasRef)
   result.rect_size.x = 40
   result.rect_size.y = 40
+  result.position = Vector2()
+  result.global_position = Vector2()
   result.kind = CANVAS_NODE
+  result.type_of_node = NODE_TYPE_CONTROL
 
+
+method calcGlobalPosition*(self: CanvasRef) {.base.} =
+  ## Returns global node position.
+  self.global_position = self.position
+  var current: CanvasRef = self
+  self.z_index_global = self.z_index
+  while current.parent != nil:
+    current = current.parent.CanvasRef
+    self.global_position += current.position
+    if self.relative_z_index:
+      self.z_index_global += current.z_index
 
 proc calculateX(canvas: CanvasRef, x, gx: GLfloat): GLfloat =
   if x > canvas.rect_size.x + gx:
@@ -104,6 +122,25 @@ method draw*(canvas: CanvasRef, w, h: GLfloat) =
 method duplicate*(self: CanvasRef): CanvasRef {.base.} =
   ## Duplicates Canvas object and create a new Canvas.
   self.deepCopy()
+
+method move*(self: CanvasRef, vec2: Vector2Ref) {.base, inline.} =
+  ## Adds `vec2` to the node position.
+  ##
+  ## Arguments:
+  ## - `vec2`: how much to add to the position on the X,Y axes.
+  self.position += vec2
+  self.can_use_anchor = false
+  self.can_use_size_anchor = false
+
+method move*(self: CanvasRef, x, y: float) {.base, inline.} =
+  ## Adds `x` and` y` to the node position.
+  ##
+  ## Arguments:
+  ## - `x`: how much to add to the position on the X axis.
+  ## - `y`: how much to add to the position on the Y axis.
+  self.position += Vector2(x, y)
+  self.can_use_anchor = false
+  self.can_use_size_anchor = false
 
 method circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
   ## Draws a circle in the canvas.

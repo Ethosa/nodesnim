@@ -10,6 +10,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../nodes/canvas,
   control,
   box
 
@@ -42,9 +43,9 @@ method getChildSize*(self: VBoxRef): Vector2Ref =
     x = 0f
     y = 0f
   for child in self.children:
-    if child.rect_size.x > x:
-      x = child.rect_size.x
-    y += child.rect_size.y + self.separator
+    if child.CanvasRef.rect_size.x > x:
+      x = child.CanvasRef.rect_size.x
+    y += child.CanvasRef.rect_size.y + self.separator
   if y > 0f:
     y -= self.separator
   Vector2(x, y)
@@ -71,9 +72,9 @@ method draw*(self: VBoxRef, w, h: GLfloat) =
     fakesize = self.getChildSize()
     y = self.rect_size.y*self.child_anchor.y1 - fakesize.y*self.child_anchor.y2
   for child in self.children:
-    child.position.x = self.rect_size.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
-    child.position.y = y
-    y += child.rect_size.y + self.separator
+    child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
+    child.CanvasRef.position.y = y
+    y += child.CanvasRef.rect_size.y + self.separator
   procCall self.ControlRef.draw(w, h)
 
 method duplicate*(self: VBoxRef): VBoxRef {.base.} =

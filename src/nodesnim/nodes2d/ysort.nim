@@ -10,6 +10,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../nodes/canvas,
   node2d
 
 
@@ -33,16 +34,16 @@ proc YSort*(name: string = "YSort"): YSortRef =
 
 
 template childsiter() =
-  child.calcGlobalPosition()
+  child.CanvasRef.calcGlobalPosition()
   var i = 0
-  let y = child.global_position.y + child.rect_size.y
+  let y = child.CanvasRef.global_position.y + child.CanvasRef.rect_size.y
 
   if childs.len() == 0:
     childs.add(child)
     continue
 
   for c in childs:
-    if c.global_position.y + c.rect_size.y > y:
+    if c.CanvasRef.global_position.y + c.CanvasRef.rect_size.y > y:
       childs.insert(child, i)
       break
     inc i

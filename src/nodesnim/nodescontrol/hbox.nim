@@ -10,6 +10,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../nodes/canvas,
   control,
   box
 
@@ -41,9 +42,9 @@ method getChildSize*(self: HBoxRef): Vector2Ref =
     x = 0f
     y = 0f
   for child in self.children:
-    x += child.rect_size.x + self.separator
-    if child.rect_size.y > y:
-      y = child.rect_size.y
+    x += child.CanvasRef.rect_size.x + self.separator
+    if child.CanvasRef.rect_size.y > y:
+      y = child.CanvasRef.rect_size.y
   if x > 0f:
     x -= self.separator
   Vector2(x, y)
@@ -71,9 +72,9 @@ method draw*(self: HBoxRef, w, h: GLfloat) =
     fakesize = self.getChildSize()
     x = self.rect_size.x*self.child_anchor.x1 - fakesize.x*self.child_anchor.x2
   for child in self.children:
-    child.position.x = x
-    child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
-    x += child.rect_size.x + self.separator
+    child.CanvasRef.position.x = x
+    child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
+    x += child.CanvasRef.rect_size.x + self.separator
   procCall self.ControlRef.draw(w, h)
 
 method duplicate*(self: HBoxRef): HBoxRef {.base.} =

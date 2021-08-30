@@ -10,6 +10,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../nodes/canvas,
   control,
   box
 
@@ -41,10 +42,10 @@ proc GridBox*(name: string = "GridBox"): GridBoxRef =
 method getMaxChildSize*(self: GridBoxRef): Vector2Ref {.base.} =
   result = Vector2()
   for child in self.children:
-    if child.rect_size.x > result.x:
-      result.x = child.rect_size.x
-    if child.rect_size.y > result.y:
-      result.y = child.rect_size.y
+    if child.CanvasRef.rect_size.x > result.x:
+      result.x = child.CanvasRef.rect_size.x
+    if child.CanvasRef.rect_size.y > result.y:
+      result.y = child.CanvasRef.rect_size.y
 
 method getChildSize*(self: GridBoxRef): Vector2Ref =
   ## Returns size with all childs.
@@ -93,8 +94,8 @@ method draw*(self: GridBoxRef, w, h: GLfloat) =
     y = self.rect_size.y*self.child_anchor.y1 - fakesize.y*self.child_anchor.y2
   for child in self.children:
     if row < self.row:
-      child.position.x = x + maxsize.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
-      child.position.y = y + maxsize.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
+      child.CanvasRef.position.x = x + maxsize.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
+      child.CanvasRef.position.y = y + maxsize.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
       x += maxsize.x + self.separator
       inc row
     else:
@@ -102,8 +103,8 @@ method draw*(self: GridBoxRef, w, h: GLfloat) =
         row = 1
       x = self.rect_size.x*self.child_anchor.x1 - fakesize.x*self.child_anchor.x2
       y += maxsize.y + self.separator
-      child.position.x = x + maxsize.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
-      child.position.y = y + maxsize.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
+      child.CanvasRef.position.x = x + maxsize.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
+      child.CanvasRef.position.y = y + maxsize.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
       x += maxsize.x + self.separator
   procCall self.ControlRef.draw(w, h)
 

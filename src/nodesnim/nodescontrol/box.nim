@@ -10,6 +10,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../nodes/canvas,
   control
 
 
@@ -40,8 +41,8 @@ method getChildSize*(self: BoxRef): Vector2Ref {.base.} =
     x = 0f
     y = 0f
   for child in self.children:
-    x += child.rect_size.x
-    y += child.rect_size.y
+    x += child.CanvasRef.rect_size.x
+    y += child.CanvasRef.rect_size.y
   Vector2(x, y)
 
 method addChild*(self: BoxRef, child: NodeRef) =
@@ -51,10 +52,10 @@ method addChild*(self: BoxRef, child: NodeRef) =
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
-  if child.rect_size.x > self.rect_size.x:
-    self.rect_size.x = child.rect_size.x
-  if child.rect_size.y > self.rect_size.y:
-    self.rect_size.y = child.rect_size.y
+  if child.CanvasRef.rect_size.x > self.rect_size.x:
+    self.rect_size.x = child.CanvasRef.rect_size.x
+  if child.CanvasRef.rect_size.y > self.rect_size.y:
+    self.rect_size.y = child.CanvasRef.rect_size.y
 
 
 method draw*(self: BoxRef, w, h: GLfloat) =
@@ -67,8 +68,8 @@ method draw*(self: BoxRef, w, h: GLfloat) =
   glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
 
   for child in self.children:
-    child.position.x = self.rect_size.x*self.child_anchor.x1 - child.rect_size.x*self.child_anchor.x2
-    child.position.y = self.rect_size.y*self.child_anchor.y1 - child.rect_size.y*self.child_anchor.y2
+    child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
+    child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
   procCall self.ControlRef.draw(w, h)
 
 method duplicate*(self: BoxRef): BoxRef {.base.} =
