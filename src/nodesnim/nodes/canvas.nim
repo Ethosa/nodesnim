@@ -48,8 +48,7 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
   runnableExamples:
     var canvas1 = Canvas("Canvas")
   nodepattern(CanvasRef)
-  result.rect_size.x = 40
-  result.rect_size.y = 40
+  result.rect_size = Vector2(40, 40)
   result.position = Vector2()
   result.global_position = Vector2()
   result.kind = CANVAS_NODE
