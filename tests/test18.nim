@@ -9,13 +9,9 @@ var
   control2 = control1.duplicate()
 
 node2.name = "Node2"
-node2.rect_size = Vector2(100, 100)
 
 echo node1.name
 echo node2.name
-
-echo node1.rect_size
-echo node2.rect_size
 
 control2.name = "Control2"
 control2.rect_size = Vector2(100, 100)
