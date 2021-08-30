@@ -18,79 +18,17 @@ import
   nodesnim/window,
   nodesnim/environment,
 
-  nodesnim/core/vector2,
-  nodesnim/core/rect2,
-  nodesnim/core/circle2,
-  nodesnim/core/polygon2,
-  nodesnim/core/enums,
-  nodesnim/core/anchor,
-  nodesnim/core/color,
-  nodesnim/core/exceptions,
-  nodesnim/core/input,
-  nodesnim/core/image,
-  nodesnim/core/color_text,
-  nodesnim/core/audio_stream,
-  nodesnim/core/animation,
-  nodesnim/core/nodes_os,
-  nodesnim/core/vector3,
-  nodesnim/core/scene_builder,
-
-  nodesnim/nodes/node,
-  nodesnim/nodes/scene,
-  nodesnim/nodes/canvas,
-  nodesnim/nodes/audio_stream_player,
-
-  nodesnim/nodescontrol/control,
-  nodesnim/nodescontrol/color_rect,
-  nodesnim/nodescontrol/texture_rect,
-  nodesnim/nodescontrol/label,
-  nodesnim/nodescontrol/button,
-  nodesnim/nodescontrol/box,
-  nodesnim/nodescontrol/hbox,
-  nodesnim/nodescontrol/vbox,
-  nodesnim/nodescontrol/grid_box,
-  nodesnim/nodescontrol/edittext,
-  nodesnim/nodescontrol/rich_label,
-  nodesnim/nodescontrol/rich_edit_text,
-  nodesnim/nodescontrol/scroll,
-  nodesnim/nodescontrol/progress_bar,
-  nodesnim/nodescontrol/vprogress_bar,
-  nodesnim/nodescontrol/slider,
-  nodesnim/nodescontrol/vslider,
-  nodesnim/nodescontrol/popup,
-  nodesnim/nodescontrol/texture_button,
-  nodesnim/nodescontrol/texture_progress_bar,
-  nodesnim/nodescontrol/counter,
-  nodesnim/nodescontrol/switch,
-  nodesnim/nodescontrol/subwindow,
-  nodesnim/nodescontrol/lineedit,
-
-  nodesnim/nodes2d/node2d,
-  nodesnim/nodes2d/sprite,
-  nodesnim/nodes2d/animated_sprite,
-  nodesnim/nodes2d/ysort,
-  nodesnim/nodes2d/collision_shape2d,
-  nodesnim/nodes2d/kinematic_body2d,
-  nodesnim/nodes2d/camera2d,
-
-  nodesnim/nodes3d/node3d,
-  nodesnim/nodes3d/geometry_instance
+  nodesnim/core,
+  nodesnim/nodes,
+  nodesnim/nodescontrol,
+  nodesnim/nodes2d,
+  nodesnim/nodes3d
 
 export
   # Third party
   opengl, glut,
   # Main
   window, environment,
-  # Core
-  vector2, rect2, circle2, enums, anchor, color, exceptions, input, image, color_text,
-  audio_stream, animation, nodes_os, vector3, scene_builder,
-  # Default nodes
-  node, scene, canvas, audio_stream_player,
-  # Control nodes
-  control, color_rect, texture_rect, label, button, box, hbox, vbox, grid_box, edittext,
-  rich_label, rich_edit_text, scroll, progress_bar, vprogress_bar, slider, vslider, popup,
-  texture_button, texture_progress_bar, counter, switch, subwindow, lineedit,
-  # 2D nodes
-  node2d, sprite, animated_sprite, ysort, collision_shape2d, kinematic_body2d, camera2d,
-  # 3D nodes
-  node3d, geometry_instance
+  # Nodes
+  core, nodes,
+  nodescontrol, nodes2d, nodes3d
