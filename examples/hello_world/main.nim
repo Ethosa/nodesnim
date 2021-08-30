@@ -1,20 +1,16 @@
 import nodesnim
 
-
-Window("Hello world")
-
-var
-  main = Scene("Main")
-
-  label = Label("HelloWorld")
-
-main.addChild(label)
+Window("Hello, world!")
 
 
-label.text = "Hello, world!"
-label.setTextAlign(0.5, 0.5, 0.5, 0.5)
-label.setSizeAnchor(1, 1)
+build:
+  - Scene scene:
+    name: "Main"
+    - Label hello:
+      call setSizeAnchor(1, 1)
+      call setTextAlign(0.5, 0.5, 0.5, 0.5)
+      call setText("Hello, world!")
+      background_color: Color(31, 45, 62)
 
-addScene(main)
-setMainScene("Main")
+addMainScene(scene)
 windowLaunch()
