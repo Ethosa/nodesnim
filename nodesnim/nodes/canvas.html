@@ -124,7 +124,10 @@ function main() {
       nil"><wbr />Draw<wbr />Command<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#CanvasObj"
     title="CanvasObj = object of NodeObj
-  commands*: seq[DrawCommand]"><wbr />Canvas<wbr />Obj<span class="attachedType"></span></a></li>
+  commands*: seq[DrawCommand]
+  position*: Vector2Ref        ## Node position, by default is Vector2(0, 0).
+  global_position*: Vector2Ref ## Node global position.
+  rect_size*: Vector2Ref       ## Node size."><wbr />Canvas<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#CanvasRef"
     title="CanvasRef = ref CanvasObj"><wbr />Canvas<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -141,10 +144,16 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#draw.e%2CCanvasRef%2CGLfloat%2CGLfloat"
+      <li><a class="reference" href="#calcGlobalPosition.e%2CCanvasRef"
+    title="calcGlobalPosition(self: CanvasRef)"><wbr />calc<wbr />Global<wbr />Position<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#draw.e%2CCanvasRef%2CGLfloat%2CGLfloat"
     title="draw(canvas: CanvasRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CCanvasRef"
     title="duplicate(self: CanvasRef): CanvasRef"><wbr />duplicate<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#move.e%2CCanvasRef%2CVector2Ref"
+    title="move(self: CanvasRef; vec2: Vector2Ref)"><wbr />move<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#move.e%2CCanvasRef%2Cfloat%2Cfloat"
+    title="move(self: CanvasRef; x, y: float)"><wbr />move<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#circle.e%2CCanvasRef%2CGLfloat%2CGLfloat%2CGLfloat%2CColorRef%2Cint"
     title="circle(canvas: CanvasRef; x, y, radius: GLfloat; color: ColorRef; quality: int = 100)"><wbr />circle<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#point.e%2CCanvasRef%2CGLfloat%2CGLfloat%2CColorRef"
@@ -209,7 +218,10 @@ function main() {
 <a id="CanvasObj"></a>
 <dt><pre><a href="canvas.html#CanvasObj"><span class="Identifier">CanvasObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a>
   <span class="Identifier">commands</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="canvas.html#DrawCommand"><span class="Identifier">DrawCommand</span></a><span class="Other">]</span>
-</pre></dt>
+  <span class="Identifier">position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>        <span class="Comment">## Node position, by default is Vector2(0, 0).</span>
+  <span class="Identifier">global_position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span class="Comment">## Node global position.</span>
+  <span class="Identifier">rect_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>       <span class="Comment">## Node size.</span>
+  </pre></dt>
 <dd>
 
 
@@ -245,6 +257,13 @@ function main() {
 <div class="section" id="14">
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
+<a id="calcGlobalPosition.e,CanvasRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#calcGlobalPosition.e%2CCanvasRef"><span class="Identifier">calcGlobalPosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Returns global node position.
+
+</dd>
 <a id="draw.e,CanvasRef,GLfloat,GLfloat"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CCanvasRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -257,6 +276,29 @@ This uses in the <tt class="docutils literal"><span class="pre">window.nim</span
 <dd>
 
 Duplicates Canvas object and create a new Canvas.
+
+</dd>
+<a id="move.e,CanvasRef,Vector2Ref"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CCanvasRef%2CVector2Ref"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Adds <tt class="docutils literal"><span class="pre">vec2</span></tt> to the node position.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">vec2</span></tt>: how much to add to the position on the X,Y axes.</li>
+</ul>
+
+
+</dd>
+<a id="move.e,CanvasRef,float,float"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CCanvasRef%2Cfloat%2Cfloat"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Adds <tt class="docutils literal"><span class="pre">x</span></tt> and` y` to the node position.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x</span></tt>: how much to add to the position on the X axis.</li>
+<li><tt class="docutils literal"><span class="pre">y</span></tt>: how much to add to the position on the Y axis.</li>
+</ul>
+
 
 </dd>
 <a id="circle.e,CanvasRef,GLfloat,GLfloat,GLfloat,ColorRef,int"></a>
@@ -350,7 +392,7 @@ Fills canvas.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 07:03:23 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 12:52:11 UTC</small>
       </div>
     </div>
   </div>

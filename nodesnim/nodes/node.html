@@ -119,9 +119,6 @@ function main() {
   z_index*, z_index_global*: float ## Uses in the Node2D
   pausemode*: PauseMode        ## Pause mode, by default is INHERIT.
   name*: string                ## Node name.
-  position*: Vector2Ref        ## Node position, by default is Vector2(0, 0).
-  global_position*: Vector2Ref ## Node global position.
-  rect_size*: Vector2Ref       ## Node size.
   size_anchor*: Vector2Ref     ## Node size anchor.
   anchor*: AnchorRef           ## Node anchor.
   parent*: NodeRef             ## Node parent.
@@ -151,8 +148,6 @@ function main() {
     title="addChild(self: NodeRef; child: NodeRef)"><wbr />add<wbr />Child<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#addChilds.e%2CNodeRef%2Cvarargs%5BNodeRef%5D"
     title="addChilds(self: NodeRef; childs: varargs[NodeRef])"><wbr />add<wbr />Childs<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#calcGlobalPosition.e%2CNodeRef"
-    title="calcGlobalPosition(self: NodeRef)"><wbr />calc<wbr />Global<wbr />Position<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#calcGlobalPosition3.e%2CNodeRef"
     title="calcGlobalPosition3(self: NodeRef)"><wbr />calc<wbr />Global<wbr />Position3<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#calcPositionAnchor.e%2CNodeRef"
@@ -183,12 +178,6 @@ function main() {
     title="getPauseMode(self: NodeRef): PauseMode"><wbr />get<wbr />Pause<wbr />Mode<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#getRootNode.e%2CNodeRef"
     title="getRootNode(self: NodeRef): NodeRef"><wbr />get<wbr />Root<wbr />Node<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#isCollide.e%2CNodeRef%2Cfloat%2Cfloat"
-    title="isCollide(self: NodeRef; x, y: float): bool"><wbr />is<wbr />Collide<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#isCollide.e%2CNodeRef%2CVector2Ref"
-    title="isCollide(self: NodeRef; vec2: Vector2Ref): bool"><wbr />is<wbr />Collide<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#isCollide.e%2CNodeRef%2CNodeRef"
-    title="isCollide(self, other: NodeRef): bool"><wbr />is<wbr />Collide<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#isParentOf.e%2CNodeRef%2CNodeRef"
     title="isParentOf(self, other: NodeRef): bool"><wbr />is<wbr />Parent<wbr />Of<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#handle.e%2CNodeRef%2CInputEvent%2CNodeRef"
@@ -201,10 +190,6 @@ function main() {
     title="hasParent(self: NodeRef): bool"><wbr />has<wbr />Parent<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#hide.e%2CNodeRef"
     title="hide(self: NodeRef)"><wbr />hide<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#move.e%2CNodeRef%2Cfloat%2Cfloat"
-    title="move(self: NodeRef; x, y: float)"><wbr />move<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#move.e%2CNodeRef%2CVector2Ref"
-    title="move(self: NodeRef; vec2: Vector2Ref)"><wbr />move<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#removeChild.e%2CNodeRef%2Cint"
     title="removeChild(self: NodeRef; index: int)"><wbr />remove<wbr />Child<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#removeChild.e%2CNodeRef%2CNodeRef"
@@ -268,9 +253,6 @@ function main() {
   <span class="Identifier">z_index</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">z_index_global</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Comment">## Uses in the Node2D</span>
   <span class="Identifier">pausemode</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#PauseMode"><span class="Identifier">PauseMode</span></a>        <span class="Comment">## Pause mode, by default is INHERIT.</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>                <span class="Comment">## Node name.</span>
-  <span class="Identifier">position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>        <span class="Comment">## Node position, by default is Vector2(0, 0).</span>
-  <span class="Identifier">global_position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span class="Comment">## Node global position.</span>
-  <span class="Identifier">rect_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>       <span class="Comment">## Node size.</span>
   <span class="Identifier">size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>     <span class="Comment">## Node size anchor.</span>
   <span class="Identifier">anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>           <span class="Comment">## Node anchor.</span>
   <span class="Identifier">parent</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a>             <span class="Comment">## Node parent.</span>
@@ -330,13 +312,6 @@ Creates a new Node.
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">child</span></tt>: other node.</li>
 </ul>
 
-
-</dd>
-<a id="calcGlobalPosition.e,NodeRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#calcGlobalPosition.e%2CNodeRef"><span class="Identifier">calcGlobalPosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-Returns global node position.
 
 </dd>
 <a id="calcGlobalPosition3.e,NodeRef"></a>
@@ -449,27 +424,6 @@ Calculates pause mode
 Gets root node.
 
 </dd>
-<a id="isCollide.e,NodeRef,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#isCollide.e%2CNodeRef%2Cfloat%2Cfloat"><span class="Identifier">isCollide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="isCollide.e,NodeRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#isCollide.e%2CNodeRef%2CVector2Ref"><span class="Identifier">isCollide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="isCollide.e,NodeRef,NodeRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#isCollide.e%2CNodeRef%2CNodeRef"><span class="Identifier">isCollide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-
-
-</dd>
 <a id="isParentOf.e,NodeRef,NodeRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#isParentOf.e%2CNodeRef%2CNodeRef"><span class="Identifier">isParentOf</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -518,29 +472,6 @@ Returns true, when node has parent.
 <dt><pre><span class="Keyword">method</span> <a href="#hide.e%2CNodeRef"><span class="Identifier">hide</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
-
-</dd>
-<a id="move.e,NodeRef,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CNodeRef%2Cfloat%2Cfloat"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Adds <tt class="docutils literal"><span class="pre">x</span></tt> and` y` to the node position.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">x</span></tt>: how much to add to the position on the X axis.</li>
-<li><tt class="docutils literal"><span class="pre">y</span></tt>: how much to add to the position on the Y axis.</li>
-</ul>
-
-
-</dd>
-<a id="move.e,NodeRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CNodeRef%2CVector2Ref"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-<p>Adds <tt class="docutils literal"><span class="pre">vec2</span></tt> to the node position.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">vec2</span></tt>: how much to add to the position on the X,Y axes.</li>
-</ul>
 
 
 </dd>
@@ -666,7 +597,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 07:03:17 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 12:52:10 UTC</small>
       </div>
     </div>
   </div>

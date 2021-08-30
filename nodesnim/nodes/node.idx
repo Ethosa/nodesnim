@@ -4,7 +4,6 @@ nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nod
 Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&quot;): NodeRef	
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
 addChilds	nodesnim/nodes/node.html#addChilds.e,NodeRef,varargs[NodeRef]	node: addChilds(self: NodeRef; childs: varargs[NodeRef])	
-calcGlobalPosition	nodesnim/nodes/node.html#calcGlobalPosition.e,NodeRef	node: calcGlobalPosition(self: NodeRef)	
 calcGlobalPosition3	nodesnim/nodes/node.html#calcGlobalPosition3.e,NodeRef	node: calcGlobalPosition3(self: NodeRef)	
 calcPositionAnchor	nodesnim/nodes/node.html#calcPositionAnchor.e,NodeRef	node: calcPositionAnchor(self: NodeRef)	
 draw	nodesnim/nodes/node.html#draw.e,NodeRef,GLfloat,GLfloat	node: draw(self: NodeRef; w, h: GLfloat)	
@@ -20,17 +19,12 @@ getPath	nodesnim/nodes/node.html#getPath.e,NodeRef	node: getPath(self: NodeRef):
 getParent	nodesnim/nodes/node.html#getParent.e,NodeRef	node: getParent(self: NodeRef): NodeRef	
 getPauseMode	nodesnim/nodes/node.html#getPauseMode.e,NodeRef	node: getPauseMode(self: NodeRef): PauseMode	
 getRootNode	nodesnim/nodes/node.html#getRootNode.e,NodeRef	node: getRootNode(self: NodeRef): NodeRef	
-isCollide	nodesnim/nodes/node.html#isCollide.e,NodeRef,float,float	node: isCollide(self: NodeRef; x, y: float): bool	
-isCollide	nodesnim/nodes/node.html#isCollide.e,NodeRef,Vector2Ref	node: isCollide(self: NodeRef; vec2: Vector2Ref): bool	
-isCollide	nodesnim/nodes/node.html#isCollide.e,NodeRef,NodeRef	node: isCollide(self, other: NodeRef): bool	
 isParentOf	nodesnim/nodes/node.html#isParentOf.e,NodeRef,NodeRef	node: isParentOf(self, other: NodeRef): bool	
 handle	nodesnim/nodes/node.html#handle.e,NodeRef,InputEvent,NodeRef	node: handle(self: NodeRef; event: InputEvent; mouse_on: var NodeRef)	
 hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,string	node: hasNode(self: NodeRef; name: string): bool	
 hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,NodeRef	node: hasNode(self: NodeRef; other: NodeRef): bool	
 hasParent	nodesnim/nodes/node.html#hasParent.e,NodeRef	node: hasParent(self: NodeRef): bool	
 hide	nodesnim/nodes/node.html#hide.e,NodeRef	node: hide(self: NodeRef)	
-move	nodesnim/nodes/node.html#move.e,NodeRef,float,float	node: move(self: NodeRef; x, y: float)	
-move	nodesnim/nodes/node.html#move.e,NodeRef,Vector2Ref	node: move(self: NodeRef; vec2: Vector2Ref)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,int	node: removeChild(self: NodeRef; index: int)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,NodeRef	node: removeChild(self: NodeRef; other: NodeRef)	
 setAnchor	nodesnim/nodes/node.html#setAnchor.e,NodeRef,AnchorRef	node: setAnchor(self: NodeRef; anchor: AnchorRef)	

@@ -3,8 +3,11 @@ DrawCommand	nodesnim/nodes/canvas.html#DrawCommand	canvas: DrawCommand
 CanvasObj	nodesnim/nodes/canvas.html#CanvasObj	canvas: CanvasObj	
 CanvasRef	nodesnim/nodes/canvas.html#CanvasRef	canvas: CanvasRef	
 Canvas	nodesnim/nodes/canvas.html#Canvas,string	canvas: Canvas(name: string = &quot;Canvas&quot;): CanvasRef	
+calcGlobalPosition	nodesnim/nodes/canvas.html#calcGlobalPosition.e,CanvasRef	canvas: calcGlobalPosition(self: CanvasRef)	
 draw	nodesnim/nodes/canvas.html#draw.e,CanvasRef,GLfloat,GLfloat	canvas: draw(canvas: CanvasRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes/canvas.html#duplicate.e,CanvasRef	canvas: duplicate(self: CanvasRef): CanvasRef	
+move	nodesnim/nodes/canvas.html#move.e,CanvasRef,Vector2Ref	canvas: move(self: CanvasRef; vec2: Vector2Ref)	
+move	nodesnim/nodes/canvas.html#move.e,CanvasRef,float,float	canvas: move(self: CanvasRef; x, y: float)	
 circle	nodesnim/nodes/canvas.html#circle.e,CanvasRef,GLfloat,GLfloat,GLfloat,ColorRef,int	canvas: circle(canvas: CanvasRef; x, y, radius: GLfloat; color: ColorRef; quality: int = 100)	
 point	nodesnim/nodes/canvas.html#point.e,CanvasRef,GLfloat,GLfloat,ColorRef	canvas: point(canvas: CanvasRef; x, y: GLfloat; color: ColorRef)	
 line	nodesnim/nodes/canvas.html#line.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: line(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
