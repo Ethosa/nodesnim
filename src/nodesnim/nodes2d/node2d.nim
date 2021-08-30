@@ -19,6 +19,8 @@ type
     rotation*: float
     scale*: Vector2Ref
     timed_position*: Vector2Ref
+    relative_z_index*: bool
+    z_index*, z_index_global*: float
   Node2DRef* = ref Node2DObj
 
 
@@ -28,6 +30,9 @@ template node2dpattern*: untyped =
   result.rect_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
+  result.z_index = 0f
+  result.z_index_global = 0f
+  result.relative_z_index = true
   result.type_of_node = NODE_TYPE_2D
 
 proc Node2D*(name: string = "Node2D"): Node2DRef =
@@ -43,6 +48,17 @@ proc Node2D*(name: string = "Node2D"): Node2DRef =
   result.rotation = 0f
   result.kind = NODE2D_NODE
 
+
+method calcGlobalPosition*(self: Node2DRef) =
+  ## Returns global node position.
+  self.global_position = self.position
+  var current: CanvasRef = self
+  self.z_index_global = self.z_index
+  while current.parent != nil:
+    current = current.parent.CanvasRef
+    self.global_position += current.position
+    if self.relative_z_index and current.type_of_node == NODE_TYPE_2D:
+      self.z_index_global += current.Node2DRef.z_index
 
 method draw*(self: Node2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.

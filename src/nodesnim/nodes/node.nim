@@ -18,14 +18,8 @@ type
     type_of_node*: NodeTypes
     visible*: bool
     is_ready*: bool
-    can_use_anchor*: bool
-    can_use_size_anchor*: bool
-    relative_z_index*: bool           ## Uses in the Node2D
-    z_index*, z_index_global*: float  ## Uses in the Node2D
     pausemode*: PauseMode            ## Pause mode, by default is INHERIT.
     name*: string                    ## Node name.
-    size_anchor*: Vector2Ref         ## Node size anchor.
-    anchor*: AnchorRef               ## Node anchor.
     parent*: NodeRef                 ## Node parent.
     children*: seq[NodeRef]          ## Node children.
     on_enter*: proc(self: NodeRef)                   ## This called when scene changed.
@@ -45,9 +39,7 @@ template nodepattern*(nodetype: untyped): untyped =
     on_input: proc(self: NodeRef, event: InputEvent) = discard,
     on_enter: proc(self: NodeRef) = discard,
     on_exit: proc(self: NodeRef) = discard,
-    is_ready: false, pausemode: INHERIT, visible: true,
-    anchor: Anchor(0, 0, 0, 0), size_anchor: Vector2(), can_use_anchor: false,
-    can_use_size_anchor: false, z_index: 0f, z_index_global: 0f, relative_z_index: true
+    is_ready: false, pausemode: INHERIT, visible: true
   )
   result.type_of_node = NODE_TYPE_DEFAULT
 
@@ -76,11 +68,6 @@ method addChilds*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
 
 method calcGlobalPosition3*(self: NodeRef) {.base.} =
   ## Uses in the 3D nodes.
-  discard
-
-method calcPositionAnchor*(self: NodeRef) {.base.} =
-  ## Calculates node position with anchor.
-  ## This used in the Window object.
   discard
 
 method draw*(self: NodeRef, w, h: GLfloat) {.base.} =
@@ -230,31 +217,6 @@ method removeChild*(self: NodeRef, other: NodeRef) {.base.} =
   var index: int = self.getChildIndex(other)
   if index != -1:
     self.removeChild(index)
-
-method setAnchor*(self: NodeRef, anchor: AnchorRef) {.base.} =
-  ## Changes node anchor.
-  ##
-  ## Arguments:
-  ## - `anchor` - AnchorRef object.
-  self.anchor = anchor
-  self.can_use_anchor = true
-
-method setAnchor*(self: NodeRef, x1, y1, x2, y2: float) {.base.} =
-  ## Changes node anchor.
-  ##
-  ## Arguments:
-  ## - `x1` and `y1` - anchor relative to the parent node.
-  ## - `x2` and `y2` - anchor relative to this node.
-  self.anchor = Anchor(x1, y1, x2, y2)
-  self.can_use_anchor = true
-
-method setSizeAnchor*(self: NodeRef, anchor: Vector2Ref) {.base.} =
-  self.size_anchor = anchor
-  self.can_use_size_anchor = true
-
-method setSizeAnchor*(self: NodeRef, x, y: float) {.base.} =
-  self.size_anchor = Vector2(x, y)
-  self.can_use_size_anchor = true
 
 method show*(self: NodeRef) {.base.} =
   self.visible = true

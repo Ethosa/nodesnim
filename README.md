@@ -66,7 +66,6 @@ This section contains links to documentation for all nodes.
 |[Animation][anim]   |                          |[Scroll][Scroll]               |                            |                             |
 |[Vector3][Vector3]  |                          |[ProgressBar][ProgressBar]     |                            |                             |
 |[SceneBuilder][SBld]|                          |[Slider][Slider]               |                            |                             |
-|                    |                          |[VProgressBar][VProgressBar]   |                            |                             |
 |                    |                          |[VSlider][VSlider]             |                            |                             |
 |                    |                          |[Popup][Popup]                 |                            |                             |
 |                    |                          |[TextureButton][TextureButton] |                            |                             |
@@ -153,7 +152,6 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Scroll]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/scroll.html
 [ProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/progress_bar.html
 [Slider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/slider.html
-[VProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vprogress_bar.html
 [VSlider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vslider.html
 [Popup]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/popup.html
 [TextureButton]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_button.html

@@ -15,7 +15,7 @@ var
 main.addChild(sprite)
 
 sprite.move(128, 128)  # Move sprite.
-# sprite.setTexture(icon)  # Change sprite image.
+sprite.setTexture(icon)  # Change sprite image.
 
 sprite.centered = true  # The default value is true. Try to change it.
 

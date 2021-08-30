@@ -69,7 +69,8 @@ method draw*(self: YSortRef, w, h: GLfloat) =
     for child in self.children:
       childsiter()
   for i in 0..childs.high:
-    childs[i].z_index = i.float
+    if childs[i].type_of_node == NODE_TYPE_2D:
+      childs[i].Node2DRef.z_index = i.float
 
 method duplicate*(self: YSortRef): YSortRef {.base.} =
   ## Duplicates YSort and create a new YSort object.

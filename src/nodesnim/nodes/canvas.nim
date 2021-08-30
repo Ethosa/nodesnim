@@ -14,7 +14,7 @@ import
   node
 
 
-const PI2 = PI + PI
+const TAU = PI + PI
 
 
 type
@@ -37,6 +37,10 @@ type
     position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
     global_position*: Vector2Ref     ## Node global position.
     rect_size*: Vector2Ref           ## Node size.
+    size_anchor*: Vector2Ref         ## Node size anchor.
+    anchor*: AnchorRef               ## Node anchor.
+    can_use_anchor*: bool
+    can_use_size_anchor*: bool
   CanvasRef* = ref CanvasObj
 
 
@@ -51,6 +55,10 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
   result.rect_size = Vector2(40, 40)
   result.position = Vector2()
   result.global_position = Vector2()
+  result.anchor = Anchor(0, 0, 0, 0)
+  result.size_anchor = Vector2()
+  result.can_use_anchor = false
+  result.can_use_size_anchor = false
   result.kind = CANVAS_NODE
   result.type_of_node = NODE_TYPE_CONTROL
 
@@ -59,12 +67,14 @@ method calcGlobalPosition*(self: CanvasRef) {.base.} =
   ## Returns global node position.
   self.global_position = self.position
   var current: CanvasRef = self
-  self.z_index_global = self.z_index
   while current.parent != nil:
     current = current.parent.CanvasRef
     self.global_position += current.position
-    if self.relative_z_index:
-      self.z_index_global += current.z_index
+
+method calcPositionAnchor*(self: CanvasRef) {.base.} =
+  ## Calculates node position with anchor.
+  ## This used in the Window object.
+  discard
 
 proc calculateX(canvas: CanvasRef, x, gx: GLfloat): GLfloat =
   if x > canvas.rect_size.x + gx:
@@ -152,7 +162,7 @@ method circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, qualit
   ## - `quality` - circle quality.
   var pnts: seq[GLfloat]
   for i in 0..quality:
-    let angle = PI2*i.float/quality.float
+    let angle = TAU*i.float/quality.float
     pnts.add(radius*cos(angle))
     pnts.add(radius*sin(angle))
   canvas.commands.add(DrawCommand(kind: CIRCLE, x1: x, y1: y, color: color, points: pnts))
@@ -204,3 +214,28 @@ method resize*(canvas: CanvasRef, w, h: GLfloat) {.base.} =
   canvas.rect_size.y = h
   canvas.can_use_anchor = false
   canvas.can_use_size_anchor = false
+
+method setAnchor*(self: CanvasRef, anchor: AnchorRef) {.base.} =
+  ## Changes node anchor.
+  ##
+  ## Arguments:
+  ## - `anchor` - AnchorRef object.
+  self.anchor = anchor
+  self.can_use_anchor = true
+
+method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
+  ## Changes node anchor.
+  ##
+  ## Arguments:
+  ## - `x1` and `y1` - anchor relative to the parent node.
+  ## - `x2` and `y2` - anchor relative to this node.
+  self.anchor = Anchor(x1, y1, x2, y2)
+  self.can_use_anchor = true
+
+method setSizeAnchor*(self: CanvasRef, anchor: Vector2Ref) {.base.} =
+  self.size_anchor = anchor
+  self.can_use_size_anchor = true
+
+method setSizeAnchor*(self: CanvasRef, x, y: float) {.base.} =
+  self.size_anchor = Vector2(x, y)
+  self.can_use_size_anchor = true

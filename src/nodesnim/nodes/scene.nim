@@ -85,4 +85,5 @@ method reAnchorScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
-    child.calcPositionAnchor()
+    if child.type_of_node == NODE_TYPE_CONTROL:
+      child.CanvasRef.calcPositionAnchor()
