@@ -28,6 +28,7 @@
 
 ## Features
 - Godot-like node system.
+- Build nodes with YML-like syntax.
 - Simple usage
   ```nim
   import nodesnim

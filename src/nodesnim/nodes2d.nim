@@ -1,11 +1,11 @@
 import
-  nodesnim/nodes2d/node2d,
-  nodesnim/nodes2d/sprite,
-  nodesnim/nodes2d/animated_sprite,
-  nodesnim/nodes2d/ysort,
-  nodesnim/nodes2d/collision_shape2d,
-  nodesnim/nodes2d/kinematic_body2d,
-  nodesnim/nodes2d/camera2d
+  nodes2d/node2d,
+  nodes2d/sprite,
+  nodes2d/animated_sprite,
+  nodes2d/ysort,
+  nodes2d/collision_shape2d,
+  nodes2d/kinematic_body2d,
+  nodes2d/camera2d
 
 export
   node2d, sprite, animated_sprite, ysort,
