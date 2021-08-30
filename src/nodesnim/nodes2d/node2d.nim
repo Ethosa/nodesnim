@@ -23,8 +23,11 @@ type
 
 
 template node2dpattern*: untyped =
-  result.centered = true
+  result.centered = false
   result.timed_position = Vector2()
+  result.rect_size = Vector2()
+  result.position = Vector2()
+  result.global_position = Vector2()
   result.type_of_node = NODE_TYPE_2D
 
 proc Node2D*(name: string = "Node2D"): Node2DRef =
@@ -45,11 +48,9 @@ method draw*(self: Node2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   self.position = self.timed_position
-
+  self.calcGlobalPosition()
   if self.centered:
-    self.position = self.timed_position - self.rect_size*2
-  else:
-    self.position = self.timed_position
+    self.position -= self.rect_size/2
 
 
 method move*(self: Node2DRef, x, y: float) =

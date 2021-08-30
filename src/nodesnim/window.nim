@@ -209,6 +209,8 @@ proc addScene*(scene: SceneRef) =
   ## - `scene` - pointer to the Scene object.
   if scene notin scenes:
     scenes.add(scene)
+  scene.rect_size.x = width.float
+  scene.rect_size.y = height.float
 
 proc addMainScene*(scene: SceneRef) =
   ## Adds a new scene in the app and set it mark it as main scene.

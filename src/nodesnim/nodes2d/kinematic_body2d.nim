@@ -64,12 +64,7 @@ method getCollideCount*(self: KinematicBody2DRef): int {.base.} =
 method draw*(self: KinematicBody2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  self.position = self.timed_position
-
-  if self.centered:
-    self.position = self.timed_position - self.rect_size*2
-  else:
-    self.position = self.timed_position
+  procCall self.Node2DRef.draw(w, h)
 
 
 method duplicate*(self: KinematicBody2DRef): KinematicBody2DRef {.base.} =

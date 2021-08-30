@@ -51,6 +51,7 @@ proc CollisionShape2D*(name: string = "CollisionShape2D"): CollisionShape2DRef =
   result.y1 = 0
   result.radius = 20
   result.polygon = @[]
+  result.centered = false
   result.kind = COLLISION_SHAPE_2D_NODE
 
 
@@ -89,12 +90,7 @@ method setShapeTypePolygon*(self: CollisionShape2DRef, positions: varargs[Vector
 method draw*(self: CollisionShape2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  # Recalculate position.
-  self.position = self.timed_position
-  if self.centered:
-    self.position = self.timed_position - self.rect_size/2
-  else:
-    self.position = self.timed_position
+  procCall self.Node2DRef.draw(w, h)
 
   # debug draw
   when defined(debug):

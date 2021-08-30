@@ -63,12 +63,7 @@ method disableSmooth*(self: Camera2DRef) {.base.} =
 method draw*(self: Camera2DRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
-  self.position = self.timed_position
-
-  if self.centered:
-    self.CanvasRef.position = self.timed_position - self.rect_size*2
-  else:
-    self.CanvasRef.position = self.timed_position
+  procCall self.Node2DRef.draw(w, h)
 
   if self.target != nil and self.current:
     var root = self.getRootNode().CanvasRef

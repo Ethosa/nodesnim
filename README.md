@@ -65,7 +65,7 @@ This section contains links to documentation for all nodes.
 |[AudioStream][astrm]|                          |[GridBox][GridBox]             |                            |                             |
 |[Animation][anim]   |                          |[Scroll][Scroll]               |                            |                             |
 |[Vector3][Vector3]  |                          |[ProgressBar][ProgressBar]     |                            |                             |
-|                    |                          |[Slider][Slider]               |                            |                             |
+|[SceneBuilder][SBld]|                          |[Slider][Slider]               |                            |                             |
 |                    |                          |[VProgressBar][VProgressBar]   |                            |                             |
 |                    |                          |[VSlider][VSlider]             |                            |                             |
 |                    |                          |[Popup][Popup]                 |                            |                             |
@@ -131,6 +131,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [astrm]:https://ethosa.github.io/nodesnim/nodesnim/core/audio_stream.html
 [anim]:https://ethosa.github.io/nodesnim/nodesnim/core/animation.html
 [Vector3]:https://ethosa.github.io/nodesnim/nodesnim/core/vector3.html
+[SBld]:https://ethosa.github.io/nodesnim/nodesnim/core/scene_builder.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html

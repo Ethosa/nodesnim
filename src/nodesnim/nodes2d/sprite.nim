@@ -12,6 +12,7 @@ import
   ../core/color,
 
   ../nodes/node,
+  ../nodes/canvas,
   node2d
 
 
@@ -35,6 +36,7 @@ proc Sprite*(name: string = "Sprite"): SpriteRef =
   result.texture = GlTextureObj()
   result.filter = Color(1f, 1f, 1f)
   result.kind = SPRITE_NODE
+  result.centered = true
 
 
 method draw*(self: SpriteRef, w, h: GLfloat) =
@@ -44,11 +46,8 @@ method draw*(self: SpriteRef, w, h: GLfloat) =
     self.rect_size = self.texture.size
 
   # Recalculate position.
-  self.position = self.timed_position
-  if self.centered:
-    self.position = self.timed_position - self.rect_size/2
-  else:
-    self.position = self.timed_position
+  procCall self.Node2DRef.draw(w, h)
+  self.CanvasRef.calcGlobalPosition()
 
   let
     x = -w/2 + self.global_position.x
@@ -106,6 +105,7 @@ method loadTexture*(self: SpriteRef, file: cstring, mode = GL_RGB) {.base.} =
   ## - `file` is a texture path.
   ## - `mode` is a GLenum. can be GL_RGB or GL_RGBA.
   self.texture = load(file, mode)
+  self.rect_size = self.texture.size
 
 method setTexture*(self: SpriteRef, texture: GlTextureObj) {.base.} =
   ## Loads a new texture from file.
@@ -113,3 +113,4 @@ method setTexture*(self: SpriteRef, texture: GlTextureObj) {.base.} =
   ## Arguments:
   ## - `texture` is a GlTexture object.
   self.texture = texture
+  self.rect_size = self.texture.size

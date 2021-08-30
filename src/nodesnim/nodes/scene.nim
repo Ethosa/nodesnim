@@ -48,6 +48,7 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
       continue
     if child.visible:
       child.draw2stage(w, h)
+  scene.CanvasRef.calcGlobalPosition()
 
 method duplicate*(self: SceneRef): SceneRef {.base.} =
   ## Duplicates Scene object and create a new Scene.

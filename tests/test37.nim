@@ -24,7 +24,6 @@ sprite1.setTexture(img1)
 body.addChild(sprite)
 body.addChild(camera)
 
-sprite1.move(0, 400)
 camera.setTarget(body)
 camera.setLimit(-600, -400, 600, 400)
 camera.setCurrent()
@@ -43,7 +42,6 @@ body.on_process =
         speed = 4f
       if distance >= 5:
         body.moveAndCollide(direction*speed)
-
 
 main.addChild(body)
 main.addChild(sprite1)
