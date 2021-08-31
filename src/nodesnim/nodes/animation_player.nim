@@ -20,7 +20,7 @@ type
 
 proc AnimationPlayer*(name: string = "AnimationPlayer"): AnimationPlayerRef =
   runnableExamples:
-    var animation_player = AnimationPlayer("AnimationPlayer")
+    var animplayer = AnimationPlayer("AnimationPlayer")
   nodepattern(AnimationPlayerRef)
   result.objects = @[]
   result.duration = 180
