@@ -4,7 +4,6 @@ nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nod
 Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&quot;): NodeRef	
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
 addChilds	nodesnim/nodes/node.html#addChilds.e,NodeRef,varargs[NodeRef]	node: addChilds(self: NodeRef; childs: varargs[NodeRef])	
-calcGlobalPosition3	nodesnim/nodes/node.html#calcGlobalPosition3.e,NodeRef	node: calcGlobalPosition3(self: NodeRef)	
 draw	nodesnim/nodes/node.html#draw.e,NodeRef,GLfloat,GLfloat	node: draw(self: NodeRef; w, h: GLfloat)	
 draw2stage	nodesnim/nodes/node.html#draw2stage.e,NodeRef,GLfloat,GLfloat	node: draw2stage(self: NodeRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes/node.html#duplicate.e,NodeRef	node: duplicate(self: NodeRef): NodeRef	

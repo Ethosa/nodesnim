@@ -117,13 +117,14 @@ function main() {
   <li><a class="reference" href="#NodeKind"
     title="NodeKind {.pure.} = enum
   NODE_NODE, CANVAS_NODE, SCENE_NODE, AUDIO_STREAM_PLAYER_NODE,
-  COLLISION_SHAPE_2D_NODE, YSORT_NODE, CAMERA_2D_NODE, SPRITE_NODE,
-  ANIMATED_SPRITE_NODE, NODE2D_NODE, KINEMATIC_BODY_2D_NODE, BOX_NODE, BUTTON_NODE,
-  COLOR_RECT_NODE, CONTROL_NODE, COUNTER_NODE, EDIT_TEXT_NODE, GRID_BOX_NODE,
-  HBOX_NODE, LABEL_NODE, POPUP_NODE, PROGRESS_BAR_NODE, RICH_EDIT_TEXT_NODE,
-  RICH_LABEL_NODE, SCROLL_NODE, SLIDER_NODE, TEXTURE_BUTTON_NODE,
-  TEXTURE_PROGRESS_BAR_NODE, TEXTURE_RECT_NODE, VBOX_NODE, VPROGRESS_BAR_NODE,
-  VSLIDER_NODE, SUB_WINDOW_NODE, LINE_EDIT_NODE, NODE3D_NODE, GEOMETRY_INSTANCE_NODE"><wbr />Node<wbr />Kind<span class="attachedType"></span></a></li>
+  ANIMATION_PLAYER_NODE, COLLISION_SHAPE_2D_NODE, YSORT_NODE, CAMERA_2D_NODE,
+  SPRITE_NODE, ANIMATED_SPRITE_NODE, NODE2D_NODE, KINEMATIC_BODY_2D_NODE, BOX_NODE,
+  BUTTON_NODE, COLOR_RECT_NODE, CONTROL_NODE, COUNTER_NODE, EDIT_TEXT_NODE,
+  GRID_BOX_NODE, HBOX_NODE, LABEL_NODE, POPUP_NODE, PROGRESS_BAR_NODE,
+  RICH_EDIT_TEXT_NODE, RICH_LABEL_NODE, SCROLL_NODE, SLIDER_NODE,
+  TEXTURE_BUTTON_NODE, TEXTURE_PROGRESS_BAR_NODE, TEXTURE_RECT_NODE, VBOX_NODE,
+  VPROGRESS_BAR_NODE, VSLIDER_NODE, SUB_WINDOW_NODE, LINE_EDIT_NODE, NODE3D_NODE,
+  GEOMETRY_INSTANCE_NODE"><wbr />Node<wbr />Kind<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#NodeTypes"
     title="NodeTypes {.pure.} = enum
   NODE_TYPE_DEFAULT, NODE_TYPE_CONTROL, NODE_TYPE_2D, NODE_TYPE_3D"><wbr />Node<wbr />Types<span class="attachedType"></span></a></li>
@@ -173,13 +174,14 @@ function main() {
 <a id="NodeKind"></a>
 <dt><pre><a href="enums.html#NodeKind"><span class="Identifier">NodeKind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">NODE_NODE</span><span class="Other">,</span> <span class="Identifier">CANVAS_NODE</span><span class="Other">,</span> <span class="Identifier">SCENE_NODE</span><span class="Other">,</span> <span class="Identifier">AUDIO_STREAM_PLAYER_NODE</span><span class="Other">,</span>
-  <span class="Identifier">COLLISION_SHAPE_2D_NODE</span><span class="Other">,</span> <span class="Identifier">YSORT_NODE</span><span class="Other">,</span> <span class="Identifier">CAMERA_2D_NODE</span><span class="Other">,</span> <span class="Identifier">SPRITE_NODE</span><span class="Other">,</span>
-  <span class="Identifier">ANIMATED_SPRITE_NODE</span><span class="Other">,</span> <span class="Identifier">NODE2D_NODE</span><span class="Other">,</span> <span class="Identifier">KINEMATIC_BODY_2D_NODE</span><span class="Other">,</span> <span class="Identifier">BOX_NODE</span><span class="Other">,</span> <span class="Identifier">BUTTON_NODE</span><span class="Other">,</span>
-  <span class="Identifier">COLOR_RECT_NODE</span><span class="Other">,</span> <span class="Identifier">CONTROL_NODE</span><span class="Other">,</span> <span class="Identifier">COUNTER_NODE</span><span class="Other">,</span> <span class="Identifier">EDIT_TEXT_NODE</span><span class="Other">,</span> <span class="Identifier">GRID_BOX_NODE</span><span class="Other">,</span>
-  <span class="Identifier">HBOX_NODE</span><span class="Other">,</span> <span class="Identifier">LABEL_NODE</span><span class="Other">,</span> <span class="Identifier">POPUP_NODE</span><span class="Other">,</span> <span class="Identifier">PROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">RICH_EDIT_TEXT_NODE</span><span class="Other">,</span>
-  <span class="Identifier">RICH_LABEL_NODE</span><span class="Other">,</span> <span class="Identifier">SCROLL_NODE</span><span class="Other">,</span> <span class="Identifier">SLIDER_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_BUTTON_NODE</span><span class="Other">,</span>
-  <span class="Identifier">TEXTURE_PROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_RECT_NODE</span><span class="Other">,</span> <span class="Identifier">VBOX_NODE</span><span class="Other">,</span> <span class="Identifier">VPROGRESS_BAR_NODE</span><span class="Other">,</span>
-  <span class="Identifier">VSLIDER_NODE</span><span class="Other">,</span> <span class="Identifier">SUB_WINDOW_NODE</span><span class="Other">,</span> <span class="Identifier">LINE_EDIT_NODE</span><span class="Other">,</span> <span class="Identifier">NODE3D_NODE</span><span class="Other">,</span> <span class="Identifier">GEOMETRY_INSTANCE_NODE</span></pre></dt>
+  <span class="Identifier">ANIMATION_PLAYER_NODE</span><span class="Other">,</span> <span class="Identifier">COLLISION_SHAPE_2D_NODE</span><span class="Other">,</span> <span class="Identifier">YSORT_NODE</span><span class="Other">,</span> <span class="Identifier">CAMERA_2D_NODE</span><span class="Other">,</span>
+  <span class="Identifier">SPRITE_NODE</span><span class="Other">,</span> <span class="Identifier">ANIMATED_SPRITE_NODE</span><span class="Other">,</span> <span class="Identifier">NODE2D_NODE</span><span class="Other">,</span> <span class="Identifier">KINEMATIC_BODY_2D_NODE</span><span class="Other">,</span> <span class="Identifier">BOX_NODE</span><span class="Other">,</span>
+  <span class="Identifier">BUTTON_NODE</span><span class="Other">,</span> <span class="Identifier">COLOR_RECT_NODE</span><span class="Other">,</span> <span class="Identifier">CONTROL_NODE</span><span class="Other">,</span> <span class="Identifier">COUNTER_NODE</span><span class="Other">,</span> <span class="Identifier">EDIT_TEXT_NODE</span><span class="Other">,</span>
+  <span class="Identifier">GRID_BOX_NODE</span><span class="Other">,</span> <span class="Identifier">HBOX_NODE</span><span class="Other">,</span> <span class="Identifier">LABEL_NODE</span><span class="Other">,</span> <span class="Identifier">POPUP_NODE</span><span class="Other">,</span> <span class="Identifier">PROGRESS_BAR_NODE</span><span class="Other">,</span>
+  <span class="Identifier">RICH_EDIT_TEXT_NODE</span><span class="Other">,</span> <span class="Identifier">RICH_LABEL_NODE</span><span class="Other">,</span> <span class="Identifier">SCROLL_NODE</span><span class="Other">,</span> <span class="Identifier">SLIDER_NODE</span><span class="Other">,</span>
+  <span class="Identifier">TEXTURE_BUTTON_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_PROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_RECT_NODE</span><span class="Other">,</span> <span class="Identifier">VBOX_NODE</span><span class="Other">,</span>
+  <span class="Identifier">VPROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">VSLIDER_NODE</span><span class="Other">,</span> <span class="Identifier">SUB_WINDOW_NODE</span><span class="Other">,</span> <span class="Identifier">LINE_EDIT_NODE</span><span class="Other">,</span> <span class="Identifier">NODE3D_NODE</span><span class="Other">,</span>
+  <span class="Identifier">GEOMETRY_INSTANCE_NODE</span></pre></dt>
 <dd>
 
 
@@ -203,7 +205,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-30 14:35:14 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-31 09:04:33 UTC</small>
       </div>
     </div>
   </div>

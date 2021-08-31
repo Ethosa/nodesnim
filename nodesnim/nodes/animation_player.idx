@@ -1,0 +1,9 @@
+AnimationObject	nodesnim/nodes/animation_player.html#AnimationObject	animation_player: AnimationObject	
+AnimationPlayerObj	nodesnim/nodes/animation_player.html#AnimationPlayerObj	animation_player: AnimationPlayerObj	
+AnimationPlayerRef	nodesnim/nodes/animation_player.html#AnimationPlayerRef	animation_player: AnimationPlayerRef	
+AnimationPlayer	nodesnim/nodes/animation_player.html#AnimationPlayer,string	animation_player: AnimationPlayer(name: string = &quot;AnimationPlayer&quot;): AnimationPlayerRef	
+addState	nodesnim/nodes/animation_player.html#addState.e,AnimationPlayerRef,ptr.float,seq[tuple[int,float]]	animation_player: addState(self: AnimationPlayerRef; obj: ptr float;\n         states: seq[tuple[tick: int, value: float]])	
+draw	nodesnim/nodes/animation_player.html#draw.e,AnimationPlayerRef,GLfloat,GLfloat	animation_player: draw(self: AnimationPlayerRef; w: GLfloat; h: GLfloat)	
+play	nodesnim/nodes/animation_player.html#play.e,AnimationPlayerRef	animation_player: play(self: AnimationPlayerRef)	
+setDuration	nodesnim/nodes/animation_player.html#setDuration.e,AnimationPlayerRef,int	animation_player: setDuration(self: AnimationPlayerRef; duration: int)	
+stop	nodesnim/nodes/animation_player.html#stop.e,AnimationPlayerRef	animation_player: stop(self: AnimationPlayerRef)	
