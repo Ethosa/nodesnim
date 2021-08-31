@@ -11,8 +11,15 @@
 </div>
 
 ## Install
-1. Install this repo
-   -  `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
+1. Install Nodesnim
+   -  Stable: `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
+   -  Nightly:
+      ```bash
+      git clone https://github.com/Ethosa/nodesnim/`
+      cd nodesnim
+      git checkout nightly
+      nimble install
+      ```
 2. Install dependencies
    -  Linux (tested on Ubuntu and Mint):
       - `sudo apt install -y freeglut3 freeglut3-dev`

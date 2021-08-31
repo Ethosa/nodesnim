@@ -10,6 +10,8 @@ import
   ../core/enums,
   ../core/color,
 
+  ../graphics/drawable,
+
   ../nodes/node,
   ../nodes/canvas
 
@@ -22,6 +24,7 @@ type
 
     mousemode*: MouseMode
     background_color*: ColorRef
+    background*: DrawableRef
 
     on_mouse_enter*: proc(self: ControlRef, x, y: float): void  ## This called when the mouse enters the Control node.
     on_mouse_exit*: proc(self: ControlRef, x, y: float): void   ## This called when the mouse exit from the Control node.
@@ -40,6 +43,7 @@ template controlpattern*: untyped =
 
   result.mousemode = MOUSEMODE_SEE
   result.background_color = Color()
+  result.background = Drawable()
   result.rect_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
@@ -86,6 +90,8 @@ method draw*(self: ControlRef, w, h: GLfloat) =
 
   glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
   glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Press
   if self.pressed:
