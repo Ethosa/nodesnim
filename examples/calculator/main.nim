@@ -5,45 +5,9 @@ import strutils
 Window("Calc")
 
 var
-  main = Scene("Main")
-
   first: string = ""
   second: string = ""
   sign: string = ""
-
-  vbox = VBox()
-  result = Label("Result")
-  buttons = GridBox("Buttons")
-
-  button_7 = Button("Button 7")
-  button_8 = Button("Button 8")
-  button_9 = Button("Button 9")
-  button_4 = Button("Button 4")
-  button_5 = Button("Button 5")
-  button_6 = Button("Button 6")
-  button_1 = Button("Button 1")
-  button_2 = Button("Button 2")
-  button_3 = Button("Button 3")
-  button_0 = Button("Button 0")
-  button_00 = Button("Button 00")
-  button_add = Button("Button +")
-  button_sub = Button("Button -")
-  button_mul = Button("Button *")
-  button_div = Button("Button /")
-  button_eq = Button("Button =")
-
-main.addChild(vbox)
-vbox.addChild(result)
-vbox.addChild(buttons)
-vbox.setChildAnchor(0.5, 0.5, 0.5, 0.5)
-vbox.setSizeAnchor(1, 1)
-buttons.setRow(4)
-buttons.addChilds(
-  button_7, button_8, button_9, button_add,
-  button_4, button_5, button_6, button_sub,
-  button_1, button_2, button_3, button_mul,
-  button_0, button_00, button_div, button_eq)
-
 
 proc number(self: ButtonRef, x, y: float) =
   if sign == "":
@@ -52,15 +16,17 @@ proc number(self: ButtonRef, x, y: float) =
     second &= self.text
 
 proc equal(): string =
+  let f = parseFloat(first)
   result =
-    if sign == "+":
-      $(parseFloat(first) + parseFloat(second))
-    elif sign == "-":
-      $(parseFloat(first) - parseFloat(second))
-    elif sign == "*":
-      $(parseFloat(first) * parseFloat(second))
-    elif sign == "/":
-      $(parseFloat(first) / parseFloat(second))
+    case sign:
+    of "+":
+      $(f + parseFloat(second))
+    of "-":
+      $(f - parseFloat(second))
+    of "x":
+      $(f * parseFloat(second))
+    of "/":
+      $(f / parseFloat(second))
     else:
       first
 
@@ -72,37 +38,34 @@ proc on_sign(self: ButtonRef, x, y: float) =
   elif first != "":
     sign = self.text
 
-
-button_1.text = "1"
-button_2.text = "2"
-button_3.text = "3"
-button_4.text = "4"
-button_5.text = "5"
-button_6.text = "6"
-button_7.text = "7"
-button_8.text = "8"
-button_9.text = "9"
-button_0.text = "0"
-button_00.text = "00"
-
-button_sub.text = "-"
-button_add.text = "+"
-button_mul.text = "*"
-button_div.text = "/"
-
-button_1.on_touch = number
-button_2.on_touch = number
-button_3.on_touch = number
-button_4.on_touch = number
-button_5.on_touch = number
-button_6.on_touch = number
-button_7.on_touch = number
-button_8.on_touch = number
-button_9.on_touch = number
-button_add.on_touch = on_sign
-button_sub.on_touch = on_sign
-button_mul.on_touch = on_sign
-button_div.on_touch = on_sign
+build:
+  - Scene main:
+    - Vbox vbox:
+      call setChildAnchor(0.5, 0.5, 0.5, 0.5)
+      call setSizeAnchor(1, 1)
+      - Label result:
+        call setTextAlign(1, 0, 1, 0)
+        call resize(160, 32)
+      - GridBox buttons:
+        call setRow(4)
+        - Button button_7(text: "7", on_touch: number)
+        - Button button_8(text: "8", on_touch: number)
+        - Button button_9(text: "9", on_touch: number)
+        - Button button_4(text: "4", on_touch: number)
+        - Button button_5(text: "5", on_touch: number)
+        - Button button_6(text: "6", on_touch: number)
+        - Button button_1(text: "1", on_touch: number)
+        - Button button_2(text: "2", on_touch: number)
+        - Button button_3(text: "3", on_touch: number)
+        - Button button_0(text: "0")
+        - Button button_00(text: "00")
+        - Button button_add(text: "+", on_touch: on_sign)
+        # Signs
+        - Button button_sub(text: "-", on_touch: on_sign)
+        - Button button_mul(text: "x", on_touch: on_sign)
+        - Button button_div(text: "/", on_touch: on_sign)
+        - Button button_eq:
+          text: "="
 
 
 button_0@on_touch(self, x, y):
@@ -118,15 +81,12 @@ button_00@on_touch(self, x, y):
     second &= "00"
 
 
-button_eq.text = "="
 button_eq@on_touch(self, x, y):
   first = equal()
   if sign != "":
     second = ""
     sign = ""
 
-result.setTextAlign(1, 0, 1, 0)
-result.resize(160, 32)
 result@on_process(self):
   if sign == "":
     result.text = first
@@ -135,7 +95,5 @@ result@on_process(self):
   else:
     result.text = first & " " & sign & " " & second
 
-
-addScene(main)
-setMainScene("Main")
+addMainScene(main)
 windowLaunch()
