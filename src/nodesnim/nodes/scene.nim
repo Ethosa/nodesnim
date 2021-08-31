@@ -6,7 +6,8 @@ import
   ../thirdparty/opengl,
   ../core/enums,
   ../core/input,
-  ../core/vector2
+  ../core/vector2,
+  ../nodes3d/node3d
 
 
 type
@@ -37,7 +38,8 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
     if child.visible:
       if child.type_of_node == NODE_TYPE_CONTROL:
         child.CanvasRef.calcGlobalPosition()
-      child.calcGlobalPosition3()
+      if child.type_of_node == NODE_TYPE_3D:
+        child.Node3DRef.calcGlobalPosition3()
       if not child.is_ready:
         child.on_ready(child)
         child.is_ready = true
@@ -48,7 +50,7 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
       continue
     if child.visible:
       child.draw2stage(w, h)
-  scene.CanvasRef.calcGlobalPosition()
+  scene.calcGlobalPosition()
 
 method duplicate*(self: SceneRef): SceneRef {.base.} =
   ## Duplicates Scene object and create a new Scene.

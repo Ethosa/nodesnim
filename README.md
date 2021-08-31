@@ -58,7 +58,7 @@ This section contains links to documentation for all nodes.
 |[Color][Color]      |[Canvas][Canvas]          |[ColorRect][ColorRect]         |[Sprite][Sprite]            |[GeometryInstance][ginstance]|
 |[ColorText][clrtext]|[Scene][Scene]            |[TextureRect][TextureRect]     |[AnimatedSprite][asprite]   |                             |
 |[Enums][Enums]      |[AudioStreamPlayer][aplay]|[Label][Label]                 |[YSort][YSort]              |                             |
-|[Exceptions][except]|                          |[Button][Button]               |[CollisionShape2D][cshape2d]|                             |
+|[Exceptions][except]|[AnimationPlayer][aplayer]|[Button][Button]               |[CollisionShape2D][cshape2d]|                             |
 |[Image][Image]      |                          |[EditText][EditText]           |[Camera2D][Camera2D]        |                             |
 |[Input][Input]      |                          |[RichLabel][RichLabel]         |                            |                             |
 |[Rect2][Rect2]      |                          |[RichEditText][RichEditText]   |                            |                             |
@@ -85,6 +85,7 @@ For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. 
 
 ## Export
 Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.
+[Static linking SDL2](https://github.com/nim-lang/sdl2#static-linking-sdl2) (or compile with `-d:static_sdl2` -> tested on Windows)
 
 -   CrossPlatform export for Windows (tested on Windows 7 x64 and Windows 10 x64)
     -   `nim c -d:mingw -d:release --opt:speed --noNimblePath file.nim`
@@ -139,6 +140,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
 [Scene]:https://ethosa.github.io/nodesnim/nodesnim/nodes/scene.html
 [aplay]:https://ethosa.github.io/nodesnim/nodesnim/nodes/audio_stream_player.html
+[aplayer]:https://ethosa.github.io/nodesnim/nodesnim/nodes/animation_player.html
 
 [Control]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/control.html
 [ColorRect]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/color_rect.html

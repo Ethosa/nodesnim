@@ -42,3 +42,4 @@
 40. [Use SubWindow node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test40.nim)
 41. [Use LineEdit node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test41.nim)
 42. [Use Scene builder.](https://github.com/Ethosa/nodesnim/blob/master/tests/test42.nim)
+43. [Use AnimationPlayer node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test43.nim)

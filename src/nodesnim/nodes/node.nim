@@ -66,10 +66,6 @@ method addChilds*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
   for node in childs:
     self.addChild(node)
 
-method calcGlobalPosition3*(self: NodeRef) {.base.} =
-  ## Uses in the 3D nodes.
-  discard
-
 method draw*(self: NodeRef, w, h: GLfloat) {.base.} =
   ## Draws node.
   ## This used in the Window object.

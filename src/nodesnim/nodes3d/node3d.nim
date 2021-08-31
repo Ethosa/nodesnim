@@ -38,7 +38,7 @@ proc Node3D*(name: string = "Node3D"): Node3DRef =
   result.kind = NODE3D_NODE
 
 
-method calcGlobalPosition3*(self: Node3DRef) =
+method calcGlobalPosition3*(self: Node3DRef) {.base.} =
   var current: NodeRef = self
   self.global_translation = self.translation
   self.global_rotation = self.rotation
