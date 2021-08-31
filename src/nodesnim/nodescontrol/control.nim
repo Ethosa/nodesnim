@@ -9,11 +9,13 @@ import
   ../core/input,
   ../core/enums,
   ../core/color,
+  ../core/stylesheet,
 
   ../graphics/drawable,
 
   ../nodes/node,
-  ../nodes/canvas
+  ../nodes/canvas,
+  strutils
 
 
 type
@@ -88,8 +90,8 @@ method draw*(self: ControlRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+  # glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
+  # glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
 
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
@@ -142,3 +144,30 @@ method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
 method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
   ## Changes Control background color.
   self.background_color = color
+
+method setStyle*(self: ControlRef, style: StyleSheetRef) {.base.} =
+  self.background.setStyle(style)
+  for i in style.dict:
+    case i.key
+    # size-anchor: 1.0
+    # size-anchor: 0.5 1
+    of "size-anchor":
+      let tmp = i.value.split(Whitespace)
+      if tmp.len() == 1:
+        self.setSizeAnchor(Vector2(parseFloat(tmp[0])))
+      elif tmp.len() == 2:
+        self.setSizeAnchor(Vector2(parseFloat(tmp[0]), parseFloat(tmp[1])))
+    # position-anchor: 1
+    # position-anchor: 0.5 1 0.5 1
+    of "position-anchor":
+      let tmp = i.value.split(Whitespace)
+      if tmp.len() == 1:
+        let tmp2 = parseFloat(tmp[0])
+        self.setAnchor(Anchor(tmp2, tmp2, tmp2, tmp2))
+      elif tmp.len() == 4:
+        self.setAnchor(Anchor(
+          parseFloat(tmp[0]), parseFloat(tmp[1]),
+          parseFloat(tmp[2]), parseFloat(tmp[3]))
+        )
+    else:
+      discard

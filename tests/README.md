@@ -44,3 +44,4 @@
 42. [Use Scene builder.](https://github.com/Ethosa/nodesnim/blob/master/tests/test42.nim)
 43. [Use AnimationPlayer node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test43.nim)
 44. [Use StyleSheet object.](https://github.com/Ethosa/nodesnim/blob/master/tests/test44.nim)
+45. [Use Drawable and Control.](https://github.com/Ethosa/nodesnim/blob/master/tests/test45.nim)
