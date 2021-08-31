@@ -63,7 +63,7 @@ jobs:
           for dir in hello_world calculator novel snake screensaver; do
             (
               cd "$dir"
-              nim c main.nim -d:debug --opt:speed -d:mingw
+              nim c main.nim
               timeout 2 xvfb-run --auto-servernum --server-num=1 ./main || [ $? -eq ${{ env.TIMEOUT_EXIT_STATUS }} ]
             )
           done
