@@ -7,7 +7,7 @@
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Nightly version - 0.0.6</h4>
+<h4>Stable version - 0.0.6</h4>
 </div>
 
 ## Install

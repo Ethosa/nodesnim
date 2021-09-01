@@ -45,7 +45,7 @@ proc Drawable*: DrawableRef =
     border_radius_rightbottom: 0,
     border_color: Color(0, 0, 0, 0),
     background_color: Color(0, 0, 0, 0),
-    shadow_offset: Vector2(0, 0)
+    shadow_offset: Vector2(0, 0), shadow: false
   )
 
 let shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
