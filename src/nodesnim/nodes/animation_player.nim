@@ -5,7 +5,11 @@ import
   ../core/enums,
   ../thirdparty/opengl
 
+
 type
+  AnimationMode* {.pure, size: sizeof(int8).} = enum
+    ANIMATION_NORMAL,
+    ANIMATION_EASE
   AnimationObject* = object
     states: seq[tuple[tick: int, value: float]]
     obj: ptr float
@@ -15,6 +19,7 @@ type
     tick*: int64
     is_played*: bool
     loop*: bool
+    mode*: AnimationMode
   AnimationPlayerRef* = ref AnimationPlayerObj
 
 
@@ -29,6 +34,16 @@ proc AnimationPlayer*(name: string = "AnimationPlayer"): AnimationPlayerRef =
   result.loop = true
   result.kind = ANIMATION_PLAYER_NODE
   result.type_of_node = NODE_TYPE_DEFAULT
+  result.mode = ANIMATION_NORMAL
+
+
+proc ease(self: AnimationPlayerRef, states: seq[tuple[tick: int, value: float]]): float =
+    var time = (self.tick - states[0].tick).float / ((states[1].tick - states[0].tick).float / 2.0)
+    let diff = states[1].value - states[0].value
+    if time < 1:
+        return diff / 2 * time * time + states[0].value
+    time -= 1
+    return -diff / 2 * (time * (time - 2) - 1) + states[0].value
 
 
 method addState*(self: AnimationPlayerRef, obj: ptr float, states: seq[tuple[tick: int, value: float]]) {.base.} =
@@ -63,11 +78,13 @@ method draw*(self: AnimationPlayerRef, w: GLfloat, h: GLfloat) =
             break
     
       if current_states.len() == 2:
-        let
-          diff_time: float = (current_states[1].tick - current_states[0].tick).float
-          diff: float = current_states[1].value - current_states[0].value
-        current[] = current_states[0].value + (self.tick - current_states[0].tick).float/diff_time * diff
-        echo current[]
+        if self.mode == ANIMATION_NORMAL:
+          let
+            diff_time: float = (current_states[1].tick - current_states[0].tick).float
+            diff: float = current_states[1].value - current_states[0].value
+          current[] = current_states[0].value + (self.tick - current_states[0].tick).float/diff_time * diff
+        else:
+          current[] = self.ease(current_states)
       current_states = @[]
 
     self.tick += 1
