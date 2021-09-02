@@ -25,7 +25,6 @@ type
     focused*: bool
 
     mousemode*: MouseMode
-    background_color*: ColorRef
     background*: DrawableRef
 
     on_mouse_enter*: proc(self: ControlRef, x, y: float): void  ## This called when the mouse enters the Control node.
@@ -44,7 +43,6 @@ template controlpattern*: untyped =
   result.pressed = false
 
   result.mousemode = MOUSEMODE_SEE
-  result.background_color = Color()
   result.background = Drawable()
   result.rect_size = Vector2()
   result.position = Vector2()
@@ -89,9 +87,6 @@ method draw*(self: ControlRef, w, h: GLfloat) =
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
-
-  # glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  # glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
 
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
@@ -143,7 +138,7 @@ method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
 
 method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
   ## Changes Control background color.
-  self.background_color = color
+  self.background.setColor(color)
 
 method setStyle*(self: ControlRef, style: StyleSheetRef) {.base.} =
   self.background.setStyle(style)

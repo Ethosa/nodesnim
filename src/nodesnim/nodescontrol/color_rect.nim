@@ -11,6 +11,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 
@@ -41,8 +42,11 @@ method draw*(self: ColorRectRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.color.r, self.color.g, self.color.b, self.color.a)
-  glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
+  if self.background.getColor().a == 0.0:
+    glColor4f(self.color.r, self.color.g, self.color.b, self.color.a)
+    glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
+  else:
+    self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Press
   if self.pressed:

@@ -12,6 +12,7 @@ import
   ../core/color,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 
@@ -51,10 +52,8 @@ method draw*(self: TextureRectRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
   glColor4f(self.texture_filter.r, self.texture_filter.g, self.texture_filter.b, self.texture_filter.a)
-
 
   if self.texture > 0'u32:
     glEnable(GL_TEXTURE_2D)

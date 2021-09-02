@@ -11,6 +11,7 @@ import
   ../core/color,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 
@@ -28,7 +29,7 @@ proc Popup*(name: string = "Popup"): PopupRef =
     var p = Popup("Popup")
   nodepattern(PopupRef)
   controlpattern()
-  result.background_color = Color(0x212121ff)
+  result.background.setColor(Color(0x212121ff))
   result.rect_size.x = 160
   result.rect_size.y = 160
   result.visible = false
@@ -60,19 +61,6 @@ method calcPositionAnchor*(self: PopupRef) =
   {.warning[LockLevel]: off.}
   procCall self.ControlRef.calcPositionAnchor()
   recalc()
-
-method draw*(self: PopupRef, w, h: GLfloat) =
-  ## This uses in the `window.nim`.
-  let
-    x = -w/2 + self.global_position.x
-    y = h/2 - self.global_position.y
-
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
-
-  # Press
-  if self.pressed:
-    self.on_press(self, last_event.x, last_event.y)
 
 method duplicate*(self: PopupRef): PopupRef {.base.} =
   ## Duplicates Popup object and create a new Popup.

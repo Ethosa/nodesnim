@@ -12,6 +12,7 @@ import
 
   ../nodes/node,
   ../nodes/canvas,
+  ../graphics/drawable,
   control,
   label
 
@@ -42,7 +43,7 @@ proc Counter*(name: string = "Counter"): CounterRef =
   result.label = Label()
   result.label.mousemode = MOUSEMODE_IGNORE
   result.label.parent = result
-  result.background_color = Color(0x212121ff)
+  result.background.setColor(Color(0x212121ff))
   result.kind = COUNTER_NODE
 
 
@@ -62,8 +63,7 @@ method draw*(self: CounterRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   self.label.calcGlobalPosition()
   self.label.resize(self.rect_size.x - 40, self.rect_size.y)

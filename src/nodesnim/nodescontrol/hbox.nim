@@ -61,13 +61,6 @@ method addChild*(self: HBoxRef, child: NodeRef) =
 
 method draw*(self: HBoxRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
-  let
-    x1 = -w/2 + self.global_position.x
-    y = h/2 - self.global_position.y
-
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x1, y, x1+self.rect_size.x, y-self.rect_size.y)
-
   var
     fakesize = self.getChildSize()
     x = self.rect_size.x*self.child_anchor.x1 - fakesize.x*self.child_anchor.x2

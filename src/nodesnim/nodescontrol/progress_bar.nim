@@ -12,6 +12,7 @@ import
 
   ../nodes/node,
   ../nodes/canvas,
+  ../graphics/drawable,
   control,
   math
 
@@ -42,7 +43,6 @@ proc ProgressBar*(name: string = "ProgressBar"): ProgressBarRef =
   controlpattern()
   result.value = 0
   result.max_value = 100
-  result.background_color = Color(1f, 1f, 1f)
   result.progress_color = Color(0.6, 0.6, 0.6)
   result.rect_size.x = 120
   result.rect_size.y = 20
@@ -101,7 +101,7 @@ method draw*(self: ProgressBarRef, w, h: GLfloat) =
       orad = min(self.rect_size.x, self.rect_size.y) / 2
       irad = (min(self.rect_size.x, self.rect_size.y) / 2) - 5f
     # background:
-    glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
+    glColor4f(self.background.getColor().r, self.background.getColor().g, self.background.getColor().b, self.background.getColor().a)
     glBegin(GL_TRIANGLE_STRIP)
     for i in 0..90:
       let angle = TAU * (i/90)
