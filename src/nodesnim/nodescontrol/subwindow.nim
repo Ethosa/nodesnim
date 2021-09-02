@@ -40,6 +40,7 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
     var window = SubWindow("SubWindow")
   nodepattern(SubWindowRef)
   controlpattern()
+  result.title_bar = Drawable()
   result.background.setColor(Color(0x454545ff))
   result.title_bar.setColor(Color(0x303030ff))
   result.background.setBorderColor(Color(0x212121ff))
