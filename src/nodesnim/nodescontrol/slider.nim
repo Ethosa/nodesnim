@@ -11,6 +11,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 
@@ -33,7 +34,7 @@ proc Slider*(name: string = "Slider"): SliderRef =
     var sc = Slider("Slider")
   nodepattern(SliderRef)
   controlpattern()
-  result.background_color = Color(1f, 1f, 1f)
+  result.background.setColor(Color(1f, 1f, 1f))
   result.rect_size.x = 120
   result.rect_size.y = 40
   result.progress_color = Color(0.5, 0.5, 0.5)
@@ -51,8 +52,7 @@ method draw*(self: SliderRef, w, h: GLfloat) =
     y = h/2 - self.global_position.y
 
   # Background
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Progress
   let progress = self.rect_size.x * (self.value.float / self.max_value.float)

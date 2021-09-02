@@ -15,6 +15,9 @@ proc Vector2*(x, y: float): Vector2Ref {.inline.} =
 proc Vector2*(b: Vector2Ref): Vector2Ref {.inline.} =
   Vector2Ref(x: b.x, y: b.y)
 
+proc Vector2*(num: float): Vector2Ref {.inline.} =
+  Vector2Ref(x: num, y: num)
+
 proc Vector2*(): Vector2Ref {.inline.} =
   Vector2Ref(x: 0, y: 0)
 

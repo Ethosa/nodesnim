@@ -7,12 +7,19 @@
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Stable version - 0.0.5</h4>
+<h4>Stable version - 0.1.0</h4>
 </div>
 
 ## Install
-1. Install this repo
-   -  `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
+1. Install Nodesnim
+   -  Stable: `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
+   -  Nightly:
+      ```bash
+      git clone https://github.com/Ethosa/nodesnim/`
+      cd nodesnim
+      git checkout nightly
+      nimble install
+      ```
 2. Install dependencies
    -  Linux (tested on Ubuntu and Mint):
       - `sudo apt install -y freeglut3 freeglut3-dev`
@@ -27,13 +34,14 @@
 ## Features
 - Godot-like node system.
 - Build nodes with YML-like syntax.
+- Stylesheets (CSS-like).
 - Simple usage
   ```nim
   import nodesnim
 
   Window("Hello, world!")
-  
-  
+
+
   build:
     - Scene scene:
       name: "Main"
@@ -41,8 +49,8 @@
         call setSizeAnchor(1, 1)
         call setTextAlign(0.5, 0.5, 0.5, 0.5)
         call setText("Hello, world!")
-        background_color: Color(31, 45, 62)
-  
+        call setBackgroundColor(Color(31, 45, 62))
+
   addMainScene(scene)
   windowLaunch()
   

@@ -14,9 +14,10 @@ import
   core/animation,
   core/nodes_os,
   core/vector3,
-  core/scene_builder
+  core/scene_builder,
+  core/stylesheet
 
 export
   vector2, rect2, circle2, polygon2, enums, anchor, color,
   exceptions, input, image, color_text, audio_stream,
-  animation, nodes_os, vector3, scene_builder
+  animation, nodes_os, vector3, scene_builder, stylesheet

@@ -45,6 +45,7 @@ method draw*(self: AnimationPlayerRef, w: GLfloat, h: GLfloat) =
         self.tick = 0
         if not self.loop:
             self.is_played = false
+            return
 
     var
       current_states: seq[tuple[tick: int, value: float]] = @[]

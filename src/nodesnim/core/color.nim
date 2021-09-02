@@ -1,5 +1,7 @@
 # author: Ethosa
-import strutils
+import
+  strutils,
+  re
 
 
 type
@@ -25,32 +27,15 @@ proc Color*(r, g, b, a: uint8): ColorRef =
   ## `r`, `g`, `b` and `a` is a numbers ranges `0..255`.
   result = ColorRef(r: r.int / 255, g: g.int / 255, b: b.int / 255, a: a.int / 255)
 
+proc Color*(r, g, b: uint8, a: float): ColorRef =
+  ## Creates a new Color from RGBA.
+  ## `r`, `g`, `b` and `a` is a numbers ranges `0..255`.
+  result = ColorRef(r: r.int / 255, g: g.int / 255, b: b.int / 255, a: a)
+
 proc Color*(r, g, b: uint8): ColorRef {.inline.} =
   ## Creates a new Color from RGB.
   ## `r`, `g` and `b` is a numbers ranges `0..255`.
   Color(r, g, b, 255)
-
-proc Color*(src: string): ColorRef =
-  ## Parses color from string.
-  ## `src` should be a string, begins with "#", "0x" or "0X" and have a RRGGBBAA color value.
-  runnableExamples:
-    var
-      clr1 = Color("#FFCCAAFF")
-      clr2 = Color("0xFFAACCFF")
-      clr3 = Color("0XAACCFFFF")
-      clr4 = Color("#AAFFCCFF")
-    echo clr1
-    echo clr2
-    echo clr3
-    echo clr4
-
-  let color = parseHexInt(src).uint32
-  result = ColorRef(
-    r: ((color shr 24) and 255).int / 255,
-    g: ((color shr 16) and 255).int / 255,
-    b: ((color shr 8) and 255).int / 255,
-    a: (color and 255).int / 255
-  )
 
 proc Color*(src: uint32): ColorRef =
   ## Translate uint32 color to the Color object.
@@ -71,6 +56,42 @@ proc Color*(src: uint32): ColorRef =
     b: ((src shr 8) and 255).int / 255,
     a: (src and 255).int / 255
   )
+
+proc Color*(src: string): ColorRef =
+  ## Parses color from string.
+  ## `src` should be a string, begins with "#", "0x" or "0X" and have a RRGGBBAA color value.
+  runnableExamples:
+    var
+      clr1 = Color("#FFCCAAFF")
+      clr2 = Color("0xFFAACCFF")
+      clr3 = Color("0XAACCFFFF")
+      clr4 = Color("#AAFFCCFF")
+    echo clr1
+    echo clr2
+    echo clr3
+    echo clr4
+  var target = src
+  var matched: array[20, string]
+
+  # #FFFFFFFF, #FFF, #FFFFFF, etc
+  if target.startsWith('#') or target.startsWith("0x") or target.startsWith("0X"):
+    target = target[1..^1]
+    if target[0] == 'x' or target[0] == 'X':
+      target = target[1..^1]
+
+    if target.len() == 3:  # #fff -> #ffffffff
+      target = target[0] & target[0] & target[1] & target[1] & target[2] & target[2] & "ff"
+    elif target.len() == 6:  # #ffffff -> #ffffffff
+      target &= "ff"
+    return Color(parseHexInt(target).uint32)
+
+  # rgba(255, 255, 255, 1.0)
+  elif target.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+.?\d*?)\s*\)\s*\Z", matched):
+    return Color(parseInt(matched[0]).uint8, parseInt(matched[1]).uint8, parseInt(matched[2]).uint8, parseFloat(matched[3]))
+
+  # rgb(255, 255, 255)
+  elif target.match(re"\A\s*rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*\Z", matched):
+    return Color(parseInt(matched[0]).uint8, parseInt(matched[1]).uint8, parseInt(matched[2]).uint8)
 
 proc Color*(): ColorRef {.inline.} =
   ## Creates a new Color object with RGBA value (0, 0, 0, 0)

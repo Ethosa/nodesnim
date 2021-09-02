@@ -21,7 +21,7 @@ var
   cmdCount {.importc: "cmdCount".}: cint
 
 
-when not defined(ios) and not defined(android):
+when not defined(ios) and not defined(android) and not defined(useGlew):
   when defined(debug):
     debug("Try to load OpenGL ...")
   loadExtensions()  # Load OpenGL extensions.

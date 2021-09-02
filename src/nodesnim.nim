@@ -19,6 +19,7 @@ import
   nodesnim/environment,
 
   nodesnim/core,
+  nodesnim/graphics,
   nodesnim/nodes,
   nodesnim/nodescontrol,
   nodesnim/nodes2d,

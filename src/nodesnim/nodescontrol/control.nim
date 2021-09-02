@@ -9,9 +9,13 @@ import
   ../core/input,
   ../core/enums,
   ../core/color,
+  ../core/stylesheet,
+
+  ../graphics/drawable,
 
   ../nodes/node,
-  ../nodes/canvas
+  ../nodes/canvas,
+  strutils
 
 
 type
@@ -21,7 +25,7 @@ type
     focused*: bool
 
     mousemode*: MouseMode
-    background_color*: ColorRef
+    background*: DrawableRef
 
     on_mouse_enter*: proc(self: ControlRef, x, y: float): void  ## This called when the mouse enters the Control node.
     on_mouse_exit*: proc(self: ControlRef, x, y: float): void   ## This called when the mouse exit from the Control node.
@@ -39,7 +43,7 @@ template controlpattern*: untyped =
   result.pressed = false
 
   result.mousemode = MOUSEMODE_SEE
-  result.background_color = Color()
+  result.background = Drawable()
   result.rect_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
@@ -84,8 +88,7 @@ method draw*(self: ControlRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Press
   if self.pressed:
@@ -135,4 +138,31 @@ method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
 
 method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
   ## Changes Control background color.
-  self.background_color = color
+  self.background.setColor(color)
+
+method setStyle*(self: ControlRef, style: StyleSheetRef) {.base.} =
+  self.background.setStyle(style)
+  for i in style.dict:
+    case i.key
+    # size-anchor: 1.0
+    # size-anchor: 0.5 1
+    of "size-anchor":
+      let tmp = i.value.split(Whitespace)
+      if tmp.len() == 1:
+        self.setSizeAnchor(Vector2(parseFloat(tmp[0])))
+      elif tmp.len() == 2:
+        self.setSizeAnchor(Vector2(parseFloat(tmp[0]), parseFloat(tmp[1])))
+    # position-anchor: 1
+    # position-anchor: 0.5 1 0.5 1
+    of "position-anchor":
+      let tmp = i.value.split(Whitespace)
+      if tmp.len() == 1:
+        let tmp2 = parseFloat(tmp[0])
+        self.setAnchor(Anchor(tmp2, tmp2, tmp2, tmp2))
+      elif tmp.len() == 4:
+        self.setAnchor(Anchor(
+          parseFloat(tmp[0]), parseFloat(tmp[1]),
+          parseFloat(tmp[2]), parseFloat(tmp[3]))
+        )
+    else:
+      discard

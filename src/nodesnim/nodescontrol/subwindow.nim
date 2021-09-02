@@ -14,6 +14,7 @@ import
 
   ../nodes/node,
   ../nodes/canvas,
+  ../graphics/drawable,
   control,
   popup,
   label
@@ -24,8 +25,7 @@ type
     left_taked*, right_taked*, top_taked*, bottom_taked*: bool
     title_taked*: bool
     icon*: GlTextureObj
-    title_bar_color*: ColorRef
-    border_color*: ColorRef
+    title_bar*: DrawableRef
     title_taked_pos*: Vector2Ref
     title*: LabelRef
   SubWindowRef* = ref SubWindowObj
@@ -40,9 +40,11 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
     var window = SubWindow("SubWindow")
   nodepattern(SubWindowRef)
   controlpattern()
-  result.background_color = Color(0x454545ff)
-  result.title_bar_color = Color(0x303030ff)
-  result.border_color = Color(0x212121ff)
+  result.title_bar = Drawable()
+  result.background.setColor(Color(0x454545ff))
+  result.title_bar.setColor(Color(0x303030ff))
+  result.background.setBorderColor(Color(0x212121ff))
+  result.background.setBorderWidth(1)
   result.rect_size.x = 320
   result.rect_size.y = 220
   result.visible = false
@@ -75,8 +77,7 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   for child in self.getChildIter():
     child.CanvasRef.calcGlobalPosition()
@@ -91,29 +92,7 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
     else:
       child.visible = true
 
-  glColor4f(self.border_color.r, self.border_color.g, self.border_color.b, self.border_color.a)
-  glBegin(GL_LINE_LOOP)
-  glVertex2f(x, y)
-  glVertex2f(x+self.rect_size.x, y)
-  glVertex2f(x+self.rect_size.x, y-self.rect_size.y)
-  glVertex2f(x, y-self.rect_size.y)
-  glEnd()
-
-  glBegin(GL_QUADS)
-
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glVertex2f(x+1, y-32)
-  glVertex2f(x + self.rect_size.x - 1, y-32)
-  glVertex2f(x + self.rect_size.x - 1, y - self.rect_size.y + 32)
-  glVertex2f(x+1, y - self.rect_size.y + 32)
-
-  glColor4f(self.title_bar_color.r, self.title_bar_color.g, self.title_bar_color.b, self.title_bar_color.a)
-  glVertex2f(x+1, y-1)
-  glVertex2f(x + self.rect_size.x - 1, y-1)
-  glVertex2f(x + self.rect_size.x - 1, y-31)
-  glVertex2f(x+1, y-31)
-
-  glEnd()
+  self.title_bar.draw(x, y, self.rect_size.x, 32)
 
   let size = self.title.getTextSize()
   self.title.position.x = self.rect_size.x / 2 - size.x / 2
@@ -256,7 +235,7 @@ method setBorderColor*(self: SubWindowRef, color: ColorRef) {.base.} =
   ##
   ## Arguments:
   ## - `color` is a new border color.
-  self.border_color = color
+  self.background.setBorderColor(color)
 
 
 method setIcon*(self: SubWindowRef, gltexture: GlTextureObj) {.base.} =
@@ -280,7 +259,7 @@ method setTitleBarColor*(self: SubWindowRef, color: ColorRef) {.base.} =
   ##
   ## Arguments:
   ## - `color` is a new title bar color.
-  self.title_bar_color = color
+  self.title_bar.setColor(color)
 
 
 method setTitle*(self: SubWindowRef, title: string) {.base.} =

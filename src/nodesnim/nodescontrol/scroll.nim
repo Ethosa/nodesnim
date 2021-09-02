@@ -12,6 +12,7 @@ import
 
   ../nodes/node,
   ../nodes/canvas,
+  ../graphics/drawable,
   control
 
 
@@ -82,8 +83,7 @@ method draw*(self: ScrollRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x+self.viewport_w, y-self.viewport_h)
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Press
   if self.pressed:

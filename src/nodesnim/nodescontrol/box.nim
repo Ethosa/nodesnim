@@ -60,13 +60,6 @@ method addChild*(self: BoxRef, child: NodeRef) =
 
 method draw*(self: BoxRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
-  let
-    x = -w/2 + self.global_position.x
-    y = h/2 - self.global_position.y
-
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
-
   for child in self.children:
     child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
     child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2

@@ -14,26 +14,24 @@ type
     body: seq[Vector2Ref]
 
 
+build:
+  - Scene main:
+    call rename("Main")
+    - Canvas canvas
+  - Scene game_over:
+    call rename("GameOverScene")
+    - Label label_go:
+      text: "Game Over"
+      call setTextAlign(0.5, 0.5, 0.5, 0.5)
+      call setSizeAnchor(1, 1)
+
 var
-  main = Scene("Main")
-  game_over = Scene("GameOverScene")
-  label_go = Label("GameOverLabel")
-
-  canvas = Canvas("Canvas")
-
   snake = Snake(
     dir: Vector2(),
     body: @[Vector2(0, 0)],
     size: Vector2(40, 40),
     food: Vector2(160, 160))
   time = 0
-
-
-game_over.addChild(label_go)
-
-label_go.text = "Game Over"
-label_go.setTextAlign(0.5, 0.5, 0.5, 0.5)
-label_go.setSizeAnchor(1, 1)
 
 
 Input.addKeyAction("forward", "w")
@@ -124,7 +122,5 @@ canvas@on_process(self):
 
 
 addScene(game_over)
-main.addChild(canvas)
-addScene(main)
-setMainScene("Main")
+addMainScene(main)
 windowLaunch()

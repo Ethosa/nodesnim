@@ -12,6 +12,7 @@ import
   ../core/color,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 
@@ -51,7 +52,7 @@ proc LineEdit*(name: string = "LineEdit"): LineEditRef =
   result.spacing = 2
   result.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
   result.color = Color(1f, 1f, 1f)
-  result.background_color = Color(0x454545ff)
+  result.background.setColor(Color(0x454545ff))
   result.hint_color = Color(0.8, 0.8, 0.8)
   result.hint_text = "Edit text ..."
   result.caret_position = 0
@@ -113,9 +114,7 @@ method draw*(self: LineEditRef, w, h: GLfloat) =
         self.hint_color
     tw = self.font.glutBitmapLength(text).float
 
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
-
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   var
     char_num = 0

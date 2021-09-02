@@ -12,6 +12,7 @@ import
   ../core/color,
 
   ../nodes/node,
+  ../graphics/drawable,
   control,
   label
 
@@ -21,9 +22,9 @@ type
     button_mask*: cint  ## Mask for handle clicks
     action_mask*: cint  ## BUTTON_RELEASE or BUTTON_CLICK.
 
-    normal_background_color*: ColorRef  ## color, when button is not pressed and not hovered.
-    hover_background_color*: ColorRef   ## color, when button hovered.
-    press_background_color*: ColorRef   ## color, when button pressed.
+    normal_background*: DrawableRef  ## color, when button is not pressed and not hovered.
+    hover_background*: DrawableRef   ## color, when button hovered.
+    press_background*: DrawableRef   ## color, when button pressed.
 
     normal_color*: ColorRef  ## text color, whenwhen button is not pressed and not hovered.
     hover_color*: ColorRef   ## text color, when button hovered.
@@ -55,25 +56,25 @@ proc Button*(name: string = "Button"): ButtonRef =
   result.press_color = Color(1f, 1f, 1f)
   result.button_mask = BUTTON_LEFT
   result.action_mask = BUTTON_RELEASE
-  result.normal_background_color = Color(0x444444ff)
-  result.hover_background_color = Color(0x505050ff)
-  result.press_background_color = Color(0x595959ff)
+  result.normal_background = Drawable()
+  result.hover_background = Drawable()
+  result.press_background = Drawable()
+  result.normal_background.setColor(Color(0x444444ff))
+  result.hover_background.setColor(Color(0x505050ff))
+  result.press_background.setColor(Color(0x595959ff))
   result.on_touch = proc(self: ButtonRef, x, y: float) = discard
   result.kind = BUTTON_NODE
 
 
 method draw*(self: ButtonRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
-  let
-    x = -w/2 + self.global_position.x
-    y = h/2 - self.global_position.y
-    color =
+  self.background =
       if self.pressed and self.focused:
-        self.press_background_color
+        self.press_background
       elif self.hovered and not mouse_pressed:
-        self.hover_background_color
+        self.hover_background
       else:
-        self.normal_background_color
+        self.normal_background
   self.color =
     if self.pressed and self.focused:
       self.press_color
@@ -81,8 +82,6 @@ method draw*(self: ButtonRef, w, h: GLfloat) =
       self.hover_color
     else:
       self.normal_color
-  glColor4f(color.r, color.g, color.b, color.a)
-  glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
   procCall self.LabelRef.draw(w, h)
 
 method duplicate*(self: ButtonRef, obj: var ButtonObj): ButtonRef {.base.} =

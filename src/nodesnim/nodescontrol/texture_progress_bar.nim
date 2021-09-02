@@ -11,6 +11,7 @@ import
   ../core/enums,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 
@@ -46,8 +47,7 @@ method draw*(self: TextureProgressBarRef, w, h: GLfloat) =
     y = h/2 - self.global_position.y
 
   # Background
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
+  self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Progress
   let

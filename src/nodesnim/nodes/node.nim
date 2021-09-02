@@ -197,6 +197,9 @@ method hasParent*(self: NodeRef): bool {.base, inline.} =
 method hide*(self: NodeRef) {.base.} =
   self.visible = false
 
+method rename*(self: NodeRef, new_name: string) {.base.} =
+  self.name = new_name
+
 method removeChild*(self: NodeRef, index: int) {.base.} =
   ## Removes node child at a specific position.
   ##

@@ -4,19 +4,31 @@ import
 
 proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
   result = newStmtList()
-  if code.kind == nnkStmtList:
+  if code.kind in [nnkStmtList, nnkObjConstr]:
     for line in code.children():
       if line.kind == nnkPrefix:
         if line[0].kind == nnkIdent and line[1].kind == nnkCommand:
           if $line[0] == "-":
-            result.add(newVarStmt(line[1][1], newCall($line[1][0])))
+            if line[1][1].kind == nnkIdent:
+              result.add(newVarStmt(line[1][1], newCall($line[1][0])))
+            elif line[1][1].kind == nnkObjConstr:
+              result.add(newVarStmt(line[1][1][0], newCall($line[1][0])))
             if level.len() > 0:
               # - Scene main_scene:
-              result.add(newCall("addChild", level[^1], line[1][1]))
+              if line[1][1].kind == nnkIdent:
+                result.add(newCall("addChild", level[^1], line[1][1]))
+              elif line[1][1].kind == nnkObjConstr:
+                result.add(newCall("addChild", level[^1], line[1][1][0]))
+                level.add(line[1][1][0])
+                var nodes = addNode(level, line[1][1])
+                for i in nodes.children():
+                  result.add(i)
+      # call methodName(arg1, arg2) -> currentNode.methodName(arg1, arg2)
       elif line.kind == nnkCommand and $line[0] == "call" and level.len() > 0:
         line[1].insert(1, level[^1])
         result.add(line[1])
-      elif line.kind == nnkCall and level.len() > 1:
+      # property: value -> currentNode.property = value
+      elif line.kind in [nnkCall, nnkExprColonExpr] and level.len() > 1:
         var attr = newNimNode(nnkAsgn)
         attr.add(newNimNode(nnkDotExpr))
         attr[0].add(level[^1])

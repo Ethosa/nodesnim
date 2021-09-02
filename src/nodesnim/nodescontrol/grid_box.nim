@@ -79,13 +79,6 @@ method addChild*(self: GridBoxRef, child: NodeRef) =
 
 method draw*(self: GridBoxRef, w, h: GLfloat) =
   ## This method uses in the `window.nim`.
-  let
-    x1 = -w/2 + self.global_position.x
-    y1 = h/2 - self.global_position.y
-
-  glColor4f(self.background_color.r, self.background_color.g, self.background_color.b, self.background_color.a)
-  glRectf(x1, y1, x1+self.rect_size.x, y1-self.rect_size.y)
-
   var
     row = 0
     fakesize = self.getChildSize()

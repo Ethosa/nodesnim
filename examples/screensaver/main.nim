@@ -5,19 +5,15 @@ randomize()
 
 Window("ScreenSaver", 720, 480)
 
-
 var
-  main = Scene("Main")
-
-  img = load("img.png", GL_RGBA)
-
-  sprite = Sprite()
-
   direction = Vector2()
   speed = 3f
 
-sprite.centered = false
-sprite.setTexture(img)
+build:
+  - Scene main:
+    - Sprite sprite:
+      centered: false
+      call setTexture(load("img.png", GL_RGBA))
 
 sprite@on_process(self):
   let rect = Rect2(sprite.global_position, sprite.rect_size)
@@ -37,7 +33,5 @@ sprite@on_process(self):
   sprite.move(direction*speed)
 
 
-main.addChild(sprite )
-addScene(main)
-setMainScene("Main")
+addMainScene(main)
 windowLaunch()
