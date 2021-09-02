@@ -23,6 +23,7 @@ hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,string	node: hasNode(self: No
 hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,NodeRef	node: hasNode(self: NodeRef; other: NodeRef): bool	
 hasParent	nodesnim/nodes/node.html#hasParent.e,NodeRef	node: hasParent(self: NodeRef): bool	
 hide	nodesnim/nodes/node.html#hide.e,NodeRef	node: hide(self: NodeRef)	
+rename	nodesnim/nodes/node.html#rename.e,NodeRef,string	node: rename(self: NodeRef; new_name: string)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,int	node: removeChild(self: NodeRef; index: int)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,NodeRef	node: removeChild(self: NodeRef; other: NodeRef)	
 show	nodesnim/nodes/node.html#show.e,NodeRef	node: show(self: NodeRef)	

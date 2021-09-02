@@ -8,3 +8,4 @@ duplicate	nodesnim/nodescontrol/control.html#duplicate.e,ControlRef	control: dup
 getGlobalMousePosition	nodesnim/nodescontrol/control.html#getGlobalMousePosition.e,ControlRef	control: getGlobalMousePosition(self: ControlRef): Vector2Ref	
 handle	nodesnim/nodescontrol/control.html#handle.e,ControlRef,InputEvent,NodeRef	control: handle(self: ControlRef; event: InputEvent; mouse_on: var NodeRef)	
 setBackgroundColor	nodesnim/nodescontrol/control.html#setBackgroundColor.e,ControlRef,ColorRef	control: setBackgroundColor(self: ControlRef; color: ColorRef)	
+setStyle	nodesnim/nodescontrol/control.html#setStyle.e,ControlRef,StyleSheetRef	control: setStyle(self: ControlRef; style: StyleSheetRef)	

@@ -1,0 +1,17 @@
+DrawableObj	nodesnim/graphics/drawable.html#DrawableObj	drawable: DrawableObj	
+DrawableRef	nodesnim/graphics/drawable.html#DrawableRef	drawable: DrawableRef	
+Drawable	nodesnim/graphics/drawable.html#Drawable	drawable: Drawable(): DrawableRef	
+enableShadow	nodesnim/graphics/drawable.html#enableShadow,DrawableRef,bool	drawable: enableShadow(self: DrawableRef; val: bool)	
+draw	nodesnim/graphics/drawable.html#draw,DrawableRef,float,float,float,float	drawable: draw(self: DrawableRef; x1, y1, width, height: float)	
+getColor	nodesnim/graphics/drawable.html#getColor,DrawableRef	drawable: getColor(self: DrawableRef): ColorRef	
+loadTexture	nodesnim/graphics/drawable.html#loadTexture,DrawableRef,string	drawable: loadTexture(self: DrawableRef; path: string)	
+setBorderColor	nodesnim/graphics/drawable.html#setBorderColor,DrawableRef,ColorRef	drawable: setBorderColor(self: DrawableRef; color: ColorRef)	
+setBorderWidth	nodesnim/graphics/drawable.html#setBorderWidth,DrawableRef,float	drawable: setBorderWidth(self: DrawableRef; width: float)	
+setColor	nodesnim/graphics/drawable.html#setColor,DrawableRef,ColorRef	drawable: setColor(self: DrawableRef; color: ColorRef)	
+setCornerRadius	nodesnim/graphics/drawable.html#setCornerRadius,DrawableRef,float	drawable: setCornerRadius(self: DrawableRef; radius: float)	
+setCornerRadius	nodesnim/graphics/drawable.html#setCornerRadius,DrawableRef,float,float,float,float	drawable: setCornerRadius(self: DrawableRef; r1, r2, r3, r4: float)	
+setCornerDetail	nodesnim/graphics/drawable.html#setCornerDetail,DrawableRef,int	drawable: setCornerDetail(self: DrawableRef; detail: int)	
+setCornerDetail	nodesnim/graphics/drawable.html#setCornerDetail,DrawableRef,int,int,int,int	drawable: setCornerDetail(self: DrawableRef; d1, d2, d3, d4: int)	
+setTexture	nodesnim/graphics/drawable.html#setTexture,DrawableRef,GlTextureObj	drawable: setTexture(self: DrawableRef; texture: GlTextureObj)	
+setShadowOffset	nodesnim/graphics/drawable.html#setShadowOffset,DrawableRef,Vector2Ref	drawable: setShadowOffset(self: DrawableRef; offset: Vector2Ref)	
+setStyle	nodesnim/graphics/drawable.html#setStyle,DrawableRef,StyleSheetRef	drawable: setStyle(self: DrawableRef; s: StyleSheetRef)	

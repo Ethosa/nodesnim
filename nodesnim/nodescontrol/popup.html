@@ -130,8 +130,6 @@ function main() {
     title="show(self: PopupRef)"><wbr />show<span class="attachedType">PopupRef</span></a></li>
   <li><a class="reference" href="#calcPositionAnchor.e%2CPopupRef"
     title="calcPositionAnchor(self: PopupRef)"><wbr />calc<wbr />Position<wbr />Anchor<span class="attachedType">PopupRef</span></a></li>
-  <li><a class="reference" href="#draw.e%2CPopupRef%2CGLfloat%2CGLfloat"
-    title="draw(self: PopupRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">PopupRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CPopupRef"
     title="duplicate(self: PopupRef): PopupRef"><wbr />duplicate<span class="attachedType">PopupRef</span></a></li>
 
@@ -148,7 +146,7 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="control.html">control</a>
+<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="control.html">control</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -211,14 +209,6 @@ Shws popup.
 This uses in the <tt class="docutils literal"><span class="pre">scene.nim</span></tt>.
 
 </dd>
-<a id="draw.e,PopupRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CPopupRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="popup.html#PopupRef"><span class="Identifier">PopupRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
-                                       <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
-
-</dd>
 <a id="duplicate.e,PopupRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CPopupRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="popup.html#PopupRef"><span class="Identifier">PopupRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="popup.html#PopupRef"><span class="Identifier">PopupRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -236,7 +226,7 @@ Duplicates Popup object and create a new Popup.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-31 16:10:36 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-02 11:38:27 UTC</small>
       </div>
     </div>
   </div>

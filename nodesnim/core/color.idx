@@ -3,9 +3,10 @@ ColorRef	nodesnim/core/color.html#ColorRef	color: ColorRef
 Color	nodesnim/core/color.html#Color,float,float,float,float	color: Color(r, g, b, a: float): ColorRef	
 Color	nodesnim/core/color.html#Color,float,float,float	color: Color(r, g, b: float): ColorRef	
 Color	nodesnim/core/color.html#Color,uint8,uint8,uint8,uint8	color: Color(r, g, b, a: uint8): ColorRef	
+Color	nodesnim/core/color.html#Color,uint8,uint8,uint8,float	color: Color(r, g, b: uint8; a: float): ColorRef	
 Color	nodesnim/core/color.html#Color,uint8,uint8,uint8	color: Color(r, g, b: uint8): ColorRef	
-Color	nodesnim/core/color.html#Color,string	color: Color(src: string): ColorRef	
 Color	nodesnim/core/color.html#Color,uint32	color: Color(src: uint32): ColorRef	
+Color	nodesnim/core/color.html#Color,string	color: Color(src: string): ColorRef	
 Color	nodesnim/core/color.html#Color	color: Color(): ColorRef	
 getBrightness	nodesnim/core/color.html#getBrightness,ColorRef	color: getBrightness(self: ColorRef): float	
 normalize	nodesnim/core/color.html#normalize,float	color: normalize(n: float): uint32	

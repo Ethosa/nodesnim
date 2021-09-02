@@ -120,12 +120,14 @@ function main() {
     title="Color(r, g, b: float): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8%2Cuint8"
     title="Color(r, g, b, a: uint8): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
+  <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8%2Cfloat"
+    title="Color(r, g, b: uint8; a: float): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8"
     title="Color(r, g, b: uint8): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2Cstring"
-    title="Color(src: string): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#Color%2Cuint32"
     title="Color(src: uint32): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
+  <li><a class="reference" href="#Color%2Cstring"
+    title="Color(src: string): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#Color"
     title="Color(): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#getBrightness%2CColorRef"
@@ -231,28 +233,18 @@ Creates a new Color from RGB. <tt class="docutils literal"><span class="pre">r</
 Creates a new Color from RGBA. <tt class="docutils literal"><span class="pre">r</span></tt>, <tt class="docutils literal"><span class="pre">g</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">a</span></tt> is a numbers ranges <tt class="docutils literal"><span class="pre">0..255</span></tt>.
 
 </dd>
+<a id="Color,uint8,uint8,uint8,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#Color%2Cuint8%2Cuint8%2Cuint8%2Cfloat"><span class="Identifier">Color</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">g</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Creates a new Color from RGBA. <tt class="docutils literal"><span class="pre">r</span></tt>, <tt class="docutils literal"><span class="pre">g</span></tt>, <tt class="docutils literal"><span class="pre">b</span></tt> and <tt class="docutils literal"><span class="pre">a</span></tt> is a numbers ranges <tt class="docutils literal"><span class="pre">0..255</span></tt>.
+
+</dd>
 <a id="Color,uint8,uint8,uint8"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#Color%2Cuint8%2Cuint8%2Cuint8"><span class="Identifier">Color</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">g</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Creates a new Color from RGB. <tt class="docutils literal"><span class="pre">r</span></tt>, <tt class="docutils literal"><span class="pre">g</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> is a numbers ranges <tt class="docutils literal"><span class="pre">0..255</span></tt>.
-
-</dd>
-<a id="Color,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Color%2Cstring"><span class="Identifier">Color</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-Parses color from string. <tt class="docutils literal"><span class="pre">src</span></tt> should be a string, begins with &quot;#&quot;, &quot;0x&quot; or &quot;0X&quot; and have a RRGGBBAA color value.
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">clr1</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;#FFCCAAFF&quot;</span><span class="Other">)</span>
-  <span class="Identifier">clr2</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;0xFFAACCFF&quot;</span><span class="Other">)</span>
-  <span class="Identifier">clr3</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;0XAACCFFFF&quot;</span><span class="Other">)</span>
-  <span class="Identifier">clr4</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;#AAFFCCFF&quot;</span><span class="Other">)</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr1</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr2</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr3</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr4</span></pre>
 
 </dd>
 <a id="Color,uint32"></a>
@@ -266,6 +258,23 @@ Translate uint32 color to the Color object.
   <span class="Identifier">clr2</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">0xFFAACCFF'u32</span><span class="Other">)</span>
   <span class="Identifier">clr3</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">0xAACCFFFF'u32</span><span class="Other">)</span>
   <span class="Identifier">clr4</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">0xAAFFCCFF'u32</span><span class="Other">)</span>
+<span class="Identifier">echo</span> <span class="Identifier">clr1</span>
+<span class="Identifier">echo</span> <span class="Identifier">clr2</span>
+<span class="Identifier">echo</span> <span class="Identifier">clr3</span>
+<span class="Identifier">echo</span> <span class="Identifier">clr4</span></pre>
+
+</dd>
+<a id="Color,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#Color%2Cstring"><span class="Identifier">Color</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Parses color from string. <tt class="docutils literal"><span class="pre">src</span></tt> should be a string, begins with &quot;#&quot;, &quot;0x&quot; or &quot;0X&quot; and have a RRGGBBAA color value.
+<p><strong class="examples_text">Examples:</strong></p>
+<pre class="listing"><span class="Keyword">var</span>
+  <span class="Identifier">clr1</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;#FFCCAAFF&quot;</span><span class="Other">)</span>
+  <span class="Identifier">clr2</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;0xFFAACCFF&quot;</span><span class="Other">)</span>
+  <span class="Identifier">clr3</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;0XAACCFFFF&quot;</span><span class="Other">)</span>
+  <span class="Identifier">clr4</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;#AAFFCCFF&quot;</span><span class="Other">)</span>
 <span class="Identifier">echo</span> <span class="Identifier">clr1</span>
 <span class="Identifier">echo</span> <span class="Identifier">clr2</span>
 <span class="Identifier">echo</span> <span class="Identifier">clr3</span>
@@ -448,7 +457,7 @@ Converts Color object to uint32 without alpha-channel with <tt class="docutils l
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-08-31 16:10:02 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-02 11:37:52 UTC</small>
       </div>
     </div>
   </div>
