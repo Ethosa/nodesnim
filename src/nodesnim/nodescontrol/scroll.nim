@@ -90,44 +90,6 @@ method draw*(self: ScrollRef, w, h: GLfloat) =
     self.on_press(self, last_event.x, last_event.y)
 
 
-method draw2stage*(self: ScrollRef, w, h: GLfloat) =
-  ## This uses in the `window.nim`.
-  let
-    x = -w/2 + self.global_position.x
-    y = h/2 - self.global_position.y
-
-  if self.children.len() > 0:
-    var child = self.children[0]
-    self.resize(child.CanvasRef.rect_size.x, child.CanvasRef.rect_size.y)
-    let
-      thumb_h = self.viewport_h * (self.viewport_h / self.rect_size.y)
-      thumb_w = self.viewport_w * (self.viewport_w / self.rect_size.x)
-      thumb_x = self.viewport_w * (self.viewport_x / self.rect_size.x)
-      thumb_y = self.viewport_h * (self.viewport_y / self.rect_size.y)
-    child.CanvasRef.position.x = -self.viewport_x
-    child.CanvasRef.position.y = -self.viewport_y
-
-    # Vertical
-    if self.viewport_h < self.rect_size.y:
-      # Back:
-      glColor4f(self.back_color.r, self.back_color.g, self.back_color.b, self.back_color.a)
-      glRectf(x + self.viewport_w - self.thumb_width, y, x+self.viewport_w, y-self.viewport_h)
-
-      # Thumb:
-      glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
-      glRectf(x + self.viewport_w - self.thumb_width, y - thumb_y, x+self.viewport_w, y - thumb_y - thumb_h)
-
-    # Horizontal
-    if self.viewport_w < self.rect_size.x:
-      # Back:
-      glColor4f(self.back_color.r, self.back_color.g, self.back_color.b, self.back_color.a)
-      glRectf(x, y - self.viewport_h + self.thumb_height, x + self.viewport_w - self.thumb_width, y-self.viewport_h)
-
-      # Thumb:
-      glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
-      glRectf(x + thumb_x, y - self.viewport_h + self.thumb_height, x + thumb_x + thumb_w, y-self.viewport_h)
-
-
 method scrollBy*(self: ScrollRef, x, y: float) {.base.} =
   ## Scrolls by `x` and `y`, if available.
   if x + self.viewport_x + self.viewport_w < self.rect_size.x and x + self.viewport_x > 0:
@@ -212,3 +174,41 @@ method handle*(self: ScrollRef, event: InputEvent, mouse_on: var NodeRef) =
   if not mouse_pressed and self.thumb_x_has_mouse:
     self.thumb_x_has_mouse = false
     mouse_on = nil
+
+
+method postdraw*(self: ScrollRef, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
+  let
+    x = -w/2 + self.global_position.x
+    y = h/2 - self.global_position.y
+
+  if self.children.len() > 0:
+    var child = self.children[0]
+    self.resize(child.CanvasRef.rect_size.x, child.CanvasRef.rect_size.y)
+    let
+      thumb_h = self.viewport_h * (self.viewport_h / self.rect_size.y)
+      thumb_w = self.viewport_w * (self.viewport_w / self.rect_size.x)
+      thumb_x = self.viewport_w * (self.viewport_x / self.rect_size.x)
+      thumb_y = self.viewport_h * (self.viewport_y / self.rect_size.y)
+    child.CanvasRef.position.x = -self.viewport_x
+    child.CanvasRef.position.y = -self.viewport_y
+
+    # Vertical
+    if self.viewport_h < self.rect_size.y:
+      # Back:
+      glColor4f(self.back_color.r, self.back_color.g, self.back_color.b, self.back_color.a)
+      glRectf(x + self.viewport_w - self.thumb_width, y, x+self.viewport_w, y-self.viewport_h)
+
+      # Thumb:
+      glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
+      glRectf(x + self.viewport_w - self.thumb_width, y - thumb_y, x+self.viewport_w, y - thumb_y - thumb_h)
+
+    # Horizontal
+    if self.viewport_w < self.rect_size.x:
+      # Back:
+      glColor4f(self.back_color.r, self.back_color.g, self.back_color.b, self.back_color.a)
+      glRectf(x, y - self.viewport_h + self.thumb_height, x + self.viewport_w - self.thumb_width, y-self.viewport_h)
+
+      # Thumb:
+      glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
+      glRectf(x + thumb_x, y - self.viewport_h + self.thumb_height, x + thumb_x + thumb_w, y-self.viewport_h)

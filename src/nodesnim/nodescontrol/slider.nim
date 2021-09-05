@@ -19,7 +19,7 @@ type
   SliderObj* = object of ControlRef
     max_value*, value*: uint
     progress_color*: ColorRef
-    thumb_color*: ColorRef
+    thumb*: DrawableRef
 
     on_changed*: proc(self: SliderRef, new_value: uint): void
   SliderRef* = ref SliderObj
@@ -34,11 +34,12 @@ proc Slider*(name: string = "Slider"): SliderRef =
     var sc = Slider("Slider")
   nodepattern(SliderRef)
   controlpattern()
+  result.thumb = Drawable()
   result.background.setColor(Color(1f, 1f, 1f))
+  result.thumb.setColor(Color(0.7, 0.7, 0.7))
   result.rect_size.x = 120
   result.rect_size.y = 40
   result.progress_color = Color(0.5, 0.5, 0.5)
-  result.thumb_color = Color(0.7, 0.7, 0.7)
   result.max_value = 100
   result.value = 0
   result.on_changed = proc(self: SliderRef, v: uint) = discard
@@ -60,8 +61,7 @@ method draw*(self: SliderRef, w, h: GLfloat) =
   glRectf(x, y, x + progress, y - self.rect_size.y)
 
   # Thumb
-  glColor4f(self.thumb_color.r, self.thumb_color.g, self.thumb_color.b, self.thumb_color.a)
-  glRectf(x + progress - 10, y, x + progress + 10, y - self.rect_size.y)
+  self.thumb.draw(x + progress, y, 10, self.rect_size.y)
 
   # Press
   if self.pressed:

@@ -4,6 +4,7 @@ import
   node,
   canvas,
   ../thirdparty/opengl,
+  ../thirdparty/opengl/glu,
   ../core/enums,
   ../core/input,
   ../core/vector2,
@@ -36,10 +37,26 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
     if paused and child.getPauseMode() != PROCESS:
       continue
     if child.visible:
+      # load opengl
+      if child.type_of_node != NODE_TYPE_DEFAULT:
+        glLoadIdentity()
+        glMatrixMode(GL_PROJECTION)
+        glMatrixMode(GL_MODELVIEW)
+
+      # when 2D
       if child.type_of_node == NODE_TYPE_CONTROL:
         child.CanvasRef.calcGlobalPosition()
-      if child.type_of_node == NODE_TYPE_3D:
+        glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
+      elif child.type_of_node == NODE_TYPE_2D:
+        glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
+      # when 3D
+      elif child.type_of_node == NODE_TYPE_3D:
         child.Node3DRef.calcGlobalPosition3()
+        gluPerspective(45.0, w/h, 1.0, 5000.0)
+        gluLookAt(0, 0, -1,
+                  0, 0, 1,
+                  0, 1, 0)
+
       if not child.is_ready:
         child.on_ready(child)
         child.is_ready = true
@@ -49,7 +66,7 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
     if paused and child.getPauseMode() != PROCESS:
       continue
     if child.visible:
-      child.draw2stage(w, h)
+      child.postdraw(w, h)
   scene.calcGlobalPosition()
 
 method duplicate*(self: SceneRef): SceneRef {.base.} =
