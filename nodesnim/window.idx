@@ -1,4 +1,5 @@
 env	nodesnim/window.html#env	window: env	
+max_distance	nodesnim/window.html#max_distance	window: max_distance	
 main_scene	nodesnim/window.html#main_scene	window: main_scene	
 current_scene	nodesnim/window.html#current_scene	window: current_scene	
 scenes	nodesnim/window.html#scenes	window: scenes	
@@ -8,5 +9,6 @@ addMainScene	nodesnim/window.html#addMainScene,SceneRef	window: addMainScene(sce
 changeScene	nodesnim/window.html#changeScene,string,seq[tuple[string,string]]	window: changeScene(name: string; extra: seq[tuple[k: string, v: string]] = @[]): bool	
 setMainScene	nodesnim/window.html#setMainScene,string	window: setMainScene(name: string)	
 setTitle	nodesnim/window.html#setTitle,cstring	window: setTitle(title: cstring)	
+setMaxDistance	nodesnim/window.html#setMaxDistance,GLdouble	window: setMaxDistance(distance: GLdouble)	
 Window	nodesnim/window.html#Window,cstring,cint,cint	window: Window(title: cstring; w: cint = 640; h: cint = 360)	
 windowLaunch	nodesnim/window.html#windowLaunch	window: windowLaunch()	

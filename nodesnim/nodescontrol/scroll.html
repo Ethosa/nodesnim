@@ -138,14 +138,14 @@ function main() {
     title="resize(canvas: ScrollRef; w, h: GLfloat)"><wbr />resize<span class="attachedType">ScrollRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CScrollRef%2CGLfloat%2CGLfloat"
     title="draw(self: ScrollRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">ScrollRef</span></a></li>
-  <li><a class="reference" href="#draw2stage.e%2CScrollRef%2CGLfloat%2CGLfloat"
-    title="draw2stage(self: ScrollRef; w, h: GLfloat)"><wbr />draw2stage<span class="attachedType">ScrollRef</span></a></li>
   <li><a class="reference" href="#scrollBy.e%2CScrollRef%2Cfloat%2Cfloat"
     title="scrollBy(self: ScrollRef; x, y: float)"><wbr />scroll<wbr />By<span class="attachedType">ScrollRef</span></a></li>
   <li><a class="reference" href="#scrollTo.e%2CScrollRef%2Cfloat%2Cfloat"
     title="scrollTo(self: ScrollRef; x, y: float)"><wbr />scroll<wbr />To<span class="attachedType">ScrollRef</span></a></li>
   <li><a class="reference" href="#handle.e%2CScrollRef%2CInputEvent%2CNodeRef"
     title="handle(self: ScrollRef; event: InputEvent; mouse_on: var NodeRef)"><wbr />handle<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#postdraw.e%2CScrollRef%2CGLfloat%2CGLfloat"
+    title="postdraw(self: ScrollRef; w, h: GLfloat)"><wbr />postdraw<span class="attachedType">ScrollRef</span></a></li>
 
   </ul>
 </li>
@@ -247,13 +247,6 @@ Duplicates Scroll object and create a new Scroll.
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="draw2stage.e,ScrollRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw2stage.e%2CScrollRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw2stage</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
-
-</dd>
 <a id="scrollBy.e,ScrollRef,float,float"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#scrollBy.e%2CScrollRef%2Cfloat%2Cfloat"><span class="Identifier">scrollBy</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -276,6 +269,13 @@ Scrolls to <tt class="docutils literal"><span class="pre">x</span></tt> and <tt 
 handles user input. This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
+<a id="postdraw.e,ScrollRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#postdraw.e%2CScrollRef%2CGLfloat%2CGLfloat"><span class="Identifier">postdraw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
+
+</dd>
 
 </dl></div>
 
@@ -286,7 +286,7 @@ handles user input. This uses in the <tt class="docutils literal"><span class="p
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-02 13:29:56 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:40:47 UTC</small>
       </div>
     </div>
   </div>

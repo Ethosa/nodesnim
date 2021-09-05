@@ -108,6 +108,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#env"
     title="env: EnvironmentRef = newEnvironment()"><wbr />env<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#max_distance"
+    title="max_distance: GLdouble = GLdouble(high(int64))"><wbr />max_<wbr />distance<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#main_scene"
     title="main_scene: SceneRef = nil"><wbr />main_<wbr />scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#current_scene"
@@ -132,6 +134,8 @@ function main() {
     title="setMainScene(name: string)"><wbr />set<wbr />Main<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#setTitle%2Ccstring"
     title="setTitle(title: cstring)"><wbr />set<wbr />Title<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#setMaxDistance%2CGLdouble"
+    title="setMaxDistance(distance: GLdouble)"><wbr />set<wbr />Max<wbr />Distance<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Window%2Ccstring%2Ccint%2Ccint"
     title="Window(title: cstring; w: cint = 640; h: cint = 360)"><wbr />Window<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#windowLaunch"
@@ -150,13 +154,20 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="thirdparty/opengl.html">thirdparty/opengl</a>, <a class="reference external" href="thirdparty/opengl/glut.html">thirdparty/opengl/glut</a>, <a class="reference external" href="core/color.html">core/color</a>, <a class="reference external" href="core/exceptions.html">core/exceptions</a>, <a class="reference external" href="core/input.html">core/input</a>, <a class="reference external" href="nodes/node.html">nodes/node</a>, <a class="reference external" href="nodes/scene.html">nodes/scene</a>, <a class="reference external" href="environment.html">environment</a>
+<a class="reference external" href="thirdparty/opengl.html">thirdparty/opengl</a>, <a class="reference external" href="thirdparty/opengl/glut.html">thirdparty/opengl/glut</a>, <a class="reference external" href="thirdparty/opengl/glu.html">thirdparty/opengl/glu</a>, <a class="reference external" href="core/color.html">core/color</a>, <a class="reference external" href="core/exceptions.html">core/exceptions</a>, <a class="reference external" href="core/input.html">core/input</a>, <a class="reference external" href="nodes/node.html">nodes/node</a>, <a class="reference external" href="nodes/scene.html">nodes/scene</a>, <a class="reference external" href="environment.html">environment</a>
 </dl></div>
 <div class="section" id="8">
 <h1><a class="toc-backref" href="#8">Vars</a></h1>
 <dl class="item">
 <a id="env"></a>
 <dt><pre><a href="window.html#env"><span class="Identifier">env</span></a><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a> <span class="Other">=</span> <span class="Identifier">newEnvironment</span><span class="Other">(</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="max_distance"></a>
+<dt><pre><a href="window.html#max_distance"><span class="Identifier">max_distance</span></a><span class="Other">:</span> <a href="thirdparty/opengl.html#GLdouble"><span class="Identifier">GLdouble</span></a> <span class="Other">=</span> <a href="thirdparty/opengl.html#GLdouble"><span class="Identifier">GLdouble</span></a><span class="Other">(</span><span class="Identifier">high</span><span class="Other">(</span><span class="Identifier">int64</span><span class="Other">)</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
@@ -247,6 +258,13 @@ function main() {
 Changes window title.
 
 </dd>
+<a id="setMaxDistance,GLdouble"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setMaxDistance%2CGLdouble"><span class="Identifier">setMaxDistance</span></a><span class="Other">(</span><span class="Identifier">distance</span><span class="Other">:</span> <a href="thirdparty/opengl.html#GLdouble"><span class="Identifier">GLdouble</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="Window,cstring,cint,cint"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#Window%2Ccstring%2Ccint%2Ccint"><span class="Identifier">Window</span></a><span class="Other">(</span><span class="Identifier">title</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">=</span> <span class="DecNumber">640</span><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">cint</span> <span class="Other">=</span> <span class="DecNumber">360</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -277,7 +295,7 @@ Start main window loop.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-02 13:29:25 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:40:13 UTC</small>
       </div>
     </div>
   </div>

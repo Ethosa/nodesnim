@@ -144,8 +144,6 @@ function main() {
     title="addChilds(self: NodeRef; childs: varargs[NodeRef])"><wbr />add<wbr />Childs<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CNodeRef%2CGLfloat%2CGLfloat"
     title="draw(self: NodeRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#draw2stage.e%2CNodeRef%2CGLfloat%2CGLfloat"
-    title="draw2stage(self: NodeRef; w, h: GLfloat)"><wbr />draw2stage<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CNodeRef"
     title="duplicate(self: NodeRef): NodeRef"><wbr />duplicate<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#getChild.e%2CNodeRef%2Cint"
@@ -180,6 +178,8 @@ function main() {
     title="hasParent(self: NodeRef): bool"><wbr />has<wbr />Parent<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#hide.e%2CNodeRef"
     title="hide(self: NodeRef)"><wbr />hide<span class="attachedType">NodeRef</span></a></li>
+  <li><a class="reference" href="#postdraw.e%2CNodeRef%2CGLfloat%2CGLfloat"
+    title="postdraw(self: NodeRef; w, h: GLfloat)"><wbr />postdraw<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#rename.e%2CNodeRef%2Cstring"
     title="rename(self: NodeRef; new_name: string)"><wbr />rename<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#removeChild.e%2CNodeRef%2Cint"
@@ -294,13 +294,6 @@ Creates a new Node.
 </dd>
 <a id="draw.e,NodeRef,GLfloat,GLfloat"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CNodeRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-Draws node. This used in the Window object.
-
-</dd>
-<a id="draw2stage.e,NodeRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw2stage.e%2CNodeRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw2stage</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Draws node. This used in the Window object.
@@ -439,6 +432,13 @@ Returns true, when node has parent.
 
 
 </dd>
+<a id="postdraw.e,NodeRef,GLfloat,GLfloat"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#postdraw.e%2CNodeRef%2CGLfloat%2CGLfloat"><span class="Identifier">postdraw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Draws node. This used in the Window object.
+
+</dd>
 <a id="rename.e,NodeRef,string"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#rename.e%2CNodeRef%2Cstring"><span class="Identifier">rename</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">new_name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -531,7 +531,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-02 13:29:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:40:08 UTC</small>
       </div>
     </div>
   </div>

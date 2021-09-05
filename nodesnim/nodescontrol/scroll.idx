@@ -5,7 +5,7 @@ addChild	nodesnim/nodescontrol/scroll.html#addChild.e,ScrollRef,NodeRef	scroll: 
 duplicate	nodesnim/nodescontrol/scroll.html#duplicate.e,ScrollRef	scroll: duplicate(self: ScrollRef): ScrollRef	
 resize	nodesnim/nodescontrol/scroll.html#resize.e,ScrollRef,GLfloat,GLfloat	scroll: resize(canvas: ScrollRef; w, h: GLfloat)	
 draw	nodesnim/nodescontrol/scroll.html#draw.e,ScrollRef,GLfloat,GLfloat	scroll: draw(self: ScrollRef; w, h: GLfloat)	
-draw2stage	nodesnim/nodescontrol/scroll.html#draw2stage.e,ScrollRef,GLfloat,GLfloat	scroll: draw2stage(self: ScrollRef; w, h: GLfloat)	
 scrollBy	nodesnim/nodescontrol/scroll.html#scrollBy.e,ScrollRef,float,float	scroll: scrollBy(self: ScrollRef; x, y: float)	
 scrollTo	nodesnim/nodescontrol/scroll.html#scrollTo.e,ScrollRef,float,float	scroll: scrollTo(self: ScrollRef; x, y: float)	
 handle	nodesnim/nodescontrol/scroll.html#handle.e,ScrollRef,InputEvent,NodeRef	scroll: handle(self: ScrollRef; event: InputEvent; mouse_on: var NodeRef)	
+postdraw	nodesnim/nodescontrol/scroll.html#postdraw.e,ScrollRef,GLfloat,GLfloat	scroll: postdraw(self: ScrollRef; w, h: GLfloat)	

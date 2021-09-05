@@ -5,7 +5,6 @@ Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&q
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
 addChilds	nodesnim/nodes/node.html#addChilds.e,NodeRef,varargs[NodeRef]	node: addChilds(self: NodeRef; childs: varargs[NodeRef])	
 draw	nodesnim/nodes/node.html#draw.e,NodeRef,GLfloat,GLfloat	node: draw(self: NodeRef; w, h: GLfloat)	
-draw2stage	nodesnim/nodes/node.html#draw2stage.e,NodeRef,GLfloat,GLfloat	node: draw2stage(self: NodeRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes/node.html#duplicate.e,NodeRef	node: duplicate(self: NodeRef): NodeRef	
 getChild	nodesnim/nodes/node.html#getChild.e,NodeRef,int	node: getChild(self: NodeRef; index: int): NodeRef	
 getChildCount	nodesnim/nodes/node.html#getChildCount.e,NodeRef	node: getChildCount(self: NodeRef): int	
@@ -23,6 +22,7 @@ hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,string	node: hasNode(self: No
 hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,NodeRef	node: hasNode(self: NodeRef; other: NodeRef): bool	
 hasParent	nodesnim/nodes/node.html#hasParent.e,NodeRef	node: hasParent(self: NodeRef): bool	
 hide	nodesnim/nodes/node.html#hide.e,NodeRef	node: hide(self: NodeRef)	
+postdraw	nodesnim/nodes/node.html#postdraw.e,NodeRef,GLfloat,GLfloat	node: postdraw(self: NodeRef; w, h: GLfloat)	
 rename	nodesnim/nodes/node.html#rename.e,NodeRef,string	node: rename(self: NodeRef; new_name: string)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,int	node: removeChild(self: NodeRef; index: int)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,NodeRef	node: removeChild(self: NodeRef; other: NodeRef)	

@@ -138,8 +138,6 @@ function main() {
     title="setShapeTypeCircle(self: CollisionShape2DRef; cx, cy, radius: float)"><wbr />set<wbr />Shape<wbr />Type<wbr />Circle<span class="attachedType">CollisionShape2DRef</span></a></li>
   <li><a class="reference" href="#setShapeTypePolygon.e%2CCollisionShape2DRef%2Cvarargs%5BVector2Ref%5D"
     title="setShapeTypePolygon(self: CollisionShape2DRef; positions: varargs[Vector2Ref])"><wbr />set<wbr />Shape<wbr />Type<wbr />Polygon<span class="attachedType">CollisionShape2DRef</span></a></li>
-  <li><a class="reference" href="#draw.e%2CCollisionShape2DRef%2CGLfloat%2CGLfloat"
-    title="draw(self: CollisionShape2DRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">CollisionShape2DRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CCollisionShape2DRef"
     title="duplicate(self: CollisionShape2DRef): CollisionShape2DRef"><wbr />duplicate<span class="attachedType">CollisionShape2DRef</span></a></li>
   <li><a class="reference" href="#getGlobalMousePosition.e%2CCollisionShape2DRef"
@@ -164,7 +162,7 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/circle2.html">../core/circle2</a>, <a class="reference external" href="../core/polygon2.html">../core/polygon2</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../nodes/canvas.html">../nodes/canvas</a>, <a class="reference external" href="node2d.html">node2d</a>
+<a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/circle2.html">../core/circle2</a>, <a class="reference external" href="../core/polygon2.html">../core/polygon2</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../nodes/canvas.html">../nodes/canvas</a>, <a class="reference external" href="node2d.html">node2d</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -255,13 +253,6 @@ Changes shape type to <tt class="docutils literal"><span class="pre">circle</spa
 
 
 </dd>
-<a id="draw.e,CollisionShape2DRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CCollisionShape2DRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="collision_shape2d.html#CollisionShape2DRef"><span class="Identifier">CollisionShape2DRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
-
-</dd>
 <a id="duplicate.e,CollisionShape2DRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CCollisionShape2DRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="collision_shape2d.html#CollisionShape2DRef"><span class="Identifier">CollisionShape2DRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="collision_shape2d.html#CollisionShape2DRef"><span class="Identifier">CollisionShape2DRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -316,7 +307,7 @@ Checks collision with other CollisionShape2D object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-02 13:30:25 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:41:19 UTC</small>
       </div>
     </div>
   </div>
