@@ -2,6 +2,7 @@
 import
   thirdparty/opengl,
   thirdparty/opengl/glut,
+  thirdparty/opengl/glu,
 
   core/color,
   core/exceptions,
@@ -35,6 +36,7 @@ glutInitDisplayMode(GLUT_DOUBLE)
 var
   env*: EnvironmentRef = newEnvironment()
   width, height: cint
+  max_distance*: GLdouble = int64.high.GLdouble
   main_scene*: SceneRef = nil
   current_scene*: SceneRef = nil
   scenes*: seq[SceneRef] = @[]
@@ -69,11 +71,11 @@ proc reshape(w, h: cint) {.cdecl.} =
   ## This called when window resized.
   if w > 0 and h > 0:
     glViewport(0, 0, w, h)
+    glLoadIdentity()
     glMatrixMode(GL_PROJECTION)
-    glLoadIdentity()
-    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
     glMatrixMode(GL_MODELVIEW)
-    glLoadIdentity()
+    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
+    gluPerspective(45.0, w/h, 1.0, 200.0)
     width = w
     height = h
 
@@ -258,6 +260,9 @@ proc setTitle*(title: cstring) =
     raise newException(WindowNotCreatedError, "Window not created!")
   glutSetWindowTitle(title)
 
+proc setMaxDistance*(distance: GLdouble) =
+  max_distance = distance
+
 proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   ## Creates a new window pointer
   ##
@@ -276,6 +281,8 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   glClearColor(r, g, b, a)
   glShadeModel(GL_FLAT)
   glClear(GL_COLOR_BUFFER_BIT)
+  glEnable(GL_COLOR_MATERIAL)
+  glMaterialf(GL_FRONT, GL_SHININESS, 15)
 
   reshape(w, h)
   window_created = true

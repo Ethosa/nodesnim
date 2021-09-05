@@ -71,11 +71,6 @@ method draw*(self: NodeRef, w, h: GLfloat) {.base.} =
   ## This used in the Window object.
   discard
 
-method draw2stage*(self: NodeRef, w, h: GLfloat) {.base.} =
-  ## Draws node.
-  ## This used in the Window object.
-  discard
-
 method duplicate*(self: NodeRef): NodeRef {.base.} =
   ## Duplicates Node object and create a new Node.
   self.deepCopy()
@@ -196,6 +191,11 @@ method hasParent*(self: NodeRef): bool {.base, inline.} =
 
 method hide*(self: NodeRef) {.base.} =
   self.visible = false
+
+method postdraw*(self: NodeRef, w, h: GLfloat) {.base.} =
+  ## Draws node.
+  ## This used in the Window object.
+  discard
 
 method rename*(self: NodeRef, new_name: string) {.base.} =
   self.name = new_name

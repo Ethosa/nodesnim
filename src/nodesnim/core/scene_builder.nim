@@ -13,10 +13,14 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
               result.add(newVarStmt(line[1][1], newCall($line[1][0])))
             elif line[1][1].kind == nnkObjConstr:
               result.add(newVarStmt(line[1][1][0], newCall($line[1][0])))
+            elif line[1][1].kind == nnkPar:
+              result.add(newVarStmt(postfix(line[1][1][0], "*"), newCall($line[1][0])))
             if level.len() > 0:
               # - Scene main_scene:
               if line[1][1].kind == nnkIdent:
                 result.add(newCall("addChild", level[^1], line[1][1]))
+              elif line[1][1].kind == nnkPar:
+                result.add(newCall("addChild", level[^1], line[1][1][0]))
               elif line[1][1].kind == nnkObjConstr:
                 result.add(newCall("addChild", level[^1], line[1][1][0]))
                 level.add(line[1][1][0])

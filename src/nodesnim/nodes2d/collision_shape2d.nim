@@ -1,8 +1,6 @@
 # author: Ethosa
 ## It provides collision shapes.
 import
-  ../thirdparty/opengl,
-
   ../core/vector2,
   ../core/rect2,
   ../core/anchor,
@@ -17,7 +15,9 @@ import
 
 
 when defined(debug):
-  import math
+  import
+    math,
+    ../thirdparty/opengl
   const PI2 = PI*2
 
 
@@ -87,13 +87,11 @@ method setShapeTypePolygon*(self: CollisionShape2DRef, positions: varargs[Vector
     self.polygon.add(i)
 
 
-method draw*(self: CollisionShape2DRef, w, h: GLfloat) =
-  ## this method uses in the `window.nim`.
-  {.warning[LockLevel]: off.}
-  procCall self.Node2DRef.draw(w, h)
-
-  # debug draw
-  when defined(debug):
+when defined(debug):
+  method draw*(self: CollisionShape2DRef, w, h: GLfloat) =
+    ## this method uses in the `window.nim`.
+    {.warning[LockLevel]: off.}
+    procCall self.Node2DRef.draw(w, h)
     let
       x = -w/2 + self.global_position.x
       y = h/2 - self.global_position.y

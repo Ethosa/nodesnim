@@ -4,20 +4,28 @@ import nodesnim
 
 Window("smth")
 
-var
-  scene = Scene("Main")
-  geometry = GeometryInstance("Cube")
+build:
+  - Scene scene:
+    - GeometryInstance geometry1:
+      translation: Vector3(1, 0, 5)
+      color: Color(144, 133, 122, 0.8)
+    - Sprite sprite:
+      call setTexture(load("assets/anim/2.jpg"))
+      call move(96, 96)
+    - GeometryInstance geometry2:
+      translation: Vector3(-1, 0, 2)
+      color: Color(122, 133, 144, 0.8)
+    - Button button:
+      text: "Hello! ^^"
+      call resize(256, 64)
+      call setAnchor(0.5, 0.5, 0.5, 0.5)
 
-
-scene.addChild(geometry)
-
-geometry.translateX(-50)
-geometry.transformX(1)
-
-geometry@on_input(self, event):
+geometry1@on_input(self, event):
   if event.isInputEventMouseMotion() and event.pressed:
-    geometry.rotateX(-event.yrel)
-    geometry.rotateY(-event.xrel)
+    geometry1.rotateX(-event.yrel)
+    geometry1.rotateY(-event.xrel)
+    geometry2.rotateX(-event.yrel)
+    geometry2.rotateY(-event.xrel)
 
 addMainScene(scene)
 windowLaunch()
