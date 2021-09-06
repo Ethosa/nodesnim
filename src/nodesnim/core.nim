@@ -15,9 +15,11 @@ import
   core/nodes_os,
   core/vector3,
   core/scene_builder,
-  core/stylesheet
+  core/stylesheet,
+  core/tools
 
 export
   vector2, rect2, circle2, polygon2, enums, anchor, color,
   exceptions, input, image, color_text, audio_stream,
-  animation, nodes_os, vector3, scene_builder, stylesheet
+  animation, nodes_os, vector3, scene_builder, stylesheet,
+  tools

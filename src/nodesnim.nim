@@ -30,6 +30,7 @@ export
   opengl, glut,
   # Main
   window, environment,
+  graphics,
   # Nodes
   core, nodes,
   nodescontrol, nodes2d, nodes3d

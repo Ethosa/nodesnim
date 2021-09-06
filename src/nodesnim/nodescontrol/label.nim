@@ -11,6 +11,9 @@ import
   ../core/input,
   ../core/enums,
   ../core/color,
+  ../core/stylesheet,
+
+  ../graphics/drawable,
 
   ../nodes/node,
   control
@@ -127,3 +130,14 @@ method setTextColor*(self: LabelRef, color: ColorRef) {.base.} =
 method setText*(self: LabelRef, value: string) {.base.} =
   ## Changes Label text.
   self.text = value
+
+method setStyle*(self: LabelRef, style: StyleSheetRef) =
+  self.background.setStyle(style)
+  for i in style.dict:
+    case i.key
+    # size-anchor: 1.0
+    # size-anchor: 0.5 1
+    of "color":
+      self.setTextColor(Color(i.value))
+    else:
+      discard
