@@ -6,5 +6,7 @@ description = "The Nim GUI/2D framework based on OpenGL and SDL2."
 license = "MIT"
 srcDir = "src"
 
+installFiles = @["unifont.ttf"]
+
 [Deps]
 Requires: "nim >= 1.0.0"

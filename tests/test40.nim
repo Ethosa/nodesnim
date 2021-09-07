@@ -1,36 +1,17 @@
-# --- Test 40. Use SubWindow node. --- #
+# --- Test 40. Use Scene builder. --- #
 import nodesnim
 
+Window("scene builder")
 
-Window("subwindow ._.")
+build:
+  - Scene scene:
+    name: "Main scene"
+    - Vbox background:  # Instead of var background = Vbox()
+      call setBackgroundColor(Color(21, 33, 48))  # You can change params without `objname`.param = value syntax.
+      call setSizeAnchor(1.0, 0.1)  # You can also call any method without `objname`.method(args) syntax. :eyes:
+      call setAnchor(0.5, 0.5, 0.5, 0.5)
 
-var
-  main = Scene()
-  window = SubWindow()
-  window1 = SubWindow()
-  window2 = SubWindow()
+echo background.size_anchor
 
-
-main.addChild(window)
-main.addChild(window1)
-main.addChild(window2)
-
-window.move(64, 64)
-window.setIcon("assets/anim/0.jpg")
-window.open()
-
-window1.move(64, 64)
-window1.setIcon("assets/anim/0.jpg")
-window1.setBackgroundColor(Color("#efefef"))
-window1.setTitle("Hello, lol")
-window1.open()
-
-window2.move(64, 64)
-window2.setIcon("assets/anim/0.jpg")
-window2.setBackgroundColor(Color("#212112"))
-window2.setTitle("Aboba")
-window2.open()
-
-
-addMainScene(main)
+addMainScene(scene)
 windowLaunch()

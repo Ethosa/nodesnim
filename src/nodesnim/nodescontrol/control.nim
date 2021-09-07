@@ -45,6 +45,7 @@ template controlpattern*: untyped =
   result.mousemode = MOUSEMODE_SEE
   result.background = Drawable()
   result.rect_size = Vector2()
+  result.rect_min_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
 
@@ -68,7 +69,6 @@ proc Control*(name: string = "Control"): ControlRef =
   controlpattern()
   result.kind = CONTROL_NODE
 
-
 method calcPositionAnchor*(self: ControlRef) =
   ## Calculates node position. This uses in the `scene.nim`.
   if self.parent != nil:
@@ -84,6 +84,7 @@ method calcPositionAnchor*(self: ControlRef) =
 method draw*(self: ControlRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
+  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

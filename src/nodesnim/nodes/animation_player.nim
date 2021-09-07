@@ -56,7 +56,6 @@ proc bezier(self: AnimationPlayerRef, states: seq[tuple[tick: int, value: float]
     diff = states[1].value - states[0].value
   result = cubic_bezier(t, 0.0, self.bezier[0], self.bezier[1], 1.0)
   result = states[0].value + diff*result
-  echo t, ", ", step, ", ", result
 
 
 method addState*(self: AnimationPlayerRef, obj: ptr float, states: seq[tuple[tick: int, value: float]]) {.base.} =

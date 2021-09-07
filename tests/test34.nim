@@ -1,4 +1,4 @@
-# --- Test 34. Use Switch node. --- #
+# --- Test 34. Rotation. --- #
 import nodesnim
 
 
@@ -7,14 +7,18 @@ Window("hello world")
 var
   main = Scene("Main")
 
-  switch = Switch()
+  sprite = Sprite()
 
-main.addChild(switch)
-switch.move(128, 64)
+main.addChild(sprite)
 
-switch.on_toggle =
-  proc(self: SwitchRef, toggled: bool) =  # this called when the user toggles switch.
-    echo toggled
+sprite.loadTexture("assets/anim/2.jpg")
+
+sprite.move(128, 128)
+sprite.centered = false
+
+
+sprite@on_process(self):
+  sprite.rotation += 0.1
 
 
 addScene(main)

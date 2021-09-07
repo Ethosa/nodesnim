@@ -37,6 +37,7 @@ type
     position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
     global_position*: Vector2Ref     ## Node global position.
     rect_size*: Vector2Ref           ## Node size.
+    rect_min_size*: Vector2Ref
     size_anchor*: Vector2Ref         ## Node size anchor.
     anchor*: AnchorRef               ## Node anchor.
     can_use_anchor*: bool
@@ -53,6 +54,7 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
     var canvas1 = Canvas("Canvas")
   nodepattern(CanvasRef)
   result.rect_size = Vector2(40, 40)
+  result.rect_min_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
   result.anchor = Anchor(0, 0, 0, 0)
@@ -204,16 +206,24 @@ method fill*(canvas: CanvasRef, color: ColorRef) {.base.} =
   ## Fills canvas.
   canvas.commands = @[DrawCommand(kind: FILL, x1: 0, y1: 0, color: color)]
 
-method resize*(canvas: CanvasRef, w, h: GLfloat) {.base.} =
+method resize*(self: CanvasRef, w, h: GLfloat) {.base.} =
   ## Resizes canvas.
   ##
   ## Arguments:
   ## - `w` is a new width.
   ## - `h` is a new height.
-  canvas.rect_size.x = w
-  canvas.rect_size.y = h
-  canvas.can_use_anchor = false
-  canvas.can_use_size_anchor = false
+  if w > self.rect_min_size.x:
+    self.rect_size.x = w
+    self.size_anchor = nil
+  else:
+    self.rect_size.x = self.rect_min_size.x
+  if h > self.rect_min_size.y:
+    self.rect_size.y = h
+    self.size_anchor = nil
+  else:
+    self.rect_size.y = self.rect_min_size.y
+  self.can_use_anchor = false
+  self.can_use_size_anchor = false
 
 method setAnchor*(self: CanvasRef, anchor: AnchorRef) {.base.} =
   ## Changes node anchor.

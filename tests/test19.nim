@@ -1,7 +1,5 @@
-# --- Test 19. Use RichEditText node. --- #
-import
-  strutils,
-  nodesnim
+# --- Test 19. Use ProgressBar node. --- #
+import nodesnim
 
 
 Window("hello world")
@@ -9,28 +7,31 @@ Window("hello world")
 var
   main = Scene("Main")
 
-  label = RichEditText()
+  progressbar = ProgressBar()
+  vprogressbar = ProgressBar()
+  cprogressbar = ProgressBar()
 
-main.addChild(label)
+vprogressbar.progress_type = PROGRESS_BAR_VERTICAL
+cprogressbar.progress_type = PROGRESS_BAR_CIRCLE
 
-label.setSizeAnchor(1, 1)
 
-label.on_process =
-  proc(self: NodeRef) =
-    label.text.setColor(Color(1f, 1f, 1f))
-    label.text.setUnderline(false)
+main.addChild(progressbar)
+main.addChild(vprogressbar)
+main.addChild(cprogressbar)
 
-    # Nim highlight
-    var start_position = ($label.text).find("Nim")
-    while start_position > -1:
-      label.text.setColor(start_position, start_position+2, Color(0xaa99ffff'u32))
-      start_position = ($label.text).find("Nim", start_position+2)
+progressbar.setProgress(50)  # default max progress value is 100.
+progressbar.setMaxValue(150)
 
-    # word underline
-    if label.text.len() > 0:
-      let (s, e) = label.getWordPositionUnderMouse()
-      if s != -1:
-        label.text.setUnderline(s, e, true)
+vprogressbar.setProgress(2)  # default max progress value is 100.
+vprogressbar.setMaxValue(5)
+vprogressbar.move(0, 64)
+vprogressbar.resize(20, 80)
+
+cprogressbar.move(64, 64)
+cprogressbar.resize(80, 80)
+cprogressbar.indeterminate = true
+cprogressbar.setMaxValue(15)
+cprogressbar.setProgress(5)
 
 
 addScene(main)

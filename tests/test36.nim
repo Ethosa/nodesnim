@@ -1,26 +1,14 @@
-# --- Test 36. Rotation. --- #
+# --- Test 36. Use Node3D. --- #
 import nodesnim
 
-
-Window("hello world")
+Window("smth here")
 
 var
-  main = Scene("Main")
+  scene = Scene("Main")
+  node = Node3D()
 
-  sprite = Sprite()
-
-main.addChild(sprite)
-
-sprite.loadTexture("assets/anim/2.jpg")
-
-sprite.move(128, 128)
-sprite.centered = false
+scene.addChild(node)
 
 
-sprite@on_process(self):
-  sprite.rotation += 0.1
-
-
-addScene(main)
-setMainScene("Main")
+addMainScene(scene)
 windowLaunch()

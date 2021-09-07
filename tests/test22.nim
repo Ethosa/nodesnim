@@ -1,4 +1,4 @@
-# --- Test 22. Use Slider node. --- #
+# --- Test 22. Use AudioStreamPlayer node. --- #
 import nodesnim
 
 
@@ -7,28 +7,20 @@ Window("hello world")
 var
   main = Scene("Main")
 
-  slider = Slider()
-  vslider = VSlider()
+  stream1 = loadAudio("assets/vug_ost_Weh.ogg")
+  stream2 = loadAudio("assets/vug_ost_Movement.ogg")
 
-main.addChild(slider)
-main.addChild(vslider)
-vslider.move(64, 64)
-vslider.setMaxValue(4)
-slider.resize(256, 32)
-slider.setMaxValue(1000)
+  audio = AudioStreamPlayer()
+  audio1 = AudioStreamPlayer()
 
-vslider.on_changed =
-  proc(self: VSliderRef, v: uint) =
-    if v > 2:
-      vslider.setProgressColor(Color(0xccaaffff'u32))
-    else:
-      vslider.setProgressColor(Color(0xffaaccff'u32))
+audio.stream = stream1
+audio.setVolume(64)
+audio.play()
 
-slider.on_changed =
-  proc(self: SliderRef, v: uint) =
-    slider.setProgressColor(Color(
-      1f - v.float / slider.max_value.float, v.float / slider.max_value.float, 0
-    ))
+when false:  # use more than one channel
+  audio1.stream = stream2
+  audio1.setVolume(64)
+  audio1.play()
 
 
 addScene(main)
