@@ -16,7 +16,7 @@ build:
       translation: Vector3(-1, 0, 2)
       color: Color(122, 133, 144, 0.8)
     - Button button:
-      text: "Hello! ^^"
+      text: stext"Hello! ^^"
       call resize(256, 64)
       call setAnchor(0.5, 0.5, 0.5, 0.5)
 

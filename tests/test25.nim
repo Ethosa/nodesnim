@@ -16,7 +16,7 @@ var
 main.addChild(button)
 env.setBackgroundColor(Color(0xf2f2f7ff'u32))
 
-button.text = "Press me!"
+button.setText("Press me!")
 button.resize(256, 64)
 button.setAnchor(0.5, 0.5, 0.5, 0.5)
 
@@ -26,7 +26,7 @@ button.setPressTexture(press_texture)
 
 button.on_touch =
   proc(self: TextureButtonRef, x, y: float) =  # This called when user clicks on the button
-    button.text = "Clicked in " & $x & ", " & $y & " position."
+    button.setText("Clicked in " & $x & ", " & $y & " position.")
 
 
 addScene(main)
