@@ -134,8 +134,8 @@ function main() {
     title="addChild(self: ScrollRef; other: NodeRef)"><wbr />add<wbr />Child<span class="attachedType">ScrollRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CScrollRef"
     title="duplicate(self: ScrollRef): ScrollRef"><wbr />duplicate<span class="attachedType">ScrollRef</span></a></li>
-  <li><a class="reference" href="#resize.e%2CScrollRef%2CGLfloat%2CGLfloat"
-    title="resize(canvas: ScrollRef; w, h: GLfloat)"><wbr />resize<span class="attachedType">ScrollRef</span></a></li>
+  <li><a class="reference" href="#resize.e%2CScrollRef%2CGLfloat%2CGLfloat%2Cbool"
+    title="resize(canvas: ScrollRef; w, h: GLfloat; save_anchor: bool = false)"><wbr />resize<span class="attachedType">ScrollRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CScrollRef%2CGLfloat%2CGLfloat"
     title="draw(self: ScrollRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">ScrollRef</span></a></li>
   <li><a class="reference" href="#scrollBy.e%2CScrollRef%2Cfloat%2Cfloat"
@@ -227,8 +227,9 @@ function main() {
 Duplicates Scroll object and create a new Scroll.
 
 </dd>
-<a id="resize.e,ScrollRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CScrollRef%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="resize.e,ScrollRef,GLfloat,GLfloat,bool"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CScrollRef%2CGLfloat%2CGLfloat%2Cbool"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="scroll.html#ScrollRef"><span class="Identifier">ScrollRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">;</span> <span class="Identifier">save_anchor</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Resizes scroll.</p>
@@ -286,7 +287,7 @@ This uses in the <tt class="docutils literal"><span class="pre">window.nim</span
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:40:47 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:23 UTC</small>
       </div>
     </div>
   </div>

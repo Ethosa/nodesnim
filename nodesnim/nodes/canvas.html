@@ -128,10 +128,9 @@ function main() {
   position*: Vector2Ref        ## Node position, by default is Vector2(0, 0).
   global_position*: Vector2Ref ## Node global position.
   rect_size*: Vector2Ref       ## Node size.
+  rect_min_size*: Vector2Ref
   size_anchor*: Vector2Ref     ## Node size anchor.
-  anchor*: AnchorRef           ## Node anchor.
-  can_use_anchor*: bool
-  can_use_size_anchor*: bool"><wbr />Canvas<wbr />Obj<span class="attachedType"></span></a></li>
+  anchor*: AnchorRef           ## Node anchor."><wbr />Canvas<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#CanvasRef"
     title="CanvasRef = ref CanvasObj"><wbr />Canvas<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -170,8 +169,8 @@ function main() {
     title="rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)"><wbr />rect<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#fill.e%2CCanvasRef%2CColorRef"
     title="fill(canvas: CanvasRef; color: ColorRef)"><wbr />fill<span class="attachedType">CanvasRef</span></a></li>
-  <li><a class="reference" href="#resize.e%2CCanvasRef%2CGLfloat%2CGLfloat"
-    title="resize(canvas: CanvasRef; w, h: GLfloat)"><wbr />resize<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#resize.e%2CCanvasRef%2CGLfloat%2CGLfloat%2Cbool"
+    title="resize(self: CanvasRef; w, h: GLfloat; save_anchor: bool = false)"><wbr />resize<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#setAnchor.e%2CCanvasRef%2CAnchorRef"
     title="setAnchor(self: CanvasRef; anchor: AnchorRef)"><wbr />set<wbr />Anchor<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#setAnchor.e%2CCanvasRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
@@ -235,11 +234,10 @@ function main() {
   <span class="Identifier">position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>        <span class="Comment">## Node position, by default is Vector2(0, 0).</span>
   <span class="Identifier">global_position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span class="Comment">## Node global position.</span>
   <span class="Identifier">rect_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>       <span class="Comment">## Node size.</span>
+  <span class="Identifier">rect_min_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>
   <span class="Identifier">size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>     <span class="Comment">## Node size anchor.</span>
   <span class="Identifier">anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>           <span class="Comment">## Node anchor.</span>
-  <span class="Identifier">can_use_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-  <span class="Identifier">can_use_size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
-</pre></dt>
+  </pre></dt>
 <dd>
 
 
@@ -395,8 +393,9 @@ Duplicates Canvas object and create a new Canvas.
 Fills canvas.
 
 </dd>
-<a id="resize.e,CanvasRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CCanvasRef%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="resize.e,CanvasRef,GLfloat,GLfloat,bool"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CCanvasRef%2CGLfloat%2CGLfloat%2Cbool"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">;</span> <span class="Identifier">save_anchor</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Resizes canvas.</p>
@@ -454,7 +453,7 @@ Fills canvas.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:40:10 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:26:59 UTC</small>
       </div>
     </div>
   </div>

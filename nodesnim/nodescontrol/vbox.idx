@@ -5,4 +5,4 @@ getChildSize	nodesnim/nodescontrol/vbox.html#getChildSize.e,VBoxRef	vbox: getChi
 addChild	nodesnim/nodescontrol/vbox.html#addChild.e,VBoxRef,NodeRef	vbox: addChild(self: VBoxRef; child: NodeRef)	
 draw	nodesnim/nodescontrol/vbox.html#draw.e,VBoxRef,GLfloat,GLfloat	vbox: draw(self: VBoxRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/vbox.html#duplicate.e,VBoxRef	vbox: duplicate(self: VBoxRef): VBoxRef	
-resize	nodesnim/nodescontrol/vbox.html#resize.e,VBoxRef,GLfloat,GLfloat	vbox: resize(self: VBoxRef; w, h: GLfloat)	
+resize	nodesnim/nodescontrol/vbox.html#resize.e,VBoxRef,GLfloat,GLfloat,bool	vbox: resize(self: VBoxRef; w, h: GLfloat; save_anchor: bool = false)	

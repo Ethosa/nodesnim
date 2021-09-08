@@ -1,15 +1,5 @@
-EditTextObj	nodesnim/nodescontrol/edittext.html#EditTextObj	edittext: EditTextObj	
 EditTextRef	nodesnim/nodescontrol/edittext.html#EditTextRef	edittext: EditTextRef	
-EditText	nodesnim/nodescontrol/edittext.html#EditText,string	edittext: EditText(name: string = &quot;EditText&quot;): EditTextRef	
-getTextSize	nodesnim/nodescontrol/edittext.html#getTextSize.e,EditTextRef	edittext: getTextSize(self: EditTextRef): Vector2Ref	
-getLine	nodesnim/nodescontrol/edittext.html#getLine.e,EditTextRef	edittext: getLine(self: EditTextRef): int	
-getCharPositionUnderMouse	nodesnim/nodescontrol/edittext.html#getCharPositionUnderMouse.e,EditTextRef	edittext: getCharPositionUnderMouse(self: EditTextRef): int	
-getCharUnderMouse	nodesnim/nodescontrol/edittext.html#getCharUnderMouse.e,EditTextRef	edittext: getCharUnderMouse(self: EditTextRef): char	
-getWordPositionUnderMouse	nodesnim/nodescontrol/edittext.html#getWordPositionUnderMouse.e,EditTextRef	edittext: getWordPositionUnderMouse(self: EditTextRef): tuple[startpos, endpos: int]	
-getWordUnderMouse	nodesnim/nodescontrol/edittext.html#getWordUnderMouse.e,EditTextRef	edittext: getWordUnderMouse(self: EditTextRef): string	
+EditText	nodesnim/nodescontrol/edittext.html#EditText,string,string	edittext: EditText(name: string = &quot;EditText&quot;; hint: string = &quot;Edit text ...&quot;): EditTextRef	
 draw	nodesnim/nodescontrol/edittext.html#draw.e,EditTextRef,GLfloat,GLfloat	edittext: draw(self: EditTextRef; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/edittext.html#duplicate.e,EditTextRef	edittext: duplicate(self: EditTextRef): EditTextRef	
+setText	nodesnim/nodescontrol/edittext.html#setText.e,EditTextRef,string,bool	edittext: setText(self: EditTextRef; text: string; save_properties: bool = false)	
 handle	nodesnim/nodescontrol/edittext.html#handle.e,EditTextRef,InputEvent,NodeRef	edittext: handle(self: EditTextRef; event: InputEvent; mouse_on: var NodeRef)	
-setTextAlign	nodesnim/nodescontrol/edittext.html#setTextAlign.e,EditTextRef,AnchorRef	edittext: setTextAlign(self: EditTextRef; align: AnchorRef)	
-setTextAlign	nodesnim/nodescontrol/edittext.html#setTextAlign.e,EditTextRef,float,float,float,float	edittext: setTextAlign(self: EditTextRef; x1, y1, x2, y2: float)	
-setText	nodesnim/nodescontrol/edittext.html#setText.e,EditTextRef,string	edittext: setText(self: EditTextRef; value: string)	

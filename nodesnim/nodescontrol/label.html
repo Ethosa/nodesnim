@@ -108,12 +108,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#LabelObj"
     title="LabelObj = object of ControlRef
-  font*: pointer               ## Glut font data.
-  spacing*: float              ## Font spacing.
-  size*: float                 ## Font size.
-  text*: string                ## Label text.
-  color*: ColorRef             ## Text color.
-  text_align*: AnchorRef       ## Text align."><wbr />Label<wbr />Obj<span class="attachedType"></span></a></li>
+  text_align*: AnchorRef
+  text*: StyleText"><wbr />Label<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#LabelRef"
     title="LabelRef = ref LabelObj"><wbr />Label<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -132,20 +128,22 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CLabelRef%2CGLfloat%2CGLfloat"
     title="draw(self: LabelRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">LabelRef</span></a></li>
-  <li><a class="reference" href="#getTextSize.e%2CLabelRef"
-    title="getTextSize(self: LabelRef): Vector2Ref"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CLabelRef"
     title="duplicate(self: LabelRef): LabelRef"><wbr />duplicate<span class="attachedType">LabelRef</span></a></li>
-  <li><a class="reference" href="#setFont.e%2CLabelRef%2Cpointer%2Cfloat"
-    title="setFont(self: LabelRef; font: pointer; size: float)"><wbr />set<wbr />Font<span class="attachedType">LabelRef</span></a></li>
-  <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2CAnchorRef"
-    title="setTextAlign(self: LabelRef; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#getText.e%2CLabelRef"
+    title="getText(self: LabelRef): string"><wbr />get<wbr />Text<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#setText.e%2CLabelRef%2Cstring%2Cbool"
+    title="setText(self: LabelRef; text: string; save_properties: bool = false)"><wbr />set<wbr />Text<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextAlign(self: LabelRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2CAnchorRef"
+    title="setTextAlign(self: LabelRef; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextColor.e%2CLabelRef%2CColorRef"
     title="setTextColor(self: LabelRef; color: ColorRef)"><wbr />set<wbr />Text<wbr />Color<span class="attachedType">LabelRef</span></a></li>
-  <li><a class="reference" href="#setText.e%2CLabelRef%2Cstring"
-    title="setText(self: LabelRef; value: string)"><wbr />set<wbr />Text<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#setTextFont.e%2CLabelRef%2CFontPtr"
+    title="setTextFont(self: LabelRef; font: FontPtr)"><wbr />set<wbr />Text<wbr />Font<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#setStyle.e%2CLabelRef%2CStyleSheetRef"
+    title="setStyle(self: LabelRef; s: StyleSheetRef)"><wbr />set<wbr />Style<span class="attachedType">LabelRef</span></a></li>
 
   </ul>
 </li>
@@ -160,20 +158,16 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../thirdparty/opengl/glut.html">../thirdparty/opengl/glut</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="control.html">control</a>
+<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../thirdparty/sdl2/ttf.html">../thirdparty/sdl2/ttf</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../core/stylesheet.html">../core/stylesheet</a>, <a class="reference external" href="../core/font.html">../core/font</a>, <a class="reference external" href="../core/nodes_os.html">../core/nodes_os</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../nodes/canvas.html">../nodes/canvas</a>, <a class="reference external" href="control.html">control</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <a id="LabelObj"></a>
 <dt><pre><a href="label.html#LabelObj"><span class="Identifier">LabelObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a>
-  <span class="Identifier">font</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">pointer</span>               <span class="Comment">## Glut font data.</span>
-  <span class="Identifier">spacing</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>              <span class="Comment">## Font spacing.</span>
-  <span class="Identifier">size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>                 <span class="Comment">## Font size.</span>
-  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>                <span class="Comment">## Label text.</span>
-  <span class="Identifier">color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>             <span class="Comment">## Text color.</span>
-  <span class="Identifier">text_align</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>       <span class="Comment">## Text align.</span>
-  </pre></dt>
+  <span class="Identifier">text_align</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>
+  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/font.html#StyleText"><span class="Identifier">StyleText</span></a>
+</pre></dt>
 <dd>
 
 
@@ -217,13 +211,6 @@ function main() {
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="getTextSize.e,LabelRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getTextSize.e%2CLabelRef"><span class="Identifier">getTextSize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
-<dd>
-
-Returns text size.
-
-</dd>
 <a id="duplicate.e,LabelRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CLabelRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -231,39 +218,60 @@ Returns text size.
 Duplicates Label object and create a new Label.
 
 </dd>
-<a id="setFont.e,LabelRef,pointer,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setFont.e%2CLabelRef%2Cpointer%2Cfloat"><span class="Identifier">setFont</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">font</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="getText.e,LabelRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#getText.e%2CLabelRef"><span class="Identifier">getText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes font to other GLUT font.
+
 
 </dd>
-<a id="setTextAlign.e,LabelRef,AnchorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setText.e,LabelRef,string,bool"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CLabelRef%2Cstring%2Cbool"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">save_properties</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes text alignment.
+<p>Changes text.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">text</span></tt> is a new Label text.</li>
+<li><tt class="docutils literal"><span class="pre">save_properties</span></tt> - saves old text properties, if <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
+</ul>
+
 
 </dd>
 <a id="setTextAlign.e,LabelRef,float,float,float,float"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes text alignment.
+
+
+</dd>
+<a id="setTextAlign.e,LabelRef,AnchorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
 
 </dd>
 <a id="setTextColor.e,LabelRef,ColorRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setTextColor.e%2CLabelRef%2CColorRef"><span class="Identifier">setTextColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes text color.
+
 
 </dd>
-<a id="setText.e,LabelRef,string"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CLabelRef%2Cstring"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setTextFont.e,LabelRef,FontPtr"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextFont.e%2CLabelRef%2CFontPtr"><span class="Identifier">setTextFont</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">font</span><span class="Other">:</span> <a href="../thirdparty/sdl2/ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes Label text.
+
+
+</dd>
+<a id="setStyle.e,LabelRef,StyleSheetRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setStyle.e%2CLabelRef%2CStyleSheetRef"><span class="Identifier">setStyle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">s</span><span class="Other">:</span> <a href="../core/stylesheet.html#StyleSheetRef"><span class="Identifier">StyleSheetRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
 
 </dd>
 
@@ -276,7 +284,7 @@ Changes Label text.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:40:28 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:13 UTC</small>
       </div>
     </div>
   </div>

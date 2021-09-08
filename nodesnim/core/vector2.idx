@@ -6,6 +6,7 @@ Vector2	nodesnim/core/vector2.html#Vector2,float	vector2: Vector2(num: float): V
 Vector2	nodesnim/core/vector2.html#Vector2	vector2: Vector2(): Vector2Ref	
 abs	nodesnim/core/vector2.html#abs,Vector2Ref	vector2: abs(a: Vector2Ref): Vector2Ref	
 angle	nodesnim/core/vector2.html#angle,Vector2Ref	vector2: angle(a: Vector2Ref): float	
+clear	nodesnim/core/vector2.html#clear,Vector2Ref	vector2: clear(a: Vector2Ref)	
 cross	nodesnim/core/vector2.html#cross,Vector2Ref,Vector2Ref	vector2: cross(a, b: Vector2Ref): float	
 cross	nodesnim/core/vector2.html#cross,Vector2Ref,float,float	vector2: cross(a: Vector2Ref; x, y: float): float	
 dot	nodesnim/core/vector2.html#dot,Vector2Ref,Vector2Ref	vector2: dot(a, b: Vector2Ref): float	
@@ -22,6 +23,7 @@ distance	nodesnim/core/vector2.html#distance,Vector2Ref,float,float	vector2: dis
 directionTo	nodesnim/core/vector2.html#directionTo,Vector2Ref,Vector2Ref	vector2: directionTo(a, b: Vector2Ref): Vector2Ref	
 directionTo	nodesnim/core/vector2.html#directionTo,Vector2Ref,float,float	vector2: directionTo(a: Vector2Ref; x, y: float): Vector2Ref	
 intersects	nodesnim/core/vector2.html#intersects,Vector2Ref,Vector2Ref,Vector2Ref,Vector2Ref	vector2: intersects(a, b, c, d: Vector2Ref): bool	
+isEmpty	nodesnim/core/vector2.html#isEmpty,Vector2Ref	vector2: isEmpty(a: Vector2Ref): bool	
 `+`	nodesnim/core/vector2.html#+,Vector2Ref,Vector2Ref	vector2: `+`(a, b: Vector2Ref): Vector2Ref	
 `-`	nodesnim/core/vector2.html#-,Vector2Ref,Vector2Ref	vector2: `-`(a, b: Vector2Ref): Vector2Ref	
 `/`	nodesnim/core/vector2.html#/,Vector2Ref,Vector2Ref	vector2: `/`(a, b: Vector2Ref): Vector2Ref	

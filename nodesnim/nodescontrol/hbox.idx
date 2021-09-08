@@ -5,4 +5,4 @@ getChildSize	nodesnim/nodescontrol/hbox.html#getChildSize.e,HBoxRef	hbox: getChi
 addChild	nodesnim/nodescontrol/hbox.html#addChild.e,HBoxRef,NodeRef	hbox: addChild(self: HBoxRef; child: NodeRef)	
 draw	nodesnim/nodescontrol/hbox.html#draw.e,HBoxRef,GLfloat,GLfloat	hbox: draw(self: HBoxRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/hbox.html#duplicate.e,HBoxRef	hbox: duplicate(self: HBoxRef): HBoxRef	
-resize	nodesnim/nodescontrol/hbox.html#resize.e,HBoxRef,GLfloat,GLfloat	hbox: resize(self: HBoxRef; w, h: GLfloat)	
+resize	nodesnim/nodescontrol/hbox.html#resize.e,HBoxRef,GLfloat,GLfloat,bool	hbox: resize(self: HBoxRef; w, h: GLfloat; save_anchor: bool = false)	

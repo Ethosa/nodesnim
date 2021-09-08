@@ -133,8 +133,8 @@ function main() {
     title="draw(self: HBoxRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">HBoxRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CHBoxRef"
     title="duplicate(self: HBoxRef): HBoxRef"><wbr />duplicate<span class="attachedType">HBoxRef</span></a></li>
-  <li><a class="reference" href="#resize.e%2CHBoxRef%2CGLfloat%2CGLfloat"
-    title="resize(self: HBoxRef; w, h: GLfloat)"><wbr />resize<span class="attachedType">HBoxRef</span></a></li>
+  <li><a class="reference" href="#resize.e%2CHBoxRef%2CGLfloat%2CGLfloat%2Cbool"
+    title="resize(self: HBoxRef; w, h: GLfloat; save_anchor: bool = false)"><wbr />resize<span class="attachedType">HBoxRef</span></a></li>
 
   </ul>
 </li>
@@ -226,8 +226,9 @@ This uses in the <tt class="docutils literal"><span class="pre">window.nim</span
 Duplicates HBox object and create a new HBox.
 
 </dd>
-<a id="resize.e,HBoxRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CHBoxRef%2CGLfloat%2CGLfloat"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="hbox.html#HBoxRef"><span class="Identifier">HBoxRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="resize.e,HBoxRef,GLfloat,GLfloat,bool"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#resize.e%2CHBoxRef%2CGLfloat%2CGLfloat%2Cbool"><span class="Identifier">resize</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="hbox.html#HBoxRef"><span class="Identifier">HBoxRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">;</span> <span class="Identifier">save_anchor</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Resizes HBox, if <tt class="docutils literal"><span class="pre">w</span></tt> and <tt class="docutils literal"><span class="pre">h</span></tt> not less than child size.</p>
@@ -248,7 +249,7 @@ Duplicates HBox object and create a new HBox.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-05 11:40:35 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:18 UTC</small>
       </div>
     </div>
   </div>

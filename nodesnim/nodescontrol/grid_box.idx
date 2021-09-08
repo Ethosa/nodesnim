@@ -6,6 +6,6 @@ getChildSize	nodesnim/nodescontrol/grid_box.html#getChildSize.e,GridBoxRef	grid_
 addChild	nodesnim/nodescontrol/grid_box.html#addChild.e,GridBoxRef,NodeRef	grid_box: addChild(self: GridBoxRef; child: NodeRef)	
 draw	nodesnim/nodescontrol/grid_box.html#draw.e,GridBoxRef,GLfloat,GLfloat	grid_box: draw(self: GridBoxRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/grid_box.html#duplicate.e,GridBoxRef	grid_box: duplicate(self: GridBoxRef): GridBoxRef	
-resize	nodesnim/nodescontrol/grid_box.html#resize.e,GridBoxRef,GLfloat,GLfloat	grid_box: resize(self: GridBoxRef; w, h: GLfloat)	
+resize	nodesnim/nodescontrol/grid_box.html#resize.e,GridBoxRef,GLfloat,GLfloat,bool	grid_box: resize(self: GridBoxRef; w, h: GLfloat; save_anchor: bool = false)	
 setRow	nodesnim/nodescontrol/grid_box.html#setRow.e,GridBoxRef,int	grid_box: setRow(self: GridBoxRef; row: int)	
 setSeparator	nodesnim/nodescontrol/grid_box.html#setSeparator.e,GridBoxRef,float	grid_box: setSeparator(self: GridBoxRef; separator: float)	

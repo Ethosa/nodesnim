@@ -14,7 +14,7 @@ point	nodesnim/nodes/canvas.html#point.e,CanvasRef,GLfloat,GLfloat,ColorRef	canv
 line	nodesnim/nodes/canvas.html#line.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: line(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
 rect	nodesnim/nodes/canvas.html#rect.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
 fill	nodesnim/nodes/canvas.html#fill.e,CanvasRef,ColorRef	canvas: fill(canvas: CanvasRef; color: ColorRef)	
-resize	nodesnim/nodes/canvas.html#resize.e,CanvasRef,GLfloat,GLfloat	canvas: resize(canvas: CanvasRef; w, h: GLfloat)	
+resize	nodesnim/nodes/canvas.html#resize.e,CanvasRef,GLfloat,GLfloat,bool	canvas: resize(self: CanvasRef; w, h: GLfloat; save_anchor: bool = false)	
 setAnchor	nodesnim/nodes/canvas.html#setAnchor.e,CanvasRef,AnchorRef	canvas: setAnchor(self: CanvasRef; anchor: AnchorRef)	
 setAnchor	nodesnim/nodes/canvas.html#setAnchor.e,CanvasRef,float,float,float,float	canvas: setAnchor(self: CanvasRef; x1, y1, x2, y2: float)	
 setSizeAnchor	nodesnim/nodes/canvas.html#setSizeAnchor.e,CanvasRef,Vector2Ref	canvas: setSizeAnchor(self: CanvasRef; anchor: Vector2Ref)	
