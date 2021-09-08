@@ -113,7 +113,7 @@ method setText*(self: EditTextRef, text: string, save_properties: bool = false) 
   self.text = st
   self.rect_min_size = self.text.getTextSize()
   self.resize(self.rect_size.x, self.rect_size.y)
-  self.text.render(self.rect_size, self.text_align)
+  self.text.rendered = false
 
 method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. Thi uses in the `window.nim`.
