@@ -72,12 +72,12 @@ proc Control*(name: string = "Control"): ControlRef =
 method calcPositionAnchor*(self: ControlRef) =
   ## Calculates node position. This uses in the `scene.nim`.
   if self.parent != nil:
-    if self.can_use_size_anchor:
+    if not self.size_anchor.isNil():
       if self.size_anchor.x > 0.0:
         self.rect_size.x = self.parent.CanvasRef.rect_size.x * self.size_anchor.x
       if self.size_anchor.y > 0.0:
         self.rect_size.y = self.parent.CanvasRef.rect_size.y * self.size_anchor.y
-    if self.can_use_anchor:
+    if not self.anchor.isNil() and not self.anchor.isEmpty():
       self.position.x = self.parent.CanvasRef.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
       self.position.y = self.parent.CanvasRef.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
 

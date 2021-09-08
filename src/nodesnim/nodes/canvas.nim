@@ -40,8 +40,6 @@ type
     rect_min_size*: Vector2Ref
     size_anchor*: Vector2Ref         ## Node size anchor.
     anchor*: AnchorRef               ## Node anchor.
-    can_use_anchor*: bool
-    can_use_size_anchor*: bool
   CanvasRef* = ref CanvasObj
 
 
@@ -59,8 +57,6 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
   result.global_position = Vector2()
   result.anchor = Anchor(0, 0, 0, 0)
   result.size_anchor = Vector2()
-  result.can_use_anchor = false
-  result.can_use_size_anchor = false
   result.kind = CANVAS_NODE
   result.type_of_node = NODE_TYPE_CONTROL
 
@@ -140,8 +136,7 @@ method move*(self: CanvasRef, vec2: Vector2Ref) {.base, inline.} =
   ## Arguments:
   ## - `vec2`: how much to add to the position on the X,Y axes.
   self.position += vec2
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
+  self.anchor.clear()
 
 method move*(self: CanvasRef, x, y: float) {.base, inline.} =
   ## Adds `x` and` y` to the node position.
@@ -150,8 +145,7 @@ method move*(self: CanvasRef, x, y: float) {.base, inline.} =
   ## - `x`: how much to add to the position on the X axis.
   ## - `y`: how much to add to the position on the Y axis.
   self.position += Vector2(x, y)
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
+  self.anchor.clear()
 
 method circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
   ## Draws a circle in the canvas.
@@ -214,16 +208,14 @@ method resize*(self: CanvasRef, w, h: GLfloat) {.base.} =
   ## - `h` is a new height.
   if w > self.rect_min_size.x:
     self.rect_size.x = w
-    self.size_anchor = nil
+    self.size_anchor.x = 0.0
   else:
     self.rect_size.x = self.rect_min_size.x
   if h > self.rect_min_size.y:
     self.rect_size.y = h
-    self.size_anchor = nil
+    self.size_anchor.y = 0.0
   else:
     self.rect_size.y = self.rect_min_size.y
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
 
 method setAnchor*(self: CanvasRef, anchor: AnchorRef) {.base.} =
   ## Changes node anchor.
@@ -231,7 +223,7 @@ method setAnchor*(self: CanvasRef, anchor: AnchorRef) {.base.} =
   ## Arguments:
   ## - `anchor` - AnchorRef object.
   self.anchor = anchor
-  self.can_use_anchor = true
+  self.calcPositionAnchor()
 
 method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes node anchor.
@@ -240,12 +232,12 @@ method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
   ## - `x1` and `y1` - anchor relative to the parent node.
   ## - `x2` and `y2` - anchor relative to this node.
   self.anchor = Anchor(x1, y1, x2, y2)
-  self.can_use_anchor = true
+  self.calcPositionAnchor()
 
 method setSizeAnchor*(self: CanvasRef, anchor: Vector2Ref) {.base.} =
   self.size_anchor = anchor
-  self.can_use_size_anchor = true
+  self.calcPositionAnchor()
 
 method setSizeAnchor*(self: CanvasRef, x, y: float) {.base.} =
   self.size_anchor = Vector2(x, y)
-  self.can_use_size_anchor = true
+  self.calcPositionAnchor()

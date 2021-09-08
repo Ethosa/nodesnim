@@ -17,7 +17,7 @@
       ```bash
       git clone https://github.com/Ethosa/nodesnim/
       cd nodesnim
-      git checkout nightly
+      git checkout nightly-0.X.X
       nimble install
       ```
 2. Install dependencies
@@ -118,12 +118,13 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 </div>
 
 
-## F.A.Q
-*Q*: Where can I see examples?  
-*A*: You can see this in the [`tests`](https://github.com/Ethosa/nodesnim/blob/master/tests) or [`examples`](https://github.com/Ethosa/nodesnim/blob/master/examples) folder.
 
-*Q*: Where can I read the docs?  
-*A*: You can read docs [here](https://ethosa.github.io/nodesnim/nodesnim.html)
+<div align="center" width="100%">
+   
+   |[Wiki][]|[Examples][]|[Docs][]|[Tests][]|
+   |--------|------------|--------|---------|
+   
+</div>
 
 
 
@@ -184,3 +185,8 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 [Node3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/node3d.html
 [ginstance]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/geometry_instance.html
+
+[Examples]:https://github.com/Ethosa/nodesnim/blob/master/examples
+[Wiki]:https://github.com/Ethosa/nodesnim/wiki
+[Docs]:https://ethosa.github.io/nodesnim/nodesnim.html
+[Tests]:https://github.com/Ethosa/nodesnim/blob/master/tests

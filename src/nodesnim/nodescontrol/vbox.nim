@@ -87,5 +87,4 @@ method resize*(self: VBoxRef, w, h: GLfloat) =
     size.y = h
   self.rect_size.x = size.x
   self.rect_size.y = size.y
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
+  self.size_anchor.clear()
