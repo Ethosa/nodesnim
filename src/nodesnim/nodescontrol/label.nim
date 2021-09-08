@@ -81,7 +81,7 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
         st.chars[i].underline = self.text.chars[i].underline
   self.text = st
   self.rect_min_size = self.text.getTextSize()
-  self.resize(self.rect_size.x, self.rect_size.y)
+  self.resize(self.rect_size.x, self.rect_size.y, true)
   self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =

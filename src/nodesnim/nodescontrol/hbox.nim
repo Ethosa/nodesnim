@@ -74,7 +74,7 @@ method duplicate*(self: HBoxRef): HBoxRef {.base.} =
   ## Duplicates HBox object and create a new HBox.
   self.deepCopy()
 
-method resize*(self: HBoxRef, w, h: GLfloat) =
+method resize*(self: HBoxRef, w, h: GLfloat, save_anchor: bool = false) =
   ## Resizes HBox, if `w` and `h` not less than child size.
   ##
   ## Arguments:
@@ -87,4 +87,5 @@ method resize*(self: HBoxRef, w, h: GLfloat) =
     size.y = h
   self.rect_size.x = size.x
   self.rect_size.y = size.y
-  self.size_anchor.clear()
+  if not save_anchor:
+    self.size_anchor.clear()

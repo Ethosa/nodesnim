@@ -105,7 +105,7 @@ method duplicate*(self: GridBoxRef): GridBoxRef {.base.} =
   ## Duplicates GridBox object and create a new GridBox.
   self.deepCopy()
 
-method resize*(self: GridBoxRef, w, h: GLfloat) =
+method resize*(self: GridBoxRef, w, h: GLfloat, save_anchor: bool = false) =
   ## Resizes GridBox.
   ##
   ## Arguments:
@@ -118,7 +118,8 @@ method resize*(self: GridBoxRef, w, h: GLfloat) =
     size.y = h
   self.rect_size.x = size.x
   self.rect_size.y = size.y
-  self.size_anchor.clear()
+  if not save_anchor:
+    self.size_anchor.clear()
 
 method setRow*(self: GridBoxRef, row: int) {.base.} =
   ## Changes gridBox row count.

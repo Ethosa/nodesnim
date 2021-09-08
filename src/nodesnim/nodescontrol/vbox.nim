@@ -74,7 +74,7 @@ method duplicate*(self: VBoxRef): VBoxRef {.base.} =
   ## Duplicate VBox object and create a new VBox.
   self.deepCopy()
 
-method resize*(self: VBoxRef, w, h: GLfloat) =
+method resize*(self: VBoxRef, w, h: GLfloat, save_anchor: bool = false) =
   ## Resizes VBox, if available.
   ##
   ## Arguments:
@@ -87,4 +87,5 @@ method resize*(self: VBoxRef, w, h: GLfloat) =
     size.y = h
   self.rect_size.x = size.x
   self.rect_size.y = size.y
-  self.size_anchor.clear()
+  if not save_anchor:
+    self.size_anchor.clear()

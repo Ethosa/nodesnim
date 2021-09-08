@@ -200,7 +200,7 @@ method fill*(canvas: CanvasRef, color: ColorRef) {.base.} =
   ## Fills canvas.
   canvas.commands = @[DrawCommand(kind: FILL, x1: 0, y1: 0, color: color)]
 
-method resize*(self: CanvasRef, w, h: GLfloat) {.base.} =
+method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base.} =
   ## Resizes canvas.
   ##
   ## Arguments:
@@ -208,12 +208,14 @@ method resize*(self: CanvasRef, w, h: GLfloat) {.base.} =
   ## - `h` is a new height.
   if w > self.rect_min_size.x:
     self.rect_size.x = w
-    self.size_anchor.x = 0.0
+    if not save_anchor:
+      self.size_anchor.x = 0.0
   else:
     self.rect_size.x = self.rect_min_size.x
   if h > self.rect_min_size.y:
     self.rect_size.y = h
-    self.size_anchor.y = 0.0
+    if not save_anchor:
+      self.size_anchor.y = 0.0
   else:
     self.rect_size.y = self.rect_min_size.y
 
@@ -223,7 +225,6 @@ method setAnchor*(self: CanvasRef, anchor: AnchorRef) {.base.} =
   ## Arguments:
   ## - `anchor` - AnchorRef object.
   self.anchor = anchor
-  self.calcPositionAnchor()
 
 method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes node anchor.
@@ -232,12 +233,9 @@ method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
   ## - `x1` and `y1` - anchor relative to the parent node.
   ## - `x2` and `y2` - anchor relative to this node.
   self.anchor = Anchor(x1, y1, x2, y2)
-  self.calcPositionAnchor()
 
 method setSizeAnchor*(self: CanvasRef, anchor: Vector2Ref) {.base.} =
   self.size_anchor = anchor
-  self.calcPositionAnchor()
 
 method setSizeAnchor*(self: CanvasRef, x, y: float) {.base.} =
   self.size_anchor = Vector2(x, y)
-  self.calcPositionAnchor()
