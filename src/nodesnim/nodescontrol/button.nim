@@ -2,7 +2,6 @@
 ## Handles mouse clicks.
 import
   ../thirdparty/opengl,
-  ../thirdparty/opengl/glut,
 
   ../core/vector2,
   ../core/rect2,

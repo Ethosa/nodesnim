@@ -2,7 +2,6 @@
 ## It is the convenient alternative of the Button node.
 import
   ../thirdparty/opengl,
-  ../thirdparty/opengl/glut,
 
   ../core/vector2,
   ../core/rect2,
