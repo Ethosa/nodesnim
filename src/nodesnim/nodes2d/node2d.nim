@@ -28,6 +28,7 @@ template node2dpattern*: untyped =
   result.centered = false
   result.timed_position = Vector2()
   result.rect_size = Vector2()
+  result.rect_min_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
   result.z_index = 0f

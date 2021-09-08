@@ -5,7 +5,6 @@ import nodesnim
 
 Window("hello world")
 
-
 var
   main = Scene("Main")
 
