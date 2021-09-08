@@ -2,7 +2,6 @@
 ## It is the convenient alternative of the Button node.
 import
   ../thirdparty/opengl,
-  ../thirdparty/opengl/glut,
 
   ../core/vector2,
   ../core/rect2,
@@ -11,6 +10,7 @@ import
   ../core/enums,
   ../core/image,
   ../core/color,
+  ../core/font,
 
   ../nodes/node,
   control,
@@ -25,10 +25,6 @@ type
     normal_background_texture*: GlTextureObj  ## texture, when button is not pressed and not hovered.
     hover_background_texture*: GlTextureObj   ## texture, when button hovered.
     press_background_texture*: GlTextureObj   ## texture, when button pressed.
-
-    normal_color*: ColorRef  ## text color, whenwhen button is not pressed and not hovered.
-    hover_color*: ColorRef   ## text color, when button hovered.
-    press_color*: ColorRef   ## text color, when button pressed.
 
     on_touch*: proc(self: TextureButtonRef, x, y: float): void  ## This called, when user clicks on button.
   TextureButtonRef* = ref TextureButtonObj
@@ -45,15 +41,8 @@ proc TextureButton*(name: string = "TextureButton"): TextureButtonRef =
   controlpattern()
   result.rect_size.x = 40
   result.rect_size.y = 40
-  result.text = ""
-  result.font = GLUT_BITMAP_HELVETICA_12
-  result.size = 12
-  result.spacing = 2
+  result.text = stext""
   result.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
-  result.color = Color(1f, 1f, 1f)
-  result.normal_color = Color(1f, 1f, 1f)
-  result.hover_color = Color(1f, 1f, 1f)
-  result.press_color = Color(1f, 1f, 1f)
   result.button_mask = BUTTON_LEFT
   result.action_mask = BUTTON_RELEASE
   result.normal_background_texture = GlTextureObj()
@@ -75,13 +64,6 @@ method draw*(self: TextureButtonRef, w, h: GLfloat) =
         self.hover_background_texture
       else:
         self.normal_background_texture
-  self.color =
-    if self.pressed and self.focused:
-      self.press_color
-    elif self.hovered and not mouse_pressed:
-      self.hover_color
-    else:
-      self.normal_color
 
   # Texture
   if texture.texture > 0'u32:

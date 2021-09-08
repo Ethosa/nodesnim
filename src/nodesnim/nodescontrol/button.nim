@@ -2,7 +2,6 @@
 ## Handles mouse clicks.
 import
   ../thirdparty/opengl,
-  ../thirdparty/opengl/glut,
 
   ../core/vector2,
   ../core/rect2,
@@ -10,6 +9,7 @@ import
   ../core/input,
   ../core/enums,
   ../core/color,
+  ../core/font,
 
   ../nodes/node,
   ../graphics/drawable,
@@ -26,10 +26,6 @@ type
     hover_background*: DrawableRef   ## color, when button hovered.
     press_background*: DrawableRef   ## color, when button pressed.
 
-    normal_color*: ColorRef  ## text color, whenwhen button is not pressed and not hovered.
-    hover_color*: ColorRef   ## text color, when button hovered.
-    press_color*: ColorRef   ## text color, when button pressed.
-
     on_touch*: proc(self: ButtonRef, x, y: float): void  ## This called, when user clicks on button.
   ButtonRef* = ref ButtonObj
 
@@ -45,15 +41,8 @@ proc Button*(name: string = "Button"): ButtonRef =
   controlpattern()
   result.rect_size.x = 160
   result.rect_size.y = 40
-  result.text = ""
-  result.font = GLUT_BITMAP_HELVETICA_12
-  result.size = 12
-  result.spacing = 2
+  result.text = stext""
   result.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
-  result.color = Color(1f, 1f, 1f)
-  result.normal_color = Color(1f, 1f, 1f)
-  result.hover_color = Color(1f, 1f, 1f)
-  result.press_color = Color(1f, 1f, 1f)
   result.button_mask = BUTTON_LEFT
   result.action_mask = BUTTON_RELEASE
   result.normal_background = Drawable()
@@ -75,13 +64,6 @@ method draw*(self: ButtonRef, w, h: GLfloat) =
         self.hover_background
       else:
         self.normal_background
-  self.color =
-    if self.pressed and self.focused:
-      self.press_color
-    elif self.hovered and not mouse_pressed:
-      self.hover_color
-    else:
-      self.normal_color
   procCall self.LabelRef.draw(w, h)
 
 method duplicate*(self: ButtonRef, obj: var ButtonObj): ButtonRef {.base.} =

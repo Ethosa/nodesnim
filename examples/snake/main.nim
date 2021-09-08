@@ -21,7 +21,7 @@ build:
   - Scene game_over:
     call rename("GameOverScene")
     - Label label_go:
-      text: "Game Over"
+      text: stext"Game Over"
       call setTextAlign(0.5, 0.5, 0.5, 0.5)
       call setSizeAnchor(1, 1)
 

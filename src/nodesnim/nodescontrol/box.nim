@@ -69,7 +69,7 @@ method duplicate*(self: BoxRef): BoxRef {.base.} =
   ## Duplicates Box.
   self.deepCopy()
 
-method resize*(self: BoxRef, w, h: GLfloat) =
+method resize*(self: BoxRef, w, h: GLfloat, save_anchor: bool = false) =
   ## Resizes Box node.
   ##
   ## Arguments:
@@ -82,8 +82,8 @@ method resize*(self: BoxRef, w, h: GLfloat) =
     size.y = h
   self.rect_size.x = size.x
   self.rect_size.y = size.y
-  self.can_use_anchor = false
-  self.can_use_size_anchor = false
+  if not save_anchor:
+    self.size_anchor.clear()
 
 method setChildAnchor*(self: BoxRef, anchor: AnchorRef) {.base.} =
   ## Changes child anchor.

@@ -1,4 +1,4 @@
-# --- Test 21. Use ProgressBar node. --- #
+# --- Test 21. Use Popup node. --- #
 import nodesnim
 
 
@@ -7,31 +7,34 @@ Window("hello world")
 var
   main = Scene("Main")
 
-  progressbar = ProgressBar()
-  vprogressbar = ProgressBar()
-  cprogressbar = ProgressBar()
+  popup = Popup()  # Create Popup node pointer.
 
-vprogressbar.progress_type = PROGRESS_BAR_VERTICAL
-cprogressbar.progress_type = PROGRESS_BAR_CIRCLE
+  box = VBox()
+
+  label = Label()
+
+  smthnode = Node()
 
 
-main.addChild(progressbar)
-main.addChild(vprogressbar)
-main.addChild(cprogressbar)
+label.setText("Hello")
+label.setTextAlign(0.5, 0.5, 0.5, 0.5)
+box.setChildAnchor(0.5, 0.1, 0.5, 0.1)
+box.setSizeAnchor(1, 1)
 
-progressbar.setProgress(50)  # default max progress value is 100.
-progressbar.setMaxValue(150)
+popup.addChild(box)
+box.addChild(label)
+main.addChild(popup)
+main.addChild(smthnode)
 
-vprogressbar.setProgress(2)  # default max progress value is 100.
-vprogressbar.setMaxValue(5)
-vprogressbar.move(0, 64)
-vprogressbar.resize(20, 80)
 
-cprogressbar.move(64, 64)
-cprogressbar.resize(80, 80)
-cprogressbar.indeterminate = true
-cprogressbar.setMaxValue(15)
-cprogressbar.setProgress(5)
+Input.addKeyAction("space", K_SPACE)
+smthnode.on_process =
+  proc(self: NodeRef) =
+    if Input.isActionJustPressed("space"):
+      if popup.visible:
+        popup.hide()
+      else:
+        popup.show()
 
 
 addScene(main)

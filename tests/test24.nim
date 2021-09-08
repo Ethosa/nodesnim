@@ -1,4 +1,4 @@
-# --- Test 24. Use AudioStreamPlayer node. --- #
+# --- Test 24. Use Sprite node. --- #
 import nodesnim
 
 
@@ -7,21 +7,17 @@ Window("hello world")
 var
   main = Scene("Main")
 
-  stream1 = loadAudio("assets/vug_ost_Weh.ogg")
-  stream2 = loadAudio("assets/vug_ost_Movement.ogg")
+  sprite = Sprite()
 
-  audio = AudioStreamPlayer()
-  audio1 = AudioStreamPlayer()
+  icon = load("assets/smile.png", GL_RGBA)
 
-audio.stream = stream1
-audio.setVolume(64)
-audio.play()
 
-when false:  # use more than one channel
-  audio1.stream = stream2
-  audio1.setVolume(64)
-  audio1.play()
+main.addChild(sprite)
 
+sprite.move(128, 128)  # Move sprite.
+sprite.setTexture(icon)  # Change sprite image.
+
+sprite.centered = true  # The default value is true. Try to change it.
 
 addScene(main)
 setMainScene("Main")

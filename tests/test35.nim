@@ -1,28 +1,50 @@
-# --- Test 35. Event handlers with macros. --- #
+# --- Test 35. use Camera2D node. --- #
 import nodesnim
 
 
-Window("test35")
+Window("hello world")
+
 
 var
   main = Scene("Main")
-  node = Button()
 
-node.setText("Hello")
-node.setAnchor(0.5, 0.5, 0.5, 0.5)
+  body = KinematicBody2D()
+
+  sprite = Sprite()
+
+  sprite1 = Sprite()
+
+  camera = Camera2D()
+
+  img = load("assets/anim/2.jpg")
+  img1 = load("assets/anim/4.jpg")
+
+sprite.setTexture(img)
+sprite1.setTexture(img1)
+body.addChild(sprite)
+body.addChild(camera)
+
+camera.setTarget(body)
+camera.setLimit(-600, -400, 600, 400)
+camera.setCurrent()
+camera.enableSmooth()
 
 
-node@ready(self):
-  echo "hello!"
 
-node@input(self, event):
-  if event.isInputEventMouseButton() and event.pressed:
-    echo "clicked"
+Input.addButtonAction("left", BUTTON_LEFT)
+body.on_process =
+  proc(self: NodeRef) =
+    if Input.isActionPressed("left"):
+      let
+        mouse_pos = body.getGlobalMousePosition()
+        distance = body.global_position.distance(mouse_pos)
+        direction = body.global_position.directionTo(mouse_pos)
+        speed = 4f
+      if distance >= 5:
+        body.moveAndCollide(direction*speed)
 
-node@on_click(self, x, y):
-  node.setText("clicked in " & $x & "," & $y & ".")
-
-
-main.addChild(node)
-addMainScene(main)
+main.addChild(body)
+main.addChild(sprite1)
+addScene(main)
+setMainScene("Main")
 windowLaunch()

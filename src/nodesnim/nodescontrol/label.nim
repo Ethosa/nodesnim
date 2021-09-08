@@ -3,7 +3,7 @@
 import
   strutils,
   ../thirdparty/opengl,
-  ../thirdparty/opengl/glut,
+  ../thirdparty/sdl2/ttf,
 
   ../core/vector2,
   ../core/rect2,
@@ -11,19 +11,21 @@ import
   ../core/input,
   ../core/enums,
   ../core/color,
+  ../core/stylesheet,
+  ../core/font,
+  ../core/nodes_os,
+
+  ../graphics/drawable,
 
   ../nodes/node,
+  ../nodes/canvas,
   control
 
 
 type
   LabelObj* = object of ControlRef
-    font*: pointer          ## Glut font data.
-    spacing*: float         ## Font spacing.
-    size*: float            ## Font size.
-    text*: string           ## Label text.
-    color*: ColorRef        ## Text color.
-    text_align*: AnchorRef  ## Text align.
+    text_align*: AnchorRef
+    text*: StyleText
   LabelRef* = ref LabelObj
 
 
@@ -38,12 +40,8 @@ proc Label*(name: string = "Label"): LabelRef =
   controlpattern()
   result.rect_size.x = 40
   result.rect_size.y = 40
-  result.text = ""
-  result.font = GLUT_BITMAP_HELVETICA_12
-  result.size = 12
-  result.spacing = 2
+  result.text = stext""
   result.text_align = Anchor(0, 0, 0, 0)
-  result.color = Color(1f, 1f, 1f)
   result.kind = LABEL_NODE
 
 
@@ -54,76 +52,87 @@ method draw*(self: LabelRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
-  glColor4f(self.color.r, self.color.g, self.color.b, self.color.a)
-  var th = 0f
-
-  for line in self.text.splitLines():  # get text height
-    th += self.spacing + self.size
-  if th != 0:
-    th -= self.spacing
-  var ty = y - self.rect_size.y*self.text_align.y1 + th*self.text_align.y2 - self.size
-
-  for line in self.text.splitLines():
-    var tw = self.font.glutBitmapLength(line).float
-    # Draw text:
-    var tx = x + self.rect_size.x*self.text_align.x1 - tw * self.text_align.x2
-    for c in line:
-      let
-        cw = self.font.glutBitmapWidth(c.int).float
-        right =
-          if self.text_align.x2 > 0.9 and self.text_align.x1 > 0.9:
-            1f
-          else:
-            0f
-        bottom =
-          if self.text_align.y2 > 0.9 and self.text_align.y1 > 0.9:
-            1f
-          else:
-            0f
-      if tx >= x and tx < x + self.rect_size.x+right and ty <= y and ty > y - self.rect_size.y+bottom:
-        glRasterPos2f(tx, ty)  # set char position
-        self.font.glutBitmapCharacter(c.int)  # render char
-      tx += cw
-    ty -= self.spacing + self.size
-
-  # Press
-  if self.pressed:
-    self.on_press(self, last_event.x, last_event.y)
-
-method getTextSize*(self: LabelRef): Vector2Ref {.base.} =
-  ## Returns text size.
-  result = Vector2()
-  for line in self.text.splitLines():  # get text height
-    var x: float = 0f
-    for c in line:
-      x += self.font.glutBitmapWidth(c.int).float
-    if x > result.x:
-      result.x = x
-    result.y += self.spacing + self.size
-  if result.y > 0:
-    result.y -= self.spacing
+  if not self.text.rendered:
+    self.text.render(self.rect_size, self.text_align)
+  self.text.renderTo(Vector2(x, y), self.rect_size, self.text_align)
 
 method duplicate*(self: LabelRef): LabelRef {.base.} =
   ## Duplicates Label object and create a new Label.
   self.deepCopy()
 
-method setFont*(self: LabelRef, font: pointer, size: float) {.base.} =
-  ## Changes font to other GLUT font.
-  self.font = font
-  self.size = size 
+method getText*(self: LabelRef): string {.base.} =
+  $self.text
 
-method setTextAlign*(self: LabelRef, align: AnchorRef) {.base.} =
-  ## Changes text alignment.
-  self.text_align = align
+method setText*(self: LabelRef, text: string, save_properties: bool = false) {.base.} =
+  ## Changes text.
+  ##
+  ## Arguments:
+  ## - `text` is a new Label text.
+  ## - `save_properties` - saves old text properties, if `true`.
+  var st = stext(text)
+  if self.text.font.isNil():
+    self.text.font = standard_font
+  st.font = self.text.font
+
+  if save_properties:
+    for i in 0..<st.chars.len():
+      if i < self.text.len():
+        st.chars[i].color = self.text.chars[i].color
+        st.chars[i].underline = self.text.chars[i].underline
+  self.text = st
+  self.rect_min_size = self.text.getTextSize()
+  self.resize(self.rect_size.x, self.rect_size.y, true)
+  self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
-  ## Changes text alignment.
   self.text_align = Anchor(x1, y1, x2, y2)
+  self.text.rendered = false
+
+method setTextAlign*(self: LabelRef, align: AnchorRef) {.base.} =
+  self.text_align = align
+  self.text.rendered = false
 
 method setTextColor*(self: LabelRef, color: ColorRef) {.base.} =
-  ## Changes text color.
-  self.color = color
+  self.text.setColor(color)
+  self.text.rendered = false
 
-method setText*(self: LabelRef, value: string) {.base.} =
-  ## Changes Label text.
-  self.text = value
+method setTextFont*(self: LabelRef, font: FontPtr) {.base.} =
+  self.text.font = font
+  self.text.rendered = false
+
+method setStyle*(self: LabelRef, s: StyleSheetRef) =
+  procCall self.ControlRef.setStyle(s)
+  self.text.rendered = false
+
+  for i in s.dict:
+    case i.key
+    # text-align: 0.5
+    # text-align: 0.5 0 0.5 0
+    of "text-align":
+      let tmp = i.value.split(Whitespace)
+      if tmp.len() == 1:
+        if tmp[0] == "center":
+          self.setTextAlign(0.5, 0.5, 0.5, 0.5)
+        elif tmp[0] == "left":
+          self.setTextAlign(0, 0.5, 0, 0.5)
+        elif tmp[0] == "right":
+          self.setTextAlign(1, 0.5, 1, 0.5)
+        elif tmp[0] == "top":
+          self.setTextAlign(0.5, 0, 0.5, 0)
+        elif tmp[0] == "bottom":
+          self.setTextAlign(0.5, 1, 0.5, 1)
+        else:
+          let tmp2 = parseFloat(tmp[0])
+          self.setTextAlign(Anchor(tmp2, tmp2, tmp2, tmp2))
+      elif tmp.len() == 4:
+        self.setTextAlign(Anchor(
+          parseFloat(tmp[0]), parseFloat(tmp[1]),
+          parseFloat(tmp[2]), parseFloat(tmp[3]))
+        )
+    # color: #f6f
+    of "color":
+      var clr = Color(i.value)
+      if not clr.isNil():
+        self.setTextColor(clr)
+    else:
+      discard

@@ -9,8 +9,6 @@ import
   nodescontrol/vbox,
   nodescontrol/grid_box,
   nodescontrol/edittext,
-  nodescontrol/rich_label,
-  nodescontrol/rich_edit_text,
   nodescontrol/scroll,
   nodescontrol/progress_bar,
   nodescontrol/slider,
@@ -25,7 +23,6 @@ import
 
 export
   control, color_rect, texture_rect, label, button,
-  box, hbox, vbox, grid_box, edittext, rich_label,
-  rich_edit_text, scroll, progress_bar, slider, popup,
-  texture_button, texture_progress_bar, counter, switch,
-  subwindow, lineedit, vslider
+  box, hbox, vbox, grid_box, edittext, scroll, progress_bar,
+  slider, popup, texture_button, texture_progress_bar,
+  counter, switch, subwindow, lineedit, vslider

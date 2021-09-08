@@ -24,6 +24,7 @@ proc Scene*(name: string = "Scene"): SceneRef =
   ## - `name` is a scene name.
   nodepattern(SceneRef)
   result.rect_size = Vector2()
+  result.rect_min_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
   result.pausemode = PAUSE

@@ -29,6 +29,10 @@ proc abs*(a: Vector2Ref): Vector2Ref =
 proc angle*(a: Vector2Ref): float =
   arctan2(a.y, a.x)
 
+proc clear*(a: Vector2Ref) =
+  a.x = 0
+  a.y = 0
+
 proc cross*(a, b: Vector2Ref): float =
   a.x*b.x - a.y*b.y
 
@@ -86,6 +90,9 @@ proc intersects*(a, b, c, d: Vector2Ref): bool =
     uA = ((d.x-c.x)*(a.y-c.y) - (d.y-c.y)*(a.x-c.x)) / ((d.y-c.y)*(b.x-a.x) - (d.x-c.x)*(b.y-a.y))
     uB = ((b.x-a.x)*(a.y-c.y) - (b.y-a.y)*(a.x-c.x)) / ((d.y-c.y)*(b.x-a.x) - (d.x-c.x)*(b.y-a.y))
   return uA >= 0 and uA <= 1 and uB >= 0 and uB <= 1
+
+proc isEmpty*(a: Vector2Ref): bool =
+  a.x == 0f and a.y == 0f
 
 
 # --- Operators --- #

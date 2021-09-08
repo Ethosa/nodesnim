@@ -67,7 +67,7 @@ method duplicate*(self: ScrollRef): ScrollRef {.base.} =
   self.deepCopy()
 
 
-method resize*(canvas: ScrollRef, w, h: GLfloat) =
+method resize*(canvas: ScrollRef, w, h: GLfloat, save_anchor: bool = false) =
   ## Resizes scroll.
   ##
   ## Arguments:

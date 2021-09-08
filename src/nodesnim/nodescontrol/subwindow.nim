@@ -11,6 +11,7 @@ import
   ../core/enums,
   ../core/color,
   ../core/image,
+  ../core/font,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -94,7 +95,7 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
 
   self.title_bar.draw(x, y, self.rect_size.x, 32)
 
-  let size = self.title.getTextSize()
+  let size = self.title.text.getTextSize()
   self.title.position.x = self.rect_size.x / 2 - size.x / 2
   self.title.position.y = 1 + 15 - size.y / 2
   self.title.calcGlobalPosition()

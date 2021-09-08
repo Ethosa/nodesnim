@@ -1,46 +1,33 @@
-# --- Test 30. Use YSort node. --- #
+# --- Test 30. use CollisionShape2D. --- #
+# Please, compile with `--define:debug` or with `-d:debug` for see collision shapes.
 import nodesnim
 
 
-Window("hello world", 1024, 640)
+Window("hello world")
+
 
 var
   main = Scene("Main")
 
-  ysort = Ysort()
-
-  sprite0 = Sprite("0")
-  sprite1 = Sprite("1")
-  sprite2 = Sprite("2")
-  sprite3 = Sprite("3")
-  sprite4 = Sprite("4")
-
-  img0 = load("assets/anim/2.jpg")
-
-sprite0.setTexture(img0)
-sprite1.setTexture(img0)
-sprite2.setTexture(img0)
-sprite3.setTexture(img0)
-sprite4.setTexture(img0)
+  shape1 = CollisionShape2D()
+  shape2 = CollisionShape2D()
+  shape3 = CollisionShape2D()
 
 
-sprite0.filter = Color(0xffccaaff'u32)
-sprite1.filter = Color(0xffaaccff'u32)
-sprite2.filter = Color(0xaaffccff'u32)
-sprite3.filter = Color(0xccffaaff'u32)
-sprite4.filter = Color(0xaaccffff'u32)
+shape1.move(100, 100)
+shape2.move(125, 125)
+shape3.move(170, 125)
+shape3.setShapeTypeCircle(0, 0, 35)  # by default shape type is a rect, but you can change it at any time.
+shape2.disable = true  # by default shape enabled, but you can change it at any time.
+
+echo shape1.isCollide(shape2)  # if one of two shapes is disabled - return false.
+echo shape1.isCollide(shape3)
+echo shape2.isCollide(shape3)
 
 
-sprite4.move(92, 92)
-sprite0.move(128, 128)
-sprite3.move(160, 160)
-sprite2.move(192, 192)
-sprite1.move(224, 224)
-
-ysort.addChilds(sprite0, sprite1, sprite2, sprite3, sprite4)
-
-
-main.addChild(ysort)
+main.addChild(shape1)
+main.addChild(shape2)
+main.addChild(shape3)
 addScene(main)
 setMainScene("Main")
 windowLaunch()

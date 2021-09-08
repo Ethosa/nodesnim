@@ -1,4 +1,4 @@
-# --- Test 21. Use TextureProgressBar node. --- #
+# --- Test 29. Use Counter node. --- #
 import nodesnim
 
 
@@ -7,19 +7,10 @@ Window("hello world")
 var
   main = Scene("Main")
 
-  progressbar = TextureProgressBar()
+  counter = Counter()
 
-  back = load("assets/texture_progress_0.png", GL_RGBA)
-  progress = load("assets/texture_progress_1.png", GL_RGBA)
-
-main.addChild(progressbar)
-
-progressbar.setProgress(50)  # default max progress value is 100.
-progressbar.setMaxValue(150)
-progressbar.resize(256, 85)
-
-progressbar.setProgressTexture(progress)
-progressbar.setBackgroundTexture(back)
+main.addChild(counter)
+counter.move(128, 64)
 
 
 addScene(main)

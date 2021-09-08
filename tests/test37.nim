@@ -1,50 +1,31 @@
-# --- Test 37. use Camera2D node. --- #
+# --- Test 37. Use GeometryInstance node. --- #
 import nodesnim
 
 
-Window("hello world")
+Window("smth")
 
+build:
+  - Scene scene:
+    - GeometryInstance geometry1:
+      translation: Vector3(1, 0, 5)
+      color: Color(144, 133, 122, 0.8)
+    - Sprite sprite:
+      call setTexture(load("assets/anim/2.jpg"))
+      call move(96, 96)
+    - GeometryInstance geometry2:
+      translation: Vector3(-1, 0, 2)
+      color: Color(122, 133, 144, 0.8)
+    - Button button:
+      text: stext"Hello! ^^"
+      call resize(256, 64)
+      call setAnchor(0.5, 0.5, 0.5, 0.5)
 
-var
-  main = Scene("Main")
+geometry1@on_input(self, event):
+  if event.isInputEventMouseMotion() and event.pressed:
+    geometry1.rotateX(-event.yrel)
+    geometry1.rotateY(-event.xrel)
+    geometry2.rotateX(-event.yrel)
+    geometry2.rotateY(-event.xrel)
 
-  body = KinematicBody2D()
-
-  sprite = Sprite()
-
-  sprite1 = Sprite()
-
-  camera = Camera2D()
-
-  img = load("assets/anim/2.jpg")
-  img1 = load("assets/anim/4.jpg")
-
-sprite.setTexture(img)
-sprite1.setTexture(img1)
-body.addChild(sprite)
-body.addChild(camera)
-
-camera.setTarget(body)
-camera.setLimit(-600, -400, 600, 400)
-camera.setCurrent()
-camera.enableSmooth()
-
-
-
-Input.addButtonAction("left", BUTTON_LEFT)
-body.on_process =
-  proc(self: NodeRef) =
-    if Input.isActionPressed("left"):
-      let
-        mouse_pos = body.getGlobalMousePosition()
-        distance = body.global_position.distance(mouse_pos)
-        direction = body.global_position.directionTo(mouse_pos)
-        speed = 4f
-      if distance >= 5:
-        body.moveAndCollide(direction*speed)
-
-main.addChild(body)
-main.addChild(sprite1)
-addScene(main)
-setMainScene("Main")
+addMainScene(scene)
 windowLaunch()

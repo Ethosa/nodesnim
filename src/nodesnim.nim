@@ -31,5 +31,5 @@ export
   # Main
   window, environment,
   # Nodes
-  core, nodes,
+  core, nodes, graphics,
   nodescontrol, nodes2d, nodes3d

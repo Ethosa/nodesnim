@@ -45,8 +45,11 @@ template controlpattern*: untyped =
   result.mousemode = MOUSEMODE_SEE
   result.background = Drawable()
   result.rect_size = Vector2()
+  result.rect_min_size = Vector2()
   result.position = Vector2()
   result.global_position = Vector2()
+  result.anchor = Anchor(0, 0, 0, 0)
+  result.size_anchor = Vector2()
 
   result.on_mouse_enter = proc(self: ControlRef, x, y: float) = discard
   result.on_mouse_exit = proc(self: ControlRef, x, y: float) = discard
@@ -68,22 +71,21 @@ proc Control*(name: string = "Control"): ControlRef =
   controlpattern()
   result.kind = CONTROL_NODE
 
-
 method calcPositionAnchor*(self: ControlRef) =
   ## Calculates node position. This uses in the `scene.nim`.
   if self.parent != nil:
-    if self.can_use_size_anchor:
-      if self.size_anchor.x > 0.0:
-        self.rect_size.x = self.parent.CanvasRef.rect_size.x * self.size_anchor.x
-      if self.size_anchor.y > 0.0:
-        self.rect_size.y = self.parent.CanvasRef.rect_size.y * self.size_anchor.y
-    if self.can_use_anchor:
+    if self.size_anchor.x > 0.0:
+      self.rect_size.x = self.parent.CanvasRef.rect_size.x * self.size_anchor.x
+    if self.size_anchor.y > 0.0:
+      self.rect_size.y = self.parent.CanvasRef.rect_size.y * self.size_anchor.y
+    if not self.anchor.isEmpty():
       self.position.x = self.parent.CanvasRef.rect_size.x*self.anchor.x1 - self.rect_size.x*self.anchor.x2
       self.position.y = self.parent.CanvasRef.rect_size.y*self.anchor.y1 - self.rect_size.y*self.anchor.y2
 
 method draw*(self: ControlRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
+  self.calcGlobalPosition()
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y

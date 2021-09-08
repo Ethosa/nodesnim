@@ -1,17 +1,22 @@
-# --- Test 42. Use Scene builder. --- #
+# --- Test 42. Use StyleSheet object. --- #
 import nodesnim
 
-Window("scene builder")
 
-build:
-  - Scene scene:
-    name: "Main scene"
-    - Vbox background:  # Instead of var background = Vbox()
-      call setBackgroundColor(Color(21, 33, 48))  # You can change params without `objname`.param = value syntax.
-      call setSizeAnchor(1.0, 0.1)  # You can also call any method without `objname`.method(args) syntax. :eyes:
-      call setAnchor(0.5, 0.5, 0.5, 0.5)
+var mystyle = style(
+  {
+    background-color: rgba(255, 125, 255, 0.7),
+    color: rgb(34, 34, 34),
+    font-size: 1,
+    text-align: center
+  })
+echo mystyle
 
-echo background.size_anchor
+var background = Color(mystyle["background-color"])
 
-addMainScene(scene)
-windowLaunch()
+assert background == Color(255, 125, 255, 0.7)
+
+echo StyleSheet(
+  {
+    "background-color": "#f2f2f7"
+  }
+)

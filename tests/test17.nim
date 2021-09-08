@@ -1,23 +1,23 @@
-# --- Test 17. Use RichLabel node. --- #
+# --- Test 17. Duplicate nodes. --- #
 import nodesnim
 
-
-Window("hello world")
-
 var
-  main = Scene("Main")
+  node1 = Node("Node1")
+  node2 = node1.duplicate()
 
-  label = RichLabel()
+  control1 = Control("Control1")
+  control2 = control1.duplicate()
 
-main.addChild(label)
+node2.name = "Node2"
 
-label.text = clrtext("Hello, world!\nsecondline\nThis is a long sentence.")  # Change label text.
-label.setTextAlign(0.2, 0.5, 0.2, 0.5)  # try to change it ^^.
-label.setSizeAnchor(1, 1)
-label.text.setColor(0, 4, Color(1, 0.6, 1))
-label.text.setColor(8, 16, Color(0xffccaaff'u32))
+echo node1.name
+echo node2.name
 
+control2.name = "Control2"
+control2.rect_size = Vector2(100, 100)
 
-addScene(main)
-setMainScene("Main")
-windowLaunch()
+echo control1.name
+echo control2.name
+
+echo control1.rect_size
+echo control2.rect_size
