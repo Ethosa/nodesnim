@@ -15,7 +15,7 @@
    -  Stable: `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
    -  Nightly:
       ```bash
-      git clone https://github.com/Ethosa/nodesnim/`
+      git clone https://github.com/Ethosa/nodesnim/
       cd nodesnim
       git checkout nightly
       nimble install

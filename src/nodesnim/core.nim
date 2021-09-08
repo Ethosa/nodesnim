@@ -9,7 +9,6 @@ import
   core/exceptions,
   core/input,
   core/image,
-  core/color_text,
   core/audio_stream,
   core/animation,
   core/nodes_os,
@@ -21,6 +20,6 @@ import
 
 export
   vector2, rect2, circle2, polygon2, enums, anchor, color,
-  exceptions, input, image, color_text, audio_stream,
+  exceptions, input, image, audio_stream,
   animation, nodes_os, vector3, scene_builder, stylesheet,
   tools, font

@@ -34,9 +34,9 @@ proc on_sign(self: ButtonRef, x, y: float) =
   if sign != "" and second != "":
     first = equal()
     second = ""
-    sign = self.text
+    sign = $self.text
   elif first != "":
-    sign = self.text
+    sign = $self.text
 
 build:
   - Scene main:
@@ -48,24 +48,24 @@ build:
         call resize(160, 32)
       - GridBox buttons:
         call setRow(4)
-        - Button button_7(text: "7", on_touch: number)
-        - Button button_8(text: "8", on_touch: number)
-        - Button button_9(text: "9", on_touch: number)
-        - Button button_4(text: "4", on_touch: number)
-        - Button button_5(text: "5", on_touch: number)
-        - Button button_6(text: "6", on_touch: number)
-        - Button button_1(text: "1", on_touch: number)
-        - Button button_2(text: "2", on_touch: number)
-        - Button button_3(text: "3", on_touch: number)
-        - Button button_0(text: "0")
-        - Button button_00(text: "00")
-        - Button button_add(text: "+", on_touch: on_sign)
+        - Button button_7(text: stext"7", on_touch: number)
+        - Button button_8(text: stext"8", on_touch: number)
+        - Button button_9(text: stext"9", on_touch: number)
+        - Button button_4(text: stext"4", on_touch: number)
+        - Button button_5(text: stext"5", on_touch: number)
+        - Button button_6(text: stext"6", on_touch: number)
+        - Button button_1(text: stext"1", on_touch: number)
+        - Button button_2(text: stext"2", on_touch: number)
+        - Button button_3(text: stext"3", on_touch: number)
+        - Button button_0(text: stext"0")
+        - Button button_00(text: stext"00")
+        - Button button_add(text: stext"+", on_touch: on_sign)
         # Signs
-        - Button button_sub(text: "-", on_touch: on_sign)
-        - Button button_mul(text: "x", on_touch: on_sign)
-        - Button button_div(text: "/", on_touch: on_sign)
+        - Button button_sub(text: stext"-", on_touch: on_sign)
+        - Button button_mul(text: stext"x", on_touch: on_sign)
+        - Button button_div(text: stext"/", on_touch: on_sign)
         - Button button_eq:
-          text: "="
+          text: stext"="
 
 
 button_0@on_touch(self, x, y):
@@ -89,11 +89,11 @@ button_eq@on_touch(self, x, y):
 
 result@on_process(self):
   if sign == "":
-    result.text = first
+    result.setText(first)
   elif second == "":
-    result.text = first & " " & sign
+    result.setText(first & " " & sign)
   else:
-    result.text = first & " " & sign & " " & second
+    result.setText(first & " " & sign & " " & second)
 
 addMainScene(main)
 windowLaunch()

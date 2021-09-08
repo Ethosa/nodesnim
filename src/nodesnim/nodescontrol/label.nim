@@ -52,6 +52,8 @@ method draw*(self: LabelRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
+  if not self.text.rendered:
+    self.text.render(self.rect_size, self.text_align)
   self.text.renderTo(Vector2(x, y), self.rect_size, self.text_align)
 
 method duplicate*(self: LabelRef): LabelRef {.base.} =
@@ -80,27 +82,27 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
   self.text = st
   self.rect_min_size = self.text.getTextSize()
   self.resize(self.rect_size.x, self.rect_size.y)
-
-  self.text.render(self.rect_size, self.text_align)
+  self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
   self.text_align = Anchor(x1, y1, x2, y2)
-  self.text.render(self.rect_size, self.text_align)
+  self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, align: AnchorRef) {.base.} =
   self.text_align = align
-  self.text.render(self.rect_size, self.text_align)
+  self.text.rendered = false
 
 method setTextColor*(self: LabelRef, color: ColorRef) {.base.} =
   self.text.setColor(color)
-  self.text.render(self.rect_size, self.text_align)
+  self.text.rendered = false
 
 method setTextFont*(self: LabelRef, font: FontPtr) {.base.} =
   self.text.font = font
-  self.text.render(self.rect_size, self.text_align)
+  self.text.rendered = false
 
 method setStyle*(self: LabelRef, s: StyleSheetRef) =
   procCall self.ControlRef.setStyle(s)
+  self.text.rendered = false
 
   for i in s.dict:
     case i.key
@@ -134,4 +136,3 @@ method setStyle*(self: LabelRef, s: StyleSheetRef) =
         self.setTextColor(clr)
     else:
       discard
-  self.text.render(self.rect_size, self.text_align)

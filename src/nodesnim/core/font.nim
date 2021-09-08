@@ -20,6 +20,7 @@ type
     color*: ColorRef
   StyleText* = ref object
     font*: FontPtr
+    rendered*: bool
     spacing*: float
     max_lines*: int
     texture*: GlTextureObj
@@ -34,6 +35,7 @@ proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool =
   for i in text.utf8():
     result.chars.add(schar(i, color, underline))
   result.font = standard_font
+  result.rendered = false
 
 
 proc toUpper*(text: StyleText): StyleText =
@@ -219,7 +221,6 @@ proc render*(text: StyleText, size: Vector2Ref, anchor: AnchorRef) =
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, surface.w,  surface.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, surface.pixels)
-    glBindTexture(GL_TEXTURE_2D, 0)
 
     # free memory
     surface.freeSurface()
@@ -266,13 +267,14 @@ proc renderTo*(text: StyleText, pos, size: Vector2Ref, anchor: AnchorRef) =
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
     glEnable(GL_TEXTURE_2D)
     glBegin(GL_QUADS)
-    glVertex2f(pos1.x, pos1.y)
-    glTexCoord2f(texcord[0], texcord[3])
     glVertex2f(pos1.x + size1.x, pos1.y)
     glTexCoord2f(texcord[0], texcord[1])
     glVertex2f(pos1.x + size1.x, pos1.y - size1.y)
     glTexCoord2f(texcord[2], texcord[1])
     glVertex2f(pos1.x, pos1.y - size1.y)
     glTexCoord2f(texcord[2], texcord[3])
+    glVertex2f(pos1.x, pos1.y)
+    glTexCoord2f(texcord[0], texcord[3])
     glEnd()
     glDisable(GL_TEXTURE_2D)
+    glBindTexture(GL_TEXTURE_2D, 0)
