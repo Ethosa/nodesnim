@@ -9,7 +9,6 @@ build:
     - Control ctrl
 
 
-scene.addChild(ctrl)
 ctrl.resize(256, 96)
 ctrl.move(64, 64)
 ctrl.setStyle(style(

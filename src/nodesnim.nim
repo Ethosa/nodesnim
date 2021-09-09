@@ -4,9 +4,8 @@ when defined(debug):
   var console_logger = newConsoleLogger(fmtStr="[$time]::$levelname - ")
   addHandler(console_logger)
 
-  when not defined(android):
-    var file_logger = newFileLogger("logs.log", fmtStr="[$date at $time]::$levelname - ")
-    addHandler(file_logger)
+  var file_logger = newFileLogger("logs.log", fmtStr="[$date at $time]::$levelname - ")
+  addHandler(file_logger)
 
   info("Compiled in debug mode.")
 
@@ -33,3 +32,7 @@ export
   # Nodes
   core, nodes, graphics,
   nodescontrol, nodes2d, nodes3d
+
+when defined(debug):
+  if standard_font.isNil():
+    error("standard_font not loaded!")

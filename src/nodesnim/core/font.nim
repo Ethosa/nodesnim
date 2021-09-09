@@ -12,6 +12,9 @@ import
   nodes_os,
   unicode
 
+when defined(debug):
+  import logging
+
 
 type
   StyleUnicode* = ref object
@@ -182,6 +185,12 @@ proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Ref, b: uint16]
     result[0].y -= text.spacing
 
 proc render*(text: StyleText, size: Vector2Ref, anchor: AnchorRef) =
+  when defined(debug):
+    if text.font.isNil():
+      error("Font is not loaded!")
+      text.rendered = true
+      return
+
   if not text.font.isNil() and $text != "":
     var
       lines = text.splitLines()

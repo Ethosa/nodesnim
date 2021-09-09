@@ -279,7 +279,7 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   # Set up OpenGL
   let (r, g, b, a) = env.color.toFloatTuple()
   glClearColor(r, g, b, a)
-  glShadeModel(GL_FLAT)
+  glShadeModel(GL_SMOOTH)
   glClear(GL_COLOR_BUFFER_BIT)
   glEnable(GL_COLOR_MATERIAL)
   glMaterialf(GL_FRONT, GL_SHININESS, 15)

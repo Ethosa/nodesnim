@@ -138,6 +138,9 @@ method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
     self.pressed = false
     self.on_release(self, event.x, event.y)
 
+method setBackground*(self: ControlRef, drawable: DrawableRef) {.base.} =
+  self.background = drawable
+
 method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
   ## Changes Control background color.
   self.background.setColor(color)

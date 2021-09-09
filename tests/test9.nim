@@ -11,11 +11,10 @@ var
 
 main.addChild(label)
 
-label.setText("Hello, world!\nsecondline\nThis is a long sentence.111111111111111111фывфывфывыфв")  # Change label text.
+label.setText("Hello, world!\nsecondline\nThis is a long sentence.")  # Change label text.
 label.setTextAlign(0.2, 0.5, 0.2, 0.5)  # try to change it ^^.
 label.setSizeAnchor(1, 1)
 label.setTextColor(Color(1f, 1f, 1f))  # default text color.
-echo label.text.font.isNil()
 
 addScene(main)
 setMainScene("Main")

@@ -59,30 +59,30 @@
 
 ## Now available
 This section contains links to documentation for all nodes.
-|Core            |Default nodes        |Control nodes         |2D Nodes            |3D Nodes            |Graphics    |
-|:--:            |:--:                 |:--:                  |  :--:              |:--:                |:--:        |
-|[Anchor][]      |[Node][]             |[Control][]           |[Node2D][]          |[Node3D][]          |[Drawable][]|
-|[Color][]       |[Canvas][]           |[ColorRect][]         |[Sprite][]          |[GeometryInstance][]|            |
-|[Font][]        |[Scene][]            |[TextureRect][]       |[AnimatedSprite][]  |                    |            |
-|[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |                    |            |
-|[Exceptions][]  |[AnimationPlayer][]  |[Button][]            |[CollisionShape2D][]|                    |            |
-|[Image][]       |                     |[EditText][]          |[Camera2D][]        |                    |            |
-|[Input][]       |                     |[Box][]               |                    |                    |            |
-|[Rect2][]       |                     |[HBox][]              |                    |                    |            |
-|[Vector2][]     |                     |[VBox][]              |                    |                    |            |
-|[Circle2][]     |                     |[GridBox][]           |                    |                    |            |
-|[Polygon2][]    |                     |[Scroll][]            |                    |                    |            |
-|[AudioStream][] |                     |[ProgressBar][]       |                    |                    |            |
-|[Animation][]   |                     |[Slider][]            |                    |                    |            |
-|[Vector3][]     |                     |[VSlider][]           |                    |                    |            |
-|[SceneBuilder][]|                     |[Popup][]             |                    |                    |            |
-|[StyleSheet][]  |                     |[TextureButton][]     |                    |                    |            |
-|                |                     |[TextureProgressBar][]|                    |                    |            |
-|                |                     |[Counter][]           |                    |                    |            |
-|                |                     |[Switch][]            |                    |                    |            |
-|                |                     |[SubWindow][]         |                    |                    |            |
-|                |                     |[LineEdit][]          |                    |                    |            |
-|                |                     |[CheckBox][]          |                    |                    |            |
+|Core            |Default nodes        |Control nodes         |2D Nodes            |3D Nodes            |Graphics            |
+|:--:            |:--:                 |:--:                  |  :--:              |:--:                |:--:                |
+|[Anchor][]      |[Node][]             |[Control][]           |[Node2D][]          |[Node3D][]          |[Drawable][]        |
+|[Color][]       |[Canvas][]           |[ColorRect][]         |[Sprite][]          |[GeometryInstance][]|[GradientDrawable][]|
+|[Font][]        |[Scene][]            |[TextureRect][]       |[AnimatedSprite][]  |                    |                    |
+|[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |                    |                    |
+|[Exceptions][]  |[AnimationPlayer][]  |[Button][]            |[CollisionShape2D][]|                    |                    |
+|[Image][]       |                     |[EditText][]          |[Camera2D][]        |                    |                    |
+|[Input][]       |                     |[Box][]               |                    |                    |                    |
+|[Rect2][]       |                     |[HBox][]              |                    |                    |                    |
+|[Vector2][]     |                     |[VBox][]              |                    |                    |                    |
+|[Circle2][]     |                     |[GridBox][]           |                    |                    |                    |
+|[Polygon2][]    |                     |[Scroll][]            |                    |                    |                    |
+|[AudioStream][] |                     |[ProgressBar][]       |                    |                    |                    |
+|[Animation][]   |                     |[Slider][]            |                    |                    |                    |
+|[Vector3][]     |                     |[VSlider][]           |                    |                    |                    |
+|[SceneBuilder][]|                     |[Popup][]             |                    |                    |                    |
+|[StyleSheet][]  |                     |[TextureButton][]     |                    |                    |                    |
+|                |                     |[TextureProgressBar][]|                    |                    |                    |
+|                |                     |[Counter][]           |                    |                    |                    |
+|                |                     |[Switch][]            |                    |                    |                    |
+|                |                     |[SubWindow][]         |                    |                    |                    |
+|                |                     |[LineEdit][]          |                    |                    |                    |
+|                |                     |[CheckBox][]          |                    |                    |                    |
 
 
 
@@ -188,6 +188,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [GeometryInstance]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/geometry_instance.html
 
 [Drawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/drawable.html
+[GradientDrawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/gradient_drawable.html
 
 [Examples]:https://github.com/Ethosa/nodesnim/blob/master/examples
 [Wiki]:https://github.com/Ethosa/nodesnim/wiki

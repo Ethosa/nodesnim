@@ -44,3 +44,4 @@
 - [Use StyleSheet object.](https://github.com/Ethosa/nodesnim/blob/master/tests/test42.nim)
 - [Use Drawable and Control.](https://github.com/Ethosa/nodesnim/blob/master/tests/test43.nim)
 - [Use CheckBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test44.nim)
+- [Use GradientDrawable and Control.](https://github.com/Ethosa/nodesnim/blob/master/tests/test45.nim)
