@@ -311,7 +311,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
         proc(`self`: NodeRef, `arg`: InputEvent) =
           `code`
 
-  of "on_toggle":
+  of "on_switch":
     var
       name = event_name[0]
       self = event_name[1]
@@ -320,6 +320,17 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
     result = quote do:
       `node`.`name` =
         proc(`self`: SwitchRef, `arg`: bool) =
+          `code`
+
+  of "on_toggle":
+    var
+      name = event_name[0]
+      self = event_name[1]
+      arg = event_name[2]
+
+    result = quote do:
+      `node`.`name` =
+        proc(`self`: CheckBoxRef, `arg`: bool) =
           `code`
 
   of "on_changed":
@@ -331,6 +342,17 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
     result = quote do:
       `node`.`name` =
         proc(`self`: SliderRef, `arg`: uint) =
+          `code`
+
+  of "on_edit":
+    var
+      name = event_name[0]
+      self = event_name[1]
+      arg = event_name[2]
+
+    result = quote do:
+      `node`.`name` =
+        proc(`self`: EditTextRef, `arg`: string) =
           `code`
   else:
     discard

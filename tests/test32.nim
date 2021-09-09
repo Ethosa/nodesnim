@@ -12,7 +12,7 @@ var
 main.addChild(switch)
 switch.move(128, 64)
 
-switch.on_toggle =
+switch.on_switch =
   proc(self: SwitchRef, toggled: bool) =  # this called when the user toggles switch.
     echo toggled
 

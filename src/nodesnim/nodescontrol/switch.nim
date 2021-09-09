@@ -20,7 +20,7 @@ type
     color_enable*, color_disable*: ColorRef
     back_enable*, back_disable*: ColorRef
 
-    on_toggle*: proc(self: SwitchRef, toggled: bool): void  ## This called when switch toggled.
+    on_switch*: proc(self: SwitchRef, toggled: bool): void  ## This called when switch toggled.
   SwitchRef* = ref SwitchObj
 
 
@@ -40,7 +40,7 @@ proc Switch*(name: string = "Switch"): SwitchRef =
   result.value = false
   result.rect_size.x = 50
   result.rect_size.y = 20
-  result.on_toggle = proc(self: SwitchRef, toggled: bool) = discard
+  result.on_switch = proc(self: SwitchRef, toggled: bool) = discard
   result.kind = COLOR_RECT_NODE
 
 
@@ -77,7 +77,7 @@ method handle*(self: SwitchRef, event: InputEvent, mouse_on: var NodeRef) =
 
   if self.hovered and event.kind == MOUSE and event.pressed:
     self.value = not self.value
-    self.on_toggle(self, self.value)
+    self.on_switch(self, self.value)
 
 
 method toggle*(self: SwitchRef) {.base.} =

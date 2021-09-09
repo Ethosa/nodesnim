@@ -43,3 +43,4 @@
 - [Use AnimationPlayer node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test41.nim)
 - [Use StyleSheet object.](https://github.com/Ethosa/nodesnim/blob/master/tests/test42.nim)
 - [Use Drawable and Control.](https://github.com/Ethosa/nodesnim/blob/master/tests/test43.nim)
+- [Use CheckBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test44.nim)

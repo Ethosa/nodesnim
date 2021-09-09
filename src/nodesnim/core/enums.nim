@@ -29,6 +29,7 @@ type
     # Control nodes
     BOX_NODE,
     BUTTON_NODE,
+    CHECKBOX_NODE,
     COLOR_RECT_NODE,
     CONTROL_NODE,
     COUNTER_NODE,
