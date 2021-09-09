@@ -17,6 +17,12 @@ gradient.enableShadow(true)
 gradient.setShadowOffset(Vector2(15, 15))
 gradient.setBorderColor(Color(1.0, 0.5, 0.5, 0.1))
 gradient.setBorderWidth(5)
+gradient.setCornerColors((
+  Color(1f, 0.5, 1f),
+  Color(1f, 0.5, 1f, 0.2),
+  Color(0.5, 0.75, 1f, 0.2),
+  Color(0.5, 0.75, 1f),
+))
 
 ctrl.setBackground(gradient)
 
