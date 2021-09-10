@@ -39,7 +39,7 @@ proc GridBox*(name: string = "GridBox"): GridBoxRef =
   result.kind = GRID_BOX_NODE
 
 
-method getMaxChildSize*(self: GridBoxRef): Vector2Ref {.base.} =
+method getMaxChildSize*(self: GridBoxRef): Vector2Obj {.base.} =
   result = Vector2()
   for child in self.children:
     if child.CanvasRef.rect_size.x > result.x:
@@ -47,7 +47,7 @@ method getMaxChildSize*(self: GridBoxRef): Vector2Ref {.base.} =
     if child.CanvasRef.rect_size.y > result.y:
       result.y = child.CanvasRef.rect_size.y
 
-method getChildSize*(self: GridBoxRef): Vector2Ref =
+method getChildSize*(self: GridBoxRef): Vector2Obj =
   ## Returns size with all childs.
   var
     row = 0

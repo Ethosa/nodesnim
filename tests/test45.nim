@@ -20,7 +20,6 @@ gradient.setBorderWidth(5)
 gradient.setStyle(style({
   corner-color: "#ff7 #ff7 #f77 #f77"
   }))
-
 ctrl.setBackground(gradient)
 
 

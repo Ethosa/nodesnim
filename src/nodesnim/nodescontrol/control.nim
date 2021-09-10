@@ -100,9 +100,9 @@ method duplicate*(self: ControlRef): ControlRef {.base.} =
   ## Duplicates Control object and create a new Control.
   self.deepCopy()
 
-method getGlobalMousePosition*(self: ControlRef): Vector2Ref {.base, inline.} =
+method getGlobalMousePosition*(self: ControlRef): Vector2Obj {.base, inline.} =
   ## Returns mouse position.
-  Vector2Ref(x: last_event.x, y: last_event.y)
+  Vector2Obj(x: last_event.x, y: last_event.y)
 
 method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. This uses in the `window.nim`.

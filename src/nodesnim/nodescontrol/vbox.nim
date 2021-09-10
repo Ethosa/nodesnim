@@ -37,7 +37,7 @@ proc VBox*(name: string = "VBox"): VBoxRef =
   result.kind = VBOX_NODE
 
 
-method getChildSize*(self: VBoxRef): Vector2Ref =
+method getChildSize*(self: VBoxRef): Vector2Obj =
   ## Returns size of all children.
   var
     x = 0f

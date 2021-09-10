@@ -35,7 +35,7 @@ proc Box*(name: string = "Box"): BoxRef =
   result.kind = BOX_NODE
 
 
-method getChildSize*(self: BoxRef): Vector2Ref {.base.} =
+method getChildSize*(self: BoxRef): Vector2Obj {.base.} =
   ## Returns Vector2 of the minimal size of the box pointer.
   var
     x = 0f

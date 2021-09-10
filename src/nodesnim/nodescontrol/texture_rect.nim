@@ -20,7 +20,7 @@ type
   TextureRectObj* = object of ControlRef
     texture*: Gluint
     texture_mode*: TextureMode
-    texture_size*: Vector2Ref
+    texture_size*: Vector2Obj
     texture_anchor*: AnchorRef
     texture_filter*: ColorRef
   TextureRectRef* = ref TextureRectObj

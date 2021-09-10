@@ -94,9 +94,9 @@ method duplicate*(self: SpriteRef): SpriteRef {.base.} =
   ## Duplicates Sprite object and create a new Sprite.
   self.deepCopy()
 
-method getGlobalMousePosition*(self: SpriteRef): Vector2Ref {.inline.} =
+method getGlobalMousePosition*(self: SpriteRef): Vector2Obj {.inline.} =
   ## Returns mouse position.
-  Vector2Ref(x: last_event.x, y: last_event.y)
+  Vector2Obj(x: last_event.x, y: last_event.y)
 
 method loadTexture*(self: SpriteRef, file: cstring, mode = GL_RGB) {.base.} =
   ## Loads a new texture from file.

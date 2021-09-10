@@ -17,8 +17,8 @@ type
   Node2DObj* = object of CanvasObj
     centered*: bool
     rotation*: float
-    scale*: Vector2Ref
-    timed_position*: Vector2Ref
+    scale*: Vector2Obj
+    timed_position*: Vector2Obj
     relative_z_index*: bool
     z_index*, z_index_global*: float
   Node2DRef* = ref Node2DObj
@@ -79,7 +79,7 @@ method move*(self: Node2DRef, x, y: float) =
   self.timed_position = self.position
 
 
-method move*(self: Node2DRef, vec2: Vector2Ref) =
+method move*(self: Node2DRef, vec2: Vector2Obj) =
   ## Moves Node2D object by `vec2`.
   self.position += vec2
   self.timed_position = self.position
@@ -90,9 +90,9 @@ method duplicate*(self: Node2DRef): Node2DRef {.base.} =
   self.deepCopy()
 
 
-method getGlobalMousePosition*(self: Node2DRef): Vector2Ref {.base, inline.} =
+method getGlobalMousePosition*(self: Node2DRef): Vector2Obj {.base, inline.} =
   ## Returns mouse position.
-  Vector2Ref(x: last_event.x, y: last_event.y)
+  Vector2Obj(x: last_event.x, y: last_event.y)
 
 
 method setZIndex*(self: Node2DRef, z_index: int) {.base.} =

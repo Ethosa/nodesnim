@@ -15,7 +15,7 @@ discard image.init()
 type
   GlTextureObj* = object of RootObj
     texture*: Gluint
-    size*: Vector2Ref
+    size*: Vector2Obj
 
 
 proc load*(file: cstring, x, y: var float, mode: Glenum = GL_RGB): Gluint =

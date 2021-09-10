@@ -25,7 +25,7 @@ type
     border_radius_righttop*: float
     border_radius_leftbottom*: float
     border_radius_rightbottom*: float
-    shadow_offset*: Vector2Ref
+    shadow_offset*: Vector2Obj
     border_color*: ColorRef
     background_color*: ColorRef
     texture*: GlTextureObj
@@ -154,7 +154,7 @@ method enableShadow*(self: DrawableRef, val: bool) {.base.} =
 
 method draw*(self: DrawableRef, x1, y1, width, height: float) {.base.} =
   var
-    vertex: seq[Vector2Ref] = @[]
+    vertex: seq[Vector2Obj] = @[]
     x = x1 + self.shadow_offset.x
     y = y1 - self.shadow_offset.y
 
@@ -253,7 +253,7 @@ method setTexture*(self: DrawableRef, texture: GlTextureObj) {.base.} =
   self.texture = texture
   self.background_color = Color(1f, 1f, 1f, 1f)
 
-method setShadowOffset*(self: DrawableRef, offset: Vector2Ref) {.base.} =
+method setShadowOffset*(self: DrawableRef, offset: Vector2Obj) {.base.} =
   ## Changes shadow offset.
   self.shadow_offset = offset
 

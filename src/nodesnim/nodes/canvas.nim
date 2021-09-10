@@ -34,11 +34,11 @@ type
   CanvasObj* = object of NodeObj
     commands*: seq[DrawCommand]
 
-    position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
-    global_position*: Vector2Ref     ## Node global position.
-    rect_size*: Vector2Ref           ## Node size.
-    rect_min_size*: Vector2Ref
-    size_anchor*: Vector2Ref         ## Node size anchor.
+    position*: Vector2Obj            ## Node position, by default is Vector2(0, 0).
+    global_position*: Vector2Obj     ## Node global position.
+    rect_size*: Vector2Obj           ## Node size.
+    rect_min_size*: Vector2Obj
+    size_anchor*: Vector2Obj         ## Node size anchor.
     anchor*: AnchorRef               ## Node anchor.
   CanvasRef* = ref CanvasObj
 
@@ -130,7 +130,7 @@ method duplicate*(self: CanvasRef): CanvasRef {.base.} =
   ## Duplicates Canvas object and create a new Canvas.
   self.deepCopy()
 
-method move*(self: CanvasRef, vec2: Vector2Ref) {.base, inline.} =
+method move*(self: CanvasRef, vec2: Vector2Obj) {.base, inline.} =
   ## Adds `vec2` to the node position.
   ##
   ## Arguments:
@@ -234,7 +234,7 @@ method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
   ## - `x2` and `y2` - anchor relative to this node.
   self.anchor = Anchor(x1, y1, x2, y2)
 
-method setSizeAnchor*(self: CanvasRef, anchor: Vector2Ref) {.base.} =
+method setSizeAnchor*(self: CanvasRef, anchor: Vector2Obj) {.base.} =
   self.size_anchor = anchor
 
 method setSizeAnchor*(self: CanvasRef, x, y: float) {.base.} =

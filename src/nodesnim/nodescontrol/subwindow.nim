@@ -27,7 +27,7 @@ type
     title_taked*: bool
     icon*: GlTextureObj
     title_bar*: DrawableRef
-    title_taked_pos*: Vector2Ref
+    title_taked_pos*: Vector2Obj
     title*: LabelRef
   SubWindowRef* = ref SubWindowObj
 
