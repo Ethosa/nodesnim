@@ -7,6 +7,13 @@ Window("drawable oops")
 build:
   - Scene scene:
     - Control ctrl
+    - Control ctrl1:
+      call move(350, 100)
+      call setSizeAnchor(0.2, 0.2)
+
+ctrl1.background.setTexture(load("assets/sharp.jpg"))
+ctrl1.background.setCornerRadius(25)
+ctrl1.background.setCornerDetail(25)
 
 
 ctrl.resize(256, 96)

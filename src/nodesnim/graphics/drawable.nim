@@ -57,6 +57,7 @@ let shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
 template vd* = discard
 
 template recalc* =
+  ## Calculates vertex positions.
   # left top
   var t = self.border_radius_lefttop
   vertex.add(Vector2(x, y - t))
@@ -95,6 +96,13 @@ template recalc* =
 
 
 template draw_template*(drawtype, color, function, secondfunc: untyped): untyped =
+  ## Draws colorized vertexes
+  ##
+  ## Arguments:
+  ## - `drawtype` - draw type, like `GL_POLYGON`
+  ## - `color` - color for border drawing.
+  ## - `function` - function called before `glBegin`
+  ## - `secondfunc` - function called after `glEnd`
   glColor4f(`color`.r, `color`.g, `color`.b, `color`.a)
   `function`
   glBegin(`drawtype`)
@@ -111,9 +119,28 @@ template draw_texture_template*(drawtype, color, function, secondfunc: untyped):
   glColor4f(`color`.r, `color`.g, `color`.b, `color`.a)
   `function`
   glBegin(`drawtype`)
+  var
+    texture_size = self.texture.size
+    h = height
+    w = width
+  if texture_size.x < width:
+    let q = width / texture_size.x
+    texture_size.x *= q
+    texture_size.y *= q
+  if texture_size.y < height:
+    let q = height / texture_size.y
+    texture_size.x *= q
+    texture_size.y *= q
+
+  # crop .. :eyes:
+  let q = width / texture_size.x
+  texture_size.x *= q
+  texture_size.y *= q
+  h /= height/width
+  h -= texture_size.y/2
 
   for i in vertex:
-    glTexCoord2f((x + width - i.x) / width, 1f - ((-y + height - -i.y) / height))
+    glTexCoord2f((-x + i.x - w + texture_size.x) / width, 1f - ((-y + i.y - h + texture_size.y) / texture_size.y))
     glVertex2f(i.x, i.y)
 
   glEnd()
