@@ -100,9 +100,9 @@ method duplicate*(self: ControlRef): ControlRef {.base.} =
   ## Duplicates Control object and create a new Control.
   self.deepCopy()
 
-method getGlobalMousePosition*(self: ControlRef): Vector2Ref {.base, inline.} =
+method getGlobalMousePosition*(self: ControlRef): Vector2Obj {.base, inline.} =
   ## Returns mouse position.
-  Vector2Ref(x: last_event.x, y: last_event.y)
+  Vector2Obj(x: last_event.x, y: last_event.y)
 
 method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. This uses in the `window.nim`.
@@ -137,6 +137,9 @@ method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
   if not mouse_pressed and self.pressed:
     self.pressed = false
     self.on_release(self, event.x, event.y)
+
+method setBackground*(self: ControlRef, drawable: DrawableRef) {.base.} =
+  self.background = drawable
 
 method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
   ## Changes Control background color.

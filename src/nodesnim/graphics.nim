@@ -1,5 +1,6 @@
 import
-  graphics/drawable
+  graphics/drawable,
+  graphics/gradient_drawable
 
 export
-  drawable
+  drawable, gradient_drawable

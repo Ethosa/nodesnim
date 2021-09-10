@@ -8,10 +8,10 @@ Window("Snake game")
 
 type
   Snake = ref object
-    dir: Vector2Ref
-    size: Vector2Ref
-    food: Vector2Ref
-    body: seq[Vector2Ref]
+    dir: Vector2Obj
+    size: Vector2Obj
+    food: Vector2Obj
+    body: seq[Vector2Obj]
 
 
 build:

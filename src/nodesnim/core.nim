@@ -1,7 +1,7 @@
 import
   core/vector2,
   core/rect2,
-  core/circle2,
+  core/circle,
   core/polygon2,
   core/enums,
   core/anchor,
@@ -19,7 +19,7 @@ import
   core/font
 
 export
-  vector2, rect2, circle2, polygon2, enums, anchor, color,
+  vector2, rect2, circle, polygon2, enums, anchor, color,
   exceptions, input, image, audio_stream,
   animation, nodes_os, vector3, scene_builder, stylesheet,
   tools, font

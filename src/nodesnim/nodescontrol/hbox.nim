@@ -37,7 +37,7 @@ proc HBox*(name: string = "HBox"): HBoxRef =
   result.kind = HBOX_NODE
 
 
-method getChildSize*(self: HBoxRef): Vector2Ref =
+method getChildSize*(self: HBoxRef): Vector2Obj =
   var
     x = 0f
     y = 0f

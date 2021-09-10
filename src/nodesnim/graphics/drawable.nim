@@ -14,26 +14,26 @@ import
 
 
 type
-  DrawableObj* = object
-    shadow: bool
-    border_width: float
-    border_detail_lefttop: int
-    border_detail_righttop: int
-    border_detail_leftbottom: int
-    border_detail_rightbottom: int
-    border_radius_lefttop: float
-    border_radius_righttop: float
-    border_radius_leftbottom: float
-    border_radius_rightbottom: float
-    shadow_offset: Vector2Ref
-    border_color: ColorRef
-    background_color: ColorRef
+  DrawableObj* = object of RootObj
+    shadow*: bool
+    border_width*: float
+    border_detail_lefttop*: int
+    border_detail_righttop*: int
+    border_detail_leftbottom*: int
+    border_detail_rightbottom*: int
+    border_radius_lefttop*: float
+    border_radius_righttop*: float
+    border_radius_leftbottom*: float
+    border_radius_rightbottom*: float
+    shadow_offset*: Vector2Obj
+    border_color*: ColorRef
+    background_color*: ColorRef
     texture*: GlTextureObj
   DrawableRef* = ref DrawableObj
 
 
-proc Drawable*: DrawableRef =
-  DrawableRef(
+template drawablepattern*(`type`: untyped): untyped =
+  result = `type`(
     texture: GlTextureObj(), border_width: 0,
     border_detail_lefttop: 20,
     border_detail_righttop: 20,
@@ -48,12 +48,16 @@ proc Drawable*: DrawableRef =
     shadow_offset: Vector2(0, 0), shadow: false
   )
 
+proc Drawable*: DrawableRef =
+  drawablepattern(DrawableRef)
+
 let shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
 
 
-template vd = discard
+template vd* = discard
 
-template recalc =
+template recalc* =
+  ## Calculates vertex positions.
   # left top
   var t = self.border_radius_lefttop
   vertex.add(Vector2(x, y - t))
@@ -91,7 +95,14 @@ template recalc =
   vertex.add(Vector2(x, y - height + t))
 
 
-template draw_template(drawtype, color, function, secondfunc: untyped): untyped =
+template draw_template*(drawtype, color, function, secondfunc: untyped): untyped =
+  ## Draws colorized vertexes
+  ##
+  ## Arguments:
+  ## - `drawtype` - draw type, like `GL_POLYGON`
+  ## - `color` - color for border drawing.
+  ## - `function` - function called before `glBegin`
+  ## - `secondfunc` - function called after `glEnd`
   glColor4f(`color`.r, `color`.g, `color`.b, `color`.a)
   `function`
   glBegin(`drawtype`)
@@ -102,15 +113,34 @@ template draw_template(drawtype, color, function, secondfunc: untyped): untyped 
   glEnd()
   `secondfunc`
 
-template draw_texture_template(drawtype, color, function, secondfunc: untyped): untyped =
+template draw_texture_template*(drawtype, color, function, secondfunc: untyped): untyped =
   glEnable(GL_TEXTURE_2D)
   glBindTexture(GL_TEXTURE_2D, self.texture.texture)
   glColor4f(`color`.r, `color`.g, `color`.b, `color`.a)
   `function`
   glBegin(`drawtype`)
+  var
+    texture_size = self.texture.size
+    h = height
+    w = width
+  if texture_size.x < width:
+    let q = width / texture_size.x
+    texture_size.x *= q
+    texture_size.y *= q
+  if texture_size.y < height:
+    let q = height / texture_size.y
+    texture_size.x *= q
+    texture_size.y *= q
+
+  # crop .. :eyes:
+  let q = width / texture_size.x
+  texture_size.x *= q
+  texture_size.y *= q
+  h /= height/width
+  h -= texture_size.y/2
 
   for i in vertex:
-    glTexCoord2f((x + width - i.x) / width, 1f - ((-y + height - -i.y) / height))
+    glTexCoord2f((-x + i.x - w + texture_size.x) / width, 1f - ((-y + i.y - h + texture_size.y) / texture_size.y))
     glVertex2f(i.x, i.y)
 
   glEnd()
@@ -118,13 +148,13 @@ template draw_texture_template(drawtype, color, function, secondfunc: untyped): 
   glDisable(GL_TEXTURE_2D)
 
 
-proc enableShadow*(self: DrawableRef, val: bool) =
+method enableShadow*(self: DrawableRef, val: bool) {.base.} =
   ## Enables shadow, when `val` is true.
   self.shadow = val
 
-proc draw*(self: DrawableRef, x1, y1, width, height: float) =
+method draw*(self: DrawableRef, x1, y1, width, height: float) {.base.} =
   var
-    vertex: seq[Vector2Ref] = @[]
+    vertex: seq[Vector2Obj] = @[]
     x = x1 + self.shadow_offset.x
     y = y1 - self.shadow_offset.y
 
@@ -148,11 +178,11 @@ proc draw*(self: DrawableRef, x1, y1, width, height: float) =
     draw_template(GL_LINE_LOOP, self.border_color, glLineWidth(self.border_width), glLineWidth(1))
 
 
-proc getColor*(self: DrawableRef): ColorRef =
+method getColor*(self: DrawableRef): ColorRef {.base.} =
   ## Returns background color.
   self.background_color
 
-proc loadTexture*(self: DrawableRef, path: string) =
+method loadTexture*(self: DrawableRef, path: string) {.base.} =
   ## Loads texture from the file.
   ##
   ## Arguments:
@@ -160,19 +190,19 @@ proc loadTexture*(self: DrawableRef, path: string) =
   self.texture = load(path)
   self.background_color = Color(1f, 1f, 1f, 1f)
 
-proc setBorderColor*(self: DrawableRef, color: ColorRef) =
+method setBorderColor*(self: DrawableRef, color: ColorRef) {.base.} =
   ## Changes border color.
   self.border_color = color
 
-proc setBorderWidth*(self: DrawableRef, width: float) =
+method setBorderWidth*(self: DrawableRef, width: float) {.base.} =
   ## Changes border width.
   self.border_width = width
 
-proc setColor*(self: DrawableRef, color: ColorRef) =
+method setColor*(self: DrawableRef, color: ColorRef) {.base.} =
   ## Changes background color.
   self.background_color = color
 
-proc setCornerRadius*(self: DrawableRef, radius: float) =
+method setCornerRadius*(self: DrawableRef, radius: float) {.base.} =
   ## Changes corner radius.
   ##
   ## Arguments:
@@ -182,7 +212,7 @@ proc setCornerRadius*(self: DrawableRef, radius: float) =
   self.border_radius_leftbottom = radius
   self.border_radius_rightbottom = radius
 
-proc setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) =
+method setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) {.base.} =
   ## Changes corner radius.
   ##
   ## Arguments:
@@ -195,7 +225,7 @@ proc setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) =
   self.border_radius_rightbottom = r3
   self.border_radius_leftbottom = r4
 
-proc setCornerDetail*(self: DrawableRef, detail: int) =
+method setCornerDetail*(self: DrawableRef, detail: int) {.base.} =
   ## Changes corner detail.
   ##
   ## Arguments:
@@ -205,7 +235,7 @@ proc setCornerDetail*(self: DrawableRef, detail: int) =
   self.border_detail_leftbottom = detail
   self.border_detail_rightbottom = detail
 
-proc setCornerDetail*(self: DrawableRef, d1, d2, d3, d4: int) =
+method setCornerDetail*(self: DrawableRef, d1, d2, d3, d4: int) {.base.} =
   ## Changes corner detail.
   ##
   ## Arguments:
@@ -218,16 +248,16 @@ proc setCornerDetail*(self: DrawableRef, d1, d2, d3, d4: int) =
   self.border_detail_leftbottom = d4
   self.border_detail_rightbottom = d3
 
-proc setTexture*(self: DrawableRef, texture: GlTextureObj) =
+method setTexture*(self: DrawableRef, texture: GlTextureObj) {.base.} =
   ## Changes drawable texture.
   self.texture = texture
   self.background_color = Color(1f, 1f, 1f, 1f)
 
-proc setShadowOffset*(self: DrawableRef, offset: Vector2Ref) =
+method setShadowOffset*(self: DrawableRef, offset: Vector2Obj) {.base.} =
   ## Changes shadow offset.
   self.shadow_offset = offset
 
-proc setStyle*(self: DrawableRef, s: StyleSheetRef) =
+method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
   ## Sets a new stylesheet.
   for i in s.dict:
     var matches: array[20, string]

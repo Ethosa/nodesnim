@@ -17,6 +17,8 @@ proc number(self: ButtonRef, x, y: float) =
 
 proc equal(): string =
   let f = parseFloat(first)
+  if second == "":
+    return first
   result =
     case sign:
     of "+":

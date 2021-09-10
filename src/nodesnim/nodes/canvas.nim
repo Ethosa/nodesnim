@@ -34,12 +34,12 @@ type
   CanvasObj* = object of NodeObj
     commands*: seq[DrawCommand]
 
-    position*: Vector2Ref            ## Node position, by default is Vector2(0, 0).
-    global_position*: Vector2Ref     ## Node global position.
-    rect_size*: Vector2Ref           ## Node size.
-    rect_min_size*: Vector2Ref
-    size_anchor*: Vector2Ref         ## Node size anchor.
-    anchor*: AnchorRef               ## Node anchor.
+    position*: Vector2Obj            ## Node position, by default is Vector2(0, 0).
+    global_position*: Vector2Obj     ## Node global position.
+    rect_size*: Vector2Obj           ## Node size.
+    rect_min_size*: Vector2Obj
+    size_anchor*: Vector2Obj         ## Node size anchor.
+    anchor*: AnchorObj               ## Node anchor.
   CanvasRef* = ref CanvasObj
 
 
@@ -130,7 +130,7 @@ method duplicate*(self: CanvasRef): CanvasRef {.base.} =
   ## Duplicates Canvas object and create a new Canvas.
   self.deepCopy()
 
-method move*(self: CanvasRef, vec2: Vector2Ref) {.base, inline.} =
+method move*(self: CanvasRef, vec2: Vector2Obj) {.base, inline.} =
   ## Adds `vec2` to the node position.
   ##
   ## Arguments:
@@ -219,11 +219,11 @@ method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base
   else:
     self.rect_size.y = self.rect_min_size.y
 
-method setAnchor*(self: CanvasRef, anchor: AnchorRef) {.base.} =
+method setAnchor*(self: CanvasRef, anchor: AnchorObj) {.base.} =
   ## Changes node anchor.
   ##
   ## Arguments:
-  ## - `anchor` - AnchorRef object.
+  ## - `anchor` - AnchorObj object.
   self.anchor = anchor
 
 method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
@@ -234,7 +234,7 @@ method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
   ## - `x2` and `y2` - anchor relative to this node.
   self.anchor = Anchor(x1, y1, x2, y2)
 
-method setSizeAnchor*(self: CanvasRef, anchor: Vector2Ref) {.base.} =
+method setSizeAnchor*(self: CanvasRef, anchor: Vector2Obj) {.base.} =
   self.size_anchor = anchor
 
 method setSizeAnchor*(self: CanvasRef, x, y: float) {.base.} =

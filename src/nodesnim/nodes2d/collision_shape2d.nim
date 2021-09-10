@@ -6,7 +6,7 @@ import
   ../core/anchor,
   ../core/input,
   ../core/enums,
-  ../core/circle2,
+  ../core/circle,
   ../core/polygon2,
 
   ../nodes/node,
@@ -29,7 +29,7 @@ type
   CollisionShape2DObj* = object of Node2DObj
     disable*: bool
     x1*, y1*, radius*: float
-    polygon*: seq[Vector2Ref]
+    polygon*: seq[Vector2Obj]
     shape_type*: CollisionShape2DType
   CollisionShape2DRef* = ref CollisionShape2DObj
 
@@ -73,7 +73,7 @@ method setShapeTypeCircle*(self: CollisionShape2DRef, cx, cy, radius: float) {.b
   self.radius = radius
 
 
-method setShapeTypePolygon*(self: CollisionShape2DRef, positions: varargs[Vector2Ref]) {.base.} =
+method setShapeTypePolygon*(self: CollisionShape2DRef, positions: varargs[Vector2Obj]) {.base.} =
   ## Changes shape type to `polygon`.
   ##
   ## Arguments:
@@ -122,9 +122,9 @@ method duplicate*(self: CollisionShape2DRef): CollisionShape2DRef {.base.} =
   self.deepCopy()
 
 
-method getGlobalMousePosition*(self: CollisionShape2DRef): Vector2Ref {.inline.} =
+method getGlobalMousePosition*(self: CollisionShape2DRef): Vector2Obj {.inline.} =
   ## Returns mouse position.
-  Vector2Ref(x: last_event.x, y: last_event.y)
+  Vector2Obj(x: last_event.x, y: last_event.y)
 
 
 method isCollide*(self: CollisionShape2DRef, x, y: float): bool {.base.} =
@@ -158,7 +158,7 @@ method isCollide*(self: CollisionShape2DRef, x, y: float): bool {.base.} =
       if ((a.y >= y and b.y < y) or (a.y < y and b.y >= y)) and (x < (b.x-a.x)*(y-a.y) / (b.y-a.y)+a.x):
         result = not result
 
-method isCollide*(self: CollisionShape2DRef, vec2: Vector2Ref): bool {.base.} =
+method isCollide*(self: CollisionShape2DRef, vec2: Vector2Obj): bool {.base.} =
   ## Checks collision with point.
   self.calcGlobalPosition()
   if self.disable:
@@ -226,7 +226,7 @@ method isCollide*(self, other: CollisionShape2DRef): bool {.base.} =
           self.global_position.y + self.y1, self.radius)
       of COLLISION_SHAPE_2D_POLYGON:
         var
-          circle = Circle2(self.global_position.x + self.x1, self.global_position.y + self.y1, self.radius)
+          circle = Circle(self.global_position.x + self.x1, self.global_position.y + self.y1, self.radius)
           a = Polygon2(other.polygon)
         a.move(other.global_position)
         return a.intersects(circle)
@@ -247,7 +247,7 @@ method isCollide*(self, other: CollisionShape2DRef): bool {.base.} =
         return a.intersects(b)
       of COLLISION_SHAPE_2D_CIRCLE:
         var
-          circle = Circle2(other.global_position.x + other.x1, other.global_position.y + other.y1, other.radius)
+          circle = Circle(other.global_position.x + other.x1, other.global_position.y + other.y1, other.radius)
           a = Polygon2(self.polygon)
         a.move(self.global_position)
         return a.intersects(circle)

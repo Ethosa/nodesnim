@@ -29,7 +29,7 @@ proc addFrame*[T](anim: AnimationRef[T], frame: T) =
 
 
 # --- Operators --- #
-proc `==`*[T](x, y: AnimationRef[T]): bool =
+proc `==`*[T](x, y: AnimationRef[T]): bool {.inline.} =
   x.name == y.name and x.speed == y.speed and x.frames == y.frames
 
 proc `[]`*[T](arr: AnimationArray[T], index: string): AnimationRef[T] =

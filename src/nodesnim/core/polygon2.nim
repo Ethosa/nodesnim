@@ -3,17 +3,17 @@
 import
   vector2,
   rect2,
-  circle2
+  circle
 {.used.}
 
 
 type
   Polygon2Obj* = object
-    positions*: seq[Vector2Ref]
+    positions*: seq[Vector2Obj]
   Polygon2Ref* = ref Polygon2Obj
 
 
-proc Polygon2*(pnts: varargs[Vector2Ref]): Polygon2Ref =
+proc Polygon2*(pnts: varargs[Vector2Obj]): Polygon2Ref =
   ## Creates a new Polygon2 object.
   ##
   ## Arguments:
@@ -24,7 +24,7 @@ proc Polygon2*(pnts: varargs[Vector2Ref]): Polygon2Ref =
   for i in pnts:
     result.positions.add(i)
 
-proc Polygon2*(pnts: seq[Vector2Ref]): Polygon2Ref =
+proc Polygon2*(pnts: seq[Vector2Obj]): Polygon2Ref =
   ## Creates a new Polygon2 object.
   ##
   ## Arguments:
@@ -49,7 +49,7 @@ proc contains*(self: Polygon2Ref, x, y: float): bool =
     if ((a.y >= y and b.y < y) or (a.y < y and b.y >= y)) and (x < (b.x-a.x)*(y-a.y) / (b.y-a.y)+a.x):
       result = not result
 
-proc contains*(self: Polygon2Ref, vec2: Vector2Ref): bool {.inline.} =
+proc contains*(self: Polygon2Ref, vec2: Vector2Obj): bool {.inline.} =
   ## Returns true, if point `vec2` in the Polygon2.
   self.contains(vec2.x, vec2.y)
 
@@ -92,7 +92,7 @@ proc intersects*(self: Polygon2Ref, r: Rect2Ref): bool =
     if r.contains(a, b):
       return true
 
-proc intersects*(self: Polygon2Ref, circle: Circle2Ref): bool =
+proc intersects*(self: Polygon2Ref, circle: CircleRef): bool =
   ## Returns true, if circle intersect with polygon.
   var next = 1
   let length = self.positions.len()
@@ -106,7 +106,7 @@ proc intersects*(self: Polygon2Ref, circle: Circle2Ref): bool =
     if circle.contains(a, b):
       return true
 
-proc move*(self: Polygon2Ref, vec2: Vector2Ref) =
+proc move*(self: Polygon2Ref, vec2: Vector2Obj) =
   ## Moves polygon.
   for i in 0..self.positions.high:
     self.positions[i] += vec2

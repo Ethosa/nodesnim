@@ -12,17 +12,17 @@ type
 proc Rect2*(x, y, w, h: float): Rect2Ref =
   Rect2Ref(x: x, y: y, w: w, h: h)
 
-proc Rect2*(left_top, width_height: Vector2Ref): Rect2Ref =
+proc Rect2*(pos, size: Vector2Obj): Rect2Ref =
   Rect2Ref(
-    x: left_top.x, y: left_top.y,
-    w: width_height.x, h: width_height.y
+    x: pos.x, y: pos.y,
+    w: size.x, h: size.y
   )
 
 
 proc contains*(self: Rect2Ref, x, y: float): bool {.inline.} =
   self.x <= x and self.x+self.w >= x and self.y <= y and self.y+self.h >= y
 
-proc contains*(self: Rect2Ref, vector: Vector2Ref): bool {.inline.} =
+proc contains*(self: Rect2Ref, vector: Vector2Obj): bool {.inline.} =
   self.contains(vector.x, vector.y)
 
 proc contains*(self, other: Rect2Ref): bool =
@@ -43,7 +43,7 @@ proc intersects*(self, other: Rect2Ref): bool =
      other.contains(self.x+other.w, self.y) or
      other.contains(self.x+other.w, self.y+self.h))
 
-proc contains*(self: Rect2Ref, a, b: Vector2Ref): bool =
+proc contains*(self: Rect2Ref, a, b: Vector2Obj): bool =
   let
     left = intersects(a, b, Vector2(self.x, self.y), Vector2(self.x, self.y+self.h))
     right = intersects(a, b, Vector2(self.x+self.w, self.y), Vector2(self.x+self.w, self.y+self.h))

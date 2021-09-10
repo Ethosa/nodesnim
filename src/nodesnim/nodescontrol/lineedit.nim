@@ -30,7 +30,7 @@ type
     color*: ColorRef        ## Text color.
     hint_color*: ColorRef   ## Hint color.
     caret_color*: ColorRef
-    text_align*: AnchorRef  ## Text align.
+    text_align*: AnchorObj  ## Text align.
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
   LineEditRef* = ref LineEditObj
 
@@ -64,7 +64,7 @@ proc LineEdit*(name: string = "LineEdit"): LineEditRef =
   result.kind = LINE_EDIT_NODE
 
 
-method getTextSize*(self: LineEditRef): Vector2Ref {.base.} =
+method getTextSize*(self: LineEditRef): Vector2Obj {.base.} =
   ## Returns text size.
   result = Vector2(0, self.size)
   for c in self.text:
@@ -76,7 +76,7 @@ method getCharPositionUnderMouse*(self: LineEditRef): int {.base.} =
   let
     size = self.getTextSize()
     textlen = self.text.len()
-    pos = Vector2Ref(x: last_event.x, y: last_event.y) - self.global_position
+    pos = Vector2Obj(x: last_event.x, y: last_event.y) - self.global_position
   if pos.y > size.y:
     return textlen
   else:

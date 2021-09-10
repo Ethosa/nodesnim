@@ -24,7 +24,7 @@ import
 
 type
   LabelObj* = object of ControlRef
-    text_align*: AnchorRef
+    text_align*: AnchorObj
     text*: StyleText
   LabelRef* = ref LabelObj
 
@@ -88,7 +88,7 @@ method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
   self.text_align = Anchor(x1, y1, x2, y2)
   self.text.rendered = false
 
-method setTextAlign*(self: LabelRef, align: AnchorRef) {.base.} =
+method setTextAlign*(self: LabelRef, align: AnchorObj) {.base.} =
   self.text_align = align
   self.text.rendered = false
 

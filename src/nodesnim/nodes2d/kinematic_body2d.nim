@@ -89,7 +89,7 @@ method isCollide*(self: KinematicBody2DRef): bool {.base.} =
           break
 
 
-method moveAndCollide*(self: KinematicBody2DRef, vel: Vector2Ref) {.base.} =
+method moveAndCollide*(self: KinematicBody2DRef, vel: Vector2Obj) {.base.} =
   ## Moves and checks collision
   ##
   ## Arguments:

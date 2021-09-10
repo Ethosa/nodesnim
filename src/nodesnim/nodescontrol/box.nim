@@ -16,7 +16,7 @@ import
 
 type
   BoxObj* = object of ControlRef
-    child_anchor*: AnchorRef
+    child_anchor*: AnchorObj
   BoxRef* = ref BoxObj
 
 
@@ -35,7 +35,7 @@ proc Box*(name: string = "Box"): BoxRef =
   result.kind = BOX_NODE
 
 
-method getChildSize*(self: BoxRef): Vector2Ref {.base.} =
+method getChildSize*(self: BoxRef): Vector2Obj {.base.} =
   ## Returns Vector2 of the minimal size of the box pointer.
   var
     x = 0f
@@ -85,7 +85,7 @@ method resize*(self: BoxRef, w, h: GLfloat, save_anchor: bool = false) =
   if not save_anchor:
     self.size_anchor.clear()
 
-method setChildAnchor*(self: BoxRef, anchor: AnchorRef) {.base.} =
+method setChildAnchor*(self: BoxRef, anchor: AnchorObj) {.base.} =
   ## Changes child anchor.
   ##
   ## Arguments:

@@ -12,6 +12,9 @@ import
   nodes_os,
   unicode
 
+when defined(debug):
+  import logging
+
 
 type
   StyleUnicode* = ref object
@@ -136,7 +139,7 @@ proc splitLines*(text: StyleText): seq[StyleText] =
         inc line
 
 
-proc getTextSize*(text: StyleText): Vector2Ref =
+proc getTextSize*(text: StyleText): Vector2Obj =
   result = Vector2()
   if not text.font.isNil():
     var
@@ -152,7 +155,7 @@ proc getTextSize*(text: StyleText): Vector2Ref =
       result.y += h.float
     result.y -= text.spacing
 
-proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Ref, b: uint16] =
+proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Obj, b: uint16] =
   result = (a: Vector2(), b: 0'u16)
   var tmp = 0'u32
   if not text.font.isNil():
@@ -181,7 +184,13 @@ proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Ref, b: uint16]
         return result
     result[0].y -= text.spacing
 
-proc render*(text: StyleText, size: Vector2Ref, anchor: AnchorRef) =
+proc render*(text: StyleText, size: Vector2Obj, anchor: AnchorObj) =
+  when defined(debug):
+    if text.font.isNil():
+      error("Font is not loaded!")
+      text.rendered = true
+      return
+
   if not text.font.isNil() and $text != "":
     var
       lines = text.splitLines()
@@ -226,7 +235,7 @@ proc render*(text: StyleText, size: Vector2Ref, anchor: AnchorRef) =
     surface.freeSurface()
     surface = nil
 
-proc renderTo*(text: StyleText, pos, size: Vector2Ref, anchor: AnchorRef) =
+proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorObj) =
     # Show text
     var
       pos1 = Vector2(pos)
