@@ -184,7 +184,7 @@ proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Obj, b: uint16]
         return result
     result[0].y -= text.spacing
 
-proc render*(text: StyleText, size: Vector2Obj, anchor: AnchorRef) =
+proc render*(text: StyleText, size: Vector2Obj, anchor: AnchorObj) =
   when defined(debug):
     if text.font.isNil():
       error("Font is not loaded!")
@@ -235,7 +235,7 @@ proc render*(text: StyleText, size: Vector2Obj, anchor: AnchorRef) =
     surface.freeSurface()
     surface = nil
 
-proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorRef) =
+proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorObj) =
     # Show text
     var
       pos1 = Vector2(pos)

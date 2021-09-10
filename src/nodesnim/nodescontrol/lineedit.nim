@@ -30,7 +30,7 @@ type
     color*: ColorRef        ## Text color.
     hint_color*: ColorRef   ## Hint color.
     caret_color*: ColorRef
-    text_align*: AnchorRef  ## Text align.
+    text_align*: AnchorObj  ## Text align.
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
   LineEditRef* = ref LineEditObj
 

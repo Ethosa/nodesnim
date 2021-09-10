@@ -18,7 +18,7 @@ type
     current*, smooth*: bool
     smooth_speed*: float
     target*: NodeRef
-    limit*: AnchorRef
+    limit*: AnchorObj
   Camera2DRef* = ref Camera2DObj
 
 
@@ -109,7 +109,7 @@ method setLimit*(self: Camera2DRef, x1, y1, x2, y2: float) {.base.} =
   self.limit = Anchor(x1, y1, x2, y2)
 
 
-method setLimit*(self: Camera2DRef, limit: AnchorRef) {.base.} =
+method setLimit*(self: Camera2DRef, limit: AnchorObj) {.base.} =
   ## Changes camera limit.
   self.limit = limit
 

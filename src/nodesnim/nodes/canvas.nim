@@ -39,7 +39,7 @@ type
     rect_size*: Vector2Obj           ## Node size.
     rect_min_size*: Vector2Obj
     size_anchor*: Vector2Obj         ## Node size anchor.
-    anchor*: AnchorRef               ## Node anchor.
+    anchor*: AnchorObj               ## Node anchor.
   CanvasRef* = ref CanvasObj
 
 
@@ -219,11 +219,11 @@ method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base
   else:
     self.rect_size.y = self.rect_min_size.y
 
-method setAnchor*(self: CanvasRef, anchor: AnchorRef) {.base.} =
+method setAnchor*(self: CanvasRef, anchor: AnchorObj) {.base.} =
   ## Changes node anchor.
   ##
   ## Arguments:
-  ## - `anchor` - AnchorRef object.
+  ## - `anchor` - AnchorObj object.
   self.anchor = anchor
 
 method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =

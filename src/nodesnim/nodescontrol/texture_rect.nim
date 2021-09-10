@@ -21,7 +21,7 @@ type
     texture*: Gluint
     texture_mode*: TextureMode
     texture_size*: Vector2Obj
-    texture_anchor*: AnchorRef
+    texture_anchor*: AnchorObj
     texture_filter*: ColorRef
   TextureRectRef* = ref TextureRectObj
 
@@ -145,7 +145,7 @@ method setTextureFilter*(self: TextureRectRef, color: ColorRef) {.base.} =
   ## Changes texture filter color.
   self.texture_filter = color
 
-method setTextureAnchor*(self: TextureRectRef, anchor: AnchorRef) {.base.} =
+method setTextureAnchor*(self: TextureRectRef, anchor: AnchorObj) {.base.} =
   ## Changes texture anchor.
   self.texture_anchor = anchor
 

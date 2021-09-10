@@ -16,7 +16,7 @@ import
 
 type
   BoxObj* = object of ControlRef
-    child_anchor*: AnchorRef
+    child_anchor*: AnchorObj
   BoxRef* = ref BoxObj
 
 
@@ -85,7 +85,7 @@ method resize*(self: BoxRef, w, h: GLfloat, save_anchor: bool = false) =
   if not save_anchor:
     self.size_anchor.clear()
 
-method setChildAnchor*(self: BoxRef, anchor: AnchorRef) {.base.} =
+method setChildAnchor*(self: BoxRef, anchor: AnchorObj) {.base.} =
   ## Changes child anchor.
   ##
   ## Arguments:
