@@ -111,7 +111,7 @@ function main() {
   current*, smooth*: bool
   smooth_speed*: float
   target*: NodeRef
-  limit*: AnchorRef"><wbr />Camera2DObj<span class="attachedType"></span></a></li>
+  limit*: AnchorObj"><wbr />Camera2DObj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Camera2DRef"
     title="Camera2DRef = ref Camera2DObj"><wbr />Camera2DRef<span class="attachedType"></span></a></li>
 
@@ -144,8 +144,8 @@ function main() {
     title="setCurrent(self: Camera2DRef)"><wbr />set<wbr />Current<span class="attachedType">Camera2DRef</span></a></li>
   <li><a class="reference" href="#setLimit.e%2CCamera2DRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setLimit(self: Camera2DRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Limit<span class="attachedType">Camera2DRef</span></a></li>
-  <li><a class="reference" href="#setLimit.e%2CCamera2DRef%2CAnchorRef"
-    title="setLimit(self: Camera2DRef; limit: AnchorRef)"><wbr />set<wbr />Limit<span class="attachedType">Camera2DRef</span></a></li>
+  <li><a class="reference" href="#setLimit.e%2CCamera2DRef%2CAnchorObj"
+    title="setLimit(self: Camera2DRef; limit: AnchorObj)"><wbr />set<wbr />Limit<span class="attachedType">Camera2DRef</span></a></li>
   <li><a class="reference" href="#setTarget.e%2CCamera2DRef%2CNodeRef"
     title="setTarget(self: Camera2DRef; target: NodeRef)"><wbr />set<wbr />Target<span class="attachedType">Camera2DRef</span></a></li>
 
@@ -172,7 +172,7 @@ function main() {
   <span class="Identifier">current</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">smooth</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">smooth_speed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
   <span class="Identifier">target</span><span class="Operator">*</span><span class="Other">:</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a>
-  <span class="Identifier">limit</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>
+  <span class="Identifier">limit</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>
 </pre></dt>
 <dd>
 
@@ -273,8 +273,8 @@ Changes the current camera. It also automatically disable other cameras.
 Change camera limit.
 
 </dd>
-<a id="setLimit.e,Camera2DRef,AnchorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setLimit.e%2CCamera2DRef%2CAnchorRef"><span class="Identifier">setLimit</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="camera2d.html#Camera2DRef"><span class="Identifier">Camera2DRef</span></a><span class="Other">;</span> <span class="Identifier">limit</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setLimit.e,Camera2DRef,AnchorObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setLimit.e%2CCamera2DRef%2CAnchorObj"><span class="Identifier">setLimit</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="camera2d.html#Camera2DRef"><span class="Identifier">Camera2DRef</span></a><span class="Other">;</span> <span class="Identifier">limit</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes camera limit.
@@ -297,7 +297,7 @@ Changes camera target node.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:53 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:56 UTC</small>
       </div>
     </div>
   </div>

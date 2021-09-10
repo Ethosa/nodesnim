@@ -1,0 +1,9 @@
+CircleObj	nodesnim/core/circle.html#CircleObj	circle: CircleObj	
+CircleRef	nodesnim/core/circle.html#CircleRef	circle: CircleRef	
+Circle	nodesnim/core/circle.html#Circle,float,float,float	circle: Circle(x, y, r: float): CircleRef	
+Circle	nodesnim/core/circle.html#Circle,Vector2Obj,float	circle: Circle(vec: Vector2Obj; r: float): CircleRef	
+contains	nodesnim/core/circle.html#contains,CircleRef,float,float	circle: contains(self: CircleRef; x, y: float): bool	
+contains	nodesnim/core/circle.html#contains,CircleRef,Vector2Obj	circle: contains(self: CircleRef; vec2: Vector2Obj): bool	
+contains	nodesnim/core/circle.html#contains,CircleRef,CircleRef	circle: contains(self, other: CircleRef): bool	
+contains	nodesnim/core/circle.html#contains,CircleRef,Vector2Obj,Vector2Obj	circle: contains(self: CircleRef; a, b: Vector2Obj): bool	
+`$`	nodesnim/core/circle.html#$,CircleRef	circle: `$`(self: CircleRef): string	

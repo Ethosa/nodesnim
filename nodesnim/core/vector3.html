@@ -103,8 +103,6 @@ function main() {
       <li><a class="reference" href="#Vector3Obj"
     title="Vector3Obj = object
   x*, y*, z*: float"><wbr />Vector3Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#Vector3Ref"
-    title="Vector3Ref = ref Vector3Obj"><wbr />Vector3Ref<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -202,13 +200,6 @@ function main() {
 
 
 </dd>
-<a id="Vector3Ref"></a>
-<dt><pre><a href="vector3.html#Vector3Ref"><span class="Identifier">Vector3Ref</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a></pre></dt>
-<dd>
-
-
-
-</dd>
 
 </dl></div>
 <div class="section" id="12">
@@ -263,35 +254,35 @@ Creates a new Vector3 object.
 
 </dd>
 <a id="cross,Vector3Obj,Vector3Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#cross%2CVector3Obj%2CVector3Obj"><span class="Identifier">cross</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cross%2CVector3Obj%2CVector3Obj"><span class="Identifier">cross</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="cross,Vector3Obj,float,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#cross%2CVector3Obj%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">cross</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cross%2CVector3Obj%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">cross</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="dot,Vector3Obj,Vector3Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#dot%2CVector3Obj%2CVector3Obj"><span class="Identifier">dot</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#dot%2CVector3Obj%2CVector3Obj"><span class="Identifier">dot</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="dot,Vector3Obj,float,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#dot%2CVector3Obj%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">dot</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#dot%2CVector3Obj%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">dot</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="angleTo,Vector3Obj,Vector3Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#angleTo%2CVector3Obj%2CVector3Obj"><span class="Identifier">angleTo</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#angleTo%2CVector3Obj%2CVector3Obj"><span class="Identifier">angleTo</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -312,7 +303,7 @@ Creates a new Vector3 object.
 
 </dd>
 <a id="len,Vector3Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#len%2CVector3Obj"><span class="Identifier">len</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#len%2CVector3Obj"><span class="Identifier">len</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -322,7 +313,7 @@ Creates a new Vector3 object.
 
 </dd>
 <a id="$,Vector3Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#%24%2CVector3Obj"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#%24%2CVector3Obj"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -478,7 +469,7 @@ Creates a new Vector3 object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:26:59 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:07 UTC</small>
       </div>
     </div>
   </div>

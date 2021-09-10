@@ -6,4 +6,4 @@ getCollideCount	nodesnim/nodes2d/kinematic_body2d.html#getCollideCount.e,Kinemat
 draw	nodesnim/nodes2d/kinematic_body2d.html#draw.e,KinematicBody2DRef,GLfloat,GLfloat	kinematic_body2d: draw(self: KinematicBody2DRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes2d/kinematic_body2d.html#duplicate.e,KinematicBody2DRef	kinematic_body2d: duplicate(self: KinematicBody2DRef): KinematicBody2DRef	
 isCollide	nodesnim/nodes2d/kinematic_body2d.html#isCollide.e,KinematicBody2DRef	kinematic_body2d: isCollide(self: KinematicBody2DRef): bool	
-moveAndCollide	nodesnim/nodes2d/kinematic_body2d.html#moveAndCollide.e,KinematicBody2DRef,Vector2Ref	kinematic_body2d: moveAndCollide(self: KinematicBody2DRef; vel: Vector2Ref)	
+moveAndCollide	nodesnim/nodes2d/kinematic_body2d.html#moveAndCollide.e,KinematicBody2DRef,Vector2Obj	kinematic_body2d: moveAndCollide(self: KinematicBody2DRef; vel: Vector2Obj)	

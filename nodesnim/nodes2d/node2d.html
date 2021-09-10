@@ -110,8 +110,8 @@ function main() {
     title="Node2DObj = object of CanvasObj
   centered*: bool
   rotation*: float
-  scale*: Vector2Ref
-  timed_position*: Vector2Ref
+  scale*: Vector2Obj
+  timed_position*: Vector2Obj
   relative_z_index*: bool
   z_index*, z_index_global*: float"><wbr />Node2DObj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Node2DRef"
@@ -136,12 +136,12 @@ function main() {
     title="draw(self: Node2DRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">Node2DRef</span></a></li>
   <li><a class="reference" href="#move.e%2CNode2DRef%2Cfloat%2Cfloat"
     title="move(self: Node2DRef; x, y: float)"><wbr />move<span class="attachedType">Node2DRef</span></a></li>
-  <li><a class="reference" href="#move.e%2CNode2DRef%2CVector2Ref"
-    title="move(self: Node2DRef; vec2: Vector2Ref)"><wbr />move<span class="attachedType">Node2DRef</span></a></li>
+  <li><a class="reference" href="#move.e%2CNode2DRef%2CVector2Obj"
+    title="move(self: Node2DRef; vec2: Vector2Obj)"><wbr />move<span class="attachedType">Node2DRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CNode2DRef"
     title="duplicate(self: Node2DRef): Node2DRef"><wbr />duplicate<span class="attachedType">Node2DRef</span></a></li>
   <li><a class="reference" href="#getGlobalMousePosition.e%2CNode2DRef"
-    title="getGlobalMousePosition(self: Node2DRef): Vector2Ref"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">Node2DRef</span></a></li>
+    title="getGlobalMousePosition(self: Node2DRef): Vector2Obj"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">Node2DRef</span></a></li>
   <li><a class="reference" href="#setZIndex.e%2CNode2DRef%2Cint"
     title="setZIndex(self: Node2DRef; z_index: int)"><wbr />set<wbr />ZIndex<span class="attachedType">Node2DRef</span></a></li>
 
@@ -175,8 +175,8 @@ function main() {
 <dt><pre><a href="node2d.html#Node2DObj"><span class="Identifier">Node2DObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../nodes/canvas.html#CanvasObj"><span class="Identifier">CanvasObj</span></a>
   <span class="Identifier">centered</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">rotation</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
-  <span class="Identifier">scale</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>
-  <span class="Identifier">timed_position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>
+  <span class="Identifier">scale</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>
+  <span class="Identifier">timed_position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>
   <span class="Identifier">relative_z_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">z_index</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">z_index_global</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
 </pre></dt>
@@ -236,8 +236,8 @@ this method uses in the <tt class="docutils literal"><span class="pre">window.ni
 Moves Node2D object by <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>.
 
 </dd>
-<a id="move.e,Node2DRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CNode2DRef%2CVector2Ref"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node2d.html#Node2DRef"><span class="Identifier">Node2DRef</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="move.e,Node2DRef,Vector2Obj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CNode2DRef%2CVector2Obj"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node2d.html#Node2DRef"><span class="Identifier">Node2DRef</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Moves Node2D object by <tt class="docutils literal"><span class="pre">vec2</span></tt>.
@@ -251,7 +251,7 @@ Duplicates Node2D object and create a new Node2D.
 
 </dd>
 <a id="getGlobalMousePosition.e,Node2DRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getGlobalMousePosition.e%2CNode2DRef"><span class="Identifier">getGlobalMousePosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node2d.html#Node2DRef"><span class="Identifier">Node2DRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">method</span> <a href="#getGlobalMousePosition.e%2CNode2DRef"><span class="Identifier">getGlobalMousePosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node2d.html#Node2DRef"><span class="Identifier">Node2DRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -287,7 +287,7 @@ Changes Z index.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:43 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:48 UTC</small>
       </div>
     </div>
   </div>

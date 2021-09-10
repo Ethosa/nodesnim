@@ -125,12 +125,12 @@ function main() {
   <li><a class="reference" href="#CanvasObj"
     title="CanvasObj = object of NodeObj
   commands*: seq[DrawCommand]
-  position*: Vector2Ref        ## Node position, by default is Vector2(0, 0).
-  global_position*: Vector2Ref ## Node global position.
-  rect_size*: Vector2Ref       ## Node size.
-  rect_min_size*: Vector2Ref
-  size_anchor*: Vector2Ref     ## Node size anchor.
-  anchor*: AnchorRef           ## Node anchor."><wbr />Canvas<wbr />Obj<span class="attachedType"></span></a></li>
+  position*: Vector2Obj        ## Node position, by default is Vector2(0, 0).
+  global_position*: Vector2Obj ## Node global position.
+  rect_size*: Vector2Obj       ## Node size.
+  rect_min_size*: Vector2Obj
+  size_anchor*: Vector2Obj     ## Node size anchor.
+  anchor*: AnchorObj           ## Node anchor."><wbr />Canvas<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#CanvasRef"
     title="CanvasRef = ref CanvasObj"><wbr />Canvas<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -155,8 +155,8 @@ function main() {
     title="draw(canvas: CanvasRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CCanvasRef"
     title="duplicate(self: CanvasRef): CanvasRef"><wbr />duplicate<span class="attachedType">CanvasRef</span></a></li>
-  <li><a class="reference" href="#move.e%2CCanvasRef%2CVector2Ref"
-    title="move(self: CanvasRef; vec2: Vector2Ref)"><wbr />move<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#move.e%2CCanvasRef%2CVector2Obj"
+    title="move(self: CanvasRef; vec2: Vector2Obj)"><wbr />move<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#move.e%2CCanvasRef%2Cfloat%2Cfloat"
     title="move(self: CanvasRef; x, y: float)"><wbr />move<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#circle.e%2CCanvasRef%2CGLfloat%2CGLfloat%2CGLfloat%2CColorRef%2Cint"
@@ -171,12 +171,12 @@ function main() {
     title="fill(canvas: CanvasRef; color: ColorRef)"><wbr />fill<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#resize.e%2CCanvasRef%2CGLfloat%2CGLfloat%2Cbool"
     title="resize(self: CanvasRef; w, h: GLfloat; save_anchor: bool = false)"><wbr />resize<span class="attachedType">CanvasRef</span></a></li>
-  <li><a class="reference" href="#setAnchor.e%2CCanvasRef%2CAnchorRef"
-    title="setAnchor(self: CanvasRef; anchor: AnchorRef)"><wbr />set<wbr />Anchor<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#setAnchor.e%2CCanvasRef%2CAnchorObj"
+    title="setAnchor(self: CanvasRef; anchor: AnchorObj)"><wbr />set<wbr />Anchor<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#setAnchor.e%2CCanvasRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setAnchor(self: CanvasRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Anchor<span class="attachedType">CanvasRef</span></a></li>
-  <li><a class="reference" href="#setSizeAnchor.e%2CCanvasRef%2CVector2Ref"
-    title="setSizeAnchor(self: CanvasRef; anchor: Vector2Ref)"><wbr />set<wbr />Size<wbr />Anchor<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#setSizeAnchor.e%2CCanvasRef%2CVector2Obj"
+    title="setSizeAnchor(self: CanvasRef; anchor: Vector2Obj)"><wbr />set<wbr />Size<wbr />Anchor<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#setSizeAnchor.e%2CCanvasRef%2Cfloat%2Cfloat"
     title="setSizeAnchor(self: CanvasRef; x, y: float)"><wbr />set<wbr />Size<wbr />Anchor<span class="attachedType">CanvasRef</span></a></li>
 
@@ -231,12 +231,12 @@ function main() {
 <a id="CanvasObj"></a>
 <dt><pre><a href="canvas.html#CanvasObj"><span class="Identifier">CanvasObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a>
   <span class="Identifier">commands</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="canvas.html#DrawCommand"><span class="Identifier">DrawCommand</span></a><span class="Other">]</span>
-  <span class="Identifier">position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>        <span class="Comment">## Node position, by default is Vector2(0, 0).</span>
-  <span class="Identifier">global_position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span class="Comment">## Node global position.</span>
-  <span class="Identifier">rect_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>       <span class="Comment">## Node size.</span>
-  <span class="Identifier">rect_min_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>
-  <span class="Identifier">size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>     <span class="Comment">## Node size anchor.</span>
-  <span class="Identifier">anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>           <span class="Comment">## Node anchor.</span>
+  <span class="Identifier">position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>        <span class="Comment">## Node position, by default is Vector2(0, 0).</span>
+  <span class="Identifier">global_position</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span class="Comment">## Node global position.</span>
+  <span class="Identifier">rect_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>       <span class="Comment">## Node size.</span>
+  <span class="Identifier">rect_min_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>
+  <span class="Identifier">size_anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>     <span class="Comment">## Node size anchor.</span>
+  <span class="Identifier">anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>           <span class="Comment">## Node anchor.</span>
   </pre></dt>
 <dd>
 
@@ -301,8 +301,8 @@ This uses in the <tt class="docutils literal"><span class="pre">window.nim</span
 Duplicates Canvas object and create a new Canvas.
 
 </dd>
-<a id="move.e,CanvasRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CCanvasRef%2CVector2Ref"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="move.e,CanvasRef,Vector2Obj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#move.e%2CCanvasRef%2CVector2Obj"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Adds <tt class="docutils literal"><span class="pre">vec2</span></tt> to the node position.</p>
@@ -406,13 +406,13 @@ Fills canvas.
 
 
 </dd>
-<a id="setAnchor.e,CanvasRef,AnchorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setAnchor.e%2CCanvasRef%2CAnchorRef"><span class="Identifier">setAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setAnchor.e,CanvasRef,AnchorObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setAnchor.e%2CCanvasRef%2CAnchorObj"><span class="Identifier">setAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Changes node anchor.</p>
 <p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">anchor</span></tt> - AnchorRef object.</li>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">anchor</span></tt> - AnchorObj object.</li>
 </ul>
 
 
@@ -429,8 +429,8 @@ Fills canvas.
 
 
 </dd>
-<a id="setSizeAnchor.e,CanvasRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setSizeAnchor.e%2CCanvasRef%2CVector2Ref"><span class="Identifier">setSizeAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setSizeAnchor.e,CanvasRef,Vector2Obj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setSizeAnchor.e%2CCanvasRef%2CVector2Obj"><span class="Identifier">setSizeAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -453,7 +453,7 @@ Fills canvas.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:26:59 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:06 UTC</small>
       </div>
     </div>
   </div>

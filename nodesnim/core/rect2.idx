@@ -1,12 +1,12 @@
 Rect2Obj	nodesnim/core/rect2.html#Rect2Obj	rect2: Rect2Obj	
 Rect2Ref	nodesnim/core/rect2.html#Rect2Ref	rect2: Rect2Ref	
 Rect2	nodesnim/core/rect2.html#Rect2,float,float,float,float	rect2: Rect2(x, y, w, h: float): Rect2Ref	
-Rect2	nodesnim/core/rect2.html#Rect2,Vector2Ref,Vector2Ref	rect2: Rect2(left_top, width_height: Vector2Ref): Rect2Ref	
+Rect2	nodesnim/core/rect2.html#Rect2,Vector2Obj,Vector2Obj	rect2: Rect2(pos, size: Vector2Obj): Rect2Ref	
 contains	nodesnim/core/rect2.html#contains,Rect2Ref,float,float	rect2: contains(self: Rect2Ref; x, y: float): bool	
-contains	nodesnim/core/rect2.html#contains,Rect2Ref,Vector2Ref	rect2: contains(self: Rect2Ref; vector: Vector2Ref): bool	
+contains	nodesnim/core/rect2.html#contains,Rect2Ref,Vector2Obj	rect2: contains(self: Rect2Ref; vector: Vector2Obj): bool	
 contains	nodesnim/core/rect2.html#contains,Rect2Ref,Rect2Ref	rect2: contains(self, other: Rect2Ref): bool	
 intersects	nodesnim/core/rect2.html#intersects,Rect2Ref,Rect2Ref	rect2: intersects(self, other: Rect2Ref): bool	
-contains	nodesnim/core/rect2.html#contains,Rect2Ref,Vector2Ref,Vector2Ref	rect2: contains(self: Rect2Ref; a, b: Vector2Ref): bool	
+contains	nodesnim/core/rect2.html#contains,Rect2Ref,Vector2Obj,Vector2Obj	rect2: contains(self: Rect2Ref; a, b: Vector2Obj): bool	
 clamp	nodesnim/core/rect2.html#clamp,float,float,float	rect2: clamp(a, b, c: float): float	
 isCollideWithCircle	nodesnim/core/rect2.html#isCollideWithCircle,Rect2Ref,float,float,float	rect2: isCollideWithCircle(self: Rect2Ref; x, y, r: float): bool	
 `$`	nodesnim/core/rect2.html#$,Rect2Ref	rect2: `$`(x: Rect2Ref): string	

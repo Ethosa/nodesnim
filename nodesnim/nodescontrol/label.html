@@ -108,7 +108,7 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#LabelObj"
     title="LabelObj = object of ControlRef
-  text_align*: AnchorRef
+  text_align*: AnchorObj
   text*: StyleText"><wbr />Label<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#LabelRef"
     title="LabelRef = ref LabelObj"><wbr />Label<wbr />Ref<span class="attachedType"></span></a></li>
@@ -136,8 +136,8 @@ function main() {
     title="setText(self: LabelRef; text: string; save_properties: bool = false)"><wbr />set<wbr />Text<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextAlign(self: LabelRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
-  <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2CAnchorRef"
-    title="setTextAlign(self: LabelRef; align: AnchorRef)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2CAnchorObj"
+    title="setTextAlign(self: LabelRef; align: AnchorObj)"><wbr />set<wbr />Text<wbr />Align<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextColor.e%2CLabelRef%2CColorRef"
     title="setTextColor(self: LabelRef; color: ColorRef)"><wbr />set<wbr />Text<wbr />Color<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextFont.e%2CLabelRef%2CFontPtr"
@@ -165,7 +165,7 @@ function main() {
 <dl class="item">
 <a id="LabelObj"></a>
 <dt><pre><a href="label.html#LabelObj"><span class="Identifier">LabelObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a>
-  <span class="Identifier">text_align</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>
+  <span class="Identifier">text_align</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>
   <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/font.html#StyleText"><span class="Identifier">StyleText</span></a>
 </pre></dt>
 <dd>
@@ -245,8 +245,8 @@ Duplicates Label object and create a new Label.
 
 
 </dd>
-<a id="setTextAlign.e,LabelRef,AnchorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2CAnchorRef"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setTextAlign.e,LabelRef,AnchorObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2CAnchorObj"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -284,7 +284,7 @@ Duplicates Label object and create a new Label.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:13 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:19 UTC</small>
       </div>
     </div>
   </div>

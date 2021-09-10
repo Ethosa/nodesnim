@@ -5,7 +5,8 @@ Control	nodesnim/nodescontrol/control.html#Control,string	control: Control(name:
 calcPositionAnchor	nodesnim/nodescontrol/control.html#calcPositionAnchor.e,ControlRef	control: calcPositionAnchor(self: ControlRef)	
 draw	nodesnim/nodescontrol/control.html#draw.e,ControlRef,GLfloat,GLfloat	control: draw(self: ControlRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/control.html#duplicate.e,ControlRef	control: duplicate(self: ControlRef): ControlRef	
-getGlobalMousePosition	nodesnim/nodescontrol/control.html#getGlobalMousePosition.e,ControlRef	control: getGlobalMousePosition(self: ControlRef): Vector2Ref	
+getGlobalMousePosition	nodesnim/nodescontrol/control.html#getGlobalMousePosition.e,ControlRef	control: getGlobalMousePosition(self: ControlRef): Vector2Obj	
 handle	nodesnim/nodescontrol/control.html#handle.e,ControlRef,InputEvent,NodeRef	control: handle(self: ControlRef; event: InputEvent; mouse_on: var NodeRef)	
+setBackground	nodesnim/nodescontrol/control.html#setBackground.e,ControlRef,DrawableRef	control: setBackground(self: ControlRef; drawable: DrawableRef)	
 setBackgroundColor	nodesnim/nodescontrol/control.html#setBackgroundColor.e,ControlRef,ColorRef	control: setBackgroundColor(self: ControlRef; color: ColorRef)	
 setStyle	nodesnim/nodescontrol/control.html#setStyle.e,ControlRef,StyleSheetRef	control: setStyle(self: ControlRef; style: StyleSheetRef)	

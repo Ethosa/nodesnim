@@ -1,5 +1,4 @@
 Vector3Obj	nodesnim/core/vector3.html#Vector3Obj	vector3: Vector3Obj	
-Vector3Ref	nodesnim/core/vector3.html#Vector3Ref	vector3: Vector3Ref	
 Vector3	nodesnim/core/vector3.html#Vector3,float,float,float	vector3: Vector3(x, y, z: float): Vector3Obj	
 Vector3	nodesnim/core/vector3.html#Vector3,float	vector3: Vector3(xyz: float): Vector3Obj	
 Vector3	nodesnim/core/vector3.html#Vector3,Vector3Obj	vector3: Vector3(other: Vector3Obj): Vector3Obj	

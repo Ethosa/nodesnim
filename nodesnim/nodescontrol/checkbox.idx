@@ -1,0 +1,9 @@
+CheckBoxRef	nodesnim/nodescontrol/checkbox.html#CheckBoxRef	checkbox: CheckBoxRef	
+CheckBox	nodesnim/nodescontrol/checkbox.html#CheckBox,string	checkbox: CheckBox(name: string = &quot;CheckBox&quot;): CheckBoxRef	
+disable	nodesnim/nodescontrol/checkbox.html#disable.e,CheckBoxRef	checkbox: disable(self: CheckBoxRef)	
+draw	nodesnim/nodescontrol/checkbox.html#draw.e,CheckBoxRef,GLfloat,GLfloat	checkbox: draw(self: CheckBoxRef; w, h: GLfloat)	
+duplicate	nodesnim/nodescontrol/checkbox.html#duplicate.e,CheckBoxRef	checkbox: duplicate(self: CheckBoxRef): CheckBoxRef	
+enable	nodesnim/nodescontrol/checkbox.html#enable.e,CheckBoxRef	checkbox: enable(self: CheckBoxRef)	
+setText	nodesnim/nodescontrol/checkbox.html#setText.e,CheckBoxRef,string,bool	checkbox: setText(self: CheckBoxRef; value: string; save_properties: bool = false)	
+toggle	nodesnim/nodescontrol/checkbox.html#toggle.e,CheckBoxRef	checkbox: toggle(self: CheckBoxRef)	
+handle	nodesnim/nodescontrol/checkbox.html#handle.e,CheckBoxRef,InputEvent,NodeRef	checkbox: handle(self: CheckBoxRef; event: InputEvent; mouse_on: var NodeRef)	

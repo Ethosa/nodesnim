@@ -1,45 +1,44 @@
 Vector2Obj	nodesnim/core/vector2.html#Vector2Obj	vector2: Vector2Obj	
-Vector2Ref	nodesnim/core/vector2.html#Vector2Ref	vector2: Vector2Ref	
-Vector2	nodesnim/core/vector2.html#Vector2,float,float	vector2: Vector2(x, y: float): Vector2Ref	
-Vector2	nodesnim/core/vector2.html#Vector2,Vector2Ref	vector2: Vector2(b: Vector2Ref): Vector2Ref	
-Vector2	nodesnim/core/vector2.html#Vector2,float	vector2: Vector2(num: float): Vector2Ref	
-Vector2	nodesnim/core/vector2.html#Vector2	vector2: Vector2(): Vector2Ref	
-abs	nodesnim/core/vector2.html#abs,Vector2Ref	vector2: abs(a: Vector2Ref): Vector2Ref	
-angle	nodesnim/core/vector2.html#angle,Vector2Ref	vector2: angle(a: Vector2Ref): float	
-clear	nodesnim/core/vector2.html#clear,Vector2Ref	vector2: clear(a: Vector2Ref)	
-cross	nodesnim/core/vector2.html#cross,Vector2Ref,Vector2Ref	vector2: cross(a, b: Vector2Ref): float	
-cross	nodesnim/core/vector2.html#cross,Vector2Ref,float,float	vector2: cross(a: Vector2Ref; x, y: float): float	
-dot	nodesnim/core/vector2.html#dot,Vector2Ref,Vector2Ref	vector2: dot(a, b: Vector2Ref): float	
-dot	nodesnim/core/vector2.html#dot,Vector2Ref,float,float	vector2: dot(a: Vector2Ref; x, y: float): float	
-angleTo	nodesnim/core/vector2.html#angleTo,Vector2Ref,Vector2Ref	vector2: angleTo(a, b: Vector2Ref): float	
-angleTo	nodesnim/core/vector2.html#angleTo,Vector2Ref,float,float	vector2: angleTo(a: Vector2Ref; x, y: float): float	
-angleToPoint	nodesnim/core/vector2.html#angleToPoint,Vector2Ref,Vector2Ref	vector2: angleToPoint(a, b: Vector2Ref): float	
-angleToPoint	nodesnim/core/vector2.html#angleToPoint,Vector2Ref,float,float	vector2: angleToPoint(a: Vector2Ref; x, y: float): float	
-length	nodesnim/core/vector2.html#length,Vector2Ref	vector2: length(a: Vector2Ref): float	
-normalize	nodesnim/core/vector2.html#normalize,Vector2Ref	vector2: normalize(a: Vector2Ref)	
-normalized	nodesnim/core/vector2.html#normalized,Vector2Ref	vector2: normalized(a: Vector2Ref): Vector2Ref	
-distance	nodesnim/core/vector2.html#distance,Vector2Ref,Vector2Ref	vector2: distance(a, b: Vector2Ref): float	
-distance	nodesnim/core/vector2.html#distance,Vector2Ref,float,float	vector2: distance(a: Vector2Ref; x, y: float): float	
-directionTo	nodesnim/core/vector2.html#directionTo,Vector2Ref,Vector2Ref	vector2: directionTo(a, b: Vector2Ref): Vector2Ref	
-directionTo	nodesnim/core/vector2.html#directionTo,Vector2Ref,float,float	vector2: directionTo(a: Vector2Ref; x, y: float): Vector2Ref	
-intersects	nodesnim/core/vector2.html#intersects,Vector2Ref,Vector2Ref,Vector2Ref,Vector2Ref	vector2: intersects(a, b, c, d: Vector2Ref): bool	
-isEmpty	nodesnim/core/vector2.html#isEmpty,Vector2Ref	vector2: isEmpty(a: Vector2Ref): bool	
-`+`	nodesnim/core/vector2.html#+,Vector2Ref,Vector2Ref	vector2: `+`(a, b: Vector2Ref): Vector2Ref	
-`-`	nodesnim/core/vector2.html#-,Vector2Ref,Vector2Ref	vector2: `-`(a, b: Vector2Ref): Vector2Ref	
-`/`	nodesnim/core/vector2.html#/,Vector2Ref,Vector2Ref	vector2: `/`(a, b: Vector2Ref): Vector2Ref	
-`*`	nodesnim/core/vector2.html#*,Vector2Ref,Vector2Ref	vector2: `*`(a, b: Vector2Ref): Vector2Ref	
-`*`	nodesnim/core/vector2.html#*,Vector2Ref,float	vector2: `*`(x: Vector2Ref; y: float): Vector2Ref	
-`+`	nodesnim/core/vector2.html#+,Vector2Ref,float	vector2: `+`(x: Vector2Ref; y: float): Vector2Ref	
-`-`	nodesnim/core/vector2.html#-,Vector2Ref,float	vector2: `-`(x: Vector2Ref; y: float): Vector2Ref	
-`/`	nodesnim/core/vector2.html#/,Vector2Ref,float	vector2: `/`(x: Vector2Ref; y: float): Vector2Ref	
-`*=`	nodesnim/core/vector2.html#*=,Vector2Ref,Vector2Ref	vector2: `*=`(x: var Vector2Ref; y: Vector2Ref)	
-`+=`	nodesnim/core/vector2.html#+=,Vector2Ref,Vector2Ref	vector2: `+=`(x: var Vector2Ref; y: Vector2Ref)	
-`-=`	nodesnim/core/vector2.html#-=,Vector2Ref,Vector2Ref	vector2: `-=`(x: var Vector2Ref; y: Vector2Ref)	
-`/=`	nodesnim/core/vector2.html#/=,Vector2Ref,Vector2Ref	vector2: `/=`(x: var Vector2Ref; y: Vector2Ref)	
-`&gt;`	nodesnim/core/vector2.html#>,Vector2Ref,Vector2Ref	vector2: `&gt;`(x, y: Vector2Ref): bool	
-`&lt;`	nodesnim/core/vector2.html#<,Vector2Ref,Vector2Ref	vector2: `&lt;`(x, y: Vector2Ref): bool	
-`&gt;=`	nodesnim/core/vector2.html#>=,Vector2Ref,Vector2Ref	vector2: `&gt;=`(x, y: Vector2Ref): bool	
-`&lt;=`	nodesnim/core/vector2.html#<=,Vector2Ref,Vector2Ref	vector2: `&lt;=`(x, y: Vector2Ref): bool	
-`==`	nodesnim/core/vector2.html#==,Vector2Ref,Vector2Ref	vector2: `==`(x, y: Vector2Ref): bool	
-`!=`	nodesnim/core/vector2.html#!=,Vector2Ref,Vector2Ref	vector2: `!=`(x, y: Vector2Ref): bool	
-`$`	nodesnim/core/vector2.html#$,Vector2Ref	vector2: `$`(a: Vector2Ref): string	
+Vector2	nodesnim/core/vector2.html#Vector2,float,float	vector2: Vector2(x, y: float): Vector2Obj	
+Vector2	nodesnim/core/vector2.html#Vector2,Vector2Obj	vector2: Vector2(b: Vector2Obj): Vector2Obj	
+Vector2	nodesnim/core/vector2.html#Vector2,float	vector2: Vector2(num: float): Vector2Obj	
+Vector2	nodesnim/core/vector2.html#Vector2	vector2: Vector2(): Vector2Obj	
+abs	nodesnim/core/vector2.html#abs,Vector2Obj	vector2: abs(a: Vector2Obj): Vector2Obj	
+angle	nodesnim/core/vector2.html#angle,Vector2Obj	vector2: angle(a: Vector2Obj): float	
+clear	nodesnim/core/vector2.html#clear,Vector2Obj	vector2: clear(a: var Vector2Obj)	
+cross	nodesnim/core/vector2.html#cross,Vector2Obj,Vector2Obj	vector2: cross(a, b: Vector2Obj): float	
+cross	nodesnim/core/vector2.html#cross,Vector2Obj,float,float	vector2: cross(a: Vector2Obj; x, y: float): float	
+dot	nodesnim/core/vector2.html#dot,Vector2Obj,Vector2Obj	vector2: dot(a, b: Vector2Obj): float	
+dot	nodesnim/core/vector2.html#dot,Vector2Obj,float,float	vector2: dot(a: Vector2Obj; x, y: float): float	
+angleTo	nodesnim/core/vector2.html#angleTo,Vector2Obj,Vector2Obj	vector2: angleTo(a, b: Vector2Obj): float	
+angleTo	nodesnim/core/vector2.html#angleTo,Vector2Obj,float,float	vector2: angleTo(a: Vector2Obj; x, y: float): float	
+angleToPoint	nodesnim/core/vector2.html#angleToPoint,Vector2Obj,Vector2Obj	vector2: angleToPoint(a, b: Vector2Obj): float	
+angleToPoint	nodesnim/core/vector2.html#angleToPoint,Vector2Obj,float,float	vector2: angleToPoint(a: Vector2Obj; x, y: float): float	
+length	nodesnim/core/vector2.html#length,Vector2Obj	vector2: length(a: Vector2Obj): float	
+normalize	nodesnim/core/vector2.html#normalize,Vector2Obj	vector2: normalize(a: var Vector2Obj)	
+normalized	nodesnim/core/vector2.html#normalized,Vector2Obj	vector2: normalized(a: Vector2Obj): Vector2Obj	
+distance	nodesnim/core/vector2.html#distance,Vector2Obj,Vector2Obj	vector2: distance(a, b: Vector2Obj): float	
+distance	nodesnim/core/vector2.html#distance,Vector2Obj,float,float	vector2: distance(a: Vector2Obj; x, y: float): float	
+directionTo	nodesnim/core/vector2.html#directionTo,Vector2Obj,Vector2Obj	vector2: directionTo(a, b: Vector2Obj): Vector2Obj	
+directionTo	nodesnim/core/vector2.html#directionTo,Vector2Obj,float,float	vector2: directionTo(a: Vector2Obj; x, y: float): Vector2Obj	
+intersects	nodesnim/core/vector2.html#intersects,Vector2Obj,Vector2Obj,Vector2Obj,Vector2Obj	vector2: intersects(a, b, c, d: Vector2Obj): bool	
+isEmpty	nodesnim/core/vector2.html#isEmpty,Vector2Obj	vector2: isEmpty(a: Vector2Obj): bool	
+`$`	nodesnim/core/vector2.html#$,Vector2Obj	vector2: `$`(a: Vector2Obj): string	
+`+`	nodesnim/core/vector2.html#+,Vector2Obj,Vector2Obj	vector2: `+`(a, b: Vector2Obj): Vector2Obj	
+`-`	nodesnim/core/vector2.html#-,Vector2Obj,Vector2Obj	vector2: `-`(a, b: Vector2Obj): Vector2Obj	
+`/`	nodesnim/core/vector2.html#/,Vector2Obj,Vector2Obj	vector2: `/`(a, b: Vector2Obj): Vector2Obj	
+`*`	nodesnim/core/vector2.html#*,Vector2Obj,Vector2Obj	vector2: `*`(a, b: Vector2Obj): Vector2Obj	
+`*`	nodesnim/core/vector2.html#*,Vector2Obj,float	vector2: `*`(x: Vector2Obj; y: float): Vector2Obj	
+`+`	nodesnim/core/vector2.html#+,Vector2Obj,float	vector2: `+`(x: Vector2Obj; y: float): Vector2Obj	
+`-`	nodesnim/core/vector2.html#-,Vector2Obj,float	vector2: `-`(x: Vector2Obj; y: float): Vector2Obj	
+`/`	nodesnim/core/vector2.html#/,Vector2Obj,float	vector2: `/`(x: Vector2Obj; y: float): Vector2Obj	
+`*=`	nodesnim/core/vector2.html#*=,Vector2Obj,Vector2Obj	vector2: `*=`(x: var Vector2Obj; y: Vector2Obj)	
+`+=`	nodesnim/core/vector2.html#+=,Vector2Obj,Vector2Obj	vector2: `+=`(x: var Vector2Obj; y: Vector2Obj)	
+`-=`	nodesnim/core/vector2.html#-=,Vector2Obj,Vector2Obj	vector2: `-=`(x: var Vector2Obj; y: Vector2Obj)	
+`/=`	nodesnim/core/vector2.html#/=,Vector2Obj,Vector2Obj	vector2: `/=`(x: var Vector2Obj; y: Vector2Obj)	
+`&gt;`	nodesnim/core/vector2.html#>,Vector2Obj,Vector2Obj	vector2: `&gt;`(x, y: Vector2Obj): bool	
+`&lt;`	nodesnim/core/vector2.html#<,Vector2Obj,Vector2Obj	vector2: `&lt;`(x, y: Vector2Obj): bool	
+`&gt;=`	nodesnim/core/vector2.html#>=,Vector2Obj,Vector2Obj	vector2: `&gt;=`(x, y: Vector2Obj): bool	
+`&lt;=`	nodesnim/core/vector2.html#<=,Vector2Obj,Vector2Obj	vector2: `&lt;=`(x, y: Vector2Obj): bool	
+`==`	nodesnim/core/vector2.html#==,Vector2Obj,Vector2Obj	vector2: `==`(x, y: Vector2Obj): bool	
+`!=`	nodesnim/core/vector2.html#!=,Vector2Obj,Vector2Obj	vector2: `!=`(x, y: Vector2Obj): bool	

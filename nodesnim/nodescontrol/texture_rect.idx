@@ -6,5 +6,5 @@ duplicate	nodesnim/nodescontrol/texture_rect.html#duplicate.e,TextureRectRef	tex
 loadTexture	nodesnim/nodescontrol/texture_rect.html#loadTexture.e,TextureRectRef,cstring	texture_rect: loadTexture(self: TextureRectRef; file: cstring)	
 setTexture	nodesnim/nodescontrol/texture_rect.html#setTexture.e,TextureRectRef,GlTextureObj	texture_rect: setTexture(self: TextureRectRef; gltexture: GlTextureObj)	
 setTextureFilter	nodesnim/nodescontrol/texture_rect.html#setTextureFilter.e,TextureRectRef,ColorRef	texture_rect: setTextureFilter(self: TextureRectRef; color: ColorRef)	
-setTextureAnchor	nodesnim/nodescontrol/texture_rect.html#setTextureAnchor.e,TextureRectRef,AnchorRef	texture_rect: setTextureAnchor(self: TextureRectRef; anchor: AnchorRef)	
+setTextureAnchor	nodesnim/nodescontrol/texture_rect.html#setTextureAnchor.e,TextureRectRef,AnchorObj	texture_rect: setTextureAnchor(self: TextureRectRef; anchor: AnchorObj)	
 setTextureAnchor	nodesnim/nodescontrol/texture_rect.html#setTextureAnchor.e,TextureRectRef,float,float,float,float	texture_rect: setTextureAnchor(self: TextureRectRef; x1, y1, x2, y2: float)	

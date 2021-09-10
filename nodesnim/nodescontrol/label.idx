@@ -6,7 +6,7 @@ duplicate	nodesnim/nodescontrol/label.html#duplicate.e,LabelRef	label: duplicate
 getText	nodesnim/nodescontrol/label.html#getText.e,LabelRef	label: getText(self: LabelRef): string	
 setText	nodesnim/nodescontrol/label.html#setText.e,LabelRef,string,bool	label: setText(self: LabelRef; text: string; save_properties: bool = false)	
 setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelRef,float,float,float,float	label: setTextAlign(self: LabelRef; x1, y1, x2, y2: float)	
-setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelRef,AnchorRef	label: setTextAlign(self: LabelRef; align: AnchorRef)	
+setTextAlign	nodesnim/nodescontrol/label.html#setTextAlign.e,LabelRef,AnchorObj	label: setTextAlign(self: LabelRef; align: AnchorObj)	
 setTextColor	nodesnim/nodescontrol/label.html#setTextColor.e,LabelRef,ColorRef	label: setTextColor(self: LabelRef; color: ColorRef)	
 setTextFont	nodesnim/nodescontrol/label.html#setTextFont.e,LabelRef,FontPtr	label: setTextFont(self: LabelRef; font: FontPtr)	
 setStyle	nodesnim/nodescontrol/label.html#setStyle.e,LabelRef,StyleSheetRef	label: setStyle(self: LabelRef; s: StyleSheetRef)	

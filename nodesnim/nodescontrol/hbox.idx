@@ -1,7 +1,7 @@
 HBoxObj	nodesnim/nodescontrol/hbox.html#HBoxObj	hbox: HBoxObj	
 HBoxRef	nodesnim/nodescontrol/hbox.html#HBoxRef	hbox: HBoxRef	
 HBox	nodesnim/nodescontrol/hbox.html#HBox,string	hbox: HBox(name: string = &quot;HBox&quot;): HBoxRef	
-getChildSize	nodesnim/nodescontrol/hbox.html#getChildSize.e,HBoxRef	hbox: getChildSize(self: HBoxRef): Vector2Ref	
+getChildSize	nodesnim/nodescontrol/hbox.html#getChildSize.e,HBoxRef	hbox: getChildSize(self: HBoxRef): Vector2Obj	
 addChild	nodesnim/nodescontrol/hbox.html#addChild.e,HBoxRef,NodeRef	hbox: addChild(self: HBoxRef; child: NodeRef)	
 draw	nodesnim/nodescontrol/hbox.html#draw.e,HBoxRef,GLfloat,GLfloat	hbox: draw(self: HBoxRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/hbox.html#duplicate.e,HBoxRef	hbox: duplicate(self: HBoxRef): HBoxRef	

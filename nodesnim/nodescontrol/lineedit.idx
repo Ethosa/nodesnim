@@ -1,7 +1,7 @@
 LineEditObj	nodesnim/nodescontrol/lineedit.html#LineEditObj	lineedit: LineEditObj	
 LineEditRef	nodesnim/nodescontrol/lineedit.html#LineEditRef	lineedit: LineEditRef	
 LineEdit	nodesnim/nodescontrol/lineedit.html#LineEdit,string	lineedit: LineEdit(name: string = &quot;LineEdit&quot;): LineEditRef	
-getTextSize	nodesnim/nodescontrol/lineedit.html#getTextSize.e,LineEditRef	lineedit: getTextSize(self: LineEditRef): Vector2Ref	
+getTextSize	nodesnim/nodescontrol/lineedit.html#getTextSize.e,LineEditRef	lineedit: getTextSize(self: LineEditRef): Vector2Obj	
 getCharPositionUnderMouse	nodesnim/nodescontrol/lineedit.html#getCharPositionUnderMouse.e,LineEditRef	lineedit: getCharPositionUnderMouse(self: LineEditRef): int	
 draw	nodesnim/nodescontrol/lineedit.html#draw.e,LineEditRef,GLfloat,GLfloat	lineedit: draw(self: LineEditRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/lineedit.html#duplicate.e,LineEditRef	lineedit: duplicate(self: LineEditRef): LineEditRef	

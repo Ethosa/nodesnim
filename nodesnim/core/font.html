@@ -182,13 +182,13 @@ function main() {
   <li><a class="reference" href="#splitLines%2CStyleText"
     title="splitLines(text: StyleText): seq[StyleText]"><wbr />split<wbr />Lines<span class="attachedType">StyleText</span></a></li>
   <li><a class="reference" href="#getTextSize%2CStyleText"
-    title="getTextSize(text: StyleText): Vector2Ref"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">StyleText</span></a></li>
+    title="getTextSize(text: StyleText): Vector2Obj"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">StyleText</span></a></li>
   <li><a class="reference" href="#getCaretPos%2CStyleText%2Cuint32"
-    title="getCaretPos(text: StyleText; pos: uint32): tuple[a: Vector2Ref, b: uint16]"><wbr />get<wbr />Caret<wbr />Pos<span class="attachedType">StyleText</span></a></li>
-  <li><a class="reference" href="#render%2CStyleText%2CVector2Ref%2CAnchorRef"
-    title="render(text: StyleText; size: Vector2Ref; anchor: AnchorRef)"><wbr />render<span class="attachedType">StyleText</span></a></li>
-  <li><a class="reference" href="#renderTo%2CStyleText%2CVector2Ref%2CVector2Ref%2CAnchorRef"
-    title="renderTo(text: StyleText; pos, size: Vector2Ref; anchor: AnchorRef)"><wbr />render<wbr />To<span class="attachedType">StyleText</span></a></li>
+    title="getCaretPos(text: StyleText; pos: uint32): tuple[a: Vector2Obj, b: uint16]"><wbr />get<wbr />Caret<wbr />Pos<span class="attachedType">StyleText</span></a></li>
+  <li><a class="reference" href="#render%2CStyleText%2CVector2Obj%2CAnchorObj"
+    title="render(text: StyleText; size: Vector2Obj; anchor: AnchorObj)"><wbr />render<span class="attachedType">StyleText</span></a></li>
+  <li><a class="reference" href="#renderTo%2CStyleText%2CVector2Obj%2CVector2Obj%2CAnchorObj"
+    title="renderTo(text: StyleText; pos, size: Vector2Obj; anchor: AnchorObj)"><wbr />render<wbr />To<span class="attachedType">StyleText</span></a></li>
 
   </ul>
 </li>
@@ -430,30 +430,30 @@ function main() {
 
 </dd>
 <a id="getTextSize,StyleText"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#getTextSize%2CStyleText"><span class="Identifier">getTextSize</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getTextSize%2CStyleText"><span class="Identifier">getTextSize</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="getCaretPos,StyleText,uint32"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#getCaretPos%2CStyleText%2Cuint32"><span class="Identifier">getCaretPos</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">pos</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#getCaretPos%2CStyleText%2Cuint32"><span class="Identifier">getCaretPos</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">pos</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="render,StyleText,Vector2Ref,AnchorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#render%2CStyleText%2CVector2Ref%2CAnchorRef"><span class="Identifier">render</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
+<a id="render,StyleText,Vector2Obj,AnchorObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#render%2CStyleText%2CVector2Obj%2CAnchorObj"><span class="Identifier">render</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="renderTo,StyleText,Vector2Ref,Vector2Ref,AnchorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#renderTo%2CStyleText%2CVector2Ref%2CVector2Ref%2CAnchorRef"><span class="Identifier">renderTo</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">pos</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<a id="renderTo,StyleText,Vector2Obj,Vector2Obj,AnchorObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#renderTo%2CStyleText%2CVector2Obj%2CVector2Obj%2CAnchorObj"><span class="Identifier">renderTo</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">pos</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -470,7 +470,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:02 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:09 UTC</small>
       </div>
     </div>
   </div>

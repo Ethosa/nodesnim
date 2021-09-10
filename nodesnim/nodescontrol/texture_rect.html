@@ -110,8 +110,8 @@ function main() {
     title="TextureRectObj = object of ControlRef
   texture*: GLuint
   texture_mode*: TextureMode
-  texture_size*: Vector2Ref
-  texture_anchor*: AnchorRef
+  texture_size*: Vector2Obj
+  texture_anchor*: AnchorObj
   texture_filter*: ColorRef"><wbr />Texture<wbr />Rect<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#TextureRectRef"
     title="TextureRectRef = ref TextureRectObj"><wbr />Texture<wbr />Rect<wbr />Ref<span class="attachedType"></span></a></li>
@@ -139,8 +139,8 @@ function main() {
     title="setTexture(self: TextureRectRef; gltexture: GlTextureObj)"><wbr />set<wbr />Texture<span class="attachedType">TextureRectRef</span></a></li>
   <li><a class="reference" href="#setTextureFilter.e%2CTextureRectRef%2CColorRef"
     title="setTextureFilter(self: TextureRectRef; color: ColorRef)"><wbr />set<wbr />Texture<wbr />Filter<span class="attachedType">TextureRectRef</span></a></li>
-  <li><a class="reference" href="#setTextureAnchor.e%2CTextureRectRef%2CAnchorRef"
-    title="setTextureAnchor(self: TextureRectRef; anchor: AnchorRef)"><wbr />set<wbr />Texture<wbr />Anchor<span class="attachedType">TextureRectRef</span></a></li>
+  <li><a class="reference" href="#setTextureAnchor.e%2CTextureRectRef%2CAnchorObj"
+    title="setTextureAnchor(self: TextureRectRef; anchor: AnchorObj)"><wbr />set<wbr />Texture<wbr />Anchor<span class="attachedType">TextureRectRef</span></a></li>
   <li><a class="reference" href="#setTextureAnchor.e%2CTextureRectRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="setTextureAnchor(self: TextureRectRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Texture<wbr />Anchor<span class="attachedType">TextureRectRef</span></a></li>
 
@@ -166,8 +166,8 @@ function main() {
 <dt><pre><a href="texture_rect.html#TextureRectObj"><span class="Identifier">TextureRectObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a>
   <span class="Identifier">texture</span><span class="Operator">*</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLuint"><span class="Identifier">GLuint</span></a>
   <span class="Identifier">texture_mode</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#TextureMode"><span class="Identifier">TextureMode</span></a>
-  <span class="Identifier">texture_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a>
-  <span class="Identifier">texture_anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a>
+  <span class="Identifier">texture_size</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>
+  <span class="Identifier">texture_anchor</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>
   <span class="Identifier">texture_filter</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
 </pre></dt>
 <dd>
@@ -252,8 +252,8 @@ Duplicates TextureRect and create a new TextureRect.
 Changes texture filter color.
 
 </dd>
-<a id="setTextureAnchor.e,TextureRectRef,AnchorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextureAnchor.e%2CTextureRectRef%2CAnchorRef"><span class="Identifier">setTextureAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorRef"><span class="Identifier">AnchorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<a id="setTextureAnchor.e,TextureRectRef,AnchorObj"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextureAnchor.e%2CTextureRectRef%2CAnchorObj"><span class="Identifier">setTextureAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -283,7 +283,7 @@ Changes texture anchor.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:17 UTC</small>
       </div>
     </div>
   </div>

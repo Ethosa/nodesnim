@@ -1,8 +1,8 @@
 GridBoxObj	nodesnim/nodescontrol/grid_box.html#GridBoxObj	grid_box: GridBoxObj	
 GridBoxRef	nodesnim/nodescontrol/grid_box.html#GridBoxRef	grid_box: GridBoxRef	
 GridBox	nodesnim/nodescontrol/grid_box.html#GridBox,string	grid_box: GridBox(name: string = &quot;GridBox&quot;): GridBoxRef	
-getMaxChildSize	nodesnim/nodescontrol/grid_box.html#getMaxChildSize.e,GridBoxRef	grid_box: getMaxChildSize(self: GridBoxRef): Vector2Ref	
-getChildSize	nodesnim/nodescontrol/grid_box.html#getChildSize.e,GridBoxRef	grid_box: getChildSize(self: GridBoxRef): Vector2Ref	
+getMaxChildSize	nodesnim/nodescontrol/grid_box.html#getMaxChildSize.e,GridBoxRef	grid_box: getMaxChildSize(self: GridBoxRef): Vector2Obj	
+getChildSize	nodesnim/nodescontrol/grid_box.html#getChildSize.e,GridBoxRef	grid_box: getChildSize(self: GridBoxRef): Vector2Obj	
 addChild	nodesnim/nodescontrol/grid_box.html#addChild.e,GridBoxRef,NodeRef	grid_box: addChild(self: GridBoxRef; child: NodeRef)	
 draw	nodesnim/nodescontrol/grid_box.html#draw.e,GridBoxRef,GLfloat,GLfloat	grid_box: draw(self: GridBoxRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/grid_box.html#duplicate.e,GridBoxRef	grid_box: duplicate(self: GridBoxRef): GridBoxRef	

@@ -143,9 +143,11 @@ function main() {
   <li><a class="reference" href="#duplicate.e%2CControlRef"
     title="duplicate(self: ControlRef): ControlRef"><wbr />duplicate<span class="attachedType">ControlRef</span></a></li>
   <li><a class="reference" href="#getGlobalMousePosition.e%2CControlRef"
-    title="getGlobalMousePosition(self: ControlRef): Vector2Ref"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">ControlRef</span></a></li>
+    title="getGlobalMousePosition(self: ControlRef): Vector2Obj"><wbr />get<wbr />Global<wbr />Mouse<wbr />Position<span class="attachedType">ControlRef</span></a></li>
   <li><a class="reference" href="#handle.e%2CControlRef%2CInputEvent%2CNodeRef"
     title="handle(self: ControlRef; event: InputEvent; mouse_on: var NodeRef)"><wbr />handle<span class="attachedType">ControlRef</span></a></li>
+  <li><a class="reference" href="#setBackground.e%2CControlRef%2CDrawableRef"
+    title="setBackground(self: ControlRef; drawable: DrawableRef)"><wbr />set<wbr />Background<span class="attachedType">ControlRef</span></a></li>
   <li><a class="reference" href="#setBackgroundColor.e%2CControlRef%2CColorRef"
     title="setBackgroundColor(self: ControlRef; color: ColorRef)"><wbr />set<wbr />Background<wbr />Color<span class="attachedType">ControlRef</span></a></li>
   <li><a class="reference" href="#setStyle.e%2CControlRef%2CStyleSheetRef"
@@ -250,7 +252,7 @@ Duplicates Control object and create a new Control.
 
 </dd>
 <a id="getGlobalMousePosition.e,ControlRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#getGlobalMousePosition.e%2CControlRef"><span class="Identifier">getGlobalMousePosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">method</span> <a href="#getGlobalMousePosition.e%2CControlRef"><span class="Identifier">getGlobalMousePosition</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span>
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -263,6 +265,14 @@ Returns mouse position.
 <dd>
 
 Handles user input. This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
+
+</dd>
+<a id="setBackground.e,ControlRef,DrawableRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setBackground.e%2CControlRef%2CDrawableRef"><span class="Identifier">setBackground</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">drawable</span><span class="Other">:</span> <a href="../graphics/drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
 
 </dd>
 <a id="setBackgroundColor.e,ControlRef,ColorRef"></a>
@@ -303,7 +313,7 @@ Changes Control background color.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-08 18:27:07 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-10 16:27:14 UTC</small>
       </div>
     </div>
   </div>

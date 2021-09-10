@@ -9,5 +9,5 @@ duplicate	nodesnim/nodes2d/camera2d.html#duplicate.e,Camera2DRef	camera2d: dupli
 enableSmooth	nodesnim/nodes2d/camera2d.html#enableSmooth.e,Camera2DRef,float	camera2d: enableSmooth(self: Camera2DRef; speed: float = 0.1)	
 setCurrent	nodesnim/nodes2d/camera2d.html#setCurrent.e,Camera2DRef	camera2d: setCurrent(self: Camera2DRef)	
 setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DRef,float,float,float,float	camera2d: setLimit(self: Camera2DRef; x1, y1, x2, y2: float)	
-setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DRef,AnchorRef	camera2d: setLimit(self: Camera2DRef; limit: AnchorRef)	
+setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DRef,AnchorObj	camera2d: setLimit(self: Camera2DRef; limit: AnchorObj)	
 setTarget	nodesnim/nodes2d/camera2d.html#setTarget.e,Camera2DRef,NodeRef	camera2d: setTarget(self: Camera2DRef; target: NodeRef)	

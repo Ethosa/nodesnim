@@ -27,7 +27,7 @@ len	nodesnim/core/font.html#len,StyleText	font: len(text: StyleText): int
 `&amp;=`	nodesnim/core/font.html#&=,string,StyleUnicode	font: `&amp;=`(text: var string; c: StyleUnicode)	
 `&amp;=`	nodesnim/core/font.html#&=,string,StyleText	font: `&amp;=`(text: var string; t: StyleText)	
 splitLines	nodesnim/core/font.html#splitLines,StyleText	font: splitLines(text: StyleText): seq[StyleText]	
-getTextSize	nodesnim/core/font.html#getTextSize,StyleText	font: getTextSize(text: StyleText): Vector2Ref	
-getCaretPos	nodesnim/core/font.html#getCaretPos,StyleText,uint32	font: getCaretPos(text: StyleText; pos: uint32): tuple[a: Vector2Ref, b: uint16]	
-render	nodesnim/core/font.html#render,StyleText,Vector2Ref,AnchorRef	font: render(text: StyleText; size: Vector2Ref; anchor: AnchorRef)	
-renderTo	nodesnim/core/font.html#renderTo,StyleText,Vector2Ref,Vector2Ref,AnchorRef	font: renderTo(text: StyleText; pos, size: Vector2Ref; anchor: AnchorRef)	
+getTextSize	nodesnim/core/font.html#getTextSize,StyleText	font: getTextSize(text: StyleText): Vector2Obj	
+getCaretPos	nodesnim/core/font.html#getCaretPos,StyleText,uint32	font: getCaretPos(text: StyleText; pos: uint32): tuple[a: Vector2Obj, b: uint16]	
+render	nodesnim/core/font.html#render,StyleText,Vector2Obj,AnchorObj	font: render(text: StyleText; size: Vector2Obj; anchor: AnchorObj)	
+renderTo	nodesnim/core/font.html#renderTo,StyleText,Vector2Obj,Vector2Obj,AnchorObj	font: renderTo(text: StyleText; pos, size: Vector2Obj; anchor: AnchorObj)	

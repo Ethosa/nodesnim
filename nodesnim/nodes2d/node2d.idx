@@ -5,7 +5,7 @@ Node2D	nodesnim/nodes2d/node2d.html#Node2D,string	node2d: Node2D(name: string = 
 calcGlobalPosition	nodesnim/nodes2d/node2d.html#calcGlobalPosition.e,Node2DRef	node2d: calcGlobalPosition(self: Node2DRef)	
 draw	nodesnim/nodes2d/node2d.html#draw.e,Node2DRef,GLfloat,GLfloat	node2d: draw(self: Node2DRef; w, h: GLfloat)	
 move	nodesnim/nodes2d/node2d.html#move.e,Node2DRef,float,float	node2d: move(self: Node2DRef; x, y: float)	
-move	nodesnim/nodes2d/node2d.html#move.e,Node2DRef,Vector2Ref	node2d: move(self: Node2DRef; vec2: Vector2Ref)	
+move	nodesnim/nodes2d/node2d.html#move.e,Node2DRef,Vector2Obj	node2d: move(self: Node2DRef; vec2: Vector2Obj)	
 duplicate	nodesnim/nodes2d/node2d.html#duplicate.e,Node2DRef	node2d: duplicate(self: Node2DRef): Node2DRef	
-getGlobalMousePosition	nodesnim/nodes2d/node2d.html#getGlobalMousePosition.e,Node2DRef	node2d: getGlobalMousePosition(self: Node2DRef): Vector2Ref	
+getGlobalMousePosition	nodesnim/nodes2d/node2d.html#getGlobalMousePosition.e,Node2DRef	node2d: getGlobalMousePosition(self: Node2DRef): Vector2Obj	
 setZIndex	nodesnim/nodes2d/node2d.html#setZIndex.e,Node2DRef,int	node2d: setZIndex(self: Node2DRef; z_index: int)	

@@ -1,7 +1,7 @@
 VBoxObj	nodesnim/nodescontrol/vbox.html#VBoxObj	vbox: VBoxObj	
 VBoxRef	nodesnim/nodescontrol/vbox.html#VBoxRef	vbox: VBoxRef	
 VBox	nodesnim/nodescontrol/vbox.html#VBox,string	vbox: VBox(name: string = &quot;VBox&quot;): VBoxRef	
-getChildSize	nodesnim/nodescontrol/vbox.html#getChildSize.e,VBoxRef	vbox: getChildSize(self: VBoxRef): Vector2Ref	
+getChildSize	nodesnim/nodescontrol/vbox.html#getChildSize.e,VBoxRef	vbox: getChildSize(self: VBoxRef): Vector2Obj	
 addChild	nodesnim/nodescontrol/vbox.html#addChild.e,VBoxRef,NodeRef	vbox: addChild(self: VBoxRef; child: NodeRef)	
 draw	nodesnim/nodescontrol/vbox.html#draw.e,VBoxRef,GLfloat,GLfloat	vbox: draw(self: VBoxRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/vbox.html#duplicate.e,VBoxRef	vbox: duplicate(self: VBoxRef): VBoxRef	
