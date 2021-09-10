@@ -20,7 +20,7 @@ proc Circle*(x, y, r: float): CircleRef =
   ## - `y` is a center circle point at Y axis.
   ## - `r` is a circle radius.
   runnableExamples:
-    var circle = Circle(10, 10, 5)
+    var obj = Circle(10, 10, 5)
   CircleRef(x: x, y: y, r: r)
 
 proc Circle*(vec: Vector2Obj, r: float): CircleRef =
