@@ -10,19 +10,22 @@ import
   ../core/color,
 
   ../nodes/node,
-  node3d
+  node3d,
+  math
 
 
 type
   GeometryType* {.pure.} = enum
-    GEOMETRY_CUBE
+    GEOMETRY_CUBE,
+    GEOMETRY_SPHERE
   GeometryInstanceObj* = object of Node3DObj
     geometry*: GeometryType
     color*: ColorRef
+    radius*: float
   GeometryInstanceRef* = ref GeometryInstanceObj
 
 
-proc GeometryInstance*(name: string = "GeometryInstance"): GeometryInstanceRef =
+proc GeometryInstance*(name: string = "GeometryInstance", geometry: GeometryType = GEOMETRY_CUBE): GeometryInstanceRef =
   ## Creates a new GeometryInstance object.
   ##
   ## Arguments:
@@ -31,8 +34,9 @@ proc GeometryInstance*(name: string = "GeometryInstance"): GeometryInstanceRef =
     var node = GeometryInstance("GeometryInstance")
   nodepattern(GeometryInstanceRef)
   node3dpattern()
-  result.geometry = GEOMETRY_CUBE
-  result.color = Color(1.0, 1.0, 1.0, 0.8)
+  result.geometry = geometry
+  result.radius = 1
+  result.color = Color(1.0, 1.0, 1.0)
   result.kind = GEOMETRY_INSTANCE_NODE
 
 
@@ -87,6 +91,25 @@ method draw*(self: GeometryInstanceRef, w, h: Glfloat) =
     glVertex3f(1, -1,  1)
     glVertex3f(1,  1,  1)
     glVertex3f(1,  1, -1)
+    glEnd()
+  of GEOMETRY_SPHERE:
+    var
+      R = 2 * PI / 24f
+      S = PI / 48f
+    glBegin(GL_TRIANGLE_STRIP)
+    for ring in 0..24:
+      for sector in 0..48:
+        var
+          s = sector.float
+          r = ring.float
+          pz = cos(PI - (S*s))*self.radius
+          py = sin(PI - (S*s))*sin(R*r)*self.radius
+          px = sin(PI - (S*s))*cos(R*r)*self.radius
+        glVertex3f(px, py, pz)
+        pz = cos(PI - (S*s))*self.radius
+        py = sin(PI - (S*s))*sin(R*(r + 1))*self.radius
+        px = sin(PI - (S*s))*cos(R*(r + 1))*self.radius
+        glVertex3f(px, py, pz)
     glEnd()
 
 
