@@ -1,2 +1,2 @@
-MainSceneNotLoadedError	nodesnim/core/exceptions.html#MainSceneNotLoadedError	exceptions: MainSceneNotLoadedError	
-WindowNotCreatedError	nodesnim/core/exceptions.html#WindowNotCreatedError	exceptions: WindowNotCreatedError	
+SceneError	nodesnim/core/exceptions.html#SceneError	exceptions: SceneError	
+WindowError	nodesnim/core/exceptions.html#WindowError	exceptions: WindowError	
