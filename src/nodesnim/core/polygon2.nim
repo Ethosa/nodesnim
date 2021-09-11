@@ -78,7 +78,7 @@ proc intersects*(self, other: Polygon2Ref): bool =
       if intersects(a, b, c, d):
         return true
 
-proc intersects*(self: Polygon2Ref, r: Rect2Ref): bool =
+proc intersects*(self: Polygon2Ref, r: Rect2Obj): bool =
   ## Returns true, if rect intersect with polygon.
   var next = 1
   let length = self.positions.len()

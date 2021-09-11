@@ -15,7 +15,6 @@ build:
       call move(-2, -2)
       call resize(256, 20)
       call setTextAlign(1, 0, 1, 0)
-      call setFont(GLUT_BITMAP_HELVETICA_18, 18)
       mousemode: MOUSEMODE_IGNORE
 
 project@on_process(self):
@@ -28,5 +27,5 @@ project@on_process(self):
     s.color = Color(0x1d242aff)
 
 project@on_click(self, x, y):
-  changeScene("Editor", @[(k: "title", v: self.getNode("Title").LabelRef.text)])
+  changeScene("Editor", @[(k: "title", v: self.getNode("Title").LabelRef.getText())])
   glutReshapeWindow(1280, 720)

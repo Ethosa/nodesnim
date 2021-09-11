@@ -257,7 +257,7 @@ proc setMainScene*(name: string) =
 proc setTitle*(title: cstring) =
   ## Changes window title.
   if not window_created:
-    raise newException(WindowNotCreatedError, "Window not created!")
+    raise newException(WindowError, "Window not created!")
   glutSetWindowTitle(title)
 
 proc setMaxDistance*(distance: GLdouble) =
@@ -305,7 +305,7 @@ proc windowLaunch* =
   glutMotionFunc(motion)
   glutPassiveMotionFunc(motion)
   if main_scene == nil:
-    raise newException(MainSceneNotLoadedError, "Main scene is not indicated!")
+    raise newException(SceneError, "Main scene is not indicated!")
   changeScene(main_scene.name)
   when defined(debug):
     info("window launched")

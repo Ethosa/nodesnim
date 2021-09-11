@@ -1,7 +1,7 @@
 [Package]
 name = "nodesnim"
 author = "Ethosa"
-version = "0.2.2"
+version = "0.2.3"
 description = "The Nim GUI/2D framework based on OpenGL and SDL2."
 license = "MIT"
 srcDir = "src"

@@ -1,5 +1,5 @@
 # author: Ethosa
 
 type
-  MainSceneNotLoadedError* = object of ValueError
-  WindowNotCreatedError* = object of ValueError
+  SceneError* = object of ValueError
+  WindowError* = object of ValueError
