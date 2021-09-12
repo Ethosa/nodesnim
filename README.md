@@ -75,7 +75,7 @@ This section contains links to documentation for all nodes.
 |[Vector3][]     |                     |[VSlider][]           |                    |                    |                    |
 |[SceneBuilder][]|                     |[Popup][]             |                    |                    |                    |
 |[StyleSheet][]  |                     |[TextureButton][]     |                    |                    |                    |
-|                |                     |[TextureProgressBar][]|                    |                    |                    |
+|[TileSet][]     |                     |[TextureProgressBar][]|                    |                    |                    |
 |                |                     |[Counter][]           |                    |                    |                    |
 |                |                     |[Switch][]            |                    |                    |                    |
 |                |                     |[SubWindow][]         |                    |                    |                    |
@@ -141,6 +141,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [SceneBuilder]:https://ethosa.github.io/nodesnim/nodesnim/core/scene_builder.html
 [Font]:https://ethosa.github.io/nodesnim/nodesnim/core/font.html
 [StyleSheet]:https://ethosa.github.io/nodesnim/nodesnim/core/stylesheet.html
+[TileSet]:https://ethosa.github.io/nodesnim/nodesnim/core/tileset.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html

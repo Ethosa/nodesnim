@@ -28,4 +28,5 @@ project@on_process(self):
 
 project@on_click(self, x, y):
   changeScene("Editor", @[(k: "title", v: self.getNode("Title").LabelRef.getText())])
-  glutReshapeWindow(1280, 720)
+  resizeWindow(1280, 720)
+  centeredWindow()

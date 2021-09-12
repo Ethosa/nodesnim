@@ -166,7 +166,9 @@ proc motion(x, y: cint) {.cdecl.} =
   current_scene.handleScene(last_event, mouse_on, paused)
 
 
-# ---- Public ---- #
+
+# -------------------- Public -------------------- #
+
 proc addScene*(scene: SceneRef) =
   ## Adds a new scenes in app.
   ##
@@ -185,6 +187,11 @@ proc addMainScene*(scene: SceneRef) =
   if scene notin scenes:
     scenes.add(scene)
   main_scene = scene
+
+proc centeredWindow* =
+  var dm: DisplayMode
+  discard getCurrentDisplayMode(0, dm)
+  windowptr.setPosition((dm.w/2 - width/2).cint, (dm.h/2 - height/2).cint)
 
 proc changeScene*(name: string, extra: seq[tuple[k: string, v: string]] = @[]): bool {.discardable.} =
   ## Changes current scene.
@@ -206,6 +213,9 @@ proc changeScene*(name: string, extra: seq[tuple[k: string, v: string]] = @[]): 
       break
   when defined(debug):
     debug("result of `changeScene` is ", result)
+
+proc resizeWindow*(x, y: cint) =
+  windowptr.setSize(x, y)
 
 proc setMainScene*(name: string) =
   ## Set up main scene.
