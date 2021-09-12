@@ -2,6 +2,7 @@
 ## It provides primitive scroll box.
 import
   ../thirdparty/opengl,
+  ../thirdparty/sdl2,
 
   ../core/vector2,
   ../core/rect2,

@@ -1,4 +1,4 @@
-# --- Test 44. Use CheckBox node. --- #
+# --- Test 44. Use GradientDrawable and Control. --- #
 import nodesnim
 
 
@@ -6,17 +6,21 @@ Window("drawable oops")
 
 build:
   - Scene scene:
-    - CheckBox box:
-      call setText("smth checkbox")
-      call enable()
-    - ColorRect rect:
-      call move(100, 100)
+    - Control ctrl:
+      call resize(100, 150)
+      call move(150, 50)
 
-box@on_toggle(self, value):
-  if value:
-    rect.color.a = 1f
-  else:
-    rect.color.a = 0f
+var gradient = GradientDrawable()
+gradient.setCornerRadius(16)
+gradient.setCornerDetail(16)
+gradient.enableShadow(true)
+gradient.setShadowOffset(Vector2(15, 15))
+gradient.setBorderColor(Color(1.0, 0.5, 0.5, 0.1))
+gradient.setBorderWidth(5)
+gradient.setStyle(style({
+  corner-color: "#ff7 #ff7 #f77 #f77"
+  }))
+ctrl.setBackground(gradient)
 
 
 addMainScene(scene)

@@ -1,4 +1,4 @@
-# --- Test 43. Use Drawable and Control. --- #
+# --- Test 43. Use CheckBox node. --- #
 import nodesnim
 
 
@@ -6,29 +6,18 @@ Window("drawable oops")
 
 build:
   - Scene scene:
-    - Control ctrl
-    - Control ctrl1:
-      call move(350, 100)
-      call setSizeAnchor(0.2, 0.2)
+    - CheckBox box:
+      call setText("smth checkbox")
+      call enable()
+    - ColorRect rect:
+      call move(100, 100)
 
-ctrl1.background.setTexture(load("assets/sharp.jpg"))
-ctrl1.background.setCornerRadius(25)
-ctrl1.background.setCornerDetail(25)
+box@on_toggle(self, value):
+  if value:
+    rect.color.a = 1f
+  else:
+    rect.color.a = 0f
 
-
-ctrl.resize(256, 96)
-ctrl.move(64, 64)
-ctrl.setStyle(style(
-  {
-    background-color: rgb(33, 65, 87),
-    border-radius: 8,
-    border-width: 1,
-    border-color: rgb(0, 0, 0),
-    shadow: true,
-    shadow-offset: 3,
-    size-anchor: "0.5 0.7"
-  }
-))
 
 addMainScene(scene)
 windowLaunch()

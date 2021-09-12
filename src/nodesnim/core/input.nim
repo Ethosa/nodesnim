@@ -13,11 +13,12 @@ type
     MOTION,    ## Mouse motion.
     WHEEL,     ## Mouse wheel.
     KEYBOARD,  ## Keyboard input
+    TEXT,      ## Text input.
     UNKNOWN    ## Unknown event.
 
   InputAction* = object
     kind*: InputEventType
-    key_int*: int8
+    key_int*: cint
     key_cint*: cint
     button_index*: cint
     name*, key*: string
@@ -27,7 +28,7 @@ type
   InputEvent* = ref object
     kind*: InputEventType
     pressed*: bool
-    key_int*: int8
+    key_int*: cint
     key_cint*: cint
     button_index*: cint
     x*, y*, xrel*, yrel*: float
@@ -49,58 +50,10 @@ const
   BUTTON_RELEASE* = 0
   BUTTON_CLICK* = 1
 
-  K_F1* = 1
-  K_F2* = 2
-  K_F3* = 3
-  K_F4* = 4
-  K_F5* = 5
-  K_F6* = 6
-  K_F7* = 7
-  K_F8* = 8
-  K_F9* = 9
-  K_TAB* = 9
-  K_F10* = 10
-  K_F11* = 11
-  K_F12* = 12
-  K_ENTER* = 13
-  K_ESCAPE* = 27
-  K_SPACE* = 32
-  K_NUM_MUL* = 42
-  K_NUM_SUB* = 45
-  K_NUM_ADD* = 43
-  K_NUM_POINT* = 46
-  K_NUM_DIV* = 47
-  K_0* = 48
-  K_1* = 49
-  K_2* = 50
-  K_3* = 51
-  K_4* = 52
-  K_5* = 53
-  K_6* = 54
-  K_7* = 55
-  K_8* = 56
-  K_9* = 57
-  K_LEFT* = 100
-  K_UP* = 101
-  K_RIGHT* = 102
-  K_DOWN* = 103
-  K_PAGE_UP* = 104
-  K_PAGE_DOWN* = 105
-  K_HOME* = 106
-  K_END* = 107
-  K_INSERT* = 108
-  K_SHIFT* = 112
-  K_RIGHT_SHIFT* = 113
-  K_CTRL* = 114
-  K_RIGHT_CTRL* = 115
-  K_ALT* = 116
-  K_RIGHT_ALT* = 117
-  K_DELETE* = 127
-
 
 var
   pressed_keys*: seq[string] = @[]
-  pressed_keys_ints*: seq[int8] = @[]
+  pressed_keys_ints*: seq[cint] = @[]
   pressed_keys_cints*: seq[cint] = @[]
   last_event*: InputEvent = InputEvent()
   last_key_state*: bool = false
@@ -133,6 +86,10 @@ proc isInputEventTouchScreen*(a: InputEvent): bool =
 proc isInputEventKeyboard*(a: InputEvent): bool =
   ## Returns true, when `a` kind is a KEYBOARD.
   a.kind == KEYBOARD
+
+proc isInputEventText*(a: InputEvent): bool =
+  ## Returns true, when `a` kind is a KEYBOARD.
+  a.kind == TEXT
 
 
 proc addButtonAction*(a: type Input, name: string, button: cint) =
@@ -243,4 +200,6 @@ proc `$`*(event: InputEvent): string =
   of TOUCH:
     "InputEventTouchScreen(x: " & $event.x & ", y: " & $event.y & ")"
   of KEYBOARD:
+    "InputEventKeyboard(key: " & event.key & ", pressed:" & $event.pressed & ")"
+  of TEXT:
     "InputEventKeyboard(key: " & event.key & ", pressed:" & $event.pressed & ")"
