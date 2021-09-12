@@ -7,29 +7,27 @@
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Stable version - 0.2.3</h4>
+<h4>Stable version - 0.2.4</h4>
 </div>
 
 ## Install
 1. Install Nodesnim
-   -  Stable: `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
+   -  Stable:
+      ```bash
+      nimble install nodesnim
+      ```
    -  Nightly:
       ```bash
-      git clone https://github.com/Ethosa/nodesnim/
-      cd nodesnim
-      git checkout nightly-0.X.X
-      nimble install
+      nimble install nodesnim@#nightly
       ```
 2. Install dependencies
    -  Linux (tested on Ubuntu and Mint):
-      - `sudo apt install -y freeglut3 freeglut3-dev`
       - `sudo apt install --fix-missing -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev`
    -  Windows / MacOS:
       -  [SDL2](https://www.libsdl.org/download-2.0.php)
       -  [SDL2_image](https://www.libsdl.org/projects/SDL_image/)
       -  [SDL2_mixer](https://www.libsdl.org/projects/SDL_mixer/)
       -  [SDL2_ttf](https://www.libsdl.org/projects/SDL_ttf/)
-      -  [freeGLUT](http://freeglut.sourceforge.net/)
       -  Put Runtime binaries in the `.nimble/bin/` folder
 
 ## Features
@@ -67,7 +65,7 @@ This section contains links to documentation for all nodes.
 |[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |                    |                    |
 |[Exceptions][]  |[AnimationPlayer][]  |[Button][]            |[CollisionShape2D][]|                    |                    |
 |[Image][]       |                     |[EditText][]          |[Camera2D][]        |                    |                    |
-|[Input][]       |                     |[Box][]               |                    |                    |                    |
+|[Input][]       |                     |[Box][]               |[TileMap][]         |                    |                    |
 |[Rect2][]       |                     |[HBox][]              |                    |                    |                    |
 |[Vector2][]     |                     |[VBox][]              |                    |                    |                    |
 |[Circle2][]     |                     |[GridBox][]           |                    |                    |                    |
@@ -77,7 +75,7 @@ This section contains links to documentation for all nodes.
 |[Vector3][]     |                     |[VSlider][]           |                    |                    |                    |
 |[SceneBuilder][]|                     |[Popup][]             |                    |                    |                    |
 |[StyleSheet][]  |                     |[TextureButton][]     |                    |                    |                    |
-|                |                     |[TextureProgressBar][]|                    |                    |                    |
+|[TileSet][]     |                     |[TextureProgressBar][]|                    |                    |                    |
 |                |                     |[Counter][]           |                    |                    |                    |
 |                |                     |[Switch][]            |                    |                    |                    |
 |                |                     |[SubWindow][]         |                    |                    |                    |
@@ -143,6 +141,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [SceneBuilder]:https://ethosa.github.io/nodesnim/nodesnim/core/scene_builder.html
 [Font]:https://ethosa.github.io/nodesnim/nodesnim/core/font.html
 [StyleSheet]:https://ethosa.github.io/nodesnim/nodesnim/core/stylesheet.html
+[TileSet]:https://ethosa.github.io/nodesnim/nodesnim/core/tileset.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
@@ -183,6 +182,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [KinematicBody2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/kinematic_body2d.html
 [Camera2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/camera2d.html
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
+[TileMap]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/tilemap.html
 
 [Node3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/node3d.html
 [GeometryInstance]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/geometry_instance.html

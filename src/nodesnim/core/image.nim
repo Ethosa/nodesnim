@@ -4,7 +4,7 @@ import
   ../thirdparty/sdl2,
   ../thirdparty/sdl2/image,
 
-  ../core/vector2
+  vector2
 
 when defined(debug):
   import logging

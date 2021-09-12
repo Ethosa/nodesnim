@@ -163,7 +163,6 @@ proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Obj, b: uint16]
       lines = text.splitLines()
       w: cint
       h: cint
-    echo lines
 
     for line in lines:
       result[0].x = 0f
@@ -234,9 +233,12 @@ proc render*(text: StyleText, size: Vector2Obj, anchor: AnchorObj) =
     # free memory
     surface.freeSurface()
     surface = nil
+  text.rendered = true
 
 proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorObj) =
     # Show text
+    if not text.rendered:
+      text.render(size, anchor)
     var
       pos1 = Vector2(pos)
       size1 = Vector2(size)

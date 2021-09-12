@@ -2,6 +2,7 @@
 ## It is the convenient alternative of the Button node.
 import
   ../thirdparty/opengl,
+  ../thirdparty/sdl2,
 
   ../core/vector2,
   ../core/rect2,
@@ -43,7 +44,7 @@ proc TextureButton*(name: string = "TextureButton"): TextureButtonRef =
   result.rect_size.y = 40
   result.text = stext""
   result.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
-  result.button_mask = BUTTON_LEFT
+  result.button_mask = BUTTON_LEFT.cint
   result.action_mask = BUTTON_RELEASE
   result.normal_background_texture = GlTextureObj()
   result.hover_background_texture = GlTextureObj()

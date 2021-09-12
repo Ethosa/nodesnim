@@ -1,7 +1,7 @@
 # author: Ethosa
 import
   ../thirdparty/opengl,
-  ../thirdparty/opengl/glut,
+  ../thirdparty/sdl2,
 
   ../core/font,
   ../core/color,
@@ -16,7 +16,8 @@ import
   ../nodes/canvas,
 
   label,
-  control
+  control,
+  unicode
 
 
 type
@@ -44,7 +45,7 @@ proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditT
   result.text = stext("")
   result.hint = stext(hint)
   result.hint.setColor(Color("#ccc"))
-  result.text.setColor(Color(0xffffffff'u32))
+  result.text.setColor(Color("#555"))
   result.text_align = Anchor(0, 0, 0, 0)
   result.on_edit = proc(key: string) = discard
   result.kind = EDIT_TEXT_NODE
@@ -65,7 +66,6 @@ method draw*(self: EditTextRef, w, h: Glfloat) =
     caret = self.text.getCaretPos(self.caret_pos)
     xalign = x + self.rect_size.x*self.text_align.x1 - self.rect_min_size.x*self.text_align.x2
     yalign = y - self.rect_size.y*self.text_align.y1 + self.rect_min_size.y*self.text_align.y2
-  echo caret
 
   dec self.blink_time
   if self.blink_time == 0:
@@ -121,44 +121,44 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
 
   when not defined(android) and not defined(ios):
     if self.hovered:  # Change cursor, if need
-      glutSetCursor(GLUT_CURSOR_TEXT)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_IBEAM))
     else:
-      glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_ARROW))
 
   if self.focused:
-    if event.kind == KEYBOARD:
-      if event.key_cint == K_LEFT and self.caret_pos > 0 and event.key_cint in pressed_keys_cints:
-        self.caret_pos -= 1
-        echo self.caret_pos
-      elif event.key_cint == K_RIGHT and self.caret_pos < self.text.len().uint32 and event.key_cint in pressed_keys_cints:
+    if event.kind == TEXT and not event.pressed:
+      # Other keys
+      if self.caret_pos > 0 and self.caret_pos < self.text.len().uint32:  # insert in caret pos
+        self.setText(($self.text)[0..self.caret_pos-1] & event.key & ($self.text)[self.caret_pos..^1])
         self.caret_pos += 1
-        echo self.caret_pos
+        self.on_edit(event.key)
+      elif self.caret_pos == 0:  # insert in start of text.
+        self.setText(event.key & ($self.text))
+        self.caret_pos += 1
+        self.on_edit(event.key)
+      elif self.caret_pos == self.text.len().uint32:  # insert in end of text.
+        self.setText(($self.text) & event.key)
+        self.caret_pos += 1
+        self.on_edit(event.key)
+    elif event.kind == KEYBOARD:
+      # Arrows
+      if event.key_int == K_LEFT and self.caret_pos > 0 and event.key_int in pressed_keys_ints:
+        self.caret_pos -= 1
+      elif event.key_int == K_RIGHT and self.caret_pos < self.text.len().uint32 and event.key_int in pressed_keys_ints:
+        self.caret_pos += 1
+
       elif event.key in pressed_keys:  # Normal chars
         if event.key_int == 8:  # Backspace
+          echo ($self.text, ", ", self.caret_pos)
           if self.caret_pos > 1 and self.caret_pos < self.text.len().uint32:
-            self.setText(($self.text)[0..self.caret_pos-2] & ($self.text)[self.caret_pos..^1])
+            self.setText(($self.text).toRunes()[0..self.caret_pos-2].`$` & ($self.text).toRunes()[self.caret_pos..^1].`$`)
             self.caret_pos -= 1
           elif self.caret_pos == self.text.len().uint32 and self.caret_pos > 0:
-            self.setText(($self.text)[0..^2])
+            self.setText(($self.text).toRunes()[0..^2].`$`)
             self.caret_pos -= 1
           elif self.caret_pos == 1:
-            self.setText(($self.text)[1..^1])
+            self.setText(($self.text).toRunes()[1..^1].`$`)
             self.caret_pos -= 1
-        elif event.key_int == 13:
+        elif event.key_int == 13:  # Next line
           self.setText($self.text & "\n")
           self.caret_pos += 1
-
-        # Other keys
-        elif self.caret_pos > 0 and self.caret_pos < self.text.len().uint32:
-          self.setText(($self.text)[0..self.caret_pos-1] & event.key & ($self.text)[self.caret_pos..^1])
-          self.caret_pos += 1
-          self.on_edit(event.key)
-          echo event.key
-        elif self.caret_pos == 0:
-          self.setText(event.key & ($self.text))
-          self.caret_pos += 1
-          self.on_edit(event.key)
-        elif self.caret_pos == self.text.len().uint32:
-          self.setText(($self.text) & event.key)
-          self.caret_pos += 1
-          self.on_edit(event.key)

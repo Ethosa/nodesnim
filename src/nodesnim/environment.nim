@@ -4,10 +4,14 @@ import core/color
 
 
 type
+  ScreenMode* {.pure.} = enum
+    SCREEN_MODE_NONE,  ## default mode.
+    SCREEN_MODE_EXPANDED  ## Keep screen size.
   EnvironmentObj* = object
     delay*: int    ## window delay.
     color*: ColorRef  ## background environment color.
     brightness*: float
+    screen_mode*: ScreenMode
   EnvironmentRef* = ref EnvironmentObj
 
 
@@ -17,7 +21,7 @@ proc newEnvironment*(color: ColorRef, brightness: float): EnvironmentRef =
   ## Arguments:
   ## - `color`: ColorRef object for background environment color.
   ## - `brightness` - window brightness with value in range `0..1`
-  EnvironmentRef(color: color, delay: 17, brightness: brightness)
+  EnvironmentRef(color: color, delay: 17, brightness: brightness, screen_mode: SCREEN_MODE_NONE)
 
 proc newEnvironment*(): EnvironmentRef {.inline.} =
   ## Creates a new EnvironmentRef object.
@@ -51,3 +55,8 @@ proc setDelay*(env: EnvironmentRef, delay: int) =
   ## Arguments:
   ## - `delay`: should be ``1000 div FPS``, e.g.: ``1000 div 60 for 60`` frames per second.
   env.delay = delay
+
+proc setScreenMode*(env: EnvironmentRef, mode: ScreenMode) =
+  ## Changes screen mode.
+  ## `mode` should be `SCREEN_MODE_NONE` or `SCREEN_MODE_EXPANDED`.
+  env.screen_mode = mode
