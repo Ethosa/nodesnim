@@ -79,7 +79,6 @@ This section contains links to documentation for all nodes.
 |                |                     |[Counter][]           |                    |                    |                    |
 |                |                     |[Switch][]            |                    |                    |                    |
 |                |                     |[SubWindow][]         |                    |                    |                    |
-|                |                     |[LineEdit][]          |                    |                    |                    |
 |                |                     |[CheckBox][]          |                    |                    |                    |
 
 
@@ -122,6 +121,8 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
    |--------|------------|--------|---------|
    
 </div>
+
+[![Stargazers over time](https://starchart.cc/Ethosa/nodesnim.svg)](https://starchart.cc/Ethosa/nodesnim)
 
 
 
@@ -171,7 +172,6 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Counter]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/counter.html
 [Switch]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/switch.html
 [SubWindow]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/subwindow.html
-[LineEdit]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/lindeedit.html
 [CheckBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/checkbox.html
 
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
