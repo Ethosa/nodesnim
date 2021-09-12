@@ -8,7 +8,8 @@ import
   ../core/tileset,
 
   ../nodes/node,
-  node2d
+  node2d,
+  math
 
 
 type
@@ -39,18 +40,20 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
+  var viewport = @[
+      abs(x + w/2).int div self.tileset.grid.x.int, abs(y - h/2).int div self.tileset.grid.y.int,
+      abs(x - w/2).int div self.tileset.grid.x.int,abs(y + h/2).int div self.tileset.grid.y.int]
+  if viewport[2] >= self.map_size.x:
+    viewport[2] = self.map_size.x-1
+  if viewport[3] >= self.map_size.y:
+    viewport[3] = self.map_size.y-1
 
-  for x1 in 0..<self.map_size.x:
-    for y1 in 0..<self.map_size.y:
-      if self.map[x1][y1].x >= 0f and self.map[x1][y1].y >= 0f:
-        let
-          posx = x + self.tileset.grid.x*x1.float
-          posy = y - self.tileset.grid.y*y1.float
-        if ((posx+self.tileset.grid.x >= -w/2 and posy-self.tileset.grid.y <= h/2) and
-            (posx - self.tileset.grid.x < w/2 and posy + self.tileset.grid.y > -h/2)):
-          self.tileset.draw(
-            self.map[x1][y1].x, self.map[x1][y1].y,
-            posx, posy)
+  for x1 in viewport[0]..viewport[2]:
+    for y1 in viewport[1]..viewport[3]:
+      let
+        posx = x + self.tileset.grid.x*x1.float
+        posy = y - self.tileset.grid.y*y1.float
+      self.tileset.draw(self.map[x1][y1].x, self.map[x1][y1].y, posx, posy)
 
 method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Obj) {.base.} =
   self.map[x][y] = (x: tile_pos.x, y: tile_pos.y)
