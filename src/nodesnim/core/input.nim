@@ -1,5 +1,6 @@
 # author: Ethosa
 import
+ ../thirdparty/sdl2,
   vector2,
   rect2
 
@@ -43,10 +44,6 @@ type
 
 
 const
-  BUTTON_LEFT* = 0
-  BUTTON_MIDDLE* = 1
-  BUTTON_RIGHT* = 2
-
   BUTTON_RELEASE* = 0
   BUTTON_CLICK* = 1
 
@@ -108,7 +105,7 @@ proc addKeyAction*(a: type Input, name, key: string) =
   ## - `key` - key, e.g.: "w", "1", etc.
   actionlist.add(InputAction(kind: KEYBOARD, name: name, key: key))
 
-proc addKeyAction*(a: type Input, name: string, key: int8) =
+proc addKeyAction*(a: type Input, name: string, key: cint) =
   ## Adds a new action on keyboard.
   ##
   ## Arguments:
@@ -134,14 +131,14 @@ proc isActionJustPressed*(a: type Input, name: string): bool =
     if action.name == name:
       if action.kind == MOUSE and (last_event.kind == MOUSE or last_event.kind == MOTION):
         if action.button_index == last_event.button_index and mouse_pressed:
-          if press_state == 1:
+          if press_state == 0:
             result = true
       elif action.kind == TOUCH and last_event.kind == TOUCH:
-        if press_state == 1:
+        if press_state == 0:
           result = true
       elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
-        if (action.key == last_event.key or action.key_int == last_event.key_int) and last_key_state == false:
-          if press_state == 1:
+        if action.key == $chr(last_event.key_int) or action.key_int == last_event.key_int:
+          if press_state == 0:
             result = true
 
 proc isActionPressed*(a: type Input, name: string): bool =
@@ -186,9 +183,9 @@ proc `$`*(event: InputEvent): string =
     "Unknown event."
   of MOUSE:
     var button =
-      if event.button_index == BUTTON_RIGHT:
+      if event.button_index == BUTTON_RIGHT.cint:
         "right"
-      elif event.button_index == BUTTON_LEFT:
+      elif event.button_index == BUTTON_LEFT.cint:
         "left"
       else:
         "middle"
@@ -202,4 +199,4 @@ proc `$`*(event: InputEvent): string =
   of KEYBOARD:
     "InputEventKeyboard(key: " & event.key & ", pressed:" & $event.pressed & ")"
   of TEXT:
-    "InputEventKeyboard(key: " & event.key & ", pressed:" & $event.pressed & ")"
+    "InputEventText(key: " & event.key & ", pressed:" & $event.pressed & ")"

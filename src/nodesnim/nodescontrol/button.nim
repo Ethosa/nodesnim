@@ -2,6 +2,7 @@
 ## Handles mouse clicks.
 import
   ../thirdparty/opengl,
+  ../thirdparty/sdl2,
 
   ../core/vector2,
   ../core/rect2,
@@ -43,7 +44,7 @@ proc Button*(name: string = "Button"): ButtonRef =
   result.rect_size.y = 40
   result.text = stext""
   result.text_align = Anchor(0.5, 0.5, 0.5, 0.5)
-  result.button_mask = BUTTON_LEFT
+  result.button_mask = BUTTON_LEFT.cint
   result.action_mask = BUTTON_RELEASE
   result.normal_background = Drawable()
   result.hover_background = Drawable()

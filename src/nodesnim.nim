@@ -12,7 +12,7 @@ when defined(debug):
 
 import
   nodesnim/thirdparty/opengl,
-  nodesnim/thirdparty/opengl/glut,
+  nodesnim/thirdparty/sdl2,
 
   nodesnim/window,
   nodesnim/environment,
@@ -26,7 +26,7 @@ import
 
 export
   # Third party
-  opengl, glut,
+  opengl, sdl2,
   # Main
   window, environment,
   # Nodes
