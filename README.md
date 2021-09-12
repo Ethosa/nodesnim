@@ -13,9 +13,9 @@
 ## Install
 1. Install Nodesnim
    -  Stable:
-     ```bash
-     nimble install nodesnim
-     ```
+      ```bash
+      nimble install nodesnim
+      ```
    -  Nightly:
       ```bash
       nimble install nodesnim@#nightly
