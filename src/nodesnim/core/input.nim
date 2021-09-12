@@ -89,13 +89,13 @@ proc isInputEventText*(a: InputEvent): bool =
   a.kind == TEXT
 
 
-proc addButtonAction*(a: type Input, name: string, button: cint) =
+proc addButtonAction*(a: type Input, name: string, button: uint8 | cint) =
   ## Adds a new action on button.
   ##
   ## Arguments:
   ## - `name` - action name.
   ## - `button` - button index, e.g.: BUTTON_LEFT, BUTTON_RIGHT or BUTTON_MIDDLE.
-  actionlist.add(InputAction(kind: MOUSE, name: name, button_index: button))
+  actionlist.add(InputAction(kind: MOUSE, name: name, button_index: button.cint))
 
 proc addKeyAction*(a: type Input, name, key: string) =
   ## Adds a new action on keyboard.
@@ -103,7 +103,7 @@ proc addKeyAction*(a: type Input, name, key: string) =
   ## Arguments:
   ## - `name` - action name.
   ## - `key` - key, e.g.: "w", "1", etc.
-  actionlist.add(InputAction(kind: KEYBOARD, name: name, key: key))
+  actionlist.add(InputAction(kind: KEYBOARD, name: name, key: key, key_int: ord(key[0]).cint))
 
 proc addKeyAction*(a: type Input, name: string, key: cint) =
   ## Adds a new action on keyboard.
@@ -156,7 +156,7 @@ proc isActionPressed*(a: type Input, name: string): bool =
         if press_state > 0:
           result = true
       elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
-        if action.key in pressed_keys or action.key_int in pressed_keys_ints:
+        if action.key_int in pressed_keys_ints:
           if press_state > 0:
             result = true
 

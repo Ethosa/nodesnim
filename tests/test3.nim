@@ -22,15 +22,6 @@ Input.addButtonAction("release", BUTTON_RIGHT)
 
 node.on_process =
   proc(self: NodeRef) =  # This called every frame.
-    if Input.isActionPressed("forward"):  # returns true, when user press "w"
-      echo "forward"
-    if Input.isActionPressed("backward"):  # returns true, when user press "s"
-      echo "backward"
-    if Input.isActionPressed("left"):  # returns true, when user press "a"
-      echo "left"
-    if Input.isActionPressed("right"):  # returns true, when user press "d"
-      echo "right"
-
     if Input.isActionJustPressed("click"):  # returns true, when the user clicks the left button one time.
       echo "clicked!"
 
@@ -41,6 +32,14 @@ node.on_input =
   proc(self: NodeRef, event: InputEvent) =  # This called only on user input.
     if event.isInputEventMouseButton() and event.pressed:
       echo "hi"
+    if Input.isActionPressed("forward"):  # returns true, when user press "w"
+      echo "forward"
+    if Input.isActionPressed("backward"):  # returns true, when user press "s"
+      echo "backward"
+    if Input.isActionPressed("left"):  # returns true, when user press "a"
+      echo "left"
+    if Input.isActionPressed("right"):  # returns true, when user press "d"
+      echo "right"
 
 
 addScene(main)
