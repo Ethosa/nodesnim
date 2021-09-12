@@ -16,10 +16,11 @@ import
   core/scene_builder,
   core/stylesheet,
   core/tools,
-  core/font
+  core/font,
+  core/tileset
 
 export
   vector2, rect2, circle, polygon2, enums, anchor, color,
   exceptions, input, image, audio_stream,
   animation, nodes_os, vector3, scene_builder, stylesheet,
-  tools, font
+  tools, font, tileset
