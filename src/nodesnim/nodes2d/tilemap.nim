@@ -22,7 +22,7 @@ type
 proc TileMap*(name: string = "TileMap"): TileMapRef =
   ## Creates a new TileMap object.
   runnableExamples:
-    var tilemap = TileMap("MyTileMap")
+    var mytilemap = TileMap("MyTileMap")
   nodepattern(TileMapRef)
   node2dpattern()
   result.map_size = (x: 25, y: 25)
@@ -33,6 +33,7 @@ proc TileMap*(name: string = "TileMap"): TileMapRef =
 
 
 method draw*(self: TileMapRef, w, h: GLfloat) =
+  ## this method uses in the `window.nim`.
   {.warning[LockLevel]: off.}
   procCall self.Node2DRef.draw(w, h)
   let

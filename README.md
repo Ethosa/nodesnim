@@ -67,7 +67,7 @@ This section contains links to documentation for all nodes.
 |[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |                    |                    |
 |[Exceptions][]  |[AnimationPlayer][]  |[Button][]            |[CollisionShape2D][]|                    |                    |
 |[Image][]       |                     |[EditText][]          |[Camera2D][]        |                    |                    |
-|[Input][]       |                     |[Box][]               |                    |                    |                    |
+|[Input][]       |                     |[Box][]               |[TileMap][]         |                    |                    |
 |[Rect2][]       |                     |[HBox][]              |                    |                    |                    |
 |[Vector2][]     |                     |[VBox][]              |                    |                    |                    |
 |[Circle2][]     |                     |[GridBox][]           |                    |                    |                    |
@@ -183,6 +183,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [KinematicBody2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/kinematic_body2d.html
 [Camera2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/camera2d.html
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
+[TileMap]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/tilemap.html
 
 [Node3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/node3d.html
 [GeometryInstance]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/geometry_instance.html
