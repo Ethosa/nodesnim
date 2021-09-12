@@ -1,8 +1,13 @@
 Vector2Obj	nodesnim/core/vector2.html#Vector2Obj	vector2: Vector2Obj	
+Vector2Ref	nodesnim/core/vector2.html#Vector2Ref	vector2: Vector2Ref	
 Vector2	nodesnim/core/vector2.html#Vector2,float,float	vector2: Vector2(x, y: float): Vector2Obj	
 Vector2	nodesnim/core/vector2.html#Vector2,Vector2Obj	vector2: Vector2(b: Vector2Obj): Vector2Obj	
 Vector2	nodesnim/core/vector2.html#Vector2,float	vector2: Vector2(num: float): Vector2Obj	
 Vector2	nodesnim/core/vector2.html#Vector2	vector2: Vector2(): Vector2Obj	
+newVector2	nodesnim/core/vector2.html#newVector2,float,float	vector2: newVector2(x, y: float): Vector2Ref	
+newVector2	nodesnim/core/vector2.html#newVector2,Vector2Obj	vector2: newVector2(o: Vector2Obj): Vector2Ref	
+newVector2	nodesnim/core/vector2.html#newVector2,float	vector2: newVector2(o: float): Vector2Ref	
+newVector2	nodesnim/core/vector2.html#newVector2	vector2: newVector2(): Vector2Ref	
 abs	nodesnim/core/vector2.html#abs,Vector2Obj	vector2: abs(a: Vector2Obj): Vector2Obj	
 angle	nodesnim/core/vector2.html#angle,Vector2Obj	vector2: angle(a: Vector2Obj): float	
 clear	nodesnim/core/vector2.html#clear,Vector2Obj	vector2: clear(a: var Vector2Obj)	

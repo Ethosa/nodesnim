@@ -108,8 +108,6 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#env"
     title="env: EnvironmentRef = newEnvironment()"><wbr />env<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#max_distance"
-    title="max_distance: GLdouble = GLdouble(high(int64))"><wbr />max_<wbr />distance<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#main_scene"
     title="main_scene: SceneRef = nil"><wbr />main_<wbr />scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#current_scene"
@@ -118,6 +116,8 @@ function main() {
     title="scenes: seq[SceneRef] = @[]"><wbr />scenes<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#paused"
     title="paused: bool = false"><wbr />paused<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#running"
+    title="running: bool = true"><wbr />running<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -128,14 +128,18 @@ function main() {
     title="addScene(scene: SceneRef)"><wbr />add<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#addMainScene%2CSceneRef"
     title="addMainScene(scene: SceneRef)"><wbr />add<wbr />Main<wbr />Scene<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#centeredWindow"
+    title="centeredWindow()"><wbr />centered<wbr />Window<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#changeScene%2Cstring%2Cseq%5Btuple%5Bstring%2Cstring%5D%5D"
     title="changeScene(name: string; extra: seq[tuple[k: string, v: string]] = @[]): bool"><wbr />change<wbr />Scene<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#resizeWindow%2Ccint%2Ccint"
+    title="resizeWindow(x, y: cint)"><wbr />resize<wbr />Window<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#setMainScene%2Cstring"
     title="setMainScene(name: string)"><wbr />set<wbr />Main<wbr />Scene<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#setTitle%2Ccstring"
     title="setTitle(title: cstring)"><wbr />set<wbr />Title<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setMaxDistance%2CGLdouble"
-    title="setMaxDistance(distance: GLdouble)"><wbr />set<wbr />Max<wbr />Distance<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#setIcon%2Ccstring"
+    title="setIcon(icon_path: cstring)"><wbr />set<wbr />Icon<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Window%2Ccstring%2Ccint%2Ccint"
     title="Window(title: cstring; w: cint = 640; h: cint = 360)"><wbr />Window<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#windowLaunch"
@@ -154,20 +158,13 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="thirdparty/opengl.html">thirdparty/opengl</a>, <a class="reference external" href="thirdparty/opengl/glut.html">thirdparty/opengl/glut</a>, <a class="reference external" href="thirdparty/opengl/glu.html">thirdparty/opengl/glu</a>, <a class="reference external" href="core/color.html">core/color</a>, <a class="reference external" href="core/exceptions.html">core/exceptions</a>, <a class="reference external" href="core/input.html">core/input</a>, <a class="reference external" href="nodes/node.html">nodes/node</a>, <a class="reference external" href="nodes/scene.html">nodes/scene</a>, <a class="reference external" href="environment.html">environment</a>
+<a class="reference external" href="thirdparty/opengl.html">thirdparty/opengl</a>, <a class="reference external" href="thirdparty/opengl/glu.html">thirdparty/opengl/glu</a>, <a class="reference external" href="thirdparty/sdl2.html">thirdparty/sdl2</a>, <a class="reference external" href="thirdparty/sdl2/image.html">thirdparty/sdl2/image</a>, <a class="reference external" href="core/color.html">core/color</a>, <a class="reference external" href="core/input.html">core/input</a>, <a class="reference external" href="core/exceptions.html">core/exceptions</a>, <a class="reference external" href="nodes/node.html">nodes/node</a>, <a class="reference external" href="nodes/scene.html">nodes/scene</a>, <a class="reference external" href="environment.html">environment</a>
 </dl></div>
 <div class="section" id="8">
 <h1><a class="toc-backref" href="#8">Vars</a></h1>
 <dl class="item">
 <a id="env"></a>
 <dt><pre><a href="window.html#env"><span class="Identifier">env</span></a><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a> <span class="Other">=</span> <span class="Identifier">newEnvironment</span><span class="Other">(</span><span class="Other">)</span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="max_distance"></a>
-<dt><pre><a href="window.html#max_distance"><span class="Identifier">max_distance</span></a><span class="Other">:</span> <a href="thirdparty/opengl.html#GLdouble"><span class="Identifier">GLdouble</span></a> <span class="Other">=</span> <a href="thirdparty/opengl.html#GLdouble"><span class="Identifier">GLdouble</span></a><span class="Other">(</span><span class="Identifier">high</span><span class="Other">(</span><span class="Identifier">int64</span><span class="Other">)</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
@@ -201,6 +198,13 @@ function main() {
 
 
 </dd>
+<a id="running"></a>
+<dt><pre><a href="window.html#running"><span class="Identifier">running</span></a><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 <div class="section" id="12">
@@ -228,6 +232,13 @@ function main() {
 
 
 </dd>
+<a id="centeredWindow"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#centeredWindow"><span class="Identifier">centeredWindow</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="changeScene,string,seq[tuple[string,string]]"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#changeScene%2Cstring%2Cseq%5Btuple%5Bstring%2Cstring%5D%5D"><span class="Identifier">changeScene</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">extra</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">k</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">discardable</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -237,6 +248,13 @@ function main() {
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> - name of the added scene.</li>
 </ul>
+
+
+</dd>
+<a id="resizeWindow,cint,cint"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#resizeWindow%2Ccint%2Ccint"><span class="Identifier">resizeWindow</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
 
 
 </dd>
@@ -258,11 +276,11 @@ function main() {
 Changes window title.
 
 </dd>
-<a id="setMaxDistance,GLdouble"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setMaxDistance%2CGLdouble"><span class="Identifier">setMaxDistance</span></a><span class="Other">(</span><span class="Identifier">distance</span><span class="Other">:</span> <a href="thirdparty/opengl.html#GLdouble"><span class="Identifier">GLdouble</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="setIcon,cstring"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setIcon%2Ccstring"><span class="Identifier">setIcon</span></a><span class="Other">(</span><span class="Identifier">icon_path</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">WindowError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Changes window title.
 
 </dd>
 <a id="Window,cstring,cint,cint"></a>
@@ -278,11 +296,11 @@ Changes window title.
 
 </dd>
 <a id="windowLaunch"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#windowLaunch"><span class="Identifier">windowLaunch</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">SceneError</span><span class="Other">]</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#windowLaunch"><span class="Identifier">windowLaunch</span></a><span class="Other">(</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">SceneError</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
                     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">TimeEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Start main window loop.
+
 
 </dd>
 
@@ -295,7 +313,7 @@ Start main window loop.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-11 12:59:15 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-12 13:25:14 UTC</small>
       </div>
     </div>
   </div>

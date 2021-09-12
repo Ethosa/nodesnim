@@ -103,6 +103,8 @@ function main() {
       <li><a class="reference" href="#Vector2Obj"
     title="Vector2Obj = object
   x*, y*: float"><wbr />Vector2Obj<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#Vector2Ref"
+    title="Vector2Ref = ref Vector2Obj"><wbr />Vector2Ref<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -117,6 +119,14 @@ function main() {
     title="Vector2(num: float): Vector2Obj"><wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
   <li><a class="reference" href="#Vector2"
     title="Vector2(): Vector2Obj"><wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
+  <li><a class="reference" href="#newVector2%2Cfloat%2Cfloat"
+    title="newVector2(x, y: float): Vector2Ref"><wbr />new<wbr />Vector2<span class="attachedType">Vector2Ref</span></a></li>
+  <li><a class="reference" href="#newVector2%2CVector2Obj"
+    title="newVector2(o: Vector2Obj): Vector2Ref"><wbr />new<wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
+  <li><a class="reference" href="#newVector2%2Cfloat"
+    title="newVector2(o: float): Vector2Ref"><wbr />new<wbr />Vector2<span class="attachedType">Vector2Ref</span></a></li>
+  <li><a class="reference" href="#newVector2"
+    title="newVector2(): Vector2Ref"><wbr />new<wbr />Vector2<span class="attachedType">Vector2Ref</span></a></li>
   <li><a class="reference" href="#abs%2CVector2Obj"
     title="abs(a: Vector2Obj): Vector2Obj"><wbr />abs<span class="attachedType">Vector2Obj</span></a></li>
   <li><a class="reference" href="#angle%2CVector2Obj"
@@ -218,6 +228,13 @@ function main() {
 
 
 </dd>
+<a id="Vector2Ref"></a>
+<dt><pre><a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 <div class="section" id="12">
@@ -246,6 +263,34 @@ function main() {
 </dd>
 <a id="Vector2"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#Vector2"><span class="Identifier">Vector2</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="newVector2,float,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVector2%2Cfloat%2Cfloat"><span class="Identifier">newVector2</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="newVector2,Vector2Obj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVector2%2CVector2Obj"><span class="Identifier">newVector2</span></a><span class="Other">(</span><span class="Identifier">o</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="newVector2,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVector2%2Cfloat"><span class="Identifier">newVector2</span></a><span class="Other">(</span><span class="Identifier">o</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="newVector2"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVector2"><span class="Identifier">newVector2</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -534,7 +579,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-11 12:59:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-12 13:25:10 UTC</small>
       </div>
     </div>
   </div>

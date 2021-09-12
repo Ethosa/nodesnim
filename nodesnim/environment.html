@@ -106,11 +106,16 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#EnvironmentObj"
+      <li><a class="reference" href="#ScreenMode"
+    title="ScreenMode {.pure.} = enum
+  SCREEN_MODE_NONE,           ## default mode.
+  SCREEN_MODE_EXPANDED        ## Keep screen size."><wbr />Screen<wbr />Mode<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#EnvironmentObj"
     title="EnvironmentObj = object
   delay*: int                  ## window delay.
   color*: ColorRef             ## background environment color.
-  brightness*: float"><wbr />Environment<wbr />Obj<span class="attachedType"></span></a></li>
+  brightness*: float
+  screen_mode*: ScreenMode"><wbr />Environment<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#EnvironmentRef"
     title="EnvironmentRef = ref EnvironmentObj"><wbr />Environment<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -131,6 +136,8 @@ function main() {
     title="setBrightness(env: EnvironmentRef; brightness: float)"><wbr />set<wbr />Brightness<span class="attachedType">EnvironmentRef</span></a></li>
   <li><a class="reference" href="#setDelay%2CEnvironmentRef%2Cint"
     title="setDelay(env: EnvironmentRef; delay: int)"><wbr />set<wbr />Delay<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#setScreenMode%2CEnvironmentRef%2CScreenMode"
+    title="setScreenMode(env: EnvironmentRef; mode: ScreenMode)"><wbr />set<wbr />Screen<wbr />Mode<span class="attachedType">EnvironmentRef</span></a></li>
 
   </ul>
 </li>
@@ -150,11 +157,21 @@ function main() {
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
+<a id="ScreenMode"></a>
+<dt><pre><a href="environment.html#ScreenMode"><span class="Identifier">ScreenMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">SCREEN_MODE_NONE</span><span class="Other">,</span>           <span class="Comment">## default mode.</span>
+  <span class="Identifier">SCREEN_MODE_EXPANDED</span>        <span class="Comment">## Keep screen size.</span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="EnvironmentObj"></a>
 <dt><pre><a href="environment.html#EnvironmentObj"><span class="Identifier">EnvironmentObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>                  <span class="Comment">## window delay.</span>
   <span class="Identifier">color</span><span class="Operator">*</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>             <span class="Comment">## background environment color.</span>
   <span class="Identifier">brightness</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
+  <span class="Identifier">screen_mode</span><span class="Operator">*</span><span class="Other">:</span> <a href="environment.html#ScreenMode"><span class="Identifier">ScreenMode</span></a>
 </pre></dt>
 <dd>
 
@@ -237,6 +254,13 @@ Creates a new EnvironmentRef object.
 
 
 </dd>
+<a id="setScreenMode,EnvironmentRef,ScreenMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setScreenMode%2CEnvironmentRef%2CScreenMode"><span class="Identifier">setScreenMode</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <a href="environment.html#ScreenMode"><span class="Identifier">ScreenMode</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes screen mode. <tt class="docutils literal"><span class="pre">mode</span></tt> should be <tt class="docutils literal"><span class="pre">SCREEN_MODE_NONE</span></tt> or <tt class="docutils literal"><span class="pre">SCREEN_MODE_EXPANDED</span></tt>.
+
+</dd>
 
 </dl></div>
 
@@ -247,7 +271,7 @@ Creates a new EnvironmentRef object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-11 12:59:15 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-12 13:25:14 UTC</small>
       </div>
     </div>
   </div>
