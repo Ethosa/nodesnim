@@ -12,13 +12,13 @@
 
 ## Install
 1. Install Nodesnim
-   -  Stable: `nimble install nodesnim` or `nimble install https://github.com/Ethosa/nodesnim.git`
+   -  Stable:
+     ```bash
+     nimble install nodesnim
+     ```
    -  Nightly:
       ```bash
-      git clone https://github.com/Ethosa/nodesnim/
-      cd nodesnim
-      git checkout nightly-0.X.X
-      nimble install
+      nimble install nodesnim@#nightly
       ```
 2. Install dependencies
    -  Linux (tested on Ubuntu and Mint):
