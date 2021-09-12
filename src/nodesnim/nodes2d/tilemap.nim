@@ -16,7 +16,7 @@ type
   TileMapObj* = object of Node2DObj
     map_size*: tuple[x, y: int]
     tileset*: TileSetObj
-    map*: seq[seq[tuple[x, y: float]]]
+    map*: seq[seq[Vector2Ref]]
   TileMapRef = ref TileMapObj
 
 
@@ -48,22 +48,35 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
   if viewport[3] >= self.map_size.y:
     viewport[3] = self.map_size.y-1
 
+  glEnable(GL_TEXTURE_2D)
+  glEnable(GL_DEPTH_TEST)
   for x1 in viewport[0]..viewport[2]:
     for y1 in viewport[1]..viewport[3]:
-      let
-        posx = x + self.tileset.grid.x*x1.float
-        posy = y - self.tileset.grid.y*y1.float
-      self.tileset.draw(self.map[x1][y1].x, self.map[x1][y1].y, posx, posy)
+      if not self.map[x1][y1].isNil():
+        let
+          posx = x + self.tileset.grid.x*x1.float
+          posy = y - self.tileset.grid.y*y1.float
+        self.tileset.draw(self.map[x1][y1].x, self.map[x1][y1].y, posx, posy)
+  glDisable(GL_DEPTH_TEST)
+  glDisable(GL_TEXTURE_2D)
 
-method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Obj) {.base.} =
-  self.map[x][y] = (x: tile_pos.x, y: tile_pos.y)
+method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Ref) {.base.} =
+  ## Changes map tile at `x`,`y` point to tile from tileset at `tile_pos` point.
+  self.map[x][y] = tile_pos
 
-method fillTile*(self: TileMapRef, tile_pos: Vector2Obj) {.base.} =
+method drawRect*(self: TileMapRef, x, y, w, h: int, tile_pos: Vector2Ref) {.base.} =
+  for x1 in x..x+w:
+    for y1 in y..y+h:
+      self.map[x1][y1] = tile_pos
+
+method fill*(self: TileMapRef, tile_pos: Vector2Ref) {.base.} =
+  ## Fills the map with a tile at `tile_pos` position.
   for x in 0..<self.map_size.x.int:
     for y in 0..<self.map_size.y.int:
-      self.map[x][y] = (x: tile_pos.x, y: tile_pos.y)
+      self.map[x][y] = tile_pos
 
-method resizeMap*(self: TileMapRef, size: Vector2Obj) {.base.} =
+method resizeMap*(self: TileMapRef, size: Vector2Ref) {.base.} =
+  ## Changes map size to `size`.
   self.map_size = (x: size.x.int, y: size.y.int)
   self.map = @[]
   self.map.setLen(self.map_size.x)
@@ -71,4 +84,5 @@ method resizeMap*(self: TileMapRef, size: Vector2Obj) {.base.} =
     self.map[x].setLen(self.map_size.x)
 
 method setTileSet*(self: TileMapRef, tileset: TileSetObj) {.base.} =
+  ## Changes current tileset.
   self.tileset = tileset

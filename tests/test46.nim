@@ -10,12 +10,13 @@ build:
   - Scene main:
     - TileMap map:
       call setTileSet(tileset)
-      call resizeMap(Vector2(10000, 10000))
-      call fillTile(Vector2(1, 0))
-      call drawTile(0, 0, Vector2(3, 0))
-      call drawTile(1, 0, Vector2(7, 4.5))
-      call drawTile(0, 1, Vector2(6.5, 5))
-      call drawTile(1, 1, Vector2(7, 5))
+      call resizeMap(newVector2(8096, 512))
+      call fill(newVector2(1, 0))
+      call drawRect(3, 3, 10, 5, newVector2(9, 7))
+      call drawTile(0, 0, newVector2(3, 0))
+      call drawTile(1, 0, newVector2(7, 4.5))
+      call drawTile(0, 1, newVector2(6.5, 5))
+      call drawTile(1, 1, newVector2(7, 5))
 
 addMainScene(main)
 windowLaunch()

@@ -6,6 +6,7 @@ import math
 type
   Vector2Obj* = object
     x*, y*: float
+  Vector2Ref* = ref Vector2Obj
 
 
 proc Vector2*(x, y: float): Vector2Obj {.inline.} =
@@ -19,6 +20,19 @@ proc Vector2*(num: float): Vector2Obj {.inline.} =
 
 proc Vector2*(): Vector2Obj {.inline.} =
   Vector2Obj(x: 0, y: 0)
+
+
+proc newVector2*(x, y: float): Vector2Ref {.inline.} =
+  Vector2Ref(x: x, y: y)
+
+proc newVector2*(o: Vector2Obj): Vector2Ref {.inline.} =
+  Vector2Ref(x: o.x, y: o.y)
+
+proc newVector2*(o: float): Vector2Ref {.inline.} =
+  Vector2Ref(x: o, y: o)
+
+proc newVector2*(): Vector2Ref {.inline.} =
+  Vector2Ref(x: 0f, y: 0f)
 
 
 

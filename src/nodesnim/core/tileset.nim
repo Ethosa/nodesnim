@@ -52,8 +52,6 @@ proc draw*(self: TileSetObj, tilex, tiley, x, y: float) =
       texx2 = self.grid.x*(tilex+1f) / self.size.x
       texy2 = self.grid.y*(tiley+1f) / self.size.y
     glBindTexture(GL_TEXTURE_2D, self.texture)
-    glEnable(GL_TEXTURE_2D)
-    glEnable(GL_DEPTH_TEST)
     glBegin(GL_QUADS)
     glTexCoord2f(texx1, texy1)
     glVertex2f(x, y)
@@ -64,6 +62,4 @@ proc draw*(self: TileSetObj, tilex, tiley, x, y: float) =
     glTexCoord2f(texx2, texy1)
     glVertex2f(x + self.grid.x, y)
     glEnd()
-    glDisable(GL_DEPTH_TEST)
-    glDisable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, 0)

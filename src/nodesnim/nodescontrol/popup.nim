@@ -14,7 +14,7 @@ import
 
 
 type
-  PopupObj* = object of ControlRef
+  PopupObj* = object of ControlObj
   PopupRef* = ref PopupObj
 
 
