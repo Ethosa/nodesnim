@@ -54,7 +54,7 @@ method draw*(self: LabelRef, w, h: GLfloat) =
 
   if not self.text.rendered:
     self.text.render(self.rect_size, self.text_align)
-  self.text.renderTo(Vector2(x, y), self.rect_size, self.text_align)
+  self.text.renderTo(Vector2(x + self.padding.x1, y - self.padding.y1), self.rect_size, self.text_align)
 
 method duplicate*(self: LabelRef): LabelRef {.base.} =
   ## Duplicates Label object and create a new Label.

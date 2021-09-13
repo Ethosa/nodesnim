@@ -32,7 +32,6 @@ proc VBox*(name: string = "VBox"): VBoxRef =
   controlpattern()
   result.rect_size.x = 40
   result.rect_size.y = 40
-  result.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   result.separator = 4f
   result.kind = VBOX_NODE
 
@@ -57,18 +56,22 @@ method addChild*(self: VBoxRef, child: NodeRef) =
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
+  self.resize(self.rect_size.x, self.rect_size.y)
 
 
 method draw*(self: VBoxRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
+  procCall self.ControlRef.draw(w, h)
   var
     fakesize = self.getChildSize()
     y = self.rect_size.y*self.child_anchor.y1 - fakesize.y*self.child_anchor.y2
   for child in self.children:
-    child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
-    child.CanvasRef.position.y = y
+    child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1
+    child.CanvasRef.position.y = y + self.padding.y1
     y += child.CanvasRef.rect_size.y + self.separator
-  procCall self.ControlRef.draw(w, h)
+
+    if child.CanvasRef.rect_size.x > self.rect_size.x:
+      self.rect_size.x = child.CanvasRef.rect_size.x
 
 method duplicate*(self: VBoxRef): VBoxRef {.base.} =
   ## Duplicate VBox object and create a new VBox.

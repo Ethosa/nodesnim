@@ -32,7 +32,6 @@ proc HBox*(name: string = "HBox"): HBoxRef =
   controlpattern()
   result.rect_size.x = 40
   result.rect_size.y = 40
-  result.child_anchor = Anchor(0.5, 0.5, 0.5, 0.5)
   result.separator = 4f
   result.kind = HBOX_NODE
 
@@ -56,19 +55,19 @@ method addChild*(self: HBoxRef, child: NodeRef) =
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
-  self.rect_size = self.getChildSize()
+  self.resize(self.rect_size.x, self.rect_size.y)
 
 
 method draw*(self: HBoxRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
+  procCall self.ControlRef.draw(w, h)
   var
     fakesize = self.getChildSize()
     x = self.rect_size.x*self.child_anchor.x1 - fakesize.x*self.child_anchor.x2
   for child in self.children:
-    child.CanvasRef.position.x = x
-    child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
+    child.CanvasRef.position.x = x + self.padding.x1
+    child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2 + self.padding.y1
     x += child.CanvasRef.rect_size.x + self.separator
-  procCall self.ControlRef.draw(w, h)
 
 method duplicate*(self: HBoxRef): HBoxRef {.base.} =
   ## Duplicates HBox object and create a new HBox.

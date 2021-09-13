@@ -61,8 +61,13 @@ method addChild*(self: BoxRef, child: NodeRef) =
 method draw*(self: BoxRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
   for child in self.children:
-    child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
-    child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
+    child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1
+    child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2 + self.padding.y1
+
+    if child.CanvasRef.rect_size.x > self.rect_size.x:
+      self.rect_size.x = child.CanvasRef.rect_size.x
+    if child.CanvasRef.rect_size.y > self.rect_size.y:
+      self.rect_size.y = child.CanvasRef.rect_size.y
   procCall self.ControlRef.draw(w, h)
 
 method duplicate*(self: BoxRef): BoxRef {.base.} =

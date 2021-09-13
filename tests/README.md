@@ -45,3 +45,4 @@
 - [Use CheckBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test43.nim)
 - [Use GradientDrawable and Control.](https://github.com/Ethosa/nodesnim/blob/master/tests/test44.nim)
 - [Use TileMap node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test45.nim)
+- [Use Padding.](https://github.com/Ethosa/nodesnim/blob/master/tests/test46.nim)
