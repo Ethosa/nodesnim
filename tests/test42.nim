@@ -26,7 +26,7 @@ ctrl.setStyle(style(
     border-color: rgb(0, 0, 0),
     shadow: true,
     shadow-offset: 3,
-    size-anchor: "0.5 0.7"
+    size-anchor: 0.5 0.7
   }
 ))
 

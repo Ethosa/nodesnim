@@ -23,10 +23,10 @@ type
     hovered*: bool
     pressed*: bool
     focused*: bool
-    padding_used*: bool
 
     mousemode*: MouseMode
-    padding*: AnchorObj
+    padding*: AnchorObj                                         ## Only for Box, VBox, HBox, GridBox and Label objects!
+    margin*: AnchorObj                                          ## Only for HBox and VBox objects!
     background*: DrawableRef
 
     on_mouse_enter*: proc(self: ControlRef, x, y: float): void  ## This called when the mouse enters the Control node.
@@ -43,7 +43,6 @@ template controlpattern*: untyped =
   result.hovered = false
   result.focused = false
   result.pressed = false
-  result.padding_used = true
 
   result.mousemode = MOUSEMODE_SEE
   result.rect_size = Vector2()
@@ -151,6 +150,15 @@ method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
   ## Changes Control background color.
   self.background.setColor(color)
 
+method setMargin*(self: ControlRef, margin: AnchorObj) {.base.} =
+  ## Changes Control margin.
+  self.margin = margin
+
+method setMargin*(self: ControlRef, x1, y1, x2, y2: float) {.base.} =
+  ## Changes Control margin.
+  self.setMargin(Anchor(x1, y1, x2, y2))
+
+
 method setPadding*(self: ControlRef, padding: AnchorObj) {.base.} =
   ## Changes Control padding.
   self.padding = padding
@@ -192,6 +200,18 @@ method setStyle*(self: ControlRef, style: StyleSheetRef) {.base.} =
         self.setPadding(Anchor(tmp2, tmp2, tmp2, tmp2))
       elif tmp.len() == 4:
         self.setPadding(Anchor(
+          parseFloat(tmp[0]), parseFloat(tmp[1]),
+          parseFloat(tmp[2]), parseFloat(tmp[3]))
+        )
+    # margin: 1
+    # margin: 0.5 1 0.5 1
+    of "margin":
+      let tmp = i.value.split(Whitespace)
+      if tmp.len() == 1:
+        let tmp2 = parseFloat(tmp[0])
+        self.setMargin(Anchor(tmp2, tmp2, tmp2, tmp2))
+      elif tmp.len() == 4:
+        self.setMargin(Anchor(
           parseFloat(tmp[0]), parseFloat(tmp[1]),
           parseFloat(tmp[2]), parseFloat(tmp[3]))
         )

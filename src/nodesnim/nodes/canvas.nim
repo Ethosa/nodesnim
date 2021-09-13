@@ -219,6 +219,7 @@ method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base
   else:
     self.rect_size.y = self.rect_min_size.y
 
+
 method setAnchor*(self: CanvasRef, anchor: AnchorObj) {.base.} =
   ## Changes node anchor.
   ##
@@ -233,6 +234,7 @@ method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
   ## - `x1` and `y1` - anchor relative to the parent node.
   ## - `x2` and `y2` - anchor relative to this node.
   self.anchor = Anchor(x1, y1, x2, y2)
+
 
 method setSizeAnchor*(self: CanvasRef, anchor: Vector2Obj) {.base.} =
   self.size_anchor = anchor

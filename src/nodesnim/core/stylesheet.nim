@@ -88,7 +88,18 @@ macro style*(obj: untyped): untyped =
 
     for child in obj.children():
       if child.kind == nnkExprColonExpr:
-        cssp[child[0].toStr()] = child[1].toStr()
+        # smth: 0 0 0 0 0 0 0 0 0 0 -> style['smth'] = "0 0 0 0 0 0 0 0 0 0"
+        if child[1].kind == nnkCommand:
+          var
+            val = ""
+            right = child[1]
+          val &= child[1][0].toStr()
+          while right.kind == nnkCommand:
+            val &= " " & child[1][0].toStr()
+            right = right[1]
+          cssp[child[0].toStr()] = val
+        else:
+          cssp[child[0].toStr()] = child[1].toStr()
 
     for i in cssp.dict:
       arr.add(newPar(newLit(i.key), newLit(i.value)))

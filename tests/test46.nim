@@ -1,4 +1,4 @@
-# --- Test 46. Use Padding. --- #
+# --- Test 46. Use padding. --- #
 import nodesnim
 
 
@@ -34,6 +34,21 @@ build:
         color: Color("#ff7")
         call resize(64, 64)
       - ColorRect rect6:
+        color: Color("#f7f")
+    - GridBox gridbox:
+      call setPadding(2, 4, 8, 16)
+      call move(300, 200)
+      call setChildAnchor(1, 1, 1, 1)
+      call setBackgroundColor(Color("#5aa"))
+      - ColorRect rect7:
+        color: Color("#ff7")
+        call resize(64, 64)
+      - ColorRect rect8:
+        color: Color("#f7f")
+      - ColorRect rect9:
+        color: Color("#ff7")
+        call resize(64, 64)
+      - ColorRect rect10:
         color: Color("#f7f")
     - Label text:
       call setText("Hello, world!")

@@ -44,6 +44,11 @@ method getChildSize*(self: VBoxRef): Vector2Obj =
   for child in self.children:
     if child.CanvasRef.rect_size.x > x:
       x = child.CanvasRef.rect_size.x
+    if child.type_of_node == NODE_TYPE_CONTROL:
+      y += child.ControlRef.margin.y1 + child.ControlRef.margin.y2
+      let x_sizem = child.ControlRef.margin.x1 + child.ControlRef.margin.x2 + child.ControlRef.rect_size.x
+      if x < x_sizem:
+        x = x_sizem
     y += child.CanvasRef.rect_size.y + self.separator
   if y > 0f:
     y -= self.separator
@@ -66,12 +71,15 @@ method draw*(self: VBoxRef, w, h: GLfloat) =
     fakesize = self.getChildSize()
     y = self.rect_size.y*self.child_anchor.y1 - fakesize.y*self.child_anchor.y2
   for child in self.children:
-    child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1
-    child.CanvasRef.position.y = y + self.padding.y1
+    if child.type_of_node == NODE_TYPE_CONTROL:
+      y += child.ControlRef.margin.y1
+      child.CanvasRef.position.y = y + self.padding.y1
+      child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1 + child.ControlRef.margin.x1
+      y += child.ControlRef.margin.y2
+    else:
+      child.CanvasRef.position.y = y + self.padding.y1
+      child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1
     y += child.CanvasRef.rect_size.y + self.separator
-
-    if child.CanvasRef.rect_size.x > self.rect_size.x:
-      self.rect_size.x = child.CanvasRef.rect_size.x
 
 method duplicate*(self: VBoxRef): VBoxRef {.base.} =
   ## Duplicate VBox object and create a new VBox.
