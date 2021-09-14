@@ -18,3 +18,11 @@ iterator bezier_iter*(step: float, p0, p1, p2: Vector2Obj): Vector2Obj =
   while t <= 1f:
     yield Vector2(bezier(t, p0.x, p1.x, p2.x), bezier(t, p0.y, p1.y, p2.y))
     t += s
+
+iterator cubic_bezier_iter*(step: float, p0, p1, p2, p3: Vector2Obj): Vector2Obj =
+  var t = 0f
+  let s = abs(step)
+
+  while t <= 1f:
+    yield Vector2(cubic_bezier(t, p0.x, p1.x, p2.x, p3.x), cubic_bezier(t, p0.y, p1.y, p2.y, p3.y))
+    t += s

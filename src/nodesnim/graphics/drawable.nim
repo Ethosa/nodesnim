@@ -8,7 +8,6 @@ import
   ../core/vector2,
   ../core/tools,
 
-  math,
   strutils,
   re
 

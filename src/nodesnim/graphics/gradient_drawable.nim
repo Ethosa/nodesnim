@@ -8,7 +8,6 @@ import
   ../core/vector2,
 
   drawable,
-  math,
   strutils
 
 type
