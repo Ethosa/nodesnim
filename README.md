@@ -72,11 +72,10 @@ This section contains links to documentation for all nodes.
 |[Polygon2][]    |                     |[Scroll][]            |                    |                    |                    |
 |[AudioStream][] |                     |[ProgressBar][]       |                    |                    |                    |
 |[Animation][]   |                     |[Slider][]            |                    |                    |                    |
-|[Vector3][]     |                     |[VSlider][]           |                    |                    |                    |
-|[SceneBuilder][]|                     |[Popup][]             |                    |                    |                    |
-|[StyleSheet][]  |                     |[TextureButton][]     |                    |                    |                    |
-|[TileSet][]     |                     |[TextureProgressBar][]|                    |                    |                    |
-|                |                     |[Counter][]           |                    |                    |                    |
+|[Vector3][]     |                     |[Popup][]             |                    |                    |                    |
+|[SceneBuilder][]|                     |[TextureButton][]     |                    |                    |                    |
+|[StyleSheet][]  |                     |[TextureProgressBar][]|                    |                    |                    |
+|[TileSet][]     |                     |[Counter][]           |                    |                    |                    |
 |                |                     |[Switch][]            |                    |                    |                    |
 |                |                     |[SubWindow][]         |                    |                    |                    |
 |                |                     |[CheckBox][]          |                    |                    |                    |
@@ -165,7 +164,6 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Scroll]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/scroll.html
 [ProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/progress_bar.html
 [Slider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/slider.html
-[VSlider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vslider.html
 [Popup]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/popup.html
 [TextureButton]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_button.html
 [TextureProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_progress_bar.html
