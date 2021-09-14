@@ -6,6 +6,7 @@ import
   ../core/stylesheet,
   ../core/image,
   ../core/vector2,
+  ../core/tools,
 
   math,
   strutils,
@@ -59,40 +60,24 @@ template vd* = discard
 template recalc* =
   ## Calculates vertex positions.
   # left top
-  var t = self.border_radius_lefttop
-  vertex.add(Vector2(x, y - t))
-  for i in 0..self.border_detail_lefttop:
-    let angle = TAU*(i/self.border_detail_lefttop)
-    if angle >= PI and angle <= PI+PI/2:
-      vertex.add(Vector2(x + t + t*cos(angle), y - t - t*sin(angle)))
-  vertex.add(Vector2(x + t, y))
+  for i in bezier_iter(1f/self.border_detail_lefttop.float, Vector2(0, -self.border_radius_lefttop),
+                       Vector2(0, 0), Vector2(self.border_radius_lefttop, 0)):
+    vertex.add(Vector2(x+i.x, y+i.y))
 
   # right top
-  t = self.border_radius_righttop
-  vertex.add(Vector2(x + width - t, y))
-  for i in 0..self.border_detail_righttop:
-    let angle = TAU*(i/self.border_detail_righttop)
-    if angle >= PI+PI/2 and angle <= TAU:
-      vertex.add(Vector2(x + width - t + t*cos(angle), y - t - t*sin(angle)))
-  vertex.add(Vector2(x + width, y - t))
+  for i in bezier_iter(1f/self.border_detail_righttop.float, Vector2(-self.border_radius_righttop, 0),
+                       Vector2(0, 0), Vector2(0, -self.border_radius_righttop)):
+    vertex.add(Vector2(x+width+i.x, y+i.y))
 
   # right bottom
-  t = self.border_radius_rightbottom
-  vertex.add(Vector2(x + width, y - height + t))
-  for i in 0..self.border_detail_rightbottom:
-    let angle = TAU*(i/self.border_detail_rightbottom)
-    if angle >= 0 and angle <= PI/2:
-      vertex.add(Vector2(x + width - t + t*cos(angle), y - height + t - t*sin(angle)))
-  vertex.add(Vector2(x + width - t, y - height))
+  for i in bezier_iter(1f/self.border_detail_rightbottom.float, Vector2(0, -self.border_radius_rightbottom),
+                       Vector2(0, 0), Vector2(-self.border_radius_rightbottom, 0)):
+    vertex.add(Vector2(x+width+i.x, y-height-i.y))
 
   # left bottom
-  t = self.border_radius_leftbottom
-  vertex.add(Vector2(x + t, y - height))
-  for i in 0..self.border_detail_leftbottom:
-    let angle = TAU*(i/self.border_detail_leftbottom)
-    if angle >= PI/2 and angle <= PI:
-      vertex.add(Vector2(x + t + t*cos(angle), y - height + t - t*sin(angle)))
-  vertex.add(Vector2(x, y - height + t))
+  for i in bezier_iter(1f/self.border_detail_leftbottom.float, Vector2(self.border_radius_leftbottom, 0),
+                       Vector2(0, 0), Vector2(0, self.border_radius_leftbottom)):
+    vertex.add(Vector2(x+i.x, y-height+i.y))
 
 
 template draw_template*(drawtype, color, function, secondfunc: untyped): untyped =
