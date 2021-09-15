@@ -241,6 +241,7 @@ method setShadowOffset*(self: DrawableRef, offset: Vector2Obj) {.base.} =
   ## Changes shadow offset.
   self.shadow_offset = offset
 
+
 method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
   ## Sets a new stylesheet.
   for i in s.dict:

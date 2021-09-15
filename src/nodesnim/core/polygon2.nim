@@ -92,7 +92,7 @@ proc intersects*(self: Polygon2Ref, r: Rect2Obj): bool =
     if r.contains(a, b):
       return true
 
-proc intersects*(self: Polygon2Ref, circle: CircleRef): bool =
+proc intersects*(self: Polygon2Ref, circle: CircleObj): bool =
   ## Returns true, if circle intersect with polygon.
   var next = 1
   let length = self.positions.len()
