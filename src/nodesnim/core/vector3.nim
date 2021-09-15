@@ -37,8 +37,10 @@ proc abs*(a: Vector3Obj): Vector3Obj =
     assert vec3.z == 3
   Vector3Obj(x: abs(a.x), y: abs(a.y), z: abs(a.z))
 
-proc cross*(a, b: Vector3Obj): float {.inline.} =
-  a.x*b.x - a.y*b.y - a.z*b.z
+proc cross*(a, b: Vector3Obj): Vector3Obj {.inline.} =
+  Vector3(a.y*b.z-b.y*a.z,
+          a.z*b.x-b.z*a.x,
+          a.x*b.y-b.x*a.y)
 
 proc cross*(a: Vector3Obj, x, y, z: float): float {.inline.} =
   a.x*x - a.y*y - a.z*z
@@ -62,6 +64,10 @@ proc normalize*(a: var Vector3Obj) =
 
 proc normalized*(a: Vector3Obj): Vector3Obj =
   result = Vector3(a)
+  result.normalize()
+
+proc directionTo*(a, b: Vector3Obj): Vector3Obj =
+  result = Vector3(b.x - a.x, b.y - a.y, b.z - a.z)
   result.normalize()
 
 proc len*(a: Vector3Obj): float {.inline.} =

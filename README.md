@@ -61,7 +61,7 @@ This section contains links to documentation for all nodes.
 |:--:            |:--:                 |:--:                  |  :--:              |:--:                |:--:                |
 |[Anchor][]      |[Node][]             |[Control][]           |[Node2D][]          |[Node3D][]          |[Drawable][]        |
 |[Color][]       |[Canvas][]           |[ColorRect][]         |[Sprite][]          |[GeometryInstance][]|[GradientDrawable][]|
-|[Font][]        |[Scene][]            |[TextureRect][]       |[AnimatedSprite][]  |                    |                    |
+|[Font][]        |[Scene][]            |[TextureRect][]       |[AnimatedSprite][]  |[Camera3D][]        |                    |
 |[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |                    |                    |
 |[Exceptions][]  |[AnimationPlayer][]  |[Button][]            |[CollisionShape2D][]|                    |                    |
 |[Image][]       |                     |[EditText][]          |[Camera2D][]        |                    |                    |
@@ -184,6 +184,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 [Node3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/node3d.html
 [GeometryInstance]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/geometry_instance.html
+[Camera3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/camera3d.html
 
 [Drawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/drawable.html
 [GradientDrawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/gradient_drawable.html

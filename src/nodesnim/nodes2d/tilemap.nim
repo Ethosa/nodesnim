@@ -26,6 +26,7 @@ proc TileMap*(name: string = "TileMap"): TileMapRef =
   nodepattern(TileMapRef)
   node2dpattern()
   result.map_size = (x: 25, y: 25)
+  result.kind = TILEMAP_NODE
   newSeq(result.map, result.map_size.x*result.map_size.y)
 
 
