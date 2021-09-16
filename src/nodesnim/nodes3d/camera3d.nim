@@ -72,13 +72,13 @@ method setCurrent*(self: Camera3DRef) {.base.} =
   self.current = true
   current_camera = self
 
-method rotateCameraX*(self: Camera3DRef, val: float) {.base.} =
+method rotateX*(self: Camera3DRef, val: float) =
   self.yaw += val
 
-method rotateCameraY*(self: Camera3DRef, val: float) {.base.} =
+method rotateY*(self: Camera3DRef, val: float) =
   self.pitch += val
 
-method rotateCamera*(self: Camera3DRef, x, y: float) {.base.} =
+method rotate*(self: Camera3DRef, x, y: float) {.base.} =
   ## Rotates camera by `x` and `y` values.
   self.yaw += x
   self.pitch += y

@@ -38,7 +38,7 @@ Input.addKeyAction("right", "d")
 
 root@on_input(self, event):
   if event.isInputEventMouseMotion() and event.pressed:
-    camera.rotateCamera(-event.xrel*0.1, event.yrel*0.1)
+    camera.rotate(-event.xrel*0.1, event.yrel*0.1)
   if Input.isActionPressed("left"):
     root.translate(camera.right * -0.1)
   if Input.isActionPressed("right"):
