@@ -1,7 +1,7 @@
 # --- Test 48. Use Camera3D node. --- #
 import nodesnim
 
-Window("camera 3d test")
+Window("camera 3d test", 1024, 640)
 
 
 build:
@@ -38,12 +38,11 @@ Input.addKeyAction("right", "d")
 
 root@on_input(self, event):
   if event.isInputEventMouseMotion() and event.pressed:
-    camera.pitch += event.yrel*0.1  # Y
-    camera.yaw -= event.xrel*0.1    # X
+    camera.rotateCamera(-event.xrel*0.1, event.yrel*0.1)
   if Input.isActionPressed("left"):
-    root.translate(camera.front.cross(camera.up).normalized() * -0.1)
+    root.translate(camera.right * -0.1)
   if Input.isActionPressed("right"):
-    root.translate(camera.front.cross(camera.up).normalized() * 0.1)
+    root.translate(camera.right * 0.1)
   if Input.isActionPressed("forward"):
     root.translate(camera.front*0.1)
   if Input.isActionPressed("back"):

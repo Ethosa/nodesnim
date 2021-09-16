@@ -10,9 +10,7 @@ import
   ../core/vector2,
   ../core/vector3,
   ../nodes3d/node3d,
-  ../nodes3d/camera3d,
-  times,
-  math
+  ../nodes3d/camera3d
 
 
 type
@@ -51,9 +49,9 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
       # when 2D
       if child.type_of_node == NODE_TYPE_CONTROL:
         child.CanvasRef.calcGlobalPosition()
-        glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
+        glOrtho(-w/2, w/2, -h/2, h/2, -w, w)
       elif child.type_of_node == NODE_TYPE_2D:
-        glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
+        glOrtho(-w/2, w/2, -h/2, h/2, -w, w)
       # when 3D
       elif child.type_of_node == NODE_TYPE_3D:
         child.Node3DRef.calcGlobalPosition3()
