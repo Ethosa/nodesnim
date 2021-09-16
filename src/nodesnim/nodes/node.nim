@@ -283,8 +283,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
   # Do style insensitive comparision
   case nimIdentNormalize(ename)
   of "onprocess", "onready", "onenter", "onexit":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self"])
     result = quote do:
       `node`.`name` =
@@ -292,8 +291,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
           `code`
 
   of "onfocus", "onunfocus":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self"])
     result = quote do:
       `node`.`name` =
@@ -301,8 +299,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
           `code`
 
   of "ontouch":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self", "x", "y"])
 
     result = quote do:
@@ -319,8 +316,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
           `code`
 
   of "oninput":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
@@ -328,8 +324,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
           `code`
 
   of "onswitch":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
@@ -337,8 +332,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
           `code`
 
   of "ontoggle":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
@@ -346,8 +340,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
           `code`
 
   of "onchanged":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
@@ -355,8 +348,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
           `code`
 
   of "onedit":
-    var
-      name = event_name[0]
+    var name = event_name[0]
     event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
