@@ -1,4 +1,4 @@
-<h1 align="center">Nodesnim</h1>
+<h1 align="center"><img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/icon.svg"></h1>
 <div align="center">The Nim GUI/2D framework based on OpenGL and SDL2.
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
