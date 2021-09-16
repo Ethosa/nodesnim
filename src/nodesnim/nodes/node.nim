@@ -253,6 +253,22 @@ macro expectParams(params_src: NimNode, params: static[seq[string]]): untyped =
     result.add quote do:
       var `varName` = `params_src`[`i` + 1] # + 1 since name is at the 0 index
 
+when not declared(nimIdentNormalize):
+  proc nimIdentNormalize(s: string): string =
+    ## Backported from https://github.com/nim-lang/Nim/blob/version-1-4/lib/pure/strutils.nim#L284
+    result = newString(s.len)
+    if s.len > 0:
+      result[0] = s[0]
+    var j = 1
+    for i in 1..len(s) - 1:
+      if s[i] in {'A'..'Z'}:
+        result[j] = chr(ord(s[i]) + (ord('a') - ord('A')))
+        inc j
+      elif s[i] != '_':
+        result[j] = s[i]
+        inc j
+    if j != s.len: setLen(result, j)
+
 macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
   ## It provides a convenient wrapper for the event handler.
   ##
