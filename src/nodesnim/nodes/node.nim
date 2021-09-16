@@ -230,6 +230,29 @@ method delete*(self: NodeRef) {.base.} =
 import
   macros
 
+macro expectParams(params_src: NimNode, params: static[seq[string]]): untyped =
+  ## Gets values from the NimNode params_src which comes after the `@` when using the `@` macro.
+  ## Also checks that the number of parameters lines up
+  ## Arguments:
+  ## - `params_src` The node that contains the parameters
+  ## - `params` List of param variables to get from params_src
+  result = newStmtList()
+  result.add quote do:
+    # This is done so params is only injected once
+    let params = `params`
+    let src_length = `params_src`.len - 1 # - 1 for name
+    if src_length != params.len:
+      # Tell the user that there was an unexpected number of params
+      let error_msg = block:
+        "Expected " & $params.len & " parameters (" & params.join(", ") & ")  but got " & $src_length
+      error_msg.error(`params_src`)
+  # Convert all the passed parameters into variables with corresponding
+  # value from the parameters source
+  for i, param in params:
+    let varName = ident param
+    result.add quote do:
+      var `varName` = `params_src`[`i` + 1] # + 1 since name is at the 0 index
+
 macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
   ## It provides a convenient wrapper for the event handler.
   ##
@@ -244,115 +267,100 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
   ##    var
   ##      smth_node = Node("Simple node")
   ##
-  ##    smth_node@ready:
+  ##    smth_node@on_ready(self):
   ##      echo "node is ready!"
   ##
-  ##    smth_node@input(event):
+  ##    smth_node@on_input(self, event):
   ##      if event.isInputEventMouseButton():
   ##        echo event
   var ename: string
   # Gets event name.
+  # TODO, event_name[0] is used in all the case block so add a better error message for when it isn't called this way
   if event_name.kind == nnkIdent:
     ename = $event_name
   elif event_name.kind == nnkCall:
     ename = $event_name[0]
-
-  case ename
-  of "on_process", "on_ready", "on_enter", "on_exit":
+  # Do style insensitive comparision
+  case nimIdentNormalize(ename)
+  of "onprocess", "onready", "onenter", "onexit":
     var
       name = event_name[0]
-      self = event_name[1]
+    event_name.expectParams(@["self"])
     result = quote do:
       `node`.`name` =
         proc(`self`: NodeRef): void =
           `code`
 
-  of "on_focus", "on_unfocus":
+  of "onfocus", "onunfocus":
     var
       name = event_name[0]
-      self = event_name[1]
+    event_name.expectParams(@["self"])
     result = quote do:
       `node`.`name` =
         proc(`self`: ControlRef): void =
           `code`
 
-  of "on_touch":
+  of "ontouch":
     var
       name = event_name[0]
-      self = event_name[1]
-      x = event_name[2]
-      y = event_name[3]
+    event_name.expectParams(@["self", "x", "y"])
 
     result = quote do:
       `node`.`name` =
         proc(`self`: ButtonRef, `x`, `y`: float) =
           `code`
 
-  of "on_mouse_exit", "on_mouse_enter", "on_click", "on_release", "on_press":
-    var
-      name = event_name[0]
-      self = event_name[1]
-      x = event_name[2]
-      y = event_name[3]
-
+  of "onmouseexit", "onmouseenter", "onclick", "onrelease", "onpress":
+    var name = event_name[0]
+    event_name.expectParams(@["self", "x", "y"])
     result = quote do:
       `node`.`name` =
         proc(`self`: ControlRef, `x`, `y`: float) =
           `code`
 
-  of "on_input":
+  of "oninput":
     var
       name = event_name[0]
-      self = event_name[1]
-      arg = event_name[2]
-
+    event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
         proc(`self`: NodeRef, `arg`: InputEvent) =
           `code`
 
-  of "on_switch":
+  of "onswitch":
     var
       name = event_name[0]
-      self = event_name[1]
-      arg = event_name[2]
-
+    event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
         proc(`self`: SwitchRef, `arg`: bool) =
           `code`
 
-  of "on_toggle":
+  of "ontoggle":
     var
       name = event_name[0]
-      self = event_name[1]
-      arg = event_name[2]
-
+    event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
         proc(`self`: CheckBoxRef, `arg`: bool) =
           `code`
 
-  of "on_changed":
+  of "onchanged":
     var
       name = event_name[0]
-      self = event_name[1]
-      arg = event_name[2]
-
+    event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
         proc(`self`: SliderRef, `arg`: uint) =
           `code`
 
-  of "on_edit":
+  of "onedit":
     var
       name = event_name[0]
-      self = event_name[1]
-      arg = event_name[2]
-
+    event_name.expectParams(@["self", "arg"])
     result = quote do:
       `node`.`name` =
         proc(`self`: EditTextRef, `arg`: string) =
           `code`
   else:
-    discard
+    error("Invalid event: " & ename, node)
