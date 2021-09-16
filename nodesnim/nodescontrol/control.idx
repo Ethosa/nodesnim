@@ -9,4 +9,8 @@ getGlobalMousePosition	nodesnim/nodescontrol/control.html#getGlobalMousePosition
 handle	nodesnim/nodescontrol/control.html#handle.e,ControlRef,InputEvent,NodeRef	control: handle(self: ControlRef; event: InputEvent; mouse_on: var NodeRef)	
 setBackground	nodesnim/nodescontrol/control.html#setBackground.e,ControlRef,DrawableRef	control: setBackground(self: ControlRef; drawable: DrawableRef)	
 setBackgroundColor	nodesnim/nodescontrol/control.html#setBackgroundColor.e,ControlRef,ColorRef	control: setBackgroundColor(self: ControlRef; color: ColorRef)	
+setMargin	nodesnim/nodescontrol/control.html#setMargin.e,ControlRef,AnchorObj	control: setMargin(self: ControlRef; margin: AnchorObj)	
+setMargin	nodesnim/nodescontrol/control.html#setMargin.e,ControlRef,float,float,float,float	control: setMargin(self: ControlRef; x1, y1, x2, y2: float)	
+setPadding	nodesnim/nodescontrol/control.html#setPadding.e,ControlRef,AnchorObj	control: setPadding(self: ControlRef; padding: AnchorObj)	
+setPadding	nodesnim/nodescontrol/control.html#setPadding.e,ControlRef,float,float,float,float	control: setPadding(self: ControlRef; x1, y1, x2, y2: float)	
 setStyle	nodesnim/nodescontrol/control.html#setStyle.e,ControlRef,StyleSheetRef	control: setStyle(self: ControlRef; style: StyleSheetRef)	

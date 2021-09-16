@@ -1,0 +1,10 @@
+Camera3DObj	nodesnim/nodes3d/camera3d.html#Camera3DObj	camera3d: Camera3DObj	
+Camera3DRef	nodesnim/nodes3d/camera3d.html#Camera3DRef	camera3d: Camera3DRef	
+current_camera	nodesnim/nodes3d/camera3d.html#current_camera	camera3d: current_camera	
+Camera3D	nodesnim/nodes3d/camera3d.html#Camera3D,string	camera3d: Camera3D(name: string = &quot;Camera3D&quot;): Camera3DRef	
+changeTarget	nodesnim/nodes3d/camera3d.html#changeTarget.e,Camera3DRef,Node3DRef	camera3d: changeTarget(self: Camera3DRef; target: Node3DRef)	
+draw	nodesnim/nodes3d/camera3d.html#draw.e,Camera3DRef,GLfloat,GLfloat	camera3d: draw(self: Camera3DRef; w, h: GLfloat)	
+setCurrent	nodesnim/nodes3d/camera3d.html#setCurrent.e,Camera3DRef	camera3d: setCurrent(self: Camera3DRef)	
+rotateX	nodesnim/nodes3d/camera3d.html#rotateX.e,Camera3DRef,float	camera3d: rotateX(self: Camera3DRef; val: float)	
+rotateY	nodesnim/nodes3d/camera3d.html#rotateY.e,Camera3DRef,float	camera3d: rotateY(self: Camera3DRef; val: float)	
+rotate	nodesnim/nodes3d/camera3d.html#rotate.e,Camera3DRef,float,float	camera3d: rotate(self: Camera3DRef; x, y: float)	

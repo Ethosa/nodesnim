@@ -1,9 +1,0 @@
-VSliderObj	nodesnim/nodescontrol/vslider.html#VSliderObj	vslider: VSliderObj	
-VSliderRef	nodesnim/nodescontrol/vslider.html#VSliderRef	vslider: VSliderRef	
-VSlider	nodesnim/nodescontrol/vslider.html#VSlider,string	vslider: VSlider(name: string = &quot;VSlider&quot;): VSliderRef	
-draw	nodesnim/nodescontrol/vslider.html#draw.e,VSliderRef,GLfloat,GLfloat	vslider: draw(self: VSliderRef; w, h: GLfloat)	
-duplicate	nodesnim/nodescontrol/vslider.html#duplicate.e,VSliderRef	vslider: duplicate(self: VSliderRef): VSliderRef	
-setMaxValue	nodesnim/nodescontrol/vslider.html#setMaxValue.e,VSliderRef,uint	vslider: setMaxValue(self: VSliderRef; value: uint)	
-setProgress	nodesnim/nodescontrol/vslider.html#setProgress.e,VSliderRef,uint	vslider: setProgress(self: VSliderRef; value: uint)	
-setProgressColor	nodesnim/nodescontrol/vslider.html#setProgressColor.e,VSliderRef,ColorRef	vslider: setProgressColor(self: VSliderRef; color: ColorRef)	
-handle	nodesnim/nodescontrol/vslider.html#handle.e,VSliderRef,InputEvent,NodeRef	vslider: handle(self: VSliderRef; event: InputEvent; mouse_on: var NodeRef)	

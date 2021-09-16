@@ -1,6 +1,7 @@
 AnchorObj	nodesnim/core/anchor.html#AnchorObj	anchor: AnchorObj	
 Anchor	nodesnim/core/anchor.html#Anchor,float,float,float,float	anchor: Anchor(x1, y1, x2, y2: float): AnchorObj	
 Anchor	nodesnim/core/anchor.html#Anchor,Vector2Obj,Vector2Obj	anchor: Anchor(vec1, vec2: Vector2Obj): AnchorObj	
+Anchor	nodesnim/core/anchor.html#Anchor	anchor: Anchor(): AnchorObj	
 clear	nodesnim/core/anchor.html#clear,AnchorObj	anchor: clear(a: var AnchorObj)	
 isEmpty	nodesnim/core/anchor.html#isEmpty,AnchorObj	anchor: isEmpty(a: AnchorObj): bool	
 `$`	nodesnim/core/anchor.html#$,AnchorObj	anchor: `$`(x: AnchorObj): string	

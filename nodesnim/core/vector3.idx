@@ -4,13 +4,14 @@ Vector3	nodesnim/core/vector3.html#Vector3,float	vector3: Vector3(xyz: float): V
 Vector3	nodesnim/core/vector3.html#Vector3,Vector3Obj	vector3: Vector3(other: Vector3Obj): Vector3Obj	
 Vector3	nodesnim/core/vector3.html#Vector3	vector3: Vector3(): Vector3Obj	
 abs	nodesnim/core/vector3.html#abs,Vector3Obj	vector3: abs(a: Vector3Obj): Vector3Obj	
-cross	nodesnim/core/vector3.html#cross,Vector3Obj,Vector3Obj	vector3: cross(a, b: Vector3Obj): float	
+cross	nodesnim/core/vector3.html#cross,Vector3Obj,Vector3Obj	vector3: cross(a, b: Vector3Obj): Vector3Obj	
 cross	nodesnim/core/vector3.html#cross,Vector3Obj,float,float,float	vector3: cross(a: Vector3Obj; x, y, z: float): float	
 dot	nodesnim/core/vector3.html#dot,Vector3Obj,Vector3Obj	vector3: dot(a, b: Vector3Obj): float	
 dot	nodesnim/core/vector3.html#dot,Vector3Obj,float,float,float	vector3: dot(a: Vector3Obj; x, y, z: float): float	
 angleTo	nodesnim/core/vector3.html#angleTo,Vector3Obj,Vector3Obj	vector3: angleTo(a, b: Vector3Obj): float	
 normalize	nodesnim/core/vector3.html#normalize,Vector3Obj	vector3: normalize(a: var Vector3Obj)	
 normalized	nodesnim/core/vector3.html#normalized,Vector3Obj	vector3: normalized(a: Vector3Obj): Vector3Obj	
+directionTo	nodesnim/core/vector3.html#directionTo,Vector3Obj,Vector3Obj	vector3: directionTo(a, b: Vector3Obj): Vector3Obj	
 len	nodesnim/core/vector3.html#len,Vector3Obj	vector3: len(a: Vector3Obj): float	
 `$`	nodesnim/core/vector3.html#$,Vector3Obj	vector3: `$`(a: Vector3Obj): string	
 `+`	nodesnim/core/vector3.html#+,Vector3Obj,Vector3Obj	vector3: `+`(a, b: Vector3Obj): Vector3Obj	

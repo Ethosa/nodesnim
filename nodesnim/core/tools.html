@@ -98,10 +98,28 @@ function main() {
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#cubic_bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="cubic_bezier(t, p0, p1, p2, p3: float): float"><wbr />cubic_<wbr />bezier<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
+    title="bezier(t, p0, p1, p2: float): float"><wbr />bezier<span class="attachedType"></span></a></li>
+
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#15" id="65">Iterators</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj"
+    title="bezier_iter(step: float; p0, p1, p2: Vector2Obj): Vector2Obj"><wbr />bezier_<wbr />iter<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#cubic_bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj%2CVector2Obj"
+    title="cubic_bezier_iter(step: float; p0, p1, p2, p3: Vector2Obj): Vector2Obj"><wbr />cubic_<wbr />bezier_<wbr />iter<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -113,11 +131,44 @@ function main() {
   <div id="tocRoot"></div>
   
   <p class="module-desc"></p>
-  <div class="section" id="12">
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
+<dl class="item">
+<a class="reference external" href="vector2.html">vector2</a>
+</dl></div>
+<div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="cubic_bezier,float,float,float,float,float"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#cubic_bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">cubic_bezier</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">,</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">,</span> <span class="Identifier">p3</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="bezier,float,float,float,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">bezier</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">,</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+
+</dl></div>
+<div class="section" id="15">
+<h1><a class="toc-backref" href="#15">Iterators</a></h1>
+<dl class="item">
+<a id="bezier_iter.i,float,Vector2Obj,Vector2Obj,Vector2Obj"></a>
+<dt><pre><span class="Keyword">iterator</span> <a href="#bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj"><span class="Identifier">bezier_iter</span></a><span class="Other">(</span><span class="Identifier">step</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">;</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="cubic_bezier_iter.i,float,Vector2Obj,Vector2Obj,Vector2Obj,Vector2Obj"></a>
+<dt><pre><span class="Keyword">iterator</span> <a href="#cubic_bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj%2CVector2Obj"><span class="Identifier">cubic_bezier_iter</span></a><span class="Other">(</span><span class="Identifier">step</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">;</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">,</span> <span class="Identifier">p3</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -133,7 +184,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-12 13:25:15 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-16 08:29:09 UTC</small>
       </div>
     </div>
   </div>

@@ -1,1 +1,4 @@
 cubic_bezier	nodesnim/core/tools.html#cubic_bezier,float,float,float,float,float	tools: cubic_bezier(t, p0, p1, p2, p3: float): float	
+bezier	nodesnim/core/tools.html#bezier,float,float,float,float	tools: bezier(t, p0, p1, p2: float): float	
+bezier_iter	nodesnim/core/tools.html#bezier_iter.i,float,Vector2Obj,Vector2Obj,Vector2Obj	tools: bezier_iter(step: float; p0, p1, p2: Vector2Obj): Vector2Obj	
+cubic_bezier_iter	nodesnim/core/tools.html#cubic_bezier_iter.i,float,Vector2Obj,Vector2Obj,Vector2Obj,Vector2Obj	tools: cubic_bezier_iter(step: float; p0, p1, p2, p3: Vector2Obj): Vector2Obj	

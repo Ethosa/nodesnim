@@ -6,5 +6,5 @@ contains	nodesnim/core/polygon2.html#contains,Polygon2Ref,float,float	polygon2: 
 contains	nodesnim/core/polygon2.html#contains,Polygon2Ref,Vector2Obj	polygon2: contains(self: Polygon2Ref; vec2: Vector2Obj): bool	
 intersects	nodesnim/core/polygon2.html#intersects,Polygon2Ref,Polygon2Ref	polygon2: intersects(self, other: Polygon2Ref): bool	
 intersects	nodesnim/core/polygon2.html#intersects,Polygon2Ref,Rect2Obj	polygon2: intersects(self: Polygon2Ref; r: Rect2Obj): bool	
-intersects	nodesnim/core/polygon2.html#intersects,Polygon2Ref,CircleRef	polygon2: intersects(self: Polygon2Ref; circle: CircleRef): bool	
+intersects	nodesnim/core/polygon2.html#intersects,Polygon2Ref,CircleObj	polygon2: intersects(self: Polygon2Ref; circle: CircleObj): bool	
 move	nodesnim/core/polygon2.html#move,Polygon2Ref,Vector2Obj	polygon2: move(self: Polygon2Ref; vec2: Vector2Obj)	

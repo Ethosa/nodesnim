@@ -120,7 +120,7 @@ function main() {
   <li><a class="reference" href="#abs%2CVector3Obj"
     title="abs(a: Vector3Obj): Vector3Obj"><wbr />abs<span class="attachedType">Vector3Obj</span></a></li>
   <li><a class="reference" href="#cross%2CVector3Obj%2CVector3Obj"
-    title="cross(a, b: Vector3Obj): float"><wbr />cross<span class="attachedType">Vector3Obj</span></a></li>
+    title="cross(a, b: Vector3Obj): Vector3Obj"><wbr />cross<span class="attachedType">Vector3Obj</span></a></li>
   <li><a class="reference" href="#cross%2CVector3Obj%2Cfloat%2Cfloat%2Cfloat"
     title="cross(a: Vector3Obj; x, y, z: float): float"><wbr />cross<span class="attachedType">Vector3Obj</span></a></li>
   <li><a class="reference" href="#dot%2CVector3Obj%2CVector3Obj"
@@ -133,6 +133,8 @@ function main() {
     title="normalize(a: var Vector3Obj)"><wbr />normalize<span class="attachedType">Vector3Obj</span></a></li>
   <li><a class="reference" href="#normalized%2CVector3Obj"
     title="normalized(a: Vector3Obj): Vector3Obj"><wbr />normalized<span class="attachedType">Vector3Obj</span></a></li>
+  <li><a class="reference" href="#directionTo%2CVector3Obj%2CVector3Obj"
+    title="directionTo(a, b: Vector3Obj): Vector3Obj"><wbr />direction<wbr />To<span class="attachedType">Vector3Obj</span></a></li>
   <li><a class="reference" href="#len%2CVector3Obj"
     title="len(a: Vector3Obj): float"><wbr />len<span class="attachedType">Vector3Obj</span></a></li>
   <li><a class="reference" href="#%24%2CVector3Obj"
@@ -254,7 +256,7 @@ Creates a new Vector3 object.
 
 </dd>
 <a id="cross,Vector3Obj,Vector3Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#cross%2CVector3Obj%2CVector3Obj"><span class="Identifier">cross</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cross%2CVector3Obj%2CVector3Obj"><span class="Identifier">cross</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -297,6 +299,13 @@ Creates a new Vector3 object.
 </dd>
 <a id="normalized,Vector3Obj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#normalized%2CVector3Obj"><span class="Identifier">normalized</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="directionTo,Vector3Obj,Vector3Obj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#directionTo%2CVector3Obj%2CVector3Obj"><span class="Identifier">directionTo</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -469,7 +478,7 @@ Creates a new Vector3 object.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-12 13:25:13 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-16 08:29:05 UTC</small>
       </div>
     </div>
   </div>
