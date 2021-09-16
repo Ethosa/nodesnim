@@ -12,14 +12,14 @@ node.setText("Hello")
 node.setAnchor(0.5, 0.5, 0.5, 0.5)
 
 
-node@ready(self):
+node@onReady(self):
   echo "hello!"
 
-node@input(self, event):
+node@onInput(self, event):
   if event.isInputEventMouseButton() and event.pressed:
     echo "clicked"
 
-node@on_click(self, x, y):
+node@onClick(self, x, y):
   node.setText("clicked in " & $x & "," & $y & ".")
 
 
