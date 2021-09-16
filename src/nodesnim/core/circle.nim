@@ -9,10 +9,9 @@ import
 type
   CircleObj* = object
     x*, y*, r*: float
-  CircleRef* = ref CircleObj
 
 
-proc Circle*(x, y, r: float): CircleRef =
+proc Circle*(x, y, r: float): CircleObj =
   ## Creates a new Circle object.
   ##
   ## Arguments:
@@ -21,30 +20,30 @@ proc Circle*(x, y, r: float): CircleRef =
   ## - `r` is a circle radius.
   runnableExamples:
     var obj = Circle(10, 10, 5)
-  CircleRef(x: x, y: y, r: r)
+  CircleObj(x: x, y: y, r: r)
 
-proc Circle*(vec: Vector2Obj, r: float): CircleRef =
+proc Circle*(vec: Vector2Obj, r: float): CircleObj =
   ## Creates a new Circle object.
   ##
   ## Arguments:
   ## - `vec` is a circle center position.
   ## - `r` is a circle radius.
-  CircleRef(x: vec.x, y: vec.y, r: r)
+  CircleObj(x: vec.x, y: vec.y, r: r)
 
 
-proc contains*(self: CircleRef, x, y: float): bool =
+proc contains*(self: CircleObj, x, y: float): bool =
   ## Returns true, if `x`,`y` in the circle.
   let
     dx = x - self.x
     dy = y - self.y
   dx*dx + dy*dy <= self.r*self.r
 
-proc contains*(self: CircleRef, vec2: Vector2Obj): bool {.inline.} =
+proc contains*(self: CircleObj, vec2: Vector2Obj): bool {.inline.} =
   ## Returns true, if `vec2` in the circle.
   self.contains(vec2.x, vec2.y)
 
 
-proc contains*(self, other: CircleRef): bool =
+proc contains*(self, other: CircleObj): bool =
   ## Returns true, if `self` intersects with `other` circle.
   let
     dx = other.x - self.x
@@ -52,7 +51,7 @@ proc contains*(self, other: CircleRef): bool =
     r = other.r + self.r
   dx*dx + dy*dy <= r*r
 
-proc contains*(self: CircleRef, a, b: Vector2Obj): bool =
+proc contains*(self: CircleObj, a, b: Vector2Obj): bool =
   let
     dx = b.x - a.x
     dy = b.y - a.y
@@ -82,5 +81,5 @@ proc contains*(self: CircleRef, a, b: Vector2Obj): bool =
 
 
 # --- Operators --- #
-proc `$`*(self: CircleRef): string {.inline.} =
+proc `$`*(self: CircleObj): string {.inline.} =
   "Circle(x:" & $self.x & ", y:" & $self.y & ", r:" & $self.r & ")"

@@ -14,6 +14,10 @@ proc Anchor*(x1, y1, x2, y2: float): AnchorObj {.inline.} =
 proc Anchor*(vec1, vec2: Vector2Obj): AnchorObj {.inline.} =
   AnchorObj(x1: vec1.x, y1: vec1.y, x2: vec2.x, y2: vec2.y)
 
+proc Anchor*(): AnchorObj {.inline.} =
+  ## Creates empty Anchor object.
+  AnchorObj(x1: 0, y1: 0, x2: 0, y2: 0)
+
 proc clear*(a: var AnchorObj) =
   a.x1 = 0
   a.x2 = 0

@@ -97,5 +97,5 @@ method handle*(self: CheckBoxRef, event: InputEvent, mouse_on: var NodeRef) =
   procCall self.ControlRef.handle(event, mouse_on)
 
   if self.hovered and self.focused:
-    if event.kind == MOUSE and not mouse_pressed and event.button_index == 0:
+    if event.kind == MOUSE and mouse_pressed:
       self.toggle()

@@ -74,7 +74,7 @@ method addChild*(self: GridBoxRef, child: NodeRef) =
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
-  self.rect_size = self.getChildSize()
+  self.resize(self.rect_size.x, self.rect_size.y)
 
 
 method draw*(self: GridBoxRef, w, h: GLfloat) =
@@ -87,8 +87,8 @@ method draw*(self: GridBoxRef, w, h: GLfloat) =
     y = self.rect_size.y*self.child_anchor.y1 - fakesize.y*self.child_anchor.y2
   for child in self.children:
     if row < self.row:
-      child.CanvasRef.position.x = x + maxsize.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
-      child.CanvasRef.position.y = y + maxsize.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
+      child.CanvasRef.position.x = x + maxsize.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1
+      child.CanvasRef.position.y = y + maxsize.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2 + self.padding.y1
       x += maxsize.x + self.separator
       inc row
     else:
@@ -96,8 +96,8 @@ method draw*(self: GridBoxRef, w, h: GLfloat) =
         row = 1
       x = self.rect_size.x*self.child_anchor.x1 - fakesize.x*self.child_anchor.x2
       y += maxsize.y + self.separator
-      child.CanvasRef.position.x = x + maxsize.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2
-      child.CanvasRef.position.y = y + maxsize.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2
+      child.CanvasRef.position.x = x + maxsize.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1
+      child.CanvasRef.position.y = y + maxsize.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2 + self.padding.y1
       x += maxsize.x + self.separator
   procCall self.ControlRef.draw(w, h)
 

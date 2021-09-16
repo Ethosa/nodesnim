@@ -65,7 +65,7 @@ else:
 
   var gluHandle: LibHandle
 
-  proc gluGetProc(procname: cstring): pointer =
+  proc gluGetProc(procname: cstring): pointer {.used.} =
     if gluHandle == nil:
       gluHandle = loadLib(gludll)
       if gluHandle == nil: quit("could not load: " & gludll)

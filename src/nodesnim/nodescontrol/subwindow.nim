@@ -2,7 +2,7 @@
 ## Extended version of SubWindow node.
 import
   ../thirdparty/opengl,
-  ../thirdparty/opengl/glut,
+  ../thirdparty/sdl2,
 
   ../core/vector2,
   ../core/rect2,
@@ -139,19 +139,19 @@ method handle*(self: SubWindowRef, event: InputEvent, mouse_on: var NodeRef) =
 
   when not defined(android) and not defined(ios):
     if left and top:
-      glutSetCursor(GLUT_CURSOR_TOP_LEFT_CORNER)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENWSE))
     elif left and bottom:
-      glutSetCursor(GLUT_CURSOR_BOTTOM_LEFT_CORNER)
-    elif right and top:
-      glutSetCursor(GLUT_CURSOR_TOP_RIGHT_CORNER)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENWSE))
     elif right and bottom:
-      glutSetCursor(GLUT_CURSOR_BOTTOM_RIGHT_CORNER)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENESW))
+    elif right and top:
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENESW))
     elif left or right:
-      glutSetCursor(GLUT_CURSOR_LEFT_RIGHT)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZEWE))
     elif bottom or top:
-      glutSetCursor(GLUT_CURSOR_UP_DOWN)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENS))
     else:
-      glutSetCursor(GLUT_CURSOR_LEFT_ARROW)
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_ARROW))
 
   if event.kind == MOUSE and mouse_on == self:
     if event.pressed:

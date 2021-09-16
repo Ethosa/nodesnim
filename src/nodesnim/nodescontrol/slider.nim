@@ -16,7 +16,11 @@ import
 
 
 type
+  SliderType*{.pure, size: sizeof(int8).} = enum
+    SLIDER_HORIZONTAL,
+    SLIDER_VERTICAL
   SliderObj* = object of ControlRef
+    slider_type*: SliderType
     max_value*, value*: uint
     progress_color*: ColorRef
     thumb*: DrawableRef
@@ -34,6 +38,7 @@ proc Slider*(name: string = "Slider"): SliderRef =
     var sc = Slider("Slider")
   nodepattern(SliderRef)
   controlpattern()
+  result.slider_type = SLIDER_HORIZONTAL
   result.thumb = Drawable()
   result.background.setColor(Color(1f, 1f, 1f))
   result.thumb.setColor(Color(0.7, 0.7, 0.7))
@@ -56,12 +61,22 @@ method draw*(self: SliderRef, w, h: GLfloat) =
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Progress
-  let progress = self.rect_size.x * (self.value.float / self.max_value.float)
-  glColor4f(self.progress_color.r, self.progress_color.g, self.progress_color.b, self.progress_color.a)
-  glRectf(x, y, x + progress, y - self.rect_size.y)
+  case self.slider_type
+  of SLIDER_HORIZONTAL:
+    let progress = self.rect_size.x * (self.value.float / self.max_value.float)
+    glColor4f(self.progress_color.r, self.progress_color.g, self.progress_color.b, self.progress_color.a)
+    glRectf(x, y, x + progress, y - self.rect_size.y)
 
-  # Thumb
-  self.thumb.draw(x + progress, y, 10, self.rect_size.y)
+    # Thumb
+    self.thumb.draw(x + progress, y, 10, self.rect_size.y)
+
+  of SLIDER_VERTICAL:
+    let progress = self.rect_size.y * (self.value.float / self.max_value.float)
+    glColor4f(self.progress_color.r, self.progress_color.g, self.progress_color.b, self.progress_color.a)
+    glRectf(x, y - self.rect_size.y + progress, x + self.rect_size.x, y - self.rect_size.y)
+
+    # Thumb
+    self.thumb.draw(x, progress-10, self.rect_size.x, 10)
 
   # Press
   if self.pressed:
@@ -96,7 +111,12 @@ method handle*(self: SliderRef, event: InputEvent, mouse_on: var NodeRef) =
 
   if self.focused and self.pressed:
     let
-      value = normalize(1f - ((self.global_position.x + self.rect_size.x - event.x) / self.rect_size.x), 0, 1)
+      value =
+        case self.slider_type
+        of SLIDER_HORIZONTAL:
+          normalize(1f - ((self.global_position.x + self.rect_size.x - event.x) / self.rect_size.x), 0, 1)
+        of SLIDER_VERTICAL:
+          normalize(((self.global_position.y + self.rect_size.y - event.y) / self.rect_size.y), 0, 1)
       progress_value = (value * self.max_value.float).uint
     if progress_value != self.value:
       self.on_changed(self, progress_value)

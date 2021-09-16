@@ -7,7 +7,7 @@
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Stable version - 0.2.4</h4>
+<h4>Stable version - 0.3.0</h4>
 </div>
 
 ## Install
@@ -61,7 +61,7 @@ This section contains links to documentation for all nodes.
 |:--:            |:--:                 |:--:                  |  :--:              |:--:                |:--:                |
 |[Anchor][]      |[Node][]             |[Control][]           |[Node2D][]          |[Node3D][]          |[Drawable][]        |
 |[Color][]       |[Canvas][]           |[ColorRect][]         |[Sprite][]          |[GeometryInstance][]|[GradientDrawable][]|
-|[Font][]        |[Scene][]            |[TextureRect][]       |[AnimatedSprite][]  |                    |                    |
+|[Font][]        |[Scene][]            |[TextureRect][]       |[AnimatedSprite][]  |[Camera3D][]        |                    |
 |[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |                    |                    |
 |[Exceptions][]  |[AnimationPlayer][]  |[Button][]            |[CollisionShape2D][]|                    |                    |
 |[Image][]       |                     |[EditText][]          |[Camera2D][]        |                    |                    |
@@ -72,14 +72,12 @@ This section contains links to documentation for all nodes.
 |[Polygon2][]    |                     |[Scroll][]            |                    |                    |                    |
 |[AudioStream][] |                     |[ProgressBar][]       |                    |                    |                    |
 |[Animation][]   |                     |[Slider][]            |                    |                    |                    |
-|[Vector3][]     |                     |[VSlider][]           |                    |                    |                    |
-|[SceneBuilder][]|                     |[Popup][]             |                    |                    |                    |
-|[StyleSheet][]  |                     |[TextureButton][]     |                    |                    |                    |
-|[TileSet][]     |                     |[TextureProgressBar][]|                    |                    |                    |
-|                |                     |[Counter][]           |                    |                    |                    |
+|[Vector3][]     |                     |[Popup][]             |                    |                    |                    |
+|[SceneBuilder][]|                     |[TextureButton][]     |                    |                    |                    |
+|[StyleSheet][]  |                     |[TextureProgressBar][]|                    |                    |                    |
+|[TileSet][]     |                     |[Counter][]           |                    |                    |                    |
 |                |                     |[Switch][]            |                    |                    |                    |
 |                |                     |[SubWindow][]         |                    |                    |                    |
-|                |                     |[LineEdit][]          |                    |                    |                    |
 |                |                     |[CheckBox][]          |                    |                    |                    |
 
 
@@ -88,8 +86,8 @@ This section contains links to documentation for all nodes.
 For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. `nim c -r -d:debug main.nim`.
 
 ## Export
-Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.  
-[Static linking SDL2](https://github.com/nim-lang/sdl2#static-linking-sdl2) (or compile with `-d:static_sdl2` -> tested on Windows)
+Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.
+[Static linking SDL2](https://github.com/nim-lang/sdl2#static-linking-sdl2)
 
 -   CrossPlatform export for Windows (tested on Windows 7 x64 and Windows 10 x64)
     -   `nim c -d:mingw -d:release --opt:speed --noNimblePath file.nim`
@@ -122,6 +120,8 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
    |--------|------------|--------|---------|
    
 </div>
+
+[![Stargazers over time](https://starchart.cc/Ethosa/nodesnim.svg)](https://starchart.cc/Ethosa/nodesnim)
 
 
 
@@ -164,14 +164,12 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 [Scroll]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/scroll.html
 [ProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/progress_bar.html
 [Slider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/slider.html
-[VSlider]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/vslider.html
 [Popup]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/popup.html
 [TextureButton]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_button.html
 [TextureProgressBar]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/texture_progress_bar.html
 [Counter]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/counter.html
 [Switch]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/switch.html
 [SubWindow]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/subwindow.html
-[LineEdit]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/lindeedit.html
 [CheckBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/checkbox.html
 
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
@@ -186,6 +184,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 [Node3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/node3d.html
 [GeometryInstance]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/geometry_instance.html
+[Camera3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/camera3d.html
 
 [Drawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/drawable.html
 [GradientDrawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/gradient_drawable.html
