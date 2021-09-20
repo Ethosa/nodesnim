@@ -1,5 +1,3 @@
-DrawCommandType	nodesnim/nodes/canvas.html#DrawCommandType	canvas: DrawCommandType	
-DrawCommand	nodesnim/nodes/canvas.html#DrawCommand	canvas: DrawCommand	
 CanvasObj	nodesnim/nodes/canvas.html#CanvasObj	canvas: CanvasObj	
 CanvasRef	nodesnim/nodes/canvas.html#CanvasRef	canvas: CanvasRef	
 Canvas	nodesnim/nodes/canvas.html#Canvas,string	canvas: Canvas(name: string = &quot;Canvas&quot;): CanvasRef	
@@ -9,13 +7,17 @@ draw	nodesnim/nodes/canvas.html#draw.e,CanvasRef,GLfloat,GLfloat	canvas: draw(ca
 duplicate	nodesnim/nodes/canvas.html#duplicate.e,CanvasRef	canvas: duplicate(self: CanvasRef): CanvasRef	
 move	nodesnim/nodes/canvas.html#move.e,CanvasRef,Vector2Obj	canvas: move(self: CanvasRef; vec2: Vector2Obj)	
 move	nodesnim/nodes/canvas.html#move.e,CanvasRef,float,float	canvas: move(self: CanvasRef; x, y: float)	
-circle	nodesnim/nodes/canvas.html#circle.e,CanvasRef,GLfloat,GLfloat,GLfloat,ColorRef,int	canvas: circle(canvas: CanvasRef; x, y, radius: GLfloat; color: ColorRef; quality: int = 100)	
-point	nodesnim/nodes/canvas.html#point.e,CanvasRef,GLfloat,GLfloat,ColorRef	canvas: point(canvas: CanvasRef; x, y: GLfloat; color: ColorRef)	
-line	nodesnim/nodes/canvas.html#line.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: line(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
-rect	nodesnim/nodes/canvas.html#rect.e,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
-fill	nodesnim/nodes/canvas.html#fill.e,CanvasRef,ColorRef	canvas: fill(canvas: CanvasRef; color: ColorRef)	
 resize	nodesnim/nodes/canvas.html#resize.e,CanvasRef,GLfloat,GLfloat,bool	canvas: resize(self: CanvasRef; w, h: GLfloat; save_anchor: bool = false)	
 setAnchor	nodesnim/nodes/canvas.html#setAnchor.e,CanvasRef,AnchorObj	canvas: setAnchor(self: CanvasRef; anchor: AnchorObj)	
 setAnchor	nodesnim/nodes/canvas.html#setAnchor.e,CanvasRef,float,float,float,float	canvas: setAnchor(self: CanvasRef; x1, y1, x2, y2: float)	
 setSizeAnchor	nodesnim/nodes/canvas.html#setSizeAnchor.e,CanvasRef,Vector2Obj	canvas: setSizeAnchor(self: CanvasRef; anchor: Vector2Obj)	
 setSizeAnchor	nodesnim/nodes/canvas.html#setSizeAnchor.e,CanvasRef,float,float	canvas: setSizeAnchor(self: CanvasRef; x, y: float)	
+bezier	nodesnim/nodes/canvas.html#bezier,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: bezier(canvas: CanvasRef; x1, y1, x2, y2, x3, y3: GLfloat; color: ColorRef)	
+circle	nodesnim/nodes/canvas.html#circle,CanvasRef,GLfloat,GLfloat,GLfloat,ColorRef,int	canvas: circle(canvas: CanvasRef; x, y, radius: GLfloat; color: ColorRef; quality: int = 100)	
+cubic_bezier	nodesnim/nodes/canvas.html#cubic_bezier,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: cubic_bezier(canvas: CanvasRef; x1, y1, x2, y2, x3, y3, x4, y4: GLfloat; color: ColorRef)	
+fill	nodesnim/nodes/canvas.html#fill,CanvasRef,ColorRef	canvas: fill(canvas: CanvasRef; color: ColorRef)	
+line	nodesnim/nodes/canvas.html#line,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: line(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
+rect	nodesnim/nodes/canvas.html#rect,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
+point	nodesnim/nodes/canvas.html#point,CanvasRef,GLfloat,GLfloat,ColorRef	canvas: point(canvas: CanvasRef; x, y: GLfloat; color: ColorRef)	
+text	nodesnim/nodes/canvas.html#text,CanvasRef,,GLfloat,GLfloat,Vector2Obj	canvas: text(canvas: CanvasRef; text: StyleText | string; x, y: GLfloat;\n     align: Vector2Obj = Vector2())	
+saveAs	nodesnim/nodes/canvas.html#saveAs,CanvasRef,cstring	canvas: saveAs(self: CanvasRef; filename: cstring)	

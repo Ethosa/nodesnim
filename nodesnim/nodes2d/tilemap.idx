@@ -1,8 +1,10 @@
+TileMapMode	nodesnim/nodes2d/tilemap.html#TileMapMode	tilemap: TileMapMode	
 TileMapObj	nodesnim/nodes2d/tilemap.html#TileMapObj	tilemap: TileMapObj	
 TileMap	nodesnim/nodes2d/tilemap.html#TileMap,string	tilemap: TileMap(name: string = &quot;TileMap&quot;): TileMapRef	
 draw	nodesnim/nodes2d/tilemap.html#draw.e,TileMapRef,GLfloat,GLfloat	tilemap: draw(self: TileMapRef; w, h: GLfloat)	
-drawTile	nodesnim/nodes2d/tilemap.html#drawTile.e,TileMapRef,int,int,Vector2Ref	tilemap: drawTile(self: TileMapRef; x, y: int; tile_pos: Vector2Ref)	
-drawRect	nodesnim/nodes2d/tilemap.html#drawRect.e,TileMapRef,int,int,int,int,Vector2Ref	tilemap: drawRect(self: TileMapRef; x, y, w, h: int; tile_pos: Vector2Ref)	
-fill	nodesnim/nodes2d/tilemap.html#fill.e,TileMapRef,Vector2Ref	tilemap: fill(self: TileMapRef; tile_pos: Vector2Ref)	
-resizeMap	nodesnim/nodes2d/tilemap.html#resizeMap.e,TileMapRef,Vector2Ref	tilemap: resizeMap(self: TileMapRef; size: Vector2Ref)	
+drawTile	nodesnim/nodes2d/tilemap.html#drawTile.e,TileMapRef,int,int,Vector2Ref,int	tilemap: drawTile(self: TileMapRef; x, y: int; tile_pos: Vector2Ref; layer: int = 0)	
+drawRect	nodesnim/nodes2d/tilemap.html#drawRect.e,TileMapRef,int,int,int,int,Vector2Ref,int	tilemap: drawRect(self: TileMapRef; x, y, w, h: int; tile_pos: Vector2Ref; layer: int = 0)	
+fill	nodesnim/nodes2d/tilemap.html#fill.e,TileMapRef,Vector2Ref,int	tilemap: fill(self: TileMapRef; tile_pos: Vector2Ref; layer: int = 0)	
+resizeMap	nodesnim/nodes2d/tilemap.html#resizeMap.e,TileMapRef,Vector2Ref,int	tilemap: resizeMap(self: TileMapRef; size: Vector2Ref; layer_count: int = 2)	
+setMode	nodesnim/nodes2d/tilemap.html#setMode.e,TileMapRef,TileMapMode	tilemap: setMode(self: TileMapRef; mode: TileMapMode)	
 setTileSet	nodesnim/nodes2d/tilemap.html#setTileSet.e,TileMapRef,TileSetObj	tilemap: setTileSet(self: TileMapRef; tileset: TileSetObj)	

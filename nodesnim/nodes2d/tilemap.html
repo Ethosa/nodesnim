@@ -106,9 +106,14 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#TileMapObj"
+      <li><a class="reference" href="#TileMapMode"
+    title="TileMapMode {.pure, size: 1.} = enum
+  TILEMAP_2D,                 ## Default 2D mode.
+  TILEMAP_ISOMETRIC           ## Isometric mode."><wbr />Tile<wbr />Map<wbr />Mode<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#TileMapObj"
     title="TileMapObj = object of Node2DObj
-  map_size*: tuple[x, y: int]
+  mode*: TileMapMode
+  map_size*: tuple[x, y, z: int]
   tileset*: TileSetObj
   map*: seq[Vector2Ref]"><wbr />Tile<wbr />Map<wbr />Obj<span class="attachedType"></span></a></li>
 
@@ -127,14 +132,16 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CTileMapRef%2CGLfloat%2CGLfloat"
     title="draw(self: TileMapRef; w, h: GLfloat)"><wbr />draw<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#drawTile.e%2CTileMapRef%2Cint%2Cint%2CVector2Ref"
-    title="drawTile(self: TileMapRef; x, y: int; tile_pos: Vector2Ref)"><wbr />draw<wbr />Tile<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#drawRect.e%2CTileMapRef%2Cint%2Cint%2Cint%2Cint%2CVector2Ref"
-    title="drawRect(self: TileMapRef; x, y, w, h: int; tile_pos: Vector2Ref)"><wbr />draw<wbr />Rect<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fill.e%2CTileMapRef%2CVector2Ref"
-    title="fill(self: TileMapRef; tile_pos: Vector2Ref)"><wbr />fill<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#resizeMap.e%2CTileMapRef%2CVector2Ref"
-    title="resizeMap(self: TileMapRef; size: Vector2Ref)"><wbr />resize<wbr />Map<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#drawTile.e%2CTileMapRef%2Cint%2Cint%2CVector2Ref%2Cint"
+    title="drawTile(self: TileMapRef; x, y: int; tile_pos: Vector2Ref; layer: int = 0)"><wbr />draw<wbr />Tile<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#drawRect.e%2CTileMapRef%2Cint%2Cint%2Cint%2Cint%2CVector2Ref%2Cint"
+    title="drawRect(self: TileMapRef; x, y, w, h: int; tile_pos: Vector2Ref; layer: int = 0)"><wbr />draw<wbr />Rect<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#fill.e%2CTileMapRef%2CVector2Ref%2Cint"
+    title="fill(self: TileMapRef; tile_pos: Vector2Ref; layer: int = 0)"><wbr />fill<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#resizeMap.e%2CTileMapRef%2CVector2Ref%2Cint"
+    title="resizeMap(self: TileMapRef; size: Vector2Ref; layer_count: int = 2)"><wbr />resize<wbr />Map<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#setMode.e%2CTileMapRef%2CTileMapMode"
+    title="setMode(self: TileMapRef; mode: TileMapMode)"><wbr />set<wbr />Mode<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#setTileSet.e%2CTileMapRef%2CTileSetObj"
     title="setTileSet(self: TileMapRef; tileset: TileSetObj)"><wbr />set<wbr />Tile<wbr />Set<span class="attachedType"></span></a></li>
 
@@ -156,9 +163,19 @@ function main() {
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
+<a id="TileMapMode"></a>
+<dt><pre><a href="tilemap.html#TileMapMode"><span class="Identifier">TileMapMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">TILEMAP_2D</span><span class="Other">,</span>                 <span class="Comment">## Default 2D mode.</span>
+  <span class="Identifier">TILEMAP_ISOMETRIC</span>           <span class="Comment">## Isometric mode.</span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="TileMapObj"></a>
 <dt><pre><a href="tilemap.html#TileMapObj"><span class="Identifier">TileMapObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="node2d.html#Node2DObj"><span class="Identifier">Node2DObj</span></a>
-  <span class="Identifier">map_size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span>
+  <span class="Identifier">mode</span><span class="Operator">*</span><span class="Other">:</span> <a href="tilemap.html#TileMapMode"><span class="Identifier">TileMapMode</span></a>
+  <span class="Identifier">map_size</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">]</span>
   <span class="Identifier">tileset</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/tileset.html#TileSetObj"><span class="Identifier">TileSetObj</span></a>
   <span class="Identifier">map</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">]</span>
 </pre></dt>
@@ -193,34 +210,43 @@ Creates a new TileMap object.
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
-<a id="drawTile.e,TileMapRef,int,int,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#drawTile.e%2CTileMapRef%2Cint%2Cint%2CVector2Ref"><span class="Identifier">drawTile</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">tile_pos</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="drawTile.e,TileMapRef,int,int,Vector2Ref,int"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#drawTile.e%2CTileMapRef%2Cint%2Cint%2CVector2Ref%2Cint"><span class="Identifier">drawTile</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">tile_pos</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">;</span> <span class="Identifier">layer</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes map tile at <tt class="docutils literal"><span class="pre">x</span></tt>,`y` point to tile from tileset at <tt class="docutils literal"><span class="pre">tile_pos</span></tt> point.
 
 </dd>
-<a id="drawRect.e,TileMapRef,int,int,int,int,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#drawRect.e%2CTileMapRef%2Cint%2Cint%2Cint%2Cint%2CVector2Ref"><span class="Identifier">drawRect</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">tile_pos</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="drawRect.e,TileMapRef,int,int,int,int,Vector2Ref,int"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#drawRect.e%2CTileMapRef%2Cint%2Cint%2Cint%2Cint%2CVector2Ref%2Cint"><span class="Identifier">drawRect</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">w</span><span class="Other">,</span> <span class="Identifier">h</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">tile_pos</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">;</span> <span class="Identifier">layer</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
-<a id="fill.e,TileMapRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#fill.e%2CTileMapRef%2CVector2Ref"><span class="Identifier">fill</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">tile_pos</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="fill.e,TileMapRef,Vector2Ref,int"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#fill.e%2CTileMapRef%2CVector2Ref%2Cint"><span class="Identifier">fill</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">tile_pos</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">;</span> <span class="Identifier">layer</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">0</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Fills the map with a tile at <tt class="docutils literal"><span class="pre">tile_pos</span></tt> position.
 
 </dd>
-<a id="resizeMap.e,TileMapRef,Vector2Ref"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#resizeMap.e%2CTileMapRef%2CVector2Ref"><span class="Identifier">resizeMap</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="resizeMap.e,TileMapRef,Vector2Ref,int"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#resizeMap.e%2CTileMapRef%2CVector2Ref%2Cint"><span class="Identifier">resizeMap</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Ref"><span class="Identifier">Vector2Ref</span></a><span class="Other">;</span> <span class="Identifier">layer_count</span><span class="Other">:</span> <span class="Identifier">int</span> <span class="Other">=</span> <span class="DecNumber">2</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes map size to <tt class="docutils literal"><span class="pre">size</span></tt>.
+
+</dd>
+<a id="setMode.e,TileMapRef,TileMapMode"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setMode.e%2CTileMapRef%2CTileMapMode"><span class="Identifier">setMode</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Identifier">TileMapRef</span><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <a href="tilemap.html#TileMapMode"><span class="Identifier">TileMapMode</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Changes drawing mode.
 
 </dd>
 <a id="setTileSet.e,TileMapRef,TileSetObj"></a>
@@ -240,7 +266,7 @@ Changes current tileset.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-16 14:18:36 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-20 16:26:41 UTC</small>
       </div>
     </div>
   </div>

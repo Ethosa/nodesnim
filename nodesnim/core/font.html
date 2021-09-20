@@ -185,6 +185,8 @@ function main() {
     title="getTextSize(text: StyleText): Vector2Obj"><wbr />get<wbr />Text<wbr />Size<span class="attachedType">StyleText</span></a></li>
   <li><a class="reference" href="#getCaretPos%2CStyleText%2Cuint32"
     title="getCaretPos(text: StyleText; pos: uint32): tuple[a: Vector2Obj, b: uint16]"><wbr />get<wbr />Caret<wbr />Pos<span class="attachedType">StyleText</span></a></li>
+  <li><a class="reference" href="#renderSurface%2CStyleText%2CAnchorObj"
+    title="renderSurface(text: StyleText; anchor: AnchorObj): SurfacePtr"><wbr />render<wbr />Surface<span class="attachedType">StyleText</span></a></li>
   <li><a class="reference" href="#render%2CStyleText%2CVector2Obj%2CAnchorObj"
     title="render(text: StyleText; size: Vector2Obj; anchor: AnchorObj)"><wbr />render<span class="attachedType">StyleText</span></a></li>
   <li><a class="reference" href="#renderTo%2CStyleText%2CVector2Obj%2CVector2Obj%2CAnchorObj"
@@ -444,6 +446,14 @@ function main() {
 
 
 </dd>
+<a id="renderSurface,StyleText,AnchorObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#renderSurface%2CStyleText%2CAnchorObj"><span class="Identifier">renderSurface</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../thirdparty/sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="render,StyleText,Vector2Obj,AnchorObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#render%2CStyleText%2CVector2Obj%2CAnchorObj"><span class="Identifier">render</span></a><span class="Other">(</span><span class="Identifier">text</span><span class="Other">:</span> <a href="font.html#StyleText"><span class="Identifier">StyleText</span></a><span class="Other">;</span> <span class="Identifier">size</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -470,7 +480,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-16 14:17:37 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-20 16:25:24 UTC</small>
       </div>
     </div>
   </div>
