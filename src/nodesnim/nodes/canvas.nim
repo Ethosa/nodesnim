@@ -5,11 +5,14 @@
 import
   math,
   ../thirdparty/opengl,
+  ../thirdparty/sdl2,
+  ../thirdparty/sdl2/image,
 
   ../core/vector2,
   ../core/color,
   ../core/anchor,
   ../core/enums,
+  ../core/tools,
 
   node
 
@@ -18,21 +21,10 @@ const TAU = PI + PI
 
 
 type
-  DrawCommandType* {.size: sizeof(int8).} = enum
-    POINT, LINE, RECT, FILL, CIRCLE
-  DrawCommand* = object
-    x1*, y1*: GLfloat
-    color*: ColorRef
-    case kind*: DrawCommandType
-    of LINE, RECT:
-      x2*, y2*: GLfloat
-    of CIRCLE:
-      points*: seq[GLfloat]
-    else:
-      discard
-
   CanvasObj* = object of NodeObj
-    commands*: seq[DrawCommand]
+    surface: SurfacePtr
+    renderer: RendererPtr
+    canvas_texture: Gluint
 
     position*: Vector2Obj            ## Node position, by default is Vector2(0, 0).
     global_position*: Vector2Obj     ## Node global position.
@@ -57,10 +49,35 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
   result.global_position = Vector2()
   result.anchor = Anchor(0, 0, 0, 0)
   result.size_anchor = Vector2()
+  result.canvas_texture = 0
+  result.surface = createRGBSurface(
+      0, 40, 40, 32,
+      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000'u32)
+  result.renderer = result.surface.createSoftwareRenderer()
   result.kind = CANVAS_NODE
   result.type_of_node = NODE_TYPE_CONTROL
+  glGenTextures(1, result.canvas_texture.addr)
 
 
+# --- Private --- #
+template loadColor(color_argument_name: untyped): untyped =
+  let clr = toUint32Tuple(`color_argument_name`)
+  echo clr
+  canvas.renderer.setDrawColor(clr.r.uint8, clr.g.uint8, clr.b.uint8, clr.a.uint8)
+
+template loadGL(canvas: untyped): untyped =
+  `canvas`.renderer.present()
+  discard `canvas`.renderer.readPixels(nil, 0, `canvas`.surface.pixels, 0)
+  glBindTexture(GL_TEXTURE_2D, `canvas`.canvas_texture)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, `canvas`.surface.w,  `canvas`.surface.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, `canvas`.surface.pixels)
+  glBindTexture(GL_TEXTURE_2D, 0)
+
+
+# --- Public --- #
 method calcGlobalPosition*(self: CanvasRef) {.base.} =
   ## Returns global node position.
   self.global_position = self.position
@@ -74,57 +91,26 @@ method calcPositionAnchor*(self: CanvasRef) {.base.} =
   ## This used in the Window object.
   discard
 
-proc calculateX(canvas: CanvasRef, x, gx: GLfloat): GLfloat =
-  if x > canvas.rect_size.x + gx:
-    canvas.rect_size.x + gx
-  elif x < gx:
-    gx
-  else:
-    x
-proc calculateY(canvas: CanvasRef, y, gy: GLfloat): GLfloat =
-  if y < gy - canvas.rect_size.y:
-    gy - canvas.rect_size.y
-  elif y > gy:
-    gy
-  else:
-    y
-
-
 method draw*(canvas: CanvasRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let
     x = -w/2 + canvas.global_position.x
     y = h/2 - canvas.global_position.y
-  for cmd in canvas.commands:
-    case cmd.kind:
-    of POINT:
-      glBegin(GL_POINTS)
-      glColor4f(cmd.color.r, cmd.color.g, cmd.color.b, cmd.color.a)
-      glVertex2f(canvas.calculateX(x + cmd.x1, x), canvas.calculateY(y - cmd.y1, y))
-      glEnd()
-    of LINE:
-      glBegin(GL_LINES)
-      glColor4f(cmd.color.r, cmd.color.g, cmd.color.b, cmd.color.a)
-      glVertex2f(canvas.calculateX(x + cmd.x1, x), canvas.calculateY(y - cmd.y1, y))
-      glVertex2f(canvas.calculateX(x + cmd.x2, x), canvas.calculateY(y - cmd.y2, y))
-      glEnd()
-    of RECT:
-      glColor4f(cmd.color.r, cmd.color.g, cmd.color.b, cmd.color.a)
-      glRectf(
-        canvas.calculateX(x + cmd.x1, x), canvas.calculateY(y - cmd.y1, y),
-        canvas.calculateX(x + cmd.x2, x), canvas.calculateY(y - cmd.y2, y))
-    of FILL:
-      glColor4f(cmd.color.r, cmd.color.g, cmd.color.b, cmd.color.a)
-      glRectf(x, y, x + canvas.rect_size.x, y - canvas.rect_size.y)
-    of CIRCLE:
-      glColor4f(cmd.color.r, cmd.color.g, cmd.color.b, cmd.color.a)
-      glBegin(GL_TRIANGLE_FAN)
-      glVertex2f(canvas.calculateX(x + cmd.x1, x), canvas.calculateY(y - cmd.y1, y))
-      for i in countup(0, cmd.points.len()-1, 2):
-        glVertex2f(
-          canvas.calculateX(x + cmd.points[i] + cmd.x1, x),
-          canvas.calculateY(y - cmd.y1 - cmd.points[i+1], y))
-      glEnd()
+  glColor4f(1, 1, 1, 1)
+  glBindTexture(GL_TEXTURE_2D, canvas.canvas_texture)
+  glEnable(GL_TEXTURE_2D)
+  glBegin(GL_QUADS)
+  glTexCoord2f(0, 0)
+  glVertex2f(x, y)
+  glTexCoord2f(1, 0)
+  glVertex2f(x + canvas.rect_size.x, y)
+  glTexCoord2f(1, 1)
+  glVertex2f(x + canvas.rect_size.x, y - canvas.rect_size.y)
+  glTexCoord2f(0, 1)
+  glVertex2f(x, y - canvas.rect_size.y)
+  glEnd()
+  glDisable(GL_TEXTURE_2D)
+  glBindTexture(GL_TEXTURE_2D, 0)
 
 method duplicate*(self: CanvasRef): CanvasRef {.base.} =
   ## Duplicates Canvas object and create a new Canvas.
@@ -147,6 +133,20 @@ method move*(self: CanvasRef, x, y: float) {.base, inline.} =
   self.position += Vector2(x, y)
   self.anchor.clear()
 
+method bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3: GLfloat, color: ColorRef) {.base.} =
+  ## Draws a quadric bezier curve at 3 points.
+  loadColor(color)
+  for pnt in bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3)):
+    canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)
+  loadGL(canvas)
+
+method cubic_bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3, x4, y4: GLfloat, color: ColorRef) {.base.} =
+  ## Draws a quadric bezier curve at 3 points.
+  loadColor(color)
+  for pnt in cubic_bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3), Vector2(x4, y4)):
+    canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)
+  loadGL(canvas)
+
 method circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
   ## Draws a circle in the canvas.
   ##
@@ -156,12 +156,11 @@ method circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, qualit
   ## - `radius` - circle radius.
   ## - `color` - Color object.
   ## - `quality` - circle quality.
-  var pnts: seq[GLfloat]
+  loadColor(color)
   for i in 0..quality:
     let angle = TAU*i.float/quality.float
-    pnts.add(radius*cos(angle))
-    pnts.add(radius*sin(angle))
-  canvas.commands.add(DrawCommand(kind: CIRCLE, x1: x, y1: y, color: color, points: pnts))
+    canvas.renderer.drawPoint((x + radius*cos(angle)).cint, (y + radius*sin(angle)).cint)
+  loadGL(canvas)
 
 method point*(canvas: CanvasRef, x, y: GLfloat, color: ColorRef) {.base.} =
   ## Draws a point in the canvas.
@@ -170,7 +169,9 @@ method point*(canvas: CanvasRef, x, y: GLfloat, color: ColorRef) {.base.} =
   ## - `x` - point position at X axis.
   ## - `y` - point position at Y axis.
   ## - `color` - point color.
-  canvas.commands.add(DrawCommand(kind: POINT, x1: x, y1: y, color: color))
+  loadColor(color)
+  canvas.renderer.drawPoint(x.cint, y.cint)
+  loadGL(canvas)
 
 method line*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
   ## Draws a line in the canvas.
@@ -181,7 +182,9 @@ method line*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base
   ## - `x2` - second position at X axis.
   ## - `y2` - second position at Y axis.
   ## - `color` - line color.
-  canvas.commands.add(DrawCommand(kind: LINE, x1: x1, y1: y1, x2: x2, y2: y2, color: color))
+  loadColor(color)
+  canvas.renderer.drawLine(x1.cint, y1.cint, x2.cint, y2.cint)
+  loadGL(canvas)
 
 method rect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
   ## Draws a line in the canvas.
@@ -192,13 +195,16 @@ method rect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base
   ## - `x2` - second position at X axis.
   ## - `y2` - second position at Y axis.
   ## - `color` - rectangle color.
-  canvas.commands.add(
-    DrawCommand(kind: RECT, x1: x1, y1: y1, x2: x2, y2: y2, color: color)
-  )
+  loadColor(color)
+  var rectangle = rect(x1.cint, y1.cint, x2.cint, y2.cint)
+  canvas.renderer.drawRect(rectangle)
+  loadGL(canvas)
 
 method fill*(canvas: CanvasRef, color: ColorRef) {.base.} =
   ## Fills canvas.
-  canvas.commands = @[DrawCommand(kind: FILL, x1: 0, y1: 0, color: color)]
+  loadColor(color)
+  canvas.renderer.clear()
+  loadGL(canvas)
 
 method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base.} =
   ## Resizes canvas.
@@ -218,7 +224,20 @@ method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base
       self.size_anchor.y = 0.0
   else:
     self.rect_size.y = self.rect_min_size.y
+  if self.kind == CANVAS_NODE:
+    var new_surface = createRGBSurface(
+      0, w.cint, h.cint, 32,
+      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000'u32)
+    self.surface.blitSurface(nil, new_surface, nil)
+    self.renderer.destroy()
+    self.surface.freeSurface()
+    self.surface = new_surface
+    self.renderer = self.surface.createSoftwareRenderer()
+    loadGL(self)
 
+proc saveAs*(self: CanvasRef, filename: cstring) =
+  ## Saves canvas as image file.
+  discard self.surface.savePNG(filename)
 
 method setAnchor*(self: CanvasRef, anchor: AnchorObj) {.base.} =
   ## Changes node anchor.
