@@ -12,8 +12,12 @@ import
 
 
 type
+  TileMapMode* {.pure, size: sizeof(int8).} = enum
+    TILEMAP_2D,            ## Default 2D mode.
+    TILEMAP_ISOMETRIC      ## Isometric mode.
   TileMapObj* = object of Node2DObj
-    map_size*: tuple[x, y: int]
+    mode*: TileMapMode
+    map_size*: tuple[x, y, z: int]
     tileset*: TileSetObj
     map*: seq[Vector2Ref]
   TileMapRef = ref TileMapObj
@@ -25,9 +29,10 @@ proc TileMap*(name: string = "TileMap"): TileMapRef =
     var mytilemap = TileMap("MyTileMap")
   nodepattern(TileMapRef)
   node2dpattern()
-  result.map_size = (x: 25, y: 25)
+  result.mode = TILEMAP_2D
+  result.map_size = (x: 25, y: 25, z: 2)
   result.kind = TILEMAP_NODE
-  newSeq(result.map, result.map_size.x*result.map_size.y)
+  newSeq(result.map, result.map_size.x*result.map_size.y*result.map_size.z)
 
 
 method draw*(self: TileMapRef, w, h: GLfloat) =
@@ -39,44 +44,54 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
     y = h/2 - self.global_position.y
   var viewport = @[
       abs(x + w/2).int div self.tileset.grid.x.int, abs(y - h/2).int div self.tileset.grid.y.int,
-      abs(x - w/2).int div self.tileset.grid.x.int,abs(y + h/2).int div self.tileset.grid.y.int]
-  if viewport[2] >= self.map_size.x:
-    viewport[2] = self.map_size.x-1
-  if viewport[3] >= self.map_size.y:
-    viewport[3] = self.map_size.y-1
+      abs(x - w/2).int div self.tileset.grid.x.int, abs(y + h/2).int div self.tileset.grid.y.int]
 
   glEnable(GL_TEXTURE_2D)
-  glEnable(GL_DEPTH_TEST)
-  for x1 in viewport[0]..viewport[2]:
-    for y1 in viewport[1]..viewport[3]:
-      let pos = x1+y1*self.map_size.x
-      if not self.map[pos].isNil():
-        let
-          posx = x + self.tileset.grid.x*x1.float
-          posy = y - self.tileset.grid.y*y1.float
-        self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy)
-  glDisable(GL_DEPTH_TEST)
+  if self.mode == TILEMAP_2D:
+    for x1 in viewport[0]..viewport[2]+1:
+      for y1 in viewport[1]..viewport[3]+1:
+        let pos = x1+y1*self.map_size.x
+        if not self.map[pos].isNil():
+          let
+            posx = x + self.tileset.grid.x*x1.float
+            posy = y - self.tileset.grid.y*y1.float
+          self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy)
+  else:
+    for z in 0..<self.map_size.z:
+      for y1 in viewport[1]..viewport[3]:
+        for x1 in viewport[1]..viewport[2]:
+          let
+            pos = x1+y1*self.map_size.x + self.map_size.x*self.map_size.y*z
+          if not self.map[pos].isNil():
+            let
+              posx = x + GLfloat((x1.GLfloat * self.tileset.grid.x  / 2) + (y1.GLfloat * self.tileset.grid.x  / 2))
+              posy = y - GLfloat((y1.GLfloat * self.tileset.grid.y / 2) - (x1.GLfloat * self.tileset.grid.y / 2)) - h/2
+            self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy - self.tileset.grid.y*z.GLfloat)
   glDisable(GL_TEXTURE_2D)
 
-method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Ref) {.base.} =
+method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Ref, layer: int = 0) {.base.} =
   ## Changes map tile at `x`,`y` point to tile from tileset at `tile_pos` point.
-  self.map[x+y*self.map_size.x] = tile_pos
+  self.map[x+y*self.map_size.x + self.map_size.x*self.map_size.y*layer] = tile_pos
 
-method drawRect*(self: TileMapRef, x, y, w, h: int, tile_pos: Vector2Ref) {.base.} =
+method drawRect*(self: TileMapRef, x, y, w, h: int, tile_pos: Vector2Ref, layer: int = 0) {.base.} =
   for x1 in x..x+w:
     for y1 in y..y+h:
-      self.map[x1+y1*self.map_size.x] = tile_pos
+      self.map[x1+y1*self.map_size.x + self.map_size.x*self.map_size.y*layer] = tile_pos
 
-method fill*(self: TileMapRef, tile_pos: Vector2Ref) {.base.} =
+method fill*(self: TileMapRef, tile_pos: Vector2Ref, layer: int = 0) {.base.} =
   ## Fills the map with a tile at `tile_pos` position.
   for x in 0..<self.map_size.x.int:
     for y in 0..<self.map_size.y.int:
-      self.map[x+y*self.map_size.x] = tile_pos
+      self.map[x+y*self.map_size.x + self.map_size.x*self.map_size.y*layer] = tile_pos
 
-method resizeMap*(self: TileMapRef, size: Vector2Ref) {.base.} =
+method resizeMap*(self: TileMapRef, size: Vector2Ref, layer_count: int = 2) {.base.} =
   ## Changes map size to `size`.
-  self.map_size = (x: size.x.int, y: size.y.int)
-  self.map.setLen(self.map_size.x*self.map_size.y)
+  self.map_size = (x: size.x.int, y: size.y.int, z: layer_count)
+  self.map.setLen(self.map_size.x*self.map_size.y*layer_count)
+
+method setMode*(self: TileMapRef, mode: TileMapMode) {.base.} =
+  ## Changes drawing mode.
+  self.mode = mode
 
 method setTileSet*(self: TileMapRef, tileset: TileSetObj) {.base.} =
   ## Changes current tileset.
