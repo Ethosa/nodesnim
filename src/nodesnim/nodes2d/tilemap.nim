@@ -48,14 +48,15 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
 
   glEnable(GL_TEXTURE_2D)
   if self.mode == TILEMAP_2D:
-    for x1 in viewport[0]..viewport[2]+1:
-      for y1 in viewport[1]..viewport[3]+1:
-        let pos = x1+y1*self.map_size.x
-        if not self.map[pos].isNil():
-          let
-            posx = x + self.tileset.grid.x*x1.float
-            posy = y - self.tileset.grid.y*y1.float
-          self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy)
+    for z in 0..<self.map_size.z:
+      for x1 in viewport[0]..viewport[2]+1:
+        for y1 in viewport[1]..viewport[3]+1:
+          let pos = x1+y1*self.map_size.x + self.map_size.x*self.map_size.y*z
+          if not self.map[pos].isNil():
+            let
+              posx = x + self.tileset.grid.x*x1.float
+              posy = y - self.tileset.grid.y*y1.float
+            self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy)
   else:
     for z in 0..<self.map_size.z:
       for y1 in viewport[1]..viewport[3]:
@@ -76,13 +77,13 @@ method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Ref, layer: int =
 method drawRect*(self: TileMapRef, x, y, w, h: int, tile_pos: Vector2Ref, layer: int = 0) {.base.} =
   for x1 in x..x+w:
     for y1 in y..y+h:
-      self.map[x1+y1*self.map_size.x + self.map_size.x*self.map_size.y*layer] = tile_pos
+      self.drawTile(x1, y1, tile_pos, layer)
 
 method fill*(self: TileMapRef, tile_pos: Vector2Ref, layer: int = 0) {.base.} =
   ## Fills the map with a tile at `tile_pos` position.
   for x in 0..<self.map_size.x.int:
     for y in 0..<self.map_size.y.int:
-      self.map[x+y*self.map_size.x + self.map_size.x*self.map_size.y*layer] = tile_pos
+      self.drawTile(x, y, tile_pos, layer)
 
 method resizeMap*(self: TileMapRef, size: Vector2Ref, layer_count: int = 2) {.base.} =
   ## Changes map size to `size`.

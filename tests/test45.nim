@@ -10,7 +10,8 @@ build:
   - Scene main:
     - TileMap map:
       call setTileSet(tileset)
-      call resizeMap(newVector2(8096, 512))
+      #                         map size   layer count
+      call resizeMap(newVector2(8096, 512), 1)
       call fill(newVector2(1, 0))
       call drawRect(3, 3, 10, 5, newVector2(9, 7))
       call drawTile(0, 0, newVector2(3, 0))
