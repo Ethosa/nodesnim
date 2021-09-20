@@ -48,3 +48,4 @@
 - [Use padding.](https://github.com/Ethosa/nodesnim/blob/master/tests/test46.nim)
 - [Use margin.](https://github.com/Ethosa/nodesnim/blob/master/tests/test47.nim)
 - [Use Camera3D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test48.nim)
+- [Use TileMap Isometric mode](https://github.com/Ethosa/nodesnim/blob/master/tests/test49.nim)

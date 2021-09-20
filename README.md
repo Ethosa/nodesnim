@@ -1,5 +1,7 @@
-<h1 align="center">Nodesnim</h1>
-<div align="center">The Nim GUI/2D framework based on OpenGL and SDL2.
+<div align="center">
+  <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/icon.svg" width="240">
+
+The Nim GUI/2D framework based on OpenGL and SDL2.
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![Nim language-plastic](https://github.com/Ethosa/yukiko/blob/master/nim-lang.svg)](https://github.com/Ethosa/yukiko/blob/master/nim-lang.svg)
@@ -7,7 +9,7 @@
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Stable version - 0.3.0</h4>
+<h4>Stable version - 0.3.1</h4>
 </div>
 
 ## Install
