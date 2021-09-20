@@ -12,6 +12,7 @@ import
   ../core/color,
   ../core/anchor,
   ../core/enums,
+  ../core/font,
   ../core/tools,
 
   node
@@ -56,21 +57,21 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
   result.renderer = result.surface.createSoftwareRenderer()
   result.kind = CANVAS_NODE
   result.type_of_node = NODE_TYPE_CONTROL
-  glGenTextures(1, result.canvas_texture.addr)
 
 
 # --- Private --- #
 template loadColor(color_argument_name: untyped): untyped =
   let clr = toUint32Tuple(`color_argument_name`)
-  echo clr
   canvas.renderer.setDrawColor(clr.r.uint8, clr.g.uint8, clr.b.uint8, clr.a.uint8)
 
 template loadGL(canvas: untyped): untyped =
   `canvas`.renderer.present()
   discard `canvas`.renderer.readPixels(nil, 0, `canvas`.surface.pixels, 0)
+  if `canvas`.canvas_texture == 0:
+    glGenTextures(1, `canvas`.canvas_texture.addr)
   glBindTexture(GL_TEXTURE_2D, `canvas`.canvas_texture)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, `canvas`.surface.w,  `canvas`.surface.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, `canvas`.surface.pixels)
@@ -133,79 +134,6 @@ method move*(self: CanvasRef, x, y: float) {.base, inline.} =
   self.position += Vector2(x, y)
   self.anchor.clear()
 
-method bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3: GLfloat, color: ColorRef) {.base.} =
-  ## Draws a quadric bezier curve at 3 points.
-  loadColor(color)
-  for pnt in bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3)):
-    canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)
-  loadGL(canvas)
-
-method cubic_bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3, x4, y4: GLfloat, color: ColorRef) {.base.} =
-  ## Draws a quadric bezier curve at 3 points.
-  loadColor(color)
-  for pnt in cubic_bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3), Vector2(x4, y4)):
-    canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)
-  loadGL(canvas)
-
-method circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) {.base.} =
-  ## Draws a circle in the canvas.
-  ##
-  ## Arguments:
-  ## - `x` - circle center at X axis.
-  ## - `y` - circle center at Y axis.
-  ## - `radius` - circle radius.
-  ## - `color` - Color object.
-  ## - `quality` - circle quality.
-  loadColor(color)
-  for i in 0..quality:
-    let angle = TAU*i.float/quality.float
-    canvas.renderer.drawPoint((x + radius*cos(angle)).cint, (y + radius*sin(angle)).cint)
-  loadGL(canvas)
-
-method point*(canvas: CanvasRef, x, y: GLfloat, color: ColorRef) {.base.} =
-  ## Draws a point in the canvas.
-  ##
-  ## Arguments:
-  ## - `x` - point position at X axis.
-  ## - `y` - point position at Y axis.
-  ## - `color` - point color.
-  loadColor(color)
-  canvas.renderer.drawPoint(x.cint, y.cint)
-  loadGL(canvas)
-
-method line*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
-  ## Draws a line in the canvas.
-  ##
-  ## Arguments:
-  ## - `x1` - first position at X axis.
-  ## - `y1` - first position at Y axis.
-  ## - `x2` - second position at X axis.
-  ## - `y2` - second position at Y axis.
-  ## - `color` - line color.
-  loadColor(color)
-  canvas.renderer.drawLine(x1.cint, y1.cint, x2.cint, y2.cint)
-  loadGL(canvas)
-
-method rect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) {.base.} =
-  ## Draws a line in the canvas.
-  ##
-  ## Arguments:
-  ## - `x1` - first position at X axis.
-  ## - `y1` - first position at Y axis.
-  ## - `x2` - second position at X axis.
-  ## - `y2` - second position at Y axis.
-  ## - `color` - rectangle color.
-  loadColor(color)
-  var rectangle = rect(x1.cint, y1.cint, x2.cint, y2.cint)
-  canvas.renderer.drawRect(rectangle)
-  loadGL(canvas)
-
-method fill*(canvas: CanvasRef, color: ColorRef) {.base.} =
-  ## Fills canvas.
-  loadColor(color)
-  canvas.renderer.clear()
-  loadGL(canvas)
-
 method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base.} =
   ## Resizes canvas.
   ##
@@ -235,10 +163,6 @@ method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base
     self.renderer = self.surface.createSoftwareRenderer()
     loadGL(self)
 
-proc saveAs*(self: CanvasRef, filename: cstring) =
-  ## Saves canvas as image file.
-  discard self.surface.savePNG(filename)
-
 method setAnchor*(self: CanvasRef, anchor: AnchorObj) {.base.} =
   ## Changes node anchor.
   ##
@@ -260,3 +184,99 @@ method setSizeAnchor*(self: CanvasRef, anchor: Vector2Obj) {.base.} =
 
 method setSizeAnchor*(self: CanvasRef, x, y: float) {.base.} =
   self.size_anchor = Vector2(x, y)
+
+
+# --- Draw functions --- #
+proc bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3: GLfloat, color: ColorRef) =
+  ## Draws a quadric bezier curve at 3 points.
+  loadColor(color)
+  for pnt in bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3)):
+    canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)
+  loadGL(canvas)
+
+proc circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, quality: int = 100) =
+  ## Draws a circle in the canvas.
+  ##
+  ## Arguments:
+  ## - `x` - circle center at X axis.
+  ## - `y` - circle center at Y axis.
+  ## - `radius` - circle radius.
+  ## - `color` - Color object.
+  ## - `quality` - circle quality.
+  loadColor(color)
+  for i in 0..quality:
+    let angle = TAU*i.float/quality.float
+    canvas.renderer.drawPoint((x + radius*cos(angle)).cint, (y + radius*sin(angle)).cint)
+  loadGL(canvas)
+
+proc cubic_bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3, x4, y4: GLfloat, color: ColorRef) =
+  ## Draws a quadric bezier curve at 3 points.
+  loadColor(color)
+  for pnt in cubic_bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3), Vector2(x4, y4)):
+    canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)
+  loadGL(canvas)
+
+proc fill*(canvas: CanvasRef, color: ColorRef) =
+  ## Fills canvas.
+  loadColor(color)
+  canvas.renderer.clear()
+  loadGL(canvas)
+
+proc line*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) =
+  ## Draws a line in the canvas.
+  ##
+  ## Arguments:
+  ## - `x1` - first position at X axis.
+  ## - `y1` - first position at Y axis.
+  ## - `x2` - second position at X axis.
+  ## - `y2` - second position at Y axis.
+  ## - `color` - line color.
+  loadColor(color)
+  canvas.renderer.drawLine(x1.cint, y1.cint, x2.cint, y2.cint)
+  loadGL(canvas)
+
+proc rect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) =
+  ## Draws a line in the canvas.
+  ##
+  ## Arguments:
+  ## - `x1` - first position at X axis.
+  ## - `y1` - first position at Y axis.
+  ## - `x2` - second position at X axis.
+  ## - `y2` - second position at Y axis.
+  ## - `color` - rectangle color.
+  loadColor(color)
+  var rectangle = rect(x1.cint, y1.cint, x2.cint, y2.cint)
+  canvas.renderer.drawRect(rectangle)
+  loadGL(canvas)
+
+proc point*(canvas: CanvasRef, x, y: GLfloat, color: ColorRef) =
+  ## Draws a point in the canvas.
+  ##
+  ## Arguments:
+  ## - `x` - point position at X axis.
+  ## - `y` - point position at Y axis.
+  ## - `color` - point color.
+  loadColor(color)
+  canvas.renderer.drawPoint(x.cint, y.cint)
+  loadGL(canvas)
+
+proc text*(canvas: CanvasRef, text: StyleText | string, x, y: Glfloat, align: Vector2Obj = Vector2()) =
+  ## Draws multiline text.
+  ##
+  ## Arguments:
+  ## - `text` - multiline colored text.
+  ## - `align` - horizontal text alignment.
+  when text is StyleText:
+    var
+      surface = text.renderSurface(Anchor(align.x, 0, align.y, 0))
+      rectangle = rect(x.cint, y.cint, x.cint+surface.w, y.cint+surface.h)
+  else:
+    var
+      surface = stext(text).renderSurface(Anchor(align.x, 0, align.y, 0))
+      rectangle = rect(x.cint, y.cint, x.cint+surface.w, y.cint+surface.h)
+  surface.blitSurface(nil, canvas.surface, rectangle.addr)
+  loadGL(canvas)
+
+proc saveAs*(self: CanvasRef, filename: cstring) =
+  ## Saves canvas as image file.
+  discard self.surface.savePNG(filename)

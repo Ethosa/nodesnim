@@ -20,6 +20,7 @@ canvas.line(200, -150, 0, 256, Color("#0e1317ff"))
 canvas.bezier(0, 0, 256, 0, 256, 256, Color("#227"))
 canvas.cubic_bezier(0, 0, 256, 0, 0, 256, 256, 256, Color("#272"))
 canvas.move(74.4, 89.4)
+canvas.text("hello!,\nworld!", 64, 64, Vector2(1, 1))
 canvas.saveAs("assets/canvas.png")  # save result in file.
 
 
