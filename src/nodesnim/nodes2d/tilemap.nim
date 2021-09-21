@@ -45,22 +45,27 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
   var viewport = @[
       abs(x + w/2).int div self.tileset.grid.x.int, abs(y - h/2).int div self.tileset.grid.y.int,
       abs(x - w/2).int div self.tileset.grid.x.int, abs(y + h/2).int div self.tileset.grid.y.int]
+  if viewport[3] >= self.map_size.y:
+    viewport[3] = self.map_size.y-1
+  if viewport[2] >= self.map_size.x:
+    viewport[2] = self.map_size.x-1
 
   glEnable(GL_TEXTURE_2D)
-  if self.mode == TILEMAP_2D:
+  case self.mode
+  of TILEMAP_2D:
     for z in 0..<self.map_size.z:
-      for x1 in viewport[0]..viewport[2]+1:
-        for y1 in viewport[1]..viewport[3]+1:
+      for x1 in viewport[0]..viewport[2]:
+        for y1 in viewport[1]..viewport[3]:
           let pos = x1+y1*self.map_size.x + self.map_size.x*self.map_size.y*z
           if not self.map[pos].isNil():
             let
               posx = x + self.tileset.grid.x*x1.float
               posy = y - self.tileset.grid.y*y1.float
             self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy)
-  else:
+  of TILEMAP_ISOMETRIC:
     for z in 0..<self.map_size.z:
       for y1 in viewport[1]..viewport[3]:
-        for x1 in viewport[1]..viewport[2]:
+        for x1 in viewport[0]..viewport[2]:
           let
             pos = x1+y1*self.map_size.x + self.map_size.x*self.map_size.y*z
           if not self.map[pos].isNil():

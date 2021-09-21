@@ -115,6 +115,7 @@ when defined(debug):
       for vec2 in self.polygon:
         glVertex3f(x + vec2.x, y - vec2.y, self.z_index_global)
       glEnd()
+    glColor4f(1, 1, 1, 1)
 
 
 method duplicate*(self: CollisionShape2DRef): CollisionShape2DRef {.base.} =
@@ -201,7 +202,8 @@ method isCollide*(self, other: CollisionShape2DRef): bool {.base.} =
   of COLLISION_SHAPE_2D_RECTANGLE:
     case other.shape_type:
       of COLLISION_SHAPE_2D_RECTANGLE:
-        return Rect2(other.global_position, other.rect_size).intersects(Rect2(self.global_position, self.rect_size))
+        return Rect2(other.global_position, other.rect_size).intersects(Rect2(self.global_position, self.rect_size)) or
+               Rect2(self.global_position, self.rect_size).intersects(Rect2(other.global_position, other.rect_size))
       of COLLISION_SHAPE_2D_CIRCLE:
         return Rect2(self.global_position, self.rect_size).isCollideWithCircle(
           other.global_position.x + other.x1,
