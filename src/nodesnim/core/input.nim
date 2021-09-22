@@ -137,6 +137,8 @@ proc isActionJustPressed*(a: type Input, name: string): bool =
         if press_state == 0:
           result = true
       elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
+        if last_event.key_int > 255:
+          continue
         if action.key == $chr(last_event.key_int) or action.key_int == last_event.key_int:
           if press_state == 0:
             result = true

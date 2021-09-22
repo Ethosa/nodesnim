@@ -12,8 +12,6 @@ var
 
 gradient.setCornerColors(Color("#C9D6FF"), Color("#C9D6FF"), Color("#E2E2E2"), Color("#E2E2E2"))
 
-Input.addKeyAction("send", 13)  # Enter
-
 
 build:
   - Scene (chat_scene):
@@ -50,6 +48,7 @@ proc listenChat(arg: tuple[scene: ptr SceneRef, username: ptr string, timed_chat
       text &= (stext arg.timed_chat[][i].str & stext": " & stext arg.timed_chat[][i+1].str & stext("\n\n"))
       inc i, 2
     text.setColor(Color("#123"))
+    
     arg.scene[].getNode("background/chat").LabelRef.text = text
 
     waitFor sleepAsync(100)

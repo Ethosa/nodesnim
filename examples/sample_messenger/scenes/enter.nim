@@ -32,6 +32,9 @@ build:
         - EditText login:
           caret: false
           call setTextAlign(0.5, 0.5, 0.5, 0.5)
+          call setHint("Username")
+          call setHintColor(Color("#ebebeb"))
+          call setTextColor(Color("#fff"))
           call setStyle(style({
             border-radius: 8,
             border-detail: 8,
@@ -60,11 +63,6 @@ send.press_background.setStyle(style({
   background-color: rgba(100, 111, 122, 0.8),
   background-width: 1
 }))
-
-
-login.hint = stext"Username"
-login.hint.setColor(Color("#ebebeb"))
-login.text.setColor(Color("#fff"))
 
 
 send@onClick(self, x, y):

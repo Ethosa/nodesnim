@@ -118,8 +118,13 @@ method setText*(self: EditTextRef, t: string, save_properties: bool = false) =
   ## - `save_properties` - saves old text properties, if `true`.
   changeText(self, t, save_properties, text)
 
-method setHint*(self: EditTextRef, t: string, save_properties: bool = false) =
+method setHint*(self: EditTextRef, t: string, save_properties: bool = false) {.base.} =
   changeText(self, t, save_properties, hint)
+
+method setHintColor*(self: EditTextRef, color: ColorRef) {.base.} =
+  self.hint.setColor(color)
+  self.hint.rendered = false
+
 
 method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. Thi uses in the `window.nim`.
