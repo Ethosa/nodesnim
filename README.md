@@ -116,7 +116,7 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/6.png" width="380" height="220" alt="Roguelike game example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/sample messenger">
-    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/7.png" width="380" height="220" alt="sample messenger">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/7.png" width="240" height="480" alt="sample messenger">
   </a>
 </div>
 
