@@ -22,12 +22,12 @@ import
 
 type
   EditTextRef* = ref object of LabelObj
-    hint: StyleText
+    hint*: StyleText
     caret_color: ColorRef
     caret_pos: uint32
     blink_time: uint8
     is_blink: bool
-    caret: bool
+    caret*: bool
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
 
 const
@@ -54,7 +54,6 @@ proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditT
   else:
     result.rect_min_size = result.hint.getTextSize()
   result.resize(result.rect_size.x, result.rect_size.y)
-  result.hint.render(result.rect_size, result.text_align)
 
 
 method draw*(self: EditTextRef, w, h: Glfloat) =
@@ -94,26 +93,33 @@ method draw*(self: EditTextRef, w, h: Glfloat) =
       yalign - caret[0].y - caret[1].float)
     glEnd()
 
-method setText*(self: EditTextRef, text: string, save_properties: bool = false) =
+
+template changeText( self, `text`, `save_properties`, t: untyped): untyped =
+  var st = stext(`text`)
+  if `self`.`t`.font.isNil():
+    `self`.`t`.font = standard_font
+  st.font = `self`.`t`.font
+
+  if `save_properties`:
+    for i in 0..<st.chars.len():
+      if i < `self`.`t`.len():
+        st.chars[i].color = `self`.`t`.chars[i].color
+        st.chars[i].underline = `self`.`t`.chars[i].underline
+  `self`.`t` = st
+  `self`.rect_min_size = `self`.`t`.getTextSize()
+  `self`.resize(`self`.rect_size.x, `self`.rect_size.y)
+  `self`.`t`.rendered = false
+
+method setText*(self: EditTextRef, t: string, save_properties: bool = false) =
   ## Changes text.
   ##
   ## Arguments:
   ## - `text` is a new Label text.
   ## - `save_properties` - saves old text properties, if `true`.
-  var st = stext(text)
-  if self.text.font.isNil():
-    self.text.font = standard_font
-  st.font = self.text.font
+  changeText(self, t, save_properties, text)
 
-  if save_properties:
-    for i in 0..<st.chars.len():
-      if i < self.text.len():
-        st.chars[i].color = self.text.chars[i].color
-        st.chars[i].underline = self.text.chars[i].underline
-  self.text = st
-  self.rect_min_size = self.text.getTextSize()
-  self.resize(self.rect_size.x, self.rect_size.y)
-  self.text.rendered = false
+method setHint*(self: EditTextRef, t: string, save_properties: bool = false) =
+  changeText(self, t, save_properties, hint)
 
 method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
   ## Handles user input. Thi uses in the `window.nim`.
@@ -149,7 +155,6 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
 
       elif event.key in pressed_keys:  # Normal chars
         if event.key_int == 8:  # Backspace
-          echo ($self.text, ", ", self.caret_pos)
           if self.caret_pos > 1 and self.caret_pos < self.text.len().uint32:
             self.setText(($self.text).toRunes()[0..self.caret_pos-2].`$` & ($self.text).toRunes()[self.caret_pos..^1].`$`)
             self.caret_pos -= 1
