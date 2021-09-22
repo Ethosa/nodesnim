@@ -30,28 +30,28 @@ proc Popup*(name: string = "Popup"): PopupRef =
   result.background.setColor(Color(0x212121ff))
   result.rect_size.x = 160
   result.rect_size.y = 160
-  result.visible = false
+  result.visible = GONE
   result.kind = POPUP_NODE
 
 
 template recalc =
   for child in self.getChildIter():
-    if child.visible and not self.visible:
-      child.visible = false
-    elif not child.visible and self.visible:
-      child.visible = true
+    if child.visible != GONE and self.visible == GONE:
+      child.visible = GONE
+    elif child.visible != VISIBLE and self.visible == VISIBLE:
+      child.visible = VISIBLE
 
 
 method hide*(self: PopupRef) =
   ## Hides popup.
   {.warning[LockLevel]: off.}
-  self.visible = false
+  self.visible = GONE
   recalc()
 
 method show*(self: PopupRef) =
   ## Shws popup.
   {.warning[LockLevel]: off.}
-  self.visible = true
+  self.visible = VISIBLE
   recalc()
 
 method calcPositionAnchor*(self: PopupRef) =

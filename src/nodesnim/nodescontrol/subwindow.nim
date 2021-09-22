@@ -48,7 +48,7 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
   result.background.setBorderWidth(1)
   result.rect_size.x = 320
   result.rect_size.y = 220
-  result.visible = false
+  result.visible = GONE
   result.title = Label("Title")
   result.title.setText("Title")
   result.title.parent = result
@@ -83,15 +83,15 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
   for child in self.getChildIter():
     child.CanvasRef.calcGlobalPosition()
     if child.CanvasRef.global_position.x > self.global_position.x + self.rect_size.x:
-      child.visible = false
+      child.visible = GONE
     elif child.CanvasRef.global_position.y > self.global_position.y + self.rect_size.y:
-      child.visible = false
+      child.visible = GONE
     elif child.CanvasRef.global_position.x + child.CanvasRef.rect_size.x < self.global_position.x:
-      child.visible = false
+      child.visible = GONE
     elif child.CanvasRef.global_position.y + child.CanvasRef.rect_size.y < self.global_position.y:
-      child.visible = false
+      child.visible = GONE
     else:
-      child.visible = true
+      child.visible = VISIBLE
 
   self.title_bar.draw(x, y, self.rect_size.x, 32)
 
@@ -141,9 +141,9 @@ method handle*(self: SubWindowRef, event: InputEvent, mouse_on: var NodeRef) =
     if left and top:
       setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENWSE))
     elif left and bottom:
-      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENWSE))
-    elif right and bottom:
       setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENESW))
+    elif right and bottom:
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENWSE))
     elif right and top:
       setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZENESW))
     elif left or right:

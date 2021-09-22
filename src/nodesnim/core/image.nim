@@ -4,7 +4,6 @@ import
   ../thirdparty/sdl2,
   ../thirdparty/sdl2/image,
 
-  tileset,
   vector2
 
 when defined(debug):
