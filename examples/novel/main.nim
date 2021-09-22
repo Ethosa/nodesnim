@@ -9,8 +9,8 @@ var
   # Charapters:
   akiko_default = load("assets/test.png", GL_RGBA)
   dialog = @[
-    ("Me", "H-Hey .. ?", false),
-    ("Eileen", "NANI??????", true)
+    ("Me", "H-Hey .. ?", GONE),
+    ("Eileen", "NANI??????", VISIBLE)
   ]
   stage = 0
 
