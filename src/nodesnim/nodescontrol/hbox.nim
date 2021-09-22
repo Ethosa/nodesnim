@@ -60,7 +60,7 @@ method addChild*(self: HBoxRef, child: NodeRef) =
   ## - `child`: other node.
   self.children.add(child)
   child.parent = self
-  self.resize(self.rect_size.x, self.rect_size.y)
+  self.resize(self.rect_size.x, self.rect_size.y, true)
 
 
 method draw*(self: HBoxRef, w, h: GLfloat) =

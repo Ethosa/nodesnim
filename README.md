@@ -97,20 +97,26 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 ## Screenshots
 <div align="center">
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/hello_world">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/1.png" width="380" height="220" alt="Hello world example">
+  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/hello_world">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/1.png" width="380" height="220" alt="Hello world example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/calculator">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/2.png" width="380" height="220" alt="Calculator example">
+  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/calculator">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/2.png" width="380" height="220" alt="Calculator example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/snake">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/3.png" width="380" height="220" alt="Snake game example">
+  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/snake">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/3.png" width="380" height="220" alt="Snake game example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/screensaver">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/4.png" width="380" height="220" alt="Screensaver example">
+  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/screensaver">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/4.png" width="380" height="220" alt="Screensaver example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/novel">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/5.png" width="380" height="220" alt="Novel game example">
+  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/novel">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/5.png" width="380" height="220" alt="Novel game example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/roguelike">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/6.png" width="380" height="220" alt="Roguelike game example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/sample messenger">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/8.png" width="380" height="220" alt="sample messenger">
   </a>
 </div>
 

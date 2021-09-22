@@ -249,6 +249,20 @@ proc rect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) =
   canvas.renderer.drawRect(rectangle)
   loadGL(canvas)
 
+proc fillRect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) =
+  ## Draws a line in the canvas.
+  ##
+  ## Arguments:
+  ## - `x1` - first position at X axis.
+  ## - `y1` - first position at Y axis.
+  ## - `x2` - second position at X axis.
+  ## - `y2` - second position at Y axis.
+  ## - `color` - rectangle color.
+  loadColor(color)
+  var rectangle = rect(x1.cint, y1.cint, x2.cint, y2.cint)
+  canvas.renderer.fillRect(rectangle)
+  loadGL(canvas)
+
 proc point*(canvas: CanvasRef, x, y: GLfloat, color: ColorRef) =
   ## Draws a point in the canvas.
   ##
