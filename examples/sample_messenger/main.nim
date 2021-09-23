@@ -8,7 +8,7 @@ import
 when isMainModule:
   Window("Client", 320, 640)
 
-  Input.addKeyAction("send", 13)  # Enter
+  addKeyAction("send", 13)  # Enter
 
 
   addScene(chat_scene)

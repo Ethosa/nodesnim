@@ -97,25 +97,25 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 ## Screenshots
 <div align="center">
-  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/hello_world">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/hello_world">
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/1.png" width="380" height="220" alt="Hello world example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/calculator">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/calculator">
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/2.png" width="380" height="220" alt="Calculator example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/snake">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/snake">
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/3.png" width="380" height="220" alt="Snake game example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/screensaver">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/screensaver">
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/4.png" width="380" height="220" alt="Screensaver example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/novel">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/novel">
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/5.png" width="380" height="220" alt="Novel game example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/roguelike">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/roguelike">
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/6.png" width="380" height="220" alt="Roguelike game example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/nightly/examples/sample messenger">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/sample_messenger">
     <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/7.png" width="240" height="480" alt="sample messenger">
   </a>
 </div>

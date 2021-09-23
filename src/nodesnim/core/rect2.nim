@@ -8,10 +8,10 @@ type
     x*, y*, w*, h*: float
 
 
-proc Rect2*(x, y, w, h: float): Rect2Obj =
+proc Rect2*(x, y, w, h: float): Rect2Obj {.inline.} =
   Rect2Obj(x: x, y: y, w: w, h: h)
 
-proc Rect2*(pos, size: Vector2Obj): Rect2Obj =
+proc Rect2*(pos, size: Vector2Obj): Rect2Obj {.inline.} =
   Rect2Obj(
     x: pos.x, y: pos.y,
     w: size.x, h: size.y
@@ -24,7 +24,7 @@ proc contains*(self: Rect2Obj, x, y: float): bool {.inline.} =
 proc contains*(self: Rect2Obj, vector: Vector2Obj): bool {.inline.} =
   self.contains(vector.x, vector.y)
 
-proc contains*(self, other: Rect2Obj): bool =
+proc contains*(self, other: Rect2Obj): bool {.inline.} =
   (self.contains(other.x, other.y) and
    self.contains(other.x+other.w, other.y) and
    self.contains(other.x, other.y+other.h) and
@@ -50,7 +50,7 @@ proc contains*(self: Rect2Obj, a, b: Vector2Obj): bool =
     bottom = intersects(a, b, Vector2(self.x, self.y+self.h), Vector2(self.x+self.w, self.y+self.h))
   left or right or bottom or top
 
-proc clamp*(a, b, c: float): float =
+proc clamp*(a, b, c: float): float {.inline.} =
   if a < b:
     b
   elif a > c:

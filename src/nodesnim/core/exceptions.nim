@@ -1,5 +1,5 @@
 # author: Ethosa
 
 type
-  SceneError* = object of ValueError
-  WindowError* = object of ValueError
+  SceneError* {.size: sizeof(int8).} = object of ValueError
+  WindowError* {.size: sizeof(int8).} = object of ValueError

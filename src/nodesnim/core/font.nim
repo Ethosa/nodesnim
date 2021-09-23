@@ -108,6 +108,9 @@ proc `&`*(text, t: StyleText): StyleText =
   for c in t.chars:
     result.chars.add(c)
 
+proc `&`*(text: StyleText, t: string): StyleText =
+  text & stext(t)
+
 proc `&`*(text: string, c: StyleUnicode): string =
   text & $c
 
@@ -125,6 +128,9 @@ proc `&=`*(text: var string, c: StyleUnicode) =
 
 proc `&=`*(text: var string, t: StyleText) =
   text = text & $t
+
+proc `&=`*(text: var StyleText, t: string) =
+  text &= stext(t)
 
 
 proc splitLines*(text: StyleText): seq[StyleText] =
@@ -191,15 +197,16 @@ proc renderSurface*(text: StyleText, anchor: AnchorObj): SurfacePtr =
       return
 
   if not text.font.isNil() and $text != "":
-    var
+    let
       lines = text.splitLines()
       textsize = text.getTextSize()
+    var
       surface = createRGBSurface(
         0, textsize.x.cint, textsize.y.cint, 32,
         0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000'u32)
+      y: cint = 0
       w: cint
       h: cint
-      y: cint = 0
 
     for line in lines:
       discard text.font.sizeUtf8(($line).cstring, addr w, addr h)
@@ -259,7 +266,7 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorObj) =
       pos1.y -= size.y*anchor.y1 - textsize.y*anchor.y2
 
     if textsize.x > size1.x:
-      var
+      let
         x1 = (size1.x*anchor.x1 - textsize.x*anchor.x2) / textsize.x
         x2 =
           if x1 > 0.5:
@@ -269,7 +276,7 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorObj) =
       texcord[0] = abs(x2)
       texcord[2] = abs(x1)
     if textsize.y > size1.y:
-      var
+      let
         y1 = (size1.y*anchor.y1 - textsize.y*anchor.y2) / textsize.y
         y2 =
           if y1 > 0.5:

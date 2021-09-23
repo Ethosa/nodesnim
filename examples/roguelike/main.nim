@@ -69,20 +69,20 @@ for i in 0..32:
 
 
 # Movement
-Input.addKeyAction("forward", "w")
-Input.addKeyAction("backward", "s")
-Input.addKeyAction("right", "d")
-Input.addKeyAction("left", "a")
+addKeyAction("forward", "w")
+addKeyAction("backward", "s")
+addKeyAction("right", "d")
+addKeyAction("left", "a")
 
 player@onInput(self, event):
-  if Input.isActionPressed("right"):
+  if isActionPressed("right"):
     player.moveAndCollide(Vector2(PLAYER_SPEED, 0))
-  elif Input.isActionPressed("left"):
+  elif isActionPressed("left"):
     player.moveAndCollide(Vector2(-PLAYER_SPEED, 0))
 
-  if Input.isActionPressed("forward"):
+  if isActionPressed("forward"):
     player.moveAndCollide(Vector2(0, -PLAYER_SPEED))
-  elif Input.isActionPressed("backward"):
+  elif isActionPressed("backward"):
     player.moveAndCollide(Vector2(0, PLAYER_SPEED))
 
 

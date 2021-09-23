@@ -8,7 +8,7 @@ import
 
 
 type
-  InputEventType* {.size: sizeof(int8).} = enum
+  InputEventType* {.pure, size: sizeof(int8).} = enum
     MOUSE,     ## Mouse button.
     TOUCH,     ## Touch screen.
     MOTION,    ## Mouse motion.
@@ -23,8 +23,6 @@ type
     key_cint*: cint
     button_index*: cint
     name*, key*: string
-
-  Input* = object
 
   InputEvent* = ref object
     kind*: InputEventType
@@ -49,47 +47,47 @@ const
 
 
 var
+  last_key_state*: bool = false
+  key_state*: bool = false
+  mouse_pressed*: bool = false
+  press_state*: int = 0
+  last_event*: InputEvent = InputEvent()
   pressed_keys*: seq[string] = @[]
   pressed_keys_ints*: seq[cint] = @[]
   pressed_keys_cints*: seq[cint] = @[]
-  last_event*: InputEvent = InputEvent()
-  last_key_state*: bool = false
-  key_state*: bool = false
-  press_state*: int = 0
   actionlist*: seq[InputAction] = @[]
-  mouse_pressed*: bool = false
 
 
-proc isInputEventVoid*(a: InputEvent): bool =
+proc isInputEventVoid*(a: InputEvent): bool {.inline.} =
   ## Returns true, when `a` kind is an UNKNOWN.
   a.kind == UNKNOWN
 
-proc isInputEventMouseButton*(a: InputEvent): bool =
+proc isInputEventMouseButton*(a: InputEvent): bool {.inline.} =
   ## Returns true, when `a` kind is a MOUSE.
   a.kind == MOUSE
 
-proc isInputEventMouseMotion*(a: InputEvent): bool =
+proc isInputEventMouseMotion*(a: InputEvent): bool {.inline.} =
   ## Returns true, when `a` kind is a MOTION.
   a.kind == MOTION
 
-proc isInputEventMouseWheel*(a: InputEvent): bool =
+proc isInputEventMouseWheel*(a: InputEvent): bool {.inline.} =
   ## Returns true, when `a` kind is a WHEEL.
   a.kind == WHEEL
 
-proc isInputEventTouchScreen*(a: InputEvent): bool =
+proc isInputEventTouchScreen*(a: InputEvent): bool {.inline.} =
   ## Returns true, when `a` kind is a TOUCH.
   a.kind == TOUCH
 
-proc isInputEventKeyboard*(a: InputEvent): bool =
+proc isInputEventKeyboard*(a: InputEvent): bool {.inline.} =
   ## Returns true, when `a` kind is a KEYBOARD.
   a.kind == KEYBOARD
 
-proc isInputEventText*(a: InputEvent): bool =
+proc isInputEventText*(a: InputEvent): bool {.inline.} =
   ## Returns true, when `a` kind is a KEYBOARD.
   a.kind == TEXT
 
 
-proc addButtonAction*(a: type Input, name: string, button: uint8 | cint) =
+proc addButtonAction*(name: string, button: uint8 | cint) {.inline.} =
   ## Adds a new action on button.
   ##
   ## Arguments:
@@ -97,7 +95,7 @@ proc addButtonAction*(a: type Input, name: string, button: uint8 | cint) =
   ## - `button` - button index, e.g.: BUTTON_LEFT, BUTTON_RIGHT or BUTTON_MIDDLE.
   actionlist.add(InputAction(kind: MOUSE, name: name, button_index: button.cint))
 
-proc addKeyAction*(a: type Input, name, key: string) =
+proc addKeyAction*(name, key: string) {.inline.} =
   ## Adds a new action on keyboard.
   ##
   ## Arguments:
@@ -105,7 +103,7 @@ proc addKeyAction*(a: type Input, name, key: string) =
   ## - `key` - key, e.g.: "w", "1", etc.
   actionlist.add(InputAction(kind: KEYBOARD, name: name, key: key, key_int: ord(key[0]).cint))
 
-proc addKeyAction*(a: type Input, name: string, key: cint) =
+proc addKeyAction*(name: string, key: cint) {.inline.} =
   ## Adds a new action on keyboard.
   ##
   ## Arguments:
@@ -113,7 +111,7 @@ proc addKeyAction*(a: type Input, name: string, key: cint) =
   ## - `key` - key, e.g.: K_ESCAPE, K_0, etc.
   actionlist.add(InputAction(kind: KEYBOARD, name: name, key_int: key))
 
-proc addTouchAction*(a: type Input, name: string) =
+proc addTouchAction*(name: string) {.inline.} =
   ## Adds a new action on touch screen.
   ##
   ## Arguments:
@@ -121,7 +119,7 @@ proc addTouchAction*(a: type Input, name: string) =
   actionlist.add(InputAction(kind: TOUCH, name: name))
 
 
-proc isActionJustPressed*(a: type Input, name: string): bool =
+proc isActionJustPressed*(name: string): bool =
   ## Returns true, when action active one times.
   ##
   ## Arguments:
@@ -143,7 +141,7 @@ proc isActionJustPressed*(a: type Input, name: string): bool =
           if press_state == 0:
             result = true
 
-proc isActionPressed*(a: type Input, name: string): bool =
+proc isActionPressed*(name: string): bool =
   ## Returns true, when action active one or more times.
   ##
   ## Arguments:
@@ -158,11 +156,11 @@ proc isActionPressed*(a: type Input, name: string): bool =
         if press_state > 0:
           result = true
       elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
-        if action.key_int in pressed_keys_ints:
+        if action.key_int in pressed_keys_ints or action.key in pressed_keys:
           if press_state > 0:
             result = true
 
-proc isActionReleased*(a: type Input, name: string): bool =
+proc isActionReleased*(name: string): bool =
   ## Returns true, when action no more active.
   ##
   ## Arguments:

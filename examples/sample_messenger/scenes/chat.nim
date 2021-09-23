@@ -58,7 +58,7 @@ background@onEnter(self):
   createThread(thr, listenChat, (chat_scene.addr, username.addr, timed_chat.addr))
 
 background@onInput(self, event):
-  if Input.isActionJustPressed("send"):
+  if isActionJustPressed("send"):
     if message.getText().len > 0:
       sendMessage(message.getText())
       message.setText("")

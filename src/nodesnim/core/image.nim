@@ -9,8 +9,6 @@ import
 when defined(debug):
   import logging
 
-discard image.init()
-
 
 type
   GlTextureObj* = object of RootObj
@@ -27,7 +25,7 @@ proc load*(file: cstring, x, y: var float, mode: Glenum = GL_RGB): Gluint =
     surface = image.load(file)  # load image from file
     textureid: Gluint
   when defined(debug):
-    if surface == nil:
+    if surface.isNil():
       error("image \"", file, "\" not loaded!")
   x = surface.w.float
   y = surface.h.float

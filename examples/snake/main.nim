@@ -34,20 +34,20 @@ var
   time = 0
 
 
-Input.addKeyAction("forward", "w")
-Input.addKeyAction("backward", "s")
-Input.addKeyAction("left", "a")
-Input.addKeyAction("right", "d")
+addKeyAction("forward", "w")
+addKeyAction("backward", "s")
+addKeyAction("left", "a")
+addKeyAction("right", "d")
 
 
 canvas@on_process(self):
-  if Input.isActionJustPressed("forward"):
+  if isActionJustPressed("forward"):
     snake.dir = Vector2(0, -40)
-  elif Input.isActionJustPressed("backward"):
+  elif isActionJustPressed("backward"):
     snake.dir = Vector2(0, 40)
-  elif Input.isActionJustPressed("left"):
+  elif isActionJustPressed("left"):
     snake.dir = Vector2(-40, 0)
-  elif Input.isActionJustPressed("right"):
+  elif isActionJustPressed("right"):
     snake.dir = Vector2(40, 0)
   if time < 10:
     inc time
