@@ -12,7 +12,7 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
             if line[1][1].kind == nnkIdent:
               result.add(newVarStmt(line[1][1], newCall($line[1][0], newStrLitNode($line[1][1]))))
             elif line[1][1].kind == nnkObjConstr:
-              result.add(newVarStmt(line[1][1][0], newCall($line[1][0], newStrLitNode($line[1][1]))))
+              result.add(newVarStmt(line[1][1][0], newCall($line[1][0], newStrLitNode($line[1][1][0]))))
             elif line[1][1].kind == nnkPar:
               result.add(newVarStmt(postfix(line[1][1][0], "*"), newCall($line[1][0], newStrLitNode($line[1][1][0]))))
             if level.len() > 0:
@@ -50,11 +50,14 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
 
 macro build*(code: untyped): untyped =
   ## Builds nodes with YML-like syntax.
-  runnableExamples:
-    build:
-      - Scene scene:
-        Node test_node
-        Node node
+  ##
+  ## Example:
+  ## .. code-block:: nim
+  ##
+  ##   build:
+  ##     - Scene scene:
+  ##       Node test_node
+  ##       Node node
   result = newStmtList()
   var
     current_level: seq[NimNode] = @[]
