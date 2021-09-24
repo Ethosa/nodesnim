@@ -20,4 +20,4 @@ proc enter*(): Future[bool] {.async.} =
 
 
 proc sendMessage*(msg: string) =
-  var response = waitFor client.get("http://127.0.0.1:5000/send?" & encodeQuery({"username": username, "msg": msg}))
+  discard waitFor client.get("http://127.0.0.1:5000/send?" & encodeQuery({"username": username, "msg": msg}))

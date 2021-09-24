@@ -49,7 +49,6 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 
   build:
     - Scene scene:
-      name: "Main"
       - Label hello:
         call setSizeAnchor(1, 1)
         call setTextAlign(0.5, 0.5, 0.5, 0.5)

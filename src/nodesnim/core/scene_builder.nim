@@ -10,11 +10,11 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
         if line[0].kind == nnkIdent and line[1].kind == nnkCommand:
           if $line[0] == "-":
             if line[1][1].kind == nnkIdent:
-              result.add(newVarStmt(line[1][1], newCall($line[1][0])))
+              result.add(newVarStmt(line[1][1], newCall($line[1][0], newStrLitNode($line[1][1]))))
             elif line[1][1].kind == nnkObjConstr:
-              result.add(newVarStmt(line[1][1][0], newCall($line[1][0])))
+              result.add(newVarStmt(line[1][1][0], newCall($line[1][0], newStrLitNode($line[1][1]))))
             elif line[1][1].kind == nnkPar:
-              result.add(newVarStmt(postfix(line[1][1][0], "*"), newCall($line[1][0])))
+              result.add(newVarStmt(postfix(line[1][1][0], "*"), newCall($line[1][0], newStrLitNode($line[1][1][0]))))
             if level.len() > 0:
               # - Scene main_scene:
               if line[1][1].kind == nnkIdent:
@@ -32,7 +32,7 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
         line[1].insert(1, level[^1])
         result.add(line[1])
       # property: value -> currentNode.property = value
-      elif line.kind in [nnkCall, nnkExprColonExpr] and level.len() > 1:
+      elif line.kind in [nnkCall, nnkExprColonExpr] and level.len() > 0:
         var attr = newNimNode(nnkAsgn)
         attr.add(newNimNode(nnkDotExpr))
         attr[0].add(level[^1])
@@ -50,6 +50,11 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
 
 macro build*(code: untyped): untyped =
   ## Builds nodes with YML-like syntax.
+  runnableExamples:
+    build:
+      - Scene scene:
+        Node test_node
+        Node node
   result = newStmtList()
   var
     current_level: seq[NimNode] = @[]

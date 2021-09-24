@@ -211,10 +211,11 @@ proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Obj, b: uint16]
         return result
     result[0].y -= text.spacing
 
-proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj): uint32 =
+proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj, text_align: AnchorObj): uint32 =
   ## Returns caret position under mouse.
   if not text.font.isNil():
     let
+      textsize = text.getTextSize()
       local_pos = global_pos - text_pos
       lines = text.splitLines()
     var
@@ -228,14 +229,14 @@ proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj): uint3
       discard text.font.sizeUtf8(($line).cstring, addr w, addr h)
       if local_pos.y >= y and local_pos.y <= y + h.float:
         position.y = y
-      x = 0
+      x = textsize.x*text_align.x1 - w.Glfloat*text_align.x2
       for c in line.chars:
         discard text.font.sizeUtf8(($c).cstring, addr w, addr h)
-        x += w.float
         result += 1
         if local_pos.x >= x and local_pos.x <= x+w.float and position.y != -1f:
           position.x = x
           break
+        x += w.float
       if position.x != -1f:
         break
       y += text.spacing + h.float
@@ -262,7 +263,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
     var
       surface = createRGBSurface(
         0, textsize.x.cint, textsize.y.cint, 32,
-        0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000'u32)
+        0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)
       y: cint = 0
       w: cint
       h: cint
