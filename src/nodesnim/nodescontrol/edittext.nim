@@ -16,8 +16,7 @@ import
   ../nodes/canvas,
 
   label,
-  control,
-  unicode
+  control
 
 
 type
@@ -31,7 +30,7 @@ type
     on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
 
 const
-  BLINK_TIME: uint8 = 20
+  BLINK_TIME: uint8 = 15
   BLINK_WIDTH: float = 2
 
 proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditTextRef =
@@ -136,6 +135,11 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
     else:
       setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_ARROW))
 
+  if event.kind == MOUSE and event.pressed and self.hovered:
+    self.caret_pos = self.text.getPosUnderPoint(
+      self.getGlobalMousePosition(),
+      self.global_position + self.rect_size/2 - self.text.getTextSize()/2)
+
   if self.focused:
     if event.kind == TEXT and not event.pressed:
       # Other keys
@@ -151,24 +155,23 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
         self.setText(($self.text) & event.key)
         self.caret_pos += 1
         self.on_edit(event.key)
-    elif event.kind == KEYBOARD:
+    elif event.kind == KEYBOARD and event.key in pressed_keys:
       # Arrows
-      if event.key_int == K_LEFT and self.caret_pos > 0 and event.key_int in pressed_keys_ints:
+      if event.key_int == K_LEFT and self.caret_pos > 0:
         self.caret_pos -= 1
-      elif event.key_int == K_RIGHT and self.caret_pos < self.text.len().uint32 and event.key_int in pressed_keys_ints:
+      elif event.key_int == K_RIGHT and self.caret_pos < self.text.len().uint32:
         self.caret_pos += 1
 
-      elif event.key in pressed_keys:  # Normal chars
-        if event.key_int == 8:  # Backspace
-          if self.caret_pos > 1 and self.caret_pos < self.text.len().uint32:
-            self.setText(($self.text).toRunes()[0..self.caret_pos-2].`$` & ($self.text).toRunes()[self.caret_pos..^1].`$`)
-            self.caret_pos -= 1
-          elif self.caret_pos == self.text.len().uint32 and self.caret_pos > 0:
-            self.setText(($self.text).toRunes()[0..^2].`$`)
-            self.caret_pos -= 1
-          elif self.caret_pos == 1:
-            self.setText(($self.text).toRunes()[1..^1].`$`)
-            self.caret_pos -= 1
-        elif event.key_int == 13:  # Next line
-          self.setText($self.text & "\n")
-          self.caret_pos += 1
+      elif event.key_int == 8:  # Backspace
+        if self.caret_pos > 1 and self.caret_pos < self.text.len().uint32:
+          self.setText($self.text[0..self.caret_pos-2] & $self.text[self.caret_pos..^1])
+          self.caret_pos -= 1
+        elif self.caret_pos == self.text.len().uint32 and self.caret_pos > 0:
+          self.setText($self.text[0..^2])
+          self.caret_pos -= 1
+        elif self.caret_pos == 1:
+          self.setText($self.text[1..^1])
+          self.caret_pos -= 1
+      elif event.key_int == 13:  # Next line
+        self.setText($self.text[0..self.caret_pos-1] & "\n" & $self.text[self.caret_pos..^1])
+        self.caret_pos += 1

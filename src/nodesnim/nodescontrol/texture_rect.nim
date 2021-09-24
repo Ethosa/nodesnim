@@ -122,7 +122,7 @@ method duplicate*(self: TextureRectRef): TextureRectRef {.base.} =
   ## Duplicates TextureRect and create a new TextureRect.
   self.deepCopy()
 
-method loadTexture*(self: TextureRectRef, file: cstring) {.base.} =
+method loadTexture*(self: TextureRectRef, file: string) {.base.} =
   ## Loads texture from file.
   ##
   ## Arguments:

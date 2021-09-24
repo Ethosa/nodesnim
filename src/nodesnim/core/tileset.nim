@@ -4,10 +4,9 @@ import
   ../thirdparty/sdl2,
   ../thirdparty/sdl2/image,
 
-  vector2
+  vector2,
+  exceptions
 
-when defined(debug):
-  import logging
 
 type
   TileSetObj* = ref object
@@ -22,8 +21,7 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
     textureid: Gluint = 0
   when defined(debug):
     if surface.isNil():
-      error("image \"", img, "\" not loaded!")
-      return
+      raise newException(ResourceError, "image \"" & img & "\" not loaded!")
 
   glGenTextures(1, textureid.addr)
   glBindTexture(GL_TEXTURE_2D, textureid)

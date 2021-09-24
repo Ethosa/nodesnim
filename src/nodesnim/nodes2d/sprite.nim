@@ -98,7 +98,7 @@ method getGlobalMousePosition*(self: SpriteRef): Vector2Obj {.inline.} =
   ## Returns mouse position.
   Vector2Obj(x: last_event.x, y: last_event.y)
 
-method loadTexture*(self: SpriteRef, file: cstring, mode = GL_RGB) {.base.} =
+method loadTexture*(self: SpriteRef, file: string, mode = GL_RGB) {.base.} =
   ## Loads a new texture from file.
   ##
   ## Arguments:

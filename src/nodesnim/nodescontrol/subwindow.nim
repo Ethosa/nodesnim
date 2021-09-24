@@ -247,7 +247,7 @@ method setIcon*(self: SubWindowRef, gltexture: GlTextureObj) {.base.} =
   self.icon = gltexture
 
 
-method setIcon*(self: SubWindowRef, file: cstring) {.base.} =
+method setIcon*(self: SubWindowRef, file: string) {.base.} =
   ## Loads icon from file.
   ##
   ## Arguments:

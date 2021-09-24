@@ -9,6 +9,10 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
+
+[![channel icon](https://patrolavia.github.io/telegram-badge/follow.png)](https://t.me/nim1love)
+[![channel icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/nodesnim)
+
 <h4>Stable version - 0.3.2</h4>
 </div>
 
