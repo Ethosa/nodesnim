@@ -57,7 +57,8 @@ macro build*(code: untyped): untyped =
   ##   build:
   ##     - Scene scene:
   ##       Node test_node
-  ##       Node node
+  ##       Label text:
+  ##         call setText("Hello, world!")
   result = newStmtList()
   var
     current_level: seq[NimNode] = @[]

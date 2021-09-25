@@ -92,7 +92,8 @@ For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. 
 
 ## Export
 Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.
-[Static linking SDL2](https://github.com/nim-lang/sdl2#static-linking-sdl2)
+[Static linking SDL2](https://github.com/nim-lang/sdl2#static-linking-sdl2)  
+Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an installer
 
 -   CrossPlatform export for Windows (tested on Windows 7 x64 and Windows 10 x64)
     -   `nim c -d:mingw -d:release --opt:speed --noNimblePath file.nim`

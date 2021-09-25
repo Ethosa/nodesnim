@@ -41,7 +41,7 @@ proc `[]=`*(a: StyleSheetRef, key, value: string) =
       return
   a.dict.add((key, value))
 
-proc count*(a: StyleSheetRef): int {.inline.} =
+proc len*(a: StyleSheetRef): int {.inline.} =
   ## Returns styles count.
   a.dict.len()
 

@@ -42,6 +42,7 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
   surface = nil
 
 proc draw*(self: TileSetObj, tilex, tiley, x, y: float) =
+  ## Draws tile at position `tilex`,`tiley` to `x`,`y` position.
   if self.texture > 0:
     let
       texx1 = self.grid.x*tilex / self.size.x

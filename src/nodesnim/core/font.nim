@@ -211,7 +211,8 @@ proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Obj, b: uint16]
         return result
     result[0].y -= text.spacing
 
-proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj, text_align: AnchorObj): uint32 =
+proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
+                       text_align: AnchorObj = Anchor(0, 0, 0, 0)): uint32 =
   ## Returns caret position under mouse.
   if not text.font.isNil():
     let
@@ -301,7 +302,8 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, surface.w,  surface.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, surface.pixels)
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, surface.w, surface.h,
+                 0, GL_RGBA, GL_UNSIGNED_BYTE, surface.pixels)
 
     # free memory
     surface.freeSurface()
