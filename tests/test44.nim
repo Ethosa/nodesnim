@@ -7,7 +7,7 @@ Window("drawable oops")
 build:
   - Scene scene:
     - Control ctrl:
-      call resize(100, 150)
+      call resize(256, 256)
       call move(150, 50)
 
 var gradient = GradientDrawable()
