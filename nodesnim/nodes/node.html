@@ -111,7 +111,7 @@ function main() {
     title="NodeObj = object of RootObj
   kind*: NodeKind
   type_of_node*: NodeTypes
-  visible*: bool
+  visible*: Visibility
   is_ready*: bool
   pausemode*: PauseMode        ## Pause mode, by default is INHERIT.
   name*: string                ## Node name.
@@ -229,7 +229,7 @@ function main() {
 <dt><pre><a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeKind"><span class="Identifier">NodeKind</span></a>
   <span class="Identifier">type_of_node</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeTypes"><span class="Identifier">NodeTypes</span></a>
-  <span class="Identifier">visible</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">visible</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#Visibility"><span class="Identifier">Visibility</span></a>
   <span class="Identifier">is_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">pausemode</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#PauseMode"><span class="Identifier">PauseMode</span></a>        <span class="Comment">## Pause mode, by default is INHERIT.</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>                <span class="Comment">## Node name.</span>
@@ -531,7 +531,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-20 16:25:24 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-26 13:10:50 UTC</small>
       </div>
     </div>
   </div>

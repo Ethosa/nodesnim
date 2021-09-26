@@ -115,7 +115,7 @@ function main() {
   TEXTURE_KEEP_ASPECT_RATIO,  ## Fill texture with keeping the aspect ratio.
   TEXTURE_CROP                ## Crop and fill texture."><wbr />Texture<wbr />Mode<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#NodeKind"
-    title="NodeKind {.pure.} = enum
+    title="NodeKind {.pure, size: 1.} = enum
   NODE_NODE, CANVAS_NODE, SCENE_NODE, AUDIO_STREAM_PLAYER_NODE,
   ANIMATION_PLAYER_NODE, COLLISION_SHAPE_2D_NODE, YSORT_NODE, CAMERA_2D_NODE,
   SPRITE_NODE, ANIMATED_SPRITE_NODE, NODE2D_NODE, KINEMATIC_BODY_2D_NODE,
@@ -125,8 +125,11 @@ function main() {
   TEXTURE_PROGRESS_BAR_NODE, TEXTURE_RECT_NODE, VBOX_NODE, SUB_WINDOW_NODE,
   NODE3D_NODE, GEOMETRY_INSTANCE_NODE, CAMERA_3D_NODE"><wbr />Node<wbr />Kind<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#NodeTypes"
-    title="NodeTypes {.pure.} = enum
+    title="NodeTypes {.pure, size: 1.} = enum
   NODE_TYPE_DEFAULT, NODE_TYPE_CONTROL, NODE_TYPE_2D, NODE_TYPE_3D"><wbr />Node<wbr />Types<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#Visibility"
+    title="Visibility {.pure, size: 1.} = enum
+  VISIBLE, INVISIBLE, GONE"><wbr />Visibility<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -171,7 +174,7 @@ function main() {
 
 </dd>
 <a id="NodeKind"></a>
-<dt><pre><a href="enums.html#NodeKind"><span class="Identifier">NodeKind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt><pre><a href="enums.html#NodeKind"><span class="Identifier">NodeKind</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">NODE_NODE</span><span class="Other">,</span> <span class="Identifier">CANVAS_NODE</span><span class="Other">,</span> <span class="Identifier">SCENE_NODE</span><span class="Other">,</span> <span class="Identifier">AUDIO_STREAM_PLAYER_NODE</span><span class="Other">,</span>
   <span class="Identifier">ANIMATION_PLAYER_NODE</span><span class="Other">,</span> <span class="Identifier">COLLISION_SHAPE_2D_NODE</span><span class="Other">,</span> <span class="Identifier">YSORT_NODE</span><span class="Other">,</span> <span class="Identifier">CAMERA_2D_NODE</span><span class="Other">,</span>
   <span class="Identifier">SPRITE_NODE</span><span class="Other">,</span> <span class="Identifier">ANIMATED_SPRITE_NODE</span><span class="Other">,</span> <span class="Identifier">NODE2D_NODE</span><span class="Other">,</span> <span class="Identifier">KINEMATIC_BODY_2D_NODE</span><span class="Other">,</span>
@@ -186,8 +189,16 @@ function main() {
 
 </dd>
 <a id="NodeTypes"></a>
-<dt><pre><a href="enums.html#NodeTypes"><span class="Identifier">NodeTypes</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt><pre><a href="enums.html#NodeTypes"><span class="Identifier">NodeTypes</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">NODE_TYPE_DEFAULT</span><span class="Other">,</span> <span class="Identifier">NODE_TYPE_CONTROL</span><span class="Other">,</span> <span class="Identifier">NODE_TYPE_2D</span><span class="Other">,</span> <span class="Identifier">NODE_TYPE_3D</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="Visibility"></a>
+<dt><pre><a href="enums.html#Visibility"><span class="Identifier">Visibility</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">VISIBLE</span><span class="Other">,</span> <span class="Identifier">INVISIBLE</span><span class="Other">,</span> <span class="Identifier">GONE</span></pre></dt>
 <dd>
 
 
@@ -203,7 +214,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-20 16:25:24 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-26 13:10:50 UTC</small>
       </div>
     </div>
   </div>

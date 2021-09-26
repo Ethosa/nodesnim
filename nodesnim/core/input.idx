@@ -1,6 +1,5 @@
 InputEventType	nodesnim/core/input.html#InputEventType	input: InputEventType	
 InputAction	nodesnim/core/input.html#InputAction	input: InputAction	
-Input	nodesnim/core/input.html#Input	input: Input	
 InputEvent	nodesnim/core/input.html#InputEvent	input: InputEvent	
 InputEventVoid	nodesnim/core/input.html#InputEventVoid	input: InputEventVoid	
 InputEventMouseButton	nodesnim/core/input.html#InputEventMouseButton	input: InputEventMouseButton	
@@ -10,15 +9,15 @@ InputEventTouchScreen	nodesnim/core/input.html#InputEventTouchScreen	input: Inpu
 InputEventKeyboard	nodesnim/core/input.html#InputEventKeyboard	input: InputEventKeyboard	
 BUTTON_RELEASE	nodesnim/core/input.html#BUTTON_RELEASE	input: BUTTON_RELEASE	
 BUTTON_CLICK	nodesnim/core/input.html#BUTTON_CLICK	input: BUTTON_CLICK	
+last_key_state	nodesnim/core/input.html#last_key_state	input: last_key_state	
+key_state	nodesnim/core/input.html#key_state	input: key_state	
+mouse_pressed	nodesnim/core/input.html#mouse_pressed	input: mouse_pressed	
+press_state	nodesnim/core/input.html#press_state	input: press_state	
+last_event	nodesnim/core/input.html#last_event	input: last_event	
 pressed_keys	nodesnim/core/input.html#pressed_keys	input: pressed_keys	
 pressed_keys_ints	nodesnim/core/input.html#pressed_keys_ints	input: pressed_keys_ints	
 pressed_keys_cints	nodesnim/core/input.html#pressed_keys_cints	input: pressed_keys_cints	
-last_event	nodesnim/core/input.html#last_event	input: last_event	
-last_key_state	nodesnim/core/input.html#last_key_state	input: last_key_state	
-key_state	nodesnim/core/input.html#key_state	input: key_state	
-press_state	nodesnim/core/input.html#press_state	input: press_state	
 actionlist	nodesnim/core/input.html#actionlist	input: actionlist	
-mouse_pressed	nodesnim/core/input.html#mouse_pressed	input: mouse_pressed	
 isInputEventVoid	nodesnim/core/input.html#isInputEventVoid,InputEvent	input: isInputEventVoid(a: InputEvent): bool	
 isInputEventMouseButton	nodesnim/core/input.html#isInputEventMouseButton,InputEvent	input: isInputEventMouseButton(a: InputEvent): bool	
 isInputEventMouseMotion	nodesnim/core/input.html#isInputEventMouseMotion,InputEvent	input: isInputEventMouseMotion(a: InputEvent): bool	
@@ -26,11 +25,11 @@ isInputEventMouseWheel	nodesnim/core/input.html#isInputEventMouseWheel,InputEven
 isInputEventTouchScreen	nodesnim/core/input.html#isInputEventTouchScreen,InputEvent	input: isInputEventTouchScreen(a: InputEvent): bool	
 isInputEventKeyboard	nodesnim/core/input.html#isInputEventKeyboard,InputEvent	input: isInputEventKeyboard(a: InputEvent): bool	
 isInputEventText	nodesnim/core/input.html#isInputEventText,InputEvent	input: isInputEventText(a: InputEvent): bool	
-addButtonAction	nodesnim/core/input.html#addButtonAction,,string,	input: addButtonAction(a: type Input; name: string; button: uint8 | cint)	
-addKeyAction	nodesnim/core/input.html#addKeyAction,,string,string	input: addKeyAction(a: type Input; name, key: string)	
-addKeyAction	nodesnim/core/input.html#addKeyAction,,string,cint	input: addKeyAction(a: type Input; name: string; key: cint)	
-addTouchAction	nodesnim/core/input.html#addTouchAction,,string	input: addTouchAction(a: type Input; name: string)	
-isActionJustPressed	nodesnim/core/input.html#isActionJustPressed,,string	input: isActionJustPressed(a: type Input; name: string): bool	
-isActionPressed	nodesnim/core/input.html#isActionPressed,,string	input: isActionPressed(a: type Input; name: string): bool	
-isActionReleased	nodesnim/core/input.html#isActionReleased,,string	input: isActionReleased(a: type Input; name: string): bool	
+addButtonAction	nodesnim/core/input.html#addButtonAction,string,	input: addButtonAction(name: string; button: uint8 | cint)	
+addKeyAction	nodesnim/core/input.html#addKeyAction,string,string	input: addKeyAction(name, key: string)	
+addKeyAction	nodesnim/core/input.html#addKeyAction,string,cint	input: addKeyAction(name: string; key: cint)	
+addTouchAction	nodesnim/core/input.html#addTouchAction,string	input: addTouchAction(name: string)	
+isActionJustPressed	nodesnim/core/input.html#isActionJustPressed,string	input: isActionJustPressed(name: string): bool	
+isActionPressed	nodesnim/core/input.html#isActionPressed,string	input: isActionPressed(name: string): bool	
+isActionReleased	nodesnim/core/input.html#isActionReleased,string	input: isActionReleased(name: string): bool	
 `$`	nodesnim/core/input.html#$,InputEvent	input: `$`(event: InputEvent): string	

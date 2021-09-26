@@ -1,2 +1,3 @@
+ResourceError	nodesnim/core/exceptions.html#ResourceError	exceptions: ResourceError	
 SceneError	nodesnim/core/exceptions.html#SceneError	exceptions: SceneError	
 WindowError	nodesnim/core/exceptions.html#WindowError	exceptions: WindowError	

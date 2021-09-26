@@ -1,5 +1,9 @@
 EditTextRef	nodesnim/nodescontrol/edittext.html#EditTextRef	edittext: EditTextRef	
 EditText	nodesnim/nodescontrol/edittext.html#EditText,string,string	edittext: EditText(name: string = &quot;EditText&quot;; hint: string = &quot;Edit text ...&quot;): EditTextRef	
 draw	nodesnim/nodescontrol/edittext.html#draw.e,EditTextRef,GLfloat,GLfloat	edittext: draw(self: EditTextRef; w, h: GLfloat)	
-setText	nodesnim/nodescontrol/edittext.html#setText.e,EditTextRef,string,bool	edittext: setText(self: EditTextRef; text: string; save_properties: bool = false)	
+moveCursorBy	nodesnim/nodescontrol/edittext.html#moveCursorBy.e,EditTextRef,int	edittext: moveCursorBy(self: EditTextRef; value: int)	
+insert	nodesnim/nodescontrol/edittext.html#insert.e,EditTextRef,uint32,string	edittext: insert(self: EditTextRef; position: uint32; value: string)	
+setText	nodesnim/nodescontrol/edittext.html#setText.e,EditTextRef,string,bool	edittext: setText(self: EditTextRef; t: string; save_properties: bool = false)	
+setHint	nodesnim/nodescontrol/edittext.html#setHint.e,EditTextRef,string,bool	edittext: setHint(self: EditTextRef; t: string; save_properties: bool = false)	
+setHintColor	nodesnim/nodescontrol/edittext.html#setHintColor.e,EditTextRef,ColorRef	edittext: setHintColor(self: EditTextRef; color: ColorRef)	
 handle	nodesnim/nodescontrol/edittext.html#handle.e,EditTextRef,InputEvent,NodeRef	edittext: handle(self: EditTextRef; event: InputEvent; mouse_on: var NodeRef)	

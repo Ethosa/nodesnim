@@ -2,6 +2,21 @@ StyleUnicode	nodesnim/core/font.html#StyleUnicode	font: StyleUnicode
 StyleText	nodesnim/core/font.html#StyleText	font: StyleText	
 schar	nodesnim/core/font.html#schar,string,ColorRef,bool	font: schar(c: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);\n      underline: bool = false): StyleUnicode	
 stext	nodesnim/core/font.html#stext,string,ColorRef,bool	font: stext(text: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);\n      underline: bool = false): StyleText	
+len	nodesnim/core/font.html#len,StyleText	font: len(text: StyleText): int	
+`$`	nodesnim/core/font.html#$,StyleUnicode	font: `$`(c: StyleUnicode): string	
+`$`	nodesnim/core/font.html#$,StyleText	font: `$`(text: StyleText): string	
+`&amp;`	nodesnim/core/font.html#&,StyleText,StyleUnicode	font: `&amp;`(text: StyleText; c: StyleUnicode): StyleText	
+`&amp;`	nodesnim/core/font.html#&,StyleText,StyleText	font: `&amp;`(text, t: StyleText): StyleText	
+`&amp;`	nodesnim/core/font.html#&,StyleText,string	font: `&amp;`(text: StyleText; t: string): StyleText	
+`&amp;`	nodesnim/core/font.html#&,string,StyleUnicode	font: `&amp;`(text: string; c: StyleUnicode): string	
+`&amp;`	nodesnim/core/font.html#&,string,StyleText	font: `&amp;`(text: string; t: StyleText): string	
+`&amp;=`	nodesnim/core/font.html#&=,StyleText,StyleUnicode	font: `&amp;=`(text: var StyleText; c: StyleUnicode)	
+`&amp;=`	nodesnim/core/font.html#&=,StyleText,StyleText	font: `&amp;=`(text: var StyleText; t: StyleText)	
+`&amp;=`	nodesnim/core/font.html#&=,string,StyleUnicode	font: `&amp;=`(text: var string; c: StyleUnicode)	
+`&amp;=`	nodesnim/core/font.html#&=,string,StyleText	font: `&amp;=`(text: var string; t: StyleText)	
+`&amp;=`	nodesnim/core/font.html#&=,StyleText,string	font: `&amp;=`(text: var StyleText; t: string)	
+`[]`	nodesnim/core/font.html#[],StyleText,int	font: `[]`(text: StyleText; index: int): StyleUnicode	
+`[]`	nodesnim/core/font.html#[],StyleText,HSlice[T,U]	font: `[]`[T, U](text: StyleText; slice: HSlice[T, U]): StyleText	
 toUpper	nodesnim/core/font.html#toUpper,StyleText	font: toUpper(text: StyleText): StyleText	
 toLower	nodesnim/core/font.html#toLower,StyleText	font: toLower(text: StyleText): StyleText	
 setColor	nodesnim/core/font.html#setColor,StyleUnicode,ColorRef	font: setColor(c: StyleUnicode; color: ColorRef)	
@@ -15,20 +30,11 @@ setUnderline	nodesnim/core/font.html#setUnderline,StyleText,int,int,bool	font: s
 setFont	nodesnim/core/font.html#setFont,StyleText,cstring,cint	font: setFont(text: StyleText; font: cstring; size: cint)	
 setFont	nodesnim/core/font.html#setFont,StyleText,FontPtr	font: setFont(text: StyleText; font: FontPtr)	
 loadFont	nodesnim/core/font.html#loadFont,cstring,cint	font: loadFont(font: cstring; size: cint): FontPtr	
-len	nodesnim/core/font.html#len,StyleText	font: len(text: StyleText): int	
-`$`	nodesnim/core/font.html#$,StyleUnicode	font: `$`(c: StyleUnicode): string	
-`$`	nodesnim/core/font.html#$,StyleText	font: `$`(text: StyleText): string	
-`&amp;`	nodesnim/core/font.html#&,StyleText,StyleUnicode	font: `&amp;`(text: StyleText; c: StyleUnicode): StyleText	
-`&amp;`	nodesnim/core/font.html#&,StyleText,StyleText	font: `&amp;`(text, t: StyleText): StyleText	
-`&amp;`	nodesnim/core/font.html#&,string,StyleUnicode	font: `&amp;`(text: string; c: StyleUnicode): string	
-`&amp;`	nodesnim/core/font.html#&,string,StyleText	font: `&amp;`(text: string; t: StyleText): string	
-`&amp;=`	nodesnim/core/font.html#&=,StyleText,StyleUnicode	font: `&amp;=`(text: var StyleText; c: StyleUnicode)	
-`&amp;=`	nodesnim/core/font.html#&=,StyleText,StyleText	font: `&amp;=`(text: var StyleText; t: StyleText)	
-`&amp;=`	nodesnim/core/font.html#&=,string,StyleUnicode	font: `&amp;=`(text: var string; c: StyleUnicode)	
-`&amp;=`	nodesnim/core/font.html#&=,string,StyleText	font: `&amp;=`(text: var string; t: StyleText)	
 splitLines	nodesnim/core/font.html#splitLines,StyleText	font: splitLines(text: StyleText): seq[StyleText]	
+split	nodesnim/core/font.html#split,StyleText,string	font: split(text: StyleText; splitval: string): seq[StyleText]	
 getTextSize	nodesnim/core/font.html#getTextSize,StyleText	font: getTextSize(text: StyleText): Vector2Obj	
 getCaretPos	nodesnim/core/font.html#getCaretPos,StyleText,uint32	font: getCaretPos(text: StyleText; pos: uint32): tuple[a: Vector2Obj, b: uint16]	
-renderSurface	nodesnim/core/font.html#renderSurface,StyleText,AnchorObj	font: renderSurface(text: StyleText; anchor: AnchorObj): SurfacePtr	
-render	nodesnim/core/font.html#render,StyleText,Vector2Obj,AnchorObj	font: render(text: StyleText; size: Vector2Obj; anchor: AnchorObj)	
-renderTo	nodesnim/core/font.html#renderTo,StyleText,Vector2Obj,Vector2Obj,AnchorObj	font: renderTo(text: StyleText; pos, size: Vector2Obj; anchor: AnchorObj)	
+getPosUnderPoint	nodesnim/core/font.html#getPosUnderPoint,StyleText,Vector2Obj,Vector2Obj,AnchorObj	font: getPosUnderPoint(text: StyleText; global_pos, text_pos: Vector2Obj;\n                 text_align: AnchorObj = Anchor(0, 0, 0, 0)): uint32	
+renderSurface	nodesnim/core/font.html#renderSurface,StyleText,AnchorObj	font: renderSurface(text: StyleText; align: AnchorObj): SurfacePtr	
+render	nodesnim/core/font.html#render,StyleText,Vector2Obj,AnchorObj	font: render(text: StyleText; size: Vector2Obj; align: AnchorObj)	
+renderTo	nodesnim/core/font.html#renderTo,StyleText,Vector2Obj,Vector2Obj,AnchorObj	font: renderTo(text: StyleText; pos, size: Vector2Obj; align: AnchorObj)	

@@ -6,7 +6,6 @@ setShapeTypeRect	nodesnim/nodes2d/collision_shape2d.html#setShapeTypeRect.e,Coll
 setShapeTypeCircle	nodesnim/nodes2d/collision_shape2d.html#setShapeTypeCircle.e,CollisionShape2DRef,float,float,float	collision_shape2d: setShapeTypeCircle(self: CollisionShape2DRef; cx, cy, radius: float)	
 setShapeTypePolygon	nodesnim/nodes2d/collision_shape2d.html#setShapeTypePolygon.e,CollisionShape2DRef,varargs[Vector2Obj]	collision_shape2d: setShapeTypePolygon(self: CollisionShape2DRef; positions: varargs[Vector2Obj])	
 duplicate	nodesnim/nodes2d/collision_shape2d.html#duplicate.e,CollisionShape2DRef	collision_shape2d: duplicate(self: CollisionShape2DRef): CollisionShape2DRef	
-getGlobalMousePosition	nodesnim/nodes2d/collision_shape2d.html#getGlobalMousePosition.e,CollisionShape2DRef	collision_shape2d: getGlobalMousePosition(self: CollisionShape2DRef): Vector2Obj	
 isCollide	nodesnim/nodes2d/collision_shape2d.html#isCollide.e,CollisionShape2DRef,float,float	collision_shape2d: isCollide(self: CollisionShape2DRef; x, y: float): bool	
 isCollide	nodesnim/nodes2d/collision_shape2d.html#isCollide.e,CollisionShape2DRef,Vector2Obj	collision_shape2d: isCollide(self: CollisionShape2DRef; vec2: Vector2Obj): bool	
 isCollide	nodesnim/nodes2d/collision_shape2d.html#isCollide.e,CollisionShape2DRef,CollisionShape2DRef	collision_shape2d: isCollide(self, other: CollisionShape2DRef): bool	

@@ -3,7 +3,7 @@ TextureRectRef	nodesnim/nodescontrol/texture_rect.html#TextureRectRef	texture_re
 TextureRect	nodesnim/nodescontrol/texture_rect.html#TextureRect,string	texture_rect: TextureRect(name: string = &quot;TextureRect&quot;): TextureRectRef	
 draw	nodesnim/nodescontrol/texture_rect.html#draw.e,TextureRectRef,GLfloat,GLfloat	texture_rect: draw(self: TextureRectRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/texture_rect.html#duplicate.e,TextureRectRef	texture_rect: duplicate(self: TextureRectRef): TextureRectRef	
-loadTexture	nodesnim/nodescontrol/texture_rect.html#loadTexture.e,TextureRectRef,cstring	texture_rect: loadTexture(self: TextureRectRef; file: cstring)	
+loadTexture	nodesnim/nodescontrol/texture_rect.html#loadTexture.e,TextureRectRef,string	texture_rect: loadTexture(self: TextureRectRef; file: string)	
 setTexture	nodesnim/nodescontrol/texture_rect.html#setTexture.e,TextureRectRef,GlTextureObj	texture_rect: setTexture(self: TextureRectRef; gltexture: GlTextureObj)	
 setTextureFilter	nodesnim/nodescontrol/texture_rect.html#setTextureFilter.e,TextureRectRef,ColorRef	texture_rect: setTextureFilter(self: TextureRectRef; color: ColorRef)	
 setTextureAnchor	nodesnim/nodescontrol/texture_rect.html#setTextureAnchor.e,TextureRectRef,AnchorObj	texture_rect: setTextureAnchor(self: TextureRectRef; anchor: AnchorObj)	

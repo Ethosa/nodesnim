@@ -1,3 +1,3 @@
 GlTextureObj	nodesnim/core/image.html#GlTextureObj	image: GlTextureObj	
-load	nodesnim/core/image.html#load,cstring,float,float,GLenum	image: load(file: cstring; x, y: var float; mode: GLenum = GL_RGB): GLuint	
-load	nodesnim/core/image.html#load,cstring,GLenum	image: load(file: cstring; mode: GLenum = GL_RGB): GlTextureObj	
+load	nodesnim/core/image.html#load,string,float,float,GLenum	image: load(file: string; x, y: var float; mode: GLenum = GL_RGB): GLuint	
+load	nodesnim/core/image.html#load,string,GLenum	image: load(file: string; mode: GLenum = GL_RGB): GlTextureObj	

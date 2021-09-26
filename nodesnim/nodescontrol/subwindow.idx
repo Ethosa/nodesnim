@@ -10,6 +10,6 @@ open	nodesnim/nodescontrol/subwindow.html#open.e,SubWindowRef	subwindow: open(se
 resize	nodesnim/nodescontrol/subwindow.html#resize.e,SubWindowRef,float,float	subwindow: resize(self: SubWindowRef; w, h: float)	
 setBorderColor	nodesnim/nodescontrol/subwindow.html#setBorderColor.e,SubWindowRef,ColorRef	subwindow: setBorderColor(self: SubWindowRef; color: ColorRef)	
 setIcon	nodesnim/nodescontrol/subwindow.html#setIcon.e,SubWindowRef,GlTextureObj	subwindow: setIcon(self: SubWindowRef; gltexture: GlTextureObj)	
-setIcon	nodesnim/nodescontrol/subwindow.html#setIcon.e,SubWindowRef,cstring	subwindow: setIcon(self: SubWindowRef; file: cstring)	
+setIcon	nodesnim/nodescontrol/subwindow.html#setIcon.e,SubWindowRef,string	subwindow: setIcon(self: SubWindowRef; file: string)	
 setTitleBarColor	nodesnim/nodescontrol/subwindow.html#setTitleBarColor.e,SubWindowRef,ColorRef	subwindow: setTitleBarColor(self: SubWindowRef; color: ColorRef)	
 setTitle	nodesnim/nodescontrol/subwindow.html#setTitle.e,SubWindowRef,string	subwindow: setTitle(self: SubWindowRef; title: string)	

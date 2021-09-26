@@ -133,8 +133,8 @@ function main() {
     title="draw(self: TextureRectRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">TextureRectRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CTextureRectRef"
     title="duplicate(self: TextureRectRef): TextureRectRef"><wbr />duplicate<span class="attachedType">TextureRectRef</span></a></li>
-  <li><a class="reference" href="#loadTexture.e%2CTextureRectRef%2Ccstring"
-    title="loadTexture(self: TextureRectRef; file: cstring)"><wbr />load<wbr />Texture<span class="attachedType">TextureRectRef</span></a></li>
+  <li><a class="reference" href="#loadTexture.e%2CTextureRectRef%2Cstring"
+    title="loadTexture(self: TextureRectRef; file: string)"><wbr />load<wbr />Texture<span class="attachedType">TextureRectRef</span></a></li>
   <li><a class="reference" href="#setTexture.e%2CTextureRectRef%2CGlTextureObj"
     title="setTexture(self: TextureRectRef; gltexture: GlTextureObj)"><wbr />set<wbr />Texture<span class="attachedType">TextureRectRef</span></a></li>
   <li><a class="reference" href="#setTextureFilter.e%2CTextureRectRef%2CColorRef"
@@ -220,8 +220,8 @@ This uses in the <tt class="docutils literal"><span class="pre">window.nim</span
 Duplicates TextureRect and create a new TextureRect.
 
 </dd>
-<a id="loadTexture.e,TextureRectRef,cstring"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#loadTexture.e%2CTextureRectRef%2Ccstring"><span class="Identifier">loadTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
+<a id="loadTexture.e,TextureRectRef,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#loadTexture.e%2CTextureRectRef%2Cstring"><span class="Identifier">loadTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -283,7 +283,7 @@ Changes texture anchor.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-20 16:25:44 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-26 13:11:10 UTC</small>
       </div>
     </div>
   </div>

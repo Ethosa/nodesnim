@@ -18,6 +18,7 @@ cubic_bezier	nodesnim/nodes/canvas.html#cubic_bezier,CanvasRef,GLfloat,GLfloat,G
 fill	nodesnim/nodes/canvas.html#fill,CanvasRef,ColorRef	canvas: fill(canvas: CanvasRef; color: ColorRef)	
 line	nodesnim/nodes/canvas.html#line,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: line(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
 rect	nodesnim/nodes/canvas.html#rect,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
+fillRect	nodesnim/nodes/canvas.html#fillRect,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef	canvas: fillRect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)	
 point	nodesnim/nodes/canvas.html#point,CanvasRef,GLfloat,GLfloat,ColorRef	canvas: point(canvas: CanvasRef; x, y: GLfloat; color: ColorRef)	
 text	nodesnim/nodes/canvas.html#text,CanvasRef,,GLfloat,GLfloat,Vector2Obj	canvas: text(canvas: CanvasRef; text: StyleText | string; x, y: GLfloat;\n     align: Vector2Obj = Vector2())	
 saveAs	nodesnim/nodes/canvas.html#saveAs,CanvasRef,cstring	canvas: saveAs(self: CanvasRef; filename: cstring)	

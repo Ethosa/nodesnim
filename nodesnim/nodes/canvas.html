@@ -139,6 +139,8 @@ function main() {
     title="line(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)"><wbr />line<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#rect%2CCanvasRef%2CGLfloat%2CGLfloat%2CGLfloat%2CGLfloat%2CColorRef"
     title="rect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)"><wbr />rect<span class="attachedType">CanvasRef</span></a></li>
+  <li><a class="reference" href="#fillRect%2CCanvasRef%2CGLfloat%2CGLfloat%2CGLfloat%2CGLfloat%2CColorRef"
+    title="fillRect(canvas: CanvasRef; x1, y1, x2, y2: GLfloat; color: ColorRef)"><wbr />fill<wbr />Rect<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#point%2CCanvasRef%2CGLfloat%2CGLfloat%2CColorRef"
     title="point(canvas: CanvasRef; x, y: GLfloat; color: ColorRef)"><wbr />point<span class="attachedType">CanvasRef</span></a></li>
   <li><a class="reference" href="#text%2CCanvasRef%2C%2CGLfloat%2CGLfloat%2CVector2Obj"
@@ -308,6 +310,22 @@ Fills canvas.
 
 
 </dd>
+<a id="fillRect,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#fillRect%2CCanvasRef%2CGLfloat%2CGLfloat%2CGLfloat%2CGLfloat%2CColorRef"><span class="Identifier">fillRect</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+<p>Draws a line in the canvas.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> - first position at X axis.</li>
+<li><tt class="docutils literal"><span class="pre">y1</span></tt> - first position at Y axis.</li>
+<li><tt class="docutils literal"><span class="pre">x2</span></tt> - second position at X axis.</li>
+<li><tt class="docutils literal"><span class="pre">y2</span></tt> - second position at Y axis.</li>
+<li><tt class="docutils literal"><span class="pre">color</span></tt> - rectangle color.</li>
+</ul>
+
+
+</dd>
 <a id="point,CanvasRef,GLfloat,GLfloat,ColorRef"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#point%2CCanvasRef%2CGLfloat%2CGLfloat%2CColorRef"><span class="Identifier">point</span></a><span class="Other">(</span><span class="Identifier">canvas</span><span class="Other">:</span> <a href="canvas.html#CanvasRef"><span class="Identifier">CanvasRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -458,7 +476,7 @@ Duplicates Canvas object and create a new Canvas.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-20 16:25:27 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-26 13:10:53 UTC</small>
       </div>
     </div>
   </div>
