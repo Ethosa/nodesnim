@@ -19,6 +19,10 @@ build:
       translation: Vector3(1, 0, 2)
       color: Color(144, 111, 144)
       geometry: GEOMETRY_SPHERE
+    - GeometryInstance geometry4:
+      translation: Vector3(3, 0, 2)
+      color: Color(111, 144, 122)
+      geometry: GEOMETRY_CYLINDER
     - Button button:
       text: stext"Hello! ^^"
       call resize(256, 64)
@@ -32,6 +36,8 @@ geometry1@on_input(self, event):
     geometry2.rotateY(-event.xrel)
     geometry3.rotateX(event.yrel)
     geometry3.rotateY(-event.xrel)
+    geometry4.rotateX(event.yrel)
+    geometry4.rotateY(-event.xrel)
 
 addMainScene(scene)
 windowLaunch()

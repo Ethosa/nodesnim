@@ -155,10 +155,9 @@ proc isActionPressed*(name: string): bool =
       elif action.kind == TOUCH and last_event.kind == TOUCH:
         if press_state > 0:
           result = true
-      elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
+      elif action.kind == KEYBOARD:
         if action.key_int in pressed_keys_ints or action.key in pressed_keys:
-          if press_state > 0:
-            result = true
+          result = true
 
 proc isActionReleased*(name: string): bool =
   ## Returns true, when action no more active.

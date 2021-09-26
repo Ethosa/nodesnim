@@ -24,6 +24,10 @@ build:
       translation: Vector3(-1, -1, 1)
       color: Color(144, 77, 144, 1.0)
       geometry: GEOMETRY_SPHERE
+    - GeometryInstance cylinder:
+      translation: Vector3(2, -1, 1)
+      color: Color(144, 77, 144, 1.0)
+      geometry: GEOMETRY_CYLINDER
     - ProgressBar health:
       call resize(256, 48)
       call setAnchor(0, 1, 0, 1)
@@ -36,9 +40,11 @@ addKeyAction("back", "s")
 addKeyAction("left", "a")
 addKeyAction("right", "d")
 
-root@on_input(self, event):
+root@onInput(self, event):
   if event.isInputEventMouseMotion() and event.pressed:
-    camera.rotate(-event.xrel*0.1, event.yrel*0.1)
+    camera.rotate(-event.xrel*0.25, event.yrel*0.25)
+
+root@onProcess(self):
   if isActionPressed("left"):
     root.translate(camera.right * -0.1)
   if isActionPressed("right"):
