@@ -35,10 +35,10 @@ type
 template drawablepattern*(`type`: untyped): untyped =
   result = `type`(
     texture: GlTextureObj(), border_width: 0,
-    border_detail_lefttop: 20,
-    border_detail_righttop: 20,
-    border_detail_leftbottom: 20,
-    border_detail_rightbottom: 20,
+    border_detail_lefttop: 8,
+    border_detail_righttop: 8,
+    border_detail_leftbottom: 8,
+    border_detail_rightbottom: 8,
     border_radius_lefttop: 0,
     border_radius_righttop: 0,
     border_radius_leftbottom: 0,
