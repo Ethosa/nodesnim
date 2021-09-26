@@ -23,8 +23,6 @@ proc GradientDrawable*: GradientDrawableRef =
                     Color(1f, 1f, 1f, 1.0),
                     Color(1f, 1f, 1f, 1.0))
 
-let shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
-
 
 template draw_template*(drawtype, color, function, secondfunc: untyped, is_gradient: bool = true): untyped =
   ## Draws colorized vertexes

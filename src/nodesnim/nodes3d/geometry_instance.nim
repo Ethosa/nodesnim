@@ -17,9 +17,11 @@ import
 type
   GeometryType* {.pure.} = enum
     GEOMETRY_CUBE,
+    GEOMETRY_CYLINDER,
     GEOMETRY_SPHERE
   GeometryInstanceObj* = object of Node3DObj
     geometry*: GeometryType
+    sides*: int
     color*: ColorRef
     radius*: float
   GeometryInstanceRef* = ref GeometryInstanceObj
@@ -35,6 +37,7 @@ proc GeometryInstance*(name: string = "GeometryInstance", geometry: GeometryType
   nodepattern(GeometryInstanceRef)
   node3dpattern()
   result.geometry = geometry
+  result.sides = 8
   result.radius = 1
   result.color = Color(1.0, 1.0, 1.0)
   result.kind = GEOMETRY_INSTANCE_NODE
@@ -91,6 +94,25 @@ method draw*(self: GeometryInstanceRef, w, h: Glfloat) =
     glVertex3f(1, -1,  1)
     glVertex3f(1,  1,  1)
     glVertex3f(1,  1, -1)
+    glEnd()
+  of GEOMETRY_CYLINDER:
+    glBegin(GL_QUAD_STRIP)
+    for i in 0..self.sides:
+      let angle = TAU*i.float/self.sides.float
+      glVertex3f(sin(angle)*self.radius, 1, cos(angle)*self.radius)
+      glVertex3f(sin(angle)*self.radius, -1, cos(angle)*self.radius)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for i in 0..self.sides:
+      let angle = TAU*i.float/self.sides.float
+      glVertex3f(sin(angle)*self.radius, 1, cos(angle)*self.radius)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for i in 0..self.sides:
+      let angle = TAU*i.float/self.sides.float
+      glVertex3f(sin(angle)*self.radius, -1, cos(angle)*self.radius)
     glEnd()
   of GEOMETRY_SPHERE:
     var
