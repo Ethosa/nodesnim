@@ -15,7 +15,7 @@
 - [Use HBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test13.nim)
 - [Use VBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test14.nim)
 - [Use GridBox node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test15.nim)
-- [Use TextEdit node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test16.nim)
+- [Use EditText node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test16.nim)
 - [Duplicate nodes.](https://github.com/Ethosa/nodesnim/blob/master/tests/test17.nim)
 - [Use Scroll node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test18.nim)
 - [Use ProgressBar node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test19.nim)
@@ -49,3 +49,4 @@
 - [Use margin.](https://github.com/Ethosa/nodesnim/blob/master/tests/test47.nim)
 - [Use Camera3D node.](https://github.com/Ethosa/nodesnim/blob/master/tests/test48.nim)
 - [Use TileMap Isometric mode](https://github.com/Ethosa/nodesnim/blob/master/tests/test49.nim)
+- [Make your own node](https://github.com/Ethosa/nodesnim/blob/master/tests/test50.nim)

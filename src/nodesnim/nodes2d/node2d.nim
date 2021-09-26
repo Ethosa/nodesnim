@@ -74,15 +74,15 @@ method draw*(self: Node2DRef, w, h: GLfloat) =
 
 method move*(self: Node2DRef, x, y: float) =
   ## Moves Node2D object by `x` and `y`.
-  self.position.x += x
-  self.position.y += y
-  self.timed_position = self.position
+  self.timed_position.x += x
+  self.timed_position.y += y
+  self.position = self.timed_position
 
 
 method move*(self: Node2DRef, vec2: Vector2Obj) =
   ## Moves Node2D object by `vec2`.
-  self.position += vec2
-  self.timed_position = self.position
+  self.timed_position += vec2
+  self.position = self.timed_position
 
 
 method duplicate*(self: Node2DRef): Node2DRef {.base.} =

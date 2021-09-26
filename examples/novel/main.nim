@@ -9,8 +9,8 @@ var
   # Charapters:
   akiko_default = load("assets/test.png", GL_RGBA)
   dialog = @[
-    ("Me", "H-Hey .. ?", false),
-    ("Eileen", "NANI??????", true)
+    ("Me", "H-Hey .. ?", GONE),
+    ("Eileen", "NANI??????", VISIBLE)
   ]
   stage = 0
 
@@ -34,7 +34,7 @@ build:
       call setTexture(akiko_default)
       call setTextureAnchor(0.5, 0.5, 0.5, 0.5)
       texture_mode: TEXTURE_KEEP_ASPECT_RATIO
-      visible: false
+      visible: GONE
     - Label dialog_text:
       call setSizeAnchor(0.8, 0.3)
       call setAnchor(0.1, 0.6, 0, 0)

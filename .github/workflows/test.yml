@@ -57,7 +57,7 @@ jobs:
       - name: Build examples
         run: |
           cd examples
-          for dir in hello_world calculator novel snake screensaver; do
+          for dir in hello_world calculator novel snake screensaver roguelike; do
             (
               cd "$dir"
               nim c main.nim

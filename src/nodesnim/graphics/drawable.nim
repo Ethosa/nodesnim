@@ -54,29 +54,71 @@ proc Drawable*: DrawableRef =
 let shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
 
 
-template vd* = discard
+template vd* =
+  ## void template
+  discard
 
-template recalc* =
+template recalc*(shadow: bool = false) =
   ## Calculates vertex positions.
-  # left top
-  for i in bezier_iter(1f/self.border_detail_lefttop.float, Vector2(0, -self.border_radius_lefttop),
-                       Vector2(0, 0), Vector2(self.border_radius_lefttop, 0)):
-    vertex.add(Vector2(x+i.x, y+i.y))
+  when not shadow:
+    # left top
+    for i in bezier_iter(1f/self.border_detail_lefttop.float, Vector2(0, -self.border_radius_lefttop),
+                         Vector2(0, 0), Vector2(self.border_radius_lefttop, 0)):
+      vertex.add(Vector2(x+i.x, y+i.y))
 
-  # right top
-  for i in bezier_iter(1f/self.border_detail_righttop.float, Vector2(-self.border_radius_righttop, 0),
-                       Vector2(0, 0), Vector2(0, -self.border_radius_righttop)):
-    vertex.add(Vector2(x+width+i.x, y+i.y))
+    # right top
+    for i in bezier_iter(1f/self.border_detail_righttop.float, Vector2(-self.border_radius_righttop, 0),
+                         Vector2(0, 0), Vector2(0, -self.border_radius_righttop)):
+      vertex.add(Vector2(x+width+i.x, y+i.y))
 
-  # right bottom
-  for i in bezier_iter(1f/self.border_detail_rightbottom.float, Vector2(0, -self.border_radius_rightbottom),
-                       Vector2(0, 0), Vector2(-self.border_radius_rightbottom, 0)):
-    vertex.add(Vector2(x+width+i.x, y-height-i.y))
+    # right bottom
+    for i in bezier_iter(1f/self.border_detail_rightbottom.float, Vector2(0, -self.border_radius_rightbottom),
+                         Vector2(0, 0), Vector2(-self.border_radius_rightbottom, 0)):
+      vertex.add(Vector2(x+width+i.x, y-height-i.y))
 
-  # left bottom
-  for i in bezier_iter(1f/self.border_detail_leftbottom.float, Vector2(self.border_radius_leftbottom, 0),
-                       Vector2(0, 0), Vector2(0, self.border_radius_leftbottom)):
-    vertex.add(Vector2(x+i.x, y-height+i.y))
+    # left bottom
+    for i in bezier_iter(1f/self.border_detail_leftbottom.float, Vector2(self.border_radius_leftbottom, 0),
+                         Vector2(0, 0), Vector2(0, self.border_radius_leftbottom)):
+      vertex.add(Vector2(x+i.x, y-height+i.y))
+  else:
+    glBegin(GL_QUAD_STRIP)
+    # left top
+    for i in bezier_iter(1f/self.border_detail_lefttop.float, Vector2(0, -self.border_radius_lefttop),
+                         Vector2(0, 0), Vector2(self.border_radius_lefttop, 0)):
+      glColor4f(0, 0, 0, 0)
+      glVertex2f(x+i.x+self.shadow_offset.x, y+i.y-self.shadow_offset.y)
+      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glVertex2f(x+i.x, y+i.y)
+
+    # right top
+    for i in bezier_iter(1f/self.border_detail_righttop.float, Vector2(-self.border_radius_righttop, 0),
+                         Vector2(0, 0), Vector2(0, -self.border_radius_righttop)):
+      glColor4f(0, 0, 0, 0)
+      glVertex2f(x+width+i.x+self.shadow_offset.x, y+i.y-self.shadow_offset.y)
+      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glVertex2f(x+width+i.x, y+i.y)
+
+    # right bottom
+    for i in bezier_iter(1f/self.border_detail_rightbottom.float, Vector2(0, -self.border_radius_rightbottom),
+                         Vector2(0, 0), Vector2(-self.border_radius_rightbottom, 0)):
+      glColor4f(0, 0, 0, 0)
+      glVertex2f(x+width+i.x+self.shadow_offset.x, y-height-i.y-self.shadow_offset.y)
+      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glVertex2f(x+width+i.x, y-height-i.y)
+
+    # left bottom
+    for i in bezier_iter(1f/self.border_detail_leftbottom.float, Vector2(self.border_radius_leftbottom, 0),
+                         Vector2(0, 0), Vector2(0, self.border_radius_leftbottom)):
+      glColor4f(0, 0, 0, 0)
+      glVertex2f(x+i.x+self.shadow_offset.x, y-height+i.y-self.shadow_offset.y)
+      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glVertex2f(x+i.x, y-height+i.y)
+
+    glColor4f(0, 0, 0, 0)
+    glVertex2f(x+self.shadow_offset.x, y-self.border_radius_lefttop-self.shadow_offset.y)
+    glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+    glVertex2f(x, y-self.border_radius_lefttop)
+    glEnd()
 
 
 template draw_template*(drawtype, color, function, secondfunc: untyped): untyped =
@@ -139,19 +181,11 @@ method enableShadow*(self: DrawableRef, val: bool) {.base.} =
 method draw*(self: DrawableRef, x1, y1, width, height: float) {.base.} =
   var
     vertex: seq[Vector2Obj] = @[]
-    x = x1 + self.shadow_offset.x
-    y = y1 - self.shadow_offset.y
+    x = x1
+    y = y1
 
   if self.shadow:
-    recalc()
-    if self.texture.texture > 0'u32:
-      draw_texture_template(GL_POLYGON, shadow_color, vd(), vd())
-    else:
-      draw_template(GL_POLYGON, shadow_color, vd(), vd())
-
-  vertex = @[]
-  x = x1
-  y = y1
+    recalc(true)
   recalc()
 
   if self.texture.texture > 0'u32:

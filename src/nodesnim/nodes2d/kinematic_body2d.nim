@@ -94,27 +94,32 @@ method moveAndCollide*(self: KinematicBody2DRef, vel: Vector2Obj) {.base.} =
   ##
   ## Arguments:
   ## - `vel` is a velocity vector.
-  self.move(vel)
-  self.calcGlobalPosition()
-  if self.has_collision:
-    var scene = self.getRootNode()
-    self.collision_node.calcGlobalPosition()
+  # TODO: normal algorithn
+  let
+    biggest = abs(if max(vel.x, vel.y) == 0.0: min(vel.x, vel.y) else: max(vel.x, vel.y))
+    step = Vector2(vel.x/biggest, vel.y/biggest)
+    vec = vel.abs()
+    scene = self.getRootNode()
+  var v = Vector2()
 
-    for node in scene.getChildIter():
-      if node.kind == COLLISION_SHAPE_2D_NODE:
-        if node == self.collision_node:
-          continue
-        if self.collision_node.isCollide(node.CollisionShape2DRef):
-          self.move(-vel.x, 0)
-          self.calcGlobalPosition()
-          self.collision_node.calcGlobalPosition()
+  while v.x < vec.x or v.y < vec.y:
+    self.move(step)
+    if self.has_collision:
+      for node in scene.getChildIter():
+        if node.kind == COLLISION_SHAPE_2D_NODE:
+          if node == self.collision_node:
+            continue
+          let collision_node = node.CollisionShape2DRef
 
-          if self.collision_node.isCollide(node.CollisionShape2DRef):
-            self.move(vel.x, -vel.y)
-            self.calcGlobalPosition()
+          if self.collision_node.isCollide(collision_node):
+            self.move(-step.x, 0)
             self.collision_node.calcGlobalPosition()
 
-          if self.collision_node.isCollide(node.CollisionShape2DRef):
-            self.move(-vel.x, 0)
-            self.calcGlobalPosition()
-            self.collision_node.calcGlobalPosition()
+            if self.collision_node.isCollide(collision_node):
+              self.move(step.x, -step.y)
+              self.collision_node.calcGlobalPosition()
+
+            if self.collision_node.isCollide(collision_node):
+              self.move(-step.x, 0)
+              self.collision_node.calcGlobalPosition()
+    v += step.abs()

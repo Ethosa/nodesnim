@@ -11,7 +11,7 @@ type
   AnimationArray*[T] = seq[AnimationRef[T]]
 
 
-proc Animation*[T](name: string, speed: float = 1f): AnimationRef[T] =
+proc Animation*[T](name: string, speed: float = 1f): AnimationRef[T] {.inline.} =
   ## Creates a new Animation object.
   ##
   ## Arguments:
@@ -23,7 +23,7 @@ proc Animation*[T](name: string, speed: float = 1f): AnimationRef[T] =
   AnimationRef[T](name: name, speed: speed, current: 0f, frames: @[], frame: 0)
 
 
-proc addFrame*[T](anim: AnimationRef[T], frame: T) =
+proc addFrame*[T](anim: AnimationRef[T], frame: T) {.inline.} =
   ## Adds a new frame in the animation.
   anim.frames.add(frame)
 

@@ -115,17 +115,12 @@ when defined(debug):
       for vec2 in self.polygon:
         glVertex3f(x + vec2.x, y - vec2.y, self.z_index_global)
       glEnd()
+    glColor4f(1, 1, 1, 1)
 
 
 method duplicate*(self: CollisionShape2DRef): CollisionShape2DRef {.base.} =
   ## Duplicates CollisionShape2D object and create a new CollisionShape2D.
   self.deepCopy()
-
-
-method getGlobalMousePosition*(self: CollisionShape2DRef): Vector2Obj {.inline.} =
-  ## Returns mouse position.
-  Vector2Obj(x: last_event.x, y: last_event.y)
-
 
 method isCollide*(self: CollisionShape2DRef, x, y: float): bool {.base.} =
   ## Checks collision with point.
@@ -160,30 +155,7 @@ method isCollide*(self: CollisionShape2DRef, x, y: float): bool {.base.} =
 
 method isCollide*(self: CollisionShape2DRef, vec2: Vector2Obj): bool {.base.} =
   ## Checks collision with point.
-  self.calcGlobalPosition()
-  if self.disable:
-    return false
-  case self.shape_type
-  of COLLISION_SHAPE_2D_RECTANGLE:
-    return Rect2(self.global_position, self.rect_size).contains(vec2)
-  of COLLISION_SHAPE_2D_CIRCLE:
-    let
-      dx = vec2.x - self.x1
-      dy = vec2.y - self.y1
-    return dx*dx + dy*dy <= self.radius*self.radius
-  of COLLISION_SHAPE_2D_POLYGON:
-    result = false
-    var next = 1
-    let length = self.polygon.len()
-
-    for i in 0..<length:
-      inc next
-      if next == length: next = 0
-      let
-        a = self.polygon[i] + self.global_position
-        b = self.polygon[next] + self.global_position
-      if ((a.y >= vec2.y and b.y < vec2.y) or (a.y < vec2.y and b.y >= vec2.y)) and (vec2.x < (b.x-a.x)*(vec2.y-a.y) / (b.y-a.y)+a.x):
-        result = not result
+  self.isCollide(vec2.x, vec2.y)
 
 
 method isCollide*(self, other: CollisionShape2DRef): bool {.base.} =
@@ -201,7 +173,8 @@ method isCollide*(self, other: CollisionShape2DRef): bool {.base.} =
   of COLLISION_SHAPE_2D_RECTANGLE:
     case other.shape_type:
       of COLLISION_SHAPE_2D_RECTANGLE:
-        return Rect2(other.global_position, other.rect_size).intersects(Rect2(self.global_position, self.rect_size))
+        return Rect2(other.global_position, other.rect_size).intersects(Rect2(self.global_position, self.rect_size)) or
+               Rect2(self.global_position, self.rect_size).intersects(Rect2(other.global_position, other.rect_size))
       of COLLISION_SHAPE_2D_CIRCLE:
         return Rect2(self.global_position, self.rect_size).isCollideWithCircle(
           other.global_position.x + other.x1,

@@ -9,7 +9,11 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 [![time tracker](https://wakatime.com/badge/github/Ethosa/nodesnim.svg)](https://wakatime.com/badge/github/Ethosa/nodesnim)
 [![test](https://github.com/Ethosa/nodesnim/workflows/test/badge.svg)](https://github.com/Ethosa/nodesnim/actions)
 
-<h4>Stable version - 0.3.1</h4>
+
+[![channel icon](https://patrolavia.github.io/telegram-badge/follow.png)](https://t.me/nim1love)
+[![channel icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/nodesnim)
+
+<h4>Stable version - 0.3.2</h4>
 </div>
 
 ## Install
@@ -45,7 +49,6 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 
   build:
     - Scene scene:
-      name: "Main"
       - Label hello:
         call setSizeAnchor(1, 1)
         call setTextAlign(0.5, 0.5, 0.5, 0.5)
@@ -89,7 +92,8 @@ For use debug mode you should compile with `-d:debug` or `--define:debug`, e.g. 
 
 ## Export
 Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynliboverride) for export to the other OS.
-[Static linking SDL2](https://github.com/nim-lang/sdl2#static-linking-sdl2)
+[Static linking SDL2](https://github.com/nim-lang/sdl2#static-linking-sdl2)  
+Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an installer
 
 -   CrossPlatform export for Windows (tested on Windows 7 x64 and Windows 10 x64)
     -   `nim c -d:mingw -d:release --opt:speed --noNimblePath file.nim`
@@ -97,20 +101,26 @@ Use the [`Nim compiler user guide`](https://nim-lang.org/docs/nimc.html#dynlibov
 
 ## Screenshots
 <div align="center">
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/hello_world">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/1.png" width="380" height="220" alt="Hello world example">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/hello_world">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/1.png" width="380" height="220" alt="Hello world example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/calculator">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/2.png" width="380" height="220" alt="Calculator example">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/calculator">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/2.png" width="380" height="220" alt="Calculator example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/snake">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/3.png" width="380" height="220" alt="Snake game example">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/snake">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/3.png" width="380" height="220" alt="Snake game example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/screensaver">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/4.png" width="380" height="220" alt="Screensaver example">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/screensaver">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/4.png" width="380" height="220" alt="Screensaver example">
   </a>
-  <a href="https://github.com/Ethosa/nodesnim/blob/master/examples/novel">
-    <img src="https://github.com/Ethosa/nodesnim/blob/master/screenshots/5.png" width="380" height="220" alt="Novel game example">
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/novel">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/5.png" width="380" height="220" alt="Novel game example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/roguelike">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/6.png" width="380" height="220" alt="Roguelike game example">
+  </a>
+  <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/sample_messenger">
+    <img src="https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/7.png" width="240" height="480" alt="sample messenger">
   </a>
 </div>
 

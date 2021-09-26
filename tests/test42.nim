@@ -14,6 +14,8 @@ build:
 ctrl1.background.setTexture(load("assets/sharp.jpg"))
 ctrl1.background.setCornerRadius(25)
 ctrl1.background.setCornerDetail(8)
+ctrl1.background.enableShadow(true)
+ctrl1.background.setShadowOffset(Vector2(0, 8))
 
 
 ctrl.resize(256, 96)
@@ -25,7 +27,7 @@ ctrl.setStyle(style(
     border-width: 1,
     border-color: rgb(0, 0, 0),
     shadow: true,
-    shadow-offset: 3,
+    shadow-offset: 8,
     size-anchor: 0.5 0.7
   }
 ))

@@ -4,12 +4,8 @@ import
   ../thirdparty/sdl2,
   ../thirdparty/sdl2/image,
 
-  vector2
-
-when defined(debug):
-  import logging
-
-discard image.init()
+  vector2,
+  exceptions
 
 
 type
@@ -18,7 +14,7 @@ type
     size*: Vector2Obj
 
 
-proc load*(file: cstring, x, y: var float, mode: Glenum = GL_RGB): Gluint =
+proc load*(file: string, x, y: var float, mode: Glenum = GL_RGB): Gluint =
   ## Loads image from file and returns texture ID.
   ##
   ## Arguments:
@@ -27,8 +23,8 @@ proc load*(file: cstring, x, y: var float, mode: Glenum = GL_RGB): Gluint =
     surface = image.load(file)  # load image from file
     textureid: Gluint
   when defined(debug):
-    if surface == nil:
-      error("image \"", file, "\" not loaded!")
+    if surface.isNil():
+      raise newException(ResourceError, "image \"" & file & "\" not loaded!")
   x = surface.w.float
   y = surface.h.float
 
@@ -51,7 +47,7 @@ proc load*(file: cstring, x, y: var float, mode: Glenum = GL_RGB): Gluint =
   textureid
 
 
-proc load*(file: cstring, mode: Glenum = GL_RGB): GlTextureObj =
+proc load*(file: string, mode: Glenum = GL_RGB): GlTextureObj =
   ## Loads GL texture.
   ##
   ## Arguments:

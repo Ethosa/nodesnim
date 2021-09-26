@@ -61,19 +61,12 @@ template draw_template*(drawtype, color, function, secondfunc: untyped, is_gradi
 method draw*(self: GradientDrawableRef, x1, y1, width, height: float) =
   var
     vertex: seq[Vector2Obj] = @[]
-    x = x1 + self.shadow_offset.x
-    y = y1 - self.shadow_offset.y
+    x = x1
+    y = y1
 
   if self.shadow:
-    recalc()
-    if self.texture.texture > 0'u32:
-      draw_texture_template(GL_POLYGON, shadow_color, vd(), vd())
-    else:
-      draw_template(GL_POLYGON, shadow_color, vd(), vd(), false)
+    recalc(true)
 
-  vertex = @[]
-  x = x1
-  y = y1
   recalc()
 
   if self.texture.texture > 0'u32:

@@ -27,11 +27,11 @@ main.addChild(popup)
 main.addChild(smthnode)
 
 
-Input.addKeyAction("space", K_SPACE)
+addKeyAction("space", K_SPACE)
 smthnode.on_process =
   proc(self: NodeRef) =
-    if Input.isActionJustPressed("space"):
-      if popup.visible:
+    if isActionJustPressed("space"):
+      if popup.visible == VISIBLE:
         popup.hide()
       else:
         popup.show()

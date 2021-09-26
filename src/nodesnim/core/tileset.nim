@@ -4,10 +4,9 @@ import
   ../thirdparty/sdl2,
   ../thirdparty/sdl2/image,
 
-  vector2
+  vector2,
+  exceptions
 
-when defined(debug):
-  import logging
 
 type
   TileSetObj* = ref object
@@ -21,9 +20,8 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
     surface = image.load(img)  # load image from file
     textureid: Gluint = 0
   when defined(debug):
-    if surface == nil:
-      error("image \"", img, "\" not loaded!")
-      return
+    if surface.isNil():
+      raise newException(ResourceError, "image \"" & img & "\" not loaded!")
 
   glGenTextures(1, textureid.addr)
   glBindTexture(GL_TEXTURE_2D, textureid)
@@ -34,7 +32,6 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
 
   glTexImage2D(GL_TEXTURE_2D, 0, mode.GLint, surface.w,  surface.h, 0, mode, GL_UNSIGNED_BYTE, surface.pixels)
   glBindTexture(GL_TEXTURE_2D, 0)
-
   result = TileSetObj(
     grid: tile_size,
     size: Vector2(surface.w.float, surface.h.float),
@@ -45,6 +42,7 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
   surface = nil
 
 proc draw*(self: TileSetObj, tilex, tiley, x, y: float) =
+  ## Draws tile at position `tilex`,`tiley` to `x`,`y` position.
   if self.texture > 0:
     let
       texx1 = self.grid.x*tilex / self.size.x

@@ -2,6 +2,7 @@
 ## Number counter box.
 import
   ../thirdparty/opengl,
+  ../thirdparty/sdl2,
 
   ../core/vector2,
   ../core/rect2,
@@ -101,6 +102,7 @@ method duplicate*(self: CounterRef): CounterRef {.base.} =
 method handle*(self: CounterRef, event: InputEvent, mouse_on: var NodeRef) =
   procCall self.ControlRef.handle(event, mouse_on)
 
+
   let
     first_button = Rect2(
       self.global_position.x + self.rect_size.x - 20, self.global_position.y,
@@ -109,11 +111,16 @@ method handle*(self: CounterRef, event: InputEvent, mouse_on: var NodeRef) =
       self.global_position.x + self.rect_size.x - 20, self.global_position.y + self.rect_size.y-8,
       20, 8).contains(last_event.x, last_event.y)
 
+  when not defined(android) and not defined(ios):
+    if self.hovered and not first_button and not second_button:
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_SIZEWE))
+    else:
+      setCursor(createSystemCursor(SDL_SYSTEM_CURSOR_ARROW))
+
   if first_button and self.pressed:
     self.changeValue(self.value+1)
   elif second_button and self.pressed:
     self.changeValue(self.value-1)
-
   elif self.pressed:
     if self.as_int:
       self.changeValue(self.value - event.xrel)

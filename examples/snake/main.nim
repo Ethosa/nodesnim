@@ -34,20 +34,20 @@ var
   time = 0
 
 
-Input.addKeyAction("forward", "w")
-Input.addKeyAction("backward", "s")
-Input.addKeyAction("left", "a")
-Input.addKeyAction("right", "d")
+addKeyAction("forward", "w")
+addKeyAction("backward", "s")
+addKeyAction("left", "a")
+addKeyAction("right", "d")
 
 
 canvas@on_process(self):
-  if Input.isActionJustPressed("forward"):
+  if isActionJustPressed("forward"):
     snake.dir = Vector2(0, -40)
-  elif Input.isActionJustPressed("backward"):
+  elif isActionJustPressed("backward"):
     snake.dir = Vector2(0, 40)
-  elif Input.isActionJustPressed("left"):
+  elif isActionJustPressed("left"):
     snake.dir = Vector2(-40, 0)
-  elif Input.isActionJustPressed("right"):
+  elif isActionJustPressed("right"):
     snake.dir = Vector2(40, 0)
   if time < 10:
     inc time
@@ -107,16 +107,16 @@ canvas@on_process(self):
     changeScene("GameOverScene")
   # draw
   for i in snake.body:
-    canvas.rect(i.x, i.y, i.x+snake.size.x, i.y+snake.size.y, Color(1f, 1f, 1f))
+    canvas.fillRect(i.x, i.y, snake.size.x, snake.size.y, Color(1f, 1f, 1f))
   # head
-  canvas.rect(
+  canvas.fillRect(
     snake.body[0].x, snake.body[0].y,
-    snake.body[0].x+snake.size.x, snake.body[0].y+snake.size.y,
+    snake.size.x, snake.size.y,
     Color(0xaaccffff'u32))
   # food
-  canvas.rect(
+  canvas.fillRect(
     snake.food.x, snake.food.y,
-    snake.food.x+snake.size.x, snake.food.y+snake.size.y,
+    snake.size.x, snake.size.y,
     Color(0xffccaaff'u32))
   time = 0
 

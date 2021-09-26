@@ -32,9 +32,9 @@ var
   env*: EnvironmentRef = newEnvironment()
   width, height: cint
   main_scene*: SceneRef = nil
+  current_scene*: SceneRef = nil
   windowptr: WindowPtr
   glcontext: GlContextPtr
-  current_scene*: SceneRef = nil
   scenes*: seq[SceneRef] = @[]
   paused*: bool = false
   running*: bool = true

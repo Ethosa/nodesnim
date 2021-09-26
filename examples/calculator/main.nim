@@ -43,28 +43,27 @@ proc on_sign(self: ButtonRef, x, y: float) =
 build:
   - Scene main:
     - Vbox vbox:
-      call setChildAnchor(0.5, 0.5, 0.5, 0.5)
       call setSizeAnchor(1, 1)
+      call setChildAnchor(0.5, 0.5, 0.5, 0.5)
       - Label result:
         call setTextAlign(1, 0, 1, 0)
         call resize(160, 32)
       - GridBox buttons:
         call setRow(4)
-        - Button button_7(text: stext"7", on_touch: number)
-        - Button button_8(text: stext"8", on_touch: number)
-        - Button button_9(text: stext"9", on_touch: number)
-        - Button button_4(text: stext"4", on_touch: number)
-        - Button button_5(text: stext"5", on_touch: number)
-        - Button button_6(text: stext"6", on_touch: number)
         - Button button_1(text: stext"1", on_touch: number)
         - Button button_2(text: stext"2", on_touch: number)
         - Button button_3(text: stext"3", on_touch: number)
+        - Button button_add(text: stext"+", on_touch: on_sign)
+        - Button button_4(text: stext"4", on_touch: number)
+        - Button button_5(text: stext"5", on_touch: number)
+        - Button button_6(text: stext"6", on_touch: number)
+        - Button button_sub(text: stext"-", on_touch: on_sign)
+        - Button button_7(text: stext"7", on_touch: number)
+        - Button button_8(text: stext"8", on_touch: number)
+        - Button button_9(text: stext"9", on_touch: number)
+        - Button button_mul(text: stext"x", on_touch: on_sign)
         - Button button_0(text: stext"0")
         - Button button_00(text: stext"00")
-        - Button button_add(text: stext"+", on_touch: on_sign)
-        # Signs
-        - Button button_sub(text: stext"-", on_touch: on_sign)
-        - Button button_mul(text: stext"x", on_touch: on_sign)
         - Button button_div(text: stext"/", on_touch: on_sign)
         - Button button_eq:
           text: stext"="

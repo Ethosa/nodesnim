@@ -31,21 +31,21 @@ build:
       call setProgressColor(Color("#a77"))
       call setBackgroundColor(Color(222, 222, 222, 0.5))
 
-Input.addKeyAction("forward", "w")
-Input.addKeyAction("back", "s")
-Input.addKeyAction("left", "a")
-Input.addKeyAction("right", "d")
+addKeyAction("forward", "w")
+addKeyAction("back", "s")
+addKeyAction("left", "a")
+addKeyAction("right", "d")
 
 root@on_input(self, event):
   if event.isInputEventMouseMotion() and event.pressed:
     camera.rotate(-event.xrel*0.1, event.yrel*0.1)
-  if Input.isActionPressed("left"):
+  if isActionPressed("left"):
     root.translate(camera.right * -0.1)
-  if Input.isActionPressed("right"):
+  if isActionPressed("right"):
     root.translate(camera.right * 0.1)
-  if Input.isActionPressed("forward"):
+  if isActionPressed("forward"):
     root.translate(camera.front*0.1)
-  if Input.isActionPressed("back"):
+  if isActionPressed("back"):
     root.translate(camera.front*(-0.1))
 
 

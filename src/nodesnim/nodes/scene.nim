@@ -39,7 +39,7 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
-    if child.visible:
+    if child.visible != GONE:
       # load opengl
       if child.type_of_node != NODE_TYPE_DEFAULT:
         glLoadIdentity()
@@ -77,7 +77,7 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
-    if child.visible:
+    if child.visible != GONE:
       child.postdraw(w, h)
   scene.calcGlobalPosition()
 
@@ -105,7 +105,7 @@ method handleScene*(scene: SceneRef, event: InputEvent, mouse_on: var NodeRef, p
   for i in countdown(childs.len()-1, 0):
     if paused and childs[i].getPauseMode() != PROCESS:
       continue
-    if childs[i].visible:
+    if childs[i].visible != GONE:
       childs[i].handle(event, mouse_on)
       childs[i].on_input(childs[i], event)
 

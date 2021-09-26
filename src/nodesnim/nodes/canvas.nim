@@ -65,8 +65,6 @@ template loadColor(color_argument_name: untyped): untyped =
   canvas.renderer.setDrawColor(clr.r.uint8, clr.g.uint8, clr.b.uint8, clr.a.uint8)
 
 template loadGL(canvas: untyped): untyped =
-  `canvas`.renderer.present()
-  discard `canvas`.renderer.readPixels(nil, 0, `canvas`.surface.pixels, 0)
   if `canvas`.canvas_texture == 0:
     glGenTextures(1, `canvas`.canvas_texture.addr)
   glBindTexture(GL_TEXTURE_2D, `canvas`.canvas_texture)
@@ -155,7 +153,7 @@ method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base
   if self.kind == CANVAS_NODE:
     var new_surface = createRGBSurface(
       0, w.cint, h.cint, 32,
-      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000'u32)
+      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)
     self.surface.blitSurface(nil, new_surface, nil)
     self.renderer.destroy()
     self.surface.freeSurface()
@@ -247,6 +245,20 @@ proc rect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) =
   loadColor(color)
   var rectangle = rect(x1.cint, y1.cint, x2.cint, y2.cint)
   canvas.renderer.drawRect(rectangle)
+  loadGL(canvas)
+
+proc fillRect*(canvas: CanvasRef, x1, y1, x2, y2: GLfloat, color: ColorRef) =
+  ## Draws a line in the canvas.
+  ##
+  ## Arguments:
+  ## - `x1` - first position at X axis.
+  ## - `y1` - first position at Y axis.
+  ## - `x2` - second position at X axis.
+  ## - `y2` - second position at Y axis.
+  ## - `color` - rectangle color.
+  loadColor(color)
+  var rectangle = rect(x1.cint, y1.cint, x2.cint, y2.cint)
+  canvas.renderer.fillRect(rectangle)
   loadGL(canvas)
 
 proc point*(canvas: CanvasRef, x, y: GLfloat, color: ColorRef) =

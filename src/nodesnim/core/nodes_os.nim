@@ -21,4 +21,9 @@ proc setStandardFont*(path: cstring, size: cint) =
     standard_font.close()
   standard_font = openFont(path, size)
 
-setStandardFont(currentSourcePath().parentDir() / "unifont.ttf", 16)
+when defined(windows):
+  setStandardFont("C://Windows/Fonts/segoeuib.ttf", 16)
+elif defined(android):
+  setStandardFont("/system/fonts/DroidSans.ttf", 16)
+else:
+  setStandardFont(currentSourcePath().parentDir() / "unifont.ttf", 16)

@@ -10,10 +10,8 @@ import
   anchor,
   color,
   nodes_os,
+  exceptions,
   unicode
-
-when defined(debug):
-  import logging
 
 
 type
@@ -41,6 +39,62 @@ proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool =
   result.rendered = false
 
 
+# ------ Operators ------ #
+
+proc len*(text: StyleText): int =
+  text.chars.len()
+
+proc `$`*(c: StyleUnicode): string =
+  c.c
+
+proc `$`*(text: StyleText): string =
+  for i in text.chars:
+    result &= $i
+
+proc `&`*(text: StyleText, c: StyleUnicode): StyleText =
+  result = text
+  result.chars.add(c)
+
+proc `&`*(text, t: StyleText): StyleText =
+  result = text
+  for c in t.chars:
+    result.chars.add(c)
+
+proc `&`*(text: StyleText, t: string): StyleText =
+  text & stext(t)
+
+proc `&`*(text: string, c: StyleUnicode): string =
+  text & $c
+
+proc `&`*(text: string, t: StyleText): string =
+  text & $t
+
+proc `&=`*(text: var StyleText, c: StyleUnicode) =
+  text = text & c
+
+proc `&=`*(text: var StyleText, t: StyleText) =
+  text = text & t
+
+proc `&=`*(text: var string, c: StyleUnicode) =
+  text = text & $c
+
+proc `&=`*(text: var string, t: StyleText) =
+  text = text & $t
+
+proc `&=`*(text: var StyleText, t: string) =
+  text &= stext(t)
+
+proc `[]`*(text: StyleText, index: int): StyleUnicode =
+  text.chars[index]
+
+proc `[]`*[T, U](text: StyleText, slice: HSlice[T, U]): StyleText =
+  result = stext""
+  for i in text.chars[slice.a..slice.b]:
+    result &= i
+
+
+# ------ Funcs ------ #
+
 proc toUpper*(text: StyleText): StyleText =
   result = text.deepCopy()
   for i in result.chars:
@@ -63,7 +117,6 @@ proc setColor*(text: StyleText, index: int, color: ColorRef) =
 proc setColor*(text: StyleText, s, e: int, color: ColorRef) =
   for i in s..e:
     text.chars[i].color = color
-
 
 proc setUnderline*(c: StyleUnicode, val: bool) =
   c.underline = val
@@ -89,43 +142,7 @@ proc loadFont*(font: cstring, size: cint): FontPtr =
   openFont(font, size)
 
 
-proc len*(text: StyleText): int =
-  text.chars.len()
-
-proc `$`*(c: StyleUnicode): string =
-  c.c
-
-proc `$`*(text: StyleText): string =
-  for i in text.chars:
-    result &= $i
-
-proc `&`*(text: StyleText, c: StyleUnicode): StyleText =
-  result = text
-  result.chars.add(c)
-
-proc `&`*(text, t: StyleText): StyleText =
-  result = text
-  for c in t.chars:
-    result.chars.add(c)
-
-proc `&`*(text: string, c: StyleUnicode): string =
-  text & $c
-
-proc `&`*(text: string, t: StyleText): string =
-  text & $t
-
-proc `&=`*(text: var StyleText, c: StyleUnicode) =
-  text = text & c
-
-proc `&=`*(text: var StyleText, t: StyleText) =
-  text = text & t
-
-proc `&=`*(text: var string, c: StyleUnicode) =
-  text = text & $c
-
-proc `&=`*(text: var string, t: StyleText) =
-  text = text & $t
-
+# ------ Utils ------ #
 
 proc splitLines*(text: StyleText): seq[StyleText] =
   result = @[stext""]
@@ -138,6 +155,17 @@ proc splitLines*(text: StyleText): seq[StyleText] =
         result.add(stext"")
         inc line
 
+proc split*(text: StyleText, splitval: string): seq[StyleText] =
+  result = @[stext""]
+  let size = splitval.len
+  var i = 0
+  while i+size-1 < text.len:
+    if $text[i..i+size-1] != splitval:
+      result[^1].chars.add(text[i])
+      inc i
+    else:
+      result.add(stext"")
+      inc i, size
 
 proc getTextSize*(text: StyleText): Vector2Obj =
   result = Vector2()
@@ -183,27 +211,67 @@ proc getCaretPos*(text: StyleText, pos: uint32): tuple[a: Vector2Obj, b: uint16]
         return result
     result[0].y -= text.spacing
 
-proc renderSurface*(text: StyleText, anchor: AnchorObj): SurfacePtr =
-  when defined(debug):
-    if text.font.isNil():
-      error("Font is not loaded!")
-      text.rendered = true
-      return
-
-  if not text.font.isNil() and $text != "":
-    var
-      lines = text.splitLines()
+proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
+                       text_align: AnchorObj = Anchor(0, 0, 0, 0)): uint32 =
+  ## Returns caret position under mouse.
+  if not text.font.isNil():
+    let
       textsize = text.getTextSize()
-      surface = createRGBSurface(
-        0, textsize.x.cint, textsize.y.cint, 32,
-        0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000'u32)
+      local_pos = global_pos - text_pos
+      lines = text.splitLines()
+    var
       w: cint
       h: cint
-      y: cint = 0
+      x: float = 0f
+      y: float = 0f
+      position = Vector2(-1, -1)
 
     for line in lines:
       discard text.font.sizeUtf8(($line).cstring, addr w, addr h)
-      var x = (textsize.x * anchor.x1 - w.float * anchor.x2).cint
+      if local_pos.y >= y and local_pos.y <= y + h.float:
+        position.y = y
+      x = textsize.x*text_align.x1 - w.Glfloat*text_align.x2
+      for c in line.chars:
+        discard text.font.sizeUtf8(($c).cstring, addr w, addr h)
+        result += 1
+        if local_pos.x >= x and local_pos.x <= x+w.float and position.y != -1f:
+          position.x = x
+          break
+        x += w.float
+      if position.x != -1f:
+        break
+      y += text.spacing + h.float
+      result += 1
+    if position.x == -1f:
+      result = 0
+
+
+# ------ Render ------ #
+
+proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
+  ## Renders the surface and returns it, if available.
+  ##
+  ## Arguments:
+  ##   - `align` -- text align.
+  when defined(debug):
+    if text.font.isNil():
+      raise newException(ResourceError, "Font isn't loaded!")
+
+  if not text.font.isNil() and $text != "":
+    let
+      lines = text.splitLines()
+      textsize = text.getTextSize()
+    var
+      surface = createRGBSurface(
+        0, textsize.x.cint, textsize.y.cint, 32,
+        0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)
+      y: cint = 0
+      w: cint
+      h: cint
+
+    for line in lines:
+      discard text.font.sizeUtf8(($line).cstring, addr w, addr h)
+      var x = (textsize.x * align.x1 - w.float * align.x2).cint
       for c in line.chars:
         discard text.font.sizeUtf8(($c).cstring, addr w, addr h)
         var
@@ -217,8 +285,9 @@ proc renderSurface*(text: StyleText, anchor: AnchorObj): SurfacePtr =
       y += h + text.spacing.cint
     return surface
 
-proc render*(text: StyleText, size: Vector2Obj, anchor: AnchorObj) =
-  var surface = renderSurface(text, anchor)
+proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
+  ## Translates SDL2 surface to OpenGL texture and frees surface memory.
+  var surface = renderSurface(text, align)
 
   if not surface.isNil():
     text.texture.size.x = surface.w.float
@@ -228,22 +297,23 @@ proc render*(text: StyleText, size: Vector2Obj, anchor: AnchorObj) =
     if text.texture.texture == 0'u32:
       glGenTextures(1, text.texture.texture.addr)
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, surface.w,  surface.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, surface.pixels)
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, surface.w, surface.h,
+                 0, GL_RGBA, GL_UNSIGNED_BYTE, surface.pixels)
 
     # free memory
     surface.freeSurface()
     surface = nil
   text.rendered = true
 
-proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorObj) =
+proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
     # Show text
     if not text.rendered:
-      text.render(size, anchor)
+      text.render(size, align)
     var
       pos1 = Vector2(pos)
       size1 = Vector2(size)
@@ -253,27 +323,27 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, anchor: AnchorObj) =
 
     if textsize.x < size1.x:
       size1.x = textsize.x
-      pos1.x += size.x*anchor.x1 - textsize.x*anchor.x2
+      pos1.x += size.x*align.x1 - textsize.x*align.x2
     if textsize.y < size1.y:
       size1.y = textsize.y
-      pos1.y -= size.y*anchor.y1 - textsize.y*anchor.y2
+      pos1.y -= size.y*align.y1 - textsize.y*align.y2
 
     if textsize.x > size1.x:
-      var
-        x1 = (size1.x*anchor.x1 - textsize.x*anchor.x2) / textsize.x
+      let
+        x1 = (size1.x*align.x1 - textsize.x*align.x2) / textsize.x
         x2 =
           if x1 > 0.5:
-            1f - ((size1.x*anchor.x1 - textsize.x*anchor.x2 + textsize.x) / textsize.x)
+            1f - ((size1.x*align.x1 - textsize.x*align.x2 + textsize.x) / textsize.x)
           else:
             x1 + (size1.x / textsize.x)
       texcord[0] = abs(x2)
       texcord[2] = abs(x1)
     if textsize.y > size1.y:
-      var
-        y1 = (size1.y*anchor.y1 - textsize.y*anchor.y2) / textsize.y
+      let
+        y1 = (size1.y*align.y1 - textsize.y*align.y2) / textsize.y
         y2 =
           if y1 > 0.5:
-            1f - ((size1.y*anchor.y1 - textsize.y*anchor.y2 + textsize.y) / textsize.y)
+            1f - ((size1.y*align.y1 - textsize.y*align.y2 + textsize.y) / textsize.y)
           else:
             y1 + (size1.y / textsize.y)
       texcord[1] = abs(y2)

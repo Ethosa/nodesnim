@@ -31,10 +31,10 @@ camera.enableSmooth()
 
 
 
-Input.addButtonAction("left", BUTTON_LEFT)
+addButtonAction("left", BUTTON_LEFT)
 body.on_process =
   proc(self: NodeRef) =
-    if Input.isActionPressed("left"):
+    if isActionPressed("left"):
       let
         mouse_pos = body.getGlobalMousePosition()
         distance = body.global_position.distance(mouse_pos)

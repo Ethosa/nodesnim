@@ -26,10 +26,10 @@ shape3.setShapeTypePolygon(Vector2(0, 0), Vector2(15, 5), Vector2(28, 15), Vecto
 shape4.setShapeTypePolygon(Vector2(0, 0), Vector2(150, 65), Vector2(25, 150))
 
 
-Input.addButtonAction("left", BUTTON_LEFT)
+addButtonAction("left", BUTTON_LEFT)
 body.on_process =
   proc(self: NodeRef) =
-    if Input.isActionPressed("left"):
+    if isActionPressed("left"):
       let
         mouse_pos = body.getGlobalMousePosition()
         distance = body.global_position.distance(mouse_pos)

@@ -12,7 +12,7 @@ type
     TEXTURE_FILL_XY,            ## Fill texture without keeping the aspect ratio.
     TEXTURE_KEEP_ASPECT_RATIO,  ## Fill texture with keeping the aspect ratio.
     TEXTURE_CROP                ## Crop and fill texture.
-  NodeKind* {.pure.} = enum
+  NodeKind* {.pure, size: sizeof(int8).} = enum
     NODE_NODE,
     CANVAS_NODE,
     SCENE_NODE,
@@ -51,8 +51,12 @@ type
     NODE3D_NODE,
     GEOMETRY_INSTANCE_NODE,
     CAMERA_3D_NODE
-  NodeTypes* {.pure.} = enum
+  NodeTypes* {.pure, size: sizeof(int8).} = enum
     NODE_TYPE_DEFAULT,
     NODE_TYPE_CONTROL,
     NODE_TYPE_2D,
     NODE_TYPE_3D
+  Visibility* {.pure, size: sizeof(int8).} = enum
+    VISIBLE,
+    INVISIBLE,
+    GONE
