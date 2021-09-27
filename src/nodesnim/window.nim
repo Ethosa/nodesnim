@@ -112,7 +112,7 @@ proc keyboardpress(c: cint) {.cdecl.} =
   ## Called when press any key on keyboard.
   if c < 0:
     return
-  var key = $c
+  let key = $c
   check(InputEventKeyboard, last_event.pressed, true)
   last_event.key = key
   last_event.key_int = c

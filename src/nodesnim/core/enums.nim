@@ -50,7 +50,8 @@ type
     # 3D nodes
     NODE3D_NODE,
     GEOMETRY_INSTANCE_NODE,
-    CAMERA_3D_NODE
+    CAMERA_3D_NODE,
+    SPRITE_3D_NODE
   NodeTypes* {.pure, size: sizeof(int8).} = enum
     NODE_TYPE_DEFAULT,
     NODE_TYPE_CONTROL,

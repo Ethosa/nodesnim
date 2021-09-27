@@ -36,6 +36,7 @@ proc Scene*(name: string = "Scene"): SceneRef =
 method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
   ## Draws scene
   ## This used in the window.nim.
+  scene.on_process(scene)
   for child in scene.getChildIter():
     if paused and child.getPauseMode() != PROCESS:
       continue
@@ -57,17 +58,13 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
         child.Node3DRef.calcGlobalPosition3()
         gluPerspective(45.0, w/h, 1.0, 5000.0)
         if current_camera.isNil():
-          gluLookAt(0, 0, -1,
-                    0, 0, 1,
-                    0, 1, 0)
+          gluLookAt(0, 0, -1, 0, 0, 1, 0, 1, 0)
         else:
           let
             pos = current_camera.global_translation
             front = current_camera.front + pos
             up = current_camera.up
-          gluLookAt(pos.x, pos.y, pos.z,
-                    front.x, front.y, front.z,
-                    up.x, up.y, up.z)
+          gluLookAt(pos.x, pos.y, pos.z, front.x, front.y, front.z, up.x, up.y, up.z)
 
       if not child.is_ready:
         child.on_ready(child)
@@ -101,6 +98,7 @@ method exit*(scene: SceneRef) {.base.} =
 
 method handleScene*(scene: SceneRef, event: InputEvent, mouse_on: var NodeRef, paused: bool) {.base.} =
   ## Handles user input. This called on any input.
+  scene.on_input(scene, event)
   var childs = scene.getChildIter()
   for i in countdown(childs.len()-1, 0):
     if paused and childs[i].getPauseMode() != PROCESS:
