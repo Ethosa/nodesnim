@@ -280,7 +280,7 @@ proc onReshape(userdata: pointer; event: ptr Event): Bool32 {.cdecl.} =
   False32
 
 proc windowLaunch* =
-  if main_scene == nil:
+  if main_scene.isNil():
     raise newException(SceneError, "Main scene is not indicated!")
   changeScene(main_scene.name)
   when defined(debug):
