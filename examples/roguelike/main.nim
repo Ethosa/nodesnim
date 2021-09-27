@@ -74,7 +74,7 @@ addKeyAction("backward", "s")
 addKeyAction("right", "d")
 addKeyAction("left", "a")
 
-player@onInput(self, event):
+player@onProcess(self):
   if isActionPressed("right"):
     player.moveAndCollide(Vector2(PLAYER_SPEED, 0))
   elif isActionPressed("left"):
