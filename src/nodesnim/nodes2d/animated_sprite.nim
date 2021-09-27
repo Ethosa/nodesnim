@@ -126,10 +126,6 @@ method duplicate*(self: AnimatedSpriteRef): AnimatedSpriteRef {.base.} =
   ## Duplicates AnimatedSprite object and create a new AnimatedSprite.
   self.deepCopy()
 
-method getGlobalMousePosition*(self: AnimatedSpriteRef): Vector2Obj {.inline.} =
-  ## Returns mouse position.
-  Vector2Obj(x: last_event.x, y: last_event.y)
-
 method addAnimation*(self: AnimatedSpriteRef, name: string, speed: float = 2f) {.base.} =
   ## Adds a new animation to the AnimatedSprite animations.
   ##
