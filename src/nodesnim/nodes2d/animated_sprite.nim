@@ -69,6 +69,7 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
   if frame >= 0 and frame < frames_count:
     var texture = self.animations[self.animation].frames[frame]
     if texture.texture > 0'u32:
+      glPushMatrix()
       if self.centered:
         glTranslatef(x + (self.rect_size.x / 2), y - (self.rect_size.y / 2), self.z_index_global)
         self.position = self.rect_size / 2
@@ -94,13 +95,7 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
       glEnd()
       glDisable(GL_DEPTH_TEST)
       glDisable(GL_TEXTURE_2D)
-      glRotatef(-self.rotation, 0, 0, 1)
-      if self.centered:
-        glTranslatef(-x - (self.rect_size.x / 2), -y + (self.rect_size.y / 2), -self.z_index_global)
-        self.position = self.timed_position - self.rect_size/2
-      else:
-        glTranslatef(-x, -y, -self.z_index_global)
-        self.position = self.timed_position
+      glPopMatrix()
     else:
       self.rect_size = Vector2()
 
