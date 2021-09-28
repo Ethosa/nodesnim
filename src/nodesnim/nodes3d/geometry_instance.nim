@@ -21,7 +21,7 @@ type
     GEOMETRY_SPHERE
   GeometryInstanceObj* = object of Node3DObj
     geometry*: GeometryType
-    sides*: int
+    sides*, rings*: int
     color*: ColorRef
     radius*: float
   GeometryInstanceRef* = ref GeometryInstanceObj
@@ -38,6 +38,7 @@ proc GeometryInstance*(name: string = "GeometryInstance", geometry: GeometryType
   node3dpattern()
   result.geometry = geometry
   result.sides = 8
+  result.rings = 8
   result.radius = 1
   result.color = Color(1.0, 1.0, 1.0)
   result.kind = GEOMETRY_INSTANCE_NODE
@@ -96,6 +97,7 @@ method draw*(self: GeometryInstanceRef, w, h: Glfloat) =
     glVertex3f(1,  1, -1)
     glEnd()
   of GEOMETRY_CYLINDER:
+    # Draw sides
     glBegin(GL_QUAD_STRIP)
     for i in 0..self.sides:
       let angle = TAU*i.float/self.sides.float
@@ -103,12 +105,14 @@ method draw*(self: GeometryInstanceRef, w, h: Glfloat) =
       glVertex3f(sin(angle)*self.radius, -1, cos(angle)*self.radius)
     glEnd()
 
+    # Draw top
     glBegin(GL_POLYGON)
     for i in 0..self.sides:
       let angle = TAU*i.float/self.sides.float
       glVertex3f(sin(angle)*self.radius, 1, cos(angle)*self.radius)
     glEnd()
 
+    # Draw bottom
     glBegin(GL_POLYGON)
     for i in 0..self.sides:
       let angle = TAU*i.float/self.sides.float
@@ -116,11 +120,11 @@ method draw*(self: GeometryInstanceRef, w, h: Glfloat) =
     glEnd()
   of GEOMETRY_SPHERE:
     var
-      R = 2 * PI / 24f
-      S = PI / 48f
+      R = 2 * PI / self.rings.float
+      S = PI / self.sides.float
     glBegin(GL_TRIANGLE_STRIP)
-    for ring in 0..24:
-      for sector in 0..48:
+    for ring in 0..self.rings:
+      for sector in 0..self.sides:
         var
           s = sector.float
           r = ring.float
