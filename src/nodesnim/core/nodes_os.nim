@@ -10,17 +10,17 @@ const
   home_folder* = getHomeDir()
   nodesnim_folder* = home_folder / "NodesNim"
   saves_folder* = "NodesNim" / "saves"
-  standard_font_path* =
-    when defined(windows):
-      "C://Windows/Fonts/segoeuib.ttf"
-    elif defined(android):
-      "/system/fonts/DroidSans.ttf"
-    else:
-      currentSourcePath().parentDir() / "unifont.ttf"
 
 discard existsOrCreateDir(nodesnim_folder)
 discard existsOrCreateDir(home_folder / saves_folder)
 
+let standard_font_path* =
+  when defined(windows):
+    "C://Windows/Fonts/segoeuib.ttf"
+  elif defined(android):
+    "/system/fonts/DroidSans.ttf"
+  else:
+      currentSourcePath().parentDir() / "unifont.ttf"
 var standard_font*: FontPtr = nil
 
 proc setStandardFont*(path: cstring, size: cint) =
