@@ -28,4 +28,12 @@ proc setStandardFont*(path: cstring, size: cint) =
     standard_font.close()
   standard_font = openFont(path, size)
 
+proc norm*(a, b, c: float): float =
+  if c < a:
+    a
+  elif c > b:
+    b
+  else:
+    c
+
 setStandardFont(standard_font_path, 16)

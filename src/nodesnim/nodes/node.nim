@@ -58,7 +58,7 @@ method addChild*(self: NodeRef, child: NodeRef) {.base.} =
   child.parent = self
 
 
-method addChilds*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
+method addChildren*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
   ## Adds new child in current node.
   ##
   ## Arguments:

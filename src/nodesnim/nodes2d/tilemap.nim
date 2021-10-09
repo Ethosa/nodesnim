@@ -51,8 +51,10 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
     viewport[2] = self.map_size.x-1
 
   glEnable(GL_TEXTURE_2D)
+  glColor4f(1, 1, 1, 1)
   case self.mode
   of TILEMAP_2D:
+    glEnable(GL_DEPTH_TEST)
     for z in 0..<self.map_size.z:
       for x1 in viewport[0]..viewport[2]:
         for y1 in viewport[1]..viewport[3]:
@@ -61,7 +63,8 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
             let
               posx = x + self.tileset.grid.x*x1.float
               posy = y - self.tileset.grid.y*y1.float
-            self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy)
+            self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy, self.z_index_global + z.float)
+    glDisable(GL_TEXTURE_2D)
   of TILEMAP_ISOMETRIC:
     for z in 0..<self.map_size.z:
       for y1 in viewport[1]..viewport[3]:
@@ -72,8 +75,8 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
             let
               posx = x + GLfloat((x1.GLfloat * self.tileset.grid.x  / 2) + (y1.GLfloat * self.tileset.grid.x  / 2))
               posy = y - GLfloat((y1.GLfloat * self.tileset.grid.y / 2) - (x1.GLfloat * self.tileset.grid.y / 2)) - h/2
-            self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy - self.tileset.grid.y*z.GLfloat)
-  glDisable(GL_TEXTURE_2D)
+            self.tileset.draw(self.map[pos].x, self.map[pos].y, posx, posy - self.tileset.grid.y*z.GLfloat, self.z_index_global)
+  glDisable(GL_DEPTH_TEST)
 
 method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Ref, layer: int = 0) {.base.} =
   ## Changes map tile at `x`,`y` point to tile from tileset at `tile_pos` point.

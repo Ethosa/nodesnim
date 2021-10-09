@@ -127,7 +127,7 @@ proc isActionJustPressed*(name: string): bool =
   result = false
   for action in actionlist:
     if action.name == name:
-      if action.kind == MOUSE and (last_event.kind == MOUSE or last_event.kind == MOTION):
+      if action.kind == MOUSE and last_event.kind in [MOUSE, MOTION]:
         if action.button_index == last_event.button_index and mouse_pressed:
           if press_state == 0:
             result = true
@@ -167,12 +167,14 @@ proc isActionReleased*(name: string): bool =
   result = false
   for action in actionlist:
     if action.name == name:
-      if action.kind == MOUSE and (last_event.kind == MOUSE or last_event.kind == MOTION):
+      if action.kind == MOUSE and last_event.kind in [MOUSE, MOTION]:
         if action.button_index == last_event.button_index and not mouse_pressed:
           if press_state == 0:
             result = true
       elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
-        if action.key notin pressed_keys or action.key_int notin pressed_keys_ints:
+        if last_event.key_int > 255:
+          continue
+        if action.key == $chr(last_event.key_int) or action.key_int == last_event.key_int:
           if press_state == 0:
             result = true
 

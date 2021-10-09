@@ -54,6 +54,12 @@ method show*(self: PopupRef) =
   self.visible = VISIBLE
   recalc()
 
+method toggle*(self: PopupRef) {.base.} =
+  if self.visible == GONE:
+    self.show()
+  else:
+    self.hide()
+
 method calcPositionAnchor*(self: PopupRef) =
   ## This uses in the `scene.nim`.
   {.warning[LockLevel]: off.}

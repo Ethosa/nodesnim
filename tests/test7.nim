@@ -1,41 +1,83 @@
-# --- Test 7. Change scenes. --- #
-import nodesnim
+# --- Test 7. Work with 3D nodes. --- #
+import
+  nodesnim,
+  unittest
 
 
-Window("hello world")
-
-var
-  main = Scene("Main")
-  second = Scene("Second scene")
-
-  lightblue = ColorRect()
-
-  violet = ColorRect()
+suite "Work with 3D nodes.":
+  
+  test "Setup window":
+    Window("3D nodes test", 1024, 640)
 
 
-addKeyAction("change_scene", K_SPACE)
-
-main.addChild(violet)
-second.addChild(lightblue)
-
-violet.color = Color(0xccaaffff'u32)
-lightblue.color = Color(0xaaccffff'u32)
-lightblue.setAnchor(0.5, 0.5, 0.5, 0.5)
-
-violet.on_process =
-  proc(self: NodeRef) =
-    if isActionJustPressed("change_scene"):
-      echo "bye from main scene :("
-      changeScene("Second scene")  # This function changes current scene.
-
-lightblue.on_process =
-  proc(self: NodeRef) =
-    if isActionJustPressed("change_scene"):
-      echo "bye from second scene :("
-      changeScene("Main")
+  test "Setup scene":
+    build:
+      - Scene main
+    addMainScene(main)
 
 
-addScene(main)
-addScene(second)
-setMainScene("Main")
-windowLaunch()
+  test "Register events":
+    addKeyAction("forward", "w")
+    addKeyAction("back", "s")
+    addKeyAction("left", "a")
+    addKeyAction("right", "d")
+
+
+  test "GeometryInstance test":
+    build:
+      - GeometryInstance cube:
+        translation: Vector3(-1, 0, 2)
+        color: Color(122, 133, 144, 0.8)
+      - GeometryInstance cube1:
+        translation: Vector3(2, 0, -2)
+        color: Color(144, 144, 122, 0.8)
+      - GeometryInstance cube2:
+        translation: Vector3(1, 2.5, 1)
+        color: Color(144, 111, 144, 0.8)
+      - GeometryInstance sphere:
+        translation: Vector3(-1, -1, 1)
+        color: Color(144, 77, 144, 1.0)
+        geometry: GEOMETRY_SPHERE
+      - GeometryInstance cylinder:
+        translation: Vector3(2, -1, 1)
+        color: Color(144, 77, 144, 1.0)
+        geometry: GEOMETRY_CYLINDER
+    getSceneByName("main").addChildren(cube, cube1, cube2, sphere, cylinder)
+
+
+  test "Camera3D test":
+    build:
+      - Node3D root:
+        call translate(2, 2, -5)
+        - Camera3D camera:
+          call setCurrent()
+          call changeTarget(root)
+    root@onInput(self, event):
+      if event.isInputEventMouseMotion() and event.pressed:
+        camera.rotate(-event.xrel*0.25, event.yrel*0.25)
+
+    root@onProcess(self):
+      if isActionPressed("left"):
+        root.translate(camera.right * -0.1)
+      if isActionPressed("right"):
+        root.translate(camera.right * 0.1)
+      if isActionPressed("forward"):
+        root.translate(camera.front*0.1)
+      if isActionPressed("back"):
+        root.translate(camera.front*(-0.1))
+    getSceneByName("main").addChild(root)
+
+
+  test "Sprite3D test":
+    build:
+      - Sprite3D sprite:
+        call loadTexture("assets/anim/2.jpg", GL_RGB)
+        call translate(-3, -2, 2)
+
+    sprite@onProcess(self):
+      sprite.rotateY(0.5)
+    getSceneByName("main").addChild(sprite)
+
+
+  test "Launch window":
+    windowLaunch()

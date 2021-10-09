@@ -55,11 +55,8 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
       self.rect_size = texture.size
 
   # Recalculate position.
-  self.position = self.timed_position
-  if self.centered:
-    self.position = self.timed_position - self.rect_size/2
-  else:
-    self.position = self.timed_position
+  procCall self.Node2DRef.draw(w, h)
+  self.calcGlobalPosition()
 
   let
     x = -w/2 + self.global_position.x

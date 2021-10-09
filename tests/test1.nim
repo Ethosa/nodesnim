@@ -1,16 +1,45 @@
-# --- Test 1. Create a window and set up the main scene. --- #
-import nodesnim
+# --- Test 1. Work with Window.. --- #
+import
+  nodesnim,
+  unittest
 
 
-Window(
-  "hello world",  # Window name
-  640,            # Window width,
-  360             # Window height
-)
+suite "Work with Window":
 
-var main = Scene("Main")  # Create a new Scene object.
+  test "Create window":
+    # Window(title, width, height)
+    Window(title = "MyWindow",
+           w = 720, h = 480)
 
+  test "Change Window title":
+    setTitle("My own window ^^")
 
-addScene(main)        # Add new scene in window.
-setMainScene("Main")  # Set main scene.
-windowLaunch()        # Start main loop.
+  test "Change Window icon":
+    setIcon("assets/sharp.jpg")
+
+  test "Resize and centered window":
+    resizeWindow(1024, 640)
+    centeredWindow()
+
+  test "Setup environment":
+    env.color = Color(1, 0.6, 1)  # window background color.
+    env.brightness = 0.5
+    env.delay = 1000 div 120  # 120 frames per second.
+
+  test "Setup window":
+    build:  # Node builder
+      - Scene main  # Create an empty Scene node with the name "main".
+
+    test "Register events":
+      addKeyAction("forward", "w")
+      addKeyAction("backward", "s")
+
+    test "Handle events":
+      main@onProcess(self):
+        if isActionJustPressed("forward"):
+          echo "forward pressed!"
+        elif isActionJustPressed("backward"):
+          echo "backward pressed!"
+
+    addMainScene(main)  # Adds scene to window and 
+    windowLaunch()

@@ -99,6 +99,7 @@ when defined(debug):
       glColor4f(0.5, 0.5, 0.5, 0.7)
     else:
       glColor4f(0.5, 0.6, 0.9, 0.7)
+    glEnable(GL_DEPTH_TEST)
 
     case self.shape_type
     of COLLISION_SHAPE_2D_RECTANGLE:
@@ -116,6 +117,7 @@ when defined(debug):
         glVertex3f(x + vec2.x, y - vec2.y, self.z_index_global)
       glEnd()
     glColor4f(1, 1, 1, 1)
+    glDisable(GL_DEPTH_TEST)
 
 
 method duplicate*(self: CollisionShape2DRef): CollisionShape2DRef {.base.} =

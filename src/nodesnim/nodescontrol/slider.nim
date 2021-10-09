@@ -76,7 +76,7 @@ method draw*(self: SliderRef, w, h: GLfloat) =
     glRectf(x, y - self.rect_size.y + progress, x + self.rect_size.x, y - self.rect_size.y)
 
     # Thumb
-    self.thumb.draw(x, progress-10, self.rect_size.x, 10)
+    self.thumb.draw(x, y-self.rect_size.y+progress, self.rect_size.x, 10)
 
   # Press
   if self.pressed:
