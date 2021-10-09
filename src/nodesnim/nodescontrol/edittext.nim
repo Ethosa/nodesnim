@@ -122,7 +122,7 @@ template changeText(self, `text`, `save_properties`, t: untyped): untyped =
     for i in 0..<st.chars.len():
       if i < `self`.`t`.len():
         st.chars[i].color = `self`.`t`.chars[i].color
-        st.chars[i].underline = `self`.`t`.chars[i].underline
+        st.chars[i].style = `self`.`t`.chars[i].style
   `self`.`t` = st
   `self`.rect_min_size = `self`.`t`.getTextSize()
   `self`.resize(`self`.rect_size.x, `self`.rect_size.y)

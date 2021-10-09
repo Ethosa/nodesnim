@@ -10,6 +10,7 @@ import
   ../core/input,
   ../core/enums,
   ../core/color,
+  ../core/font,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -44,6 +45,7 @@ proc Counter*(name: string = "Counter"): CounterRef =
   result.label = Label()
   result.label.mousemode = MOUSEMODE_IGNORE
   result.label.parent = result
+  result.label.setTextAlign(0.1, 0.5, 0.1, 0.5)
   result.background.setColor(Color(0x212121ff))
   result.kind = COUNTER_NODE
 
@@ -66,14 +68,13 @@ method draw*(self: CounterRef, w, h: GLfloat) =
 
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
-  self.label.calcGlobalPosition()
-  self.label.resize(self.rect_size.x - 40, self.rect_size.y)
-  self.label.setTextAlign(0.5, 0.5, 0.5, 0.5)
   if self.as_int:
     self.label.setText($self.value.int)
   else:
     self.label.setText($self.value)
-  self.label.draw(w, h)
+  self.label.text.renderTo(
+    Vector2(x + self.label.padding.x1, y - self.label.padding.y1),
+    self.rect_size, self.label.text_align)
 
   glColor4f(1f, 1f, 1f, 1f)
 

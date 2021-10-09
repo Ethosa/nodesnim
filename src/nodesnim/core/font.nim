@@ -16,7 +16,7 @@ import
 
 type
   StyleUnicode* = ref object
-    underline*: bool
+    style*: cint
     c*: string
     color*: ColorRef
   StyleText* = ref object
@@ -28,13 +28,13 @@ type
     chars*: seq[StyleUnicode]
 
 
-proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool = false): StyleUnicode =
-  StyleUnicode(c: c, color: color, underline: underline)
+proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f), style: cint = TTF_STYLE_NORMAL): StyleUnicode =
+  StyleUnicode(c: c, color: color, style: style)
 
-proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool = false): StyleText =
+proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f), style: cint = TTF_STYLE_NORMAL): StyleText =
   result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1)
   for i in text.utf8():
-    result.chars.add(schar(i, color, underline))
+    result.chars.add(schar(i, color, style))
   result.font = standard_font
   result.rendered = false
 
@@ -94,6 +94,11 @@ proc `[]`*[T, U](text: StyleText, slice: HSlice[T, U]): StyleText =
 
 
 # ------ Funcs ------ #
+proc applyStyle*(symbol: StyleUnicode, style: cint, enabled: bool = true) =
+  if (symbol.style and style) == 0 and enabled:
+    symbol.style = symbol.style or style
+  elif (symbol.style and style) != 0 and not enabled:
+    symbol.style = symbol.style xor style
 
 proc toUpper*(text: StyleText): StyleText =
   result = text.deepCopy()
@@ -118,19 +123,24 @@ proc setColor*(text: StyleText, s, e: int, color: ColorRef) =
   for i in s..e:
     text.chars[i].color = color
 
-proc setUnderline*(c: StyleUnicode, val: bool) =
-  c.underline = val
+template styleFunc(setter, style_type: untyped): untyped =
+  proc `setter`*(c: StyleUnicode, val: bool = true) =
+    c.applyStyle(`style_type`, val)
 
-proc setUnderline*(text: StyleText, val: bool) =
-  for i in text.chars:
-    i.underline = val
+  proc `setter`*(text: StyleText, val: bool) =
+    for i in text.chars:
+      i.`setter`(val)
 
-proc setUnderline*(text: StyleText, index: int, val: bool) =
-  text.chars[index].underline = val
+  proc `setter`*(text: StyleText, index: int, val: bool) =
+    text.chars[index].`setter`(val)
 
-proc setUnderline*(text: StyleText, s, e: int, val: bool) =
-  for i in s..e:
-    text.chars[i].underline = val
+  proc `setter`*(text: StyleText, s, e: int, val: bool) =
+    for i in s..e:
+      text.chars[i].`setter`(val)
+styleFunc(setBold, TTF_STYLE_BOLD)
+styleFunc(setItalic, TTF_STYLE_ITALIC)
+styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
+styleFunc(setStrikethrough, TTF_STYLE_STRIKETHROUGH)
 
 proc setFont*(text: StyleText, font: cstring, size: cint) =
   text.font = openFont(font, size)
@@ -273,6 +283,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
       discard text.font.sizeUtf8(($line).cstring, addr w, addr h)
       var x = (textsize.x * align.x1 - w.float * align.x2).cint
       for c in line.chars:
+        text.font.setFontStyle(c.style)
         discard text.font.sizeUtf8(($c).cstring, addr w, addr h)
         var
           rendered = text.font.renderUtf8Blended(
@@ -353,6 +364,7 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
     glEnable(GL_TEXTURE_2D)
     glBegin(GL_QUADS)
+    glTexCoord2f(texcord[0], texcord[3])
     glVertex2f(pos1.x + size1.x, pos1.y)
     glTexCoord2f(texcord[0], texcord[1])
     glVertex2f(pos1.x + size1.x, pos1.y - size1.y)
@@ -360,7 +372,6 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
     glVertex2f(pos1.x, pos1.y - size1.y)
     glTexCoord2f(texcord[2], texcord[3])
     glVertex2f(pos1.x, pos1.y)
-    glTexCoord2f(texcord[0], texcord[3])
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, 0)

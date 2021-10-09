@@ -9,6 +9,7 @@ import
   ../core/input,
   ../core/color,
   ../core/enums,
+  ../core/nodes_os,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -72,8 +73,8 @@ method draw*(self: ProgressBarRef, w, h: GLfloat) =
       else:
         self.indeterminate_val = -progress_width
       glRectf(
-        normalize(x + self.indeterminate_val, x, x + self.rect_size.x), y,
-        normalize(x + self.indeterminate_val + progress_width, x, x + self.rect_size.x), y - self.rect_size.y)
+        norm(x, x + self.rect_size.x, x + self.indeterminate_val), y,
+        norm(x, x + self.rect_size.x, x + self.indeterminate_val + progress_width), y - self.rect_size.y)
     else:
       glRectf(x, y, x + progress_width, y - self.rect_size.y)
 
@@ -87,8 +88,8 @@ method draw*(self: ProgressBarRef, w, h: GLfloat) =
       else:
         self.indeterminate_val = -progress_width
       glRectf(
-        x, normalize(y - self.indeterminate_val, y - self.rect_size.y, y),
-        x + self.rect_size.x, normalize(y - self.indeterminate_val - progress_width, y - self.rect_size.y, y))
+        x, norm(y - self.rect_size.y, y, y - self.indeterminate_val),
+        x + self.rect_size.x, norm(y - self.rect_size.y, y, y - self.indeterminate_val - progress_width))
     else:
       glRectf(x, y, x + self.rect_size.x, y - progress_width)
 

@@ -47,7 +47,7 @@ method draw*(self: SpriteRef, w, h: GLfloat) =
 
   # Recalculate position.
   procCall self.Node2DRef.draw(w, h)
-  self.CanvasRef.calcGlobalPosition()
+  self.calcGlobalPosition()
 
   let
     x = -w/2 + self.global_position.x

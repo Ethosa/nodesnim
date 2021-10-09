@@ -214,7 +214,14 @@ proc changeScene*(name: string, extra: seq[tuple[k: string, v: string]] = @[]): 
   when defined(debug):
     debug("result of `changeScene` is ", result)
 
+proc getSceneByName*(name: string): SceneRef =
+  for scene in scenes:
+    if scene.name == name:
+      return scene
+
 proc resizeWindow*(x, y: cint) =
+  width = x
+  height = y
   windowptr.setSize(x, y)
 
 proc setMainScene*(name: string) =

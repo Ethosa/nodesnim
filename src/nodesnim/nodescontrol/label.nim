@@ -76,7 +76,7 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
     for i in 0..<st.chars.len():
       if i < self.text.len():
         st.chars[i].color = self.text.chars[i].color
-        st.chars[i].underline = self.text.chars[i].underline
+        st.chars[i].style = self.text.chars[i].style
   self.text = st
   self.rect_min_size = self.text.getTextSize()
   self.resize(self.rect_size.x, self.rect_size.y, true)
