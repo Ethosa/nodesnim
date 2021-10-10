@@ -68,28 +68,19 @@ proc `&`*(text, t: StyleText): StyleText =
 proc `&`*(text: StyleText, t: string): StyleText =
   text & stext(t)
 
-proc `&`*(text: string, c: StyleUnicode): string =
+proc `&`*(text: string, c: StyleUnicode | StyleText): string =
   text & $c
 
-proc `&`*(text: string, t: StyleText): string =
-  text & $t
+proc `&=`*(text: var StyleText, c: StyleUnicode | StyleText) =
+  text &= c
 
-proc `&=`*(text: var StyleText, c: StyleUnicode) =
-  text = text & c
-
-proc `&=`*(text: var StyleText, t: StyleText) =
-  text = text & t
-
-proc `&=`*(text: var string, c: StyleUnicode) =
-  text = text & $c
-
-proc `&=`*(text: var string, t: StyleText) =
-  text = text & $t
+proc `&=`*(text: var string, c: StyleUnicode | StyleText) =
+  text &= $c
 
 proc `&=`*(text: var StyleText, t: string) =
   text &= stext(t)
 
-proc `[]`*(text: StyleText, index: int): StyleUnicode =
+proc `[]`*(text: StyleText, index: int | BackwardsIndex): StyleUnicode =
   text.chars[index]
 
 proc `[]`*[T, U](text: StyleText, slice: HSlice[T, U]): StyleText =
@@ -131,17 +122,16 @@ proc setColor*(text: StyleText, s, e: int, color: ColorRef) =
 template styleFunc(setter, style_type: untyped): untyped =
   proc `setter`*(c: StyleUnicode, val: bool = true) =
     c.applyStyle(`style_type`, val)
-
   proc `setter`*(text: StyleText, val: bool) =
     for i in text.chars:
       i.`setter`(val)
-
   proc `setter`*(text: StyleText, index: int, val: bool) =
     text.chars[index].`setter`(val)
-
   proc `setter`*(text: StyleText, s, e: int, val: bool) =
     for i in s..e:
       text.chars[i].`setter`(val)
+
+styleFunc(setNormal, TTF_STYLE_NORMAL)
 styleFunc(setBold, TTF_STYLE_BOLD)
 styleFunc(setItalic, TTF_STYLE_ITALIC)
 styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
