@@ -34,7 +34,7 @@ build:
       call setTexture(akiko_default)
       call setTextureAnchor(0.5, 0.5, 0.5, 0.5)
       texture_mode: TEXTURE_KEEP_ASPECT_RATIO
-      visible: GONE
+      visibility: GONE
     - Label dialog_text:
       call setSizeAnchor(0.8, 0.3)
       call setAnchor(0.1, 0.6, 0, 0)
@@ -65,7 +65,7 @@ foreground_rect@on_input(self, event):
     if stage < dialog.len():
       name_charapter.setText(dialog[stage][0])
       dialog_text.setText(dialog[stage][1])
-      charapter.visible = dialog[stage][2]
+      charapter.visibility = dialog[stage][2]
     inc stage
 
 
