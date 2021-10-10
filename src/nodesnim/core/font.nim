@@ -16,8 +16,9 @@ import
 
 type
   StyleUnicode* = ref object
+    is_url*: bool
     style*: cint
-    c*: string
+    c*, url*: string
     color*: ColorRef
   StyleText* = ref object
     font*: FontPtr
@@ -27,11 +28,15 @@ type
     texture*: GlTextureObj
     chars*: seq[StyleUnicode]
 
+let URL_COLOR = Color(0.45, 0.45, 0.9)
 
-proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f), style: cint = TTF_STYLE_NORMAL): StyleUnicode =
-  StyleUnicode(c: c, color: color, style: style)
 
-proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f), style: cint = TTF_STYLE_NORMAL): StyleText =
+proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f),
+            style: cint = TTF_STYLE_NORMAL, is_url: bool = false): StyleUnicode =
+  StyleUnicode(c: c, color: color, style: style, is_url: is_url, url: "")
+
+proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f),
+            style: cint = TTF_STYLE_NORMAL): StyleText =
   result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1)
   for i in text.utf8():
     result.chars.add(schar(i, color, style))
@@ -141,6 +146,12 @@ styleFunc(setBold, TTF_STYLE_BOLD)
 styleFunc(setItalic, TTF_STYLE_ITALIC)
 styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
 styleFunc(setStrikethrough, TTF_STYLE_STRIKETHROUGH)
+
+proc setURL*(text: StyleText, s, e: int, url: string) =
+  for i in s..e:
+    text.chars[i].is_url = true
+    text.chars[i].url = url
+    text.chars[i].color = URL_COLOR
 
 proc setFont*(text: StyleText, font: cstring, size: cint) =
   text.font = openFont(font, size)
@@ -255,6 +266,14 @@ proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
     if position.x == -1f:
       result = 0
 
+proc getCharUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
+                        text_align: AnchorObj = Anchor(0, 0, 0, 0)): tuple[c: StyleUnicode, pos: uint32] =
+  let pos = text.getPosUnderPoint(global_pos, text_pos, text_align)
+  if pos > 0:
+    (c: text.chars[pos-1], pos: pos-1)
+  else:
+    (c: text.chars[pos], pos: pos)
+
 
 # ------ Render ------ #
 
@@ -273,7 +292,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
       textsize = text.getTextSize()
     var
       surface = createRGBSurface(
-        0, textsize.x.cint, textsize.y.cint, 32,
+        0, textsize.x.cint + 8, textsize.y.cint, 32,
         0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)
       y: cint = 0
       w: cint

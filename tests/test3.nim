@@ -104,9 +104,10 @@ suite "Work with Control nodes.":
   test "Label test":
     build:
       - Label label:
-        call setText("hello,\nworld!")
+        call setText("hello,\nworld!\n    VK!")
         call move(0, 40)
     label.text.setColor(6, 12, Color("#664fff"))
+    label.text.setURL(18, 19, "https://vk.com")
     label.text.setUnderline(0, 2, true)
     label.text.setStrikethrough(1, 3, true)
     label.text.setItalic(0, true)
@@ -197,7 +198,7 @@ suite "Work with Control nodes.":
   test "EditText test":
     build:
       - EditText edit:
-        call move(0, 100)
+        call move(0, 150)
     getSceneByName("main").addChild(edit)
 
 

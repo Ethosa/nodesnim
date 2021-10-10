@@ -19,6 +19,7 @@ import
 
   ../nodes/node,
   ../nodes/canvas,
+  browsers,
   control
 
 
@@ -60,6 +61,31 @@ method duplicate*(self: LabelRef): LabelRef {.base.} =
 
 method getText*(self: LabelRef): string {.base.} =
   $self.text
+
+method handle*(self: LabelRef, event: InputEvent, mouse_on: var NodeRef) =
+  ## Handles user input. Thi uses in the `window.nim`.
+  procCall self.ControlRef.handle(event, mouse_on)
+
+  if event.kind in [MOUSE, MOTION]:
+    let (c, pos) = self.text.getCharUnderPoint(
+      self.getGlobalMousePosition(), self.global_position + self.rect_size/2 - self.text.getTextSize()/2,
+      self.text_align)
+
+    if c.is_url:
+      var (i, j) = (pos.int, pos.int)
+      while i - 1 > 0 and self.text.chars[i - 1].is_url:
+        dec i
+      while j + 1 < self.text.len and self.text.chars[j + 1].is_url:
+        inc j
+      self.text.setUnderline(i, j, true)
+      self.text.rendered = false
+      if last_event.pressed and last_event.kind == MOUSE:
+        openDefaultBrowser(c.url)
+    else:
+      for i in self.text.chars:
+        if i.is_url:
+          i.setUnderline(false)
+      self.text.rendered = false
 
 method setText*(self: LabelRef, text: string, save_properties: bool = false) {.base.} =
   ## Changes text.
