@@ -20,3 +20,5 @@
 
 ## [Sample messenger](https://github.com/Ethosa/nodesnim/blob/master/examples/sample_messenger)
 ![Sample messenger](https://github.com/Ethosa/nodesnim/blob/nightly/screenshots/7.png)
+
+## [Builder features](https://github.com/Ethosa/nodesnim/blob/master/examples/builder_features)

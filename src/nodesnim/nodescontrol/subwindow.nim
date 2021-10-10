@@ -48,7 +48,7 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
   result.background.setBorderWidth(1)
   result.rect_size.x = 320
   result.rect_size.y = 220
-  result.visible = GONE
+  result.visibility = GONE
   result.title = Label("Title")
   result.title.setText("Title")
   result.title.parent = result
@@ -83,15 +83,15 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
   for child in self.getChildIter():
     child.CanvasRef.calcGlobalPosition()
     if child.CanvasRef.global_position.x > self.global_position.x + self.rect_size.x:
-      child.visible = GONE
+      child.visibility = GONE
     elif child.CanvasRef.global_position.y > self.global_position.y + self.rect_size.y:
-      child.visible = GONE
+      child.visibility = GONE
     elif child.CanvasRef.global_position.x + child.CanvasRef.rect_size.x < self.global_position.x:
-      child.visible = GONE
+      child.visibility = GONE
     elif child.CanvasRef.global_position.y + child.CanvasRef.rect_size.y < self.global_position.y:
-      child.visible = GONE
+      child.visibility = GONE
     else:
-      child.visible = VISIBLE
+      child.visibility = VISIBLE
 
   self.title_bar.draw(x, y, self.rect_size.x, 32)
 

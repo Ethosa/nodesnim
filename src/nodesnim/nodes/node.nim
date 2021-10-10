@@ -16,7 +16,7 @@ type
   NodeObj* = object of RootObj
     kind*: NodeKind
     type_of_node*: NodeTypes
-    visible*: Visibility
+    visibility*: Visibility
     is_ready*: bool
     pausemode*: PauseMode            ## Pause mode, by default is INHERIT.
     name*: string                    ## Node name.
@@ -39,7 +39,7 @@ template nodepattern*(nodetype: untyped): untyped =
     on_input: proc(self: NodeRef, event: InputEvent) = discard,
     on_enter: proc(self: NodeRef) = discard,
     on_exit: proc(self: NodeRef) = discard,
-    is_ready: false, pausemode: INHERIT, visible: VISIBLE
+    is_ready: false, pausemode: INHERIT, visibility: VISIBLE
   )
   result.type_of_node = NODE_TYPE_DEFAULT
 
@@ -190,7 +190,7 @@ method hasParent*(self: NodeRef): bool {.base, inline.} =
   self.parent != nil
 
 method hide*(self: NodeRef) {.base.} =
-  self.visible = INVISIBLE
+  self.visibility = INVISIBLE
 
 method postdraw*(self: NodeRef, w, h: GLfloat) {.base.} =
   ## Draws node.
@@ -218,7 +218,7 @@ method removeChild*(self: NodeRef, other: NodeRef) {.base.} =
     self.removeChild(index)
 
 method show*(self: NodeRef) {.base.} =
-  self.visible = VISIBLE
+  self.visibility = VISIBLE
 
 method delete*(self: NodeRef) {.base.} =
   ## Deletes current node.
