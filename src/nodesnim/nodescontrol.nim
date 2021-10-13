@@ -18,10 +18,11 @@ import
   nodescontrol/counter,
   nodescontrol/switch,
   nodescontrol/subwindow,
-  nodescontrol/checkbox
+  nodescontrol/checkbox,
+  nodescontrol/tooltip
 
 export
   control, color_rect, texture_rect, label, button,
   box, hbox, vbox, grid_box, edittext, scroll, progress_bar,
   slider, popup, texture_button, texture_progress_bar,
-  counter, switch, subwindow, checkbox
+  counter, switch, subwindow, checkbox, tooltip

@@ -132,6 +132,23 @@ method move*(self: CanvasRef, x, y: float) {.base, inline.} =
   self.position += Vector2(x, y)
   self.anchor.clear()
 
+method moveTo*(self: CanvasRef, x, y: float) {.base, inline.} =
+  ## Change node position.
+  ##
+  ## Arguments:
+  ## - `x`: how much to add to the position on the X axis.
+  ## - `y`: how much to add to the position on the Y axis.
+  self.position = Vector2(x, y)
+  self.anchor.clear()
+
+method moveTo*(self: CanvasRef, vec2: Vector2Obj) {.base, inline.} =
+  ## Change node position.
+  ##
+  ## Arguments:
+  ## - `vec2`: how much to add to the position on the X,Y axes.
+  self.position = vec2
+  self.anchor.clear()
+
 method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base.} =
   ## Resizes canvas.
   ##

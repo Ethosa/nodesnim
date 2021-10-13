@@ -324,6 +324,14 @@ suite "Work with Control nodes.":
         call move(600, 310)
     getSceneByName("main").addChildren(slider1, slider2)
 
+  test "ToolTip test":
+    build:
+      - ToolTip tooltip:
+        call showAtMouse()
+        @onProcess():
+          tooltip.showAtMouse()
+    getSceneByName("main").addChild(tooltip)
+
 
   test "Launch window":
     windowLaunch()

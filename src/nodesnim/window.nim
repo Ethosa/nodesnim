@@ -8,6 +8,7 @@ import
   core/color,
   core/input,
   core/exceptions,
+  core/vector2,
 
   nodes/node,
   nodes/scene,
@@ -219,6 +220,9 @@ proc getSceneByName*(name: string): SceneRef =
     if scene.name == name:
       return scene
 
+proc getWindowSize*(): Vector2Obj =
+  Vector2(width.float, height.float)
+
 proc resizeWindow*(x, y: cint) =
   width = x
   height = y
@@ -255,7 +259,7 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   ## - `title` - window title.
   # Set up window.
   once:
-    when not defined(android) and not defined(ios):
+    when not defined(android) and not defined(ios) and not defined(useGlew):
       loadExtensions()  # Load OpenGL extensions.
       discard captureMouse(True32)
   windowptr = createWindow(

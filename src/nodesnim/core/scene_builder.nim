@@ -6,37 +6,36 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
   result = newStmtList()
   if code.kind in [nnkStmtList, nnkObjConstr, nnkCall]:
     for line in code.children():
-      if line.kind == nnkPrefix:
-        if line[0].kind == nnkIdent and line[1].kind == nnkCommand:
-          # - Node name:
-          if $line[0] == "-":
-            case line[1][1].kind
-            of nnkIdent:  # - Node name:
-              result.add(newVarStmt(line[1][1], newCall($line[1][0], newStrLitNode($line[1][1]))))
-            of nnkObjConstr:  # - Node name(a: .., b: ...)
-              result.add(newVarStmt(line[1][1][0], newCall($line[1][0], newStrLitNode($line[1][1][0]))))
-            of nnkPar:  # Node (name):
-              result.add(newVarStmt(postfix(line[1][1][0], "*"), newCall($line[1][0], newStrLitNode($line[1][1][0]))))
-            of nnkCall:  # Node name(call smth()):
-              result.add(newVarStmt(line[1][1][0], newCall($line[1][0], newStrLitNode($line[1][1][0]))))
+      if line.kind == nnkPrefix and line[0].kind == nnkIdent and line[1].kind == nnkCommand:
+        # - Node name:
+        if $line[0] == "-":
+          case line[1][1].kind
+          of nnkIdent:  # - Node name:
+            result.add(newVarStmt(line[1][1], newCall($line[1][0], newStrLitNode($line[1][1]))))
+          of nnkObjConstr:  # - Node name(a: .., b: ...)
+            result.add(newVarStmt(line[1][1][0], newCall($line[1][0], newStrLitNode($line[1][1][0]))))
+          of nnkPar:  # Node (name):
+            result.add(newVarStmt(postfix(line[1][1][0], "*"), newCall($line[1][0], newStrLitNode($line[1][1][0]))))
+          of nnkCall:  # Node name(call smth()):
+            result.add(newVarStmt(line[1][1][0], newCall($line[1][0], newStrLitNode($line[1][1][0]))))
+          else:
+            discard
+
+          if level.len() > 0:
+            case line[1][1].kind:
+            of nnkIdent:
+              result.add(newCall("addChild", level[^1], line[1][1]))
+            of nnkPar, nnkObjConstr, nnkCall:
+              result.add(newCall("addChild", level[^1], line[1][1][0]))
             else:
               discard
 
-            if level.len() > 0:
-              case line[1][1].kind:
-              of nnkIdent:
-                result.add(newCall("addChild", level[^1], line[1][1]))
-              of nnkPar, nnkObjConstr, nnkCall:
-                result.add(newCall("addChild", level[^1], line[1][1][0]))
-              else:
-                discard
-
-            if line[1][1].kind == nnkObjConstr:  # - Node node(...)
-              level.add(line[1][1][0])
-              let nodes = addNode(level, line[1][1])
-              for i in nodes.children():
-                result.add(i)
-      # call  hodName(arg1, arg2) -> currentNode.methodName(arg1, arg2)
+          if line[1][1].kind == nnkObjConstr:  # - Node node(...)
+            level.add(line[1][1][0])
+            let nodes = addNode(level, line[1][1])
+            for i in nodes.children():
+              result.add(i)
+      # call methodName(arg1, arg2) -> currentNode.methodName(arg1, arg2)
       elif line.kind == nnkCommand and $line[0] == "call" and level.len > 0:
         line[1].insert(1, level[^1])
         result.add(line[1])
