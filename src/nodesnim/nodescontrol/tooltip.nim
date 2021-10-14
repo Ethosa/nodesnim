@@ -42,7 +42,7 @@ proc ToolTip*(name: string = "ToolTip",
   result.hide()
 
 
-method draw*(self: ToolTipRef, w, h: GLfloat) =
+method postdraw*(self: ToolTipRef, w, h: GLfloat) =
   procCall self.ControlRef.draw(w, h)
   let
     x = -w/2 + self.global_position.x
