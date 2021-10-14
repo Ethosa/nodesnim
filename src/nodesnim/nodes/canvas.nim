@@ -2,10 +2,10 @@
 ## Canvas is the root type of all 2D and Control nodes.
 ## 
 ## Canvas used for drawing primitive geometry.
+import ../thirdparty/sdl2 except Color
 import
   math,
   ../thirdparty/opengl,
-  ../thirdparty/sdl2,
   ../thirdparty/sdl2/image,
 
   ../core/vector2,

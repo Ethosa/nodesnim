@@ -34,8 +34,8 @@ proc ToolTip*(name: string = "ToolTip",
   result.background.setColor(Color("#444"))
   result.background.setBorderColor(Color("#555"))
   result.background.setBorderWidth(0.5)
-  result.background.setCornerRadius(8)
-  result.background.setCornerDetail(8)
+  result.background.setCornerRadius(4)
+  result.background.setCornerDetail(4)
   result.background.enableShadow(true)
   result.background.setShadowOffset(Vector2(0, 5))
   result.mousemode = MOUSEMODE_IGNORE

@@ -1,8 +1,8 @@
 # author: Ethosa
 ## It is the convenient alternative of the Button node.
+import ../thirdparty/sdl2 except Color
 import
   ../thirdparty/opengl,
-  ../thirdparty/sdl2,
 
   ../core/vector2,
   ../core/rect2,

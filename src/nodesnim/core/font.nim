@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Provides TTF text rendering. Use SDL2_ttf.
+import ../thirdparty/sdl2 except Color
 import
-  ../thirdparty/sdl2,
   ../thirdparty/sdl2/ttf,
   ../thirdparty/opengl,
 

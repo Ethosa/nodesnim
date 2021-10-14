@@ -1,7 +1,7 @@
 # author: Ethosa
+import ../thirdparty/sdl2 except Color
 import
   ../thirdparty/opengl,
-  ../thirdparty/sdl2,
   ../thirdparty/sdl2/ttf,
 
   ../core/font,
