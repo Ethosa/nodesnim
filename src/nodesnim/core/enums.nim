@@ -61,3 +61,25 @@ type
     VISIBLE,
     INVISIBLE,
     GONE
+  ProgressBarType* {.pure, size: sizeof(int8).} = enum
+    PROGRESS_BAR_HORIZONTAL,
+    PROGRESS_BAR_VERTICAL,
+    PROGRESS_BAR_CIRCLE
+  SliderType* {.pure, size: sizeof(int8).} = enum
+    SLIDER_HORIZONTAL,
+    SLIDER_VERTICAL
+  GeometryType* {.pure, size: sizeof(int8).} = enum
+    GEOMETRY_CUBE,
+    GEOMETRY_CYLINDER,
+    GEOMETRY_SPHERE
+  TileMapMode* {.pure, size: sizeof(int8).} = enum
+    TILEMAP_2D,            ## Default 2D mode.
+    TILEMAP_ISOMETRIC      ## Isometric mode.
+  CollisionShape2DType* {.size: sizeof(int8), pure.} = enum
+    COLLISION_SHAPE_2D_RECTANGLE,
+    COLLISION_SHAPE_2D_CIRCLE,
+    COLLISION_SHAPE_2D_POLYGON
+  AnimationMode* {.pure, size: sizeof(int8).} = enum
+    ANIMATION_NORMAL,
+    ANIMATION_EASE,
+    ANIMATION_BEZIER

@@ -20,10 +20,6 @@ import
 const CIRCLE_STEP: float = TAU * 0.01
 
 type
-  ProgressBarType* {.pure.} = enum
-    PROGRESS_BAR_HORIZONTAL,
-    PROGRESS_BAR_VERTICAL,
-    PROGRESS_BAR_CIRCLE
   ProgressBarObj* = object of ControlRef
     max_value*, value*: float
     progress_color*: ColorRef

@@ -15,10 +15,6 @@ import
 
 
 type
-  GeometryType* {.pure.} = enum
-    GEOMETRY_CUBE,
-    GEOMETRY_CYLINDER,
-    GEOMETRY_SPHERE
   GeometryInstanceObj* = object of Node3DObj
     geometry*: GeometryType
     sides*, rings*: int

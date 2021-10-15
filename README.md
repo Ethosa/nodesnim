@@ -81,7 +81,7 @@ This section contains links to documentation for all nodes.
 |[SceneBuilder][]|                     |[TextureButton][]     |                    |                    |                    |
 |[StyleSheet][]  |                     |[TextureProgressBar][]|                    |                    |                    |
 |[TileSet][]     |                     |[Counter][]           |                    |                    |                    |
-|[Scripts][]     |                     |[Switch][]            |                    |                    |                    |
+|                |                     |[Switch][]            |                    |                    |                    |
 |                |                     |[SubWindow][]         |                    |                    |                    |
 |                |                     |[CheckBox][]          |                    |                    |                    |
 |                |                     |[ToolTip][]           |                    |                    |                    |

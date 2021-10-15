@@ -49,11 +49,12 @@ proc Color*(src: uint32): ColorRef =
     echo clr3
     echo clr4
 
+  let clr = src.int
   ColorRef(
-    r: ((src shr 24) and 255).int / 255,
-    g: ((src shr 16) and 255).int / 255,
-    b: ((src shr 8) and 255).int / 255,
-    a: (src and 255).int / 255
+    r: ((clr shr 24) and 255) / 255,
+    g: ((clr shr 16) and 255) / 255,
+    b: ((clr shr 8) and 255) / 255,
+    a: (clr and 255) / 255
   )
 
 proc Color*(src: string): ColorRef =
@@ -73,16 +74,23 @@ proc Color*(src: string): ColorRef =
     target = src
     matched: array[20, string]
 
-  # #FFFFFFFF, #FFF, #FFFFFF, etc
+  # #FFFFFFFF, #FFF, #FFFFFF, #FFFF, etc
   if target.startsWith('#') or target.startsWith("0x") or target.startsWith("0X"):
     target = target[1..^1]
-    if target[0] == 'x' or target[0] == 'X':
+    if target[0] in {'x', 'X'}:
       target = target[1..^1]
 
-    if target.len() == 3:  # #fff -> #ffffffff
+    let length = target.len
+    case length
+    of 3:
       target = target[0] & target[0] & target[1] & target[1] & target[2] & target[2] & "ff"
-    elif target.len() == 6:  # #ffffff -> #ffffffff
+    of 4:  # #1234 -> #11223344
+      target = target[0] & target[0] & target[1] & target[1] & target[2] & target[2] & target[3] & target[3]
+    of 6:  # #ffffff -> #ffffffff
       target &= "ff"
+    else:
+      discard
+
     return Color(parseHexInt(target).uint32)
 
   # rgba(255, 255, 255, 1.0)

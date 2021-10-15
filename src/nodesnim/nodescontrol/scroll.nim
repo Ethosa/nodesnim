@@ -68,16 +68,6 @@ method duplicate*(self: ScrollRef): ScrollRef {.base.} =
   self.deepCopy()
 
 
-method resize*(canvas: ScrollRef, w, h: GLfloat, save_anchor: bool = false) =
-  ## Resizes scroll.
-  ##
-  ## Arguments:
-  ## - `w` is a new width.
-  ## - `h` is a new height.
-  canvas.rect_size.x = w
-  canvas.rect_size.y = h
-
-
 method draw*(self: ScrollRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
   let

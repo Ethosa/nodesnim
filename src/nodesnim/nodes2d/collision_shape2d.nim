@@ -22,10 +22,6 @@ when defined(debug):
 
 
 type
-  CollisionShape2DType* {.size: sizeof(int8), pure.} = enum
-    COLLISION_SHAPE_2D_RECTANGLE,
-    COLLISION_SHAPE_2D_CIRCLE,
-    COLLISION_SHAPE_2D_POLYGON
   CollisionShape2DObj* = object of Node2DObj
     disable*: bool
     x1*, y1*, radius*: float

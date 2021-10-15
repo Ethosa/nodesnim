@@ -8,10 +8,6 @@ import
 
 
 type
-  AnimationMode* {.pure, size: sizeof(int8).} = enum
-    ANIMATION_NORMAL,
-    ANIMATION_EASE,
-    ANIMATION_BEZIER
   AnimationObject* = object
     states: seq[tuple[tick: int, value: float]]
     obj: ptr float

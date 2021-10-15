@@ -43,6 +43,7 @@ proc ToolTip*(name: string = "ToolTip",
 
 
 method postdraw*(self: ToolTipRef, w, h: GLfloat) =
+  {.warning[LockLevel]: off.}
   procCall self.ControlRef.draw(w, h)
   let
     x = -w/2 + self.global_position.x

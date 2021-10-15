@@ -12,9 +12,6 @@ import
 
 
 type
-  TileMapMode* {.pure, size: sizeof(int8).} = enum
-    TILEMAP_2D,            ## Default 2D mode.
-    TILEMAP_ISOMETRIC      ## Isometric mode.
   TileMapObj* = object of Node2DObj
     mode*: TileMapMode
     map_size*: tuple[x, y, z: int]

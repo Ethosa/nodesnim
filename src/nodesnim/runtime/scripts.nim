@@ -8,17 +8,11 @@ import
     condsyms
   ],
 
-  exceptions,
+  ../core/exceptions,
+  ../core/vector2,
+  scripts_impl,
 
   os
-
-
-type
-  CompiledScript = ref object
-    pctx*: PCtx
-    graph*: ModuleGraph
-    module*: PSym
-    filename*: string
 
 
 var
@@ -26,10 +20,16 @@ var
   cfg = newConfigRef()
 
 once:
+  let std = AbsoluteDir(getHomeDir() / ".nimble" / "lib")
   # Search .nimble/lib folder 👀
-  cfg.libpath = AbsoluteDir(getHomeDir() / ".nimble" / "lib")
+  cfg.libpath = std
   cfg.searchPaths.add(cfg.libpath)
-  cfg.searchPaths.add(AbsoluteDir($cfg.libpath / "pure"))
+  cfg.searchPaths.add(AbsoluteDir($std / "pure"))
+  cfg.searchPaths.add(AbsoluteDir($std / "pure" / "collections"))
+  cfg.searchPaths.add(AbsoluteDir($std / "core"))
+  cfg.searchPaths.add(AbsoluteDir($std / "impure"))
+  cfg.searchPaths.add(AbsoluteDir($std / "std"))
+  cfg.implicitIncludes.add(getCurrentDir() / "scripts_api.nim")
 
 
 # --- Convert default Nim types to PNode --- #
@@ -44,10 +44,12 @@ converter toNode*(x: openarray[int|float|string|bool|enum]): PNode =
   result.sons.initialize(x.len)
   for i in x.low..x.high:
     result[i] = x[i].toNode()
+
 converter toNode*(x: tuple | object): PNode =
   result = newTree(nkPar)
   for field in x.fields:
     result.sons.add(field.toNode())
+
 converter toNode*(x: ref tuple | ref object): PNode =
   result = newTree(nkPar)
   if x.isNil():

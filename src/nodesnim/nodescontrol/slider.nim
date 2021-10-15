@@ -16,9 +16,6 @@ import
 
 
 type
-  SliderType*{.pure, size: sizeof(int8).} = enum
-    SLIDER_HORIZONTAL,
-    SLIDER_VERTICAL
   SliderObj* = object of ControlRef
     slider_type*: SliderType
     max_value*, value*: uint
