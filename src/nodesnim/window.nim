@@ -9,6 +9,7 @@ import
   core/input,
   core/exceptions,
   core/vector2,
+  core/enums,
 
   nodes/node,
   nodes/scene,

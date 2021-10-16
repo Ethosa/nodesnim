@@ -1,12 +1,11 @@
 # author: Ethosa
-import core/color
+import
+  core/color,
+  core/enums
 {.used.}
 
 
 type
-  ScreenMode* {.pure.} = enum
-    SCREEN_MODE_NONE,  ## default mode.
-    SCREEN_MODE_EXPANDED  ## Keep screen size.
   EnvironmentObj* = object
     delay*: int    ## window delay.
     color*: ColorRef  ## background environment color.

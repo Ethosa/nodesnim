@@ -1,18 +1,21 @@
 # author: Ethosa
 
+{.push pure, size: sizeof(int8).}
+
 type
-  MouseMode* {.size: sizeof(int8).} = enum
+  MouseMode* = enum
     MOUSEMODE_IGNORE = 0x00000001  ## Igore mouse input. This used in Control nodes
     MOUSEMODE_SEE = 0x00000002     ## Handle mouse input.
-  PauseMode* {.size: sizeof(int8).} = enum
+  PauseMode* = enum
     PROCESS,  ## Continue to work when the window paused.
     PAUSE,    ## Pause work when the window paused.
     INHERIT   ## Take parent value.
-  TextureMode* {.size: sizeof(int8).} = enum
+  TextureMode* = enum
     TEXTURE_FILL_XY,            ## Fill texture without keeping the aspect ratio.
     TEXTURE_KEEP_ASPECT_RATIO,  ## Fill texture with keeping the aspect ratio.
     TEXTURE_CROP                ## Crop and fill texture.
-  NodeKind* {.pure, size: sizeof(int8).} = enum
+
+  NodeKind* = enum
     NODE_NODE,
     CANVAS_NODE,
     SCENE_NODE,
@@ -52,34 +55,48 @@ type
     GEOMETRY_INSTANCE_NODE,
     CAMERA_3D_NODE,
     SPRITE_3D_NODE
-  NodeTypes* {.pure, size: sizeof(int8).} = enum
+
+  NodeTypes* = enum
     NODE_TYPE_DEFAULT,
     NODE_TYPE_CONTROL,
     NODE_TYPE_2D,
     NODE_TYPE_3D
-  Visibility* {.pure, size: sizeof(int8).} = enum
+
+  Visibility* = enum
     VISIBLE,
     INVISIBLE,
     GONE
-  ProgressBarType* {.pure, size: sizeof(int8).} = enum
+
+  ProgressBarType* = enum
     PROGRESS_BAR_HORIZONTAL,
     PROGRESS_BAR_VERTICAL,
     PROGRESS_BAR_CIRCLE
-  SliderType* {.pure, size: sizeof(int8).} = enum
+
+  SliderType* = enum
     SLIDER_HORIZONTAL,
     SLIDER_VERTICAL
-  GeometryType* {.pure, size: sizeof(int8).} = enum
-    GEOMETRY_CUBE,
-    GEOMETRY_CYLINDER,
-    GEOMETRY_SPHERE
-  TileMapMode* {.pure, size: sizeof(int8).} = enum
-    TILEMAP_2D,            ## Default 2D mode.
-    TILEMAP_ISOMETRIC      ## Isometric mode.
-  CollisionShape2DType* {.size: sizeof(int8), pure.} = enum
-    COLLISION_SHAPE_2D_RECTANGLE,
-    COLLISION_SHAPE_2D_CIRCLE,
-    COLLISION_SHAPE_2D_POLYGON
-  AnimationMode* {.pure, size: sizeof(int8).} = enum
-    ANIMATION_NORMAL,
-    ANIMATION_EASE,
-    ANIMATION_BEZIER
+
+  GeometryType* = enum
+    GEOMETRY_CUBE,      ## Uses for cube rendering.
+    GEOMETRY_CYLINDER,  ## Uses for cylinder rendering.
+    GEOMETRY_SPHERE     ## Uses for sphere rendering.
+
+  TileMapMode* = enum
+    TILEMAP_2D,         ## Default 2D mode.
+    TILEMAP_ISOMETRIC   ## Isometric mode.
+
+  CollisionShape2DType* = enum
+    COLLISION_SHAPE_2D_RECTANGLE,  ## Uses for handle rect collision.
+    COLLISION_SHAPE_2D_CIRCLE,     ## Uses for handle circle collision.
+    COLLISION_SHAPE_2D_POLYGON     ## Uses for handle polygon collision.
+
+  AnimationMode* = enum
+    ANIMATION_NORMAL,  ## specific speed per second.
+    ANIMATION_EASE,    ## ease mode.
+    ANIMATION_BEZIER   ## specific bezier curve for speed.
+
+  ScreenMode* = enum
+    SCREEN_MODE_NONE,  ## default mode.
+    SCREEN_MODE_EXPANDED  ## Keep screen size.
+
+{.pop.}

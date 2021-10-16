@@ -17,14 +17,8 @@ type
   DrawableObj* = object of RootObj
     shadow*: bool
     border_width*: float
-    border_detail_lefttop*: int
-    border_detail_righttop*: int
-    border_detail_leftbottom*: int
-    border_detail_rightbottom*: int
-    border_radius_lefttop*: float
-    border_radius_righttop*: float
-    border_radius_leftbottom*: float
-    border_radius_rightbottom*: float
+    border_detail*: array[4, int]
+    border_radius*: array[4, float]
     shadow_offset*: Vector2Obj
     border_color*: ColorRef
     background_color*: ColorRef
@@ -35,14 +29,8 @@ type
 template drawablepattern*(`type`: untyped): untyped =
   result = `type`(
     texture: GlTextureObj(), border_width: 0,
-    border_detail_lefttop: 8,
-    border_detail_righttop: 8,
-    border_detail_leftbottom: 8,
-    border_detail_rightbottom: 8,
-    border_radius_lefttop: 0,
-    border_radius_righttop: 0,
-    border_radius_leftbottom: 0,
-    border_radius_rightbottom: 0,
+    border_detail: [8, 8, 8, 8],
+    border_radius: [0.float, 0, 0, 0],
     border_color: Color(0, 0, 0, 0),
     background_color: Color(0, 0, 0, 0),
     shadow_offset: Vector2(0, 0), shadow: false
@@ -62,62 +50,62 @@ template recalc*(shadow: bool = false) =
   ## Calculates vertex positions.
   when not shadow:
     # left top
-    for i in bezier_iter(1f/self.border_detail_lefttop.float, Vector2(0, -self.border_radius_lefttop),
-                         Vector2(0, 0), Vector2(self.border_radius_lefttop, 0)):
+    for i in bezier_iter(1f/self.border_detail[0].float, Vector2(0, -self.border_radius[0]),
+                         Vector2(0, 0), Vector2(self.border_radius[0], 0)):
       vertex.add(Vector2(x+i.x, y+i.y))
 
     # right top
-    for i in bezier_iter(1f/self.border_detail_righttop.float, Vector2(-self.border_radius_righttop, 0),
-                         Vector2(0, 0), Vector2(0, -self.border_radius_righttop)):
+    for i in bezier_iter(1f/self.border_detail[1].float, Vector2(-self.border_radius[01], 0),
+                         Vector2(0, 0), Vector2(0, -self.border_radius[1])):
       vertex.add(Vector2(x+width+i.x, y+i.y))
 
     # right bottom
-    for i in bezier_iter(1f/self.border_detail_rightbottom.float, Vector2(0, -self.border_radius_rightbottom),
-                         Vector2(0, 0), Vector2(-self.border_radius_rightbottom, 0)):
+    for i in bezier_iter(1f/self.border_detail[2].float, Vector2(0, -self.border_radius[2]),
+                         Vector2(0, 0), Vector2(-self.border_radius[2], 0)):
       vertex.add(Vector2(x+width+i.x, y-height-i.y))
 
     # left bottom
-    for i in bezier_iter(1f/self.border_detail_leftbottom.float, Vector2(self.border_radius_leftbottom, 0),
-                         Vector2(0, 0), Vector2(0, self.border_radius_leftbottom)):
+    for i in bezier_iter(1f/self.border_detail[3].float, Vector2(self.border_radius[3], 0),
+                         Vector2(0, 0), Vector2(0, self.border_radius[3])):
       vertex.add(Vector2(x+i.x, y-height+i.y))
   else:
     glBegin(GL_QUAD_STRIP)
     # left top
-    for i in bezier_iter(1f/self.border_detail_lefttop.float, Vector2(0, -self.border_radius_lefttop),
-                         Vector2(0, 0), Vector2(self.border_radius_lefttop, 0)):
+    for i in bezier_iter(1f/self.border_detail[0].float, Vector2(0, -self.border_radius[0]),
+                         Vector2(0, 0), Vector2(self.border_radius[0], 0)):
       glColor4f(0, 0, 0, 0)
       glVertex2f(x+i.x+self.shadow_offset.x, y+i.y-self.shadow_offset.y)
       glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
       glVertex2f(x+i.x, y+i.y)
 
     # right top
-    for i in bezier_iter(1f/self.border_detail_righttop.float, Vector2(-self.border_radius_righttop, 0),
-                         Vector2(0, 0), Vector2(0, -self.border_radius_righttop)):
+    for i in bezier_iter(1f/self.border_detail[1].float, Vector2(-self.border_radius[1], 0),
+                         Vector2(0, 0), Vector2(0, -self.border_radius[1])):
       glColor4f(0, 0, 0, 0)
       glVertex2f(x+width+i.x+self.shadow_offset.x, y+i.y-self.shadow_offset.y)
       glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
       glVertex2f(x+width+i.x, y+i.y)
 
     # right bottom
-    for i in bezier_iter(1f/self.border_detail_rightbottom.float, Vector2(0, -self.border_radius_rightbottom),
-                         Vector2(0, 0), Vector2(-self.border_radius_rightbottom, 0)):
+    for i in bezier_iter(1f/self.border_detail[2].float, Vector2(0, -self.border_radius[2]),
+                         Vector2(0, 0), Vector2(-self.border_radius[2], 0)):
       glColor4f(0, 0, 0, 0)
       glVertex2f(x+width+i.x+self.shadow_offset.x, y-height-i.y-self.shadow_offset.y)
       glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
       glVertex2f(x+width+i.x, y-height-i.y)
 
     # left bottom
-    for i in bezier_iter(1f/self.border_detail_leftbottom.float, Vector2(self.border_radius_leftbottom, 0),
-                         Vector2(0, 0), Vector2(0, self.border_radius_leftbottom)):
+    for i in bezier_iter(1f/self.border_detail[3].float, Vector2(self.border_radius[3], 0),
+                         Vector2(0, 0), Vector2(0, self.border_radius[3])):
       glColor4f(0, 0, 0, 0)
       glVertex2f(x+i.x+self.shadow_offset.x, y-height+i.y-self.shadow_offset.y)
       glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
       glVertex2f(x+i.x, y-height+i.y)
 
     glColor4f(0, 0, 0, 0)
-    glVertex2f(x+self.shadow_offset.x, y-self.border_radius_lefttop-self.shadow_offset.y)
+    glVertex2f(x+self.shadow_offset.x, y-self.border_radius[0]-self.shadow_offset.y)
     glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
-    glVertex2f(x, y-self.border_radius_lefttop)
+    glVertex2f(x, y-self.border_radius[0])
     glEnd()
 
 
@@ -225,10 +213,7 @@ method setCornerRadius*(self: DrawableRef, radius: float) {.base.} =
   ##
   ## Arguments:
   ## - `radius` is a new corner radius.
-  self.border_radius_lefttop = radius
-  self.border_radius_righttop = radius
-  self.border_radius_leftbottom = radius
-  self.border_radius_rightbottom = radius
+  self.border_radius = [radius, radius, radius, radius]
 
 method setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) {.base.} =
   ## Changes corner radius.
@@ -238,20 +223,14 @@ method setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) {.base.} =
   ## - `r2` is a new right-top radius.
   ## - `r3` is a new right-bottm radius.
   ## - `r4` is a new left-bottm radius.
-  self.border_radius_lefttop = r1
-  self.border_radius_righttop = r2
-  self.border_radius_rightbottom = r3
-  self.border_radius_leftbottom = r4
+  self.border_radius = [r1, r2, r3, r4]
 
 method setCornerDetail*(self: DrawableRef, detail: int) {.base.} =
   ## Changes corner detail.
   ##
   ## Arguments:
   ## - `detail` is a new corner detail.
-  self.border_detail_lefttop = detail
-  self.border_detail_righttop = detail
-  self.border_detail_leftbottom = detail
-  self.border_detail_rightbottom = detail
+  self.border_detail = [detail, detail, detail, detail]
 
 method setCornerDetail*(self: DrawableRef, d1, d2, d3, d4: int) {.base.} =
   ## Changes corner detail.
@@ -261,10 +240,7 @@ method setCornerDetail*(self: DrawableRef, d1, d2, d3, d4: int) {.base.} =
   ## - `d2` is a new right-top detail.
   ## - `d3` is a new right-bottm detail.
   ## - `d4` is a new left-bottm detail.
-  self.border_detail_lefttop = d1
-  self.border_detail_righttop = d2
-  self.border_detail_leftbottom = d4
-  self.border_detail_rightbottom = d3
+  self.border_detail = [d1, d2, d3, d4]
 
 method setTexture*(self: DrawableRef, texture: GlTextureObj) {.base.} =
   ## Changes drawable texture.
