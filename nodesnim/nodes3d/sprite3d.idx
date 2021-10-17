@@ -1,0 +1,7 @@
+Sprite3DObj	nodesnim/nodes3d/sprite3d.html#Sprite3DObj	sprite3d: Sprite3DObj	
+Sprite3DRef	nodesnim/nodes3d/sprite3d.html#Sprite3DRef	sprite3d: Sprite3DRef	
+Sprite3D	nodesnim/nodes3d/sprite3d.html#Sprite3D,string	sprite3d: Sprite3D(name: string = &quot;Sprite3D&quot;): Sprite3DRef	
+draw	nodesnim/nodes3d/sprite3d.html#draw.e,Sprite3DRef,GLfloat,GLfloat	sprite3d: draw(self: Sprite3DRef; w, h: GLfloat)	
+duplicate	nodesnim/nodes3d/sprite3d.html#duplicate.e,Sprite3DRef	sprite3d: duplicate(self: Sprite3DRef): Sprite3DRef	
+loadTexture	nodesnim/nodes3d/sprite3d.html#loadTexture.e,Sprite3DRef,string	sprite3d: loadTexture(self: Sprite3DRef; file: string; mode = GL_RGB)	
+setTexture	nodesnim/nodes3d/sprite3d.html#setTexture.e,Sprite3DRef,GlTextureObj	sprite3d: setTexture(self: Sprite3DRef; texture: GlTextureObj)	

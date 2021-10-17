@@ -108,7 +108,6 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Camera3DObj"
     title="Camera3DObj = object of Node3DObj
-  current*: bool
   pitch*, yaw*: float
   target*: Node3DRef
   front*: Vector3Obj
@@ -142,6 +141,8 @@ function main() {
     title="changeTarget(self: Camera3DRef; target: Node3DRef)"><wbr />change<wbr />Target<span class="attachedType">Camera3DRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CCamera3DRef%2CGLfloat%2CGLfloat"
     title="draw(self: Camera3DRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">Camera3DRef</span></a></li>
+  <li><a class="reference" href="#isCurrent.e%2CCamera3DRef"
+    title="isCurrent(self: Camera3DRef): bool"><wbr />is<wbr />Current<span class="attachedType">Camera3DRef</span></a></li>
   <li><a class="reference" href="#setCurrent.e%2CCamera3DRef"
     title="setCurrent(self: Camera3DRef)"><wbr />set<wbr />Current<span class="attachedType">Camera3DRef</span></a></li>
   <li><a class="reference" href="#rotateX.e%2CCamera3DRef%2Cfloat"
@@ -171,7 +172,6 @@ function main() {
 <dl class="item">
 <a id="Camera3DObj"></a>
 <dt><pre><a href="camera3d.html#Camera3DObj"><span class="Identifier">Camera3DObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="node3d.html#Node3DObj"><span class="Identifier">Node3DObj</span></a>
-  <span class="Identifier">current</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">pitch</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">yaw</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
   <span class="Identifier">target</span><span class="Operator">*</span><span class="Other">:</span> <a href="node3d.html#Node3DRef"><span class="Identifier">Node3DRef</span></a>
   <span class="Identifier">front</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector3.html#Vector3Obj"><span class="Identifier">Vector3Obj</span></a>
@@ -239,6 +239,13 @@ Changes camera target (without camera position.)
 this method uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
+<a id="isCurrent.e,Camera3DRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#isCurrent.e%2CCamera3DRef"><span class="Identifier">isCurrent</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="camera3d.html#Camera3DRef"><span class="Identifier">Camera3DRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="setCurrent.e,Camera3DRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setCurrent.e%2CCamera3DRef"><span class="Identifier">setCurrent</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="camera3d.html#Camera3DRef"><span class="Identifier">Camera3DRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -277,7 +284,7 @@ Rotates camera by <tt class="docutils literal"><span class="pre">x</span></tt> a
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:10 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:36 UTC</small>
       </div>
     </div>
   </div>

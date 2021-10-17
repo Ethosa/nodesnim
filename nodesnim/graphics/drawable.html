@@ -110,14 +110,8 @@ function main() {
     title="DrawableObj = object of RootObj
   shadow*: bool
   border_width*: float
-  border_detail_lefttop*: int
-  border_detail_righttop*: int
-  border_detail_leftbottom*: int
-  border_detail_rightbottom*: int
-  border_radius_lefttop*: float
-  border_radius_righttop*: float
-  border_radius_leftbottom*: float
-  border_radius_rightbottom*: float
+  border_detail*: array[4, int] ## left-top, right-top, right-bottom, left-bottom
+  border_radius*: array[4, float] ## left-top, right-top, right-bottom, left-bottom
   shadow_offset*: Vector2Obj
   border_color*: ColorRef
   background_color*: ColorRef
@@ -139,7 +133,7 @@ function main() {
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#enableShadow.e%2CDrawableRef%2Cbool"
-    title="enableShadow(self: DrawableRef; val: bool)"><wbr />enable<wbr />Shadow<span class="attachedType">DrawableRef</span></a></li>
+    title="enableShadow(self: DrawableRef; val: bool = true)"><wbr />enable<wbr />Shadow<span class="attachedType">DrawableRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CDrawableRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
     title="draw(self: DrawableRef; x1, y1, width, height: float)"><wbr />draw<span class="attachedType">DrawableRef</span></a></li>
   <li><a class="reference" href="#getColor.e%2CDrawableRef"
@@ -205,14 +199,8 @@ function main() {
 <dt><pre><a href="drawable.html#DrawableObj"><span class="Identifier">DrawableObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
   <span class="Identifier">shadow</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">border_width</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
-  <span class="Identifier">border_detail_lefttop</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">border_detail_righttop</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">border_detail_leftbottom</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">border_detail_rightbottom</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>
-  <span class="Identifier">border_radius_lefttop</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
-  <span class="Identifier">border_radius_righttop</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
-  <span class="Identifier">border_radius_leftbottom</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
-  <span class="Identifier">border_radius_rightbottom</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
+  <span class="Identifier">border_detail</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">int</span><span class="Other">]</span> <span class="Comment">## left-top, right-top, right-bottom, left-bottom</span>
+  <span class="Identifier">border_radius</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">float</span><span class="Other">]</span> <span class="Comment">## left-top, right-top, right-bottom, left-bottom</span>
   <span class="Identifier">shadow_offset</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>
   <span class="Identifier">border_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">background_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
@@ -248,7 +236,7 @@ function main() {
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
 <a id="enableShadow.e,DrawableRef,bool"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#enableShadow.e%2CDrawableRef%2Cbool"><span class="Identifier">enableShadow</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#enableShadow.e%2CDrawableRef%2Cbool"><span class="Identifier">enableShadow</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">val</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Enables shadow, when <tt class="docutils literal"><span class="pre">val</span></tt> is true.
@@ -270,7 +258,8 @@ Returns background color.
 
 </dd>
 <a id="loadTexture.e,DrawableRef,string"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#loadTexture.e%2CDrawableRef%2Cstring"><span class="Identifier">loadTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#loadTexture.e%2CDrawableRef%2Cstring"><span class="Identifier">loadTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Loads texture from the file.</p>
@@ -369,7 +358,7 @@ Changes shadow offset.
 </dd>
 <a id="setStyle.e,DrawableRef,StyleSheetRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setStyle.e%2CDrawableRef%2CStyleSheetRef"><span class="Identifier">setStyle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">s</span><span class="Other">:</span> <a href="../core/stylesheet.html#StyleSheetRef"><span class="Identifier">StyleSheetRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Sets a new stylesheet.
@@ -432,7 +421,7 @@ Calculates vertex positions.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:37 UTC</small>
       </div>
     </div>
   </div>

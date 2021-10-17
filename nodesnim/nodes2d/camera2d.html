@@ -108,10 +108,10 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Camera2DObj"
     title="Camera2DObj = object of Node2DObj
-  current*, smooth*: bool
+  smooth*: bool
   smooth_speed*: float
   target*: NodeRef
-  limit*: AnchorObj"><wbr />Camera2DObj<span class="attachedType"></span></a></li>
+  limit*: AnchorObj            ## left, top, right, bottom"><wbr />Camera2DObj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#Camera2DRef"
     title="Camera2DRef = ref Camera2DObj"><wbr />Camera2DRef<span class="attachedType"></span></a></li>
 
@@ -140,6 +140,8 @@ function main() {
     title="duplicate(self: Camera2DRef): Camera2DRef"><wbr />duplicate<span class="attachedType">Camera2DRef</span></a></li>
   <li><a class="reference" href="#enableSmooth.e%2CCamera2DRef%2Cfloat"
     title="enableSmooth(self: Camera2DRef; speed: float = 0.1)"><wbr />enable<wbr />Smooth<span class="attachedType">Camera2DRef</span></a></li>
+  <li><a class="reference" href="#isCurrent.e%2CCamera2DRef"
+    title="isCurrent(self: Camera2DRef): bool"><wbr />is<wbr />Current<span class="attachedType">Camera2DRef</span></a></li>
   <li><a class="reference" href="#setCurrent.e%2CCamera2DRef"
     title="setCurrent(self: Camera2DRef)"><wbr />set<wbr />Current<span class="attachedType">Camera2DRef</span></a></li>
   <li><a class="reference" href="#setLimit.e%2CCamera2DRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
@@ -169,11 +171,11 @@ function main() {
 <dl class="item">
 <a id="Camera2DObj"></a>
 <dt><pre><a href="camera2d.html#Camera2DObj"><span class="Identifier">Camera2DObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="node2d.html#Node2DObj"><span class="Identifier">Node2DObj</span></a>
-  <span class="Identifier">current</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">smooth</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">smooth</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">smooth_speed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
   <span class="Identifier">target</span><span class="Operator">*</span><span class="Other">:</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a>
-  <span class="Identifier">limit</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>
-</pre></dt>
+  <span class="Identifier">limit</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>            <span class="Comment">## left, top, right, bottom</span>
+  </pre></dt>
 <dd>
 
 
@@ -231,7 +233,11 @@ Changes camera target (without camera position.)
 <dt><pre><span class="Keyword">method</span> <a href="#disableSmooth.e%2CCamera2DRef"><span class="Identifier">disableSmooth</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="camera2d.html#Camera2DRef"><span class="Identifier">Camera2DRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Disables smooth mode.
+<p>Disables smooth mode.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#enableSmooth.e,Camera2DRef,float">enableSmooth method</a></li>
+</ul>
+
 
 </dd>
 <a id="draw.e,Camera2DRef,GLfloat,GLfloat"></a>
@@ -256,6 +262,16 @@ Duplicates Camera2D and create a new Camera2D object.
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">speed</span></tt> is a smooth speed. The closer to 0, the smoother the camera. The default is 0.1.</li>
 </ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#disableSmooth.e,Camera2DRef">disableSmooth method</a></li>
+</ul>
+
+
+</dd>
+<a id="isCurrent.e,Camera2DRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#isCurrent.e%2CCamera2DRef"><span class="Identifier">isCurrent</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="camera2d.html#Camera2DRef"><span class="Identifier">Camera2DRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
 
 
 </dd>
@@ -297,7 +313,7 @@ Changes camera target node.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:17:08 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:57:49 UTC</small>
       </div>
     </div>
   </div>

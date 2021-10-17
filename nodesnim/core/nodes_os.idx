@@ -1,5 +1,7 @@
 home_folder	nodesnim/core/nodes_os.html#home_folder	nodes_os: home_folder	
 nodesnim_folder	nodesnim/core/nodes_os.html#nodesnim_folder	nodes_os: nodesnim_folder	
 saves_folder	nodesnim/core/nodes_os.html#saves_folder	nodes_os: saves_folder	
+standard_font_path	nodesnim/core/nodes_os.html#standard_font_path	nodes_os: standard_font_path	
 standard_font	nodesnim/core/nodes_os.html#standard_font	nodes_os: standard_font	
 setStandardFont	nodesnim/core/nodes_os.html#setStandardFont,cstring,cint	nodes_os: setStandardFont(path: cstring; size: cint)	
+norm	nodesnim/core/nodes_os.html#norm,float,float,float	nodes_os: norm(a, b, c: float): float	

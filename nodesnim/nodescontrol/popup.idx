@@ -3,5 +3,6 @@ PopupRef	nodesnim/nodescontrol/popup.html#PopupRef	popup: PopupRef
 Popup	nodesnim/nodescontrol/popup.html#Popup,string	popup: Popup(name: string = &quot;Popup&quot;): PopupRef	
 hide	nodesnim/nodescontrol/popup.html#hide.e,PopupRef	popup: hide(self: PopupRef)	
 show	nodesnim/nodescontrol/popup.html#show.e,PopupRef	popup: show(self: PopupRef)	
+toggle	nodesnim/nodescontrol/popup.html#toggle.e,PopupRef	popup: toggle(self: PopupRef)	
 calcPositionAnchor	nodesnim/nodescontrol/popup.html#calcPositionAnchor.e,PopupRef	popup: calcPositionAnchor(self: PopupRef)	
 duplicate	nodesnim/nodescontrol/popup.html#duplicate.e,PopupRef	popup: duplicate(self: PopupRef): PopupRef	

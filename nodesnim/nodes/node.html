@@ -107,21 +107,25 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#NodeObj"
+      <li><a class="reference" href="#NodeHandler"
+    title="NodeHandler = proc (self: NodeRef)"><wbr />Node<wbr />Handler<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#NodeEvHandler"
+    title="NodeEvHandler = proc (self: NodeRef; event: InputEvent)"><wbr />Node<wbr />Ev<wbr />Handler<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#NodeObj"
     title="NodeObj = object of RootObj
   kind*: NodeKind
-  type_of_node*: NodeTypes
-  visible*: Visibility
-  is_ready*: bool
+  type_of_node*: NodeTypes     ## default, gui, 2d or 3d.
+  visibility*: Visibility      ## visible, invisible or gone.
+  is_ready*: bool              ## true, when scene is ready.
   pausemode*: PauseMode        ## Pause mode, by default is INHERIT.
   name*: string                ## Node name.
   parent*: NodeRef             ## Node parent.
   children*: seq[NodeRef]      ## Node children.
-  on_enter*: proc (self: NodeRef) ## This called when scene changed.
-  on_exit*: proc (self: NodeRef) ## This called when exit from the scene.
-  on_input*: proc (self: NodeRef; event: InputEvent) ## This called on user input.
-  on_ready*: proc (self: NodeRef) ## This called when the scene changed and the `enter` was called.
-  on_process*: proc (self: NodeRef) ## This called every frame."><wbr />Node<wbr />Obj<span class="attachedType"></span></a></li>
+  on_enter*: NodeHandler       ## This called when scene changed.
+  on_exit*: NodeHandler        ## This called when exit from the scene.
+  on_input*: NodeEvHandler     ## This called on user input.
+  on_ready*: NodeHandler       ## This called when the scene changed and the `enter` was called.
+  on_process*: NodeHandler     ## This called every frame."><wbr />Node<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#NodeRef"
     title="NodeRef = ref NodeObj"><wbr />Node<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -140,8 +144,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#addChild.e%2CNodeRef%2CNodeRef"
     title="addChild(self: NodeRef; child: NodeRef)"><wbr />add<wbr />Child<span class="attachedType">NodeRef</span></a></li>
-  <li><a class="reference" href="#addChilds.e%2CNodeRef%2Cvarargs%5BNodeRef%5D"
-    title="addChilds(self: NodeRef; childs: varargs[NodeRef])"><wbr />add<wbr />Childs<span class="attachedType">NodeRef</span></a></li>
+  <li><a class="reference" href="#addChildren.e%2CNodeRef%2Cvarargs%5BNodeRef%5D"
+    title="addChildren(self: NodeRef; childs: varargs[NodeRef])"><wbr />add<wbr />Children<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#draw.e%2CNodeRef%2CGLfloat%2CGLfloat"
     title="draw(self: NodeRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#duplicate.e%2CNodeRef"
@@ -225,21 +229,35 @@ function main() {
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
+<a id="NodeHandler"></a>
+<dt><pre><a href="node.html#NodeHandler"><span class="Identifier">NodeHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="NodeEvHandler"></a>
+<dt><pre><a href="node.html#NodeEvHandler"><span class="Identifier">NodeEvHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="NodeObj"></a>
 <dt><pre><a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">RootObj</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeKind"><span class="Identifier">NodeKind</span></a>
-  <span class="Identifier">type_of_node</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeTypes"><span class="Identifier">NodeTypes</span></a>
-  <span class="Identifier">visible</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#Visibility"><span class="Identifier">Visibility</span></a>
-  <span class="Identifier">is_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">type_of_node</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#NodeTypes"><span class="Identifier">NodeTypes</span></a>     <span class="Comment">## default, gui, 2d or 3d.</span>
+  <span class="Identifier">visibility</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#Visibility"><span class="Identifier">Visibility</span></a>      <span class="Comment">## visible, invisible or gone.</span>
+  <span class="Identifier">is_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>              <span class="Comment">## true, when scene is ready.</span>
   <span class="Identifier">pausemode</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/enums.html#PauseMode"><span class="Identifier">PauseMode</span></a>        <span class="Comment">## Pause mode, by default is INHERIT.</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>                <span class="Comment">## Node name.</span>
   <span class="Identifier">parent</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a>             <span class="Comment">## Node parent.</span>
   <span class="Identifier">children</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">]</span>      <span class="Comment">## Node children.</span>
-  <span class="Identifier">on_enter</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span class="Comment">## This called when scene changed.</span>
-  <span class="Identifier">on_exit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span class="Comment">## This called when exit from the scene.</span>
-  <span class="Identifier">on_input</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span> <span class="Comment">## This called on user input.</span>
-  <span class="Identifier">on_ready</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span class="Comment">## This called when the scene changed and the `enter` was called.</span>
-  <span class="Identifier">on_process</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span class="Comment">## This called every frame.</span>
+  <span class="Identifier">on_enter</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeHandler"><span class="Identifier">NodeHandler</span></a>       <span class="Comment">## This called when scene changed.</span>
+  <span class="Identifier">on_exit</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeHandler"><span class="Identifier">NodeHandler</span></a>        <span class="Comment">## This called when exit from the scene.</span>
+  <span class="Identifier">on_input</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeEvHandler"><span class="Identifier">NodeEvHandler</span></a>     <span class="Comment">## This called on user input.</span>
+  <span class="Identifier">on_ready</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeHandler"><span class="Identifier">NodeHandler</span></a>       <span class="Comment">## This called when the scene changed and the `enter` was called.</span>
+  <span class="Identifier">on_process</span><span class="Operator">*</span><span class="Other">:</span> <a href="node.html#NodeHandler"><span class="Identifier">NodeHandler</span></a>     <span class="Comment">## This called every frame.</span>
   </pre></dt>
 <dd>
 
@@ -278,16 +296,23 @@ Creates a new Node.
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">child</span></tt>: other node.</li>
 </ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#addChildren.e,NodeRef,varargs[NodeRef]">addChildren method</a></li>
+<li><a class="reference external" href="#getChild.e,NodeRef,int">getChild method</a></li>
+</ul>
 
 
 </dd>
-<a id="addChilds.e,NodeRef,varargs[NodeRef]"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#addChilds.e%2CNodeRef%2Cvarargs%5BNodeRef%5D"><span class="Identifier">addChilds</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">childs</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">]</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="addChildren.e,NodeRef,varargs[NodeRef]"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#addChildren.e%2CNodeRef%2Cvarargs%5BNodeRef%5D"><span class="Identifier">addChildren</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">childs</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">]</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Adds new child in current node.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">child</span></tt>: other node.</li>
+</ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#addChild.e,NodeRef,NodeRef">addChild method</a></li>
 </ul>
 
 
@@ -314,6 +339,10 @@ Duplicates Node object and create a new Node.
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">index</span></tt>: child index.</li>
 </ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#addChild.e,NodeRef,NodeRef">addChild method</a></li>
+<li><a class="reference external" href="#getChildCount.e,NodeRef">getChildCount method</a></li>
+</ul>
 
 
 </dd>
@@ -321,21 +350,33 @@ Duplicates Node object and create a new Node.
 <dt><pre><span class="Keyword">method</span> <a href="#getChildCount.e%2CNodeRef"><span class="Identifier">getChildCount</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Returns child count.
+<p>Returns child count.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#getChild.e,NodeRef,int">getChild method</a></li>
+</ul>
+
 
 </dd>
 <a id="getChildIndex.e,NodeRef,string"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#getChildIndex.e%2CNodeRef%2Cstring"><span class="Identifier">getChildIndex</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Returns <tt class="docutils literal"><span class="pre">child</span></tt> index or -1, if another node is not the child.
+<p>Returns <tt class="docutils literal"><span class="pre">child</span></tt> index or -1, if another node is not the child.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#getChildIndex.e,NodeRef,NodeRef">getChildIndex method</a></li>
+</ul>
+
 
 </dd>
 <a id="getChildIndex.e,NodeRef,NodeRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#getChildIndex.e%2CNodeRef%2CNodeRef"><span class="Identifier">getChildIndex</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">child</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Returns <tt class="docutils literal"><span class="pre">child</span></tt> index or -1, if another node is not the child.
+<p>Returns <tt class="docutils literal"><span class="pre">child</span></tt> index or -1, if another node is not the child.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#getChildIndex.e,NodeRef,string">getChildIndex method</a></li>
+</ul>
+
 
 </dd>
 <a id="getChildIter.e,NodeRef"></a>
@@ -397,7 +438,7 @@ Handles user input. This used in the Window object.
 
 </dd>
 <a id="hasNode.e,NodeRef,string"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#hasNode.e%2CNodeRef%2Cstring"><span class="Identifier">hasNode</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#hasNode.e%2CNodeRef%2Cstring"><span class="Identifier">hasNode</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Returns true, if a node with name <tt class="docutils literal"><span class="pre">name</span></tt> in children.</p>
@@ -408,7 +449,7 @@ Handles user input. This used in the Window object.
 
 </dd>
 <a id="hasNode.e,NodeRef,NodeRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#hasNode.e%2CNodeRef%2CNodeRef"><span class="Identifier">hasNode</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#hasNode.e%2CNodeRef%2CNodeRef"><span class="Identifier">hasNode</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Returns true, if <tt class="docutils literal"><span class="pre">other</span></tt> in self children.</p>
@@ -453,6 +494,9 @@ Draws node. This used in the Window object.
 <p>Removes node child at a specific position.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">index</span></tt>: child index.</li>
+</ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#addChild.e,NodeRef,NodeRef">addChild method</a></li>
 </ul>
 
 
@@ -531,7 +575,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:29 UTC</small>
       </div>
     </div>
   </div>

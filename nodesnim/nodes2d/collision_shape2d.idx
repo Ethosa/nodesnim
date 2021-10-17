@@ -1,4 +1,3 @@
-CollisionShape2DType	nodesnim/nodes2d/collision_shape2d.html#CollisionShape2DType	collision_shape2d: CollisionShape2DType	
 CollisionShape2DObj	nodesnim/nodes2d/collision_shape2d.html#CollisionShape2DObj	collision_shape2d: CollisionShape2DObj	
 CollisionShape2DRef	nodesnim/nodes2d/collision_shape2d.html#CollisionShape2DRef	collision_shape2d: CollisionShape2DRef	
 CollisionShape2D	nodesnim/nodes2d/collision_shape2d.html#CollisionShape2D,string	collision_shape2d: CollisionShape2D(name: string = &quot;CollisionShape2D&quot;): CollisionShape2DRef	

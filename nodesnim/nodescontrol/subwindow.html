@@ -168,7 +168,7 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../thirdparty/sdl2.html">../thirdparty/sdl2</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../core/image.html">../core/image</a>, <a class="reference external" href="../core/font.html">../core/font</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../nodes/canvas.html">../nodes/canvas</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="control.html">control</a>, <a class="reference external" href="popup.html">popup</a>, <a class="reference external" href="label.html">label</a>
+<a class="reference external" href="../thirdparty/sdl2.html">../thirdparty/sdl2</a>, <a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../core/image.html">../core/image</a>, <a class="reference external" href="../core/font.html">../core/font</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../nodes/canvas.html">../nodes/canvas</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="control.html">control</a>, <a class="reference external" href="popup.html">popup</a>, <a class="reference external" href="label.html">label</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -296,7 +296,8 @@ Opens the window. alias of show() method.
 
 </dd>
 <a id="setIcon.e,SubWindowRef,string"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setIcon.e%2CSubWindowRef%2Cstring"><span class="Identifier">setIcon</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="subwindow.html#SubWindowRef"><span class="Identifier">SubWindowRef</span></a><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setIcon.e%2CSubWindowRef%2Cstring"><span class="Identifier">setIcon</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="subwindow.html#SubWindowRef"><span class="Identifier">SubWindowRef</span></a><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Loads icon from file.</p>
@@ -339,7 +340,7 @@ Opens the window. alias of show() method.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:53 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:57:30 UTC</small>
       </div>
     </div>
   </div>

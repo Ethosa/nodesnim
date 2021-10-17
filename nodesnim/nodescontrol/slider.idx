@@ -1,4 +1,3 @@
-SliderType	nodesnim/nodescontrol/slider.html#SliderType	slider: SliderType	
 SliderObj	nodesnim/nodescontrol/slider.html#SliderObj	slider: SliderObj	
 SliderRef	nodesnim/nodescontrol/slider.html#SliderRef	slider: SliderRef	
 Slider	nodesnim/nodescontrol/slider.html#Slider,string	slider: Slider(name: string = &quot;Slider&quot;): SliderRef	

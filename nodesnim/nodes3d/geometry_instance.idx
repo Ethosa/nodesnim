@@ -1,4 +1,3 @@
-GeometryType	nodesnim/nodes3d/geometry_instance.html#GeometryType	geometry_instance: GeometryType	
 GeometryInstanceObj	nodesnim/nodes3d/geometry_instance.html#GeometryInstanceObj	geometry_instance: GeometryInstanceObj	
 GeometryInstanceRef	nodesnim/nodes3d/geometry_instance.html#GeometryInstanceRef	geometry_instance: GeometryInstanceRef	
 GeometryInstance	nodesnim/nodes3d/geometry_instance.html#GeometryInstance,string,GeometryType	geometry_instance: GeometryInstance(name: string = &quot;GeometryInstance&quot;;\n                 geometry: GeometryType = GEOMETRY_CUBE): GeometryInstanceRef	

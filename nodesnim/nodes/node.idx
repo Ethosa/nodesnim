@@ -1,9 +1,11 @@
+NodeHandler	nodesnim/nodes/node.html#NodeHandler	node: NodeHandler	
+NodeEvHandler	nodesnim/nodes/node.html#NodeEvHandler	node: NodeEvHandler	
 NodeObj	nodesnim/nodes/node.html#NodeObj	node: NodeObj	
 NodeRef	nodesnim/nodes/node.html#NodeRef	node: NodeRef	
 nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nodetype: untyped): untyped	
 Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&quot;): NodeRef	
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
-addChilds	nodesnim/nodes/node.html#addChilds.e,NodeRef,varargs[NodeRef]	node: addChilds(self: NodeRef; childs: varargs[NodeRef])	
+addChildren	nodesnim/nodes/node.html#addChildren.e,NodeRef,varargs[NodeRef]	node: addChildren(self: NodeRef; childs: varargs[NodeRef])	
 draw	nodesnim/nodes/node.html#draw.e,NodeRef,GLfloat,GLfloat	node: draw(self: NodeRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes/node.html#duplicate.e,NodeRef	node: duplicate(self: NodeRef): NodeRef	
 getChild	nodesnim/nodes/node.html#getChild.e,NodeRef,int	node: getChild(self: NodeRef; index: int): NodeRef	

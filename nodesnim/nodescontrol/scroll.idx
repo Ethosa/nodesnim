@@ -3,7 +3,6 @@ ScrollRef	nodesnim/nodescontrol/scroll.html#ScrollRef	scroll: ScrollRef
 Scroll	nodesnim/nodescontrol/scroll.html#Scroll,string	scroll: Scroll(name: string = &quot;Scroll&quot;): ScrollRef	
 addChild	nodesnim/nodescontrol/scroll.html#addChild.e,ScrollRef,NodeRef	scroll: addChild(self: ScrollRef; other: NodeRef)	
 duplicate	nodesnim/nodescontrol/scroll.html#duplicate.e,ScrollRef	scroll: duplicate(self: ScrollRef): ScrollRef	
-resize	nodesnim/nodescontrol/scroll.html#resize.e,ScrollRef,GLfloat,GLfloat,bool	scroll: resize(canvas: ScrollRef; w, h: GLfloat; save_anchor: bool = false)	
 draw	nodesnim/nodescontrol/scroll.html#draw.e,ScrollRef,GLfloat,GLfloat	scroll: draw(self: ScrollRef; w, h: GLfloat)	
 scrollBy	nodesnim/nodescontrol/scroll.html#scrollBy.e,ScrollRef,float,float	scroll: scrollBy(self: ScrollRef; x, y: float)	
 scrollTo	nodesnim/nodescontrol/scroll.html#scrollTo.e,ScrollRef,float,float	scroll: scrollTo(self: ScrollRef; x, y: float)	

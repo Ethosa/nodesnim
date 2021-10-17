@@ -132,6 +132,8 @@ function main() {
     title="duplicate(self: LabelRef): LabelRef"><wbr />duplicate<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#getText.e%2CLabelRef"
     title="getText(self: LabelRef): string"><wbr />get<wbr />Text<span class="attachedType">LabelRef</span></a></li>
+  <li><a class="reference" href="#handle.e%2CLabelRef%2CInputEvent%2CNodeRef"
+    title="handle(self: LabelRef; event: InputEvent; mouse_on: var NodeRef)"><wbr />handle<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setText.e%2CLabelRef%2Cstring%2Cbool"
     title="setText(self: LabelRef; text: string; save_properties: bool = false)"><wbr />set<wbr />Text<span class="attachedType">LabelRef</span></a></li>
   <li><a class="reference" href="#setTextAlign.e%2CLabelRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
@@ -222,7 +224,19 @@ Duplicates Label object and create a new Label.
 <dt><pre><span class="Keyword">method</span> <a href="#getText.e%2CLabelRef"><span class="Identifier">getText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Returns <tt class="docutils literal"><span class="pre">StyleText</span></tt> as <tt class="docutils literal"><span class="pre">string</span></tt>.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#setText.e,LabelRef,string,bool">setText method</a></li>
+</ul>
 
+
+</dd>
+<a id="handle.e,LabelRef,InputEvent,NodeRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#handle.e%2CLabelRef%2CInputEvent%2CNodeRef"><span class="Identifier">handle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">;</span> <span class="Identifier">mouse_on</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="../nodes/node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">,</span> <span class="Identifier">ExecIOEffect</span><span class="Other">,</span> <span class="Identifier">ReadEnvEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Handles user input. Thi uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
 
 </dd>
 <a id="setText.e,LabelRef,string,bool"></a>
@@ -235,6 +249,9 @@ Duplicates Label object and create a new Label.
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">text</span></tt> is a new Label text.</li>
 <li><tt class="docutils literal"><span class="pre">save_properties</span></tt> - saves old text properties, if <tt class="docutils literal"><span class="pre">true</span></tt>.</li>
 </ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#getText.e,LabelRef">getText method</a></li>
+</ul>
 
 
 </dd>
@@ -242,6 +259,14 @@ Duplicates Label object and create a new Label.
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes text alignment.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> <tt class="docutils literal"><span class="pre">y1</span></tt> - parent anchor.</li>
+<li><tt class="docutils literal"><span class="pre">x2</span></tt> <tt class="docutils literal"><span class="pre">y2</span></tt> - self anchor.</li>
+</ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#setTextAlign.e,LabelRef,AnchorObj">setTextAlign method</a></li>
+</ul>
 
 
 </dd>
@@ -249,6 +274,10 @@ Duplicates Label object and create a new Label.
 <dt><pre><span class="Keyword">method</span> <a href="#setTextAlign.e%2CLabelRef%2CAnchorObj"><span class="Identifier">setTextAlign</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">align</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes text alignment.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#setTextAlign.e,LabelRef,float,float,float,float">setTextAlign method</a></li>
+</ul>
 
 
 </dd>
@@ -256,6 +285,10 @@ Duplicates Label object and create a new Label.
 <dt><pre><span class="Keyword">method</span> <a href="#setTextColor.e%2CLabelRef%2CColorRef"><span class="Identifier">setTextColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes text color.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt> - new text color.</li>
+</ul>
 
 
 </dd>
@@ -263,12 +296,16 @@ Duplicates Label object and create a new Label.
 <dt><pre><span class="Keyword">method</span> <a href="#setTextFont.e%2CLabelRef%2CFontPtr"><span class="Identifier">setTextFont</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">font</span><span class="Other">:</span> <a href="../thirdparty/sdl2/ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes text font.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">font</span></tt> - new text font.</li>
+</ul>
 
 
 </dd>
 <a id="setStyle.e,LabelRef,StyleSheetRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setStyle.e%2CLabelRef%2CStyleSheetRef"><span class="Identifier">setStyle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a><span class="Other">;</span> <span class="Identifier">s</span><span class="Other">:</span> <a href="../core/stylesheet.html#StyleSheetRef"><span class="Identifier">StyleSheetRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -284,7 +321,7 @@ Duplicates Label object and create a new Label.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:23 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:52 UTC</small>
       </div>
     </div>
   </div>

@@ -1,32 +1,47 @@
 StyleUnicode	nodesnim/core/font.html#StyleUnicode	font: StyleUnicode	
 StyleText	nodesnim/core/font.html#StyleText	font: StyleText	
-schar	nodesnim/core/font.html#schar,string,ColorRef,bool	font: schar(c: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);\n      underline: bool = false): StyleUnicode	
-stext	nodesnim/core/font.html#stext,string,ColorRef,bool	font: stext(text: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);\n      underline: bool = false): StyleText	
+schar	nodesnim/core/font.html#schar,string,ColorRef,cint,bool	font: schar(c: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);\n      style: cint = TTF_STYLE_NORMAL; is_url: bool = false): StyleUnicode	
+stext	nodesnim/core/font.html#stext,string,ColorRef,cint	font: stext(text: string; color: ColorRef = Color(1.0&apos;f32, 1.0&apos;f32, 1.0&apos;f32);\n      style: cint = TTF_STYLE_NORMAL): StyleText	
 len	nodesnim/core/font.html#len,StyleText	font: len(text: StyleText): int	
 `$`	nodesnim/core/font.html#$,StyleUnicode	font: `$`(c: StyleUnicode): string	
 `$`	nodesnim/core/font.html#$,StyleText	font: `$`(text: StyleText): string	
 `&amp;`	nodesnim/core/font.html#&,StyleText,StyleUnicode	font: `&amp;`(text: StyleText; c: StyleUnicode): StyleText	
 `&amp;`	nodesnim/core/font.html#&,StyleText,StyleText	font: `&amp;`(text, t: StyleText): StyleText	
 `&amp;`	nodesnim/core/font.html#&,StyleText,string	font: `&amp;`(text: StyleText; t: string): StyleText	
-`&amp;`	nodesnim/core/font.html#&,string,StyleUnicode	font: `&amp;`(text: string; c: StyleUnicode): string	
-`&amp;`	nodesnim/core/font.html#&,string,StyleText	font: `&amp;`(text: string; t: StyleText): string	
-`&amp;=`	nodesnim/core/font.html#&=,StyleText,StyleUnicode	font: `&amp;=`(text: var StyleText; c: StyleUnicode)	
-`&amp;=`	nodesnim/core/font.html#&=,StyleText,StyleText	font: `&amp;=`(text: var StyleText; t: StyleText)	
-`&amp;=`	nodesnim/core/font.html#&=,string,StyleUnicode	font: `&amp;=`(text: var string; c: StyleUnicode)	
-`&amp;=`	nodesnim/core/font.html#&=,string,StyleText	font: `&amp;=`(text: var string; t: StyleText)	
+`&amp;`	nodesnim/core/font.html#&,string,	font: `&amp;`(text: string; c: StyleUnicode | StyleText): string	
+`&amp;=`	nodesnim/core/font.html#&=,StyleText,	font: `&amp;=`(text: var StyleText; c: StyleUnicode | StyleText)	
+`&amp;=`	nodesnim/core/font.html#&=,string,	font: `&amp;=`(text: var string; c: StyleUnicode | StyleText)	
 `&amp;=`	nodesnim/core/font.html#&=,StyleText,string	font: `&amp;=`(text: var StyleText; t: string)	
-`[]`	nodesnim/core/font.html#[],StyleText,int	font: `[]`(text: StyleText; index: int): StyleUnicode	
+`[]`	nodesnim/core/font.html#[],StyleText,	font: `[]`(text: StyleText; index: int | BackwardsIndex): StyleUnicode	
 `[]`	nodesnim/core/font.html#[],StyleText,HSlice[T,U]	font: `[]`[T, U](text: StyleText; slice: HSlice[T, U]): StyleText	
+applyStyle	nodesnim/core/font.html#applyStyle,StyleUnicode,cint,bool	font: applyStyle(symbol: StyleUnicode; style: cint; enabled: bool = true)	
 toUpper	nodesnim/core/font.html#toUpper,StyleText	font: toUpper(text: StyleText): StyleText	
 toLower	nodesnim/core/font.html#toLower,StyleText	font: toLower(text: StyleText): StyleText	
 setColor	nodesnim/core/font.html#setColor,StyleUnicode,ColorRef	font: setColor(c: StyleUnicode; color: ColorRef)	
 setColor	nodesnim/core/font.html#setColor,StyleText,ColorRef	font: setColor(text: StyleText; color: ColorRef)	
 setColor	nodesnim/core/font.html#setColor,StyleText,int,ColorRef	font: setColor(text: StyleText; index: int; color: ColorRef)	
 setColor	nodesnim/core/font.html#setColor,StyleText,int,int,ColorRef	font: setColor(text: StyleText; s, e: int; color: ColorRef)	
-setUnderline	nodesnim/core/font.html#setUnderline,StyleUnicode,bool	font: setUnderline(c: StyleUnicode; val: bool)	
-setUnderline	nodesnim/core/font.html#setUnderline,StyleText,bool	font: setUnderline(text: StyleText; val: bool)	
-setUnderline	nodesnim/core/font.html#setUnderline,StyleText,int,bool	font: setUnderline(text: StyleText; index: int; val: bool)	
-setUnderline	nodesnim/core/font.html#setUnderline,StyleText,int,int,bool	font: setUnderline(text: StyleText; s, e: int; val: bool)	
+setNormal	nodesnim/core/font.html#setNormal,StyleUnicode,bool	font: setNormal(c`gensym17625213: StyleUnicode; val`gensym17625214: bool = true)	
+setNormal	nodesnim/core/font.html#setNormal,StyleText,bool	font: setNormal(text`gensym17625215: StyleText; val`gensym17625216: bool)	
+setNormal	nodesnim/core/font.html#setNormal,StyleText,int,bool	font: setNormal(text`gensym17625218: StyleText; index`gensym17625219: int;\n          val`gensym17625220: bool)	
+setNormal	nodesnim/core/font.html#setNormal,StyleText,int,int,bool	font: setNormal(text`gensym17625221: StyleText; s`gensym17625222, e`gensym17625223: int;\n          val`gensym17625224: bool)	
+setBold	nodesnim/core/font.html#setBold,StyleUnicode,bool	font: setBold(c`gensym17630093: StyleUnicode; val`gensym17630094: bool = true)	
+setBold	nodesnim/core/font.html#setBold,StyleText,bool	font: setBold(text`gensym17630095: StyleText; val`gensym17630096: bool)	
+setBold	nodesnim/core/font.html#setBold,StyleText,int,bool	font: setBold(text`gensym17630098: StyleText; index`gensym17630099: int;\n        val`gensym17630100: bool)	
+setBold	nodesnim/core/font.html#setBold,StyleText,int,int,bool	font: setBold(text`gensym17630101: StyleText; s`gensym17630102, e`gensym17630103: int;\n        val`gensym17630104: bool)	
+setItalic	nodesnim/core/font.html#setItalic,StyleUnicode,bool	font: setItalic(c`gensym17635093: StyleUnicode; val`gensym17635094: bool = true)	
+setItalic	nodesnim/core/font.html#setItalic,StyleText,bool	font: setItalic(text`gensym17635095: StyleText; val`gensym17635096: bool)	
+setItalic	nodesnim/core/font.html#setItalic,StyleText,int,bool	font: setItalic(text`gensym17635098: StyleText; index`gensym17635099: int;\n          val`gensym17635100: bool)	
+setItalic	nodesnim/core/font.html#setItalic,StyleText,int,int,bool	font: setItalic(text`gensym17635101: StyleText; s`gensym17635102, e`gensym17635103: int;\n          val`gensym17635104: bool)	
+setUnderline	nodesnim/core/font.html#setUnderline,StyleUnicode,bool	font: setUnderline(c`gensym17640093: StyleUnicode; val`gensym17640094: bool = true)	
+setUnderline	nodesnim/core/font.html#setUnderline,StyleText,bool	font: setUnderline(text`gensym17640095: StyleText; val`gensym17640096: bool)	
+setUnderline	nodesnim/core/font.html#setUnderline,StyleText,int,bool	font: setUnderline(text`gensym17640098: StyleText; index`gensym17640099: int;\n             val`gensym17640100: bool)	
+setUnderline	nodesnim/core/font.html#setUnderline,StyleText,int,int,bool	font: setUnderline(text`gensym17640101: StyleText;\n             s`gensym17640102, e`gensym17640103: int; val`gensym17640104: bool)	
+setStrikethrough	nodesnim/core/font.html#setStrikethrough,StyleUnicode,bool	font: setStrikethrough(c`gensym17645093: StyleUnicode; val`gensym17645094: bool = true)	
+setStrikethrough	nodesnim/core/font.html#setStrikethrough,StyleText,bool	font: setStrikethrough(text`gensym17645095: StyleText; val`gensym17645096: bool)	
+setStrikethrough	nodesnim/core/font.html#setStrikethrough,StyleText,int,bool	font: setStrikethrough(text`gensym17645098: StyleText; index`gensym17645099: int;\n                 val`gensym17645100: bool)	
+setStrikethrough	nodesnim/core/font.html#setStrikethrough,StyleText,int,int,bool	font: setStrikethrough(text`gensym17645101: StyleText;\n                 s`gensym17645102, e`gensym17645103: int; val`gensym17645104: bool)	
+setURL	nodesnim/core/font.html#setURL,StyleText,int,int,string	font: setURL(text: StyleText; s, e: int; url: string)	
 setFont	nodesnim/core/font.html#setFont,StyleText,cstring,cint	font: setFont(text: StyleText; font: cstring; size: cint)	
 setFont	nodesnim/core/font.html#setFont,StyleText,FontPtr	font: setFont(text: StyleText; font: FontPtr)	
 loadFont	nodesnim/core/font.html#loadFont,cstring,cint	font: loadFont(font: cstring; size: cint): FontPtr	
@@ -35,6 +50,7 @@ split	nodesnim/core/font.html#split,StyleText,string	font: split(text: StyleText
 getTextSize	nodesnim/core/font.html#getTextSize,StyleText	font: getTextSize(text: StyleText): Vector2Obj	
 getCaretPos	nodesnim/core/font.html#getCaretPos,StyleText,uint32	font: getCaretPos(text: StyleText; pos: uint32): tuple[a: Vector2Obj, b: uint16]	
 getPosUnderPoint	nodesnim/core/font.html#getPosUnderPoint,StyleText,Vector2Obj,Vector2Obj,AnchorObj	font: getPosUnderPoint(text: StyleText; global_pos, text_pos: Vector2Obj;\n                 text_align: AnchorObj = Anchor(0, 0, 0, 0)): uint32	
+getCharUnderPoint	nodesnim/core/font.html#getCharUnderPoint,StyleText,Vector2Obj,Vector2Obj,AnchorObj	font: getCharUnderPoint(text: StyleText; global_pos, text_pos: Vector2Obj;\n                  text_align: AnchorObj = Anchor(0, 0, 0, 0)): tuple[c: StyleUnicode,\n    pos: uint32]	
 renderSurface	nodesnim/core/font.html#renderSurface,StyleText,AnchorObj	font: renderSurface(text: StyleText; align: AnchorObj): SurfacePtr	
 render	nodesnim/core/font.html#render,StyleText,Vector2Obj,AnchorObj	font: render(text: StyleText; size: Vector2Obj; align: AnchorObj)	
 renderTo	nodesnim/core/font.html#renderTo,StyleText,Vector2Obj,Vector2Obj,AnchorObj	font: renderTo(text: StyleText; pos, size: Vector2Obj; align: AnchorObj)	

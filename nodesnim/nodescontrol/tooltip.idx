@@ -1,0 +1,6 @@
+ToolTipObj	nodesnim/nodescontrol/tooltip.html#ToolTipObj	tooltip: ToolTipObj	
+ToolTipRef	nodesnim/nodescontrol/tooltip.html#ToolTipRef	tooltip: ToolTipRef	
+ToolTip	nodesnim/nodescontrol/tooltip.html#ToolTip,string,string	tooltip: ToolTip(name: string = &quot;ToolTip&quot;; tooltip: string = &quot;Tooltip&quot;): ToolTipRef	
+postdraw	nodesnim/nodescontrol/tooltip.html#postdraw.e,ToolTipRef,GLfloat,GLfloat	tooltip: postdraw(self: ToolTipRef; w, h: GLfloat)	
+showAt	nodesnim/nodescontrol/tooltip.html#showAt.e,ToolTipRef,float,float	tooltip: showAt(self: ToolTipRef; x, y: float)	
+showAtMouse	nodesnim/nodescontrol/tooltip.html#showAtMouse.e,ToolTipRef	tooltip: showAtMouse(self: ToolTipRef)	

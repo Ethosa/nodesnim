@@ -1,3 +1,5 @@
 ResourceError	nodesnim/core/exceptions.html#ResourceError	exceptions: ResourceError	
 SceneError	nodesnim/core/exceptions.html#SceneError	exceptions: SceneError	
+VMError	nodesnim/core/exceptions.html#VMError	exceptions: VMError	
 WindowError	nodesnim/core/exceptions.html#WindowError	exceptions: WindowError	
+throwError	nodesnim/core/exceptions.html#throwError.t,typedesc,string	exceptions: throwError(err: typedesc; msg: string)	

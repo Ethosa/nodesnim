@@ -14,9 +14,7 @@ key_state	nodesnim/core/input.html#key_state	input: key_state
 mouse_pressed	nodesnim/core/input.html#mouse_pressed	input: mouse_pressed	
 press_state	nodesnim/core/input.html#press_state	input: press_state	
 last_event	nodesnim/core/input.html#last_event	input: last_event	
-pressed_keys	nodesnim/core/input.html#pressed_keys	input: pressed_keys	
-pressed_keys_ints	nodesnim/core/input.html#pressed_keys_ints	input: pressed_keys_ints	
-pressed_keys_cints	nodesnim/core/input.html#pressed_keys_cints	input: pressed_keys_cints	
+pressed_keys_cint	nodesnim/core/input.html#pressed_keys_cint	input: pressed_keys_cint	
 actionlist	nodesnim/core/input.html#actionlist	input: actionlist	
 isInputEventVoid	nodesnim/core/input.html#isInputEventVoid,InputEvent	input: isInputEventVoid(a: InputEvent): bool	
 isInputEventMouseButton	nodesnim/core/input.html#isInputEventMouseButton,InputEvent	input: isInputEventMouseButton(a: InputEvent): bool	
@@ -33,3 +31,4 @@ isActionJustPressed	nodesnim/core/input.html#isActionJustPressed,string	input: i
 isActionPressed	nodesnim/core/input.html#isActionPressed,string	input: isActionPressed(name: string): bool	
 isActionReleased	nodesnim/core/input.html#isActionReleased,string	input: isActionReleased(name: string): bool	
 `$`	nodesnim/core/input.html#$,InputEvent	input: `$`(event: InputEvent): string	
+`$`	nodesnim/core/input.html#$,InputAction	input: `$`(action: InputAction): string	

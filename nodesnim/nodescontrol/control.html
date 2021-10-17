@@ -106,7 +106,11 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#ControlObj"
+      <li><a class="reference" href="#ControlXYHandler"
+    title="ControlXYHandler = proc (self: ControlRef; x, y: float)"><wbr />Control<wbr />XYHandler<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#ControlHandler"
+    title="ControlHandler = proc (self: ControlRef)"><wbr />Control<wbr />Handler<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#ControlObj"
     title="ControlObj = object of CanvasObj
   hovered*: bool
   pressed*: bool
@@ -115,13 +119,13 @@ function main() {
   padding*: AnchorObj          ## Only for Box, VBox, HBox, GridBox and Label objects!
   margin*: AnchorObj           ## Only for HBox and VBox objects!
   background*: DrawableRef
-  on_mouse_enter*: proc (self: ControlRef; x, y: float): void ## This called when the mouse enters the Control node.
-  on_mouse_exit*: proc (self: ControlRef; x, y: float): void ## This called when the mouse exit from the Control node.
-  on_click*: proc (self: ControlRef; x, y: float): void ## This called when the user clicks on the Control node.
-  on_press*: proc (self: ControlRef; x, y: float): void ## This called when the user holds on the mouse on the Control node.
-  on_release*: proc (self: ControlRef; x, y: float): void ## This called when the user no more holds on the mouse.
-  on_focus*: proc (self: ControlRef): void ## This called when the Control node gets focus.
-  on_unfocus*: proc (self: ControlRef): void ## This called when the Control node loses focus."><wbr />Control<wbr />Obj<span class="attachedType"></span></a></li>
+  on_mouse_enter*: ControlXYHandler ## This called when the mouse enters the Control node.
+  on_mouse_exit*: ControlXYHandler ## This called when the mouse exit from the Control node.
+  on_click*: ControlXYHandler  ## This called when the user clicks on the Control node.
+  on_press*: ControlXYHandler  ## This called when the user holds on the mouse on the Control node.
+  on_release*: ControlXYHandler ## This called when the user no more holds on the mouse.
+  on_focus*: ControlHandler    ## This called when the Control node gets focus.
+  on_unfocus*: ControlHandler  ## This called when the Control node loses focus."><wbr />Control<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#ControlRef"
     title="ControlRef = ref ControlObj"><wbr />Control<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -189,6 +193,20 @@ function main() {
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
+<a id="ControlXYHandler"></a>
+<dt><pre><a href="control.html#ControlXYHandler"><span class="Identifier">ControlXYHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="ControlHandler"></a>
+<dt><pre><a href="control.html#ControlHandler"><span class="Identifier">ControlHandler</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="ControlObj"></a>
 <dt><pre><a href="control.html#ControlObj"><span class="Identifier">ControlObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="../nodes/canvas.html#CanvasObj"><span class="Identifier">CanvasObj</span></a>
   <span class="Identifier">hovered</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
@@ -198,13 +216,13 @@ function main() {
   <span class="Identifier">padding</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>          <span class="Comment">## Only for Box, VBox, HBox, GridBox and Label objects!</span>
   <span class="Identifier">margin</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>           <span class="Comment">## Only for HBox and VBox objects!</span>
   <span class="Identifier">background</span><span class="Operator">*</span><span class="Other">:</span> <a href="../graphics/drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a>
-  <span class="Identifier">on_mouse_enter</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when the mouse enters the Control node.</span>
-  <span class="Identifier">on_mouse_exit</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when the mouse exit from the Control node.</span>
-  <span class="Identifier">on_click</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when the user clicks on the Control node.</span>
-  <span class="Identifier">on_press</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when the user holds on the mouse on the Control node.</span>
-  <span class="Identifier">on_release</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when the user no more holds on the mouse.</span>
-  <span class="Identifier">on_focus</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when the Control node gets focus.</span>
-  <span class="Identifier">on_unfocus</span><span class="Operator">*</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">void</span> <span class="Comment">## This called when the Control node loses focus.</span>
+  <span class="Identifier">on_mouse_enter</span><span class="Operator">*</span><span class="Other">:</span> <a href="control.html#ControlXYHandler"><span class="Identifier">ControlXYHandler</span></a> <span class="Comment">## This called when the mouse enters the Control node.</span>
+  <span class="Identifier">on_mouse_exit</span><span class="Operator">*</span><span class="Other">:</span> <a href="control.html#ControlXYHandler"><span class="Identifier">ControlXYHandler</span></a> <span class="Comment">## This called when the mouse exit from the Control node.</span>
+  <span class="Identifier">on_click</span><span class="Operator">*</span><span class="Other">:</span> <a href="control.html#ControlXYHandler"><span class="Identifier">ControlXYHandler</span></a>  <span class="Comment">## This called when the user clicks on the Control node.</span>
+  <span class="Identifier">on_press</span><span class="Operator">*</span><span class="Other">:</span> <a href="control.html#ControlXYHandler"><span class="Identifier">ControlXYHandler</span></a>  <span class="Comment">## This called when the user holds on the mouse on the Control node.</span>
+  <span class="Identifier">on_release</span><span class="Operator">*</span><span class="Other">:</span> <a href="control.html#ControlXYHandler"><span class="Identifier">ControlXYHandler</span></a> <span class="Comment">## This called when the user no more holds on the mouse.</span>
+  <span class="Identifier">on_focus</span><span class="Operator">*</span><span class="Other">:</span> <a href="control.html#ControlHandler"><span class="Identifier">ControlHandler</span></a>    <span class="Comment">## This called when the Control node gets focus.</span>
+  <span class="Identifier">on_unfocus</span><span class="Operator">*</span><span class="Other">:</span> <a href="control.html#ControlHandler"><span class="Identifier">ControlHandler</span></a>  <span class="Comment">## This called when the Control node loses focus.</span>
   </pre></dt>
 <dd>
 
@@ -280,54 +298,97 @@ Handles user input. This uses in the <tt class="docutils literal"><span class="p
 
 </dd>
 <a id="setBackground.e,ControlRef,DrawableRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setBackground.e%2CControlRef%2CDrawableRef"><span class="Identifier">setBackground</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">drawable</span><span class="Other">:</span> <a href="../graphics/drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setBackground.e%2CControlRef%2CDrawableRef"><span class="Identifier">setBackground</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">drawable</span><span class="Other">:</span> <a href="../graphics/drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes background drawable.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">drawable</span></tt> - can be <tt class="docutils literal"><span class="pre">DrawableRef</span></tt> or <tt class="docutils literal"><span class="pre">GradientDrawableRef</span></tt>.</li>
+</ul>
 
 
 </dd>
 <a id="setBackgroundColor.e,ControlRef,ColorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setBackgroundColor.e%2CControlRef%2CColorRef"><span class="Identifier">setBackgroundColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setBackgroundColor.e%2CControlRef%2CColorRef"><span class="Identifier">setBackgroundColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes Control background color.
 
 </dd>
 <a id="setMargin.e,ControlRef,AnchorObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setMargin.e%2CControlRef%2CAnchorObj"><span class="Identifier">setMargin</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">margin</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setMargin.e%2CControlRef%2CAnchorObj"><span class="Identifier">setMargin</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">margin</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes Control margin.
+<p>Changes Control margin.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#setMargin.e,ControlRef,float,float,float,float">setMargin method</a></li>
+</ul>
+
 
 </dd>
 <a id="setMargin.e,ControlRef,float,float,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setMargin.e%2CControlRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setMargin</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setMargin.e%2CControlRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setMargin</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes Control margin.
+<p>Changes Control margin.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> - left margin.</li>
+<li><tt class="docutils literal"><span class="pre">y1</span></tt> - top margin.</li>
+<li><tt class="docutils literal"><span class="pre">x2</span></tt> - right margin.</li>
+<li><tt class="docutils literal"><span class="pre">y2</span></tt> - bottom margin.</li>
+</ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#setMargin.e,ControlRef,AnchorObj">setMargin method</a></li>
+</ul>
+
 
 </dd>
 <a id="setPadding.e,ControlRef,AnchorObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setPadding.e%2CControlRef%2CAnchorObj"><span class="Identifier">setPadding</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">padding</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setPadding.e%2CControlRef%2CAnchorObj"><span class="Identifier">setPadding</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">padding</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes Control padding.
+<p>Changes Control padding.</p>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#setPadding.e,ControlRef,float,float,float,float">setPadding method</a></li>
+</ul>
+
 
 </dd>
 <a id="setPadding.e,ControlRef,float,float,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setPadding.e%2CControlRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setPadding</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setPadding.e%2CControlRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setPadding</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes Control padding.
+<p>Changes Control padding.</p>
+<p>Arguments:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">x1</span></tt> - left padding.</li>
+<li><tt class="docutils literal"><span class="pre">y1</span></tt> - top padding.</li>
+<li><tt class="docutils literal"><span class="pre">x2</span></tt> - right padding.</li>
+<li><tt class="docutils literal"><span class="pre">y2</span></tt> - bottom padding.</li>
+</ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#setPadding.e,ControlRef,AnchorObj">setPadding method</a></li>
+</ul>
+
 
 </dd>
 <a id="setStyle.e,ControlRef,StyleSheetRef"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setStyle.e%2CControlRef%2CStyleSheetRef"><span class="Identifier">setStyle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a><span class="Other">;</span> <span class="Identifier">style</span><span class="Other">:</span> <a href="../core/stylesheet.html#StyleSheetRef"><span class="Identifier">StyleSheetRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Changes control node style.</p>
+<p>Styles:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">size-anchor</span></tt> - <tt class="docutils literal"><span class="pre">1</span></tt>, <tt class="docutils literal"><span class="pre">1.0</span></tt>, <tt class="docutils literal"><span class="pre">0.5 1</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">position-anchor</span></tt> - <tt class="docutils literal"><span class="pre">1</span></tt>, <tt class="docutils literal"><span class="pre">0.5 1 0.5 1</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">margin</span></tt> - <tt class="docutils literal"><span class="pre">8</span></tt>, <tt class="docutils literal"><span class="pre">2 4 6 8</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">padding</span></tt> - <tt class="docutils literal"><span class="pre">8</span></tt>, <tt class="docutils literal"><span class="pre">2 4 6 8</span></tt></li>
+</ul>
 
 
 </dd>
@@ -353,7 +414,7 @@ Changes Control padding.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:17 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:44 UTC</small>
       </div>
     </div>
   </div>

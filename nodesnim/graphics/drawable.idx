@@ -6,7 +6,7 @@ vd	nodesnim/graphics/drawable.html#vd.t	drawable: vd()
 recalc	nodesnim/graphics/drawable.html#recalc.t,bool	drawable: recalc(shadow: bool = false)	
 draw_template	nodesnim/graphics/drawable.html#draw_template.t,untyped,untyped,untyped,untyped	drawable: draw_template(drawtype, color, function, secondfunc: untyped): untyped	
 draw_texture_template	nodesnim/graphics/drawable.html#draw_texture_template.t,untyped,untyped,untyped,untyped	drawable: draw_texture_template(drawtype, color, function, secondfunc: untyped): untyped	
-enableShadow	nodesnim/graphics/drawable.html#enableShadow.e,DrawableRef,bool	drawable: enableShadow(self: DrawableRef; val: bool)	
+enableShadow	nodesnim/graphics/drawable.html#enableShadow.e,DrawableRef,bool	drawable: enableShadow(self: DrawableRef; val: bool = true)	
 draw	nodesnim/graphics/drawable.html#draw.e,DrawableRef,float,float,float,float	drawable: draw(self: DrawableRef; x1, y1, width, height: float)	
 getColor	nodesnim/graphics/drawable.html#getColor.e,DrawableRef	drawable: getColor(self: DrawableRef): ColorRef	
 loadTexture	nodesnim/graphics/drawable.html#loadTexture.e,DrawableRef,string	drawable: loadTexture(self: DrawableRef; path: string)	

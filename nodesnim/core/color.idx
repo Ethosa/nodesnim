@@ -8,6 +8,7 @@ Color	nodesnim/core/color.html#Color,uint8,uint8,uint8	color: Color(r, g, b: uin
 Color	nodesnim/core/color.html#Color,uint32	color: Color(src: uint32): ColorRef	
 Color	nodesnim/core/color.html#Color,string	color: Color(src: string): ColorRef	
 Color	nodesnim/core/color.html#Color	color: Color(): ColorRef	
+Color	nodesnim/core/color.html#Color,ColorRef	color: Color(clr: ColorRef): ColorRef	
 getBrightness	nodesnim/core/color.html#getBrightness,ColorRef	color: getBrightness(self: ColorRef): float	
 normalize	nodesnim/core/color.html#normalize,float	color: normalize(n: float): uint32	
 normalize	nodesnim/core/color.html#normalize,float,float,float	color: normalize(n, min, max: float): float	

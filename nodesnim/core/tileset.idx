@@ -1,3 +1,3 @@
 TileSetObj	nodesnim/core/tileset.html#TileSetObj	tileset: TileSetObj	
 TileSet	nodesnim/core/tileset.html#TileSet,string,Vector2Obj,GLenum	tileset: TileSet(img: string; tile_size: Vector2Obj; mode: GLenum = GL_RGB): TileSetObj	
-draw	nodesnim/core/tileset.html#draw,TileSetObj,float,float,float,float	tileset: draw(self: TileSetObj; tilex, tiley, x, y: float)	
+draw	nodesnim/core/tileset.html#draw,TileSetObj,float,float,float,float,float	tileset: draw(self: TileSetObj; tilex, tiley, x, y, z: float)	

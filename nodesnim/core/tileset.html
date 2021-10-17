@@ -118,8 +118,8 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#TileSet%2Cstring%2CVector2Obj%2CGLenum"
     title="TileSet(img: string; tile_size: Vector2Obj; mode: GLenum = GL_RGB): TileSetObj"><wbr />Tile<wbr />Set<span class="attachedType">TileSetObj</span></a></li>
-  <li><a class="reference" href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="draw(self: TileSetObj; tilex, tiley, x, y: float)"><wbr />draw<span class="attachedType">TileSetObj</span></a></li>
+  <li><a class="reference" href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
+    title="draw(self: TileSetObj; tilex, tiley, x, y, z: float)"><wbr />draw<span class="attachedType">TileSetObj</span></a></li>
 
   </ul>
 </li>
@@ -156,14 +156,14 @@ function main() {
 <dl class="item">
 <a id="TileSet,string,Vector2Obj,GLenum"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#TileSet%2Cstring%2CVector2Obj%2CGLenum"><span class="Identifier">TileSet</span></a><span class="Other">(</span><span class="Identifier">img</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">tile_size</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLenum"><span class="Identifier">GLenum</span></a> <span class="Other">=</span> <span class="Identifier">GL_RGB</span><span class="Other">)</span><span class="Other">:</span> <a href="tileset.html#TileSetObj"><span class="Identifier">TileSetObj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Creates a new TileSet from image
 
 </dd>
-<a id="draw,TileSetObj,float,float,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tileset.html#TileSetObj"><span class="Identifier">TileSetObj</span></a><span class="Other">;</span> <span class="Identifier">tilex</span><span class="Other">,</span> <span class="Identifier">tiley</span><span class="Other">,</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="draw,TileSetObj,float,float,float,float,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tileset.html#TileSetObj"><span class="Identifier">TileSetObj</span></a><span class="Other">;</span> <span class="Identifier">tilex</span><span class="Other">,</span> <span class="Identifier">tiley</span><span class="Other">,</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Draws tile at position <tt class="docutils literal"><span class="pre">tilex</span></tt>,`tiley` to <tt class="docutils literal"><span class="pre">x</span></tt>,`y` position.
@@ -179,7 +179,7 @@ Draws tile at position <tt class="docutils literal"><span class="pre">tilex</spa
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:37 UTC</small>
       </div>
     </div>
   </div>

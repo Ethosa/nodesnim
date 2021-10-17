@@ -119,7 +119,6 @@ function main() {
     title="InputAction = object
   kind*: InputEventType
   key_int*: cint
-  key_cint*: cint
   button_index*: cint
   name*, key*: string"><wbr />Input<wbr />Action<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#InputEvent"
@@ -127,7 +126,6 @@ function main() {
   kind*: InputEventType
   pressed*: bool
   key_int*: cint
-  key_cint*: cint
   button_index*: cint
   x*, y*, xrel*, yrel*: float
   key*: string"><wbr />Input<wbr />Event<span class="attachedType"></span></a></li>
@@ -159,12 +157,8 @@ function main() {
     title="press_state: int = 0"><wbr />press_<wbr />state<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#last_event"
     title="last_event: InputEvent = InputEvent()"><wbr />last_<wbr />event<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#pressed_keys"
-    title="pressed_keys: seq[string] = @[]"><wbr />pressed_<wbr />keys<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#pressed_keys_ints"
-    title="pressed_keys_ints: seq[cint] = @[]"><wbr />pressed_<wbr />keys_<wbr />ints<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#pressed_keys_cints"
-    title="pressed_keys_cints: seq[cint] = @[]"><wbr />pressed_<wbr />keys_<wbr />cints<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#pressed_keys_cint"
+    title="pressed_keys_cint: seq[cint] = @[]"><wbr />pressed_<wbr />keys_<wbr />cint<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#actionlist"
     title="actionlist: seq[InputAction] = @[]"><wbr />actionlist<span class="attachedType"></span></a></li>
 
@@ -213,6 +207,8 @@ function main() {
     title="isActionReleased(name: string): bool"><wbr />is<wbr />Action<wbr />Released<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#%24%2CInputEvent"
     title="`$`(event: InputEvent): string"><wbr />`$`<span class="attachedType">InputEvent</span></a></li>
+  <li><a class="reference" href="#%24%2CInputAction"
+    title="`$`(action: InputAction): string"><wbr />`$`<span class="attachedType">InputAction</span></a></li>
 
   </ul>
 </li>
@@ -250,7 +246,6 @@ function main() {
 <dt><pre><a href="input.html#InputAction"><span class="Identifier">InputAction</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="input.html#InputEventType"><span class="Identifier">InputEventType</span></a>
   <span class="Identifier">key_int</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
-  <span class="Identifier">key_cint</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">button_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">key</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
 </pre></dt>
@@ -264,7 +259,6 @@ function main() {
   <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <a href="input.html#InputEventType"><span class="Identifier">InputEventType</span></a>
   <span class="Identifier">pressed</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
   <span class="Identifier">key_int</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
-  <span class="Identifier">key_cint</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">button_index</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">cint</span>
   <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">xrel</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">yrel</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
   <span class="Identifier">key</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
@@ -356,22 +350,8 @@ function main() {
 
 
 </dd>
-<a id="pressed_keys"></a>
-<dt><pre><a href="input.html#pressed_keys"><span class="Identifier">pressed_keys</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="pressed_keys_ints"></a>
-<dt><pre><a href="input.html#pressed_keys_ints"><span class="Identifier">pressed_keys_ints</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">cint</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="pressed_keys_cints"></a>
-<dt><pre><a href="input.html#pressed_keys_cints"><span class="Identifier">pressed_keys_cints</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">cint</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
+<a id="pressed_keys_cint"></a>
+<dt><pre><a href="input.html#pressed_keys_cint"><span class="Identifier">pressed_keys_cint</span></a><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">cint</span><span class="Other">]</span> <span class="Other">=</span> <span class="Operator">@</span><span class="Other">[</span><span class="Other">]</span></pre></dt>
 <dd>
 
 
@@ -544,6 +524,13 @@ Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> 
 
 
 </dd>
+<a id="$,InputAction"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%24%2CInputAction"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">action</span><span class="Other">:</span> <a href="input.html#InputAction"><span class="Identifier">InputAction</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 
@@ -554,7 +541,7 @@ Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> 
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-09-30 15:16:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:29 UTC</small>
       </div>
     </div>
   </div>

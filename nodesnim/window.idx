@@ -8,6 +8,8 @@ addScene	nodesnim/window.html#addScene,SceneRef	window: addScene(scene: SceneRef
 addMainScene	nodesnim/window.html#addMainScene,SceneRef	window: addMainScene(scene: SceneRef)	
 centeredWindow	nodesnim/window.html#centeredWindow	window: centeredWindow()	
 changeScene	nodesnim/window.html#changeScene,string,seq[tuple[string,string]]	window: changeScene(name: string; extra: seq[tuple[k: string, v: string]] = @[]): bool	
+getSceneByName	nodesnim/window.html#getSceneByName,string	window: getSceneByName(name: string): SceneRef	
+getWindowSize	nodesnim/window.html#getWindowSize	window: getWindowSize(): Vector2Obj	
 resizeWindow	nodesnim/window.html#resizeWindow,cint,cint	window: resizeWindow(x, y: cint)	
 setMainScene	nodesnim/window.html#setMainScene,string	window: setMainScene(name: string)	
 setTitle	nodesnim/window.html#setTitle,cstring	window: setTitle(title: cstring)	

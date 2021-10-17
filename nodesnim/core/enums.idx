@@ -1,6 +1,82 @@
+MOUSEMODE_IGNORE	nodesnim/core/enums.html#MOUSEMODE_IGNORE	MouseMode.MOUSEMODE_IGNORE	
+MOUSEMODE_SEE	nodesnim/core/enums.html#MOUSEMODE_SEE	MouseMode.MOUSEMODE_SEE	
 MouseMode	nodesnim/core/enums.html#MouseMode	enums: MouseMode	
+PROCESS	nodesnim/core/enums.html#PROCESS	PauseMode.PROCESS	
+PAUSE	nodesnim/core/enums.html#PAUSE	PauseMode.PAUSE	
+INHERIT	nodesnim/core/enums.html#INHERIT	PauseMode.INHERIT	
 PauseMode	nodesnim/core/enums.html#PauseMode	enums: PauseMode	
+TEXTURE_FILL_XY	nodesnim/core/enums.html#TEXTURE_FILL_XY	TextureMode.TEXTURE_FILL_XY	
+TEXTURE_KEEP_ASPECT_RATIO	nodesnim/core/enums.html#TEXTURE_KEEP_ASPECT_RATIO	TextureMode.TEXTURE_KEEP_ASPECT_RATIO	
+TEXTURE_CROP	nodesnim/core/enums.html#TEXTURE_CROP	TextureMode.TEXTURE_CROP	
 TextureMode	nodesnim/core/enums.html#TextureMode	enums: TextureMode	
+NODE_NODE	nodesnim/core/enums.html#NODE_NODE	NodeKind.NODE_NODE	
+CANVAS_NODE	nodesnim/core/enums.html#CANVAS_NODE	NodeKind.CANVAS_NODE	
+SCENE_NODE	nodesnim/core/enums.html#SCENE_NODE	NodeKind.SCENE_NODE	
+AUDIO_STREAM_PLAYER_NODE	nodesnim/core/enums.html#AUDIO_STREAM_PLAYER_NODE	NodeKind.AUDIO_STREAM_PLAYER_NODE	
+ANIMATION_PLAYER_NODE	nodesnim/core/enums.html#ANIMATION_PLAYER_NODE	NodeKind.ANIMATION_PLAYER_NODE	
+COLLISION_SHAPE_2D_NODE	nodesnim/core/enums.html#COLLISION_SHAPE_2D_NODE	NodeKind.COLLISION_SHAPE_2D_NODE	
+YSORT_NODE	nodesnim/core/enums.html#YSORT_NODE	NodeKind.YSORT_NODE	
+CAMERA_2D_NODE	nodesnim/core/enums.html#CAMERA_2D_NODE	NodeKind.CAMERA_2D_NODE	
+SPRITE_NODE	nodesnim/core/enums.html#SPRITE_NODE	NodeKind.SPRITE_NODE	
+ANIMATED_SPRITE_NODE	nodesnim/core/enums.html#ANIMATED_SPRITE_NODE	NodeKind.ANIMATED_SPRITE_NODE	
+NODE2D_NODE	nodesnim/core/enums.html#NODE2D_NODE	NodeKind.NODE2D_NODE	
+KINEMATIC_BODY_2D_NODE	nodesnim/core/enums.html#KINEMATIC_BODY_2D_NODE	NodeKind.KINEMATIC_BODY_2D_NODE	
+TILEMAP_NODE	nodesnim/core/enums.html#TILEMAP_NODE	NodeKind.TILEMAP_NODE	
+BOX_NODE	nodesnim/core/enums.html#BOX_NODE	NodeKind.BOX_NODE	
+BUTTON_NODE	nodesnim/core/enums.html#BUTTON_NODE	NodeKind.BUTTON_NODE	
+CHECKBOX_NODE	nodesnim/core/enums.html#CHECKBOX_NODE	NodeKind.CHECKBOX_NODE	
+COLOR_RECT_NODE	nodesnim/core/enums.html#COLOR_RECT_NODE	NodeKind.COLOR_RECT_NODE	
+CONTROL_NODE	nodesnim/core/enums.html#CONTROL_NODE	NodeKind.CONTROL_NODE	
+COUNTER_NODE	nodesnim/core/enums.html#COUNTER_NODE	NodeKind.COUNTER_NODE	
+EDIT_TEXT_NODE	nodesnim/core/enums.html#EDIT_TEXT_NODE	NodeKind.EDIT_TEXT_NODE	
+GRID_BOX_NODE	nodesnim/core/enums.html#GRID_BOX_NODE	NodeKind.GRID_BOX_NODE	
+HBOX_NODE	nodesnim/core/enums.html#HBOX_NODE	NodeKind.HBOX_NODE	
+LABEL_NODE	nodesnim/core/enums.html#LABEL_NODE	NodeKind.LABEL_NODE	
+POPUP_NODE	nodesnim/core/enums.html#POPUP_NODE	NodeKind.POPUP_NODE	
+PROGRESS_BAR_NODE	nodesnim/core/enums.html#PROGRESS_BAR_NODE	NodeKind.PROGRESS_BAR_NODE	
+SCROLL_NODE	nodesnim/core/enums.html#SCROLL_NODE	NodeKind.SCROLL_NODE	
+SLIDER_NODE	nodesnim/core/enums.html#SLIDER_NODE	NodeKind.SLIDER_NODE	
+TEXTURE_BUTTON_NODE	nodesnim/core/enums.html#TEXTURE_BUTTON_NODE	NodeKind.TEXTURE_BUTTON_NODE	
+TEXTURE_PROGRESS_BAR_NODE	nodesnim/core/enums.html#TEXTURE_PROGRESS_BAR_NODE	NodeKind.TEXTURE_PROGRESS_BAR_NODE	
+TEXTURE_RECT_NODE	nodesnim/core/enums.html#TEXTURE_RECT_NODE	NodeKind.TEXTURE_RECT_NODE	
+VBOX_NODE	nodesnim/core/enums.html#VBOX_NODE	NodeKind.VBOX_NODE	
+SUB_WINDOW_NODE	nodesnim/core/enums.html#SUB_WINDOW_NODE	NodeKind.SUB_WINDOW_NODE	
+NODE3D_NODE	nodesnim/core/enums.html#NODE3D_NODE	NodeKind.NODE3D_NODE	
+GEOMETRY_INSTANCE_NODE	nodesnim/core/enums.html#GEOMETRY_INSTANCE_NODE	NodeKind.GEOMETRY_INSTANCE_NODE	
+CAMERA_3D_NODE	nodesnim/core/enums.html#CAMERA_3D_NODE	NodeKind.CAMERA_3D_NODE	
+SPRITE_3D_NODE	nodesnim/core/enums.html#SPRITE_3D_NODE	NodeKind.SPRITE_3D_NODE	
 NodeKind	nodesnim/core/enums.html#NodeKind	enums: NodeKind	
+NODE_TYPE_DEFAULT	nodesnim/core/enums.html#NODE_TYPE_DEFAULT	NodeTypes.NODE_TYPE_DEFAULT	
+NODE_TYPE_CONTROL	nodesnim/core/enums.html#NODE_TYPE_CONTROL	NodeTypes.NODE_TYPE_CONTROL	
+NODE_TYPE_2D	nodesnim/core/enums.html#NODE_TYPE_2D	NodeTypes.NODE_TYPE_2D	
+NODE_TYPE_3D	nodesnim/core/enums.html#NODE_TYPE_3D	NodeTypes.NODE_TYPE_3D	
 NodeTypes	nodesnim/core/enums.html#NodeTypes	enums: NodeTypes	
+VISIBLE	nodesnim/core/enums.html#VISIBLE	Visibility.VISIBLE	
+INVISIBLE	nodesnim/core/enums.html#INVISIBLE	Visibility.INVISIBLE	
+GONE	nodesnim/core/enums.html#GONE	Visibility.GONE	
 Visibility	nodesnim/core/enums.html#Visibility	enums: Visibility	
+PROGRESS_BAR_HORIZONTAL	nodesnim/core/enums.html#PROGRESS_BAR_HORIZONTAL	ProgressBarType.PROGRESS_BAR_HORIZONTAL	
+PROGRESS_BAR_VERTICAL	nodesnim/core/enums.html#PROGRESS_BAR_VERTICAL	ProgressBarType.PROGRESS_BAR_VERTICAL	
+PROGRESS_BAR_CIRCLE	nodesnim/core/enums.html#PROGRESS_BAR_CIRCLE	ProgressBarType.PROGRESS_BAR_CIRCLE	
+ProgressBarType	nodesnim/core/enums.html#ProgressBarType	enums: ProgressBarType	
+SLIDER_HORIZONTAL	nodesnim/core/enums.html#SLIDER_HORIZONTAL	SliderType.SLIDER_HORIZONTAL	
+SLIDER_VERTICAL	nodesnim/core/enums.html#SLIDER_VERTICAL	SliderType.SLIDER_VERTICAL	
+SliderType	nodesnim/core/enums.html#SliderType	enums: SliderType	
+GEOMETRY_CUBE	nodesnim/core/enums.html#GEOMETRY_CUBE	GeometryType.GEOMETRY_CUBE	
+GEOMETRY_CYLINDER	nodesnim/core/enums.html#GEOMETRY_CYLINDER	GeometryType.GEOMETRY_CYLINDER	
+GEOMETRY_SPHERE	nodesnim/core/enums.html#GEOMETRY_SPHERE	GeometryType.GEOMETRY_SPHERE	
+GeometryType	nodesnim/core/enums.html#GeometryType	enums: GeometryType	
+TILEMAP_2D	nodesnim/core/enums.html#TILEMAP_2D	TileMapMode.TILEMAP_2D	
+TILEMAP_ISOMETRIC	nodesnim/core/enums.html#TILEMAP_ISOMETRIC	TileMapMode.TILEMAP_ISOMETRIC	
+TileMapMode	nodesnim/core/enums.html#TileMapMode	enums: TileMapMode	
+COLLISION_SHAPE_2D_RECTANGLE	nodesnim/core/enums.html#COLLISION_SHAPE_2D_RECTANGLE	CollisionShape2DType.COLLISION_SHAPE_2D_RECTANGLE	
+COLLISION_SHAPE_2D_CIRCLE	nodesnim/core/enums.html#COLLISION_SHAPE_2D_CIRCLE	CollisionShape2DType.COLLISION_SHAPE_2D_CIRCLE	
+COLLISION_SHAPE_2D_POLYGON	nodesnim/core/enums.html#COLLISION_SHAPE_2D_POLYGON	CollisionShape2DType.COLLISION_SHAPE_2D_POLYGON	
+CollisionShape2DType	nodesnim/core/enums.html#CollisionShape2DType	enums: CollisionShape2DType	
+ANIMATION_NORMAL	nodesnim/core/enums.html#ANIMATION_NORMAL	AnimationMode.ANIMATION_NORMAL	
+ANIMATION_EASE	nodesnim/core/enums.html#ANIMATION_EASE	AnimationMode.ANIMATION_EASE	
+ANIMATION_BEZIER	nodesnim/core/enums.html#ANIMATION_BEZIER	AnimationMode.ANIMATION_BEZIER	
+AnimationMode	nodesnim/core/enums.html#AnimationMode	enums: AnimationMode	
+SCREEN_MODE_NONE	nodesnim/core/enums.html#SCREEN_MODE_NONE	ScreenMode.SCREEN_MODE_NONE	
+SCREEN_MODE_EXPANDED	nodesnim/core/enums.html#SCREEN_MODE_EXPANDED	ScreenMode.SCREEN_MODE_EXPANDED	
+ScreenMode	nodesnim/core/enums.html#ScreenMode	enums: ScreenMode	

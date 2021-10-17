@@ -3,7 +3,6 @@ AnimatedSpriteRef	nodesnim/nodes2d/animated_sprite.html#AnimatedSpriteRef	animat
 AnimatedSprite	nodesnim/nodes2d/animated_sprite.html#AnimatedSprite,string	animated_sprite: AnimatedSprite(name: string = &quot;AnimatedSprite&quot;): AnimatedSpriteRef	
 draw	nodesnim/nodes2d/animated_sprite.html#draw.e,AnimatedSpriteRef,GLfloat,GLfloat	animated_sprite: draw(self: AnimatedSpriteRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes2d/animated_sprite.html#duplicate.e,AnimatedSpriteRef	animated_sprite: duplicate(self: AnimatedSpriteRef): AnimatedSpriteRef	
-getGlobalMousePosition	nodesnim/nodes2d/animated_sprite.html#getGlobalMousePosition.e,AnimatedSpriteRef	animated_sprite: getGlobalMousePosition(self: AnimatedSpriteRef): Vector2Obj	
 addAnimation	nodesnim/nodes2d/animated_sprite.html#addAnimation.e,AnimatedSpriteRef,string,float	animated_sprite: addAnimation(self: AnimatedSpriteRef; name: string; speed: float = 2.0&apos;f32)	
 addFrame	nodesnim/nodes2d/animated_sprite.html#addFrame.e,AnimatedSpriteRef,string,GlTextureObj	animated_sprite: addFrame(self: AnimatedSpriteRef; name: string; frame: GlTextureObj)	
 removeAnimation	nodesnim/nodes2d/animated_sprite.html#removeAnimation.e,AnimatedSpriteRef,string	animated_sprite: removeAnimation(self: AnimatedSpriteRef; name: string)	

@@ -1,4 +1,3 @@
-ProgressBarType	nodesnim/nodescontrol/progress_bar.html#ProgressBarType	progress_bar: ProgressBarType	
 ProgressBarObj	nodesnim/nodescontrol/progress_bar.html#ProgressBarObj	progress_bar: ProgressBarObj	
 ProgressBarRef	nodesnim/nodescontrol/progress_bar.html#ProgressBarRef	progress_bar: ProgressBarRef	
 ProgressBar	nodesnim/nodescontrol/progress_bar.html#ProgressBar,string	progress_bar: ProgressBar(name: string = &quot;ProgressBar&quot;): ProgressBarRef	

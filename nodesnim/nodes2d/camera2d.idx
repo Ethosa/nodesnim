@@ -7,6 +7,7 @@ disableSmooth	nodesnim/nodes2d/camera2d.html#disableSmooth.e,Camera2DRef	camera2
 draw	nodesnim/nodes2d/camera2d.html#draw.e,Camera2DRef,GLfloat,GLfloat	camera2d: draw(self: Camera2DRef; w, h: GLfloat)	
 duplicate	nodesnim/nodes2d/camera2d.html#duplicate.e,Camera2DRef	camera2d: duplicate(self: Camera2DRef): Camera2DRef	
 enableSmooth	nodesnim/nodes2d/camera2d.html#enableSmooth.e,Camera2DRef,float	camera2d: enableSmooth(self: Camera2DRef; speed: float = 0.1)	
+isCurrent	nodesnim/nodes2d/camera2d.html#isCurrent.e,Camera2DRef	camera2d: isCurrent(self: Camera2DRef): bool	
 setCurrent	nodesnim/nodes2d/camera2d.html#setCurrent.e,Camera2DRef	camera2d: setCurrent(self: Camera2DRef)	
 setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DRef,float,float,float,float	camera2d: setLimit(self: Camera2DRef; x1, y1, x2, y2: float)	
 setLimit	nodesnim/nodes2d/camera2d.html#setLimit.e,Camera2DRef,AnchorObj	camera2d: setLimit(self: Camera2DRef; limit: AnchorObj)	
