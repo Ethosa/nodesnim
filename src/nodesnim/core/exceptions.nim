@@ -1,6 +1,16 @@
 # author: Ethosa
+import logging
 
+{.push pure, size: sizeof(int8).}
 type
-  ResourceError* {.size: sizeof(int8).} = object of ValueError
-  SceneError* {.size: sizeof(int8).} = object of ValueError
-  WindowError* {.size: sizeof(int8).} = object of ValueError
+  ResourceError* = object of ValueError
+  SceneError* = object of ValueError
+  VMError* = object of ValueError
+  WindowError* = object of ValueError
+{.pop.}
+
+
+template throwError*(err: typedesc, msg: string) =
+  when defined(debug):
+    error(msg)
+  raise newException(err, msg)

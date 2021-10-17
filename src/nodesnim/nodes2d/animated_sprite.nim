@@ -55,11 +55,8 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
       self.rect_size = texture.size
 
   # Recalculate position.
-  self.position = self.timed_position
-  if self.centered:
-    self.position = self.timed_position - self.rect_size/2
-  else:
-    self.position = self.timed_position
+  procCall self.Node2DRef.draw(w, h)
+  self.calcGlobalPosition()
 
   let
     x = -w/2 + self.global_position.x
@@ -69,6 +66,7 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
   if frame >= 0 and frame < frames_count:
     var texture = self.animations[self.animation].frames[frame]
     if texture.texture > 0'u32:
+      glPushMatrix()
       if self.centered:
         glTranslatef(x + (self.rect_size.x / 2), y - (self.rect_size.y / 2), self.z_index_global)
         self.position = self.rect_size / 2
@@ -94,13 +92,7 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
       glEnd()
       glDisable(GL_DEPTH_TEST)
       glDisable(GL_TEXTURE_2D)
-      glRotatef(-self.rotation, 0, 0, 1)
-      if self.centered:
-        glTranslatef(-x - (self.rect_size.x / 2), -y + (self.rect_size.y / 2), -self.z_index_global)
-        self.position = self.timed_position - self.rect_size/2
-      else:
-        glTranslatef(-x, -y, -self.z_index_global)
-        self.position = self.timed_position
+      glPopMatrix()
     else:
       self.rect_size = Vector2()
 
@@ -125,10 +117,6 @@ method draw*(self: AnimatedSpriteRef, w, h: GLfloat) =
 method duplicate*(self: AnimatedSpriteRef): AnimatedSpriteRef {.base.} =
   ## Duplicates AnimatedSprite object and create a new AnimatedSprite.
   self.deepCopy()
-
-method getGlobalMousePosition*(self: AnimatedSpriteRef): Vector2Obj {.inline.} =
-  ## Returns mouse position.
-  Vector2Obj(x: last_event.x, y: last_event.y)
 
 method addAnimation*(self: AnimatedSpriteRef, name: string, speed: float = 2f) {.base.} =
   ## Adds a new animation to the AnimatedSprite animations.

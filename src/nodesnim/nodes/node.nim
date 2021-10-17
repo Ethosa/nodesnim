@@ -13,20 +13,22 @@ import
 
 
 type
+  NodeHandler* = proc(self: NodeRef)
+  NodeEvHandler* = proc(self: NodeRef, event: InputEvent)
   NodeObj* = object of RootObj
     kind*: NodeKind
-    type_of_node*: NodeTypes
-    visible*: Visibility
-    is_ready*: bool
-    pausemode*: PauseMode            ## Pause mode, by default is INHERIT.
-    name*: string                    ## Node name.
-    parent*: NodeRef                 ## Node parent.
-    children*: seq[NodeRef]          ## Node children.
-    on_enter*: proc(self: NodeRef)                   ## This called when scene changed.
-    on_exit*: proc(self: NodeRef)                    ## This called when exit from the scene.
-    on_input*: proc(self: NodeRef, event: InputEvent)  ## This called on user input.
-    on_ready*: proc(self: NodeRef)                   ## This called when the scene changed and the `enter` was called.
-    on_process*: proc(self: NodeRef)                 ## This called every frame.
+    type_of_node*: NodeTypes     ## default, gui, 2d or 3d.
+    visibility*: Visibility      ## visible, invisible or gone.
+    is_ready*: bool              ## true, when scene is ready.
+    pausemode*: PauseMode        ## Pause mode, by default is INHERIT.
+    name*: string                ## Node name.
+    parent*: NodeRef             ## Node parent.
+    children*: seq[NodeRef]      ## Node children.
+    on_enter*: NodeHandler       ## This called when scene changed.
+    on_exit*: NodeHandler        ## This called when exit from the scene.
+    on_input*: NodeEvHandler     ## This called on user input.
+    on_ready*: NodeHandler       ## This called when the scene changed and the `enter` was called.
+    on_process*: NodeHandler     ## This called every frame.
   NodeRef* = ref NodeObj
 
 
@@ -39,7 +41,7 @@ template nodepattern*(nodetype: untyped): untyped =
     on_input: proc(self: NodeRef, event: InputEvent) = discard,
     on_enter: proc(self: NodeRef) = discard,
     on_exit: proc(self: NodeRef) = discard,
-    is_ready: false, pausemode: INHERIT, visible: VISIBLE
+    is_ready: false, pausemode: INHERIT, visibility: VISIBLE
   )
   result.type_of_node = NODE_TYPE_DEFAULT
 
@@ -54,15 +56,22 @@ method addChild*(self: NodeRef, child: NodeRef) {.base.} =
   ##
   ## Arguments:
   ## - `child`: other node.
+  ##
+  ## See also:
+  ## - `addChildren method <#addChildren.e,NodeRef,varargs[NodeRef]>`_
+  ## - `getChild method <#getChild.e,NodeRef,int>`_
   self.children.add(child)
   child.parent = self
 
 
-method addChilds*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
+method addChildren*(self: NodeRef, childs: varargs[NodeRef]) {.base.} =
   ## Adds new child in current node.
   ##
   ## Arguments:
   ## - `child`: other node.
+  ##
+  ## See also:
+  ## - `addChild method <#addChild.e,NodeRef,NodeRef>`_
   for node in childs:
     self.addChild(node)
 
@@ -80,29 +89,42 @@ method getChild*(self: NodeRef, index: int): NodeRef {.base.} =
   ##
   ## Arguments:
   ## - `index`: child index.
+  ##
+  ## See also:
+  ## - `addChild method <#addChild.e,NodeRef,NodeRef>`_
+  ## - `getChildCount method <#getChildCount.e,NodeRef>`_
   self.children[index]
 
 method getChildCount*(self: NodeRef): int {.base, inline.} =
   ## Returns child count.
+  ##
+  ## See also:
+  ## - `getChild method <#getChild.e,NodeRef,int>`_
   self.children.len()
 
 method getChildIndex*(self: NodeRef, name: string): int {.base.} =
   ## Returns `child` index or -1, if another node is not the child.
+  ##
+  ## See also:
+  ## - `getChildIndex method <#getChildIndex.e,NodeRef,NodeRef>`_
   var i = 0
   for node in self.children:
     if node.name == name:
       return i
     inc i
-  return -1
+  -1
 
 method getChildIndex*(self: NodeRef, child: NodeRef): int {.base.} =
   ## Returns `child` index or -1, if another node is not the child.
+  ##
+  ## See also:
+  ## - `getChildIndex method <#getChildIndex.e,NodeRef,string>`_
   var i = 0
   for node in self.children:
     if child == node:
       return i
     inc i
-  return -1
+  -1
 
 method getChildIter*(self: NodeRef): seq[NodeRef] {.base.} =
   ## Returns all children iter.
@@ -171,14 +193,14 @@ method handle*(self: NodeRef, event: InputEvent, mouse_on: var NodeRef) {.base.}
   ## This used in the Window object.
   discard
 
-method hasNode*(self: NodeRef, name: string): bool {.base.} =
+method hasNode*(self: NodeRef, name: string): bool {.base, inline.} =
   ## Returns true, if a node with name `name` in children.
   ##
   ## Arguments:
   ## - `name`: node name.
   self.getChildIndex(name) != -1
 
-method hasNode*(self: NodeRef, other: NodeRef): bool {.base.} =
+method hasNode*(self: NodeRef, other: NodeRef): bool {.base, inline.} =
   ## Returns true, if `other` in self children.
   ##
   ## Arguments:
@@ -187,10 +209,10 @@ method hasNode*(self: NodeRef, other: NodeRef): bool {.base.} =
 
 method hasParent*(self: NodeRef): bool {.base, inline.} =
   ## Returns true, when node has parent.
-  self.parent != nil
+  not self.parent.isNil()
 
 method hide*(self: NodeRef) {.base.} =
-  self.visible = INVISIBLE
+  self.visibility = INVISIBLE
 
 method postdraw*(self: NodeRef, w, h: GLfloat) {.base.} =
   ## Draws node.
@@ -205,6 +227,9 @@ method removeChild*(self: NodeRef, index: int) {.base.} =
   ##
   ## Arguments:
   ## - `index`: child index.
+  ##
+  ## See also:
+  ## - `addChild method <#addChild.e,NodeRef,NodeRef>`_
   self.children[index].parent = nil
   self.children.delete(index)
 
@@ -213,12 +238,12 @@ method removeChild*(self: NodeRef, other: NodeRef) {.base.} =
   ##
   ## Arguments:
   ## - `other`: other node.
-  var index: int = self.getChildIndex(other)
+  let index: int = self.getChildIndex(other)
   if index != -1:
     self.removeChild(index)
 
 method show*(self: NodeRef) {.base.} =
-  self.visible = VISIBLE
+  self.visibility = VISIBLE
 
 method delete*(self: NodeRef) {.base.} =
   ## Deletes current node.

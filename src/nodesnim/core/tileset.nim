@@ -19,9 +19,8 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
   var
     surface = image.load(img)  # load image from file
     textureid: Gluint = 0
-  when defined(debug):
-    if surface.isNil():
-      raise newException(ResourceError, "image \"" & img & "\" not loaded!")
+  if surface.isNil():
+    throwError(ResourceError, "image \"" & img & "\" not loaded!")
 
   glGenTextures(1, textureid.addr)
   glBindTexture(GL_TEXTURE_2D, textureid)
@@ -41,7 +40,7 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
   surface.freeSurface()
   surface = nil
 
-proc draw*(self: TileSetObj, tilex, tiley, x, y: float) =
+proc draw*(self: TileSetObj, tilex, tiley, x, y, z: float) =
   ## Draws tile at position `tilex`,`tiley` to `x`,`y` position.
   if self.texture > 0:
     let
@@ -49,15 +48,18 @@ proc draw*(self: TileSetObj, tilex, tiley, x, y: float) =
       texy1 = self.grid.y*tiley / self.size.y
       texx2 = self.grid.x*(tilex+1f) / self.size.x
       texy2 = self.grid.y*(tiley+1f) / self.size.y
+    glPushMatrix()
+    glTranslatef(x, y, z)
     glBindTexture(GL_TEXTURE_2D, self.texture)
     glBegin(GL_QUADS)
     glTexCoord2f(texx1, texy1)
-    glVertex2f(x, y)
+    glVertex3f(0, 0, 0)
     glTexCoord2f(texx1, texy2)
-    glVertex2f(x, y - self.grid.y)
+    glVertex3f(0, -self.grid.y, 0)
     glTexCoord2f(texx2, texy2)
-    glVertex2f(x + self.grid.x, y - self.grid.y)
+    glVertex3f(self.grid.x, -self.grid.y, 0)
     glTexCoord2f(texx2, texy1)
-    glVertex2f(x + self.grid.x, y)
+    glVertex3f(self.grid.x, 0, 0)
     glEnd()
     glBindTexture(GL_TEXTURE_2D, 0)
+    glPopMatrix()

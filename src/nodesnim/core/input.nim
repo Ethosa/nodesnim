@@ -20,7 +20,6 @@ type
   InputAction* = object
     kind*: InputEventType
     key_int*: cint
-    key_cint*: cint
     button_index*: cint
     name*, key*: string
 
@@ -28,7 +27,6 @@ type
     kind*: InputEventType
     pressed*: bool
     key_int*: cint
-    key_cint*: cint
     button_index*: cint
     x*, y*, xrel*, yrel*: float
     key*: string
@@ -52,9 +50,7 @@ var
   mouse_pressed*: bool = false
   press_state*: int = 0
   last_event*: InputEvent = InputEvent()
-  pressed_keys*: seq[string] = @[]
-  pressed_keys_ints*: seq[cint] = @[]
-  pressed_keys_cints*: seq[cint] = @[]
+  pressed_keys_cint*: seq[cint] = @[]
   actionlist*: seq[InputAction] = @[]
 
 
@@ -101,7 +97,7 @@ proc addKeyAction*(name, key: string) {.inline.} =
   ## Arguments:
   ## - `name` - action name.
   ## - `key` - key, e.g.: "w", "1", etc.
-  actionlist.add(InputAction(kind: KEYBOARD, name: name, key: key, key_int: ord(key[0]).cint))
+  actionlist.add(InputAction(kind: KEYBOARD, name: name, key_int: ord(key[0]).cint))
 
 proc addKeyAction*(name: string, key: cint) {.inline.} =
   ## Adds a new action on keyboard.
@@ -127,7 +123,7 @@ proc isActionJustPressed*(name: string): bool =
   result = false
   for action in actionlist:
     if action.name == name:
-      if action.kind == MOUSE and (last_event.kind == MOUSE or last_event.kind == MOTION):
+      if action.kind == MOUSE and last_event.kind in [MOUSE, MOTION]:
         if action.button_index == last_event.button_index and mouse_pressed:
           if press_state == 0:
             result = true
@@ -155,10 +151,9 @@ proc isActionPressed*(name: string): bool =
       elif action.kind == TOUCH and last_event.kind == TOUCH:
         if press_state > 0:
           result = true
-      elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
-        if action.key_int in pressed_keys_ints or action.key in pressed_keys:
-          if press_state > 0:
-            result = true
+      elif action.kind == KEYBOARD:
+        if action.key_int in pressed_keys_cint:
+          result = true
 
 proc isActionReleased*(name: string): bool =
   ## Returns true, when action no more active.
@@ -168,12 +163,14 @@ proc isActionReleased*(name: string): bool =
   result = false
   for action in actionlist:
     if action.name == name:
-      if action.kind == MOUSE and (last_event.kind == MOUSE or last_event.kind == MOTION):
+      if action.kind == MOUSE and last_event.kind in [MOUSE, MOTION]:
         if action.button_index == last_event.button_index and not mouse_pressed:
           if press_state == 0:
             result = true
       elif action.kind == KEYBOARD and last_event.kind == KEYBOARD:
-        if action.key notin pressed_keys or action.key_int notin pressed_keys_ints:
+        if last_event.key_int > 255:
+          continue
+        if action.key == $chr(last_event.key_int) or action.key_int == last_event.key_int:
           if press_state == 0:
             result = true
 
@@ -200,3 +197,15 @@ proc `$`*(event: InputEvent): string =
     "InputEventKeyboard(key: " & event.key & ", pressed:" & $event.pressed & ")"
   of TEXT:
     "InputEventText(key: " & event.key & ", pressed:" & $event.pressed & ")"
+
+
+proc `$`*(action: InputAction): string =
+  case action.kind
+  of MOUSE:
+    "InputAction[Mouse](button: " & $action.button_index & ")"
+  of KEYBOARD:
+    "InputAction[Keyboard](key: " & $action.key_int & ")"
+  of TOUCH:
+    "InputAction[Touch]()"
+  else:
+    ""

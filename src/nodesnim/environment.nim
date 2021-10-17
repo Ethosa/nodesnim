@@ -1,31 +1,29 @@
 # author: Ethosa
-import core/color
+import
+  core/color,
+  core/enums
 {.used.}
 
 
 type
-  ScreenMode* {.pure.} = enum
-    SCREEN_MODE_NONE,  ## default mode.
-    SCREEN_MODE_EXPANDED  ## Keep screen size.
   EnvironmentObj* = object
-    delay*: int    ## window delay.
-    color*: ColorRef  ## background environment color.
-    brightness*: float
+    color*: ColorRef         ## background environment color.
     screen_mode*: ScreenMode
+    delay*: int              ## window delay.
   EnvironmentRef* = ref EnvironmentObj
 
 
-proc newEnvironment*(color: ColorRef, brightness: float): EnvironmentRef =
+proc newEnvironment*(color: ColorRef): EnvironmentRef =
   ## Creates a new EnvironmentRef object.
   ##
   ## Arguments:
   ## - `color`: ColorRef object for background environment color.
   ## - `brightness` - window brightness with value in range `0..1`
-  EnvironmentRef(color: color, delay: 17, brightness: brightness, screen_mode: SCREEN_MODE_NONE)
+  EnvironmentRef(color: color, delay: 17,screen_mode: SCREEN_MODE_NONE)
 
 proc newEnvironment*(): EnvironmentRef {.inline.} =
   ## Creates a new EnvironmentRef object.
-  newEnvironment(Color(0x313131ff), 1.0)
+  newEnvironment(Color(0x313131ff))
 
 
 proc setBackgroundColor*(env: EnvironmentRef, color: ColorRef) =
@@ -41,13 +39,6 @@ proc setBackgroundColor*(env: EnvironmentRef, color: uint32) =
   ## Arguments:
   ## - `color`: uint32 color, e.g.: 0xFF64FF
   env.color = Color(color)
-
-proc setBrightness*(env: EnvironmentRef, brightness: float) =
-  ## Changes window brightness.
-  ##
-  ## Arguments:
-  ## - `brightness` - window brightness with value in range `0..1`
-  env.brightness = brightness
 
 proc setDelay*(env: EnvironmentRef, delay: int) =
   ## Changes window delay.

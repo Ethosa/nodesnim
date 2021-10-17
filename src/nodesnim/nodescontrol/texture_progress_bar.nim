@@ -69,6 +69,7 @@ method draw*(self: TextureProgressBarRef, w, h: GLfloat) =
     glVertex2f(x + self.rect_size.x, y)
     glEnd()
 
+    glBindTexture(GL_TEXTURE_2D, 0)
     glDisable(GL_TEXTURE_2D)
 
   if self.progress_texture.texture > 0'u32:
@@ -86,6 +87,7 @@ method draw*(self: TextureProgressBarRef, w, h: GLfloat) =
     glVertex2f(x + progress, y)
     glEnd()
 
+    glBindTexture(GL_TEXTURE_2D, 0)
     glDisable(GL_TEXTURE_2D)
 
   # Press

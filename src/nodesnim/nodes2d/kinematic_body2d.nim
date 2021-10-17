@@ -96,7 +96,7 @@ method moveAndCollide*(self: KinematicBody2DRef, vel: Vector2Obj) {.base.} =
   ## - `vel` is a velocity vector.
   # TODO: normal algorithn
   let
-    biggest = abs(if max(vel.x, vel.y) == 0.0: min(vel.x, vel.y) else: max(vel.x, vel.y))
+    biggest = max(vel.x.abs(), vel.y.abs())
     step = Vector2(vel.x/biggest, vel.y/biggest)
     vec = vel.abs()
     scene = self.getRootNode()

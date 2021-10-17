@@ -1,49 +1,76 @@
-# --- Test 5. Handle Control node events. --- #
-import nodesnim
+# --- Test 5. Work with graphics. --- #
+import
+  nodesnim,
+  unittest
 
 
-Window("hello world")
-
-var
-  main = Scene("Main")
-
-  colorrect = ColorRect()
-
-  colorrect1 = ColorRect()
-
-main.addChild(colorrect)
-colorrect.addChild(colorrect1)
+suite "Work with graphics.":
+  
+  test "Setup window":
+    Window("graphics test")
 
 
-colorrect1.on_click =
-  proc(self: ControlRef, x, y: float) =  # This called when the user clicks on the Control node (ColorRect in this case).
-    colorrect1.move(3, 3)
+  test "Setup scene":
+    build:
+      - Scene main
 
-colorrect.on_press =
-  proc(self: ControlRef, x, y: float) =  # This called when the user holds on the mouse on the Control node.
-    colorrect.color.r -= 0.001
+    addMainScene(main)
 
-colorrect.on_release =
-  proc(self: ControlRef, x, y: float) =  # This called when the user no more holds on the mouse.
-    colorrect.color.r = 1
+  test "Color background":
+    build:
+      - Control ctrl
 
-colorrect.on_focus =
-  proc(self: ControlRef) =  # This called when the Control node gets focus.
-    echo "hello ^^."
+    ctrl.resize(256, 96)
+    ctrl.move(64, 64)
+    ctrl.setStyle(style(
+      {
+        background-color: rgb(33, 65, 87),
+        border-radius: 8,
+        border-width: 1,
+        border-color: rgb(0, 0, 0),
+        shadow: true,
+        shadow-offset: 8,
+        size-anchor: 0.5 0.7
+      }
+    ))
 
-colorrect.on_unfocus =
-  proc(self: ControlRef) =  # This called when the Control node loses focus.
-    echo "bye :("
-
-colorrect1.on_mouse_enter =
-  proc(self: ControlRef, x, y: float) =  # This called when the mouse enters the Control node.
-    colorrect1.color = Color(1, 0.6, 1, 0.5)
-
-colorrect1.on_mouse_exit =
-  proc(self: ControlRef, x, y: float) =  # This called when the mouse exit from the Control node.
-    colorrect1.color = Color(1f, 1f, 1f)
+    getSceneByName("main").addChild(ctrl)
 
 
-addScene(main)
-setMainScene("Main")
-windowLaunch()
+  test "Image background":
+    build:
+      - Control ctrl1:
+        call move(350, 100)
+        call setSizeAnchor(0.2, 0.2)
+
+    ctrl1.background.setTexture(load("assets/sharp.jpg"))
+    ctrl1.background.setCornerRadius(25)
+    ctrl1.background.setCornerDetail(8)
+    ctrl1.background.enableShadow(true)
+    ctrl1.background.setShadowOffset(Vector2(0, 8))
+
+    getSceneByName("main").addChild(ctrl1)
+
+
+  test "Gradient background":
+    build:
+      - Control ctrl2:
+        call resize(96, 96)
+        call setAnchor(0, 0.5, 0, 0.5)
+    var gradient = GradientDrawable()
+    gradient.setCornerRadius(16)
+    gradient.setCornerDetail(16)
+    gradient.enableShadow(true)
+    gradient.setShadowOffset(Vector2(15, 15))
+    gradient.setBorderColor(Color(1.0, 0.5, 0.5, 0.1))
+    gradient.setBorderWidth(5)
+    gradient.setStyle(style({
+      corner-color: "#ff7 #ff7 #f77 #f77"
+      }))
+    ctrl2.setBackground(gradient)
+
+    getSceneByName("main").addChild(ctrl2)
+
+
+  test "Launch window":
+    windowLaunch()

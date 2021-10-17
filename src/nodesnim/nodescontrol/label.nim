@@ -19,6 +19,7 @@ import
 
   ../nodes/node,
   ../nodes/canvas,
+  browsers,
   control
 
 
@@ -59,7 +60,36 @@ method duplicate*(self: LabelRef): LabelRef {.base.} =
   self.deepCopy()
 
 method getText*(self: LabelRef): string {.base.} =
+  ## Returns `StyleText` as `string`.
+  ##
+  ## See also:
+  ## * `setText method <#setText.e,LabelRef,string,bool>`_
   $self.text
+
+method handle*(self: LabelRef, event: InputEvent, mouse_on: var NodeRef) =
+  ## Handles user input. Thi uses in the `window.nim`.
+  procCall self.ControlRef.handle(event, mouse_on)
+
+  if event.kind in [MOUSE, MOTION]:
+    let (c, pos) = self.text.getCharUnderPoint(
+      self.getGlobalMousePosition(), self.global_position + self.rect_size/2 - self.text.getTextSize()/2,
+      self.text_align)
+
+    if c.is_url:
+      var (i, j) = (pos.int, pos.int)
+      while i - 1 > 0 and self.text.chars[i - 1].is_url:
+        dec i
+      while j + 1 < self.text.len and self.text.chars[j + 1].is_url:
+        inc j
+      self.text.setUnderline(i, j, true)
+      self.text.rendered = false
+      if last_event.pressed and last_event.kind == MOUSE:
+        openDefaultBrowser(c.url)
+    else:
+      for i in self.text.chars:
+        if i.is_url:
+          i.setUnderline(false)
+      self.text.rendered = false
 
 method setText*(self: LabelRef, text: string, save_properties: bool = false) {.base.} =
   ## Changes text.
@@ -67,6 +97,9 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
   ## Arguments:
   ## - `text` is a new Label text.
   ## - `save_properties` - saves old text properties, if `true`.
+  ##
+  ## See also:
+  ## * `getText method <#getText.e,LabelRef>`_
   var st = stext(text)
   if self.text.font.isNil():
     self.text.font = standard_font
@@ -76,25 +109,45 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
     for i in 0..<st.chars.len():
       if i < self.text.len():
         st.chars[i].color = self.text.chars[i].color
-        st.chars[i].underline = self.text.chars[i].underline
+        st.chars[i].style = self.text.chars[i].style
   self.text = st
   self.rect_min_size = self.text.getTextSize()
   self.resize(self.rect_size.x, self.rect_size.y, true)
   self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
+  ## Changes text alignment.
+  ##
+  ## Arguments:
+  ## - `x1` `y1` - parent anchor.
+  ## - `x2` `y2` - self anchor.
+  ##
+  ## See also:
+  ## * `setTextAlign method <#setTextAlign.e,LabelRef,AnchorObj>`_
   self.text_align = Anchor(x1, y1, x2, y2)
   self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, align: AnchorObj) {.base.} =
+  ## Changes text alignment.
+  ##
+  ## See also:
+  ## * `setTextAlign method <#setTextAlign.e,LabelRef,float,float,float,float>`_
   self.text_align = align
   self.text.rendered = false
 
 method setTextColor*(self: LabelRef, color: ColorRef) {.base.} =
+  ## Changes text color.
+  ##
+  ## Arguments:
+  ## - `color` - new text color.
   self.text.setColor(color)
   self.text.rendered = false
 
 method setTextFont*(self: LabelRef, font: FontPtr) {.base.} =
+  ## Changes text font.
+  ##
+  ## Arguments:
+  ## - `font` - new text font.
   self.text.font = font
   self.text.rendered = false
 

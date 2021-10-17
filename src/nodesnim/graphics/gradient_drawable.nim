@@ -12,18 +12,16 @@ import
 
 type
   GradientDrawableObj* = object of DrawableObj
-    corners*: tuple[p0, p1, p2, p3: ColorRef]
+    corners*: array[4, ColorRef]
   GradientDrawableRef* = ref GradientDrawableObj
 
 
 proc GradientDrawable*: GradientDrawableRef =
   drawablepattern(GradientDrawableRef)
-  result.corners = (Color(1f, 1f, 1f, 1.0),
+  result.corners = [Color(1f, 1f, 1f, 1.0),
                     Color(1f, 1f, 1f, 1.0),
                     Color(1f, 1f, 1f, 1.0),
-                    Color(1f, 1f, 1f, 1.0))
-
-let shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
+                    Color(1f, 1f, 1f, 1.0)]
 
 
 template draw_template*(drawtype, color, function, secondfunc: untyped, is_gradient: bool = true): untyped =
@@ -76,9 +74,6 @@ method draw*(self: GradientDrawableRef, x1, y1, width, height: float) =
   if self.border_width > 0f:
     draw_template(GL_LINE_LOOP, self.border_color, glLineWidth(self.border_width), glLineWidth(1), false)
 
-method setCornerColors*(self: GradientDrawableRef, corners: tuple[p0, p1, p2, p3: ColorRef]) {.base.} =
-  self.corners = corners
-
 method setCornerColors*(self: GradientDrawableRef, c0, c1, c2, c3: ColorRef) {.base.} =
   ## Changes corners colors
   ##
@@ -87,10 +82,23 @@ method setCornerColors*(self: GradientDrawableRef, c0, c1, c2, c3: ColorRef) {.b
   ## -  `c1` is right-top color.
   ## -  `c2` is right-bottom color.
   ## -  `c3` is left-bottom color.
-  self.corners[0] = c0
-  self.corners[1] = c1
-  self.corners[2] = c2
-  self.corners[3] = c3
+  self.corners = [c0, c1, c2, c3]
+
+method setCornerColors*(self: GradientDrawableRef, corners: array[4, ColorRef]) {.base.} =
+  ## Changes corners colors
+  ##
+  ## See also:
+  ## * `setCornerColors method <#setCornerColors.e,GradientDrawableRef,ColorRef,ColorRef,ColorRef,ColorRef>`_
+  ## * `setCornerColors(GradientDrawableRef, ColorRef) method <#setCornerColors.e,GradientDrawableRef,ColorRef>`_
+  self.corners = corners
+
+method setCornerColors*(self: GradientDrawableRef, clr: ColorRef) {.base.} =
+  ## Changes corners colors
+  ##
+  ## See also:
+  ## * `setCornerColors method <#setCornerColors.e,GradientDrawableRef,ColorRef,ColorRef,ColorRef,ColorRef>`_
+  ## * `setCornerColors(GradientDrawableRef, array[4, ColorRef]) method <#setCornerColors.e,GradientDrawableRef,array[,ColorRef]>`_
+  self.corners = [Color(clr), Color(clr), Color(clr), Color(clr)]
 
 method setStyle*(self: GradientDrawableRef, s: StyleSheetRef) =
   ## Sets a new stylesheet.
@@ -102,7 +110,7 @@ method setStyle*(self: GradientDrawableRef, s: StyleSheetRef) =
     of "corner-color":
       let tmp = i.value.split(" ")
       if tmp.len() == 1:
-        self.setCornerColors(Color(tmp[0]), Color(tmp[0]), Color(tmp[0]), Color(tmp[0]))
+        self.setCornerColors(Color(tmp[0]))
       elif tmp.len() == 4:
         self.setCornerColors(Color(tmp[0]), Color(tmp[1]), Color(tmp[2]), Color(tmp[3]))
     else:

@@ -2,10 +2,10 @@
 ## Canvas is the root type of all 2D and Control nodes.
 ## 
 ## Canvas used for drawing primitive geometry.
+import ../thirdparty/sdl2 except Color
 import
   math,
   ../thirdparty/opengl,
-  ../thirdparty/sdl2,
   ../thirdparty/sdl2/image,
 
   ../core/vector2,
@@ -53,7 +53,7 @@ proc Canvas*(name: string = "Canvas"): CanvasRef =
   result.canvas_texture = 0
   result.surface = createRGBSurface(
       0, 40, 40, 32,
-      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000'u32)
+      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)
   result.renderer = result.surface.createSoftwareRenderer()
   result.kind = CANVAS_NODE
   result.type_of_node = NODE_TYPE_CONTROL
@@ -120,6 +120,10 @@ method move*(self: CanvasRef, vec2: Vector2Obj) {.base, inline.} =
   ##
   ## Arguments:
   ## - `vec2`: how much to add to the position on the X,Y axes.
+  ##
+  ## See also:
+  ## - `move method <#move.e,CanvasRef,float,float>`_
+  ## - `moveTo method <#moveTo.e,CanvasRef,Vector2Obj>`_
   self.position += vec2
   self.anchor.clear()
 
@@ -129,7 +133,28 @@ method move*(self: CanvasRef, x, y: float) {.base, inline.} =
   ## Arguments:
   ## - `x`: how much to add to the position on the X axis.
   ## - `y`: how much to add to the position on the Y axis.
+  ##
+  ## See also:
+  ## - `move method <#move.e,CanvasRef,Vector2Obj>`_
+  ## - `moveTo method <#moveTo.e,CanvasRef,float,float>`_
   self.position += Vector2(x, y)
+  self.anchor.clear()
+
+method moveTo*(self: CanvasRef, x, y: float) {.base, inline.} =
+  ## Change node position.
+  ##
+  ## Arguments:
+  ## - `x`: how much to add to the position on the X axis.
+  ## - `y`: how much to add to the position on the Y axis.
+  self.position = Vector2(x, y)
+  self.anchor.clear()
+
+method moveTo*(self: CanvasRef, vec2: Vector2Obj) {.base, inline.} =
+  ## Change node position.
+  ##
+  ## Arguments:
+  ## - `vec2`: how much to add to the position on the X,Y axes.
+  self.position = vec2
   self.anchor.clear()
 
 method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base.} =
@@ -178,15 +203,25 @@ method setAnchor*(self: CanvasRef, x1, y1, x2, y2: float) {.base.} =
 
 
 method setSizeAnchor*(self: CanvasRef, anchor: Vector2Obj) {.base.} =
+  ## Changes the size anchor to the size of the parent.
   self.size_anchor = anchor
 
 method setSizeAnchor*(self: CanvasRef, x, y: float) {.base.} =
+  ## Changes the size anchor to the size of the parent.
   self.size_anchor = Vector2(x, y)
 
 
 # --- Draw functions --- #
 proc bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3: GLfloat, color: ColorRef) =
   ## Draws a quadric bezier curve at 3 points.
+  ##
+  ## Arguments:
+  ## - `x1` `y1` - first point.
+  ## - `x2` `y2` - second point.
+  ## - `x3` `y3` - third point.
+  ##
+  ## See also:
+  ## - `cubicBezier proc <#cubicBezier,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef>`_
   loadColor(color)
   for pnt in bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3)):
     canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)
@@ -207,8 +242,17 @@ proc circle*(canvas: CanvasRef, x, y, radius: GLfloat, color: ColorRef, quality:
     canvas.renderer.drawPoint((x + radius*cos(angle)).cint, (y + radius*sin(angle)).cint)
   loadGL(canvas)
 
-proc cubic_bezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3, x4, y4: GLfloat, color: ColorRef) =
-  ## Draws a quadric bezier curve at 3 points.
+proc cubicBezier*(canvas: CanvasRef, x1, y1, x2, y2, x3, y3, x4, y4: GLfloat, color: ColorRef) =
+  ## Draws a quadric bezier curve at 4 points.
+  ##
+  ## Arguments:
+  ## - `x1` `y1` - first point.
+  ## - `x2` `y2` - second point.
+  ## - `x3` `y3` - third point.
+  ## - `x4` `y4` - fourth point.
+  ##
+  ## See also:
+  ## - `bezier proc <#bezier,CanvasRef,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,GLfloat,ColorRef>`_
   loadColor(color)
   for pnt in cubic_bezier_iter(0.001, Vector2(x1, y1), Vector2(x2, y2), Vector2(x3, y3), Vector2(x4, y4)):
     canvas.renderer.drawPoint(pnt.x.cint, pnt.y.cint)

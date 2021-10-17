@@ -1,5 +1,5 @@
 # author: Ethosa
-## By default popup visible is false. Popup, unlike other nodes, changes children visible when calling show() and hide().
+## By default popup visibility is false. Popup, unlike other nodes, changes children visibility when calling show() and hide().
 import
   ../core/vector2,
   ../core/rect2,
@@ -30,29 +30,35 @@ proc Popup*(name: string = "Popup"): PopupRef =
   result.background.setColor(Color(0x212121ff))
   result.rect_size.x = 160
   result.rect_size.y = 160
-  result.visible = GONE
+  result.visibility = GONE
   result.kind = POPUP_NODE
 
 
 template recalc =
   for child in self.getChildIter():
-    if child.visible != GONE and self.visible == GONE:
-      child.visible = GONE
-    elif child.visible != VISIBLE and self.visible == VISIBLE:
-      child.visible = VISIBLE
+    if child.visibility != GONE and self.visibility == GONE:
+      child.visibility = GONE
+    elif child.visibility != VISIBLE and self.visibility == VISIBLE:
+      child.visibility = VISIBLE
 
 
 method hide*(self: PopupRef) =
   ## Hides popup.
   {.warning[LockLevel]: off.}
-  self.visible = GONE
+  self.visibility = GONE
   recalc()
 
 method show*(self: PopupRef) =
   ## Shws popup.
   {.warning[LockLevel]: off.}
-  self.visible = VISIBLE
+  self.visibility = VISIBLE
   recalc()
+
+method toggle*(self: PopupRef) {.base.} =
+  if self.visibility == GONE:
+    self.show()
+  else:
+    self.hide()
 
 method calcPositionAnchor*(self: PopupRef) =
   ## This uses in the `scene.nim`.

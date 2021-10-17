@@ -1,13 +1,15 @@
 # author: Ethosa
+import thirdparty/sdl2 except Color
 import
   thirdparty/opengl,
   thirdparty/opengl/glu,
-  thirdparty/sdl2,
   thirdparty/sdl2/image,
 
   core/color,
   core/input,
   core/exceptions,
+  core/vector2,
+  core/enums,
 
   nodes/node,
   nodes/scene,
@@ -112,13 +114,10 @@ proc keyboardpress(c: cint) {.cdecl.} =
   ## Called when press any key on keyboard.
   if c < 0:
     return
-  var key = $c
   check(InputEventKeyboard, last_event.pressed, true)
-  last_event.key = key
   last_event.key_int = c
-  if key notin pressed_keys:
-    pressed_keys.add(key)
-    pressed_keys_ints.add(c)
+  if c notin pressed_keys_cint:
+    pressed_keys_cint.add(c)
   last_event.kind = KEYBOARD
   last_key_state = key_state
   key_state = true
@@ -138,28 +137,23 @@ proc keyboardup(c: cint) {.cdecl.} =
   ## Called when any key no more pressed.
   if c < 0:
     return
-  let key = $c
   check(InputEventKeyboard, false, false)
-  last_event.key = key
   last_event.key_int = c
   last_event.kind = KEYBOARD
   last_key_state = key_state
   key_state = false
-  var i = 0
-  for k in pressed_keys:
-    if k == key:
-      pressed_keys.delete(i)
-      pressed_keys_ints.delete(i)
+  for i in pressed_keys_cint.low..pressed_keys_cint.high:
+    if pressed_keys_cint[i] == c:
+      pressed_keys_cint.delete(i)
       break
-    inc i
 
   current_scene.handleScene(last_event, mouse_on, paused)
 
-proc motion(x, y: cint) {.cdecl.} =
+proc motion(x, y, xrel, yrel: cint) {.cdecl.} =
   ## Called on any mouse motion.
   last_event.kind = MOTION
-  last_event.xrel = last_event.x - x.float
-  last_event.yrel = last_event.y - y.float
+  last_event.xrel = xrel.float
+  last_event.yrel = yrel.float
   last_event.x = x.float
   last_event.y = y.float
 
@@ -189,6 +183,7 @@ proc addMainScene*(scene: SceneRef) =
   main_scene = scene
 
 proc centeredWindow* =
+  ## Moves window to the display center.
   var dm: DisplayMode
   discard getCurrentDisplayMode(0, dm)
   windowptr.setPosition((dm.w/2 - width/2).cint, (dm.h/2 - height/2).cint)
@@ -214,7 +209,18 @@ proc changeScene*(name: string, extra: seq[tuple[k: string, v: string]] = @[]): 
   when defined(debug):
     debug("result of `changeScene` is ", result)
 
+proc getSceneByName*(name: string): SceneRef =
+  for scene in scenes:
+    if scene.name == name:
+      return scene
+
+proc getWindowSize*(): Vector2Obj =
+  Vector2(width.float, height.float)
+
 proc resizeWindow*(x, y: cint) =
+  ## Resizes window.
+  width = x
+  height = y
   windowptr.setSize(x, y)
 
 proc setMainScene*(name: string) =
@@ -232,14 +238,14 @@ proc setTitle*(title: cstring) =
   if window_created:
     windowptr.setTitle(title)
   else:
-    raise newException(WindowError, "Window not launched!")
+    throwError(WindowError, "Window not launched!")
 
 proc setIcon*(icon_path: cstring) =
   ## Changes window title.
   if window_created:
     windowptr.setIcon(image.load(icon_path))
   else:
-    raise newException(WindowError, "Window not launched!")
+    throwError(WindowError, "Window not launched!")
 
 proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   ## Creates a new window pointer
@@ -248,13 +254,14 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   ## - `title` - window title.
   # Set up window.
   once:
-    when not defined(android) and not defined(ios):
+    when not defined(android) and not defined(ios) and not defined(useGlew):
       loadExtensions()  # Load OpenGL extensions.
       discard captureMouse(True32)
   windowptr = createWindow(
     title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h,
     SDL_WINDOW_SHOWN or SDL_WINDOW_OPENGL or SDL_WINDOW_RESIZABLE or
-    SDL_WINDOW_ALLOW_HIGHDPI or SDL_WINDOW_FOREIGN or SDL_WINDOW_INPUT_FOCUS or SDL_WINDOW_MOUSE_FOCUS)
+    SDL_WINDOW_ALLOW_HIGHDPI or SDL_WINDOW_FOREIGN or
+    SDL_WINDOW_INPUT_FOCUS or SDL_WINDOW_MOUSE_FOCUS)
   glcontext = windowptr.glCreateContext()
 
   # Set up OpenGL
@@ -280,8 +287,8 @@ proc onReshape(userdata: pointer; event: ptr Event): Bool32 {.cdecl.} =
   False32
 
 proc windowLaunch* =
-  if main_scene == nil:
-    raise newException(SceneError, "Main scene is not indicated!")
+  if main_scene.isNil():
+    throwError(SceneError, "Main scene is not indicated!")
   changeScene(main_scene.name)
   when defined(debug):
     info("window launched")
@@ -304,7 +311,7 @@ proc windowLaunch* =
         textinput(e)
       of MouseMotion:
         let e = evMouseMotion(event)
-        motion(e.x, e.y)
+        motion(e.x, e.y, e.xrel, e.yrel)
       of MouseButtonDown:
         let e = evMouseButton(event)
         mouse(e.button.cint, e.x, e.y, true)

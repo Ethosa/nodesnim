@@ -13,7 +13,7 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 [![channel icon](https://patrolavia.github.io/telegram-badge/follow.png)](https://t.me/nim1love)
 [![channel icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/nodesnim)
 
-<h4>Stable version - 0.3.2</h4>
+<h4>Stable version - 0.4.0</h4>
 </div>
 
 ## Install
@@ -67,7 +67,7 @@ This section contains links to documentation for all nodes.
 |[Anchor][]      |[Node][]             |[Control][]           |[Node2D][]          |[Node3D][]          |[Drawable][]        |
 |[Color][]       |[Canvas][]           |[ColorRect][]         |[Sprite][]          |[GeometryInstance][]|[GradientDrawable][]|
 |[Font][]        |[Scene][]            |[TextureRect][]       |[AnimatedSprite][]  |[Camera3D][]        |                    |
-|[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |                    |                    |
+|[Enums][]       |[AudioStreamPlayer][]|[Label][]             |[YSort][]           |[Sprite3D][]        |                    |
 |[Exceptions][]  |[AnimationPlayer][]  |[Button][]            |[CollisionShape2D][]|                    |                    |
 |[Image][]       |                     |[EditText][]          |[Camera2D][]        |                    |                    |
 |[Input][]       |                     |[Box][]               |[TileMap][]         |                    |                    |
@@ -84,6 +84,7 @@ This section contains links to documentation for all nodes.
 |                |                     |[Switch][]            |                    |                    |                    |
 |                |                     |[SubWindow][]         |                    |                    |                    |
 |                |                     |[CheckBox][]          |                    |                    |                    |
+|                |                     |[ToolTip][]           |                    |                    |                    |
 
 
 
@@ -154,6 +155,7 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [Font]:https://ethosa.github.io/nodesnim/nodesnim/core/font.html
 [StyleSheet]:https://ethosa.github.io/nodesnim/nodesnim/core/stylesheet.html
 [TileSet]:https://ethosa.github.io/nodesnim/nodesnim/core/tileset.html
+[Scripts]:https://ethosa.github.io/nodesnim/nodesnim/core/scripts.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
@@ -183,6 +185,7 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [Switch]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/switch.html
 [SubWindow]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/subwindow.html
 [CheckBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/checkbox.html
+[ToolTip]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/tooltip.html
 
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
 [Sprite]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html
@@ -197,6 +200,7 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [Node3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/node3d.html
 [GeometryInstance]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/geometry_instance.html
 [Camera3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/camera3d.html
+[Sprite3D]:https://ethosa.github.io/nodesnim/nodesnim/nodes3d/sprite3d.html
 
 [Drawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/drawable.html
 [GradientDrawable]:https://ethosa.github.io/nodesnim/nodesnim/graphics/gradient_drawable.html

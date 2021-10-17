@@ -1,7 +1,7 @@
 # author: Ethosa
+import ../thirdparty/sdl2 except Color
 import
   ../thirdparty/opengl,
-  ../thirdparty/sdl2,
   ../thirdparty/sdl2/ttf,
 
   ../core/font,
@@ -122,7 +122,7 @@ template changeText(self, `text`, `save_properties`, t: untyped): untyped =
     for i in 0..<st.chars.len():
       if i < `self`.`t`.len():
         st.chars[i].color = `self`.`t`.chars[i].color
-        st.chars[i].underline = `self`.`t`.chars[i].underline
+        st.chars[i].style = `self`.`t`.chars[i].style
   `self`.`t` = st
   `self`.rect_min_size = `self`.`t`.getTextSize()
   `self`.resize(`self`.rect_size.x, `self`.rect_size.y)
@@ -193,7 +193,7 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
     if event.kind == TEXT and not event.pressed:
       # Other keys
       self.insert(self.caret_pos[0], event.key)
-    elif event.kind == KEYBOARD and event.key in pressed_keys:
+    elif event.kind == KEYBOARD and event.key_int in pressed_keys_cint:
       # Arrows
       if event.key_int == K_LEFT and self.caret_pos[0] > 0:
         self.moveCursorBy(-1)

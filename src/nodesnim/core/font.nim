@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Provides TTF text rendering. Use SDL2_ttf.
+import ../thirdparty/sdl2 except Color
 import
-  ../thirdparty/sdl2,
   ../thirdparty/sdl2/ttf,
   ../thirdparty/opengl,
 
@@ -16,8 +16,9 @@ import
 
 type
   StyleUnicode* = ref object
-    underline*: bool
-    c*: string
+    is_url*: bool
+    style*: cint
+    c*, url*: string
     color*: ColorRef
   StyleText* = ref object
     font*: FontPtr
@@ -27,14 +28,18 @@ type
     texture*: GlTextureObj
     chars*: seq[StyleUnicode]
 
+let URL_COLOR = Color(0.45, 0.45, 0.9)
 
-proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool = false): StyleUnicode =
-  StyleUnicode(c: c, color: color, underline: underline)
 
-proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f), underline: bool = false): StyleText =
+proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f),
+            style: cint = TTF_STYLE_NORMAL, is_url: bool = false): StyleUnicode =
+  StyleUnicode(c: c, color: color, style: style, is_url: is_url, url: "")
+
+proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f),
+            style: cint = TTF_STYLE_NORMAL): StyleText =
   result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1)
   for i in text.utf8():
-    result.chars.add(schar(i, color, underline))
+    result.chars.add(schar(i, color, style))
   result.font = standard_font
   result.rendered = false
 
@@ -63,28 +68,19 @@ proc `&`*(text, t: StyleText): StyleText =
 proc `&`*(text: StyleText, t: string): StyleText =
   text & stext(t)
 
-proc `&`*(text: string, c: StyleUnicode): string =
+proc `&`*(text: string, c: StyleUnicode | StyleText): string =
   text & $c
 
-proc `&`*(text: string, t: StyleText): string =
-  text & $t
+proc `&=`*(text: var StyleText, c: StyleUnicode | StyleText) =
+  text &= c
 
-proc `&=`*(text: var StyleText, c: StyleUnicode) =
-  text = text & c
-
-proc `&=`*(text: var StyleText, t: StyleText) =
-  text = text & t
-
-proc `&=`*(text: var string, c: StyleUnicode) =
-  text = text & $c
-
-proc `&=`*(text: var string, t: StyleText) =
-  text = text & $t
+proc `&=`*(text: var string, c: StyleUnicode | StyleText) =
+  text &= $c
 
 proc `&=`*(text: var StyleText, t: string) =
   text &= stext(t)
 
-proc `[]`*(text: StyleText, index: int): StyleUnicode =
+proc `[]`*(text: StyleText, index: int | BackwardsIndex): StyleUnicode =
   text.chars[index]
 
 proc `[]`*[T, U](text: StyleText, slice: HSlice[T, U]): StyleText =
@@ -94,6 +90,11 @@ proc `[]`*[T, U](text: StyleText, slice: HSlice[T, U]): StyleText =
 
 
 # ------ Funcs ------ #
+proc applyStyle*(symbol: StyleUnicode, style: cint, enabled: bool = true) =
+  if (symbol.style and style) == 0 and enabled:
+    symbol.style = symbol.style or style
+  elif (symbol.style and style) != 0 and not enabled:
+    symbol.style = symbol.style xor style
 
 proc toUpper*(text: StyleText): StyleText =
   result = text.deepCopy()
@@ -118,19 +119,29 @@ proc setColor*(text: StyleText, s, e: int, color: ColorRef) =
   for i in s..e:
     text.chars[i].color = color
 
-proc setUnderline*(c: StyleUnicode, val: bool) =
-  c.underline = val
+template styleFunc(setter, style_type: untyped): untyped =
+  proc `setter`*(c: StyleUnicode, val: bool = true) =
+    c.applyStyle(`style_type`, val)
+  proc `setter`*(text: StyleText, val: bool) =
+    for i in text.chars:
+      i.`setter`(val)
+  proc `setter`*(text: StyleText, index: int, val: bool) =
+    text.chars[index].`setter`(val)
+  proc `setter`*(text: StyleText, s, e: int, val: bool) =
+    for i in s..e:
+      text.chars[i].`setter`(val)
 
-proc setUnderline*(text: StyleText, val: bool) =
-  for i in text.chars:
-    i.underline = val
+styleFunc(setNormal, TTF_STYLE_NORMAL)
+styleFunc(setBold, TTF_STYLE_BOLD)
+styleFunc(setItalic, TTF_STYLE_ITALIC)
+styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
+styleFunc(setStrikethrough, TTF_STYLE_STRIKETHROUGH)
 
-proc setUnderline*(text: StyleText, index: int, val: bool) =
-  text.chars[index].underline = val
-
-proc setUnderline*(text: StyleText, s, e: int, val: bool) =
+proc setURL*(text: StyleText, s, e: int, url: string) =
   for i in s..e:
-    text.chars[i].underline = val
+    text.chars[i].is_url = true
+    text.chars[i].url = url
+    text.chars[i].color = URL_COLOR
 
 proc setFont*(text: StyleText, font: cstring, size: cint) =
   text.font = openFont(font, size)
@@ -245,6 +256,14 @@ proc getPosUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
     if position.x == -1f:
       result = 0
 
+proc getCharUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
+                        text_align: AnchorObj = Anchor(0, 0, 0, 0)): tuple[c: StyleUnicode, pos: uint32] =
+  let pos = text.getPosUnderPoint(global_pos, text_pos, text_align)
+  if pos > 0:
+    (c: text.chars[pos-1], pos: pos-1)
+  else:
+    (c: text.chars[pos], pos: pos)
+
 
 # ------ Render ------ #
 
@@ -255,7 +274,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
   ##   - `align` -- text align.
   when defined(debug):
     if text.font.isNil():
-      raise newException(ResourceError, "Font isn't loaded!")
+      throwError(ResourceError, "Font isn't loaded!")
 
   if not text.font.isNil() and $text != "":
     let
@@ -263,7 +282,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
       textsize = text.getTextSize()
     var
       surface = createRGBSurface(
-        0, textsize.x.cint, textsize.y.cint, 32,
+        0, textsize.x.cint + 8, textsize.y.cint, 32,
         0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)
       y: cint = 0
       w: cint
@@ -273,6 +292,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
       discard text.font.sizeUtf8(($line).cstring, addr w, addr h)
       var x = (textsize.x * align.x1 - w.float * align.x2).cint
       for c in line.chars:
+        text.font.setFontStyle(c.style)
         discard text.font.sizeUtf8(($c).cstring, addr w, addr h)
         var
           rendered = text.font.renderUtf8Blended(
@@ -353,6 +373,7 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
     glEnable(GL_TEXTURE_2D)
     glBegin(GL_QUADS)
+    glTexCoord2f(texcord[0], texcord[3])
     glVertex2f(pos1.x + size1.x, pos1.y)
     glTexCoord2f(texcord[0], texcord[1])
     glVertex2f(pos1.x + size1.x, pos1.y - size1.y)
@@ -360,7 +381,6 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
     glVertex2f(pos1.x, pos1.y - size1.y)
     glTexCoord2f(texcord[2], texcord[3])
     glVertex2f(pos1.x, pos1.y)
-    glTexCoord2f(texcord[0], texcord[3])
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, 0)

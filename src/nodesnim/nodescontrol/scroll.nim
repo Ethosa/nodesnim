@@ -1,8 +1,8 @@
 # author: Ethosa
 ## It provides primitive scroll box.
+import ../thirdparty/sdl2 except Color
 import
   ../thirdparty/opengl,
-  ../thirdparty/sdl2,
 
   ../core/vector2,
   ../core/rect2,
@@ -66,16 +66,6 @@ method addChild*(self: ScrollRef, other: NodeRef) =
 method duplicate*(self: ScrollRef): ScrollRef {.base.} =
   ## Duplicates Scroll object and create a new Scroll.
   self.deepCopy()
-
-
-method resize*(canvas: ScrollRef, w, h: GLfloat, save_anchor: bool = false) =
-  ## Resizes scroll.
-  ##
-  ## Arguments:
-  ## - `w` is a new width.
-  ## - `h` is a new height.
-  canvas.rect_size.x = w
-  canvas.rect_size.y = h
 
 
 method draw*(self: ScrollRef, w, h: GLfloat) =
@@ -150,10 +140,10 @@ method handle*(self: ScrollRef, event: InputEvent, mouse_on: var NodeRef) =
 
   if mouse_in:  # Keyboard movement
     if event.kind == KEYBOARD:
-      if event.key_cint in pressed_keys_cints:  # Special chars
-        if event.key_cint == K_UP:
+      if event.key_int in pressed_keys_cint:  # Special chars
+        if event.key_int == K_UP:
           self.scrollBy(0, -40)
-        elif event.key_cint == K_DOWN:
+        elif event.key_int == K_DOWN:
           self.scrollBy(0, 40)
     elif event.kind == WHEEL:
       self.scrollBy(0, -20 * event.yrel)
