@@ -18,7 +18,7 @@ build:
   - Scene main:
     - TileMap map:
       call setTileSet(tileset)
-      call resizeMap(newVector2(LEVEL_WIDTH, 15), 2)
+      call resizeMap(Vector2(LEVEL_WIDTH, 15), 2)
 
     # Player
     - KinematicBody2D player:
@@ -51,18 +51,18 @@ build:
 
 # Draw grass
 for i in 0..512:
-  map.drawTile(rand(99), rand(14), newVector2(0, 1), 1)
+  map.drawTile(rand(99), rand(14), Vector2(0, 1), 1)
 
 # Draw trees
 for i in 0..128:
-    map.drawTile(rand(99), rand(14), newVector2(rand(13..16).float, 0), 1)
+    map.drawTile(rand(99), rand(14), Vector2(rand(13..16).float, 0), 1)
 
 # Draw houses
 for i in 0..32:
     var
       pos = Vector2(rand(99).float, rand(14).float)
       collider = CollisionShape2D()
-    map.drawTile(pos.x.int, pos.y.int, newVector2(rand(13..16).float, 2), 1)
+    map.drawTile(pos.x.int, pos.y.int, Vector2(rand(13..16).float, 2), 1)
     collider.resize(PLAYER_SIZE, PLAYER_SIZE)
     collider.move(pos.x*PLAYER_SIZE, pos.y*PLAYER_SIZE)
     main.addChild(collider)
