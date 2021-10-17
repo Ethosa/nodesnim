@@ -6,13 +6,13 @@ import
 
 discard ttfInit()
 
-const
+let
   home_folder* = getHomeDir()
   nodesnim_folder* = home_folder / "NodesNim"
-  saves_folder* = "NodesNim" / "saves"
+  saves_folder* = nodesnim_folder / "saves"
 
 discard existsOrCreateDir(nodesnim_folder)
-discard existsOrCreateDir(home_folder / saves_folder)
+discard existsOrCreateDir(saves_folder)
 
 let standard_font_path* =
   when defined(windows):
@@ -21,6 +21,7 @@ let standard_font_path* =
     "/system/fonts/DroidSans.ttf"
   else:
       currentSourcePath().parentDir() / "unifont.ttf"
+
 var standard_font*: FontPtr = nil
 
 proc setStandardFont*(path: cstring, size: cint) =

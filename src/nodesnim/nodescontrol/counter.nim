@@ -103,7 +103,6 @@ method duplicate*(self: CounterRef): CounterRef {.base.} =
 method handle*(self: CounterRef, event: InputEvent, mouse_on: var NodeRef) =
   procCall self.ControlRef.handle(event, mouse_on)
 
-
   let
     first_button = Rect2(
       self.global_position.x + self.rect_size.x - 20, self.global_position.y,
@@ -130,10 +129,16 @@ method handle*(self: CounterRef, event: InputEvent, mouse_on: var NodeRef) =
 
 method setMaxValue*(self: CounterRef, value: float) {.base.} =
   ## Changes max value, if it more then current `value`.
+  ##
+  ## See also:
+  ## - `setMinValue method <#setMinValue.e,CounterRef,float>`_
   if value > self.value:
     self.max_value = value
 
 method setMinValue*(self: CounterRef, value: float) {.base.} =
   ## Changes max value, if it less then current `value`.
+  ##
+  ## See also:
+  ## - `setMaxValue method <#setMaxValue.e,CounterRef,float>`_
   if value < self.value:
     self.min_value = value

@@ -20,7 +20,6 @@ type
   InputAction* = object
     kind*: InputEventType
     key_int*: cint
-    key_cint*: cint
     button_index*: cint
     name*, key*: string
 
@@ -28,7 +27,6 @@ type
     kind*: InputEventType
     pressed*: bool
     key_int*: cint
-    key_cint*: cint
     button_index*: cint
     x*, y*, xrel*, yrel*: float
     key*: string
@@ -52,9 +50,7 @@ var
   mouse_pressed*: bool = false
   press_state*: int = 0
   last_event*: InputEvent = InputEvent()
-  pressed_keys*: seq[string] = @[]
-  pressed_keys_ints*: seq[cint] = @[]
-  pressed_keys_cints*: seq[cint] = @[]
+  pressed_keys_cint*: seq[cint] = @[]
   actionlist*: seq[InputAction] = @[]
 
 
@@ -101,7 +97,7 @@ proc addKeyAction*(name, key: string) {.inline.} =
   ## Arguments:
   ## - `name` - action name.
   ## - `key` - key, e.g.: "w", "1", etc.
-  actionlist.add(InputAction(kind: KEYBOARD, name: name, key: key, key_int: ord(key[0]).cint))
+  actionlist.add(InputAction(kind: KEYBOARD, name: name, key_int: ord(key[0]).cint))
 
 proc addKeyAction*(name: string, key: cint) {.inline.} =
   ## Adds a new action on keyboard.
@@ -156,7 +152,7 @@ proc isActionPressed*(name: string): bool =
         if press_state > 0:
           result = true
       elif action.kind == KEYBOARD:
-        if action.key_int in pressed_keys_ints or action.key in pressed_keys:
+        if action.key_int in pressed_keys_cint:
           result = true
 
 proc isActionReleased*(name: string): bool =
@@ -201,3 +197,15 @@ proc `$`*(event: InputEvent): string =
     "InputEventKeyboard(key: " & event.key & ", pressed:" & $event.pressed & ")"
   of TEXT:
     "InputEventText(key: " & event.key & ", pressed:" & $event.pressed & ")"
+
+
+proc `$`*(action: InputAction): string =
+  case action.kind
+  of MOUSE:
+    "InputAction[Mouse](button: " & $action.button_index & ")"
+  of KEYBOARD:
+    "InputAction[Keyboard](key: " & $action.key_int & ")"
+  of TOUCH:
+    "InputAction[Touch]()"
+  else:
+    ""

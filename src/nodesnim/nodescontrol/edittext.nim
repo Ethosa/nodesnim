@@ -193,7 +193,7 @@ method handle*(self: EditTextRef, event: InputEvent, mouse_on: var NodeRef) =
     if event.kind == TEXT and not event.pressed:
       # Other keys
       self.insert(self.caret_pos[0], event.key)
-    elif event.kind == KEYBOARD and event.key in pressed_keys:
+    elif event.kind == KEYBOARD and event.key_int in pressed_keys_cint:
       # Arrows
       if event.key_int == K_LEFT and self.caret_pos[0] > 0:
         self.moveCursorBy(-1)

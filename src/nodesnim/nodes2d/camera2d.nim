@@ -15,14 +15,14 @@ import
 
 type
   Camera2DObj* = object of Node2DObj
-    current*, smooth*: bool
+    smooth*: bool
     smooth_speed*: float
     target*: NodeRef
-    limit*: AnchorObj
+    limit*: AnchorObj  ## left, top, right, bottom
   Camera2DRef* = ref Camera2DObj
 
 
-var nodes: seq[Camera2DRef] = @[]
+var current_camera: Camera2DRef = nil
 
 
 proc Camera2D*(name: string = "Camera2D"): Camera2DRef =
@@ -35,11 +35,9 @@ proc Camera2D*(name: string = "Camera2D"): Camera2DRef =
   nodepattern(Camera2DRef)
   node2dpattern()
   result.limit = Anchor(-100000, -100000, 100000, 100000)
-  result.current = false
   result.smooth = false
   result.smooth_speed = 0.1
   result.kind = CAMERA_2D_NODE
-  nodes.add(result)
 
 
 method changeTarget*(self: Camera2DRef, target: NodeRef) {.base.} =
@@ -57,6 +55,9 @@ method changeSmoothSpeed*(self: Camera2DRef, speed: float) {.base.} =
 
 method disableSmooth*(self: Camera2DRef) {.base.} =
   ## Disables smooth mode.
+  ##
+  ## See also:
+  ## - `enableSmooth method <#enableSmooth.e,Camera2DRef,float>`_
   self.smooth = false
 
 
@@ -65,7 +66,7 @@ method draw*(self: Camera2DRef, w, h: GLfloat) =
   {.warning[LockLevel]: off.}
   procCall self.Node2DRef.draw(w, h)
 
-  if self.target != nil and self.current:
+  if self.target != nil and self == current_camera:
     var root = self.getRootNode().CanvasRef
     let
       x = self.target.CanvasRef.position.x
@@ -93,15 +94,20 @@ method enableSmooth*(self: Camera2DRef, speed: float = 0.1) {.base.} =
   ##
   ## Arguments:
   ## - `speed` is a smooth speed. The closer to 0, the smoother the camera. The default is 0.1.
+  ##
+  ## See also:
+  ## - `disableSmooth method <#disableSmooth.e,Camera2DRef>`_
   self.smooth = true
   self.smooth_speed = speed
 
 
+method isCurrent*(self: Camera2DRef): bool {.base.} =
+  self == current_camera
+
+
 method setCurrent*(self: Camera2DRef) {.base.} =
   ## Changes the current camera. It also automatically disable other cameras.
-  for c in nodes:
-    c.current = false
-  self.current = true
+  current_camera = self
 
 
 method setLimit*(self: Camera2DRef, x1, y1, x2, y2: float) {.base.} =

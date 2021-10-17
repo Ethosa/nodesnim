@@ -134,13 +134,13 @@ suite "Work with 2D nodes.":
         call setTileSet(tileset)
         call move(-2048, -1024)
         #                         map size   layer count
-        call resizeMap(newVector2(512, 128), 1)
-        call fill(newVector2(1, 0))
-        call drawRect(3, 3, 10, 5, newVector2(9, 7))
-        call drawTile(0, 0, newVector2(3, 0))
-        call drawTile(1, 0, newVector2(7, 4.5))
-        call drawTile(0, 1, newVector2(6.5, 5))
-        call drawTile(1, 1, newVector2(7, 5))
+        call resizeMap(Vector2(512, 128), 1)
+        call fill(Vector2(1, 0))
+        call drawRect(3, 3, 10, 5, Vector2(9, 7))
+        call drawTile(0, 0, Vector2(3, 0))
+        call drawTile(1, 0, Vector2(7, 4.5))
+        call drawTile(0, 1, Vector2(6.5, 5))
+        call drawTile(1, 1, Vector2(7, 5))
     getSceneByName("main").addChild(map)
 
 
@@ -153,28 +153,28 @@ suite "Work with 2D nodes.":
         call setTileSet(tileset)
         call move(-2048, -1024)
         #                         map size   layer count
-        call resizeMap(newVector2(32, 32), layer_count=4)
-        call fill(newVector2(1, 0))
-        call drawRect(3, 3, 10, 5, newVector2(15, 1))
+        call resizeMap(Vector2(32, 32), layer_count=4)
+        call fill(Vector2(1, 0))
+        call drawRect(3, 3, 10, 5, Vector2(15, 1))
 
         # platform
-        call drawTile(2, 4, newVector2(0, 27), 1)
-        call drawTile(1, 5, newVector2(0, 28), 1)
+        call drawTile(2, 4, Vector2(0, 27), 1)
+        call drawTile(1, 5, Vector2(0, 28), 1)
 
         # cross
-        call drawTile(4, 6, newVector2(14, 13), 1)
-        call drawTile(3, 7, newVector2(14, 14), 1)
+        call drawTile(4, 6, Vector2(14, 13), 1)
+        call drawTile(3, 7, Vector2(14, 14), 1)
 
         # sign
-        call drawTile(4, 5, newVector2(11, 12), 1)
-        call drawTile(4, 5, newVector2(11, 13), 2)
-        call drawTile(4, 5, newVector2(11, 14), 3)
+        call drawTile(4, 5, Vector2(11, 12), 1)
+        call drawTile(4, 5, Vector2(11, 13), 2)
+        call drawTile(4, 5, Vector2(11, 14), 3)
 
         # magic
-        call drawTile(5, 10, newVector2(2, 33), 1)
-        call drawTile(6, 11, newVector2(3, 33), 1)
-        call drawTile(4, 11, newVector2(2, 34), 1)
-        call drawTile(5, 12, newVector2(3, 34), 1)
+        call drawTile(5, 10, Vector2(2, 33), 1)
+        call drawTile(6, 11, Vector2(3, 33), 1)
+        call drawTile(4, 11, Vector2(2, 34), 1)
+        call drawTile(5, 12, Vector2(3, 34), 1)
     getSceneByName("main").addChild(map)
 
 

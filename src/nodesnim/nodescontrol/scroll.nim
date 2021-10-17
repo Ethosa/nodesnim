@@ -140,10 +140,10 @@ method handle*(self: ScrollRef, event: InputEvent, mouse_on: var NodeRef) =
 
   if mouse_in:  # Keyboard movement
     if event.kind == KEYBOARD:
-      if event.key_cint in pressed_keys_cints:  # Special chars
-        if event.key_cint == K_UP:
+      if event.key_int in pressed_keys_cint:  # Special chars
+        if event.key_int == K_UP:
           self.scrollBy(0, -40)
-        elif event.key_cint == K_DOWN:
+        elif event.key_int == K_DOWN:
           self.scrollBy(0, 40)
     elif event.kind == WHEEL:
       self.scrollBy(0, -20 * event.yrel)

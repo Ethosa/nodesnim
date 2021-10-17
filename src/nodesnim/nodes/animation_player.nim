@@ -37,23 +37,28 @@ proc AnimationPlayer*(name: string = "AnimationPlayer"): AnimationPlayerRef =
   result.mode = ANIMATION_NORMAL
 
 
-proc ease(self: AnimationPlayerRef, states: seq[tuple[tick: int, value: float]]): float =
-  var time = (self.tick - states[0].tick).float / ((states[1].tick - states[0].tick).float / 2.0)
+# --- Private --- #
+proc ease(self: AnimationPlayerRef,
+          states: seq[tuple[tick: int, value: float]]): float =
+  var time = (self.tick - states[0].tick).float /
+             ((states[1].tick - states[0].tick).float / 2.0)
   let diff = states[1].value - states[0].value
   if time < 1:
       return diff / 2 * time * time + states[0].value
   time -= 1
-  return -diff / 2 * (time * (time - 2) - 1) + states[0].value
+  -diff / 2 * (time * (time - 2) - 1) + states[0].value
 
-proc bezier(self: AnimationPlayerRef, states: seq[tuple[tick: int, value: float]], current: float): float =
+proc bezier(self: AnimationPlayerRef,
+            states: seq[tuple[tick: int, value: float]], current: float): float =
   let
     step = 1f / (states[1].tick - states[0].tick).float
     t = step * (self.tick - states[0].tick).float
     diff = states[1].value - states[0].value
   result = cubic_bezier(t, 0.0, self.bezier[0], self.bezier[1], 1.0)
-  result = states[0].value + diff*result
+  return states[0].value + diff*result
 
 
+# --- Public --- #
 method addState*(self: AnimationPlayerRef, obj: ptr float, states: seq[tuple[tick: int, value: float]]) {.base.} =
   ## Adds a new state to AnimationPlayer.
   self.objects.add(AnimationObject(
@@ -61,14 +66,15 @@ method addState*(self: AnimationPlayerRef, obj: ptr float, states: seq[tuple[tic
     obj: obj
   ))
 
+
 method draw*(self: AnimationPlayerRef, w: GLfloat, h: GLfloat) =
   ## This uses in the `window.nim`.
   if self.is_played:
     if self.tick > self.duration:
-        self.tick = 0
-        if not self.loop:
-            self.is_played = false
-            return
+      self.tick = 0
+      if not self.loop:
+        self.is_played = false
+        return
 
     var
       current_states: seq[tuple[tick: int, value: float]] = @[]
@@ -81,21 +87,22 @@ method draw*(self: AnimationPlayerRef, w: GLfloat, h: GLfloat) =
           if self.tick == obj.states[i].tick:
             current[] = obj.states[i].value
           break
-      if current_states.len() == 1:
+      if current_states.len == 1:
         for i in 0..obj.states.high:
           if current_states[0].tick < obj.states[i].tick:
             current_states.add(obj.states[i])
             break
     
-      if current_states.len() == 2:
-        if self.mode == ANIMATION_NORMAL:
+      if current_states.len == 2:
+        case self.mode
+        of ANIMATION_NORMAL:
           let
             diff_time: float = (current_states[1].tick - current_states[0].tick).float
             diff: float = current_states[1].value - current_states[0].value
           current[] = current_states[0].value + (self.tick - current_states[0].tick).float/diff_time * diff
-        elif self.mode == ANIMATION_EASE:
-          current[] = self.ease(current_states)
-        elif self.mode == ANIMATION_BEZIER:
+        of ANIMATION_EASE:
+          current[] = ease(self, current_states)
+        of ANIMATION_BEZIER:
           current[] = bezier(self, current_states, current[])
       current_states = @[]
 

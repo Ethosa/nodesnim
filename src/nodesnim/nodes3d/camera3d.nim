@@ -12,7 +12,6 @@ import
 
 type
   Camera3DObj* = object of Node3DObj
-    current*: bool
     pitch*, yaw*: float
     target*: Node3DRef
     front*: Vector3Obj
@@ -21,9 +20,7 @@ type
   Camera3DRef* = ref Camera3DObj
 
 
-var
-  nodes: seq[Camera3DRef] = @[]
-  current_camera*: Camera3DRef = nil
+var current_camera*: Camera3DRef = nil
 
 
 proc Camera3D*(name: string = "Camera3D"): Camera3DRef =
@@ -35,14 +32,12 @@ proc Camera3D*(name: string = "Camera3D"): Camera3DRef =
     var node = Camera3D("Camera3D")
   nodepattern(Camera3DRef)
   node3dpattern()
-  result.current = false
   result.kind = CAMERA_3D_NODE
   result.front = Vector3(0, 0, 1)
   result.up = Vector3(0, 1, 0)
   result.right = Vector3()
   result.pitch = 0f
   result.yaw = 90f
-  nodes.add(result)
 
 
 method changeTarget*(self: Camera3DRef, target: Node3DRef) {.base.} =
@@ -65,11 +60,11 @@ method draw*(self: Camera3DRef, w, h: GLfloat) =
     sin(degToRad(self.yaw)) * cos(degToRad(self.pitch))).normalized()
   self.right = self.front.cross(self.up).normalized()
 
+method isCurrent*(self: Camera3DRef): bool {.base.} =
+  self == current_camera
+
 method setCurrent*(self: Camera3DRef) {.base.} =
   ## Changes the current camera. It also automatically disable other cameras.
-  for c in nodes:
-    c.current = false
-  self.current = true
   current_camera = self
 
 method rotateX*(self: Camera3DRef, val: float) =

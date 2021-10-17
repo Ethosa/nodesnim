@@ -95,6 +95,9 @@ method setChildAnchor*(self: BoxRef, anchor: AnchorObj) {.base.} =
   ##
   ## Arguments:
   ## - `anchor` - Anchor object.
+  ##
+  ## See also:
+  ## - `setChildAnchor method <#setChildAnchor.e,BoxRef,float,float,float,float>`_
   self.child_anchor = anchor
 
 method setChildAnchor*(self: BoxRef, x1, y1, x2, y2: float) {.base.} =
@@ -103,4 +106,7 @@ method setChildAnchor*(self: BoxRef, x1, y1, x2, y2: float) {.base.} =
   ## Arguments:
   ## - `x1` and `y1` is an anchor relative to Box size.
   ## - `x2` and `y2` is an anchor relative to child size.
+  ##
+  ## See also:
+  ## - `setChildAnchor method <#setChildAnchor.e,BoxRef,AnchorObj>`_
   self.child_anchor = Anchor(x1, y1, x2, y2)

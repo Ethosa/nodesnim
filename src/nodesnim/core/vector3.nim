@@ -3,7 +3,7 @@ import math
 
 
 type
-  Vector3Obj* = object
+  Vector3Obj* = ref object
     x*, y*, z*: float
 
 

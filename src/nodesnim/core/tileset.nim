@@ -19,9 +19,8 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
   var
     surface = image.load(img)  # load image from file
     textureid: Gluint = 0
-  when defined(debug):
-    if surface.isNil():
-      raise newException(ResourceError, "image \"" & img & "\" not loaded!")
+  if surface.isNil():
+    throwError(ResourceError, "image \"" & img & "\" not loaded!")
 
   glGenTextures(1, textureid.addr)
   glBindTexture(GL_TEXTURE_2D, textureid)

@@ -19,23 +19,25 @@ import
 
 
 type
+  ControlXYHandler* = proc(self: ControlRef, x, y: float)
+  ControlHandler* = proc(self: ControlRef)
   ControlObj* = object of CanvasObj
     hovered*: bool
     pressed*: bool
     focused*: bool
 
     mousemode*: MouseMode
-    padding*: AnchorObj                                         ## Only for Box, VBox, HBox, GridBox and Label objects!
-    margin*: AnchorObj                                          ## Only for HBox and VBox objects!
+    padding*: AnchorObj                      ## Only for Box, VBox, HBox, GridBox and Label objects!
+    margin*: AnchorObj                       ## Only for HBox and VBox objects!
     background*: DrawableRef
 
-    on_mouse_enter*: proc(self: ControlRef, x, y: float): void  ## This called when the mouse enters the Control node.
-    on_mouse_exit*: proc(self: ControlRef, x, y: float): void   ## This called when the mouse exit from the Control node.
-    on_click*: proc(self: ControlRef, x, y: float): void        ## This called when the user clicks on the Control node.
-    on_press*: proc(self: ControlRef, x, y: float): void        ## This called when the user holds on the mouse on the Control node.
-    on_release*: proc(self: ControlRef, x, y: float): void      ## This called when the user no more holds on the mouse.
-    on_focus*: proc(self: ControlRef): void                     ## This called when the Control node gets focus.
-    on_unfocus*: proc(self: ControlRef): void                   ## This called when the Control node loses focus.
+    on_mouse_enter*: ControlXYHandler        ## This called when the mouse enters the Control node.
+    on_mouse_exit*: ControlXYHandler         ## This called when the mouse exit from the Control node.
+    on_click*: ControlXYHandler              ## This called when the user clicks on the Control node.
+    on_press*: ControlXYHandler              ## This called when the user holds on the mouse on the Control node.
+    on_release*: ControlXYHandler            ## This called when the user no more holds on the mouse.
+    on_focus*: ControlHandler                ## This called when the Control node gets focus.
+    on_unfocus*: ControlHandler              ## This called when the Control node loses focus.
   ControlRef* = ref ControlObj
 
 
@@ -143,31 +145,66 @@ method handle*(self: ControlRef, event: InputEvent, mouse_on: var NodeRef) =
     self.pressed = false
     self.on_release(self, event.x, event.y)
 
-method setBackground*(self: ControlRef, drawable: DrawableRef) {.base.} =
+method setBackground*(self: ControlRef, drawable: DrawableRef) {.base, inline.} =
+  ## Changes background drawable.
+  ##
+  ## Arguments:
+  ## - `drawable` - can be `DrawableRef` or `GradientDrawableRef`.
   self.background = drawable
 
-method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base.} =
+method setBackgroundColor*(self: ControlRef, color: ColorRef) {.base, inline.} =
   ## Changes Control background color.
   self.background.setColor(color)
 
-method setMargin*(self: ControlRef, margin: AnchorObj) {.base.} =
+method setMargin*(self: ControlRef, margin: AnchorObj) {.base, inline.} =
   ## Changes Control margin.
+  ##
+  ## See also:
+  ## - `setMargin method <#setMargin.e,ControlRef,float,float,float,float>`_
   self.margin = margin
 
-method setMargin*(self: ControlRef, x1, y1, x2, y2: float) {.base.} =
+method setMargin*(self: ControlRef, x1, y1, x2, y2: float) {.base, inline.} =
   ## Changes Control margin.
-  self.setMargin(Anchor(x1, y1, x2, y2))
+  ##
+  ## Arguments:
+  ## - `x1` - left margin.
+  ## - `y1` - top margin.
+  ## - `x2` - right margin.
+  ## - `y2` - bottom margin.
+  ##
+  ## See also:
+  ## - `setMargin method <#setMargin.e,ControlRef,AnchorObj>`_
+  self.margin = Anchor(x1, y1, x2, y2)
 
 
-method setPadding*(self: ControlRef, padding: AnchorObj) {.base.} =
+method setPadding*(self: ControlRef, padding: AnchorObj) {.base, inline.} =
   ## Changes Control padding.
+  ##
+  ## See also:
+  ## - `setPadding method <#setPadding.e,ControlRef,float,float,float,float>`_
   self.padding = padding
 
-method setPadding*(self: ControlRef, x1, y1, x2, y2: float) {.base.} =
+method setPadding*(self: ControlRef, x1, y1, x2, y2: float) {.base, inline.} =
   ## Changes Control padding.
-  self.setPadding(Anchor(x1, y1, x2, y2))
+  ##
+  ## Arguments:
+  ## - `x1` - left padding.
+  ## - `y1` - top padding.
+  ## - `x2` - right padding.
+  ## - `y2` - bottom padding.
+  ##
+  ## See also:
+  ## - `setPadding method <#setPadding.e,ControlRef,AnchorObj>`_
+  self.padding = Anchor(x1, y1, x2, y2)
 
 method setStyle*(self: ControlRef, style: StyleSheetRef) {.base.} =
+  ## Changes control node style.
+  ##
+  ## Styles:
+  ## - `size-anchor` - `1`, `1.0`, `0.5 1`
+  ## - `position-anchor` - `1`, `0.5 1 0.5 1`
+  ## - `margin` - `8`, `2 4 6 8`
+  ## - `padding` - `8`, `2 4 6 8`
   self.background.setStyle(style)
   for i in style.dict:
     case i.key

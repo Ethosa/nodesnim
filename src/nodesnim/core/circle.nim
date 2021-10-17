@@ -77,7 +77,7 @@ proc contains*(self: CircleObj, a, b: Vector2Obj): bool =
   let tmin = if -b - discr > 0: -b - discr else: 0
   if tmin > d:
     return false
-  return true
+  true
 
 
 # --- Operators --- #

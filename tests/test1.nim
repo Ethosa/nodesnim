@@ -23,7 +23,6 @@ suite "Work with Window":
 
   test "Setup environment":
     env.color = Color(1, 0.6, 1)  # window background color.
-    env.brightness = 0.5
     env.delay = 1000 div 120  # 120 frames per second.
 
   test "Setup window":

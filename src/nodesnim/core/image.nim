@@ -22,9 +22,8 @@ proc load*(file: string, x, y: var float, mode: Glenum = GL_RGB): Gluint =
   var
     surface = image.load(file)  # load image from file
     textureid: Gluint
-  when defined(debug):
-    if surface.isNil():
-      raise newException(ResourceError, "image \"" & file & "\" not loaded!")
+  if surface.isNil():
+    throwError(ResourceError, "image \"" & file & "\" not loaded!")
   x = surface.w.float
   y = surface.h.float
 

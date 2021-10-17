@@ -274,7 +274,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
   ##   - `align` -- text align.
   when defined(debug):
     if text.font.isNil():
-      raise newException(ResourceError, "Font isn't loaded!")
+      throwError(ResourceError, "Font isn't loaded!")
 
   if not text.font.isNil() and $text != "":
     let
