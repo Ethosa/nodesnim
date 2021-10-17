@@ -60,6 +60,10 @@ method duplicate*(self: LabelRef): LabelRef {.base.} =
   self.deepCopy()
 
 method getText*(self: LabelRef): string {.base.} =
+  ## Returns `StyleText` as `string`.
+  ##
+  ## See also:
+  ## * `setText method <#setText.e,LabelRef,string,bool>`_
   $self.text
 
 method handle*(self: LabelRef, event: InputEvent, mouse_on: var NodeRef) =
@@ -93,6 +97,9 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
   ## Arguments:
   ## - `text` is a new Label text.
   ## - `save_properties` - saves old text properties, if `true`.
+  ##
+  ## See also:
+  ## * `getText method <#getText.e,LabelRef>`_
   var st = stext(text)
   if self.text.font.isNil():
     self.text.font = standard_font
@@ -109,18 +116,38 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
   self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
+  ## Changes text alignment.
+  ##
+  ## Arguments:
+  ## - `x1` `y1` - parent anchor.
+  ## - `x2` `y2` - self anchor.
+  ##
+  ## See also:
+  ## * `setTextAlign method <#setTextAlign.e,LabelRef,AnchorObj>`_
   self.text_align = Anchor(x1, y1, x2, y2)
   self.text.rendered = false
 
 method setTextAlign*(self: LabelRef, align: AnchorObj) {.base.} =
+  ## Changes text alignment.
+  ##
+  ## See also:
+  ## * `setTextAlign method <#setTextAlign.e,LabelRef,float,float,float,float>`_
   self.text_align = align
   self.text.rendered = false
 
 method setTextColor*(self: LabelRef, color: ColorRef) {.base.} =
+  ## Changes text color.
+  ##
+  ## Arguments:
+  ## - `color` - new text color.
   self.text.setColor(color)
   self.text.rendered = false
 
 method setTextFont*(self: LabelRef, font: FontPtr) {.base.} =
+  ## Changes text font.
+  ##
+  ## Arguments:
+  ## - `font` - new text font.
   self.text.font = font
   self.text.rendered = false
 

@@ -105,6 +105,9 @@ proc Color*(): ColorRef {.inline.} =
   ## Creates a new Color object with RGBA value (0, 0, 0, 0)
   ColorRef(r: 0, g: 0, b: 0, a: 0)
 
+proc Color*(clr: ColorRef): ColorRef {.inline.} =
+  ColorRef(r: clr.r, g: clr.g, b: clr.b, a: clr.a)
+
 proc getBrightness*(self: ColorRef): float {.inline.} =
   (self.r + self.g + self.b) / 3f
 
