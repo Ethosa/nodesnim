@@ -4,7 +4,7 @@ import math
 
 
 type
-  Vector2Obj* = ref object
+  Vector2Obj* = object
     x*, y*: float
 
 
@@ -20,6 +20,10 @@ proc Vector2*(x: float): Vector2Obj {.inline.} =
 proc Vector2*(): Vector2Obj {.inline.} =
   Vector2Obj(x: 0, y: 0)
 
+
+proc newVector2*(vec2: Vector2Obj): ref Vector2Obj =
+  new result
+  result[] = vec2
 
 
 proc abs*(a: Vector2Obj): Vector2Obj =

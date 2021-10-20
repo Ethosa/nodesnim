@@ -13,7 +13,7 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 [![channel icon](https://patrolavia.github.io/telegram-badge/follow.png)](https://t.me/nim1love)
 [![channel icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/nodesnim)
 
-<h4>Stable version - 0.4.0</h4>
+<h4>Stable version - 0.4.1</h4>
 </div>
 
 ## Install

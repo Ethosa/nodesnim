@@ -16,7 +16,7 @@ type
     mode*: TileMapMode
     map_size*: tuple[x, y, z: int]
     tileset*: TileSetObj
-    map*: seq[Vector2Obj]
+    map*: seq[ref Vector2Obj]
   TileMapRef = ref TileMapObj
 
 
@@ -77,7 +77,7 @@ method draw*(self: TileMapRef, w, h: GLfloat) =
 
 method drawTile*(self: TileMapRef, x, y: int, tile_pos: Vector2Obj, layer: int = 0) {.base.} =
   ## Changes map tile at `x`,`y` point to tile from tileset at `tile_pos` point.
-  self.map[x+y*self.map_size.x + self.map_size.x*self.map_size.y*layer] = tile_pos
+  self.map[x+y*self.map_size.x + self.map_size.x*self.map_size.y*layer] = newVector2(tile_pos)
 
 method drawRect*(self: TileMapRef, x, y, w, h: int, tile_pos: Vector2Obj, layer: int = 0) {.base.} =
   for x1 in x..x+w:
