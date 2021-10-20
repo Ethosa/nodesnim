@@ -20,7 +20,7 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 1. Install Nodesnim
    -  Stable:
       ```bash
-      nimble install nodesnim
+      nimble install nodesnim@#master
       ```
    -  Nightly:
       ```bash
