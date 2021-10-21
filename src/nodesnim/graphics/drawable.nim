@@ -142,6 +142,7 @@ template draw_texture_template*(drawtype, color, function, secondfunc: untyped):
     let q = width / texture_size.x
     texture_size.x *= q
     texture_size.y *= q
+
   if texture_size.y < height:
     let q = height / texture_size.y
     texture_size.x *= q
@@ -152,11 +153,10 @@ template draw_texture_template*(drawtype, color, function, secondfunc: untyped):
   texture_size.x *= q
   texture_size.y *= q
   h /= height/width
-  h -= texture_size.y/2
 
   for i in vertex:
-    glTexCoord2f((-x + i.x - w + texture_size.x) / width,
-                 1f - ((-y + i.y - h + texture_size.y) / texture_size.y))
+    glTexCoord2f((-x + i.x - w + texture_size.x) / texture_size.x,
+                 (y - i.y - h + texture_size.y) / texture_size.y)
     glVertex2f(i.x, i.y)
 
   glEnd()
@@ -211,14 +211,14 @@ method setColor*(self: DrawableRef, color: ColorRef) {.base.} =
   self.background_color = color
 
 method setCornerRadius*(self: DrawableRef, radius: float) {.base.} =
-  ## Changes corner radius.
+  ## Changes corners radius.
   ##
   ## Arguments:
   ## - `radius` is a new corner radius.
   self.border_radius = [radius, radius, radius, radius]
 
 method setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) {.base.} =
-  ## Changes corner radius.
+  ## Changes corners radius.
   ##
   ## Arguments:
   ## - `r1` is a new left-top radius.
@@ -228,14 +228,14 @@ method setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) {.base.} =
   self.border_radius = [r1, r2, r3, r4]
 
 method setCornerDetail*(self: DrawableRef, detail: int) {.base.} =
-  ## Changes corner detail.
+  ## Changes corners details.
   ##
   ## Arguments:
   ## - `detail` is a new corner detail.
   self.border_detail = [detail, detail, detail, detail]
 
 method setCornerDetail*(self: DrawableRef, d1, d2, d3, d4: int) {.base.} =
-  ## Changes corner detail.
+  ## Changes corners details.
   ##
   ## Arguments:
   ## - `d1` is a new left-top detail.
@@ -255,7 +255,19 @@ method setShadowOffset*(self: DrawableRef, offset: Vector2Obj) {.base.} =
 
 
 method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
-  ## Sets a new stylesheet.
+  ## Sets new stylesheet.
+  ##
+  ## Styles:
+  ## - `background-color` - `rgb(1, 1, 1)`; `rgba(1, 1, 1, 1)`; `#ffef`.
+  ## - `background-image` - `"assets/image.jpg".
+  ## - `background` - the same as `background-image` and `background-color`.
+  ## - `border-color` - the same as `background-color`.
+  ## - `border-width` - `0`; `8`.
+  ## - `border-detail` - corners details. `8`; `8 8 8 8`.
+  ## - `border-radius` - corners radius. same as `border-detail`.
+  ## - `border` - corners radius and border color. `8 #ffef`.
+  ## - `shadow` - enables shadow. `true`; `yes`; `on`; `off`; `no`; `false`.
+  ## - `shadow-offset` - XY shadow offset. `3`; `5 10`.
   for i in s.dict:
     var matches: array[20, string]
     case i.key

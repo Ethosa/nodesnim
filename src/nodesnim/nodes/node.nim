@@ -32,15 +32,20 @@ type
   NodeRef* = ref NodeObj
 
 
+var
+  handler_default = proc(self: NodeRef) = discard
+  event_handler_default = proc(self: NodeRef, event: InputEvent) = discard
+
+
 template nodepattern*(nodetype: untyped): untyped =
   ## This used in childs of the NodeObj.
   result = `nodetype`(
     name: name, children: @[],
-    on_ready: proc(self: NodeRef) = discard,
-    on_process: proc(self: NodeRef) = discard,
-    on_input: proc(self: NodeRef, event: InputEvent) = discard,
-    on_enter: proc(self: NodeRef) = discard,
-    on_exit: proc(self: NodeRef) = discard,
+    on_ready: handler_default,
+    on_process: handler_default,
+    on_input: event_handler_default,
+    on_enter: handler_default,
+    on_exit: handler_default,
     is_ready: false, pausemode: INHERIT, visibility: VISIBLE
   )
   result.type_of_node = NODE_TYPE_DEFAULT

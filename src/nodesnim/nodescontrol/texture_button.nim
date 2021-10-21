@@ -19,6 +19,7 @@ import
 
 
 type
+  TextureButtonTouchHandler* = proc(self: TextureButtonRef, x, y: float)
   TextureButtonObj* = object of LabelObj
     button_mask*: cint  ## Mask for handle clicks
     action_mask*: cint  ## BUTTON_RELEASE or BUTTON_CLICK.
@@ -27,8 +28,11 @@ type
     hover_background_texture*: GlTextureObj   ## texture, when button hovered.
     press_background_texture*: GlTextureObj   ## texture, when button pressed.
 
-    on_touch*: proc(self: TextureButtonRef, x, y: float): void  ## This called, when user clicks on button.
+    on_touch*: TextureButtonTouchHandler  ## This called, when user clicks on button.
   TextureButtonRef* = ref TextureButtonObj
+
+let texture_btn_touch_handler*: TextureButtonTouchHandler =
+    proc(self: TextureButtonRef, x, y: float) = discard
 
 
 proc TextureButton*(name: string = "TextureButton"): TextureButtonRef =
@@ -49,7 +53,8 @@ proc TextureButton*(name: string = "TextureButton"): TextureButtonRef =
   result.normal_background_texture = GlTextureObj()
   result.hover_background_texture = GlTextureObj()
   result.press_background_texture = GlTextureObj()
-  result.on_touch = proc(self: TextureButtonRef, x, y: float) = discard
+  result.on_touch = texture_btn_touch_handler
+  result.on_text_changed = text_changed_handler
   result.kind = TEXTURE_BUTTON_NODE
 
 

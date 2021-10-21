@@ -16,15 +16,18 @@ import
 
 
 type
+  SliderChangedHandler* = proc(self: SliderRef, new_value: uint)
   SliderObj* = object of ControlRef
     slider_type*: SliderType
     max_value*, value*: uint
     progress_color*: ColorRef
     thumb*: DrawableRef
 
-    on_changed*: proc(self: SliderRef, new_value: uint): void
+    on_changed*: SliderChangedHandler
   SliderRef* = ref SliderObj
 
+let slider_changed_handler*: SliderChangedHandler =
+    proc(self: SliderRef, new_value: uint) = discard
 
 proc Slider*(name: string = "Slider"): SliderRef =
   ## Creates a new Slider.
@@ -44,7 +47,7 @@ proc Slider*(name: string = "Slider"): SliderRef =
   result.progress_color = Color(0.5, 0.5, 0.5)
   result.max_value = 100
   result.value = 0
-  result.on_changed = proc(self: SliderRef, v: uint) = discard
+  result.on_changed = slider_changed_handler
   result.kind = SLIDER_NODE
 
 

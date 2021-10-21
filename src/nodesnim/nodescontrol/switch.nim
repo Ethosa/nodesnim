@@ -15,13 +15,16 @@ import
 
 
 type
+  SwitchHandler* = proc(self: SwitchRef, toggled: bool)
   SwitchObj* = object of ControlRef
     value*: bool
     color_enable*, color_disable*: ColorRef
     back_enable*, back_disable*: ColorRef
 
-    on_switch*: proc(self: SwitchRef, toggled: bool): void  ## This called when switch toggled.
+    on_switch*: SwitchHandler  ## This called when switch toggled.
   SwitchRef* = ref SwitchObj
+
+let switch_handler*: SwitchHandler = proc(self: SwitchRef, toggled: bool) = discard
 
 
 proc Switch*(name: string = "Switch"): SwitchRef =
@@ -40,7 +43,7 @@ proc Switch*(name: string = "Switch"): SwitchRef =
   result.value = false
   result.rect_size.x = 50
   result.rect_size.y = 20
-  result.on_switch = proc(self: SwitchRef, toggled: bool) = discard
+  result.on_switch = switch_handler
   result.kind = COLOR_RECT_NODE
 
 

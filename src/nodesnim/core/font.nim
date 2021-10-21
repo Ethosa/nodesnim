@@ -137,7 +137,8 @@ styleFunc(setItalic, TTF_STYLE_ITALIC)
 styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
 styleFunc(setStrikethrough, TTF_STYLE_STRIKETHROUGH)
 
-proc setURL*(text: StyleText, s, e: int, url: string) =
+proc setURL*(text: StyleText, s, e: int,
+             url: string, color: ColorRef = URL_COLOR) =
   for i in s..e:
     text.chars[i].is_url = true
     text.chars[i].url = url

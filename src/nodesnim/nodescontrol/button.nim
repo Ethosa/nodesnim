@@ -19,6 +19,7 @@ import
 
 
 type
+  ButtonTouchHandler* = proc(self: ButtonRef, x, y: float)
   ButtonObj* = object of LabelObj
     button_mask*: cint  ## Mask for handle clicks
     action_mask*: cint  ## BUTTON_RELEASE or BUTTON_CLICK.
@@ -27,8 +28,10 @@ type
     hover_background*: DrawableRef   ## color, when button hovered.
     press_background*: DrawableRef   ## color, when button pressed.
 
-    on_touch*: proc(self: ButtonRef, x, y: float): void  ## This called, when user clicks on button.
+    on_touch*: ButtonTouchHandler ## This called, when user clicks on button.
   ButtonRef* = ref ButtonObj
+
+let touch_handler*: ButtonTouchHandler = proc(self: ButtonRef, x, y: float) = discard
 
 
 proc Button*(name: string = "Button"): ButtonRef =
@@ -52,7 +55,8 @@ proc Button*(name: string = "Button"): ButtonRef =
   result.normal_background.setColor(Color(0x444444ff))
   result.hover_background.setColor(Color(0x505050ff))
   result.press_background.setColor(Color(0x595959ff))
-  result.on_touch = proc(self: ButtonRef, x, y: float) = discard
+  result.on_touch = touch_handler
+  result.on_text_changed = text_changed_handler
   result.kind = BUTTON_NODE
 
 

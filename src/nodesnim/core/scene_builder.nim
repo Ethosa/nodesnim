@@ -80,15 +80,17 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
 macro build*(code: untyped): untyped =
   ## Builds nodes with YML-like syntax.
   ##
-  ## Example:
+  ## ## Examples
   ## .. code-block:: nim
   ##
-  ##   build:
-  ##     - Scene scene:
-  ##       - Node test_node
-  ##       - Label text:
-  ##         call setText("Hello, world!")
-  ##       - Button btn(call setText(""))
+  ##    build:
+  ##      - Scene scene:
+  ##        - Node test_node
+  ##        - Label text:
+  ##          call setText("Hello, world!")
+  ##        - Button btn(call setText("")):
+  ##          @onTouch(x, y):
+  ##            echo x, ", ", y
   result = newStmtList()
   var
     current_level: seq[NimNode] = @[]

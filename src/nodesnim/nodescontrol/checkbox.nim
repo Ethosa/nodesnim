@@ -18,13 +18,17 @@ import
 
 
 type
+  ToggleHandler* = proc(self: CheckBoxRef, toggled: bool)
   CheckBoxRef* = ref object of ControlRef
     enabled*: bool
 
     box: DrawableRef
     text: LabelRef
 
-    on_toggle*: proc(self: CheckBoxRef, toggled: bool): void  ## This called when switch toggled.
+    on_toggle*: ToggleHandler  ## This called when switch toggled.
+
+let toggle_handler*: ToggleHandler = proc(self: CheckBoxRef, toggled: bool) = discard
+
 
 proc CheckBox*(name: string = "CheckBox"): CheckBoxRef =
   ## Creates a new CheckBox.
@@ -45,7 +49,7 @@ proc CheckBox*(name: string = "CheckBox"): CheckBoxRef =
   result.box.setColor(Color("#444444"))
   result.box.setBorderColor(Color("#555555"))
   result.box.setBorderWidth(1)
-  result.on_toggle = proc(self: CheckBoxRef, toggled: bool) = discard
+  result.on_toggle = toggle_handler
 
 
 method disable*(self: CheckBoxRef) {.base.} =
