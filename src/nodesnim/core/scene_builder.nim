@@ -30,7 +30,7 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
             else:
               discard
 
-          if line[1][1].kind == nnkObjConstr:  # - Node node(...)
+          if line[1][1].kind in [nnkPar, nnkCall, nnkObjConstr]:  # - Node node(...)
             level.add(line[1][1][0])
             let nodes = addNode(level, line[1][1])
             for i in nodes.children():

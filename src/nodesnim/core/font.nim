@@ -261,9 +261,9 @@ proc getCharUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
                         text_align: AnchorObj = Anchor(0, 0, 0, 0)): tuple[c: StyleUnicode, pos: uint32] =
   let pos = text.getPosUnderPoint(global_pos, text_pos, text_align)
   if pos > 0:
-    (c: text.chars[pos-1], pos: pos-1)
-  else:
-    (c: text.chars[pos], pos: pos)
+    return (c: text.chars[pos-1], pos: pos-1)
+  elif text.chars.len > 0:
+    return (c: text.chars[pos], pos: pos)
 
 
 # ------ Render ------ #

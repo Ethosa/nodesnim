@@ -32,7 +32,7 @@ proc Polygon2*(pnts: var seq[Vector2Obj]): Polygon2Obj =
   result = pnts[0..^1]
 
 
-proc contains*(self: Polygon2Obj, x, y: float): bool =
+proc hasPoint*(self: Polygon2Obj, x, y: float): bool =
   ## Returns true, if point `x`, `y` in the Polygon2.
   result = false
   var next = 1
@@ -47,9 +47,9 @@ proc contains*(self: Polygon2Obj, x, y: float): bool =
     if ((a.y >= y and b.y < y) or (a.y < y and b.y >= y)) and (x < (b.x-a.x)*(y-a.y) / (b.y-a.y)+a.x):
       result = not result
 
-proc contains*(self: Polygon2Obj, vec2: Vector2Obj): bool {.inline.} =
+proc hasPoint*(self: Polygon2Obj, vec2: Vector2Obj): bool {.inline.} =
   ## Returns true, if point `vec2` in the Polygon2.
-  self.contains(vec2.x, vec2.y)
+  self.hasPoint(vec2.x, vec2.y)
 
 
 proc intersects*(self, other: Polygon2Obj): bool =

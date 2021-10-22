@@ -80,7 +80,7 @@ method handle*(self: LabelRef, event: InputEvent, mouse_on: var NodeRef) =
       self.getGlobalMousePosition(), self.global_position + self.rect_size/2 - self.text.getTextSize()/2,
       self.text_align)
 
-    if c.is_url:
+    if not c.isNil() and c.is_url:
       var (i, j) = (pos.int, pos.int)
       while i - 1 > 0 and self.text.chars[i - 1].is_url:
         dec i
