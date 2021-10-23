@@ -22,12 +22,13 @@ import
 when defined(debug):
   import logging
 
-discard sdl2.init(INIT_EVERYTHING)
+once:
+  discard sdl2.init(INIT_EVERYTHING)
 
-discard glSetAttribute(SDL_GL_DOUBLEBUFFER, 1)
-discard glSetAttribute(SDL_GL_RED_SIZE, 5)
-discard glSetAttribute(SDL_GL_GREEN_SIZE, 6)
-discard glSetAttribute(SDL_GL_BLUE_SIZE, 5)
+  discard glSetAttribute(SDL_GL_DOUBLEBUFFER, 1)
+  discard glSetAttribute(SDL_GL_RED_SIZE, 5)
+  discard glSetAttribute(SDL_GL_GREEN_SIZE, 6)
+  discard glSetAttribute(SDL_GL_BLUE_SIZE, 5)
 
 
 var
@@ -36,7 +37,7 @@ var
   main_scene*: SceneRef = nil
   current_scene*: SceneRef = nil
   windowptr: WindowPtr
-  glcontext: GlContextPtr
+  glcontext: GlContextPtr = windowptr.glCreateContext()
   scenes*: seq[SceneRef] = @[]
   paused*: bool = false
   running*: bool = true

@@ -4,8 +4,9 @@ import
   ../thirdparty/sdl2/mixer
 
 
-discard mixer.init(MIX_INIT_OGG)
-discard mixer.openAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024)
+once:
+  discard mixer.init(MIX_INIT_OGG)
+  discard mixer.openAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024)
 
 type
   AudioStreamRef* = ref object of RootObj
