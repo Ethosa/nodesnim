@@ -256,6 +256,13 @@ method delete*(self: NodeRef) {.base.} =
     self.parent.removeChild(self)
 
 
+method `[]`*(self: NodeRef, index: int): NodeRef {.base, inline.} =
+  self.getChild(index)
+
+method `~`*(self: NodeRef, path: string): NodeRef {.base, inline.} =
+  self.getNode(path)
+
+
 # --- Macros --- #
 import
   macros
@@ -391,6 +398,14 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
     result = quote do:
       `node`.`name` =
         proc(`self`: SliderRef, `arg`: uint) =
+          `code`
+
+  of "ontextchanged":
+    var name = event_name[0]
+    event_name.expectParams(@["self", "arg"])
+    result = quote do:
+      `node`.`name` =
+        proc(`self`: LabelRef, `arg`: string) =
           `code`
 
   of "onedit":

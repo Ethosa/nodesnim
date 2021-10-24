@@ -50,7 +50,8 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
   result.rect_size.y = 220
   result.visibility = GONE
   result.title = Label("Title")
-  result.title.setText("Title")
+  result.title.text = stext"Title"
+  result.title.text.rendered = false
   result.title.parent = result
   result.left_taked = false
   result.right_taked = false

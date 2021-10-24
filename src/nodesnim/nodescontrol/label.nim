@@ -31,8 +31,6 @@ type
     text*: StyleText
   LabelRef* = ref LabelObj
 
-let text_changed_handler*: TextChangedHandler = proc(self: LabelRef, text: string) = discard
-
 
 proc Label*(name: string = "Label"): LabelRef =
   ## Creates a new Label.
@@ -47,7 +45,7 @@ proc Label*(name: string = "Label"): LabelRef =
   result.rect_size.y = 40
   result.text = stext""
   result.text_align = Anchor(0, 0, 0, 0)
-  result.on_text_changed = text_changed_handler
+  result.on_text_changed = proc(self: LabelRef, text: string) = discard
   result.kind = LABEL_NODE
 
 

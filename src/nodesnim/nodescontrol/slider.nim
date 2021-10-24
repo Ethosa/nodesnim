@@ -26,8 +26,6 @@ type
     on_changed*: SliderChangedHandler
   SliderRef* = ref SliderObj
 
-let slider_changed_handler*: SliderChangedHandler =
-    proc(self: SliderRef, new_value: uint) = discard
 
 proc Slider*(name: string = "Slider"): SliderRef =
   ## Creates a new Slider.
@@ -47,7 +45,7 @@ proc Slider*(name: string = "Slider"): SliderRef =
   result.progress_color = Color(0.5, 0.5, 0.5)
   result.max_value = 100
   result.value = 0
-  result.on_changed = slider_changed_handler
+  result.on_changed = proc(self: SliderRef, new_value: uint) = discard
   result.kind = SLIDER_NODE
 
 

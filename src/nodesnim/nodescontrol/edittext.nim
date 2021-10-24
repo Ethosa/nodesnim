@@ -34,7 +34,6 @@ type
 const
   BLINK_TIME: uint8 = 15
   BLINK_WIDTH: float = 2
-let edit_handler*: EditHandler = proc(k: string) = discard
 
 
 proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditTextRef =
@@ -52,8 +51,8 @@ proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditT
   result.hint.setColor(Color("#ccc"))
   result.text.setColor(Color("#555"))
   result.text_align = Anchor(0, 0, 0, 0)
-  result.on_edit = edit_handler
-  result.on_text_changed = text_changed_handler
+  result.on_edit = proc(k: string) = discard
+  result.on_text_changed = proc(self: LabelRef, text: string) = discard
   result.kind = EDIT_TEXT_NODE
   
   if result.text.chars.len() > result.hint.chars.len():

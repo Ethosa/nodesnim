@@ -40,7 +40,6 @@ proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f),
   result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1)
   for i in text.utf8():
     result.chars.add(schar(i, color, style))
-  result.font = standard_font
   result.rendered = false
 
 
@@ -273,9 +272,10 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
   ##
   ## Arguments:
   ##   - `align` -- text align.
-  when defined(debug):
-    if text.font.isNil():
-      throwError(ResourceError, "Font isn't loaded!")
+  if text.font.isNil():
+    text.font = standard_font
+  if text.font.isNil():
+    throwError(ResourceError, "Font isn't loaded!")
 
   if not text.font.isNil() and $text != "":
     let

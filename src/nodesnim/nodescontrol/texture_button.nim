@@ -31,9 +31,6 @@ type
     on_touch*: TextureButtonTouchHandler  ## This called, when user clicks on button.
   TextureButtonRef* = ref TextureButtonObj
 
-let texture_btn_touch_handler*: TextureButtonTouchHandler =
-    proc(self: TextureButtonRef, x, y: float) = discard
-
 
 proc TextureButton*(name: string = "TextureButton"): TextureButtonRef =
   ## Creates a new TextureButton node.
@@ -53,8 +50,8 @@ proc TextureButton*(name: string = "TextureButton"): TextureButtonRef =
   result.normal_background_texture = GlTextureObj()
   result.hover_background_texture = GlTextureObj()
   result.press_background_texture = GlTextureObj()
-  result.on_touch = texture_btn_touch_handler
-  result.on_text_changed = text_changed_handler
+  result.on_touch = proc(self: TextureButtonRef, x, y: float) = discard
+  result.on_text_changed = proc(self: LabelRef, text: string) = discard
   result.kind = TEXTURE_BUTTON_NODE
 
 

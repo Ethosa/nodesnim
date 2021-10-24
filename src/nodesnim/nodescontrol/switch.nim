@@ -24,8 +24,6 @@ type
     on_switch*: SwitchHandler  ## This called when switch toggled.
   SwitchRef* = ref SwitchObj
 
-let switch_handler*: SwitchHandler = proc(self: SwitchRef, toggled: bool) = discard
-
 
 proc Switch*(name: string = "Switch"): SwitchRef =
   ## Creates a new Switch.
@@ -43,7 +41,7 @@ proc Switch*(name: string = "Switch"): SwitchRef =
   result.value = false
   result.rect_size.x = 50
   result.rect_size.y = 20
-  result.on_switch = switch_handler
+  result.on_switch = proc(self: SwitchRef, toggled: bool) = discard
   result.kind = COLOR_RECT_NODE
 
 
