@@ -15,31 +15,6 @@ import
   macros
 
 
-var parsable = {
-  # default
-  "Node": Node, "Scene": Scene, "AudioStreamPlayer": AudioStreamPlayer,
-  "AnimationPlayer": AnimationPlayer,
-  # control
-  "Control": Control, "Box": Box, "VBox": VBox, "HBox": HBox,
-  "ColorRect": ColorRect, "Label": Label,"Button": Button, 
-  "EditText": proc(name: string = "EditText"): EditTextRef = EditText(name, "Edit text ..."),
-  "TextureButton": TextureButton, "TextureRect": TextureRect,
-  "TextureProgressBar": TextureProgressBar, "Switch": Switch,
-  "ToolTip": proc(name: string = "ToolTip"): ToolTipRef = ToolTip(name, "ToolTip"),
-  "SubWindow": SubWindow, "Scroll": Scroll, "ProgressBar": ProgressBar, "Slider": Slider,
-  "Popup": Popup, "Counter": Counter,
-  # 2D
-  "Node2D": Node2D, "Sprite": Sprite, "Sprite2D", "CollisionShape2D": CollisionShape2D,
-  "KinematicBody2D": KinematicBody2D, "TileMap": TileMap, "Camera2D": Camera2D,
-  "YSort": YSort,
-  # 3D
-  "Node3D": Node3D, "Sprite3D": Sprite3D, "Camera3D": Camera3D,
-  "GeometryInstance": proc(name: string = "GeometryInstance"): GeometryInstanceRef =
-                      GeometryInstance(name, GEOMETRY_CUBE)
-}.toTable()
-
-
-var properties = initTable[system.string, proc (node: NodeRef, value: string)]()
 macro `!`(props, fn, code: untyped): untyped =
   let
     node = ident("node")
@@ -48,6 +23,31 @@ macro `!`(props, fn, code: untyped): untyped =
     `props`[`fn[1]`] =
       proc(`node`: NodeRef, `value`: string) =
         `code`
+
+macro mkparse*(nodes: varargs[untyped]): untyped =
+  result = newStmtList()
+  for node in nodes:
+    if node.kind in [nnkIdent, nnkStrLit]:
+      let
+        name = ident($node)
+        strname = $node
+        refname = ident(strname & "Ref")
+      result.add:
+        quote do:
+          parsable[`strname`] = proc(name: string = `strname`): `refname` = `name`(`strname`)
+
+
+var
+  parsable = initTable[system.string, proc (name: string): NodeRef]()
+  properties = initTable[system.string, proc (node: NodeRef, value: string)]()
+
+mkparse(Node, Scene, AudioStreamPlayer, AnimationPlayer)
+mkparse(Control, Box, VBox, HBox, ColorRect, Label, SubWindow, ToolTip,
+        Button, EditText, TextureButton, TextureRect, GridBox,
+        Slider, Switch, Popup, Scroll, Counter, ProgressBar, TextureProgressBar)
+mkparse(Node2D, Sprite, AnimatedSprite, KinematicBody2D, CollisionShape2D, TileMap, Camera2D, YSort)
+mkparse(Node3D, Sprite3D, GeometryInstance)
+
 
 properties!"color":
   node.ColorRectRef.color = Color(value)

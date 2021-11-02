@@ -53,10 +53,10 @@ method draw*(self: SwitchRef, w, h: GLfloat) =
     color = if self.value: self.color_enable else: self.color_disable
     back = if self.value: self.back_enable else: self.back_disable
 
-  glColor4f(back.r, back.g, back.b, back.a)
+  glColor(back)
   glRectf(x, y, x+self.rect_size.x, y-self.rect_size.y)
 
-  glColor4f(color.r, color.g, color.b, color.a)
+  glColor(color)
   if self.value:
     glRectf(x + self.rect_size.x - 10, y, x + self.rect_size.x, y-self.rect_size.y)
   else:

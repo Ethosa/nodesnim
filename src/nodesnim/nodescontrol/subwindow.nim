@@ -103,6 +103,7 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
   self.title.draw(w, h)
 
   if self.icon.texture > 0'u32:
+    glColor4f(1, 1, 1, 1)
     glEnable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, self.icon.texture)
     glBegin(GL_QUADS)

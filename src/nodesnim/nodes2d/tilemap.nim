@@ -17,7 +17,7 @@ type
     map_size*: tuple[x, y, z: int]
     tileset*: TileSetObj
     map*: seq[ref Vector2Obj]
-  TileMapRef = ref TileMapObj
+  TileMapRef* = ref TileMapObj
 
 
 proc TileMap*(name: string = "TileMap"): TileMapRef =

@@ -62,7 +62,7 @@ method draw*(self: SliderRef, w, h: GLfloat) =
   case self.slider_type
   of SLIDER_HORIZONTAL:
     let progress = self.rect_size.x * (self.value.float / self.max_value.float)
-    glColor4f(self.progress_color.r, self.progress_color.g, self.progress_color.b, self.progress_color.a)
+    glColor(self.progress_color)
     glRectf(x, y, x + progress, y - self.rect_size.y)
 
     # Thumb
@@ -70,7 +70,7 @@ method draw*(self: SliderRef, w, h: GLfloat) =
 
   of SLIDER_VERTICAL:
     let progress = self.rect_size.y * (self.value.float / self.max_value.float)
-    glColor4f(self.progress_color.r, self.progress_color.g, self.progress_color.b, self.progress_color.a)
+    glColor(self.progress_color)
     glRectf(x, y - self.rect_size.y + progress, x + self.rect_size.x, y - self.rect_size.y)
 
     # Thumb

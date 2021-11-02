@@ -51,7 +51,7 @@ method draw*(self: Sprite3DRef, w, h: GLfloat) =
     glRotatef(self.global_rotation.y, 0, 1, 0)
     glRotatef(self.global_rotation.z, 0, 0, 1)
     glScalef(self.scale.x, self.scale.y, self.scale.z)
-    glColor4f(self.filter.r, self.filter.g, self.filter.b, self.filter.a)
+    glColor(self.filter)
 
     glEnable(GL_TEXTURE_2D)
     glEnable(GL_DEPTH_TEST)

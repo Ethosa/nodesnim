@@ -63,7 +63,7 @@ method draw*(self: SpriteRef, w, h: GLfloat) =
       glTranslatef(x, y, self.z_index_global)
       self.position = Vector2()
     glRotatef(self.rotation, 0, 0, 1)
-    glColor4f(self.filter.r, self.filter.g, self.filter.b, self.filter.a)
+    glColor(self.filter)
 
     glEnable(GL_TEXTURE_2D)
     glEnable(GL_DEPTH_TEST)

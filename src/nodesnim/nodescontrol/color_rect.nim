@@ -43,7 +43,7 @@ method draw*(self: ColorRectRef, w, h: GLfloat) =
     y = h/2 - self.global_position.y
 
   if self.background.getColor().a == 0.0:
-    glColor4f(self.color.r, self.color.g, self.color.b, self.color.a)
+    glColor(self.color)
     glRectf(x, y, x + self.rect_size.x, y - self.rect_size.y)
   else:
     self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
