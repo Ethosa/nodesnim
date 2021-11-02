@@ -32,9 +32,9 @@ type
   NodeRef* = ref NodeObj
 
 
-var
-  handler_default = proc(self: NodeRef) = discard
-  event_handler_default = proc(self: NodeRef, event: InputEvent) = discard
+let
+  handler_default* = proc(self: NodeRef) = discard
+  event_handler_default* = proc(self: NodeRef, event: InputEvent) = discard
 
 
 template nodepattern*(nodetype: untyped): untyped =

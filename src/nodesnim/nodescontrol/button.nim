@@ -31,6 +31,8 @@ type
     on_touch*: ButtonTouchHandler ## This called, when user clicks on button.
   ButtonRef* = ref ButtonObj
 
+let touch_handler = proc(self: ButtonRef, x, y: float) = discard
+
 
 proc Button*(name: string = "Button"): ButtonRef =
   ## Creates a new Button node.
@@ -53,8 +55,8 @@ proc Button*(name: string = "Button"): ButtonRef =
   result.normal_background.setColor(Color(0x444444ff))
   result.hover_background.setColor(Color(0x505050ff))
   result.press_background.setColor(Color(0x595959ff))
-  result.on_touch = proc(self: ButtonRef, x, y: float) = discard
-  result.on_text_changed = proc(self: LabelRef, text: string) = discard
+  result.on_touch = touch_handler
+  result.on_text_changed = text_changed_handler
   result.kind = BUTTON_NODE
 
 

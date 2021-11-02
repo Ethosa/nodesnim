@@ -31,6 +31,8 @@ type
     caret_pos: array[2, uint32]
     on_edit*: EditHandler  ## This called when user press any key.
 
+let edit_handler = proc(k: string) = discard
+
 const
   BLINK_TIME: uint8 = 15
   BLINK_WIDTH: float = 2
@@ -51,8 +53,8 @@ proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditT
   result.hint.setColor(Color("#ccc"))
   result.text.setColor(Color("#555"))
   result.text_align = Anchor(0, 0, 0, 0)
-  result.on_edit = proc(k: string) = discard
-  result.on_text_changed = proc(self: LabelRef, text: string) = discard
+  result.on_edit = edit_handler
+  result.on_text_changed = text_changed_handler
   result.kind = EDIT_TEXT_NODE
   
   if result.text.chars.len() > result.hint.chars.len():
@@ -104,7 +106,7 @@ method draw*(self: EditTextRef, w, h: Glfloat) =
         glVertex2f(coords[0], coords[1]-h.Glfloat)
         glEnd()
       if self.is_blink and i == self.caret_pos[0]:
-        glColor4f(self.caret_color.r, self.caret_color.g, self.caret_color.b, self.caret_color.a)
+        glColor(self.caret_color)
         glBegin(GL_QUADS)
         glVertex2f(coords[0], coords[1])
         glVertex2f(coords[0]+BLINK_WIDTH, coords[1])

@@ -40,6 +40,8 @@ type
     on_unfocus*: ControlHandler              ## This called when the Control node loses focus.
   ControlRef* = ref ControlObj
 
+let control_handler = proc(self: ControlRef) = discard
+let control_xy_handler = proc(self: ControlRef, x, y: float) = discard
 
 template controlpattern*: untyped =
   result.hovered = false
@@ -56,13 +58,13 @@ template controlpattern*: untyped =
   result.padding = Anchor(0, 0, 0, 0)
   result.background = Drawable()
 
-  result.on_mouse_enter = proc(self: ControlRef, x, y: float) = discard
-  result.on_mouse_exit = proc(self: ControlRef, x, y: float) = discard
-  result.on_click = proc(self: ControlRef, x, y: float) = discard
-  result.on_press = proc(self: ControlRef, x, y: float) = discard
-  result.on_release = proc(self: ControlRef, x, y: float) = discard
-  result.on_focus = proc(self: ControlRef) = discard
-  result.on_unfocus = proc(self: ControlRef) = discard
+  result.on_mouse_enter = control_xy_handler
+  result.on_mouse_exit = control_xy_handler
+  result.on_click = control_xy_handler
+  result.on_press = control_xy_handler
+  result.on_release = control_xy_handler
+  result.on_focus = control_handler
+  result.on_unfocus = control_handler
   result.type_of_node = NODE_TYPE_CONTROL
 
 proc Control*(name: string = "Control"): ControlRef =
