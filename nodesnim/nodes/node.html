@@ -132,6 +132,16 @@ function main() {
   </ul>
 </li>
 <li>
+  <a class="reference reference-toplevel" href="#9" id="59">Lets</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#handler_default"
+    title="handler_default = proc (self: NodeRef) = discard"><wbr />handler_<wbr />default<span class="attachedType"></span></a></li>
+  <li><a class="reference" href="#event_handler_default"
+    title="event_handler_default = proc (self: NodeRef; event: InputEvent) = discard"><wbr />event_<wbr />handler_<wbr />default<span class="attachedType"></span></a></li>
+
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Node%2Cstring"
@@ -194,6 +204,10 @@ function main() {
     title="show(self: NodeRef)"><wbr />show<span class="attachedType">NodeRef</span></a></li>
   <li><a class="reference" href="#delete.e%2CNodeRef"
     title="delete(self: NodeRef)"><wbr />delete<span class="attachedType">NodeRef</span></a></li>
+  <li><a class="reference" href="#%5B%5D.e%2CNodeRef%2Cint"
+    title="`[]`(self: NodeRef; index: int): NodeRef"><wbr />`[]`<span class="attachedType">NodeRef</span></a></li>
+  <li><a class="reference" href="#~.e%2CNodeRef%2Cstring"
+    title="`~`(self: NodeRef; path: string): NodeRef"><wbr />`~`<span class="attachedType">NodeRef</span></a></li>
 
   </ul>
 </li>
@@ -266,6 +280,25 @@ function main() {
 </dd>
 <a id="NodeRef"></a>
 <dt><pre><a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="node.html#NodeObj"><span class="Identifier">NodeObj</span></a></pre></dt>
+<dd>
+
+
+
+</dd>
+
+</dl></div>
+<div class="section" id="9">
+<h1><a class="toc-backref" href="#9">Lets</a></h1>
+<dl class="item">
+<a id="handler_default"></a>
+<dt><pre><a href="node.html#handler_default"><span class="Identifier">handler_default</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">)</span> <span class="Other">=</span> <span class="Keyword">discard</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="event_handler_default"></a>
+<dt><pre><a href="node.html#event_handler_default"><span class="Identifier">event_handler_default</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">event</span><span class="Other">:</span> <a href="../core/input.html#InputEvent"><span class="Identifier">InputEvent</span></a><span class="Other">)</span> <span class="Other">=</span> <span class="Keyword">discard</span></pre></dt>
 <dd>
 
 
@@ -526,6 +559,20 @@ Draws node. This used in the Window object.
 Deletes current node.
 
 </dd>
+<a id="[].e,NodeRef,int"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#%5B%5D.e%2CNodeRef%2Cint"><span class="Identifier">`[]`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">index</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="~.e,NodeRef,string"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#~.e%2CNodeRef%2Cstring"><span class="Identifier">`~`</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a><span class="Other">;</span> <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="node.html#NodeRef"><span class="Identifier">NodeRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 <div class="section" id="17">
@@ -575,7 +622,7 @@ This used in childs of the NodeObj.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
       </div>
     </div>
   </div>

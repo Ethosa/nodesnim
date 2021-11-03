@@ -1,4 +1,6 @@
+ToggleHandler	nodesnim/nodescontrol/checkbox.html#ToggleHandler	checkbox: ToggleHandler	
 CheckBoxRef	nodesnim/nodescontrol/checkbox.html#CheckBoxRef	checkbox: CheckBoxRef	
+toggle_handler	nodesnim/nodescontrol/checkbox.html#toggle_handler	checkbox: toggle_handler	
 CheckBox	nodesnim/nodescontrol/checkbox.html#CheckBox,string	checkbox: CheckBox(name: string = &quot;CheckBox&quot;): CheckBoxRef	
 disable	nodesnim/nodescontrol/checkbox.html#disable.e,CheckBoxRef	checkbox: disable(self: CheckBoxRef)	
 draw	nodesnim/nodescontrol/checkbox.html#draw.e,CheckBoxRef,GLfloat,GLfloat	checkbox: draw(self: CheckBoxRef; w, h: GLfloat)	

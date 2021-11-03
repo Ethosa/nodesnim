@@ -3,6 +3,7 @@ Vector2	nodesnim/core/vector2.html#Vector2,float,float	vector2: Vector2(x, y: fl
 Vector2	nodesnim/core/vector2.html#Vector2,Vector2Obj	vector2: Vector2(b: Vector2Obj): Vector2Obj	
 Vector2	nodesnim/core/vector2.html#Vector2,float	vector2: Vector2(x: float): Vector2Obj	
 Vector2	nodesnim/core/vector2.html#Vector2	vector2: Vector2(): Vector2Obj	
+newVector2	nodesnim/core/vector2.html#newVector2,Vector2Obj	vector2: newVector2(vec2: Vector2Obj): ref Vector2Obj	
 abs	nodesnim/core/vector2.html#abs,Vector2Obj	vector2: abs(a: Vector2Obj): Vector2Obj	
 angle	nodesnim/core/vector2.html#angle,Vector2Obj	vector2: angle(a: Vector2Obj): float	
 clear	nodesnim/core/vector2.html#clear,Vector2Obj	vector2: clear(a: var Vector2Obj)	

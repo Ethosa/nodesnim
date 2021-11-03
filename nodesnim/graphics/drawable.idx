@@ -18,5 +18,6 @@ setCornerRadius	nodesnim/graphics/drawable.html#setCornerRadius.e,DrawableRef,fl
 setCornerDetail	nodesnim/graphics/drawable.html#setCornerDetail.e,DrawableRef,int	drawable: setCornerDetail(self: DrawableRef; detail: int)	
 setCornerDetail	nodesnim/graphics/drawable.html#setCornerDetail.e,DrawableRef,int,int,int,int	drawable: setCornerDetail(self: DrawableRef; d1, d2, d3, d4: int)	
 setTexture	nodesnim/graphics/drawable.html#setTexture.e,DrawableRef,GlTextureObj	drawable: setTexture(self: DrawableRef; texture: GlTextureObj)	
+setShadowColor	nodesnim/graphics/drawable.html#setShadowColor.e,DrawableRef,ColorRef	drawable: setShadowColor(self: DrawableRef; clr: ColorRef)	
 setShadowOffset	nodesnim/graphics/drawable.html#setShadowOffset.e,DrawableRef,Vector2Obj	drawable: setShadowOffset(self: DrawableRef; offset: Vector2Obj)	
 setStyle	nodesnim/graphics/drawable.html#setStyle.e,DrawableRef,StyleSheetRef	drawable: setStyle(self: DrawableRef; s: StyleSheetRef)	

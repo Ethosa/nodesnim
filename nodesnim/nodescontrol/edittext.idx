@@ -1,3 +1,4 @@
+EditHandler	nodesnim/nodescontrol/edittext.html#EditHandler	edittext: EditHandler	
 EditTextRef	nodesnim/nodescontrol/edittext.html#EditTextRef	edittext: EditTextRef	
 EditText	nodesnim/nodescontrol/edittext.html#EditText,string,string	edittext: EditText(name: string = &quot;EditText&quot;; hint: string = &quot;Edit text ...&quot;): EditTextRef	
 draw	nodesnim/nodescontrol/edittext.html#draw.e,EditTextRef,GLfloat,GLfloat	edittext: draw(self: EditTextRef; w, h: GLfloat)	

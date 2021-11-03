@@ -1,3 +1,4 @@
+SliderChangedHandler	nodesnim/nodescontrol/slider.html#SliderChangedHandler	slider: SliderChangedHandler	
 SliderObj	nodesnim/nodescontrol/slider.html#SliderObj	slider: SliderObj	
 SliderRef	nodesnim/nodescontrol/slider.html#SliderRef	slider: SliderRef	
 Slider	nodesnim/nodescontrol/slider.html#Slider,string	slider: Slider(name: string = &quot;Slider&quot;): SliderRef	

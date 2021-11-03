@@ -1,3 +1,4 @@
+TextureButtonTouchHandler	nodesnim/nodescontrol/texture_button.html#TextureButtonTouchHandler	texture_button: TextureButtonTouchHandler	
 TextureButtonObj	nodesnim/nodescontrol/texture_button.html#TextureButtonObj	texture_button: TextureButtonObj	
 TextureButtonRef	nodesnim/nodescontrol/texture_button.html#TextureButtonRef	texture_button: TextureButtonRef	
 TextureButton	nodesnim/nodescontrol/texture_button.html#TextureButton,string	texture_button: TextureButton(name: string = &quot;TextureButton&quot;): TextureButtonRef	

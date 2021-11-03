@@ -1,5 +1,7 @@
+TextChangedHandler	nodesnim/nodescontrol/label.html#TextChangedHandler	label: TextChangedHandler	
 LabelObj	nodesnim/nodescontrol/label.html#LabelObj	label: LabelObj	
 LabelRef	nodesnim/nodescontrol/label.html#LabelRef	label: LabelRef	
+text_changed_handler	nodesnim/nodescontrol/label.html#text_changed_handler	label: text_changed_handler	
 Label	nodesnim/nodescontrol/label.html#Label,string	label: Label(name: string = &quot;Label&quot;): LabelRef	
 draw	nodesnim/nodescontrol/label.html#draw.e,LabelRef,GLfloat,GLfloat	label: draw(self: LabelRef; w, h: GLfloat)	
 duplicate	nodesnim/nodescontrol/label.html#duplicate.e,LabelRef	label: duplicate(self: LabelRef): LabelRef	

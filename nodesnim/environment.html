@@ -108,9 +108,15 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#EnvironmentObj"
     title="EnvironmentObj = object
-  color*: ColorRef             ## background environment color.
-  screen_mode*: ScreenMode
-  delay*: int                  ## window delay."><wbr />Environment<wbr />Obj<span class="attachedType"></span></a></li>
+  windowptr*: WindowPtr        ## window pointer
+  color_value: ColorRef
+  screen_mode_value: ScreenMode
+  delay_value: int
+  brightness_value: float
+  grabbed_value: bool
+  fullscreen_value: bool
+  bordered_value: bool
+  resizable_value: bool"><wbr />Environment<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#EnvironmentRef"
     title="EnvironmentRef = ref EnvironmentObj"><wbr />Environment<wbr />Ref<span class="attachedType"></span></a></li>
 
@@ -119,18 +125,47 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#newEnvironment%2CColorRef"
-    title="newEnvironment(color: ColorRef): EnvironmentRef"><wbr />new<wbr />Environment<span class="attachedType">EnvironmentRef</span></a></li>
+      <li><a class="reference" href="#newEnvironment%2CColorRef%2Cfloat%2CWindowPtr"
+    title="newEnvironment(color: ColorRef; brightness: float = 1.0&apos;f32;
+               windowptr: WindowPtr = nil): EnvironmentRef"><wbr />new<wbr />Environment<span class="attachedType">EnvironmentRef</span></a></li>
   <li><a class="reference" href="#newEnvironment"
     title="newEnvironment(): EnvironmentRef"><wbr />new<wbr />Environment<span class="attachedType">EnvironmentRef</span></a></li>
-  <li><a class="reference" href="#setBackgroundColor%2CEnvironmentRef%2CColorRef"
-    title="setBackgroundColor(env: EnvironmentRef; color: ColorRef)"><wbr />set<wbr />Background<wbr />Color<span class="attachedType">EnvironmentRef</span></a></li>
-  <li><a class="reference" href="#setBackgroundColor%2CEnvironmentRef%2Cuint32"
-    title="setBackgroundColor(env: EnvironmentRef; color: uint32)"><wbr />set<wbr />Background<wbr />Color<span class="attachedType">EnvironmentRef</span></a></li>
-  <li><a class="reference" href="#setDelay%2CEnvironmentRef%2Cint"
-    title="setDelay(env: EnvironmentRef; delay: int)"><wbr />set<wbr />Delay<span class="attachedType">EnvironmentRef</span></a></li>
-  <li><a class="reference" href="#setScreenMode%2CEnvironmentRef%2CScreenMode"
-    title="setScreenMode(env: EnvironmentRef; mode: ScreenMode)"><wbr />set<wbr />Screen<wbr />Mode<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#delay%2CEnvironmentRef"
+    title="delay(env: EnvironmentRef): int"><wbr />delay<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#delay%3D%2CEnvironmentRef%2Cint"
+    title="delay=(env: EnvironmentRef; value: int)"><wbr />delay=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#background_color%2CEnvironmentRef"
+    title="background_color(env: EnvironmentRef): ColorRef"><wbr />background_<wbr />color<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#background_color%3D%2CEnvironmentRef%2CColorRef"
+    title="background_color=(env: EnvironmentRef; value: ColorRef)"><wbr />background_<wbr />color=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#background_color%3D%2CEnvironmentRef%2Cuint32"
+    title="background_color=(env: EnvironmentRef; value: uint32)"><wbr />background_<wbr />color=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#background_color%3D%2CEnvironmentRef%2Cstring"
+    title="background_color=(env: EnvironmentRef; value: string)"><wbr />background_<wbr />color=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#grabbed%2CEnvironmentRef"
+    title="grabbed(env: EnvironmentRef): bool"><wbr />grabbed<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#grabbed%3D%2CEnvironmentRef%2Cbool"
+    title="grabbed=(env: EnvironmentRef; value: bool)"><wbr />grabbed=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#fullscreen%2CEnvironmentRef"
+    title="fullscreen(env: EnvironmentRef): bool"><wbr />fullscreen<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#fullscreen%3D%2CEnvironmentRef%2Cbool"
+    title="fullscreen=(env: EnvironmentRef; value: bool)"><wbr />fullscreen=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#bordered%2CEnvironmentRef"
+    title="bordered(env: EnvironmentRef): bool"><wbr />bordered<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#bordered%3D%2CEnvironmentRef%2Cbool"
+    title="bordered=(env: EnvironmentRef; value: bool)"><wbr />bordered=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#resizable%2CEnvironmentRef"
+    title="resizable(env: EnvironmentRef): bool"><wbr />resizable<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#resizable%3D%2CEnvironmentRef%2Cbool"
+    title="resizable=(env: EnvironmentRef; value: bool)"><wbr />resizable=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#brightness%2CEnvironmentRef"
+    title="brightness(env: EnvironmentRef): float"><wbr />brightness<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#brightness%3D%2CEnvironmentRef%2Cfloat"
+    title="brightness=(env: EnvironmentRef; value: float)"><wbr />brightness=<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#screen_mode%2CEnvironmentRef"
+    title="screen_mode(env: EnvironmentRef): ScreenMode"><wbr />screen_<wbr />mode<span class="attachedType">EnvironmentRef</span></a></li>
+  <li><a class="reference" href="#screen_mode%3D%2CEnvironmentRef%2CScreenMode"
+    title="screen_mode=(env: EnvironmentRef; value: ScreenMode)"><wbr />screen_<wbr />mode=<span class="attachedType">EnvironmentRef</span></a></li>
 
   </ul>
 </li>
@@ -145,17 +180,23 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="core/color.html">core/color</a>, <a class="reference external" href="core/enums.html">core/enums</a>
+<a class="reference external" href="thirdparty/sdl2.html">thirdparty/sdl2</a>, <a class="reference external" href="core/color.html">core/color</a>, <a class="reference external" href="core/enums.html">core/enums</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <a id="EnvironmentObj"></a>
 <dt><pre><a href="environment.html#EnvironmentObj"><span class="Identifier">EnvironmentObj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">color</span><span class="Operator">*</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>             <span class="Comment">## background environment color.</span>
-  <span class="Identifier">screen_mode</span><span class="Operator">*</span><span class="Other">:</span> <a href="core/enums.html#ScreenMode"><span class="Identifier">ScreenMode</span></a>
-  <span class="Identifier">delay</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">int</span>                  <span class="Comment">## window delay.</span>
-  </pre></dt>
+  <span class="Identifier">windowptr</span><span class="Operator">*</span><span class="Other">:</span> <a href="thirdparty/sdl2.html#WindowPtr"><span class="Identifier">WindowPtr</span></a>        <span class="Comment">## window pointer</span>
+  <span class="Identifier">color_value</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
+  <span class="Identifier">screen_mode_value</span><span class="Other">:</span> <a href="core/enums.html#ScreenMode"><span class="Identifier">ScreenMode</span></a>
+  <span class="Identifier">delay_value</span><span class="Other">:</span> <span class="Identifier">int</span>
+  <span class="Identifier">brightness_value</span><span class="Other">:</span> <span class="Identifier">float</span>
+  <span class="Identifier">grabbed_value</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">fullscreen_value</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">bordered_value</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">resizable_value</span><span class="Other">:</span> <span class="Identifier">bool</span>
+</pre></dt>
 <dd>
 
 
@@ -173,8 +214,9 @@ function main() {
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<a id="newEnvironment,ColorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#newEnvironment%2CColorRef"><span class="Identifier">newEnvironment</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="newEnvironment,ColorRef,float,WindowPtr"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newEnvironment%2CColorRef%2Cfloat%2CWindowPtr"><span class="Identifier">newEnvironment</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">;</span> <span class="Identifier">brightness</span><span class="Other">:</span> <span class="Identifier">float</span> <span class="Other">=</span> <span class="FloatNumber">1.0'f32</span><span class="Other">;</span>
+                   <span class="Identifier">windowptr</span><span class="Other">:</span> <a href="thirdparty/sdl2.html#WindowPtr"><span class="Identifier">WindowPtr</span></a> <span class="Other">=</span> <span class="Keyword">nil</span><span class="Other">)</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new EnvironmentRef object.</p>
@@ -192,44 +234,131 @@ function main() {
 Creates a new EnvironmentRef object.
 
 </dd>
-<a id="setBackgroundColor,EnvironmentRef,ColorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setBackgroundColor%2CEnvironmentRef%2CColorRef"><span class="Identifier">setBackgroundColor</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="delay,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#delay%2CEnvironmentRef"><span class="Identifier">delay</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes background environment color.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt>: ColorRef object.</li>
-</ul>
 
 
 </dd>
-<a id="setBackgroundColor,EnvironmentRef,uint32"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setBackgroundColor%2CEnvironmentRef%2Cuint32"><span class="Identifier">setBackgroundColor</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="delay=,EnvironmentRef,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#delay%3D%2CEnvironmentRef%2Cint"><span class="Identifier">delay=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes background environment color.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">color</span></tt>: uint32 color, e.g.: 0xFF64FF</li>
-</ul>
 
 
 </dd>
-<a id="setDelay,EnvironmentRef,int"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setDelay%2CEnvironmentRef%2Cint"><span class="Identifier">setDelay</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">delay</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="background_color,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#background_color%2CEnvironmentRef"><span class="Identifier">background_color</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes window delay.</p>
-<p>Arguments:</p>
-<ul class="simple"><li><tt class="docutils literal"><span class="pre">delay</span></tt>: should be <tt class="docutils literal"><span class="pre">1000 div FPS</span></tt>, e.g.: <tt class="docutils literal"><span class="pre">1000 div 60 for 60</span></tt> frames per second.</li>
-</ul>
 
 
 </dd>
-<a id="setScreenMode,EnvironmentRef,ScreenMode"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setScreenMode%2CEnvironmentRef%2CScreenMode"><span class="Identifier">setScreenMode</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">mode</span><span class="Other">:</span> <a href="core/enums.html#ScreenMode"><span class="Identifier">ScreenMode</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="background_color=,EnvironmentRef,ColorRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#background_color%3D%2CEnvironmentRef%2CColorRef"><span class="Identifier">background_color=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Changes screen mode. <tt class="docutils literal"><span class="pre">mode</span></tt> should be <tt class="docutils literal"><span class="pre">SCREEN_MODE_NONE</span></tt> or <tt class="docutils literal"><span class="pre">SCREEN_MODE_EXPANDED</span></tt>.
+
+
+</dd>
+<a id="background_color=,EnvironmentRef,uint32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#background_color%3D%2CEnvironmentRef%2Cuint32"><span class="Identifier">background_color=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="background_color=,EnvironmentRef,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#background_color%3D%2CEnvironmentRef%2Cstring"><span class="Identifier">background_color=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="grabbed,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#grabbed%2CEnvironmentRef"><span class="Identifier">grabbed</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="grabbed=,EnvironmentRef,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#grabbed%3D%2CEnvironmentRef%2Cbool"><span class="Identifier">grabbed=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="fullscreen,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#fullscreen%2CEnvironmentRef"><span class="Identifier">fullscreen</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="fullscreen=,EnvironmentRef,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#fullscreen%3D%2CEnvironmentRef%2Cbool"><span class="Identifier">fullscreen=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="bordered,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#bordered%2CEnvironmentRef"><span class="Identifier">bordered</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="bordered=,EnvironmentRef,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#bordered%3D%2CEnvironmentRef%2Cbool"><span class="Identifier">bordered=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="resizable,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#resizable%2CEnvironmentRef"><span class="Identifier">resizable</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="resizable=,EnvironmentRef,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#resizable%3D%2CEnvironmentRef%2Cbool"><span class="Identifier">resizable=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="brightness,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#brightness%2CEnvironmentRef"><span class="Identifier">brightness</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="brightness=,EnvironmentRef,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#brightness%3D%2CEnvironmentRef%2Cfloat"><span class="Identifier">brightness=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="screen_mode,EnvironmentRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#screen_mode%2CEnvironmentRef"><span class="Identifier">screen_mode</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="core/enums.html#ScreenMode"><span class="Identifier">ScreenMode</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="screen_mode=,EnvironmentRef,ScreenMode"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#screen_mode%3D%2CEnvironmentRef%2CScreenMode"><span class="Identifier">screen_mode=</span></a><span class="Other">(</span><span class="Identifier">env</span><span class="Other">:</span> <a href="environment.html#EnvironmentRef"><span class="Identifier">EnvironmentRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <a href="core/enums.html#ScreenMode"><span class="Identifier">ScreenMode</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
 
 </dd>
 
@@ -242,7 +371,7 @@ Changes screen mode. <tt class="docutils literal"><span class="pre">mode</span><
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:36 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:11 UTC</small>
       </div>
     </div>
   </div>

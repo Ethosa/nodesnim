@@ -114,6 +114,7 @@ function main() {
   border_radius*: array[4, float] ## left-top, right-top, right-bottom, left-bottom
   shadow_offset*: Vector2Obj
   border_color*: ColorRef
+  shadow_color*: ColorRef
   background_color*: ColorRef
   texture*: GlTextureObj"><wbr />Drawable<wbr />Obj<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#DrawableRef"
@@ -156,6 +157,8 @@ function main() {
     title="setCornerDetail(self: DrawableRef; d1, d2, d3, d4: int)"><wbr />set<wbr />Corner<wbr />Detail<span class="attachedType">DrawableRef</span></a></li>
   <li><a class="reference" href="#setTexture.e%2CDrawableRef%2CGlTextureObj"
     title="setTexture(self: DrawableRef; texture: GlTextureObj)"><wbr />set<wbr />Texture<span class="attachedType">DrawableRef</span></a></li>
+  <li><a class="reference" href="#setShadowColor.e%2CDrawableRef%2CColorRef"
+    title="setShadowColor(self: DrawableRef; clr: ColorRef)"><wbr />set<wbr />Shadow<wbr />Color<span class="attachedType">DrawableRef</span></a></li>
   <li><a class="reference" href="#setShadowOffset.e%2CDrawableRef%2CVector2Obj"
     title="setShadowOffset(self: DrawableRef; offset: Vector2Obj)"><wbr />set<wbr />Shadow<wbr />Offset<span class="attachedType">DrawableRef</span></a></li>
   <li><a class="reference" href="#setStyle.e%2CDrawableRef%2CStyleSheetRef"
@@ -203,6 +206,7 @@ function main() {
   <span class="Identifier">border_radius</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">4</span><span class="Other">,</span> <span class="Identifier">float</span><span class="Other">]</span> <span class="Comment">## left-top, right-top, right-bottom, left-bottom</span>
   <span class="Identifier">shadow_offset</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a>
   <span class="Identifier">border_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
+  <span class="Identifier">shadow_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">background_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">texture</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a>
 </pre></dt>
@@ -294,7 +298,7 @@ Changes background color.
 <dt><pre><span class="Keyword">method</span> <a href="#setCornerRadius.e%2CDrawableRef%2Cfloat"><span class="Identifier">setCornerRadius</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">radius</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes corner radius.</p>
+<p>Changes corners radius.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">radius</span></tt> is a new corner radius.</li>
 </ul>
@@ -306,7 +310,7 @@ Changes background color.
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes corner radius.</p>
+<p>Changes corners radius.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">r1</span></tt> is a new left-top radius.</li>
 <li><tt class="docutils literal"><span class="pre">r2</span></tt> is a new right-top radius.</li>
@@ -320,7 +324,7 @@ Changes background color.
 <dt><pre><span class="Keyword">method</span> <a href="#setCornerDetail.e%2CDrawableRef%2Cint"><span class="Identifier">setCornerDetail</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">detail</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes corner detail.</p>
+<p>Changes corners details.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">detail</span></tt> is a new corner detail.</li>
 </ul>
@@ -331,7 +335,7 @@ Changes background color.
 <dt><pre><span class="Keyword">method</span> <a href="#setCornerDetail.e%2CDrawableRef%2Cint%2Cint%2Cint%2Cint"><span class="Identifier">setCornerDetail</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">d1</span><span class="Other">,</span> <span class="Identifier">d2</span><span class="Other">,</span> <span class="Identifier">d3</span><span class="Other">,</span> <span class="Identifier">d4</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-<p>Changes corner detail.</p>
+<p>Changes corners details.</p>
 <p>Arguments:</p>
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">d1</span></tt> is a new left-top detail.</li>
 <li><tt class="docutils literal"><span class="pre">d2</span></tt> is a new right-top detail.</li>
@@ -348,6 +352,13 @@ Changes background color.
 Changes drawable texture.
 
 </dd>
+<a id="setShadowColor.e,DrawableRef,ColorRef"></a>
+<dt><pre><span class="Keyword">method</span> <a href="#setShadowColor.e%2CDrawableRef%2CColorRef"><span class="Identifier">setShadowColor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">clr</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="setShadowOffset.e,DrawableRef,Vector2Obj"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#setShadowOffset.e%2CDrawableRef%2CVector2Obj"><span class="Identifier">setShadowOffset</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a><span class="Other">;</span> <span class="Identifier">offset</span><span class="Other">:</span> <a href="../core/vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
@@ -361,7 +372,19 @@ Changes shadow offset.
     <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">,</span> <span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Sets a new stylesheet.
+<p>Sets new stylesheet.</p>
+<p>Styles:</p>
+<ul class="simple"><li><tt class="docutils literal"><span class="pre">background-color</span></tt> - <tt class="docutils literal"><span class="pre">rgb(1, 1, 1)</span></tt>; <tt class="docutils literal"><span class="pre">rgba(1, 1, 1, 1)</span></tt>; <tt class="docutils literal"><span class="pre">#ffef</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">background-image</span></tt> - <tt class="docutils literal"><span class="pre">&quot;assets/image.jpg&quot;. - `background</span></tt> - the same as <tt class="docutils literal"><span class="pre">background-image</span></tt> and <tt class="docutils literal"><span class="pre">background-color</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">border-color</span></tt> - the same as <tt class="docutils literal"><span class="pre">background-color</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">border-width</span></tt> - <tt class="docutils literal"><span class="pre">0</span></tt>; <tt class="docutils literal"><span class="pre">8</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">border-detail</span></tt> - corners details. <tt class="docutils literal"><span class="pre">8</span></tt>; <tt class="docutils literal"><span class="pre">8 8 8 8</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">border-radius</span></tt> - corners radius. same as <tt class="docutils literal"><span class="pre">border-detail</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">border</span></tt> - corners radius and border color. <tt class="docutils literal"><span class="pre">8 #ffef</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">shadow</span></tt> - enables shadow. <tt class="docutils literal"><span class="pre">true</span></tt>; <tt class="docutils literal"><span class="pre">yes</span></tt>; <tt class="docutils literal"><span class="pre">on</span></tt>; <tt class="docutils literal"><span class="pre">off</span></tt>; <tt class="docutils literal"><span class="pre">no</span></tt>; <tt class="docutils literal"><span class="pre">false</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">shadow-offset</span></tt> - XY shadow offset. <tt class="docutils literal"><span class="pre">3</span></tt>; <tt class="docutils literal"><span class="pre">5 10</span></tt>.</li>
+</ul>
+
 
 </dd>
 
@@ -421,7 +444,7 @@ Calculates vertex positions.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:37 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:12 UTC</small>
       </div>
     </div>
   </div>

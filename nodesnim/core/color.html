@@ -98,6 +98,12 @@ function main() {
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
+  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
+  <ul class="simple simple-toc-section">
+    
+  </ul>
+</li>
+<li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#ColorObj"
@@ -153,6 +159,8 @@ function main() {
     title="lerp(r1, g1, b1, a1, r2, g2, b2, a2: uint32; lerpv: float): uint32"><wbr />lerp<span class="attachedType"></span></a></li>
   <li><a class="reference" href="#lerp%2CColorRef%2CColorRef%2Cfloat"
     title="lerp(self, other: ColorRef; lerpv: float): uint32"><wbr />lerp<span class="attachedType">ColorRef</span></a></li>
+  <li><a class="reference" href="#glColor%2CColorRef"
+    title="glColor(clr: ColorRef)"><wbr />gl<wbr />Color<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#%24%2CColorRef"
     title="`$`(color: ColorRef): string"><wbr />`$`<span class="attachedType">ColorRef</span></a></li>
   <li><a class="reference" href="#%2B%2CColorRef%2CColorRef"
@@ -184,7 +192,12 @@ function main() {
   <div id="tocRoot"></div>
   
   <p class="module-desc"></p>
-  <div class="section" id="7">
+  <div class="section" id="6">
+<h1><a class="toc-backref" href="#6">Imports</a></h1>
+<dl class="item">
+<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>
+</dl></div>
+<div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <a id="ColorObj"></a>
@@ -383,6 +396,13 @@ Converts Color object to uint32 without alpha-channel with <tt class="docutils l
 
 
 </dd>
+<a id="glColor,ColorRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#glColor%2CColorRef"><span class="Identifier">glColor</span></a><span class="Other">(</span><span class="Identifier">clr</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="$,ColorRef"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#%24%2CColorRef"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
@@ -463,7 +483,7 @@ Converts Color object to uint32 without alpha-channel with <tt class="docutils l
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
       </div>
     </div>
   </div>
