@@ -16,6 +16,7 @@ suite "Work with Control nodes.":
       - Scene second_scene
     addMainScene(main)
     addScene(second_scene)
+    env.screen_mode = SCREEN_MODE_EXPANDED
 
 
   test "Register events":

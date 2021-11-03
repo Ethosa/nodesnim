@@ -25,8 +25,9 @@ suite "Work with Window":
     env.background_color = Color(1, 0.6, 1)  # window background color.
     env.delay = 1000 div 120  # 120 frames per second.
     env.brightness = 0.0
-    env.resizable = false
+    env.resizable = true
     env.bordered = true
+    env.screen_mode = SCREEN_MODE_EXPANDED
 
   test "Setup window":
     build:  # Node builder

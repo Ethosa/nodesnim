@@ -47,7 +47,9 @@ proc `delay=`*(env: EnvironmentRef, value: int) =
 proc `background_color`*(env: EnvironmentRef): ColorRef = env.color_value
 proc `background_color=`*(env: EnvironmentRef, value: ColorRef) =
   env.color_value = value
-proc `background_color=`*(env: EnvironmentRef, value: uint32 | string) =
+proc `background_color=`*(env: EnvironmentRef, value: uint32) =
+  env.color_value = Color(value)
+proc `background_color=`*(env: EnvironmentRef, value: string) =
   env.color_value = Color(value)
 
 proc `grabbed`*(env: EnvironmentRef): bool = env.grabbed_value

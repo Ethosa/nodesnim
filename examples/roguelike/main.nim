@@ -3,7 +3,7 @@ import
   random
 
 Window("Roguelike", 480, 240)
-env.setBackgroundColor(Color("#e0f8cf"))
+env.background_color = "#e0f8cf"
 
 var
   tileset = TileSet("assets/colored_tilemap.png", Vector2(16, 16), GL_RGBA)
