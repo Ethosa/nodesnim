@@ -107,10 +107,7 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Polygon2Obj"
-    title="Polygon2Obj = object
-  positions*: seq[Vector2Obj]"><wbr />Polygon2Obj<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#Polygon2Ref"
-    title="Polygon2Ref = ref Polygon2Obj"><wbr />Polygon2Ref<span class="attachedType"></span></a></li>
+    title="Polygon2Obj = seq[Vector2Obj]"><wbr />Polygon2Obj<span class="attachedType"></span></a></li>
 
   </ul>
 </li>
@@ -118,21 +115,21 @@ function main() {
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Polygon2%2Cvarargs%5BVector2Obj%5D"
-    title="Polygon2(pnts: varargs[Vector2Obj]): Polygon2Ref"><wbr />Polygon2<span class="attachedType">Polygon2Ref</span></a></li>
+    title="Polygon2(pnts: varargs[Vector2Obj]): Polygon2Obj"><wbr />Polygon2<span class="attachedType">Polygon2Obj</span></a></li>
   <li><a class="reference" href="#Polygon2%2Cseq%5BVector2Obj%5D"
-    title="Polygon2(pnts: seq[Vector2Obj]): Polygon2Ref"><wbr />Polygon2<span class="attachedType">Polygon2Ref</span></a></li>
-  <li><a class="reference" href="#contains%2CPolygon2Ref%2Cfloat%2Cfloat"
-    title="contains(self: Polygon2Ref; x, y: float): bool"><wbr />contains<span class="attachedType">Polygon2Ref</span></a></li>
-  <li><a class="reference" href="#contains%2CPolygon2Ref%2CVector2Obj"
-    title="contains(self: Polygon2Ref; vec2: Vector2Obj): bool"><wbr />contains<span class="attachedType">Polygon2Ref</span></a></li>
-  <li><a class="reference" href="#intersects%2CPolygon2Ref%2CPolygon2Ref"
-    title="intersects(self, other: Polygon2Ref): bool"><wbr />intersects<span class="attachedType">Polygon2Ref</span></a></li>
-  <li><a class="reference" href="#intersects%2CPolygon2Ref%2CRect2Obj"
-    title="intersects(self: Polygon2Ref; r: Rect2Obj): bool"><wbr />intersects<span class="attachedType">Polygon2Ref</span></a></li>
-  <li><a class="reference" href="#intersects%2CPolygon2Ref%2CCircleObj"
-    title="intersects(self: Polygon2Ref; circle: CircleObj): bool"><wbr />intersects<span class="attachedType">Polygon2Ref</span></a></li>
-  <li><a class="reference" href="#move%2CPolygon2Ref%2CVector2Obj"
-    title="move(self: Polygon2Ref; vec2: Vector2Obj)"><wbr />move<span class="attachedType">Polygon2Ref</span></a></li>
+    title="Polygon2(pnts: var seq[Vector2Obj]): Polygon2Obj"><wbr />Polygon2<span class="attachedType">Polygon2Obj</span></a></li>
+  <li><a class="reference" href="#hasPoint%2CPolygon2Obj%2Cfloat%2Cfloat"
+    title="hasPoint(self: Polygon2Obj; x, y: float): bool"><wbr />has<wbr />Point<span class="attachedType">Polygon2Obj</span></a></li>
+  <li><a class="reference" href="#hasPoint%2CPolygon2Obj%2CVector2Obj"
+    title="hasPoint(self: Polygon2Obj; vec2: Vector2Obj): bool"><wbr />has<wbr />Point<span class="attachedType">Polygon2Obj</span></a></li>
+  <li><a class="reference" href="#intersects%2CPolygon2Obj%2CPolygon2Obj"
+    title="intersects(self, other: Polygon2Obj): bool"><wbr />intersects<span class="attachedType">Polygon2Obj</span></a></li>
+  <li><a class="reference" href="#intersects%2CPolygon2Obj%2CRect2Obj"
+    title="intersects(self: Polygon2Obj; r: Rect2Obj): bool"><wbr />intersects<span class="attachedType">Polygon2Obj</span></a></li>
+  <li><a class="reference" href="#intersects%2CPolygon2Obj%2CCircleObj"
+    title="intersects(self: Polygon2Obj; circle: CircleObj): bool"><wbr />intersects<span class="attachedType">Polygon2Obj</span></a></li>
+  <li><a class="reference" href="#move%2CPolygon2Obj%2CVector2Obj"
+    title="move(self: var Polygon2Obj; vec2: Vector2Obj)"><wbr />move<span class="attachedType">Polygon2Obj</span></a></li>
 
   </ul>
 </li>
@@ -153,16 +150,7 @@ function main() {
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <a id="Polygon2Obj"></a>
-<dt><pre><a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">positions</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">]</span>
-</pre></dt>
-<dd>
-
-
-
-</dd>
-<a id="Polygon2Ref"></a>
-<dt><pre><a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a></pre></dt>
+<dt><pre><a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a> <span class="Other">=</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">]</span></pre></dt>
 <dd>
 
 
@@ -174,7 +162,7 @@ function main() {
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="Polygon2,varargs[Vector2Obj]"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Polygon2%2Cvarargs%5BVector2Obj%5D"><span class="Identifier">Polygon2</span></a><span class="Other">(</span><span class="Identifier">pnts</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#Polygon2%2Cvarargs%5BVector2Obj%5D"><span class="Identifier">Polygon2</span></a><span class="Other">(</span><span class="Identifier">pnts</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new Polygon2 object.</p>
@@ -185,7 +173,7 @@ function main() {
 
 </dd>
 <a id="Polygon2,seq[Vector2Obj]"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#Polygon2%2Cseq%5BVector2Obj%5D"><span class="Identifier">Polygon2</span></a><span class="Other">(</span><span class="Identifier">pnts</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#Polygon2%2Cseq%5BVector2Obj%5D"><span class="Identifier">Polygon2</span></a><span class="Other">(</span><span class="Identifier">pnts</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new Polygon2 object.</p>
@@ -195,43 +183,43 @@ function main() {
 
 
 </dd>
-<a id="contains,Polygon2Ref,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CPolygon2Ref%2Cfloat%2Cfloat"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="hasPoint,Polygon2Obj,float,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#hasPoint%2CPolygon2Obj%2Cfloat%2Cfloat"><span class="Identifier">hasPoint</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if point <tt class="docutils literal"><span class="pre">x</span></tt>, <tt class="docutils literal"><span class="pre">y</span></tt> in the Polygon2.
 
 </dd>
-<a id="contains,Polygon2Ref,Vector2Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CPolygon2Ref%2CVector2Obj"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="hasPoint,Polygon2Obj,Vector2Obj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#hasPoint%2CPolygon2Obj%2CVector2Obj"><span class="Identifier">hasPoint</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if point <tt class="docutils literal"><span class="pre">vec2</span></tt> in the Polygon2.
 
 </dd>
-<a id="intersects,Polygon2Ref,Polygon2Ref"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Ref%2CPolygon2Ref"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="intersects,Polygon2Obj,Polygon2Obj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Obj%2CPolygon2Obj"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if two polygons intersect.
 
 </dd>
-<a id="intersects,Polygon2Ref,Rect2Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Ref%2CRect2Obj"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <a href="rect2.html#Rect2Obj"><span class="Identifier">Rect2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="intersects,Polygon2Obj,Rect2Obj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Obj%2CRect2Obj"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">r</span><span class="Other">:</span> <a href="rect2.html#Rect2Obj"><span class="Identifier">Rect2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if rect intersect with polygon.
 
 </dd>
-<a id="intersects,Polygon2Ref,CircleObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Ref%2CCircleObj"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a><span class="Other">;</span> <span class="Identifier">circle</span><span class="Other">:</span> <a href="circle.html#CircleObj"><span class="Identifier">CircleObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="intersects,Polygon2Obj,CircleObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Obj%2CCircleObj"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">circle</span><span class="Other">:</span> <a href="circle.html#CircleObj"><span class="Identifier">CircleObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if circle intersect with polygon.
 
 </dd>
-<a id="move,Polygon2Ref,Vector2Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#move%2CPolygon2Ref%2CVector2Obj"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Ref"><span class="Identifier">Polygon2Ref</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="move,Polygon2Obj,Vector2Obj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#move%2CPolygon2Obj%2CVector2Obj"><span class="Identifier">move</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Moves polygon.
@@ -247,7 +235,7 @@ Moves polygon.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:37 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:11 UTC</small>
       </div>
     </div>
   </div>

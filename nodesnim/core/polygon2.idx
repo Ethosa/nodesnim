@@ -1,10 +1,9 @@
 Polygon2Obj	nodesnim/core/polygon2.html#Polygon2Obj	polygon2: Polygon2Obj	
-Polygon2Ref	nodesnim/core/polygon2.html#Polygon2Ref	polygon2: Polygon2Ref	
-Polygon2	nodesnim/core/polygon2.html#Polygon2,varargs[Vector2Obj]	polygon2: Polygon2(pnts: varargs[Vector2Obj]): Polygon2Ref	
-Polygon2	nodesnim/core/polygon2.html#Polygon2,seq[Vector2Obj]	polygon2: Polygon2(pnts: seq[Vector2Obj]): Polygon2Ref	
-contains	nodesnim/core/polygon2.html#contains,Polygon2Ref,float,float	polygon2: contains(self: Polygon2Ref; x, y: float): bool	
-contains	nodesnim/core/polygon2.html#contains,Polygon2Ref,Vector2Obj	polygon2: contains(self: Polygon2Ref; vec2: Vector2Obj): bool	
-intersects	nodesnim/core/polygon2.html#intersects,Polygon2Ref,Polygon2Ref	polygon2: intersects(self, other: Polygon2Ref): bool	
-intersects	nodesnim/core/polygon2.html#intersects,Polygon2Ref,Rect2Obj	polygon2: intersects(self: Polygon2Ref; r: Rect2Obj): bool	
-intersects	nodesnim/core/polygon2.html#intersects,Polygon2Ref,CircleObj	polygon2: intersects(self: Polygon2Ref; circle: CircleObj): bool	
-move	nodesnim/core/polygon2.html#move,Polygon2Ref,Vector2Obj	polygon2: move(self: Polygon2Ref; vec2: Vector2Obj)	
+Polygon2	nodesnim/core/polygon2.html#Polygon2,varargs[Vector2Obj]	polygon2: Polygon2(pnts: varargs[Vector2Obj]): Polygon2Obj	
+Polygon2	nodesnim/core/polygon2.html#Polygon2,seq[Vector2Obj]	polygon2: Polygon2(pnts: var seq[Vector2Obj]): Polygon2Obj	
+hasPoint	nodesnim/core/polygon2.html#hasPoint,Polygon2Obj,float,float	polygon2: hasPoint(self: Polygon2Obj; x, y: float): bool	
+hasPoint	nodesnim/core/polygon2.html#hasPoint,Polygon2Obj,Vector2Obj	polygon2: hasPoint(self: Polygon2Obj; vec2: Vector2Obj): bool	
+intersects	nodesnim/core/polygon2.html#intersects,Polygon2Obj,Polygon2Obj	polygon2: intersects(self, other: Polygon2Obj): bool	
+intersects	nodesnim/core/polygon2.html#intersects,Polygon2Obj,Rect2Obj	polygon2: intersects(self: Polygon2Obj; r: Rect2Obj): bool	
+intersects	nodesnim/core/polygon2.html#intersects,Polygon2Obj,CircleObj	polygon2: intersects(self: Polygon2Obj; circle: CircleObj): bool	
+move	nodesnim/core/polygon2.html#move,Polygon2Obj,Vector2Obj	polygon2: move(self: var Polygon2Obj; vec2: Vector2Obj)	

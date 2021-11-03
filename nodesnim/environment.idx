@@ -1,8 +1,22 @@
 EnvironmentObj	nodesnim/environment.html#EnvironmentObj	environment: EnvironmentObj	
 EnvironmentRef	nodesnim/environment.html#EnvironmentRef	environment: EnvironmentRef	
-newEnvironment	nodesnim/environment.html#newEnvironment,ColorRef	environment: newEnvironment(color: ColorRef): EnvironmentRef	
+newEnvironment	nodesnim/environment.html#newEnvironment,ColorRef,float,WindowPtr	environment: newEnvironment(color: ColorRef; brightness: float = 1.0&apos;f32;\n               windowptr: WindowPtr = nil): EnvironmentRef	
 newEnvironment	nodesnim/environment.html#newEnvironment	environment: newEnvironment(): EnvironmentRef	
-setBackgroundColor	nodesnim/environment.html#setBackgroundColor,EnvironmentRef,ColorRef	environment: setBackgroundColor(env: EnvironmentRef; color: ColorRef)	
-setBackgroundColor	nodesnim/environment.html#setBackgroundColor,EnvironmentRef,uint32	environment: setBackgroundColor(env: EnvironmentRef; color: uint32)	
-setDelay	nodesnim/environment.html#setDelay,EnvironmentRef,int	environment: setDelay(env: EnvironmentRef; delay: int)	
-setScreenMode	nodesnim/environment.html#setScreenMode,EnvironmentRef,ScreenMode	environment: setScreenMode(env: EnvironmentRef; mode: ScreenMode)	
+delay	nodesnim/environment.html#delay,EnvironmentRef	environment: delay(env: EnvironmentRef): int	
+delay=	nodesnim/environment.html#delay=,EnvironmentRef,int	environment: delay=(env: EnvironmentRef; value: int)	
+background_color	nodesnim/environment.html#background_color,EnvironmentRef	environment: background_color(env: EnvironmentRef): ColorRef	
+background_color=	nodesnim/environment.html#background_color=,EnvironmentRef,ColorRef	environment: background_color=(env: EnvironmentRef; value: ColorRef)	
+background_color=	nodesnim/environment.html#background_color=,EnvironmentRef,uint32	environment: background_color=(env: EnvironmentRef; value: uint32)	
+background_color=	nodesnim/environment.html#background_color=,EnvironmentRef,string	environment: background_color=(env: EnvironmentRef; value: string)	
+grabbed	nodesnim/environment.html#grabbed,EnvironmentRef	environment: grabbed(env: EnvironmentRef): bool	
+grabbed=	nodesnim/environment.html#grabbed=,EnvironmentRef,bool	environment: grabbed=(env: EnvironmentRef; value: bool)	
+fullscreen	nodesnim/environment.html#fullscreen,EnvironmentRef	environment: fullscreen(env: EnvironmentRef): bool	
+fullscreen=	nodesnim/environment.html#fullscreen=,EnvironmentRef,bool	environment: fullscreen=(env: EnvironmentRef; value: bool)	
+bordered	nodesnim/environment.html#bordered,EnvironmentRef	environment: bordered(env: EnvironmentRef): bool	
+bordered=	nodesnim/environment.html#bordered=,EnvironmentRef,bool	environment: bordered=(env: EnvironmentRef; value: bool)	
+resizable	nodesnim/environment.html#resizable,EnvironmentRef	environment: resizable(env: EnvironmentRef): bool	
+resizable=	nodesnim/environment.html#resizable=,EnvironmentRef,bool	environment: resizable=(env: EnvironmentRef; value: bool)	
+brightness	nodesnim/environment.html#brightness,EnvironmentRef	environment: brightness(env: EnvironmentRef): float	
+brightness=	nodesnim/environment.html#brightness=,EnvironmentRef,float	environment: brightness=(env: EnvironmentRef; value: float)	
+screen_mode	nodesnim/environment.html#screen_mode,EnvironmentRef	environment: screen_mode(env: EnvironmentRef): ScreenMode	
+screen_mode=	nodesnim/environment.html#screen_mode=,EnvironmentRef,ScreenMode	environment: screen_mode=(env: EnvironmentRef; value: ScreenMode)	

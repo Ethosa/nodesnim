@@ -1,4 +1,5 @@
 TileMapObj	nodesnim/nodes2d/tilemap.html#TileMapObj	tilemap: TileMapObj	
+TileMapRef	nodesnim/nodes2d/tilemap.html#TileMapRef	tilemap: TileMapRef	
 TileMap	nodesnim/nodes2d/tilemap.html#TileMap,string	tilemap: TileMap(name: string = &quot;TileMap&quot;): TileMapRef	
 draw	nodesnim/nodes2d/tilemap.html#draw.e,TileMapRef,GLfloat,GLfloat	tilemap: draw(self: TileMapRef; w, h: GLfloat)	
 drawTile	nodesnim/nodes2d/tilemap.html#drawTile.e,TileMapRef,int,int,Vector2Obj,int	tilemap: drawTile(self: TileMapRef; x, y: int; tile_pos: Vector2Obj; layer: int = 0)	

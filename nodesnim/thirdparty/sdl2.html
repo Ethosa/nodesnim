@@ -1566,6 +1566,8 @@ function main() {
     title="setSize(window: WindowPtr; w, h: cint)"><wbr />set<wbr />Size<span class="attachedType">WindowPtr</span></a></li>
   <li><a class="reference" href="#getSize%2CWindowPtr%2Ccint%2Ccint"
     title="getSize(window: WindowPtr; w, h: var cint)"><wbr />get<wbr />Size<span class="attachedType">WindowPtr</span></a></li>
+  <li><a class="reference" href="#setResizable%2CWindowPtr%2CBool32"
+    title="setResizable(window: WindowPtr; resizable: Bool32)"><wbr />set<wbr />Resizable<span class="attachedType">WindowPtr</span></a></li>
   <li><a class="reference" href="#setBordered%2CWindowPtr%2CBool32"
     title="setBordered(window: WindowPtr; bordered: Bool32)"><wbr />set<wbr />Bordered<span class="attachedType">WindowPtr</span></a></li>
   <li><a class="reference" href="#setFullscreen%2CWindowPtr%2Cuint32"
@@ -6498,6 +6500,14 @@ a default &quot;initialized&quot; Event
 
 
 </dd>
+<a id="setResizable,WindowPtr,Bool32"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#setResizable%2CWindowPtr%2CBool32"><span class="Identifier">setResizable</span></a><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <a href="sdl2.html#WindowPtr"><span class="Identifier">WindowPtr</span></a><span class="Other">;</span> <span class="Identifier">resizable</span><span class="Other">:</span> <a href="sdl2.html#Bool32"><span class="Identifier">Bool32</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowResizable&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 <a id="setBordered,WindowPtr,Bool32"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#setBordered%2CWindowPtr%2CBool32"><span class="Identifier">setBordered</span></a><span class="Other">(</span><span class="Identifier">window</span><span class="Other">:</span> <a href="sdl2.html#WindowPtr"><span class="Identifier">WindowPtr</span></a><span class="Other">;</span> <span class="Identifier">bordered</span><span class="Other">:</span> <a href="sdl2.html#Bool32"><span class="Identifier">Bool32</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_SetWindowBordered&quot;</span></span><span class="Other">.}</span></span></pre></dt>
@@ -8743,7 +8753,7 @@ Calculate a 256 entry gamma ramp for a gamma value.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-10-17 15:56:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:01 UTC</small>
       </div>
     </div>
   </div>

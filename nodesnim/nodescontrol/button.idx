@@ -1,3 +1,4 @@
+ButtonTouchHandler	nodesnim/nodescontrol/button.html#ButtonTouchHandler	button: ButtonTouchHandler	
 ButtonObj	nodesnim/nodescontrol/button.html#ButtonObj	button: ButtonObj	
 ButtonRef	nodesnim/nodescontrol/button.html#ButtonRef	button: ButtonRef	
 Button	nodesnim/nodescontrol/button.html#Button,string	button: Button(name: string = &quot;Button&quot;): ButtonRef	

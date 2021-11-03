@@ -562,6 +562,7 @@ setPosition	nodesnim/thirdparty/sdl2.html#setPosition,WindowPtr,cint,cint	sdl2: 
 getPosition	nodesnim/thirdparty/sdl2.html#getPosition,WindowPtr,cint,cint	sdl2: getPosition(window: WindowPtr; x, y: var cint)	
 setSize	nodesnim/thirdparty/sdl2.html#setSize,WindowPtr,cint,cint	sdl2: setSize(window: WindowPtr; w, h: cint)	
 getSize	nodesnim/thirdparty/sdl2.html#getSize,WindowPtr,cint,cint	sdl2: getSize(window: WindowPtr; w, h: var cint)	
+setResizable	nodesnim/thirdparty/sdl2.html#setResizable,WindowPtr,Bool32	sdl2: setResizable(window: WindowPtr; resizable: Bool32)	
 setBordered	nodesnim/thirdparty/sdl2.html#setBordered,WindowPtr,Bool32	sdl2: setBordered(window: WindowPtr; bordered: Bool32)	
 setFullscreen	nodesnim/thirdparty/sdl2.html#setFullscreen,WindowPtr,uint32	sdl2: setFullscreen(window: WindowPtr; fullscreen: uint32): SDL_Return	
 getSurface	nodesnim/thirdparty/sdl2.html#getSurface,WindowPtr	sdl2: getSurface(window: WindowPtr): SurfacePtr	

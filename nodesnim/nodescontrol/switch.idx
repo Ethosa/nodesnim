@@ -1,3 +1,4 @@
+SwitchHandler	nodesnim/nodescontrol/switch.html#SwitchHandler	switch: SwitchHandler	
 SwitchObj	nodesnim/nodescontrol/switch.html#SwitchObj	switch: SwitchObj	
 SwitchRef	nodesnim/nodescontrol/switch.html#SwitchRef	switch: SwitchRef	
 Switch	nodesnim/nodescontrol/switch.html#Switch,string	switch: Switch(name: string = &quot;Switch&quot;): SwitchRef	

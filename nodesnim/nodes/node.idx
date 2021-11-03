@@ -2,6 +2,8 @@ NodeHandler	nodesnim/nodes/node.html#NodeHandler	node: NodeHandler
 NodeEvHandler	nodesnim/nodes/node.html#NodeEvHandler	node: NodeEvHandler	
 NodeObj	nodesnim/nodes/node.html#NodeObj	node: NodeObj	
 NodeRef	nodesnim/nodes/node.html#NodeRef	node: NodeRef	
+handler_default	nodesnim/nodes/node.html#handler_default	node: handler_default	
+event_handler_default	nodesnim/nodes/node.html#event_handler_default	node: event_handler_default	
 nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nodetype: untyped): untyped	
 Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&quot;): NodeRef	
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
@@ -30,5 +32,7 @@ removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,int	node: removeChild
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,NodeRef	node: removeChild(self: NodeRef; other: NodeRef)	
 show	nodesnim/nodes/node.html#show.e,NodeRef	node: show(self: NodeRef)	
 delete	nodesnim/nodes/node.html#delete.e,NodeRef	node: delete(self: NodeRef)	
+`[]`	nodesnim/nodes/node.html#[].e,NodeRef,int	node: `[]`(self: NodeRef; index: int): NodeRef	
+`~`	nodesnim/nodes/node.html#~.e,NodeRef,string	node: `~`(self: NodeRef; path: string): NodeRef	
 Examples	node.html#examples	  Examples	
 `@`	nodesnim/nodes/node.html#@.m,NodeRef,untyped,untyped	node: `@`(node: NodeRef; event_name, code: untyped): untyped	
