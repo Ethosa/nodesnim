@@ -342,6 +342,8 @@ method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
       elif tmp.len() == 2:
         self.setShadowOffset(Vector2(parseFloat(tmp[0]), parseFloat(tmp[1])))
     of "shadow-color":
-      self.setShadowColor(Color(i.value))
+      let clr = Color(i.value)
+      if not clr.isNil():
+        self.setShadowColor(clr)
     else:
       discard

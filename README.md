@@ -18,11 +18,11 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 
 ## Install
 1. Install Nodesnim
-   -  Stable:
+   -  [Stable](https://github.com/Ethosa/nodesnim/tree/master):
       ```bash
       nimble install nodesnim@#master
       ```
-   -  Nightly:
+   -  [Nightly](https://github.com/Ethosa/nodesnim/tree/nightly):
       ```bash
       nimble install nodesnim@#nightly
       ```

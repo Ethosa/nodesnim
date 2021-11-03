@@ -1,5 +1,6 @@
 # author: Ethosa
 import
+  thirdparty/sdl2,
   core/color,
   core/enums
 {.used.}
@@ -7,47 +8,82 @@ import
 
 type
   EnvironmentObj* = object
-    color*: ColorRef         ## background environment color.
-    screen_mode*: ScreenMode
-    delay*: int              ## window delay.
+    windowptr*: WindowPtr  ## window pointer
+    color_value: ColorRef
+    screen_mode_value: ScreenMode
+    delay_value: int
+    brightness_value: float
+    grabbed_value: bool
+    fullscreen_value: bool
+    bordered_value: bool
+    resizable_value: bool
   EnvironmentRef* = ref EnvironmentObj
 
 
-proc newEnvironment*(color: ColorRef): EnvironmentRef =
+proc newEnvironment*(color: ColorRef, brightness: float = 1f,
+                     windowptr: WindowPtr = nil): EnvironmentRef =
   ## Creates a new EnvironmentRef object.
   ##
   ## Arguments:
   ## - `color`: ColorRef object for background environment color.
   ## - `brightness` - window brightness with value in range `0..1`
-  EnvironmentRef(color: color, delay: 17,screen_mode: SCREEN_MODE_NONE)
+  if not windowptr.isNil():
+    discard windowptr.setBrightness(normalize(brightness, 0f, 1f))
+
+  EnvironmentRef(color_value: color, delay_value: 17,
+    screen_mode_value: SCREEN_MODE_NONE, brightness_value: brightness,
+    windowptr: windowptr, grabbed_value: false, fullscreen_value: false,
+    resizable_value: true)
 
 proc newEnvironment*(): EnvironmentRef {.inline.} =
   ## Creates a new EnvironmentRef object.
-  newEnvironment(Color(0x313131ff))
+  newEnvironment(Color(0x181527ff))
 
 
-proc setBackgroundColor*(env: EnvironmentRef, color: ColorRef) =
-  ## Changes background environment color.
-  ##
-  ## Arguments:
-  ## - `color`: ColorRef object.
-  env.color = color
+proc `delay`*(env: EnvironmentRef): int = env.delay_value
+proc `delay=`*(env: EnvironmentRef, value: int) =
+  env.delay_value = value
 
-proc setBackgroundColor*(env: EnvironmentRef, color: uint32) =
-  ## Changes background environment color.
-  ##
-  ## Arguments:
-  ## - `color`: uint32 color, e.g.: 0xFF64FF
-  env.color = Color(color)
+proc `background_color`*(env: EnvironmentRef): ColorRef = env.color_value
+proc `background_color=`*(env: EnvironmentRef, value: ColorRef) =
+  env.color_value = value
+proc `background_color=`*(env: EnvironmentRef, value: uint32 | string) =
+  env.color_value = Color(value)
 
-proc setDelay*(env: EnvironmentRef, delay: int) =
-  ## Changes window delay.
-  ##
-  ## Arguments:
-  ## - `delay`: should be ``1000 div FPS``, e.g.: ``1000 div 60 for 60`` frames per second.
-  env.delay = delay
+proc `grabbed`*(env: EnvironmentRef): bool = env.grabbed_value
+proc `grabbed=`*(env: EnvironmentRef, value: bool) =
+  when not defined(android) and not defined(ios):
+    if not env.windowptr.isNil():
+      env.windowptr.setGrab(value.Bool32)
+  env.grabbed_value = value
 
-proc setScreenMode*(env: EnvironmentRef, mode: ScreenMode) =
-  ## Changes screen mode.
-  ## `mode` should be `SCREEN_MODE_NONE` or `SCREEN_MODE_EXPANDED`.
-  env.screen_mode = mode
+proc `fullscreen`*(env: EnvironmentRef): bool = env.fullscreen_value
+proc `fullscreen=`*(env: EnvironmentRef, value: bool) =
+  when not defined(android) and not defined(ios):
+    if not env.windowptr.isNil():
+      discard env.windowptr.setFullscreen(if value: SDL_WINDOW_FULLSCREEN else: 0)
+  env.fullscreen_value = value
+
+proc `bordered`*(env: EnvironmentRef): bool = env.bordered_value
+proc `bordered=`*(env: EnvironmentRef, value: bool) =
+  when not defined(android) and not defined(ios):
+    if not env.windowptr.isNil():
+      env.windowptr.setBordered(value.Bool32)
+  env.bordered_value = value
+
+proc `resizable`*(env: EnvironmentRef): bool = env.resizable_value
+proc `resizable=`*(env: EnvironmentRef, value: bool) =
+  when not defined(android) and not defined(ios):
+    if not env.windowptr.isNil():
+      env.windowptr.setResizable(value.Bool32)
+  env.resizable_value = value
+
+proc `brightness`*(env: EnvironmentRef): float = env.brightness_value
+proc `brightness=`*(env: EnvironmentRef, value: float) =
+  if not env.windowptr.isNil():
+    discard env.windowptr.setBrightness(normalize(value, 0f, 1f))
+  env.brightness_value = value
+
+proc `screen_mode`*(env: EnvironmentRef): ScreenMode = env.screen_mode_value
+proc `screen_mode=`*(env: EnvironmentRef, value: ScreenMode) =
+  env.screen_mode_value = value

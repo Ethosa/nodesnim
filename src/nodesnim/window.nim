@@ -18,9 +18,9 @@ import
   strutils,
   unicode,
   os
-
 when defined(debug):
   import logging
+
 
 once:
   discard sdl2.init(INIT_EVERYTHING)
@@ -51,7 +51,7 @@ var
 
 proc display {.cdecl.} =
   ## Displays window.
-  glClearColor(env.color.r, env.color.g, env.color.b, env.color.a)
+  glClearColor(env.background_color.r, env.background_color.g, env.background_color.b, env.background_color.a)
   glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
   glEnable(GL_BLEND)
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
@@ -264,6 +264,7 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
     SDL_WINDOW_ALLOW_HIGHDPI or SDL_WINDOW_FOREIGN or
     SDL_WINDOW_INPUT_FOCUS or SDL_WINDOW_MOUSE_FOCUS)
   glcontext = windowptr.glCreateContext()
+  env.windowptr = windowptr
 
   # Set up OpenGL
   glShadeModel(GL_SMOOTH)

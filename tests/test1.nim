@@ -22,8 +22,11 @@ suite "Work with Window":
     centeredWindow()
 
   test "Setup environment":
-    env.color = Color(1, 0.6, 1)  # window background color.
+    env.background_color = Color(1, 0.6, 1)  # window background color.
     env.delay = 1000 div 120  # 120 frames per second.
+    env.brightness = 0.0
+    env.resizable = false
+    env.bordered = true
 
   test "Setup window":
     build:  # Node builder
