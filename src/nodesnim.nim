@@ -9,7 +9,6 @@ when defined(debug):
 
   info("Compiled in debug mode.")
 
-
 import nodesnim/thirdparty/sdl2 except Color
 import
   nodesnim/thirdparty/opengl,

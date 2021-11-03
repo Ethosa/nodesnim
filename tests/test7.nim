@@ -54,7 +54,7 @@ suite "Work with 3D nodes.":
           call changeTarget(root)
     root@onInput(self, event):
       if event.isInputEventMouseMotion() and event.pressed:
-        camera.rotate(-event.xrel*0.25, event.yrel*0.25)
+        camera.rotate(event.xrel*0.25, -event.yrel*0.25)
 
     root@onProcess(self):
       if isActionPressed("left"):

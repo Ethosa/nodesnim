@@ -58,6 +58,9 @@ method showAt*(self: ToolTipRef, x, y: float) {.base.} =
   self.show()
 
 method showAtMouse*(self: ToolTipRef) {.base.} =
+  ## Shows ToolTip at mouse position.
+  ##
+  ## See also `showAt method <#showAt.e,ToolTipRef,float,float>`_
   let
     pos = self.getGlobalMousePosition()
     textsize = self.text.getTextSize()

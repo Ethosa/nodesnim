@@ -30,7 +30,7 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
             else:
               discard
 
-          if line[1][1].kind == nnkObjConstr:  # - Node node(...)
+          if line[1][1].kind in [nnkPar, nnkCall, nnkObjConstr]:  # - Node node(...)
             level.add(line[1][1][0])
             let nodes = addNode(level, line[1][1])
             for i in nodes.children():
@@ -80,15 +80,17 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
 macro build*(code: untyped): untyped =
   ## Builds nodes with YML-like syntax.
   ##
-  ## Example:
+  ## ## Examples
   ## .. code-block:: nim
   ##
-  ##   build:
-  ##     - Scene scene:
-  ##       - Node test_node
-  ##       - Label text:
-  ##         call setText("Hello, world!")
-  ##       - Button btn(call setText(""))
+  ##    build:
+  ##      - Scene scene:
+  ##        - Node test_node
+  ##        - Label text:
+  ##          call setText("Hello, world!")
+  ##        - Button btn(call setText("")):
+  ##          @onTouch(x, y):
+  ##            echo x, ", ", y
   result = newStmtList()
   var
     current_level: seq[NimNode] = @[]

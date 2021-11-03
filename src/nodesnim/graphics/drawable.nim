@@ -21,10 +21,13 @@ type
     border_radius*: array[4, float]  ## left-top, right-top, right-bottom, left-bottom
     shadow_offset*: Vector2Obj
     border_color*: ColorRef
+    shadow_color*: ColorRef
     background_color*: ColorRef
     texture*: GlTextureObj
   DrawableRef* = ref DrawableObj
 
+
+let standard_shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
 
 template drawablepattern*(`type`: untyped): untyped =
   result = `type`(
@@ -33,13 +36,12 @@ template drawablepattern*(`type`: untyped): untyped =
     border_radius: [0.float, 0, 0, 0],
     border_color: Color(0, 0, 0, 0),
     background_color: Color(0, 0, 0, 0),
-    shadow_offset: Vector2(0, 0), shadow: false
+    shadow_offset: Vector2(0, 0), shadow: false,
+    shadow_color: standard_shadow_color
   )
 
 proc Drawable*: DrawableRef =
   drawablepattern(DrawableRef)
-
-let shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
 
 
 template vd* =
@@ -76,7 +78,7 @@ template recalc*(shadow: bool = false) =
                          Vector2(0, 0), Vector2(self.border_radius[0], 0)):
       glColor4f(0, 0, 0, 0)
       glVertex2f(x + i.x + self.shadow_offset.x, y + i.y - self.shadow_offset.y)
-      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glColor(self.shadow_color)
       glVertex2f(x + i.x, y + i.y)
 
     # right top
@@ -84,7 +86,7 @@ template recalc*(shadow: bool = false) =
                          Vector2(0, 0), Vector2(0, -self.border_radius[1])):
       glColor4f(0, 0, 0, 0)
       glVertex2f(xw + i.x + self.shadow_offset.x, y + i.y - self.shadow_offset.y)
-      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glColor(self.shadow_color)
       glVertex2f(xw + i.x, y + i.y)
 
     # right bottom
@@ -92,7 +94,7 @@ template recalc*(shadow: bool = false) =
                          Vector2(0, 0), Vector2(-self.border_radius[2], 0)):
       glColor4f(0, 0, 0, 0)
       glVertex2f(xw + i.x + self.shadow_offset.x, yh - i.y - self.shadow_offset.y)
-      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glColor(self.shadow_color)
       glVertex2f(xw + i.x, yh - i.y)
 
     # left bottom
@@ -100,12 +102,12 @@ template recalc*(shadow: bool = false) =
                          Vector2(0, 0), Vector2(0, self.border_radius[3])):
       glColor4f(0, 0, 0, 0)
       glVertex2f(x + i.x + self.shadow_offset.x, yh + i.y - self.shadow_offset.y)
-      glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+      glColor(self.shadow_color)
       glVertex2f(x + i.x, yh + i.y)
 
     glColor4f(0, 0, 0, 0)
     glVertex2f(x + self.shadow_offset.x, y - self.border_radius[0] - self.shadow_offset.y)
-    glColor4f(shadow_color.r, shadow_color.g, shadow_color.b, shadow_color.a)
+    glColor(self.shadow_color)
     glVertex2f(x, y - self.border_radius[0])
     glEnd()
 
@@ -142,6 +144,7 @@ template draw_texture_template*(drawtype, color, function, secondfunc: untyped):
     let q = width / texture_size.x
     texture_size.x *= q
     texture_size.y *= q
+
   if texture_size.y < height:
     let q = height / texture_size.y
     texture_size.x *= q
@@ -152,11 +155,10 @@ template draw_texture_template*(drawtype, color, function, secondfunc: untyped):
   texture_size.x *= q
   texture_size.y *= q
   h /= height/width
-  h -= texture_size.y/2
 
   for i in vertex:
-    glTexCoord2f((-x + i.x - w + texture_size.x) / width,
-                 1f - ((-y + i.y - h + texture_size.y) / texture_size.y))
+    glTexCoord2f((-x + i.x - w + texture_size.x) / texture_size.x,
+                 (y - i.y - h + texture_size.y) / texture_size.y)
     glVertex2f(i.x, i.y)
 
   glEnd()
@@ -211,14 +213,14 @@ method setColor*(self: DrawableRef, color: ColorRef) {.base.} =
   self.background_color = color
 
 method setCornerRadius*(self: DrawableRef, radius: float) {.base.} =
-  ## Changes corner radius.
+  ## Changes corners radius.
   ##
   ## Arguments:
   ## - `radius` is a new corner radius.
   self.border_radius = [radius, radius, radius, radius]
 
 method setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) {.base.} =
-  ## Changes corner radius.
+  ## Changes corners radius.
   ##
   ## Arguments:
   ## - `r1` is a new left-top radius.
@@ -228,14 +230,14 @@ method setCornerRadius*(self: DrawableRef, r1, r2, r3, r4: float) {.base.} =
   self.border_radius = [r1, r2, r3, r4]
 
 method setCornerDetail*(self: DrawableRef, detail: int) {.base.} =
-  ## Changes corner detail.
+  ## Changes corners details.
   ##
   ## Arguments:
   ## - `detail` is a new corner detail.
   self.border_detail = [detail, detail, detail, detail]
 
 method setCornerDetail*(self: DrawableRef, d1, d2, d3, d4: int) {.base.} =
-  ## Changes corner detail.
+  ## Changes corners details.
   ##
   ## Arguments:
   ## - `d1` is a new left-top detail.
@@ -249,13 +251,28 @@ method setTexture*(self: DrawableRef, texture: GlTextureObj) {.base.} =
   self.texture = texture
   self.background_color = Color(1f, 1f, 1f, 1f)
 
+method setShadowColor*(self: DrawableRef, clr: ColorRef) {.base.} =
+  self.shadow_color = clr
+
 method setShadowOffset*(self: DrawableRef, offset: Vector2Obj) {.base.} =
   ## Changes shadow offset.
   self.shadow_offset = offset
 
 
 method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
-  ## Sets a new stylesheet.
+  ## Sets new stylesheet.
+  ##
+  ## Styles:
+  ## - `background-color` - `rgb(1, 1, 1)`; `rgba(1, 1, 1, 1)`; `#ffef`.
+  ## - `background-image` - `"assets/image.jpg".
+  ## - `background` - the same as `background-image` and `background-color`.
+  ## - `border-color` - the same as `background-color`.
+  ## - `border-width` - `0`; `8`.
+  ## - `border-detail` - corners details. `8`; `8 8 8 8`.
+  ## - `border-radius` - corners radius. same as `border-detail`.
+  ## - `border` - corners radius and border color. `8 #ffef`.
+  ## - `shadow` - enables shadow. `true`; `yes`; `on`; `off`; `no`; `false`.
+  ## - `shadow-offset` - XY shadow offset. `3`; `5 10`.
   for i in s.dict:
     var matches: array[20, string]
     case i.key
@@ -324,5 +341,9 @@ method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
         self.setShadowOffset(Vector2(parseFloat(tmp[0])))
       elif tmp.len() == 2:
         self.setShadowOffset(Vector2(parseFloat(tmp[0]), parseFloat(tmp[1])))
+    of "shadow-color":
+      let clr = Color(i.value)
+      if not clr.isNil():
+        self.setShadowColor(clr)
     else:
       discard

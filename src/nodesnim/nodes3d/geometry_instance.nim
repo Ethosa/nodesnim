@@ -50,7 +50,7 @@ method draw*(self: GeometryInstanceRef, w, h: Glfloat) =
   glRotatef(self.global_rotation.y, 0, 1, 0)
   glRotatef(self.global_rotation.z, 0, 0, 1)
   glScalef(self.scale.x, self.scale.y, self.scale.z)
-  glColor4f(self.color.r, self.color.g, self.color.b, self.color.a)
+  glColor(self.color)
   glEnable(GL_DEPTH_TEST)
 
   case self.geometry

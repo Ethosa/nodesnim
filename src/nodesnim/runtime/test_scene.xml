@@ -1,0 +1,8 @@
+<Node
+    name="myOwnNode"
+    >
+    <Label
+        text="hello, world!"
+        >
+    </Label>
+</Node>

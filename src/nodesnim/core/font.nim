@@ -137,7 +137,8 @@ styleFunc(setItalic, TTF_STYLE_ITALIC)
 styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
 styleFunc(setStrikethrough, TTF_STYLE_STRIKETHROUGH)
 
-proc setURL*(text: StyleText, s, e: int, url: string) =
+proc setURL*(text: StyleText, s, e: int,
+             url: string, color: ColorRef = URL_COLOR) =
   for i in s..e:
     text.chars[i].is_url = true
     text.chars[i].url = url
@@ -260,9 +261,9 @@ proc getCharUnderPoint*(text: StyleText, global_pos, text_pos: Vector2Obj,
                         text_align: AnchorObj = Anchor(0, 0, 0, 0)): tuple[c: StyleUnicode, pos: uint32] =
   let pos = text.getPosUnderPoint(global_pos, text_pos, text_align)
   if pos > 0:
-    (c: text.chars[pos-1], pos: pos-1)
-  else:
-    (c: text.chars[pos], pos: pos)
+    return (c: text.chars[pos-1], pos: pos-1)
+  elif text.chars.len > 0:
+    return (c: text.chars[pos], pos: pos)
 
 
 # ------ Render ------ #
@@ -272,9 +273,8 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
   ##
   ## Arguments:
   ##   - `align` -- text align.
-  when defined(debug):
-    if text.font.isNil():
-      throwError(ResourceError, "Font isn't loaded!")
+  if text.font.isNil():
+    throwError(ResourceError, "Font isn't loaded!")
 
   if not text.font.isNil() and $text != "":
     let
@@ -300,7 +300,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
             color(uint8(c.color.r * 255), uint8(c.color.g * 255), uint8(c.color.b * 255), uint8(c.color.a * 255)))
           r = rect(x, y, w, h)
         rendered.blitSurface(nil, surface, addr r)
-        freeSurface(rendered)
+        rendered = nil
         x += w
       y += h + text.spacing.cint
     return surface

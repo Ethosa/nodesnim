@@ -24,10 +24,14 @@ import
 
 
 type
+  TextChangedHandler* = proc(self: LabelRef, text: string)
   LabelObj* = object of ControlRef
+    on_text_changed*: TextChangedHandler
     text_align*: AnchorObj
     text*: StyleText
   LabelRef* = ref LabelObj
+
+let text_changed_handler* = proc(self: LabelRef, text: string) = discard
 
 
 proc Label*(name: string = "Label"): LabelRef =
@@ -43,6 +47,7 @@ proc Label*(name: string = "Label"): LabelRef =
   result.rect_size.y = 40
   result.text = stext""
   result.text_align = Anchor(0, 0, 0, 0)
+  result.on_text_changed = text_changed_handler
   result.kind = LABEL_NODE
 
 
@@ -75,7 +80,7 @@ method handle*(self: LabelRef, event: InputEvent, mouse_on: var NodeRef) =
       self.getGlobalMousePosition(), self.global_position + self.rect_size/2 - self.text.getTextSize()/2,
       self.text_align)
 
-    if c.is_url:
+    if not c.isNil() and c.is_url:
       var (i, j) = (pos.int, pos.int)
       while i - 1 > 0 and self.text.chars[i - 1].is_url:
         dec i
@@ -114,6 +119,7 @@ method setText*(self: LabelRef, text: string, save_properties: bool = false) {.b
   self.rect_min_size = self.text.getTextSize()
   self.resize(self.rect_size.x, self.rect_size.y, true)
   self.text.rendered = false
+  self.on_text_changed(self, text)
 
 method setTextAlign*(self: LabelRef, x1, y1, x2, y2: float) {.base.} =
   ## Changes text alignment.
@@ -152,6 +158,11 @@ method setTextFont*(self: LabelRef, font: FontPtr) {.base.} =
   self.text.rendered = false
 
 method setStyle*(self: LabelRef, s: StyleSheetRef) =
+  ## Changes Label stylesheet.
+  ##
+  ## Styles:
+  ## - `text-align` - text alignment. `0.5`; `1 0 1 0`.
+  ## - `color` - text color. `#ffef`; `rgba(1, 1, 1, 1)`; `rgb(1, 1, 1)`.
   procCall self.ControlRef.setStyle(s)
   self.text.rendered = false
 

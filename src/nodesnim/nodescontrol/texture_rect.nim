@@ -53,7 +53,7 @@ method draw*(self: TextureRectRef, w, h: GLfloat) =
     y = h/2 - self.global_position.y
 
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
-  glColor4f(self.texture_filter.r, self.texture_filter.g, self.texture_filter.b, self.texture_filter.a)
+  glColor(self.texture_filter)
 
   if self.texture > 0'u32:
     glEnable(GL_TEXTURE_2D)

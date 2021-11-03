@@ -816,6 +816,8 @@ proc getPosition*(window: WindowPtr; x, y: var cint)  {.importc: "SDL_GetWindowP
 proc setSize*(window: WindowPtr; w, h: cint)  {.importc: "SDL_SetWindowSize".}
 proc getSize*(window: WindowPtr; w, h: var cint) {.importc: "SDL_GetWindowSize".}
 
+proc setResizable*(window: WindowPtr, resizable: Bool32) {.importc: "SDL_SetWindowResizable".}
+
 proc setBordered*(window: WindowPtr; bordered: Bool32) {.importc: "SDL_SetWindowBordered".}
 
 
@@ -891,7 +893,6 @@ proc getBasePath*(): cstring {.
   importc: "SDL_GetBasePath".}
 proc getPrefPath*(org, app: cstring): cstring {.
   importc: "SDL_GetPrefPath".}
-
 
 proc getNumRenderDrivers*(): cint {.
   importc: "SDL_GetNumRenderDriver".}

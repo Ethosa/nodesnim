@@ -21,6 +21,7 @@ import
 
 
 type
+  EditHandler* = proc(pressed_key: string)
   EditTextRef* = ref object of LabelObj
     is_blink, is_select: bool
     caret*, selectable: bool
@@ -28,11 +29,14 @@ type
     caret_color: ColorRef
     hint*: StyleText
     caret_pos: array[2, uint32]
-    on_edit*: proc(pressed_key: string): void  ## This called when user press any key.
+    on_edit*: EditHandler  ## This called when user press any key.
+
+let edit_handler = proc(k: string) = discard
 
 const
   BLINK_TIME: uint8 = 15
   BLINK_WIDTH: float = 2
+
 
 proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditTextRef =
   nodepattern(EditTextRef)
@@ -49,8 +53,10 @@ proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditT
   result.hint.setColor(Color("#ccc"))
   result.text.setColor(Color("#555"))
   result.text_align = Anchor(0, 0, 0, 0)
-  result.on_edit = proc(key: string) = discard
+  result.on_edit = edit_handler
+  result.on_text_changed = text_changed_handler
   result.kind = EDIT_TEXT_NODE
+  
   if result.text.chars.len() > result.hint.chars.len():
     result.rect_min_size = result.text.getTextSize()
   else:
@@ -60,6 +66,7 @@ proc EditText*(name: string = "EditText", hint: string = "Edit text ..."): EditT
 
 method draw*(self: EditTextRef, w, h: Glfloat) =
   ## This method uses for redraw Label object.
+  {.warning[LockLevel]: off.}
   procCall self.ControlRef.draw(w, h)
   let
     x = -w/2 + self.global_position.x
@@ -79,7 +86,7 @@ method draw*(self: EditTextRef, w, h: Glfloat) =
     self.blink_time = BLINK_TIME
     self.is_blink = not self.is_blink
 
-  if self.text.chars.len() == 0:
+  if self.text.chars.len == 0:
     self.hint.renderTo(Vector2(x+self.padding.x1, y-self.padding.y1), self.rect_size, self.text_align)
   else:
     self.text.renderTo(Vector2(x+self.padding.x1, y-self.padding.y1), self.rect_size, self.text_align)
@@ -87,23 +94,24 @@ method draw*(self: EditTextRef, w, h: Glfloat) =
   for line in lines:
     discard self.text.font.sizeUtf8(($line).cstring, addr w, addr h)
     x1 = self.rect_min_size.x*self.text_align.x1 - w.Glfloat*self.text_align.x2
+    let coords = [xalign+x1, yalign-y1]
     for c in line.chars:
       discard self.text.font.sizeUtf8(($c).cstring, addr w, addr h)
       if self.is_select and (i >= self.caret_pos[0] and i < self.caret_pos[1]) or (i >= self.caret_pos[1] and i < self.caret_pos[0]):
         glColor4f(0.4, 0.4, 0.7, 0.5)
         glBegin(GL_QUADS)
-        glVertex2f(xalign+x1, yalign-y1)
-        glVertex2f(xalign+x1+w.Glfloat, yalign-y1)
-        glVertex2f(xalign+x1+w.Glfloat, yalign-y1-h.Glfloat)
-        glVertex2f(xalign+x1, yalign-y1-h.Glfloat)
+        glVertex2f(coords[0], coords[1])
+        glVertex2f(coords[0]+w.Glfloat, coords[1])
+        glVertex2f(coords[0]+w.Glfloat, coords[1]-h.Glfloat)
+        glVertex2f(coords[0], coords[1]-h.Glfloat)
         glEnd()
       if self.is_blink and i == self.caret_pos[0]:
-        glColor4f(self.caret_color.r, self.caret_color.g, self.caret_color.b, self.caret_color.a)
+        glColor(self.caret_color)
         glBegin(GL_QUADS)
-        glVertex2f(xalign+x1, yalign-y1)
-        glVertex2f(xalign+x1+BLINK_WIDTH, yalign-y1)
-        glVertex2f(xalign+x1+BLINK_WIDTH, yalign-y1-h.Glfloat)
-        glVertex2f(xalign+x1, yalign-y1-h.Glfloat)
+        glVertex2f(coords[0], coords[1])
+        glVertex2f(coords[0]+BLINK_WIDTH, coords[1])
+        glVertex2f(coords[0]+BLINK_WIDTH, coords[1]-h.Glfloat)
+        glVertex2f(coords[0], coords[1]-h.Glfloat)
         glEnd()
       x1 += w.float
       inc i

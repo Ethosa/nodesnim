@@ -72,5 +72,20 @@ suite "Work with graphics.":
     getSceneByName("main").addChild(ctrl2)
 
 
+  test "Image background":
+    build:
+      - Control ctrl1:
+        call setAnchor(1, 0, 1, 0)
+        call setSizeAnchor(0.2, 0.2)
+
+    ctrl1.background.setTexture(load("assets/anim/2.jpg"))
+    ctrl1.background.setCornerRadius(25)
+    ctrl1.background.setCornerDetail(8)
+    ctrl1.background.enableShadow(true)
+    ctrl1.background.setShadowOffset(Vector2(0, 8))
+
+    getSceneByName("main").addChild(ctrl1)
+
+
   test "Launch window":
     windowLaunch()

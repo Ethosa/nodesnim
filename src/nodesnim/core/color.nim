@@ -1,5 +1,6 @@
 # author: Ethosa
 import
+  ../thirdparty/opengl,
   strutils,
   re
 
@@ -199,6 +200,10 @@ proc lerp*(self, other: ColorRef, lerpv: float): uint32 =
     (r1, g1, b1, a1) = self.toUint32Tuple()
     (r2, g2, b2, a2) = self.toUint32Tuple()
   lerp(r1, g1, b1, a1, r2, g2, b2, a2, lerpv)
+
+
+proc glColor*(clr: ColorRef) =
+  glColor4f(clr.r, clr.g, clr.b, clr.a)
 
 
 # --- Operators --- #

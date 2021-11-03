@@ -61,7 +61,7 @@ method draw*(self: ProgressBarRef, w, h: GLfloat) =
   case self.progress_type
   of PROGRESS_BAR_HORIZONTAL:
     procCall self.ControlRef.draw(w, h)
-    glColor4f(self.progress_color.r, self.progress_color.g, self.progress_color.b, self.progress_color.a)
+    glColor(self.progress_color)
     let progress_width = progress_percent * self.rect_size.x
     if self.indeterminate:
       if self.indeterminate_val - progress_width < self.rect_size.x:
@@ -76,7 +76,7 @@ method draw*(self: ProgressBarRef, w, h: GLfloat) =
 
   of PROGRESS_BAR_VERTICAL:
     procCall self.ControlRef.draw(w, h)
-    glColor4f(self.progress_color.r, self.progress_color.g, self.progress_color.b, self.progress_color.a)
+    glColor(self.progress_color)
     let progress_width = progress_percent * self.rect_size.y
     if self.indeterminate:
       if self.indeterminate_val - progress_width < self.rect_size.y:
@@ -98,7 +98,7 @@ method draw*(self: ProgressBarRef, w, h: GLfloat) =
       orad = min(self.rect_size.x, self.rect_size.y) / 2
       irad = (min(self.rect_size.x, self.rect_size.y) / 2) - 5f
     # background:
-    glColor4f(self.background.getColor().r, self.background.getColor().g, self.background.getColor().b, self.background.getColor().a)
+    glColor(self.background.getColor())
     glBegin(GL_TRIANGLE_STRIP)
     for i in 0..90:
       let angle = TAU * (i/90)

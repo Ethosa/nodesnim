@@ -41,13 +41,13 @@ template draw_template*(drawtype, color, function, secondfunc: untyped, is_gradi
     for i in 0..vertex.high:
       let tmp = i/vertex.len()
       if tmp < 0.25:
-        glColor4f(self.corners[0].r, self.corners[0].g, self.corners[0].b, self.corners[0].a)
+        glColor(self.corners[0])
       elif tmp < 0.5:
-        glColor4f(self.corners[1].r, self.corners[1].g, self.corners[1].b, self.corners[1].a)
+        glColor(self.corners[1])
       elif tmp < 0.75:
-        glColor4f(self.corners[2].r, self.corners[2].g, self.corners[2].b, self.corners[2].a)
+        glColor(self.corners[2])
       else:
-        glColor4f(self.corners[3].r, self.corners[3].g, self.corners[3].b, self.corners[3].a)
+        glColor(self.corners[3])
       glVertex2f(vertex[i].x, vertex[i].y)
   else:
     for i in vertex:
