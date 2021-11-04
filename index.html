@@ -4,14 +4,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" href="styles/night-owl.min.css">
+    <script src="highlight/highlight.min.js"></script>
     <title>nodesnim</title>
 </head>
 <body>
-    <div align="center">
+    <div align="center" style="width:fit-content; margin-left: auto; margin-right: auto;">
         <h1>
-            <font color="#d8d3ec" style="position: absolute; margin-left: -32px;">♡</font>
-            nodes<font color="#9a4488">nim</font>
+            <font style="position: absolute; margin-left: -32px;">♡</font>
+            <font color="#cb8ea3">nodes</font><font color="#9a4488">nim</font>
         </h1>
+        <h3>
+            GUI/2D engine written in Nim.
+        </h3>
+
+        <div style="width: fit-content; position: relative; text-align: left;">
+            <h4 class="pink-text">Hello world example:</h4>
+            <pre><code class="nim" style="padding: 0 1em 0 1em;">
+import nodesnim
+
+Window("Hello, world!", 640, 480)  # Title, width, height</code><code class="yaml" style="padding: 0 1em 0 1em;">
+build:
+  - Scene main:
+    - Label hw:</code><code class="nim" style="padding: 0 1em 0 1em;">      call setText("Hello, world!")
+
+addMainScene(main)
+windowLaunch()
+            </code></pre>
+        </div>
     </div>
+    
+    <!-- Initialize highlight -->
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
