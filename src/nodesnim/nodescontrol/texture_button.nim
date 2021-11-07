@@ -89,6 +89,7 @@ method draw*(self: TextureButtonRef, w, h: GLfloat) =
 
     glDisable(GL_TEXTURE_2D)
 
+  self.text.rendered = false
   procCall self.LabelRef.draw(w, h)
 
 method duplicate*(self: TextureButtonRef): TextureButtonRef {.base.} =

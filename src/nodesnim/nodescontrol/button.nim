@@ -11,6 +11,7 @@ import
   ../core/enums,
   ../core/color,
   ../core/font,
+  ../core/themes,
 
   ../nodes/node,
   ../graphics/drawable,
@@ -52,9 +53,9 @@ proc Button*(name: string = "Button"): ButtonRef =
   result.normal_background = Drawable()
   result.hover_background = Drawable()
   result.press_background = Drawable()
-  result.normal_background.setColor(Color(0x444444ff))
-  result.hover_background.setColor(Color(0x505050ff))
-  result.press_background.setColor(Color(0x595959ff))
+  result.normal_background.setColor(current_theme~background_deep)
+  result.hover_background.setColor(current_theme~accent)
+  result.press_background.setColor(current_theme~accent_dark)
   result.on_touch = touch_handler
   result.on_text_changed = text_changed_handler
   result.kind = BUTTON_NODE
@@ -69,6 +70,8 @@ method draw*(self: ButtonRef, w, h: GLfloat) =
         self.hover_background
       else:
         self.normal_background
+
+  self.text.rendered = false
   procCall self.LabelRef.draw(w, h)
 
 method duplicate*(self: ButtonRef, obj: var ButtonObj): ButtonRef {.base.} =

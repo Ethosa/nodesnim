@@ -122,6 +122,11 @@ suite "Work with Control nodes.":
         call move(420, 0)
     btn@onTouch(self, x, y):
       echo "clicked btn!"
+      echo btn.text.chars[0].color
+      if current_theme.name == "default":
+        changeTheme("light")
+      else:
+        changeTheme("default")
     getSceneByName("main").addChild(btn)
 
 

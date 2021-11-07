@@ -12,6 +12,7 @@ import
   ../core/color,
   ../core/image,
   ../core/font,
+  ../core/themes,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -42,9 +43,9 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
   nodepattern(SubWindowRef)
   controlpattern()
   result.title_bar = Drawable()
-  result.background.setColor(Color(0x454545ff))
-  result.title_bar.setColor(Color(0x303030ff))
-  result.background.setBorderColor(Color(0x212121ff))
+  result.background.setColor(current_theme~background_deep)
+  result.title_bar.setColor(current_theme~background)
+  result.background.setBorderColor(current_theme~foreground)
   result.background.setBorderWidth(1)
   result.rect_size.x = 320
   result.rect_size.y = 220
@@ -94,7 +95,7 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
     else:
       child.visibility = VISIBLE
 
-  self.title_bar.draw(x, y, self.rect_size.x, 32)
+  self.title_bar.draw(x, y, self.rect_size.x-1, 32)
 
   let size = self.title.text.getTextSize()
   self.title.position.x = self.rect_size.x / 2 - size.x / 2

@@ -201,6 +201,12 @@ proc lerp*(self, other: ColorRef, lerpv: float): uint32 =
     (r2, g2, b2, a2) = self.toUint32Tuple()
   lerp(r1, g1, b1, a1, r2, g2, b2, a2, lerpv)
 
+proc copyColorTo*(dest, src: ColorRef) =
+  src.r = dest.r
+  src.g = dest.g
+  src.b = dest.b
+  src.a = dest.a
+
 
 proc glColor*(clr: ColorRef) =
   glColor4f(clr.r, clr.g, clr.b, clr.a)

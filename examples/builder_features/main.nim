@@ -36,6 +36,14 @@ build:
     - Node3D node2(is_ready: true, call hide())
     - Control node3(is_ready: true, call hide())
 
+    # If you need a lot of repeating nodes ...
+    # maybe a cycle will help you?
+    for i in 0..10:
+      - Node nodeNumber_i:  # Translates to nodeNumber{i}
+        call hide()
+
+for child in main.getChildIter():
+  echo child.name
 
 addMainScene(main)
 windowLaunch()

@@ -9,6 +9,7 @@ import
   vector2,
   anchor,
   color,
+  themes,
   nodes_os,
   exceptions,
   unicode
@@ -28,14 +29,17 @@ type
     texture*: GlTextureObj
     chars*: seq[StyleUnicode]
 
-let URL_COLOR = Color(0.45, 0.45, 0.9)
 
-
-proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f),
+proc schar*(c: string, color: ColorRef = nil,
             style: cint = TTF_STYLE_NORMAL, is_url: bool = false): StyleUnicode =
-  StyleUnicode(c: c, color: color, style: style, is_url: is_url, url: "")
+  StyleUnicode(
+    c: c, style: style, is_url: is_url, url: "",
+    color: if color.isNil():
+             current_theme~foreground
+           else:
+             color)
 
-proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f),
+proc stext*(text: string, color: ColorRef = nil,
             style: cint = TTF_STYLE_NORMAL): StyleText =
   result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1)
   for i in text.utf8():
@@ -138,11 +142,11 @@ styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
 styleFunc(setStrikethrough, TTF_STYLE_STRIKETHROUGH)
 
 proc setURL*(text: StyleText, s, e: int,
-             url: string, color: ColorRef = URL_COLOR) =
+             url: string, color: ColorRef = current_theme~url_color) =
   for i in s..e:
     text.chars[i].is_url = true
     text.chars[i].url = url
-    text.chars[i].color = URL_COLOR
+    text.chars[i].color = current_theme~url_color
 
 proc setFont*(text: StyleText, font: cstring, size: cint) =
   text.font = openFont(font, size)

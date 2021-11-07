@@ -11,6 +11,7 @@ import
   ../core/enums,
   ../core/color,
   ../core/font,
+  ../core/themes,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -46,7 +47,7 @@ proc Counter*(name: string = "Counter"): CounterRef =
   result.label.mousemode = MOUSEMODE_IGNORE
   result.label.parent = result
   result.label.setTextAlign(0.1, 0.5, 0.1, 0.5)
-  result.background.setColor(Color(0x212121ff))
+  result.background.setColor(current_theme~background_deep)
   result.kind = COUNTER_NODE
 
 
@@ -76,7 +77,7 @@ method draw*(self: CounterRef, w, h: GLfloat) =
     Vector2(x + self.label.padding.x1, y - self.label.padding.y1),
     self.rect_size, self.label.text_align)
 
-  glColor4f(1f, 1f, 1f, 1f)
+  glColor(current_theme~accent)
 
   glBegin(GL_TRIANGLES)
   # First button
@@ -123,9 +124,9 @@ method handle*(self: CounterRef, event: InputEvent, mouse_on: var NodeRef) =
     self.changeValue(self.value-1)
   elif self.pressed:
     if self.as_int:
-      self.changeValue(self.value - event.xrel)
+      self.changeValue(self.value + event.xrel)
     else:
-      self.changeValue(self.value - event.xrel*0.01)
+      self.changeValue(self.value + event.xrel*0.01)
 
 method setMaxValue*(self: CounterRef, value: float) {.base.} =
   ## Changes max value, if it more then current `value`.

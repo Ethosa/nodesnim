@@ -2,6 +2,7 @@
 import
   thirdparty/sdl2,
   core/color,
+  core/themes,
   core/enums
 {.used.}
 
@@ -20,7 +21,7 @@ type
   EnvironmentRef* = ref EnvironmentObj
 
 
-proc newEnvironment*(color: ColorRef, brightness: float = 1f,
+proc newEnvironment*(color: ColorRef = nil, brightness: float = 1f,
                      windowptr: WindowPtr = nil): EnvironmentRef =
   ## Creates a new EnvironmentRef object.
   ##
@@ -30,14 +31,14 @@ proc newEnvironment*(color: ColorRef, brightness: float = 1f,
   if not windowptr.isNil():
     discard windowptr.setBrightness(normalize(brightness, 0f, 1f))
 
-  EnvironmentRef(color_value: color, delay_value: 17,
+  var clr = color
+  if clr.isNil():
+    clr = current_theme~background
+
+  EnvironmentRef(color_value: clr, delay_value: 17,
     screen_mode_value: SCREEN_MODE_NONE, brightness_value: brightness,
     windowptr: windowptr, grabbed_value: false, fullscreen_value: false,
     resizable_value: true)
-
-proc newEnvironment*(): EnvironmentRef {.inline.} =
-  ## Creates a new EnvironmentRef object.
-  newEnvironment(Color(0x181527ff))
 
 
 proc `delay`*(env: EnvironmentRef): int = env.delay_value

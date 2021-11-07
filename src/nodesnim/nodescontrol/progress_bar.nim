@@ -10,6 +10,7 @@ import
   ../core/color,
   ../core/enums,
   ../core/nodes_os,
+  ../core/themes,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -40,7 +41,7 @@ proc ProgressBar*(name: string = "ProgressBar"): ProgressBarRef =
   controlpattern()
   result.value = 0
   result.max_value = 100
-  result.progress_color = Color(0.6, 0.6, 0.6)
+  result.progress_color = current_theme~accent
   result.rect_size.x = 120
   result.rect_size.y = 20
   result.indeterminate = false
