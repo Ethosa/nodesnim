@@ -6,6 +6,7 @@ body {
     font-weight: 700;
     background-color: #181527;
     color: #d8d3ec;
+    padding: 8px;
 }
 
 .pink-text {
@@ -23,4 +24,16 @@ body {
 h4 {
     padding-top: 1em;
     margin-left: 1em;
+}
+
+.main {
+    padding-left: 32px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+
+.codes {
+    float: right;
+    display: inline-block;
 }

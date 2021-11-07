@@ -11,54 +11,105 @@ code.hljs{
     border-radius: 8px;
 	color:#d6deeb
 }
+
+.hljs::selection {
+    background: #d8d3ec55;
+}
+
 .hljs-keyword{
 	color:#c792ea;
 	font-style:italic
+}
+
+.hljs-keyword::selection {
+    background: #d8d3ec55;
 }
 .hljs-built_in{
 	color:#addb67;
 	font-style:italic
 }
+.hljs-built_in::selection {
+    background: #d8d3ec55;
+}
 .hljs-type{
 	color:#82aaff
+}
+.hljs-type::selection {
+    background: #d8d3ec55;
 }
 .hljs-literal{
 	color:#ff5874
 }
+.hljs-literal::selection {
+    background: #d8d3ec55;
+}
 .hljs-number{
 	color:#f78c6c
+}
+.hljs-number::selection {
+    background: #d8d3ec55;
 }
 .hljs-regexp{
 	color:#5ca7e4
 }
+.hljs-regexp::selection {
+    background: #d8d3ec55;
+}
 .hljs-string{
 	color:#ecc48d
+}
+.hljs-string::selection {
+    background: #d8d3ec55;
 }
 .hljs-subst{
 	color:#d3423e
 }
+.hljs-string::selection {
+    background: #d8d3ec55;
+}
 .hljs-symbol{
 	color:#82aaff
+}
+.hljs-symbol::selection {
+    background: #d8d3ec55;
 }
 .hljs-class{
 	color:#ffcb8b
 }
+.hljs-class::selection {
+    background: #d8d3ec55;
+}
 .hljs-function{
 	color:#82aaff
+}
+.hljs-function::selection {
+    background: #d8d3ec55;
 }
 .hljs-title{
 	color:#dcdcaa;
 	font-style:italic
 }
+.hljs-title::selection {
+    background: #d8d3ec55;
+}
 .hljs-params{
 	color:#7fdbca
+}
+.hljs-params::selection {
+    background: #d8d3ec55;
 }
 .hljs-comment{
 	color:#637777;
 	font-style:italic
 }
+.hljs-comment::selection {
+    background: #d8d3ec55;
+}
 .hljs-doctag{
 	color:#7fdbca
+}
+.hljs-doctag::selection {
+    background: #d8d3ec55;
 }
 .hljs-meta,.hljs-meta .hljs-keyword{
 	color:#82aaff
@@ -69,38 +120,71 @@ code.hljs{
 .hljs-section{
 	color:#82b1ff
 }
+.hljs-section::selection{
+    background: #d8d3ec55;
+}
 .hljs-attr,.hljs-name,.hljs-tag{
 	color:#7fdbca
+}
+.hljs-attr::selection {
+    background: #d8d3ec55;
 }
 .hljs-attribute{
 	color:#80cbc4
 }
+.hljs-attribute::selection{
+    background: #d8d3ec55;
+}
 .hljs-variable{
 	color:#addb67
+}
+.hljs-variable::selection{
+    background: #d8d3ec55;
 }
 .hljs-bullet{
 	color:#d9f5dd
 }
+.hljs-bullet::selection{
+    background: #d8d3ec55;
+}
 .hljs-code{
 	color:#80cbc4
+}
+.hljs-code::selection{
+    background: #d8d3ec55;
 }
 .hljs-emphasis{
 	color:#c792ea;
 	font-style:italic
 }
+.hljs-emphasis::selection{
+    background: #d8d3ec55;
+}
 .hljs-strong{
 	color:#addb67;
 	font-weight:700
 }
+.hljs-strong::selection{
+    background: #d8d3ec55;
+}
 .hljs-formula{
 	color:#c792ea
+}
+.hljs-formula::selection{
+    background: #d8d3ec55;
 }
 .hljs-link{
 	color:#ff869a
 }
+.hljs-link::selection{
+    background: #d8d3ec55;
+}
 .hljs-quote{
 	color:#697098;
 	font-style:italic
+}
+.hljs-quote::selection{
+    background: #d8d3ec55;
 }
 .hljs-selector-tag{
 	color:#ff6363
