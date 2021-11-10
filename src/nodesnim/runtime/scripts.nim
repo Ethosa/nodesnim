@@ -96,7 +96,7 @@ proc compileScript*(file: string): CompiledScript =
 
   # Compile module
   if not processModule(result.graph, result.module, llStreamOpen(AbsoluteFile(file), fmRead)):
-    raise newException(VMError, "Failed to process `" & file & "`")
+    throwError(VMError, "Failed to process `" & file & "`")
 
   # Cleanup
   setupGlobalCtx(nil, result.graph)
@@ -120,7 +120,7 @@ proc call*(self: CompiledScript, routine: string,
   # Find routine
   let prc = self.getProc(routine)
   if prc.isNil():
-    raise newException(VMError, "\nUnable to locate proc `" & routine & "` in `" & self.filename & "`")
+    throwError(VMError, "\nUnable to locate proc `" & routine & "` in `" & self.filename & "`")
 
   # Call routine
   result = execProc(self.pctx, prc, args)
