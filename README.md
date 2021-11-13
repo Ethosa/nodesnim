@@ -84,11 +84,11 @@ This section contains links to documentation for all nodes.
 |[SceneBuilder][]|                     |[TextureButton][]     |                    |                    |                    |
 |[StyleSheet][]  |                     |[TextureProgressBar][]|                    |                    |                    |
 |[TileSet][]     |                     |[Counter][]           |                    |                    |                    |
-|                |                     |[Switch][]            |                    |                    |                    |
-|                |                     |[SubWindow][]         |                    |                    |                    |
-|                |                     |[CheckBox][]          |                    |                    |                    |
+|[ChartData][]   |                     |[Switch][]            |                    |                    |                    |
+|[Scripts][]     |                     |[SubWindow][]         |                    |                    |                    |
+|[Scene loader][]|                     |[CheckBox][]          |                    |                    |                    |
 |                |                     |[ToolTip][]           |                    |                    |                    |
-
+|                |                     |[Chart][]             |                    |                    |                    |
 
 
 ## Debug mode
@@ -161,7 +161,9 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [Font]:https://ethosa.github.io/nodesnim/nodesnim/core/font.html
 [StyleSheet]:https://ethosa.github.io/nodesnim/nodesnim/core/stylesheet.html
 [TileSet]:https://ethosa.github.io/nodesnim/nodesnim/core/tileset.html
-[Scripts]:https://ethosa.github.io/nodesnim/nodesnim/core/scripts.html
+[Scripts]:https://ethosa.github.io/nodesnim/nodesnim/runtime/scripts.html
+[Scene loader]:https://ethosa.github.io/nodesnim/nodesnim/runtime/scene_loader.html
+[ChartData]:https://ethosa.github.io/nodesnim/nodesnim/core/chartdata.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
@@ -192,6 +194,7 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [SubWindow]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/subwindow.html
 [CheckBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/checkbox.html
 [ToolTip]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/tooltip.html
+[Chart]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/chart.html
 
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
 [Sprite]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html
