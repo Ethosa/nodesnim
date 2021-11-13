@@ -121,7 +121,7 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
     <img src="https://user-images.githubusercontent.com/49402667/138454518-376b40ba-44d0-458a-9b2b-48a5ea53ff64.png" height="220" alt="Novel game example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/roguelike">
-    <img src="https://user-images.githubusercontent.com/49402667/138454722-e2b2766d-29cd-412a-92d2-29393d442775.png" height="220" alt="Roguelike game example">
+    <img src="https://user-images.githubusercontent.com/49402667/138454722-e2b2766d-29cd-412a-92d2-29393d442775.png" height="200" alt="Roguelike game example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/sample_messenger">
     <img src="https://user-images.githubusercontent.com/49402667/138455176-d38ea0b3-274d-41c6-b877-2a9be39a7b90.png" height="460" alt="sample messenger">
