@@ -304,7 +304,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
             color(uint8(c.color.r * 255), uint8(c.color.g * 255), uint8(c.color.b * 255), uint8(c.color.a * 255)))
           r = rect(x, y, w, h)
         rendered.blitSurface(nil, surface, addr r)
-        rendered = nil
+        rendered.freeSurface()
         x += w
       y += h + text.spacing.cint
     return surface
@@ -331,7 +331,6 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
 
     # free memory
     surface.freeSurface()
-    surface = nil
   text.rendered = true
 
 proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =

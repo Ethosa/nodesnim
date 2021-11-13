@@ -31,7 +31,7 @@ var
              "background_deep": Color("#cbb693"),
              "accent": Color("#fbaefa"),
              "accent_dark": Color("#da9de9"),
-             "foreground": Color("#59616b"),
+             "foreground": Color("#39414b"),
              "url_color": Color("#2a9afc")}.toTable())
   ]
   current_theme* = themes[0].deepCopy()

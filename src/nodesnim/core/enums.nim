@@ -99,4 +99,13 @@ type
     SCREEN_MODE_NONE,  ## default mode.
     SCREEN_MODE_EXPANDED  ## Keep screen size.
 
+  ChartType* = enum
+    LINE_CHART
+
+  ChartDataValueType* = enum
+    INTEGER_VALUE,
+    FLOAT_VALUE,
+    STRING_VALUE,
+    CHAR_VALUE
+
 {.pop.}

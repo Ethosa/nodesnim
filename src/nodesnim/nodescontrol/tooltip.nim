@@ -7,6 +7,7 @@ import
   ../core/enums,
   ../core/color,
   ../core/anchor,
+  ../core/themes,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -15,12 +16,12 @@ import
 
   ../window,
 
-  control
+  control,
+  label
 
 
 type
-  ToolTipObj* = object of ControlObj
-    text*: StyleText
+  ToolTipObj* = object of LabelObj
   ToolTipRef* = ref ToolTipObj
 
 const TOOLTIP_SPACE: float = 32f
@@ -31,8 +32,8 @@ proc ToolTip*(name: string = "ToolTip",
   nodepattern(ToolTipRef)
   controlpattern()
   result.text = stext(tooltip)
-  result.background.setColor(Color("#444"))
-  result.background.setBorderColor(Color("#555"))
+  result.background.setColor(current_theme~background)
+  result.background.setBorderColor(current_theme~background_deep)
   result.background.setBorderWidth(0.5)
   result.background.setCornerRadius(4)
   result.background.setCornerDetail(4)
@@ -44,12 +45,7 @@ proc ToolTip*(name: string = "ToolTip",
 
 method postdraw*(self: ToolTipRef, w, h: GLfloat) =
   {.warning[LockLevel]: off.}
-  procCall self.ControlRef.draw(w, h)
-  let
-    x = -w/2 + self.global_position.x
-    y = h/2 - self.global_position.y
-
-  self.text.renderTo(Vector2(x, y), self.rect_size, Anchor(0, 0, 0, 0))
+  procCall self.LabelRef.draw(w, h)
 
 method showAt*(self: ToolTipRef, x, y: float) {.base.} =
   self.moveTo(x, y)

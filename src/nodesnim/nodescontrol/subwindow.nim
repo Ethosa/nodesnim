@@ -101,6 +101,7 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
   self.title.position.x = self.rect_size.x / 2 - size.x / 2
   self.title.position.y = 1 + 15 - size.y / 2
   self.title.calcGlobalPosition()
+  self.title.text.rendered = false
   self.title.draw(w, h)
 
   if self.icon.texture > 0'u32:
