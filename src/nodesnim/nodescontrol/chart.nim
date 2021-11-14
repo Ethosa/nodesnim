@@ -52,21 +52,20 @@ method draw*(self: ChartRef, w, h: GLfloat) =
       data = zip(chart_data.x_axis, chart_data.y_axis)
       max_height = self.rect_size.y - self.rect_size.y/5
       max_val = chart_data.findMax().y.getNum()
+      section_width = (self.rect_size.x - self.rect_size.x/5) / data.len.float
 
     glColor(chart_data.data_color)
 
     case chart_data.chart_type
     of LINE_CHART:
-      let section_width = (self.rect_size.x - self.rect_size.x/5) / (data.len.float-1)
       glBegin(GL_LINE_STRIP)
       for i in data.low..data.high:
         let
           j = i.float
           h = max_height * (data[i][1].getNum() / max_val)
-        glVertex2f(start_x + section_width*j, end_y + h)
+        glVertex2f(start_x + section_width*j + section_width/2, end_y + h)
       glEnd()
     of BAR_CHART:
-      let section_width = (self.rect_size.x - self.rect_size.x/5) / data.len.float
       for i in data.low..data.high:
         let
           j = i.float
