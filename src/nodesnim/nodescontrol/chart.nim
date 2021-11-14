@@ -2,7 +2,6 @@
 ## Provides charting functionality
 import
   ../thirdparty/opengl,
-  ../thirdparty/sdl2,
 
   ../core/font,
   ../core/enums,

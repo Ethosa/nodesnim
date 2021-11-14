@@ -95,7 +95,7 @@ proc Color*(src: string): ColorRef =
     return Color(parseHexInt(target).uint32)
 
   # rgba(255, 255, 255, 1.0)
-  elif target.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+.?\d*?)\s*\)\s*\Z", matched):
+  elif target.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+\.?\d*?)\s*\)\s*\Z", matched):
     return Color(parseInt(matched[0]).uint8, parseInt(matched[1]).uint8, parseInt(matched[2]).uint8, parseFloat(matched[3]))
 
   # rgb(255, 255, 255)
@@ -210,6 +210,11 @@ proc copyColorTo*(dest, src: ColorRef) =
 
 proc glColor*(clr: ColorRef) =
   glColor4f(clr.r, clr.g, clr.b, clr.a)
+
+proc matchColor*(source: string): bool =
+  source.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+\.?\d*?)\s*\)\s*\Z") or
+  source.match(re"\A\s*rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*\Z") or
+  source.match(re"\A(#|0x|0X)[0-9a-fA-F]{3,8}\Z")
 
 
 # --- Operators --- #

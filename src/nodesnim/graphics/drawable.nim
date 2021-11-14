@@ -259,6 +259,9 @@ method setShadowOffset*(self: DrawableRef, offset: Vector2Obj) {.base.} =
   self.shadow_offset = offset
 
 
+proc matchBackgroundImage*(source: string, matches: var array[20, string]): bool =
+  source.match(re"\A\s*url\(([^\)]+)\)\s*\Z", matches)
+
 method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
   ## Sets new stylesheet.
   ##
@@ -289,12 +292,12 @@ method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
     # background: "url(img.jpg) #f6f"
     of "background":
       # #fff | rgba(1, 1, 1)
-      if i.value.match(re"\A\s*(rgba?\([^\)]+\)\s*|#[a-f0-9]{3,8})\s*\Z", matches):
+      if i.value.matchColor():
         let tmpclr = Color(matches[0])
         if not tmpclr.isNil():
           self.setColor(tmpclr)
       # url(path/to/image)
-      elif i.value.match(re"\A\s*url\(([^\)]+)\)\s*\Z", matches):
+      elif i.value.matchBackgroundImage(matches):
         self.loadTexture(matches[0])
       # url(path to image) #fff | rgba(1, 1, 1)
       elif i.value.match(re"\A\s*url\(([^\)]+)\)\s+(rgba?\([^\)]+\)\s*|#[a-f0-9]{3,8})\s*\Z", matches):
