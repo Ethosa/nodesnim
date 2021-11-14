@@ -259,9 +259,6 @@ method setShadowOffset*(self: DrawableRef, offset: Vector2Obj) {.base.} =
   self.shadow_offset = offset
 
 
-proc matchBackgroundImage*(source: string, matches: var array[20, string]): bool =
-  source.match(re"\A\s*url\(([^\)]+)\)\s*\Z", matches)
-
 method setStyle*(self: DrawableRef, s: StyleSheetRef) {.base.} =
   ## Sets new stylesheet.
   ##

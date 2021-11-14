@@ -18,20 +18,22 @@ type
       cval*: char
 
   ChartData* = ref object
+    chart_type*: ChartType
     data_color*: ColorRef
     data_name*: string
     x_axis*: seq[ChartDataValue]
     y_axis*: seq[ChartDataValue]
 
 
-proc newChartData*(data_name: string = "data", data_color: ColorRef = Color()): ChartData =
+proc newChartData*(data_name: string = "data", data_color: ColorRef = Color(),
+                   chart_type: ChartType = LINE_CHART): ChartData =
   ## Creates a new empty ChartData.
   runnableExamples:
     var my_chart_data = newChartData()
-  ChartData(x_axis: @[], y_axis: @[], data_name: data_name, data_color: data_color)
+  ChartData(x_axis: @[], y_axis: @[], data_name: data_name, data_color: data_color, chart_type: chart_type)
 
 proc newChartData*(x_length, y_length: int, data_name: string = "data",
-                   data_color: ColorRef = Color()): ChartData =
+                   data_color: ColorRef = Color(), chart_type: ChartType = LINE_CHART): ChartData =
   ## Creates a new ChartData with specified length.
   ##
   ## Arguments:
@@ -39,12 +41,12 @@ proc newChartData*(x_length, y_length: int, data_name: string = "data",
   ## - y_length -- length of `y_axis`.
   runnableExamples:
     var my_chart_data1 = newChartData(5, 5)
-  result = newChartData(data_name, data_color)
+  result = newChartData(data_name, data_color, chart_type)
   result.x_axis.setLen(x_length)
   result.y_axis.setLen(y_length)
 
-proc newChartData*(x_data, y_data: seq[ChartDataValue],
-                   data_name: string = "data", data_color: ColorRef = Color()): ChartData =
+proc newChartData*(x_data, y_data: seq[ChartDataValue], data_name: string = "data",
+                   data_color: ColorRef = Color(), chart_type: ChartType = LINE_CHART): ChartData =
   ## Creates a new ChartData from specified data.
   ##
   ## Arguments:
@@ -52,7 +54,7 @@ proc newChartData*(x_data, y_data: seq[ChartDataValue],
   ## - y_data -- specified data for `y_axis`.
   runnableExamples:
     var my_chart_data2 = newChartData(@[1, 5, 2], @["10.10.2021", "10.11.2021", "10.01.2021"])
-  ChartData(x_axis: x_data, y_axis: y_data, data_name: data_name, data_color: data_color)
+  ChartData(x_axis: x_data, y_axis: y_data, data_name: data_name, data_color: data_color, chart_type: chart_type)
 
 
 proc cmp(x, y: ChartDataValue): int =

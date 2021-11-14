@@ -100,7 +100,8 @@ type
     SCREEN_MODE_EXPANDED  ## Keep screen size.
 
   ChartType* = enum
-    LINE_CHART
+    LINE_CHART,
+    BAR_CHART
 
   ChartDataValueType* = enum
     INTEGER_VALUE,

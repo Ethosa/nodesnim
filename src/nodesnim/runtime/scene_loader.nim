@@ -15,15 +15,6 @@ import
   macros
 
 
-macro `!`(props, fn, code: untyped): untyped =
-  let
-    node = ident("node")
-    value = ident("value")
-  result = quote do:
-    `props`[`fn[1]`] =
-      proc(`node`: NodeRef, `value`: string) =
-        `code`
-
 macro `mkattrs`*(properties_var, prop_list: untyped): untyped =
   if prop_list.kind != nnkStmtList and properties_var.kind != nnkCall:
     return

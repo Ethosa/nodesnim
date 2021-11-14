@@ -3,10 +3,8 @@
 import
   ../thirdparty/opengl,
 
-  ../core/font,
   ../core/enums,
   ../core/color,
-  ../core/exceptions,
   ../core/vector2,
   ../core/chartdata,
   ../core/themes,
@@ -20,17 +18,15 @@ import
 type
   ChartObj* = object of ControlObj
     line_color*: ColorRef
-    chart_type*: ChartType
-    data*: ChartData
+    data*: seq[ChartData]
   ChartRef* = ref ChartObj
 
 
-proc Chart*(name: string = "Chart", chart_type: ChartType = LINE_CHART): ChartRef =
+proc Chart*(name: string = "Chart"): ChartRef =
   ## Creates a new Chart object.
   nodepattern(ChartRef)
   controlpattern()
-  result.chart_type = chart_type
-  result.data = newChartData("some data", current_theme~accent)
+  result.data = @[]
   result.line_color = current_theme~foreground
 
 
@@ -42,9 +38,6 @@ method draw*(self: ChartRef, w, h: GLfloat) =
     y = h/2 - self.global_position.y
     start_x = x + self.rect_size.x/10
     end_y = y - self.rect_size.y + self.rect_size.y/10
-    data = zip(self.data.x_axis, self.data.y_axis)
-    width = (self.rect_size.x - self.rect_size.x/5) / data.len.float
-    max_val = self.data.findMax().y.getNum()
 
   glColor(self.line_color)
   glLineWidth(2)
@@ -54,10 +47,32 @@ method draw*(self: ChartRef, w, h: GLfloat) =
   glVertex2f(x + self.rect_size.x - self.rect_size.x/10, end_y)
   glEnd()
 
-  glColor(self.data.data_color)
-  for i in data.low..data.high:
+  for chart_data in self.data:
     let
-      j = i.float
-      h = (self.rect_size.y - self.rect_size.y/5) * (data[i][1].getNum() / max_val)
-    glRectf(start_x + width*j, end_y + h, start_x + width*(j+1), end_y)
+      data = zip(chart_data.x_axis, chart_data.y_axis)
+      max_height = self.rect_size.y - self.rect_size.y/5
+      max_val = chart_data.findMax().y.getNum()
+
+    glColor(chart_data.data_color)
+
+    case chart_data.chart_type
+    of LINE_CHART:
+      let section_width = (self.rect_size.x - self.rect_size.x/5) / (data.len.float-1)
+      glBegin(GL_LINE_STRIP)
+      for i in data.low..data.high:
+        let
+          j = i.float
+          h = max_height * (data[i][1].getNum() / max_val)
+        glVertex2f(start_x + section_width*j, end_y + h)
+      glEnd()
+    of BAR_CHART:
+      let section_width = (self.rect_size.x - self.rect_size.x/5) / data.len.float
+      for i in data.low..data.high:
+        let
+          j = i.float
+          h = max_height * (data[i][1].getNum() / max_val)
+        glRectf(start_x + section_width*j, end_y + h, start_x + section_width*(j+1), end_y)
+
+method addChartData*(self: ChartRef, chart_data: ChartData) {.base.} =
+  self.data.add(chart_data)
 

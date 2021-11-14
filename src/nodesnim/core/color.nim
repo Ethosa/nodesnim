@@ -211,11 +211,6 @@ proc copyColorTo*(dest, src: ColorRef) =
 proc glColor*(clr: ColorRef) =
   glColor4f(clr.r, clr.g, clr.b, clr.a)
 
-proc matchColor*(source: string): bool =
-  source.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+\.?\d*?)\s*\)\s*\Z") or
-  source.match(re"\A\s*rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*\Z") or
-  source.match(re"\A(#|0x|0X)[0-9a-fA-F]{3,8}\Z")
-
 
 # --- Operators --- #
 proc `$`*(color: ColorRef): string =

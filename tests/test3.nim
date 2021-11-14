@@ -337,12 +337,17 @@ suite "Work with Control nodes.":
           tooltip.showAtMouse()
     getSceneByName("main").addChild(tooltip)
 
-  test "Line chart test":
+  test "Line & Bar chart test":
     build:
       - Chart line_chart:
-        data: newChartData(
-          @["one", "two", "three", "four", "five", "six"],
-          @[1, 8, 18, 32, 4, 16], "myData", current_theme~accent)
+        call addChartData(
+          newChartData(
+            @["one", "two", "three", "four", "five", "six"],
+            @[1, 8, 18, 32, 4, 16], "myData", current_theme~accent_dark, BAR_CHART))
+        call addChartData(
+          newChartData(
+            @["one", "two", "three", "four", "five", "six"],
+            @[1, 8, 18, 32, 4, 16], "myData", current_theme~accent, LINE_CHART))
 
         call move(100, 450)
         call resize(320, 196)
