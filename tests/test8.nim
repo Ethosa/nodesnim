@@ -1,7 +1,8 @@
 # --- Test 8. Make your own node. --- #
 import
   nodesnim,
-  nodesnim/runtime/scene_loader  # For runtime load your node from XML scene file.
+  nodesnim/runtime/scene_loader,  # For runtime load your node from XML scene file.
+  strutils
 
 
 type

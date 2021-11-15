@@ -10,15 +10,27 @@ import
 
   xmltree,
   xmlparser,
-  strtabs,
   tables,
+  strtabs,
   strutils,
   macros
 
-export
-  strtabs,
-  strutils,
-  tables
+
+type
+  KVPairSeq[T, U] = seq[tuple[key: T, val: U]]
+
+proc `[]=`*[T, U](src: var KVPairSeq[T, U], key: T, val: U) =
+  src.add((key: key, val: val))
+
+proc hasKey*[T, U](src: KVPairSeq[T, U], key: T): bool =
+  for i in src:
+    if i.key == key:
+      return true
+  return false
+
+iterator pairs*[T, U](src: KVPairSeq[T, U]): tuple[key: T, value: U] =
+  for i in src:
+    yield (key: i.key, value: i.val)
 
 
 macro `mkattrs`*(properties_var, prop_list: untyped): untyped =
@@ -57,8 +69,8 @@ macro mkparse*(nodes: varargs[untyped]): untyped =
 
 
 var
-  parsable* = newOrderedTable[system.string, proc (name: string): NodeRef]()
-  attrs* = newOrderedTable[system.string, proc (node: NodeRef, value: string)]()
+  parsable*: KVPairSeq[string, proc (name: string): NodeRef] = @[]
+  attrs*: KVPairSeq[string, proc (node: NodeRef, value: string)] = @[]
 
 mkparse(Node, Scene, AudioStreamPlayer, AnimationPlayer)
 mkparse(Control, Box, VBox, HBox, ColorRect, Label, SubWindow, ToolTip,
@@ -126,7 +138,7 @@ mkattrs attrs(node, value):
 proc xmlAttr(xml: XmlNode, node: NodeRef) =
   if not xml.attrs.isNil():
     for attr, fn in attrs.pairs:
-      if xml.attrs.hasKey(attr):
+      if attr in xml.attrs:
         fn(node, xml.attrs[attr])
 
 
