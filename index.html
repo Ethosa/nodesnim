@@ -27,7 +27,9 @@ import nodesnim
 Window("Hello, world!", 640, 480)  # Title, width, height</code><code class="yaml" style="padding: 0 1em 0 1em;">
 build:
   - Scene main:
-    - Label hw:</code><code class="nim" style="padding: 0 1em 0 1em;">      call setText("Hello, world!")
+    - Label hw:</code><code class="nim" style="padding: 0 1em 0 1em;">      call:
+        setText("Hello, world!")
+        setAnchor(0.5, 0.5, 0.5, 0.5)  # center text align and valign.
 
 addMainScene(main)
 windowLaunch()
