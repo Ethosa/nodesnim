@@ -17,18 +17,18 @@ import
 
 
 type
-  KVPairSeq[T, U] = seq[tuple[key: T, val: U]]
+  KVPairSeq[T] = seq[tuple[key: string, val: T]]
 
-proc `[]=`*[T, U](src: var KVPairSeq[T, U], key: T, val: U) =
+proc `[]=`*[T](src: var KVPairSeq[T], key: string, val: T) =
   src.add((key: key, val: val))
 
-proc hasKey*[T, U](src: KVPairSeq[T, U], key: T): bool =
+proc hasKey*[T](src: KVPairSeq[T], key: string): bool =
   for i in src:
     if i.key == key:
       return true
   return false
 
-iterator pairs*[T, U](src: KVPairSeq[T, U]): tuple[key: T, value: U] =
+iterator pairs*[T](src: KVPairSeq[T]): tuple[key: string, value: T] =
   for i in src:
     yield (key: i.key, value: i.val)
 
@@ -69,8 +69,8 @@ macro mkparse*(nodes: varargs[untyped]): untyped =
 
 
 var
-  parsable*: KVPairSeq[string, proc (name: string): NodeRef] = @[]
-  attrs*: KVPairSeq[string, proc (node: NodeRef, value: string)] = @[]
+  parsable*: KVPairSeq[proc (name: string): NodeRef] = @[]
+  attrs*: KVPairSeq[proc (node: NodeRef, value: string)] = @[]
 
 mkparse(Node, Scene, AudioStreamPlayer, AnimationPlayer)
 mkparse(Control, Box, VBox, HBox, ColorRect, Label, SubWindow, ToolTip,
