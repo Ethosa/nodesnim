@@ -39,7 +39,7 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 ## Features
 - Godot-like node system.
 - Runtime scene loader.
-- Build nodes with YML-like syntax.
+- Powerful node build system using YML-like syntax.
 - Stylesheets (CSS-like).
 - Android-like drawables.
 - Customizable GUI themes.
@@ -53,10 +53,11 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
   build:
     - Scene scene:
       - Label hello:
-        call setSizeAnchor(1, 1)
-        call setTextAlign(0.5, 0.5, 0.5, 0.5)
-        call setText("Hello, world!")
-        call setBackgroundColor(Color(31, 45, 62))
+        call:
+          setSizeAnchor(1, 1)
+          setTextAlign(0.5, 0.5, 0.5, 0.5)
+          setText("Hello, world!")
+          setBackgroundColor(Color(31, 45, 62))
 
   addMainScene(scene)
   windowLaunch()

@@ -16,14 +16,14 @@ type
 
 build:
   - Scene main:
-    call rename("Main")
     - Canvas canvas
+
   - Scene game_over:
-    call rename("GameOverScene")
     - Label label_go:
-      text: stext"Game Over"
-      call setTextAlign(0.5, 0.5, 0.5, 0.5)
-      call setSizeAnchor(1, 1)
+      call:
+        setText("Game Over")
+        setTextAlign(0.5, 0.5, 0.5, 0.5)
+        setSizeAnchor(1, 1)
 
 var
   snake = Snake(
@@ -104,7 +104,7 @@ canvas@on_process(self):
     snake.food.x = (rand(grid_size.x.int-1) * snake.size.x.int).float
     snake.food.y = (rand(grid_size.y.int-1) * snake.size.y.int).float
   elif snake.body[0] in snake.body[1..^1]:
-    changeScene("GameOverScene")
+    changeScene("game_over")
   # draw
   for i in snake.body:
     canvas.fillRect(i.x, i.y, snake.size.x, snake.size.y, Color(1f, 1f, 1f))

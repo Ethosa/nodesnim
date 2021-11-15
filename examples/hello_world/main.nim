@@ -4,13 +4,13 @@ Window("Hello, world!")
 
 
 build:
-  - Scene scene:
-    name: "Main"
+  - Scene main_scene:
     - Label hello:
-      call setSizeAnchor(1, 1)
-      call setTextAlign(0.5, 0.5, 0.5, 0.5)
-      call setText("Hello, world!")
-      call setBackgroundColor(Color(31, 45, 62))
+      call:
+        setSizeAnchor(1, 1)
+        setTextAlign(0.5, 0.5, 0.5, 0.5)
+        setText("Hello, world!")
+        setBackgroundColor(Color(31, 45, 62))
 
-addMainScene(scene)
+addMainScene(main_scene)
 windowLaunch()
