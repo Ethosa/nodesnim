@@ -42,6 +42,12 @@ build:
       - Node nodeNumber_i:  # Translates to nodeNumber{i}
         call hide()
 
+    - Label hello_world:
+      call:
+        setText("Hello world!")
+        setAnchor(1, 0, 1, 0)
+        setTextColor(Color("#cefc"))
+
 for child in main.getChildIter():
   echo child.name
 

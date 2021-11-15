@@ -372,8 +372,8 @@ suite "Work with Control nodes.":
       - Chart spiderweb_chart:
         call addChartData(
           newChartData(
-            @["one", "two", "three", "four", "five", "six"],
-            @[10, 24, 18, 32, 4, 16], "myData", current_theme~accent_dark, RADAR_CHART))
+            @["one", "two", "three", "four", "five"],
+            @[10, 24, 18, 32, 4], "myData", current_theme~accent_dark, RADAR_CHART))
 
         call move(700, 450)
         call resize(128, 128)

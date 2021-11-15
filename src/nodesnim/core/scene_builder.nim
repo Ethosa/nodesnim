@@ -39,6 +39,14 @@ proc addNode(level: var seq[NimNode], code: NimNode): NimNode {.compileTime.} =
     elif line.kind == nnkCommand and $line[0] == "call" and level.len > 0:
       line[1].insert(1, level[^1])
       result.add(line[1])
+    # call:
+    #   methodName(arg1, arg2) -> currentNode.methodName(arg1, arg2)
+    #   method2(some args) -> currentNode.method2(some args)
+    elif line.kind == nnkCall and line[0].kind == nnkIdent and $line[0] == "call" and level.len > 0:
+      for i in line[1]:
+        var method_call = i
+        method_call.insert(1, level[^1])
+        result.add(method_call)
     # @onProcess() -> parent@onProcess(self)
     # @onPress(x, y) -> parent@onPress(self, x, y)
     elif line.kind == nnkCall and line[0].kind == nnkPrefix and level.len > 0:
