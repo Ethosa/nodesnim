@@ -57,8 +57,8 @@ macro mkparse*(nodes: varargs[untyped]): untyped =
 
 
 var
-  parsable* = newTable[system.string, proc (name: string): NodeRef]()
-  attrs* = newTable[system.string, proc (node: NodeRef, value: string)]()
+  parsable* = newOrderedTable[system.string, proc (name: string): NodeRef]()
+  attrs* = newOrderedTable[system.string, proc (node: NodeRef, value: string)]()
 
 mkparse(Node, Scene, AudioStreamPlayer, AnimationPlayer)
 mkparse(Control, Box, VBox, HBox, ColorRect, Label, SubWindow, ToolTip,
