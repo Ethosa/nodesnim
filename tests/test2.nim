@@ -17,17 +17,18 @@ suite "Work with default nodes.":
   test "Canvas test":
     build:
       - Canvas canvas:
-        call resize(256, 256)
-        call fill(Color("#ffaacc"))
-        call point(5, 5, Color("#64ffff"))
-        call line(8, 16, 128, 64, Color("#ffff64ff"))
-        call circle(0, 240, 32, Color("#aaff6456"))
-        call line(200, -150, 0, 256, Color("#0e1317ff"))
-        call bezier(0, 0, 256, 0, 256, 256, Color("#227"))
-        call cubic_bezier(0, 0, 256, 0, 0, 256, 256, 256, Color("#272"))
-        call move(74.4, 89.4)
-        call text("hello!,\nworld!", 64, 64, Vector2(1, 1))
-        call saveAs("assets/canvas.png")  # save result in file.
+        call:
+          resize(256, 256)
+          fill(Color("#ffaacc"))
+          point(5, 5, Color("#64ffff"))
+          line(8, 16, 128, 64, Color("#ffff64ff"))
+          circle(0, 240, 32, Color("#aaff6456"))
+          line(200, -150, 0, 256, Color("#0e1317ff"))
+          bezier(0, 0, 256, 0, 256, 256, Color("#227"))
+          cubic_bezier(0, 0, 256, 0, 0, 256, 256, 256, Color("#272"))
+          move(74.4, 89.4)
+          text("hello!,\nworld!", 64, 64, Vector2(1, 1))
+          saveAs("assets/canvas.png")  # save result in file.
     getSceneByName("main").addChild(canvas)
 
   test "AudioStreamPlayer test":
@@ -58,22 +59,25 @@ suite "Work with default nodes.":
         call resize(100, 100)
         call move(0, 300)
       - AnimationPlayer animation:
-        call addState(rect.color.r.addr, @[(tick: 0, value: 0.0), (tick: 200, value: 1.0)])
-        call addState(rect.position.x.addr, @[(tick: 0, value: 0.0), (tick: 100, value: 250.0)])
-        call setDuration(200)
-        call play()
         mode: ANIMATION_NORMAL  # Default animation mode.
+        call:
+          addState(rect.color.r.addr, @[(tick: 0, value: 0.0), (tick: 200, value: 1.0)])
+          addState(rect.position.x.addr, @[(tick: 0, value: 0.0), (tick: 100, value: 250.0)])
+          setDuration(200)
+          play()
       - AnimationPlayer animation1:
-        call addState(rect1.position.x.addr, @[(tick: 0, value: 0.0), (tick: 100, value: 250.0)])
-        call setDuration(200)
-        call play()
         mode: ANIMATION_EASE
+        call:
+          addState(rect1.position.x.addr, @[(tick: 0, value: 0.0), (tick: 100, value: 250.0)])
+          setDuration(200)
+          play()
       - AnimationPlayer animation2:
-        call addState(rect2.position.x.addr, @[(tick: 0, value: 0.0), (tick: 100, value: 250.0)])
-        call setDuration(200)
-        call play()
         mode: ANIMATION_BEZIER
         bezier: (0.8, 0.9)
+        call:
+          addState(rect2.position.x.addr, @[(tick: 0, value: 0.0), (tick: 100, value: 250.0)])
+          setDuration(200)
+          play()
     getSceneByName("main").addChildren(rect, rect1, rect2, animation, animation1, animation2)
 
   test "Launch window":

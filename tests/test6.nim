@@ -44,13 +44,14 @@ suite "Work with 2D nodes.":
       - AnimatedSprite animation:
         centered: false
         z_index: -10
-        call addFrame("default", load("assets/anim/0.jpg"))
-        call addFrame("default", load("assets/anim/1.jpg"))
-        call addFrame("default", load("assets/anim/2.jpg"))
-        call addFrame("default", load("assets/anim/3.jpg"))
-        call addFrame("default", load("assets/anim/4.jpg"))
-        call play(name = "", backward = false)
-        call setSpeed("default", 5)  # name, frames-per-second
+        call:
+          addFrame("default", load("assets/anim/0.jpg"))
+          addFrame("default", load("assets/anim/1.jpg"))
+          addFrame("default", load("assets/anim/2.jpg"))
+          addFrame("default", load("assets/anim/3.jpg"))
+          addFrame("default", load("assets/anim/4.jpg"))
+          play(name = "", backward = false)
+          setSpeed("default", 5)  # name, frames-per-second
     getSceneByName("main").addChild(animation)
 
 
@@ -110,10 +111,11 @@ suite "Work with 2D nodes.":
           filter: Color("#555")
           call loadTexture("assets/anim/2.jpg")
       - Camera2D camera:
-        call setTarget(player)
-        call setLimit(-2048, -1024, 2048, 1024)
-        call setCurrent()
-        call enableSmooth()
+        call:
+          setTarget(player)
+          setLimit(-2048, -1024, 2048, 1024)
+          setCurrent()
+          enableSmooth()
     player@onProcess(self):
       if isActionPressed("w"):
         player.move(0, -10)
@@ -131,16 +133,17 @@ suite "Work with 2D nodes.":
     build:
       - TileMap map:
         z_index: -100
-        call setTileSet(tileset)
-        call move(-2048, -1024)
-        #                         map size   layer count
-        call resizeMap(Vector2(512, 128), 1)
-        call fill(Vector2(1, 0))
-        call drawRect(3, 3, 10, 5, Vector2(9, 7))
-        call drawTile(0, 0, Vector2(3, 0))
-        call drawTile(1, 0, Vector2(7, 4.5))
-        call drawTile(0, 1, Vector2(6.5, 5))
-        call drawTile(1, 1, Vector2(7, 5))
+        call:
+          setTileSet(tileset)
+          move(-2048, -1024)
+          #                 map size   layer count
+          resizeMap(Vector2(512, 128), 1)
+          fill(Vector2(1, 0))
+          drawRect(3, 3, 10, 5, Vector2(9, 7))
+          drawTile(0, 0, Vector2(3, 0))
+          drawTile(1, 0, Vector2(7, 4.5))
+          drawTile(0, 1, Vector2(6.5, 5))
+          drawTile(1, 1, Vector2(7, 5))
     getSceneByName("main").addChild(map)
 
 
@@ -149,32 +152,33 @@ suite "Work with 2D nodes.":
     build:
       - TileMap map:
         z_index: -80
-        call setMode(TILEMAP_ISOMETRIC)
-        call setTileSet(tileset)
-        call move(-2048, -1024)
-        #                         map size   layer count
-        call resizeMap(Vector2(32, 32), layer_count=4)
-        call fill(Vector2(1, 0))
-        call drawRect(3, 3, 10, 5, Vector2(15, 1))
+        call:
+          setMode(TILEMAP_ISOMETRIC)
+          setTileSet(tileset)
+          move(-2048, -1024)
+          #                         map size   layer count
+          resizeMap(Vector2(32, 32), layer_count=4)
+          fill(Vector2(1, 0))
+          drawRect(3, 3, 10, 5, Vector2(15, 1))
 
-        # platform
-        call drawTile(2, 4, Vector2(0, 27), 1)
-        call drawTile(1, 5, Vector2(0, 28), 1)
+          # platform
+          drawTile(2, 4, Vector2(0, 27), 1)
+          drawTile(1, 5, Vector2(0, 28), 1)
 
-        # cross
-        call drawTile(4, 6, Vector2(14, 13), 1)
-        call drawTile(3, 7, Vector2(14, 14), 1)
+          # cross
+          drawTile(4, 6, Vector2(14, 13), 1)
+          drawTile(3, 7, Vector2(14, 14), 1)
 
-        # sign
-        call drawTile(4, 5, Vector2(11, 12), 1)
-        call drawTile(4, 5, Vector2(11, 13), 2)
-        call drawTile(4, 5, Vector2(11, 14), 3)
+          # sign
+          drawTile(4, 5, Vector2(11, 12), 1)
+          drawTile(4, 5, Vector2(11, 13), 2)
+          drawTile(4, 5, Vector2(11, 14), 3)
 
-        # magic
-        call drawTile(5, 10, Vector2(2, 33), 1)
-        call drawTile(6, 11, Vector2(3, 33), 1)
-        call drawTile(4, 11, Vector2(2, 34), 1)
-        call drawTile(5, 12, Vector2(3, 34), 1)
+          # magic
+          drawTile(5, 10, Vector2(2, 33), 1)
+          drawTile(6, 11, Vector2(3, 33), 1)
+          drawTile(4, 11, Vector2(2, 34), 1)
+          drawTile(5, 12, Vector2(3, 34), 1)
     getSceneByName("main").addChild(map)
 
 
