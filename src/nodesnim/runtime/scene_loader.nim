@@ -15,6 +15,11 @@ import
   strutils,
   macros
 
+export
+  strtabs,
+  strutils,
+  tables
+
 
 macro `mkattrs`*(properties_var, prop_list: untyped): untyped =
   if prop_list.kind != nnkStmtList and properties_var.kind != nnkCall:
