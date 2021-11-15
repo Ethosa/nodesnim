@@ -25,6 +25,11 @@ proc newVector2*(vec2: Vector2Obj): ref Vector2Obj =
   new result
   result[] = vec2
 
+proc newVector2*(x, y: float): ref Vector2Obj =
+  new result
+  result.x = x
+  result.y = y
+
 
 proc abs*(a: Vector2Obj): Vector2Obj =
   Vector2(abs(a.x), abs(a.y))

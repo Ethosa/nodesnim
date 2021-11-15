@@ -339,7 +339,7 @@ suite "Work with Control nodes.":
 
   test "Line & Bar chart test":
     build:
-      - Chart line_chart:
+      - Chart my_chart:
         call addChartData(
           newChartData(
             @["one", "two", "three", "four", "five", "six"],
@@ -352,7 +352,20 @@ suite "Work with Control nodes.":
         call move(100, 450)
         call resize(320, 196)
 
-    getSceneByName("main").addChildren(line_chart)
+    getSceneByName("main").addChildren(my_chart)
+
+  test "Pie chart test":
+    build:
+      - Chart circle_chart:
+        call addChartData(
+          newChartData(
+            @["one", "two", "three", "four", "five", "six"],
+            @[1, 8, 18, 32, 4, 16], "myData", current_theme~accent_dark, PIE_CHART))
+
+        call move(900, 450)
+        call resize(128, 128)
+
+    getSceneByName("main").addChildren(circle_chart)
 
 
   test "Launch window":

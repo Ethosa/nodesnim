@@ -38,7 +38,6 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
   )
 
   surface.freeSurface()
-  surface = nil
 
 proc draw*(self: TileSetObj, tilex, tiley, x, y, z: float) =
   ## Draws tile at position `tilex`,`tiley` to `x`,`y` position.

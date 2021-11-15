@@ -90,6 +90,13 @@ proc getNum*(val: ChartDataValue): float =
   of STRING_VALUE:
     0f
 
+proc getSorted*(data: ChartData): seq[tuple[x, y: ChartDataValue]] =
+  zip(data.x_axis, data.y_axis).sorted do (a, b: tuple[x, y: ChartDataValue]) -> int: cmp(a.y.getNum(), b.y.getNum())
+
+proc getSum*(data: ChartData): float =
+  for i in data.y_axis:
+    result += i.getNum()
+
 
 converter toChartDataValue*(val: seq[int]): seq[ChartDataValue] =
   result = @[]

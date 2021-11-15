@@ -50,6 +50,8 @@ type
     TEXTURE_RECT_NODE,
     VBOX_NODE,
     SUB_WINDOW_NODE,
+    TOOLTIP_NODE,
+    CHART_NODE,
     # 3D nodes
     NODE3D_NODE,
     GEOMETRY_INSTANCE_NODE,
@@ -101,7 +103,8 @@ type
 
   ChartType* = enum
     LINE_CHART,
-    BAR_CHART
+    BAR_CHART,
+    PIE_CHART
 
   ChartDataValueType* = enum
     INTEGER_VALUE,

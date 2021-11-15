@@ -12,7 +12,8 @@ import
   ../nodes/node,
 
   control,
-  sequtils
+  sequtils,
+  math
 
 
 type
@@ -28,6 +29,15 @@ proc Chart*(name: string = "Chart"): ChartRef =
   controlpattern()
   result.data = @[]
   result.line_color = current_theme~foreground
+  result.kind = CHART_NODE
+
+method hasAxis*(self: ChartRef): bool {.base.} =
+  ## Returns true, if chart contains axis data.
+  ## For example: LINE_CHART, BAR_CHART.
+  for data in self.data:
+    if data.chart_type in [LINE_CHART, BAR_CHART]:
+      return true
+  false
 
 
 method draw*(self: ChartRef, w, h: GLfloat) =
@@ -39,13 +49,14 @@ method draw*(self: ChartRef, w, h: GLfloat) =
     start_x = x + self.rect_size.x/10
     end_y = y - self.rect_size.y + self.rect_size.y/10
 
-  glColor(self.line_color)
-  glLineWidth(2)
-  glBegin(GL_LINE_STRIP)
-  glVertex2f(start_x, y)
-  glVertex2f(start_x, end_y)
-  glVertex2f(x + self.rect_size.x - self.rect_size.x/10, end_y)
-  glEnd()
+  if self.hasAxis():
+    glColor(self.line_color)
+    glLineWidth(2)
+    glBegin(GL_LINE_STRIP)
+    glVertex2f(start_x, y)
+    glVertex2f(start_x, end_y)
+    glVertex2f(x + self.rect_size.x - self.rect_size.x/10, end_y)
+    glEnd()
 
   for chart_data in self.data:
     let
@@ -65,12 +76,33 @@ method draw*(self: ChartRef, w, h: GLfloat) =
           h = max_height * (data[i][1].getNum() / max_val)
         glVertex2f(start_x + section_width*j + section_width/2, end_y + h)
       glEnd()
+
     of BAR_CHART:
       for i in data.low..data.high:
         let
           j = i.float
           h = max_height * (data[i][1].getNum() / max_val)
         glRectf(start_x + section_width*j, end_y + h, start_x + section_width*(j+1), end_y)
+
+    of PIE_CHART:
+      let
+        d = chart_data.getSorted()
+        sum = chart_data.getSum()
+        radius = min(self.rect_size.x, self.rect_size.y)/2
+        center = Vector2(x + self.rect_size.x/2, y - self.rect_size.y/2)
+      var
+        angle = PI/2
+        a: float
+      for i in d.low..d.high:
+        glBegin(GL_TRIANGLE_FAN)
+        glVertex2f(center.x, center.y)
+        a = angle
+        angle += d[i][1].getNum() / sum * TAU
+        while a <= angle:
+          glVertex2f(center.x + cos(a)*radius, center.y + sin(a)*radius)
+          a += 0.01
+        glEnd()
+        glColor4f(angle/6, angle/5, angle/4, 1f)
 
 method addChartData*(self: ChartRef, chart_data: ChartData) {.base.} =
   self.data.add(chart_data)

@@ -40,6 +40,7 @@ proc ToolTip*(name: string = "ToolTip",
   result.background.enableShadow(true)
   result.background.setShadowOffset(Vector2(0, 5))
   result.mousemode = MOUSEMODE_IGNORE
+  result.kind = TOOLTIP_NODE
   result.hide()
 
 
