@@ -104,7 +104,8 @@ type
   ChartType* = enum
     LINE_CHART,
     BAR_CHART,
-    PIE_CHART
+    PIE_CHART,
+    RADAR_CHART
 
   ChartDataValueType* = enum
     INTEGER_VALUE,

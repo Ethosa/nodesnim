@@ -104,6 +104,43 @@ method draw*(self: ChartRef, w, h: GLfloat) =
         glEnd()
         glColor4f(angle/6, angle/5, angle/4, 1f)
 
+    of RADAR_CHART:
+      let
+        radius_max = min(self.rect_size.x, self.rect_size.y)/2
+        radius_step = radius_max/5
+        center = Vector2(x + self.rect_size.x/2, y - self.rect_size.y/2)
+        angle_step = TAU / data.len.float
+      var
+        radius = radius_step
+        angle = 0f
+      glColor(current_theme~foreground)
+      glLineWidth(1)
+      for step in 0..5:
+        glBegin(GL_LINE_LOOP)
+        for i in data.low..data.high:
+          glVertex2f(center.x + cos(angle)*radius, center.y + sin(angle)*radius)
+          angle += angle_step
+        radius += radius_step
+        angle = 0f
+        glEnd()
+
+      glBegin(GL_LINES)
+      for i in data.low..data.high:
+        glVertex2f(center.x + cos(angle)*radius_max, center.y + sin(angle)*radius_max)
+        glVertex2f(center.x, center.y)
+        angle += angle_step
+      angle = 0f
+      glEnd()
+
+      glColor4f(chart_data.data_color.r, chart_data.data_color.g, chart_data.data_color.b, 0.8)
+      glBegin(GL_POLYGON)
+      for i in data.low..data.high:
+        let r = radius_max * (data[i][1].getNum() / max_val)
+        glVertex2f(center.x + cos(angle)*r, center.y + sin(angle)*r)
+        angle += angle_step
+      glEnd()
+
+
 method addChartData*(self: ChartRef, chart_data: ChartData) {.base.} =
   self.data.add(chart_data)
 
