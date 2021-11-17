@@ -24,6 +24,7 @@ type
   StyleText* = ref object
     font*: FontPtr
     rendered*: bool
+    need_free*: bool
     spacing*: float
     max_lines*: int
     texture*: GlTextureObj
@@ -41,7 +42,7 @@ proc schar*(c: string, color: ColorRef = nil,
 
 proc stext*(text: string, color: ColorRef = nil,
             style: cint = TTF_STYLE_NORMAL): StyleText =
-  result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1)
+  result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1, need_free: false)
   for i in text.utf8():
     result.chars.add(schar(i, color, style))
   result.font = standard_font
@@ -318,8 +319,9 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
     text.texture.size.y = surface.h.float
 
     # OpenGL:
-    if text.texture.texture == 0'u32:
-      glGenTextures(1, text.texture.texture.addr)
+    if text.texture.texture != 0'u32:
+      glDeleteTextures(1, addr text.texture.texture)
+    glGenTextures(1, addr text.texture.texture)
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
@@ -387,3 +389,10 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, 0)
+    if text.need_free:
+      glDeleteTextures(1, addr text.texture.texture)
+
+
+proc freeMemory*(text: StyleText) =
+  if text.texture.texture != 0'u32:
+    glDeleteTextures(1, addr text.texture.texture)

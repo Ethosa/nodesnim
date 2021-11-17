@@ -72,6 +72,7 @@ method draw*(self: CheckBoxRef, w, h: GLfloat) =
   self.rect_min_size = self.text.getTextSize()
   self.rect_min_size.x += 36
   self.resize(self.rect_size.x, self.rect_size.y)
+  self.text.freeMemory()
 
   self.box.draw(x+4, y-4, 24, 24)
   if self.enabled:

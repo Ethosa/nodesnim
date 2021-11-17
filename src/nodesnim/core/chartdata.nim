@@ -90,6 +90,17 @@ proc getNum*(val: ChartDataValue): float =
   of STRING_VALUE:
     0f
 
+proc `$`*(val: ChartDataValue): string =
+  case val.kind
+  of INTEGER_VALUE:
+    $val.ival
+  of FLOAT_VALUE:
+    $val.fval
+  of CHAR_VALUE:
+    $val.cval
+  of STRING_VALUE:
+    val.sval
+
 proc getSorted*(data: ChartData): seq[tuple[x, y: ChartDataValue]] =
   zip(data.x_axis, data.y_axis).sorted do (a, b: tuple[x, y: ChartDataValue]) -> int: cmp(a.y.getNum(), b.y.getNum())
 

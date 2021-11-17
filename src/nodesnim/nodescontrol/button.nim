@@ -71,7 +71,6 @@ method draw*(self: ButtonRef, w, h: GLfloat) =
       else:
         self.normal_background
 
-  self.text.rendered = false
   procCall self.LabelRef.draw(w, h)
 
 method duplicate*(self: ButtonRef, obj: var ButtonObj): ButtonRef {.base.} =

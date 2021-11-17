@@ -392,7 +392,7 @@ suite "Work with Control nodes.":
               @["one", "two", "three", "four", "five"],
               @[10, 24, 18, 32, 4], "myData", current_theme~accent_dark, RADAR_CHART))
           move(700, 450)
-          resize(128, 128)
+          resize(196, 196)
 
     getSceneByName("main").addChildren(spiderweb_chart)
 
