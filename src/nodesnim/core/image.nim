@@ -41,7 +41,6 @@ proc load*(file: string, x, y: var float, mode: Glenum = GL_RGB): Gluint =
 
   # free memory
   surface.freeSurface()
-  surface = nil
 
   textureid
 

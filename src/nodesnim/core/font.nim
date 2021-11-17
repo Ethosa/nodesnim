@@ -333,6 +333,7 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
 
     # free memory
     surface.freeSurface()
+    surface = nil
   text.rendered = true
 
 proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
