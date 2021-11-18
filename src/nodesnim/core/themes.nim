@@ -62,8 +62,6 @@ proc changeTheme*(name: string) =
 macro `~`*(theme: ThemeRef, field: untyped): untyped =
   ## Alternative usage of `[]` proc.
   ##
-  runnableExamples:
-    var theme_background = current_theme~background
   let fname = $field
   result = quote do:
     `theme`[`fname`]
