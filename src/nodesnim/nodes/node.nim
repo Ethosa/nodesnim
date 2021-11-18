@@ -190,6 +190,9 @@ method getRootNode*(self: NodeRef): NodeRef {.base.} =
   while result.parent != nil:
     result = result.parent
 
+method insertChild*(self: NodeRef, index: int, node: NodeRef) {.base.} =
+  self.children.insert(node, index)
+
 method isParentOf*(self, other: NodeRef): bool {.base, inline.} =
   other in self.children
 
@@ -247,6 +250,9 @@ method removeChild*(self: NodeRef, other: NodeRef) {.base.} =
   if index != -1:
     self.removeChild(index)
 
+method removeChildren*(self: NodeRef) {.base.} =
+  self.children = @[]
+
 method show*(self: NodeRef) {.base.} =
   self.visibility = VISIBLE
 
@@ -254,10 +260,14 @@ method delete*(self: NodeRef) {.base.} =
   ## Deletes current node.
   if self.parent != nil:
     self.parent.removeChild(self)
+  self.removeChildren()
 
 
 method `[]`*(self: NodeRef, index: int): NodeRef {.base, inline.} =
   self.getChild(index)
+
+method `[]`*(self: NodeRef, index: string): NodeRef {.base, inline.} =
+  self.getNode(index)
 
 method `~`*(self: NodeRef, path: string): NodeRef {.base, inline.} =
   self.getNode(path)

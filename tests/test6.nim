@@ -156,7 +156,7 @@ suite "Work with 2D nodes.":
           setMode(TILEMAP_ISOMETRIC)
           setTileSet(tileset)
           move(-2048, -1024)
-          #                         map size   layer count
+          #                 map size   layer count
           resizeMap(Vector2(32, 32), layer_count=4)
           fill(Vector2(1, 0))
           drawRect(3, 3, 10, 5, Vector2(15, 1))
