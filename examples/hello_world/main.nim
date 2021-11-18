@@ -1,13 +1,4 @@
-import
-  nodesnim/window,
-  nodesnim/core/anchor,
-  nodesnim/core/scene_builder,
-  nodesnim/core/color,
-  nodesnim/nodes/scene,
-  nodesnim/nodes/node,
-  nodesnim/nodes/canvas,
-  nodesnim/nodescontrol/label,
-  nodesnim/nodescontrol/control
+import nodesnim
 
 Window("Hello, world!")
 
