@@ -35,8 +35,7 @@ var
              "url_color": Color("#2a9afc")}.toTable())
   ]
 {.cast(noSideEffect).}:
-  var current_theme*: ThemeRef
-current_theme = themes[0].deepCopy()
+  var current_theme* = themes[0].deepCopy()
 
 proc addTheme*(theme: ThemeRef) =
   themes.add(theme)

@@ -206,4 +206,3 @@ method draw*(self: ChartRef, w, h: GLfloat) =
 
 method addChartData*(self: ChartRef, chart_data: ChartData) {.base.} =
   self.data.add(chart_data)
-

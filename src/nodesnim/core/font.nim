@@ -101,6 +101,9 @@ proc applyStyle*(symbol: StyleUnicode, style: cint, enabled: bool = true) =
   elif (symbol.style and style) != 0 and not enabled:
     symbol.style = symbol.style xor style
 
+proc clear*(text: StyleText) =
+  text.chars = @[]
+
 proc toUpper*(text: StyleText): StyleText =
   result = text.deepCopy()
   for i in result.chars:
@@ -319,9 +322,8 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
     text.texture.size.y = surface.h.float
 
     # OpenGL:
-    if text.texture.texture != 0'u32:
-      glDeleteTextures(1, addr text.texture.texture)
-    glGenTextures(1, addr text.texture.texture)
+    if text.texture.texture == 0'u32:
+      glGenTextures(1, addr text.texture.texture)
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
@@ -334,6 +336,7 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
     # free memory
     surface.freeSurface()
     surface = nil
+    echo text.texture.texture, ", ", text
   text.rendered = true
 
 proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
@@ -395,5 +398,4 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
 
 
 proc freeMemory*(text: StyleText) =
-  if text.texture.texture != 0'u32:
-    glDeleteTextures(1, addr text.texture.texture)
+  glDeleteTextures(1, addr text.texture.texture)
