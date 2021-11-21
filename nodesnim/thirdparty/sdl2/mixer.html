@@ -20,7 +20,7 @@
 <title>nodesnim/thirdparty/sdl2/mixer</title>
 <link rel="stylesheet" type="text/css" href="../../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -107,28 +101,29 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#ChunkPtr"
-    title="ChunkPtr = ptr Chunk"><wbr />Chunk<wbr />Ptr<span class="attachedType"></span></a></li>
+    title="ChunkPtr = ptr Chunk">ChunkPtr</a></li>
   <li><a class="reference" href="#Chunk"
     title="Chunk = object
   allocated*: cint
   abuf*: ptr uint8
   alen*: uint32
-  volume*: uint8"><wbr />Chunk<span class="attachedType"></span></a></li>
+  volume*: uint8">Chunk</a></li>
   <li><a class="reference" href="#Fading"
     title="Fading {.size: 4.} = enum
-  MIX_NO_FADING, MIX_FADING_OUT, MIX_FADING_IN"><wbr />Fading<span class="attachedType"></span></a></li>
+  MIX_NO_FADING, MIX_FADING_OUT, MIX_FADING_IN">Fading</a></li>
   <li><a class="reference" href="#MusicType"
     title="MusicType {.size: 4.} = enum
-  MUS_NONE, MUS_CMD, MUS_WAV, MUS_MOD, MUS_MID, MUS_OGG, MUS_MP3, MUS_MP3_MAD, MUS_FLAC,
-  MUS_MODPLUG"><wbr />Music<wbr />Type<span class="attachedType"></span></a></li>
+  MUS_NONE, MUS_CMD, MUS_WAV, MUS_MOD, MUS_MID, MUS_OGG, MUS_MP3, MUS_MP3_MAD,
+  MUS_FLAC, MUS_MODPLUG">MusicType</a></li>
   <li><a class="reference" href="#MusicPtr"
-    title="MusicPtr = ptr Music"><wbr />Music<wbr />Ptr<span class="attachedType"></span></a></li>
+    title="MusicPtr = ptr Music">MusicPtr</a></li>
   <li><a class="reference" href="#Music"
-    title="Music = object"><wbr />Music<span class="attachedType"></span></a></li>
+    title="Music = object">Music</a></li>
   <li><a class="reference" href="#Mix_EffectFunc_t"
-    title="Mix_EffectFunc_t = proc (chan: cint; stream: pointer; len: cint; udata: pointer) {.cdecl.}"><wbr />Mix_<wbr />Effect<wbr />Func_<wbr />t<span class="attachedType"></span></a></li>
+    title="Mix_EffectFunc_t = proc (chan: cint; stream: pointer; len: cint; udata: pointer) {.
+    cdecl.}">Mix_EffectFunc_t</a></li>
   <li><a class="reference" href="#Mix_EffectDone_t"
-    title="Mix_EffectDone_t = proc (chan: cint; udata: pointer) {.cdecl.}"><wbr />Mix_<wbr />Effect<wbr />Done_<wbr />t<span class="attachedType"></span></a></li>
+    title="Mix_EffectDone_t = proc (chan: cint; udata: pointer) {.cdecl.}">Mix_EffectDone_t</a></li>
 
   </ul>
 </li>
@@ -136,187 +131,409 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#LibName"
-    title="LibName = &quot;libSDL2_mixer(|-2.0).so(|.0)&quot;"><wbr />Lib<wbr />Name<span class="attachedType"></span></a></li>
+    title="LibName = &quot;libSDL2_mixer(|-2.0).so(|.0)&quot;">LibName</a></li>
   <li><a class="reference" href="#MIX_DEFAULT_FORMAT"
-    title="MIX_DEFAULT_FORMAT = 0x00008010"><wbr />MIX_<wbr />DEFAULT_<wbr />FORMAT<span class="attachedType"></span></a></li>
+    title="MIX_DEFAULT_FORMAT = 0x00008010">MIX_DEFAULT_FORMAT</a></li>
   <li><a class="reference" href="#MIX_INIT_FLAC"
-    title="MIX_INIT_FLAC: cint = 0x00000001"><wbr />MIX_<wbr />INIT_<wbr />FLAC<span class="attachedType"></span></a></li>
+    title="MIX_INIT_FLAC: cint = 0x00000001">MIX_INIT_FLAC</a></li>
   <li><a class="reference" href="#MIX_INIT_MOD"
-    title="MIX_INIT_MOD: cint = 0x00000002"><wbr />MIX_<wbr />INIT_<wbr />MOD<span class="attachedType"></span></a></li>
+    title="MIX_INIT_MOD: cint = 0x00000002">MIX_INIT_MOD</a></li>
   <li><a class="reference" href="#MIX_INIT_MODPLUG"
-    title="MIX_INIT_MODPLUG: cint = 0x00000004"><wbr />MIX_<wbr />INIT_<wbr />MODPLUG<span class="attachedType"></span></a></li>
+    title="MIX_INIT_MODPLUG: cint = 0x00000004">MIX_INIT_MODPLUG</a></li>
   <li><a class="reference" href="#MIX_INIT_MP3"
-    title="MIX_INIT_MP3: cint = 0x00000008"><wbr />MIX_<wbr />INIT_<wbr />MP3<span class="attachedType"></span></a></li>
+    title="MIX_INIT_MP3: cint = 0x00000008">MIX_INIT_MP3</a></li>
   <li><a class="reference" href="#MIX_INIT_OGG"
-    title="MIX_INIT_OGG: cint = 0x00000010"><wbr />MIX_<wbr />INIT_<wbr />OGG<span class="attachedType"></span></a></li>
+    title="MIX_INIT_OGG: cint = 0x00000010">MIX_INIT_OGG</a></li>
   <li><a class="reference" href="#MIX_INIT_FLUIDSYNTH"
-    title="MIX_INIT_FLUIDSYNTH: cint = 0x00000020"><wbr />MIX_<wbr />INIT_<wbr />FLUIDSYNTH<span class="attachedType"></span></a></li>
+    title="MIX_INIT_FLUIDSYNTH: cint = 0x00000020">MIX_INIT_FLUIDSYNTH</a></li>
   <li><a class="reference" href="#MIX_CHANNELS"
-    title="MIX_CHANNELS = 8"><wbr />MIX_<wbr />CHANNELS<span class="attachedType"></span></a></li>
+    title="MIX_CHANNELS = 8">MIX_CHANNELS</a></li>
   <li><a class="reference" href="#MIX_DEFAULT_FREQUENCY"
-    title="MIX_DEFAULT_FREQUENCY = 22050"><wbr />MIX_<wbr />DEFAULT_<wbr />FREQUENCY<span class="attachedType"></span></a></li>
+    title="MIX_DEFAULT_FREQUENCY = 22050">MIX_DEFAULT_FREQUENCY</a></li>
   <li><a class="reference" href="#MIX_DEFAULT_CHANNELS"
-    title="MIX_DEFAULT_CHANNELS = 2"><wbr />MIX_<wbr />DEFAULT_<wbr />CHANNELS<span class="attachedType"></span></a></li>
+    title="MIX_DEFAULT_CHANNELS = 2">MIX_DEFAULT_CHANNELS</a></li>
   <li><a class="reference" href="#MIX_MAX_VOLUME"
-    title="MIX_MAX_VOLUME = 128"><wbr />MIX_<wbr />MAX_<wbr />VOLUME<span class="attachedType"></span></a></li>
+    title="MIX_MAX_VOLUME = 128">MIX_MAX_VOLUME</a></li>
   <li><a class="reference" href="#MIX_CHANNEL_POST"
-    title="MIX_CHANNEL_POST = -2"><wbr />MIX_<wbr />CHANNEL_<wbr />POST<span class="attachedType"></span></a></li>
+    title="MIX_CHANNEL_POST = -2">MIX_CHANNEL_POST</a></li>
   <li><a class="reference" href="#MIX_EFFECTSMAXSPEED"
-    title="MIX_EFFECTSMAXSPEED = &quot;MIX_EFFECTSMAXSPEED&quot;"><wbr />MIX_<wbr />EFFECTSMAXSPEED<span class="attachedType"></span></a></li>
+    title="MIX_EFFECTSMAXSPEED = &quot;MIX_EFFECTSMAXSPEED&quot;">MIX_EFFECTSMAXSPEED</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#linkedVersion"
-    title="linkedVersion(): ptr SDL_Version"><wbr />linked<wbr />Version<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#init%2Ccint"
-    title="init(flags: cint): cint"><wbr />init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#quit"
-    title="quit()"><wbr />quit<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#openAudio%2Ccint%2Cuint16%2Ccint%2Ccint"
-    title="openAudio(frequency: cint; format: uint16; channels: cint; chunksize: cint): cint"><wbr />open<wbr />Audio<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#allocateChannels%2Ccint"
-    title="allocateChannels(numchans: cint): cint"><wbr />allocate<wbr />Channels<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#querySpec%2Cptr.cint%2Cptr.uint16%2Cptr.cint"
-    title="querySpec(frequency: ptr cint; format: ptr uint16; channels: ptr cint): cint"><wbr />query<wbr />Spec<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadWAV_RW%2CRWopsPtr%2Ccint"
-    title="loadWAV_RW(src: RWopsPtr; freesrc: cint): ptr Chunk"><wbr />load<wbr />WAV_<wbr />RW<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#loadMUS%2Ccstring"
-    title="loadMUS(file: cstring): ptr Music"><wbr />load<wbr />MUS<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#loadMUS_RW%2CRWopsPtr%2Ccint"
-    title="loadMUS_RW(src: RWopsPtr; freesrc: cint): ptr Music"><wbr />load<wbr />MUS_<wbr />RW<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#loadMUSType_RW%2CRWopsPtr%2CMusicType%2Ccint"
-    title="loadMUSType_RW(src: RWopsPtr; `type`: MusicType; freesrc: cint): ptr Music"><wbr />load<wbr />MUSType_<wbr />RW<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#quickLoad_WAV%2Cptr.uint8"
-    title="quickLoad_WAV(mem: ptr uint8): ptr Chunk"><wbr />quick<wbr />Load_<wbr />WAV<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#quickLoad_RAW%2Cptr.uint8%2Cuint32"
-    title="quickLoad_RAW(mem: ptr uint8; len: uint32): ptr Chunk"><wbr />quick<wbr />Load_<wbr />RAW<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#freeChunk%2Cptr.Chunk"
-    title="freeChunk(chunk: ptr Chunk)"><wbr />free<wbr />Chunk<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#freeMusic%2Cptr.Music"
-    title="freeMusic(music: ptr Music)"><wbr />free<wbr />Music<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#getNumChunkDecoders"
-    title="getNumChunkDecoders(): cint"><wbr />get<wbr />Num<wbr />Chunk<wbr />Decoders<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getChunkDecoder%2Ccint"
-    title="getChunkDecoder(index: cint): cstring"><wbr />get<wbr />Chunk<wbr />Decoder<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getNumMusicDecoders"
-    title="getNumMusicDecoders(): cint"><wbr />get<wbr />Num<wbr />Music<wbr />Decoders<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getMusicDecoder%2Ccint"
-    title="getMusicDecoder(index: cint): cstring"><wbr />get<wbr />Music<wbr />Decoder<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getMusicType%2Cptr.Music"
-    title="getMusicType(music: ptr Music): MusicType"><wbr />get<wbr />Music<wbr />Type<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#setPostMix%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"
-    title="setPostMix(mix_func: proc (udata: pointer; stream: ptr uint8; len: cint) {.cdecl.};
-           arg: pointer)"><wbr />set<wbr />Post<wbr />Mix<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#hookMusic%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"
+      <ul class="simple nested-toc-section">allocateChannels
+      <li><a class="reference" href="#allocateChannels%2Ccint"
+    title="allocateChannels(numchans: cint): cint">allocateChannels,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">reserveChannels
+      <li><a class="reference" href="#reserveChannels%2Ccint"
+    title="reserveChannels(num: cint): cint">reserveChannels,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadeInMusicPos
+      <li><a class="reference" href="#fadeInMusicPos%2Cptr.Music%2Ccint%2Ccint%2Ccdouble"
+    title="fadeInMusicPos(music: ptr Music; loops: cint; ms: cint; position: cdouble): cint">fadeInMusicPos,<wbr>ptr.Music,<wbr>cint,<wbr>cint,<wbr>cdouble</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">groupChannels
+      <li><a class="reference" href="#groupChannels%2Ccint%2Ccint%2Ccint"
+    title="groupChannels(from: cint; to: cint; tag: cint): cint">groupChannels,<wbr>cint,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">volumeMusic
+      <li><a class="reference" href="#volumeMusic%2Ccint"
+    title="volumeMusic(volume: cint): cint">volumeMusic,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadeInMusic
+      <li><a class="reference" href="#fadeInMusic%2Cptr.Music%2Ccint%2Ccint"
+    title="fadeInMusic(music: ptr Music; loops: cint; ms: cint): cint">fadeInMusic,<wbr>ptr.Music,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getSoundFonts
+      <li><a class="reference" href="#getSoundFonts"
+    title="getSoundFonts(): cstring">getSoundFonts</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadMUSType_RW
+      <li><a class="reference" href="#loadMUSType_RW%2CRWopsPtr%2CMusicType%2Ccint"
+    title="loadMUSType_RW(src: RWopsPtr; type: MusicType; freesrc: cint): ptr Music">loadMUSType_RW,<wbr>RWopsPtr,<wbr>MusicType,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">pause
+      <li><a class="reference" href="#pause%2Ccint"
+    title="pause(channel: cint)">pause,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">hookMusic
+      <li><a class="reference" href="#hookMusic%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"
     title="hookMusic(mix_func: proc (udata: pointer; stream: ptr uint8; len: cint) {.cdecl.};
-          arg: pointer)"><wbr />hook<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#hookMusicFinished%2Cproc%29"
-    title="hookMusicFinished(music_finished: proc () {.cdecl.})"><wbr />hook<wbr />Music<wbr />Finished<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getMusicHookData"
-    title="getMusicHookData(): pointer"><wbr />get<wbr />Music<wbr />Hook<wbr />Data<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#channelFinished%2Cproc%28cint%29"
-    title="channelFinished(channel_finished: proc (channel: cint) {.cdecl.})"><wbr />channel<wbr />Finished<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#registerEffect%2Ccint%2CMix_EffectFunc_t%2CMix_EffectDone_t%2Cpointer"
-    title="registerEffect(chan: cint; f: Mix_EffectFunc_t; d: Mix_EffectDone_t; arg: pointer): cint"><wbr />register<wbr />Effect<span class="attachedType">Mix_EffectFunc_t</span></a></li>
-  <li><a class="reference" href="#unregisterEffect%2Ccint%2CMix_EffectFunc_t"
-    title="unregisterEffect(channel: cint; f: Mix_EffectFunc_t): cint"><wbr />unregister<wbr />Effect<span class="attachedType">Mix_EffectFunc_t</span></a></li>
-  <li><a class="reference" href="#unregisterAllEffects%2Ccint"
-    title="unregisterAllEffects(channel: cint): cint"><wbr />unregister<wbr />All<wbr />Effects<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setPanning%2Ccint%2Cuint8%2Cuint8"
-    title="setPanning(channel: cint; left: uint8; right: uint8): cint"><wbr />set<wbr />Panning<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setPosition%2Ccint%2Cint16%2Cuint8"
-    title="setPosition(channel: cint; angle: int16; distance: uint8): cint"><wbr />set<wbr />Position<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setDistance%2Ccint%2Cuint8"
-    title="setDistance(channel: cint; distance: uint8): cint"><wbr />set<wbr />Distance<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setReverseStereo%2Ccint%2Ccint"
-    title="setReverseStereo(channel: cint; flip: cint): cint"><wbr />set<wbr />Reverse<wbr />Stereo<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#reserveChannels%2Ccint"
-    title="reserveChannels(num: cint): cint"><wbr />reserve<wbr />Channels<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#groupChannel%2Ccint%2Ccint"
-    title="groupChannel(which: cint; tag: cint): cint"><wbr />group<wbr />Channel<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#groupChannels%2Ccint%2Ccint%2Ccint"
-    title="groupChannels(`from`: cint; to: cint; tag: cint): cint"><wbr />group<wbr />Channels<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#groupAvailable%2Ccint"
-    title="groupAvailable(tag: cint): cint"><wbr />group<wbr />Available<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#groupCount%2Ccint"
-    title="groupCount(tag: cint): cint"><wbr />group<wbr />Count<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#groupOldest%2Ccint"
-    title="groupOldest(tag: cint): cint"><wbr />group<wbr />Oldest<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#groupNewer%2Ccint"
-    title="groupNewer(tag: cint): cint"><wbr />group<wbr />Newer<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#playChannelTimed%2Ccint%2Cptr.Chunk%2Ccint%2Ccint"
-    title="playChannelTimed(channel: cint; chunk: ptr Chunk; loops: cint; ticks: cint): cint"><wbr />play<wbr />Channel<wbr />Timed<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#playMusic%2Cptr.Music%2Ccint"
-    title="playMusic(music: ptr Music; loops: cint): cint"><wbr />play<wbr />Music<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#fadeInMusic%2Cptr.Music%2Ccint%2Ccint"
-    title="fadeInMusic(music: ptr Music; loops: cint; ms: cint): cint"><wbr />fade<wbr />In<wbr />Music<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#fadeInMusicPos%2Cptr.Music%2Ccint%2Ccint%2Ccdouble"
-    title="fadeInMusicPos(music: ptr Music; loops: cint; ms: cint; position: cdouble): cint"><wbr />fade<wbr />In<wbr />Music<wbr />Pos<span class="attachedType">Music</span></a></li>
-  <li><a class="reference" href="#fadeInChannelTimed%2Ccint%2Cptr.Chunk%2Ccint%2Ccint%2Ccint"
-    title="fadeInChannelTimed(channel: cint; chunk: ptr Chunk; loops: cint; ms: cint; ticks: cint): cint"><wbr />fade<wbr />In<wbr />Channel<wbr />Timed<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#volume%2Ccint%2Ccint"
-    title="volume(channel: cint; volume: cint): cint"><wbr />volume<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#volumeChunk%2Cptr.Chunk%2Ccint"
-    title="volumeChunk(chunk: ptr Chunk; volume: cint): cint"><wbr />volume<wbr />Chunk<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#volumeMusic%2Ccint"
-    title="volumeMusic(volume: cint): cint"><wbr />volume<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#haltChannel%2Ccint"
-    title="haltChannel(channel: cint): cint"><wbr />halt<wbr />Channel<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#haltGroup%2Ccint"
-    title="haltGroup(tag: cint): cint"><wbr />halt<wbr />Group<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#haltMusic"
-    title="haltMusic(): cint"><wbr />halt<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#expireChannel%2Ccint%2Ccint"
-    title="expireChannel(channel: cint; ticks: cint): cint"><wbr />expire<wbr />Channel<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fadeOutChannel%2Ccint%2Ccint"
-    title="fadeOutChannel(which: cint; ms: cint): cint"><wbr />fade<wbr />Out<wbr />Channel<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fadeOutGroup%2Ccint%2Ccint"
-    title="fadeOutGroup(tag: cint; ms: cint): cint"><wbr />fade<wbr />Out<wbr />Group<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fadeOutMusic%2Ccint"
-    title="fadeOutMusic(ms: cint): cint"><wbr />fade<wbr />Out<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fadingMusic"
-    title="fadingMusic(): Fading"><wbr />fading<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fadingChannel%2Ccint"
-    title="fadingChannel(which: cint): Fading"><wbr />fading<wbr />Channel<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#pause%2Ccint"
-    title="pause(channel: cint)"><wbr />pause<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#resume%2Ccint"
-    title="resume(channel: cint)"><wbr />resume<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#paused%2Ccint"
-    title="paused(channel: cint): cint"><wbr />paused<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#pauseMusic"
-    title="pauseMusic()"><wbr />pause<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#resumeMusic"
-    title="resumeMusic()"><wbr />resume<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#rewindMusic"
-    title="rewindMusic()"><wbr />rewind<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#pausedMusic"
-    title="pausedMusic(): cint"><wbr />paused<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setMusicPosition%2Ccdouble"
-    title="setMusicPosition(position: cdouble): cint"><wbr />set<wbr />Music<wbr />Position<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#playing%2Ccint"
-    title="playing(channel: cint): cint"><wbr />playing<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#playingMusic"
-    title="playingMusic(): cint"><wbr />playing<wbr />Music<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setMusicCMD%2Ccstring"
-    title="setMusicCMD(command: cstring): cint"><wbr />set<wbr />Music<wbr />CMD<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setSynchroValue%2Ccint"
-    title="setSynchroValue(value: cint): cint"><wbr />set<wbr />Synchro<wbr />Value<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getSynchroValue"
-    title="getSynchroValue(): cint"><wbr />get<wbr />Synchro<wbr />Value<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setSoundFonts%2Ccstring"
-    title="setSoundFonts(paths: cstring): cint"><wbr />set<wbr />Sound<wbr />Fonts<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getSoundFonts"
-    title="getSoundFonts(): cstring"><wbr />get<wbr />Sound<wbr />Fonts<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#eachSoundFont%2Cproc%28cstring%2Cpointer%29%2Cpointer"
-    title="eachSoundFont(function: proc (a2: cstring; a3: pointer): cint {.cdecl.}; data: pointer): cint"><wbr />each<wbr />Sound<wbr />Font<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getChunk%2Ccint"
-    title="getChunk(channel: cint): ptr Chunk"><wbr />get<wbr />Chunk<span class="attachedType">Chunk</span></a></li>
-  <li><a class="reference" href="#closeAudio"
-    title="closeAudio()"><wbr />close<wbr />Audio<span class="attachedType"></span></a></li>
+          arg: pointer)">hookMusic,<wbr>proc(pointer,<wbr>ptr.uint8,<wbr>cint),<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">volumeChunk
+      <li><a class="reference" href="#volumeChunk%2Cptr.Chunk%2Ccint"
+    title="volumeChunk(chunk: ptr Chunk; volume: cint): cint">volumeChunk,<wbr>ptr.Chunk,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">pauseMusic
+      <li><a class="reference" href="#pauseMusic"
+    title="pauseMusic()">pauseMusic</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">pausedMusic
+      <li><a class="reference" href="#pausedMusic"
+    title="pausedMusic(): cint">pausedMusic</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">hookMusicFinished
+      <li><a class="reference" href="#hookMusicFinished%2Cproc%29"
+    title="hookMusicFinished(music_finished: proc () {.cdecl.})">hookMusicFinished,<wbr>proc)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setPostMix
+      <li><a class="reference" href="#setPostMix%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"
+    title="setPostMix(mix_func: proc (udata: pointer; stream: ptr uint8; len: cint) {.cdecl.};
+           arg: pointer)">setPostMix,<wbr>proc(pointer,<wbr>ptr.uint8,<wbr>cint),<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadWAV_RW
+      <li><a class="reference" href="#loadWAV_RW%2CRWopsPtr%2Ccint"
+    title="loadWAV_RW(src: RWopsPtr; freesrc: cint): ptr Chunk">loadWAV_RW,<wbr>RWopsPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">init
+      <li><a class="reference" href="#init%2Ccint"
+    title="init(flags: cint): cint">init,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">registerEffect
+      <li><a class="reference" href="#registerEffect%2Ccint%2CMix_EffectFunc_t%2CMix_EffectDone_t%2Cpointer"
+    title="registerEffect(chan: cint; f: Mix_EffectFunc_t; d: Mix_EffectDone_t;
+               arg: pointer): cint">registerEffect,<wbr>cint,<wbr>Mix_EffectFunc_t,<wbr>Mix_EffectDone_t,<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadingChannel
+      <li><a class="reference" href="#fadingChannel%2Ccint"
+    title="fadingChannel(which: cint): Fading">fadingChannel,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getSynchroValue
+      <li><a class="reference" href="#getSynchroValue"
+    title="getSynchroValue(): cint">getSynchroValue</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getChunk
+      <li><a class="reference" href="#getChunk%2Ccint"
+    title="getChunk(channel: cint): ptr Chunk">getChunk,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadMUS
+      <li><a class="reference" href="#loadMUS%2Ccstring"
+    title="loadMUS(file: cstring): ptr Music">loadMUS,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setPanning
+      <li><a class="reference" href="#setPanning%2Ccint%2Cuint8%2Cuint8"
+    title="setPanning(channel: cint; left: uint8; right: uint8): cint">setPanning,<wbr>cint,<wbr>uint8,<wbr>uint8</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">freeMusic
+      <li><a class="reference" href="#freeMusic%2Cptr.Music"
+    title="freeMusic(music: ptr Music)">freeMusic,<wbr>ptr.Music</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadMUS_RW
+      <li><a class="reference" href="#loadMUS_RW%2CRWopsPtr%2Ccint"
+    title="loadMUS_RW(src: RWopsPtr; freesrc: cint): ptr Music">loadMUS_RW,<wbr>RWopsPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getMusicDecoder
+      <li><a class="reference" href="#getMusicDecoder%2Ccint"
+    title="getMusicDecoder(index: cint): cstring">getMusicDecoder,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">playing
+      <li><a class="reference" href="#playing%2Ccint"
+    title="playing(channel: cint): cint">playing,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getNumMusicDecoders
+      <li><a class="reference" href="#getNumMusicDecoders"
+    title="getNumMusicDecoders(): cint">getNumMusicDecoders</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadeInChannelTimed
+      <li><a class="reference" href="#fadeInChannelTimed%2Ccint%2Cptr.Chunk%2Ccint%2Ccint%2Ccint"
+    title="fadeInChannelTimed(channel: cint; chunk: ptr Chunk; loops: cint; ms: cint;
+                   ticks: cint): cint">fadeInChannelTimed,<wbr>cint,<wbr>ptr.Chunk,<wbr>cint,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">resumeMusic
+      <li><a class="reference" href="#resumeMusic"
+    title="resumeMusic()">resumeMusic</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadeOutChannel
+      <li><a class="reference" href="#fadeOutChannel%2Ccint%2Ccint"
+    title="fadeOutChannel(which: cint; ms: cint): cint">fadeOutChannel,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setMusicPosition
+      <li><a class="reference" href="#setMusicPosition%2Ccdouble"
+    title="setMusicPosition(position: cdouble): cint">setMusicPosition,<wbr>cdouble</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setMusicCMD
+      <li><a class="reference" href="#setMusicCMD%2Ccstring"
+    title="setMusicCMD(command: cstring): cint">setMusicCMD,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">eachSoundFont
+      <li><a class="reference" href="#eachSoundFont%2Cproc%28cstring%2Cpointer%29%2Cpointer"
+    title="eachSoundFont(function: proc (a2: cstring; a3: pointer): cint {.cdecl.};
+              data: pointer): cint">eachSoundFont,<wbr>proc(cstring,<wbr>pointer),<wbr>pointer</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">rewindMusic
+      <li><a class="reference" href="#rewindMusic"
+    title="rewindMusic()">rewindMusic</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">quickLoad_WAV
+      <li><a class="reference" href="#quickLoad_WAV%2Cptr.uint8"
+    title="quickLoad_WAV(mem: ptr uint8): ptr Chunk">quickLoad_WAV,<wbr>ptr.uint8</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">freeChunk
+      <li><a class="reference" href="#freeChunk%2Cptr.Chunk"
+    title="freeChunk(chunk: ptr Chunk)">freeChunk,<wbr>ptr.Chunk</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">channelFinished
+      <li><a class="reference" href="#channelFinished%2Cproc%28cint%29"
+    title="channelFinished(channel_finished: proc (channel: cint) {.cdecl.})">channelFinished,<wbr>proc(cint)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">unregisterEffect
+      <li><a class="reference" href="#unregisterEffect%2Ccint%2CMix_EffectFunc_t"
+    title="unregisterEffect(channel: cint; f: Mix_EffectFunc_t): cint">unregisterEffect,<wbr>cint,<wbr>Mix_EffectFunc_t</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadeOutMusic
+      <li><a class="reference" href="#fadeOutMusic%2Ccint"
+    title="fadeOutMusic(ms: cint): cint">fadeOutMusic,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">haltChannel
+      <li><a class="reference" href="#haltChannel%2Ccint"
+    title="haltChannel(channel: cint): cint">haltChannel,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">paused
+      <li><a class="reference" href="#paused%2Ccint"
+    title="paused(channel: cint): cint">paused,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">groupChannel
+      <li><a class="reference" href="#groupChannel%2Ccint%2Ccint"
+    title="groupChannel(which: cint; tag: cint): cint">groupChannel,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setSynchroValue
+      <li><a class="reference" href="#setSynchroValue%2Ccint"
+    title="setSynchroValue(value: cint): cint">setSynchroValue,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">playingMusic
+      <li><a class="reference" href="#playingMusic"
+    title="playingMusic(): cint">playingMusic</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">openAudio
+      <li><a class="reference" href="#openAudio%2Ccint%2Cuint16%2Ccint%2Ccint"
+    title="openAudio(frequency: cint; format: uint16; channels: cint; chunksize: cint): cint">openAudio,<wbr>cint,<wbr>uint16,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">groupNewer
+      <li><a class="reference" href="#groupNewer%2Ccint"
+    title="groupNewer(tag: cint): cint">groupNewer,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">groupOldest
+      <li><a class="reference" href="#groupOldest%2Ccint"
+    title="groupOldest(tag: cint): cint">groupOldest,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getMusicHookData
+      <li><a class="reference" href="#getMusicHookData"
+    title="getMusicHookData(): pointer">getMusicHookData</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getChunkDecoder
+      <li><a class="reference" href="#getChunkDecoder%2Ccint"
+    title="getChunkDecoder(index: cint): cstring">getChunkDecoder,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">closeAudio
+      <li><a class="reference" href="#closeAudio"
+    title="closeAudio()">closeAudio</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">playMusic
+      <li><a class="reference" href="#playMusic%2Cptr.Music%2Ccint"
+    title="playMusic(music: ptr Music; loops: cint): cint">playMusic,<wbr>ptr.Music,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">volume
+      <li><a class="reference" href="#volume%2Ccint%2Ccint"
+    title="volume(channel: cint; volume: cint): cint">volume,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">expireChannel
+      <li><a class="reference" href="#expireChannel%2Ccint%2Ccint"
+    title="expireChannel(channel: cint; ticks: cint): cint">expireChannel,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">quickLoad_RAW
+      <li><a class="reference" href="#quickLoad_RAW%2Cptr.uint8%2Cuint32"
+    title="quickLoad_RAW(mem: ptr uint8; len: uint32): ptr Chunk">quickLoad_RAW,<wbr>ptr.uint8,<wbr>uint32</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">unregisterAllEffects
+      <li><a class="reference" href="#unregisterAllEffects%2Ccint"
+    title="unregisterAllEffects(channel: cint): cint">unregisterAllEffects,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadingMusic
+      <li><a class="reference" href="#fadingMusic"
+    title="fadingMusic(): Fading">fadingMusic</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setReverseStereo
+      <li><a class="reference" href="#setReverseStereo%2Ccint%2Ccint"
+    title="setReverseStereo(channel: cint; flip: cint): cint">setReverseStereo,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setPosition
+      <li><a class="reference" href="#setPosition%2Ccint%2Cint16%2Cuint8"
+    title="setPosition(channel: cint; angle: int16; distance: uint8): cint">setPosition,<wbr>cint,<wbr>int16,<wbr>uint8</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">playChannelTimed
+      <li><a class="reference" href="#playChannelTimed%2Ccint%2Cptr.Chunk%2Ccint%2Ccint"
+    title="playChannelTimed(channel: cint; chunk: ptr Chunk; loops: cint; ticks: cint): cint">playChannelTimed,<wbr>cint,<wbr>ptr.Chunk,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getMusicType
+      <li><a class="reference" href="#getMusicType%2Cptr.Music"
+    title="getMusicType(music: ptr Music): MusicType">getMusicType,<wbr>ptr.Music</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">haltGroup
+      <li><a class="reference" href="#haltGroup%2Ccint"
+    title="haltGroup(tag: cint): cint">haltGroup,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fadeOutGroup
+      <li><a class="reference" href="#fadeOutGroup%2Ccint%2Ccint"
+    title="fadeOutGroup(tag: cint; ms: cint): cint">fadeOutGroup,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setSoundFonts
+      <li><a class="reference" href="#setSoundFonts%2Ccstring"
+    title="setSoundFonts(paths: cstring): cint">setSoundFonts,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setDistance
+      <li><a class="reference" href="#setDistance%2Ccint%2Cuint8"
+    title="setDistance(channel: cint; distance: uint8): cint">setDistance,<wbr>cint,<wbr>uint8</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getNumChunkDecoders
+      <li><a class="reference" href="#getNumChunkDecoders"
+    title="getNumChunkDecoders(): cint">getNumChunkDecoders</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">linkedVersion
+      <li><a class="reference" href="#linkedVersion"
+    title="linkedVersion(): ptr SDL_Version">linkedVersion</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">groupAvailable
+      <li><a class="reference" href="#groupAvailable%2Ccint"
+    title="groupAvailable(tag: cint): cint">groupAvailable,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">haltMusic
+      <li><a class="reference" href="#haltMusic"
+    title="haltMusic(): cint">haltMusic</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">resume
+      <li><a class="reference" href="#resume%2Ccint"
+    title="resume(channel: cint)">resume,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">groupCount
+      <li><a class="reference" href="#groupCount%2Ccint"
+    title="groupCount(tag: cint): cint">groupCount,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">querySpec
+      <li><a class="reference" href="#querySpec%2Cptr.cint%2Cptr.uint16%2Cptr.cint"
+    title="querySpec(frequency: ptr cint; format: ptr uint16; channels: ptr cint): cint">querySpec,<wbr>ptr.cint,<wbr>ptr.uint16,<wbr>ptr.cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">quit
+      <li><a class="reference" href="#quit"
+    title="quit()">quit</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -324,11 +541,11 @@ function main() {
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#loadWAV.t%2Cuntyped"
-    title="loadWAV(file: untyped): untyped"><wbr />load<wbr />WAV<span class="attachedType"></span></a></li>
+    title="loadWAV(file: untyped): untyped">loadWAV</a></li>
   <li><a class="reference" href="#playChannel.t%2Cuntyped%2Cuntyped%2Cuntyped"
-    title="playChannel(channel, chunk, loops: untyped): untyped"><wbr />play<wbr />Channel<span class="attachedType"></span></a></li>
+    title="playChannel(channel, chunk, loops: untyped): untyped">playChannel</a></li>
   <li><a class="reference" href="#fadeInChannel.t%2Cuntyped%2Cuntyped%2Cuntyped%2Cuntyped"
-    title="fadeInChannel(channel, chunk, loops, ms: untyped): untyped"><wbr />fade<wbr />In<wbr />Channel<span class="attachedType"></span></a></li>
+    title="fadeInChannel(channel, chunk, loops, ms: untyped): untyped">fadeInChannel</a></li>
 
   </ul>
 </li>
@@ -377,8 +594,8 @@ function main() {
 </dd>
 <a id="MusicType"></a>
 <dt><pre><a href="mixer.html#MusicType"><span class="Identifier">MusicType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">4</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">MUS_NONE</span><span class="Other">,</span> <span class="Identifier">MUS_CMD</span><span class="Other">,</span> <span class="Identifier">MUS_WAV</span><span class="Other">,</span> <span class="Identifier">MUS_MOD</span><span class="Other">,</span> <span class="Identifier">MUS_MID</span><span class="Other">,</span> <span class="Identifier">MUS_OGG</span><span class="Other">,</span> <span class="Identifier">MUS_MP3</span><span class="Other">,</span> <span class="Identifier">MUS_MP3_MAD</span><span class="Other">,</span> <span class="Identifier">MUS_FLAC</span><span class="Other">,</span>
-  <span class="Identifier">MUS_MODPLUG</span></pre></dt>
+  <span class="Identifier">MUS_NONE</span><span class="Other">,</span> <span class="Identifier">MUS_CMD</span><span class="Other">,</span> <span class="Identifier">MUS_WAV</span><span class="Other">,</span> <span class="Identifier">MUS_MOD</span><span class="Other">,</span> <span class="Identifier">MUS_MID</span><span class="Other">,</span> <span class="Identifier">MUS_OGG</span><span class="Other">,</span> <span class="Identifier">MUS_MP3</span><span class="Other">,</span> <span class="Identifier">MUS_MP3_MAD</span><span class="Other">,</span>
+  <span class="Identifier">MUS_FLAC</span><span class="Other">,</span> <span class="Identifier">MUS_MODPLUG</span></pre></dt>
 <dd>
 
 
@@ -399,7 +616,8 @@ function main() {
 
 </dd>
 <a id="Mix_EffectFunc_t"></a>
-<dt><pre><a href="mixer.html#Mix_EffectFunc_t"><span class="Identifier">Mix_EffectFunc_t</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">chan</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">udata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><a href="mixer.html#Mix_EffectFunc_t"><span class="Identifier">Mix_EffectFunc_t</span></a> <span class="Other">=</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">chan</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">udata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -565,7 +783,8 @@ function main() {
 
 </dd>
 <a id="loadWAV_RW,RWopsPtr,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#loadWAV_RW%2CRWopsPtr%2Ccint"><span class="Identifier">loadWAV_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Chunk"><span class="Identifier">Chunk</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_LoadWAV_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#loadWAV_RW%2CRWopsPtr%2Ccint"><span class="Identifier">loadWAV_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Chunk"><span class="Identifier">Chunk</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_LoadWAV_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -579,14 +798,15 @@ function main() {
 
 </dd>
 <a id="loadMUS_RW,RWopsPtr,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#loadMUS_RW%2CRWopsPtr%2Ccint"><span class="Identifier">loadMUS_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Music"><span class="Identifier">Music</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_LoadMUS_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#loadMUS_RW%2CRWopsPtr%2Ccint"><span class="Identifier">loadMUS_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Music"><span class="Identifier">Music</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_LoadMUS_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="loadMUSType_RW,RWopsPtr,MusicType,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#loadMUSType_RW%2CRWopsPtr%2CMusicType%2Ccint"><span class="Identifier">loadMUSType_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Other">`</span><span class="Keyword">type</span><span class="Other">`</span><span class="Other">:</span> <a href="mixer.html#MusicType"><span class="Identifier">MusicType</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Music"><span class="Identifier">Music</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#loadMUSType_RW%2CRWopsPtr%2CMusicType%2Ccint"><span class="Identifier">loadMUSType_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">type</span><span class="Other">:</span> <a href="mixer.html#MusicType"><span class="Identifier">MusicType</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Music"><span class="Identifier">Music</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_LoadMUSType_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -658,16 +878,16 @@ function main() {
 
 </dd>
 <a id="setPostMix,proc(pointer,ptr.uint8,cint),pointer"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setPostMix%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"><span class="Identifier">setPostMix</span></a><span class="Other">(</span><span class="Identifier">mix_func</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">udata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span><span class="Other">;</span>
-               <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_SetPostMix&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#setPostMix%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"><span class="Identifier">setPostMix</span></a><span class="Other">(</span><span class="Identifier">mix_func</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">udata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span></span><span class="Other">.}</span></span><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_SetPostMix&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="hookMusic,proc(pointer,ptr.uint8,cint),pointer"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#hookMusic%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"><span class="Identifier">hookMusic</span></a><span class="Other">(</span><span class="Identifier">mix_func</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">udata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span><span class="Other">;</span>
-              <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_HookMusic&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#hookMusic%2Cproc%28pointer%2Cptr.uint8%2Ccint%29%2Cpointer"><span class="Identifier">hookMusic</span></a><span class="Other">(</span><span class="Identifier">mix_func</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">udata</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">;</span> <span class="Identifier">stream</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">cdecl</span></span><span class="Other">.}</span></span><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_HookMusic&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -697,8 +917,8 @@ function main() {
 
 </dd>
 <a id="registerEffect,cint,Mix_EffectFunc_t,Mix_EffectDone_t,pointer"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#registerEffect%2Ccint%2CMix_EffectFunc_t%2CMix_EffectDone_t%2Cpointer"><span class="Identifier">registerEffect</span></a><span class="Other">(</span><span class="Identifier">chan</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <a href="mixer.html#Mix_EffectFunc_t"><span class="Identifier">Mix_EffectFunc_t</span></a><span class="Other">;</span> <span class="Identifier">d</span><span class="Other">:</span> <a href="mixer.html#Mix_EffectDone_t"><span class="Identifier">Mix_EffectDone_t</span></a><span class="Other">;</span> <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_RegisterEffect&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#registerEffect%2Ccint%2CMix_EffectFunc_t%2CMix_EffectDone_t%2Cpointer"><span class="Identifier">registerEffect</span></a><span class="Other">(</span><span class="Identifier">chan</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">f</span><span class="Other">:</span> <a href="mixer.html#Mix_EffectFunc_t"><span class="Identifier">Mix_EffectFunc_t</span></a><span class="Other">;</span> <span class="Identifier">d</span><span class="Other">:</span> <a href="mixer.html#Mix_EffectDone_t"><span class="Identifier">Mix_EffectDone_t</span></a><span class="Other">;</span>
+                    <span class="Identifier">arg</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_RegisterEffect&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -713,7 +933,8 @@ function main() {
 
 </dd>
 <a id="unregisterAllEffects,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#unregisterAllEffects%2Ccint"><span class="Identifier">unregisterAllEffects</span></a><span class="Other">(</span><span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_UnregisterAllEffects&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#unregisterAllEffects%2Ccint"><span class="Identifier">unregisterAllEffects</span></a><span class="Other">(</span><span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_UnregisterAllEffects&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -736,7 +957,8 @@ function main() {
 
 </dd>
 <a id="setDistance,cint,uint8"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setDistance%2Ccint%2Cuint8"><span class="Identifier">setDistance</span></a><span class="Other">(</span><span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">distance</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_SetDistance&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#setDistance%2Ccint%2Cuint8"><span class="Identifier">setDistance</span></a><span class="Other">(</span><span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">distance</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_SetDistance&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -765,7 +987,7 @@ function main() {
 
 </dd>
 <a id="groupChannels,cint,cint,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#groupChannels%2Ccint%2Ccint%2Ccint"><span class="Identifier">groupChannels</span></a><span class="Other">(</span><span class="Other">`</span><span class="Keyword">from</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">to</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#groupChannels%2Ccint%2Ccint%2Ccint"><span class="Identifier">groupChannels</span></a><span class="Other">(</span><span class="Identifier">from</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">to</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">tag</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_GroupChannels&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -833,7 +1055,7 @@ function main() {
 </dd>
 <a id="fadeInChannelTimed,cint,ptr.Chunk,cint,cint,cint"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#fadeInChannelTimed%2Ccint%2Cptr.Chunk%2Ccint%2Ccint%2Ccint"><span class="Identifier">fadeInChannelTimed</span></a><span class="Other">(</span><span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">chunk</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Chunk"><span class="Identifier">Chunk</span></a><span class="Other">;</span> <span class="Identifier">loops</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ms</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                       <span class="Identifier">ticks</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_FadeInChannelTimed&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+                        <span class="Identifier">ticks</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_FadeInChannelTimed&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -847,7 +1069,8 @@ function main() {
 
 </dd>
 <a id="volumeChunk,ptr.Chunk,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#volumeChunk%2Cptr.Chunk%2Ccint"><span class="Identifier">volumeChunk</span></a><span class="Other">(</span><span class="Identifier">chunk</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Chunk"><span class="Identifier">Chunk</span></a><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_VolumeChunk&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#volumeChunk%2Cptr.Chunk%2Ccint"><span class="Identifier">volumeChunk</span></a><span class="Other">(</span><span class="Identifier">chunk</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="mixer.html#Chunk"><span class="Identifier">Chunk</span></a><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_VolumeChunk&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -882,7 +1105,8 @@ function main() {
 
 </dd>
 <a id="expireChannel,cint,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#expireChannel%2Ccint%2Ccint"><span class="Identifier">expireChannel</span></a><span class="Other">(</span><span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ticks</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_ExpireChannel&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#expireChannel%2Ccint%2Ccint"><span class="Identifier">expireChannel</span></a><span class="Other">(</span><span class="Identifier">channel</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">ticks</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_ExpireChannel&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -1030,7 +1254,7 @@ function main() {
 </dd>
 <a id="eachSoundFont,proc(cstring,pointer),pointer"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#eachSoundFont%2Cproc%28cstring%2Cpointer%29%2Cpointer"><span class="Identifier">eachSoundFont</span></a><span class="Other">(</span><span class="Identifier">function</span><span class="Other">:</span> <span class="Keyword">proc</span> <span class="Other">(</span><span class="Identifier">a2</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">a3</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">cdecl</span></span><span class="Other">.}</span></span><span class="Other">;</span>
-                  <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_EachSoundFont&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+                   <span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">pointer</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;Mix_EachSoundFont&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -1086,7 +1310,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:30 UTC</small>
       </div>
     </div>
   </div>

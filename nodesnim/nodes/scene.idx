@@ -5,5 +5,5 @@ drawScene	nodesnim/nodes/scene.html#drawScene.e,SceneRef,GLfloat,GLfloat,bool	sc
 duplicate	nodesnim/nodes/scene.html#duplicate.e,SceneRef	scene: duplicate(self: SceneRef): SceneRef	
 enter	nodesnim/nodes/scene.html#enter.e,SceneRef	scene: enter(scene: SceneRef)	
 exit	nodesnim/nodes/scene.html#exit.e,SceneRef	scene: exit(scene: SceneRef)	
-handleScene	nodesnim/nodes/scene.html#handleScene.e,SceneRef,InputEvent,NodeRef,bool	scene: handleScene(scene: SceneRef; event: InputEvent; mouse_on: var NodeRef; paused: bool)	
+handleScene	nodesnim/nodes/scene.html#handleScene.e,SceneRef,InputEvent,NodeRef,bool	scene: handleScene(scene: SceneRef; event: InputEvent; mouse_on: var NodeRef;\n            paused: bool)	
 reAnchorScene	nodesnim/nodes/scene.html#reAnchorScene.e,SceneRef,GLfloat,GLfloat,bool	scene: reAnchorScene(scene: SceneRef; w, h: GLfloat; paused: bool)	

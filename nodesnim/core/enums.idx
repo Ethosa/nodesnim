@@ -41,6 +41,8 @@ TEXTURE_PROGRESS_BAR_NODE	nodesnim/core/enums.html#TEXTURE_PROGRESS_BAR_NODE	Nod
 TEXTURE_RECT_NODE	nodesnim/core/enums.html#TEXTURE_RECT_NODE	NodeKind.TEXTURE_RECT_NODE	
 VBOX_NODE	nodesnim/core/enums.html#VBOX_NODE	NodeKind.VBOX_NODE	
 SUB_WINDOW_NODE	nodesnim/core/enums.html#SUB_WINDOW_NODE	NodeKind.SUB_WINDOW_NODE	
+TOOLTIP_NODE	nodesnim/core/enums.html#TOOLTIP_NODE	NodeKind.TOOLTIP_NODE	
+CHART_NODE	nodesnim/core/enums.html#CHART_NODE	NodeKind.CHART_NODE	
 NODE3D_NODE	nodesnim/core/enums.html#NODE3D_NODE	NodeKind.NODE3D_NODE	
 GEOMETRY_INSTANCE_NODE	nodesnim/core/enums.html#GEOMETRY_INSTANCE_NODE	NodeKind.GEOMETRY_INSTANCE_NODE	
 CAMERA_3D_NODE	nodesnim/core/enums.html#CAMERA_3D_NODE	NodeKind.CAMERA_3D_NODE	
@@ -80,3 +82,13 @@ AnimationMode	nodesnim/core/enums.html#AnimationMode	enums: AnimationMode
 SCREEN_MODE_NONE	nodesnim/core/enums.html#SCREEN_MODE_NONE	ScreenMode.SCREEN_MODE_NONE	
 SCREEN_MODE_EXPANDED	nodesnim/core/enums.html#SCREEN_MODE_EXPANDED	ScreenMode.SCREEN_MODE_EXPANDED	
 ScreenMode	nodesnim/core/enums.html#ScreenMode	enums: ScreenMode	
+LINE_CHART	nodesnim/core/enums.html#LINE_CHART	ChartType.LINE_CHART	
+BAR_CHART	nodesnim/core/enums.html#BAR_CHART	ChartType.BAR_CHART	
+PIE_CHART	nodesnim/core/enums.html#PIE_CHART	ChartType.PIE_CHART	
+RADAR_CHART	nodesnim/core/enums.html#RADAR_CHART	ChartType.RADAR_CHART	
+ChartType	nodesnim/core/enums.html#ChartType	enums: ChartType	
+INTEGER_VALUE	nodesnim/core/enums.html#INTEGER_VALUE	ChartDataValueType.INTEGER_VALUE	
+FLOAT_VALUE	nodesnim/core/enums.html#FLOAT_VALUE	ChartDataValueType.FLOAT_VALUE	
+STRING_VALUE	nodesnim/core/enums.html#STRING_VALUE	ChartDataValueType.STRING_VALUE	
+CHAR_VALUE	nodesnim/core/enums.html#CHAR_VALUE	ChartDataValueType.CHAR_VALUE	
+ChartDataValueType	nodesnim/core/enums.html#ChartDataValueType	enums: ChartDataValueType	

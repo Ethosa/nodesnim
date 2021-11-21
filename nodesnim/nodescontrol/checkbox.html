@@ -20,7 +20,7 @@
 <title>nodesnim/nodescontrol/checkbox</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -107,13 +101,15 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#ToggleHandler"
-    title="ToggleHandler = proc (self: CheckBoxRef; toggled: bool)"><wbr />Toggle<wbr />Handler<span class="attachedType"></span></a></li>
+    title="ToggleHandler = proc (self: CheckBoxRef; toggled: bool)">ToggleHandler</a></li>
   <li><a class="reference" href="#CheckBoxRef"
     title="CheckBoxRef = ref object of ControlRef
   enabled*: bool
+  check_color*: ColorRef
   box: DrawableRef
-  text: LabelRef
-  on_toggle*: ToggleHandler    ## This called when switch toggled."><wbr />Check<wbr />Box<wbr />Ref<span class="attachedType"></span></a></li>
+  text*: StyleText
+  text_align*: AnchorObj
+  on_toggle*: ToggleHandler  ## This called when switch toggled.">CheckBoxRef</a></li>
 
   </ul>
 </li>
@@ -121,15 +117,18 @@ function main() {
   <a class="reference reference-toplevel" href="#9" id="59">Lets</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#toggle_handler"
-    title="toggle_handler: ToggleHandler = proc (self: CheckBoxRef; toggled: bool) = discard"><wbr />toggle_<wbr />handler<span class="attachedType"></span></a></li>
+    title="toggle_handler: ToggleHandler = proc (self: CheckBoxRef; toggled: bool) = discard">toggle_handler</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">CheckBox
       <li><a class="reference" href="#CheckBox%2Cstring"
-    title="CheckBox(name: string = &quot;CheckBox&quot;): CheckBoxRef"><wbr />Check<wbr />Box<span class="attachedType">CheckBoxRef</span></a></li>
+    title="CheckBox(name: string = &quot;CheckBox&quot;): CheckBoxRef">CheckBox,<wbr>string</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -137,19 +136,19 @@ function main() {
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#disable.e%2CCheckBoxRef"
-    title="disable(self: CheckBoxRef)"><wbr />disable<span class="attachedType">CheckBoxRef</span></a></li>
+    title="disable(self: CheckBoxRef)">disable</a></li>
   <li><a class="reference" href="#draw.e%2CCheckBoxRef%2CGLfloat%2CGLfloat"
-    title="draw(self: CheckBoxRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">CheckBoxRef</span></a></li>
+    title="draw(self: CheckBoxRef; w, h: GLfloat)">draw</a></li>
   <li><a class="reference" href="#duplicate.e%2CCheckBoxRef"
-    title="duplicate(self: CheckBoxRef): CheckBoxRef"><wbr />duplicate<span class="attachedType">CheckBoxRef</span></a></li>
+    title="duplicate(self: CheckBoxRef): CheckBoxRef">duplicate</a></li>
   <li><a class="reference" href="#enable.e%2CCheckBoxRef"
-    title="enable(self: CheckBoxRef)"><wbr />enable<span class="attachedType">CheckBoxRef</span></a></li>
+    title="enable(self: CheckBoxRef)">enable</a></li>
   <li><a class="reference" href="#setText.e%2CCheckBoxRef%2Cstring%2Cbool"
-    title="setText(self: CheckBoxRef; value: string; save_properties: bool = false)"><wbr />set<wbr />Text<span class="attachedType">CheckBoxRef</span></a></li>
+    title="setText(self: CheckBoxRef; value: string; save_properties: bool = false)">setText</a></li>
   <li><a class="reference" href="#toggle.e%2CCheckBoxRef"
-    title="toggle(self: CheckBoxRef)"><wbr />toggle<span class="attachedType">CheckBoxRef</span></a></li>
+    title="toggle(self: CheckBoxRef)">toggle</a></li>
   <li><a class="reference" href="#handle.e%2CCheckBoxRef%2CInputEvent%2CNodeRef"
-    title="handle(self: CheckBoxRef; event: InputEvent; mouse_on: var NodeRef)"><wbr />handle<span class="attachedType">CheckBoxRef</span></a></li>
+    title="handle(self: CheckBoxRef; event: InputEvent; mouse_on: var NodeRef)">handle</a></li>
 
   </ul>
 </li>
@@ -164,7 +163,7 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/font.html">../core/font</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../nodes/canvas.html">../nodes/canvas</a>, <a class="reference external" href="label.html">label</a>, <a class="reference external" href="control.html">control</a>
+<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/font.html">../core/font</a>, <a class="reference external" href="../core/themes.html">../core/themes</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/nodes_os.html">../core/nodes_os</a>, <a class="reference external" href="../private/templates.html">../private/templates</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../nodes/canvas.html">../nodes/canvas</a>, <a class="reference external" href="control.html">control</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -179,9 +178,11 @@ function main() {
 <a id="CheckBoxRef"></a>
 <dt><pre><a href="checkbox.html#CheckBoxRef"><span class="Identifier">CheckBoxRef</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <a href="control.html#ControlRef"><span class="Identifier">ControlRef</span></a>
   <span class="Identifier">enabled</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">bool</span>
+  <span class="Identifier">check_color</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a>
   <span class="Identifier">box</span><span class="Other">:</span> <a href="../graphics/drawable.html#DrawableRef"><span class="Identifier">DrawableRef</span></a>
-  <span class="Identifier">text</span><span class="Other">:</span> <a href="label.html#LabelRef"><span class="Identifier">LabelRef</span></a>
-  <span class="Identifier">on_toggle</span><span class="Operator">*</span><span class="Other">:</span> <a href="checkbox.html#ToggleHandler"><span class="Identifier">ToggleHandler</span></a>    <span class="Comment">## This called when switch toggled.</span>
+  <span class="Identifier">text</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/font.html#StyleText"><span class="Identifier">StyleText</span></a>
+  <span class="Identifier">text_align</span><span class="Operator">*</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a>
+  <span class="Identifier">on_toggle</span><span class="Operator">*</span><span class="Other">:</span> <a href="checkbox.html#ToggleHandler"><span class="Identifier">ToggleHandler</span></a>  <span class="Comment">## This called when switch toggled.</span>
   </pre></dt>
 <dd>
 
@@ -206,8 +207,7 @@ function main() {
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="CheckBox,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#CheckBox%2Cstring"><span class="Identifier">CheckBox</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;CheckBox&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="checkbox.html#CheckBoxRef"><span class="Identifier">CheckBoxRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">,</span> <span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#CheckBox%2Cstring"><span class="Identifier">CheckBox</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;CheckBox&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="checkbox.html#CheckBoxRef"><span class="Identifier">CheckBoxRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new CheckBox.</p>
@@ -215,8 +215,8 @@ function main() {
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
 </ul>
 
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">text</span> <span class="Other">=</span> <span class="Identifier">CheckBox</span><span class="Other">(</span><span class="StringLit">&quot;CheckBox&quot;</span><span class="Other">)</span></pre>
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">text</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">CheckBox</span><span class="Punctuation">(</span><span class="StringLit">&quot;CheckBox&quot;</span><span class="Punctuation">)</span></pre>
 
 </dd>
 
@@ -225,7 +225,8 @@ function main() {
 <h1><a class="toc-backref" href="#14">Methods</a></h1>
 <dl class="item">
 <a id="disable.e,CheckBoxRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#disable.e%2CCheckBoxRef"><span class="Identifier">disable</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="checkbox.html#CheckBoxRef"><span class="Identifier">CheckBoxRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#disable.e%2CCheckBoxRef"><span class="Identifier">disable</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="checkbox.html#CheckBoxRef"><span class="Identifier">CheckBoxRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span>
+                                    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -254,8 +255,8 @@ Duplicates ChechBox object and create a new ChechBox.
 
 </dd>
 <a id="setText.e,CheckBoxRef,string,bool"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CCheckBoxRef%2Cstring%2Cbool"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="checkbox.html#CheckBoxRef"><span class="Identifier">CheckBoxRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">save_properties</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">Exception</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RootEffect</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setText.e%2CCheckBoxRef%2Cstring%2Cbool"><span class="Identifier">setText</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="checkbox.html#CheckBoxRef"><span class="Identifier">CheckBoxRef</span></a><span class="Other">;</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">save_properties</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -286,7 +287,7 @@ Handles user input. This uses in the <tt class="docutils literal"><span class="p
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:20:02 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:11:40 UTC</small>
       </div>
     </div>
   </div>

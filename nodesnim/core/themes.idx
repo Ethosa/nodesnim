@@ -1,0 +1,7 @@
+ThemeRef	nodesnim/core/themes.html#ThemeRef	themes: ThemeRef	
+newTheme	nodesnim/core/themes.html#newTheme,string,Colors	themes: newTheme(name: string; colors: Colors): ThemeRef	
+addTheme	nodesnim/core/themes.html#addTheme,ThemeRef	themes: addTheme(theme: ThemeRef)	
+getTheme	nodesnim/core/themes.html#getTheme,string	themes: getTheme(name: string): ThemeRef	
+`[]`	nodesnim/core/themes.html#[],ThemeRef,string	themes: `[]`(theme: ThemeRef; index: string): ColorRef	
+changeTheme	nodesnim/core/themes.html#changeTheme,string	themes: changeTheme(name: string)	
+`~`	nodesnim/core/themes.html#~.m,ThemeRef,untyped	themes: `~`(theme: ThemeRef; field: untyped): untyped	

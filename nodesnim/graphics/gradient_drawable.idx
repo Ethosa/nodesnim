@@ -1,7 +1,6 @@
 GradientDrawableObj	nodesnim/graphics/gradient_drawable.html#GradientDrawableObj	gradient_drawable: GradientDrawableObj	
 GradientDrawableRef	nodesnim/graphics/gradient_drawable.html#GradientDrawableRef	gradient_drawable: GradientDrawableRef	
 GradientDrawable	nodesnim/graphics/gradient_drawable.html#GradientDrawable	gradient_drawable: GradientDrawable(): GradientDrawableRef	
-draw_template	nodesnim/graphics/gradient_drawable.html#draw_template.t,untyped,untyped,untyped,untyped,bool	gradient_drawable: draw_template(drawtype, color, function, secondfunc: untyped;\n              is_gradient: bool = true): untyped	
 draw	nodesnim/graphics/gradient_drawable.html#draw.e,GradientDrawableRef,float,float,float,float	gradient_drawable: draw(self: GradientDrawableRef; x1, y1, width, height: float)	
 setCornerColors	nodesnim/graphics/gradient_drawable.html#setCornerColors.e,GradientDrawableRef,ColorRef,ColorRef,ColorRef,ColorRef	gradient_drawable: setCornerColors(self: GradientDrawableRef; c0, c1, c2, c3: ColorRef)	
 setCornerColors	nodesnim/graphics/gradient_drawable.html#setCornerColors.e,GradientDrawableRef,array[,ColorRef]	gradient_drawable: setCornerColors(self: GradientDrawableRef; corners: array[4, ColorRef])	

@@ -391,7 +391,7 @@ SDL_PACKEDLAYOUT_8888	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_8888	sdl2: 
 SDL_PACKEDLAYOUT_2101010	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_2101010	sdl2: SDL_PACKEDLAYOUT_2101010	
 SDL_PACKEDLAYOUT_1010102	nodesnim/thirdparty/sdl2.html#SDL_PACKEDLAYOUT_1010102	sdl2: SDL_PACKEDLAYOUT_1010102	
 SDL_DEFINE_PIXELFOURCC	nodesnim/thirdparty/sdl2.html#SDL_DEFINE_PIXELFOURCC.t,char,char,char,char	sdl2: SDL_DEFINE_PIXELFOURCC(A, B, C, D: char): uint32	
-SDL_DEFINE_PIXELFORMAT	nodesnim/thirdparty/sdl2.html#SDL_DEFINE_PIXELFORMAT.t,int,int,int,int,int	sdl2: SDL_DEFINE_PIXELFORMAT(`type`, order, layout, bits, bytes: int): uint32	
+SDL_DEFINE_PIXELFORMAT	nodesnim/thirdparty/sdl2.html#SDL_DEFINE_PIXELFORMAT.t,int,int,int,int,int	sdl2: SDL_DEFINE_PIXELFORMAT(type, order, layout, bits, bytes: int): uint32	
 SDL_PIXELFLAG	nodesnim/thirdparty/sdl2.html#SDL_PIXELFLAG.t,uint32	sdl2: SDL_PIXELFLAG(X: uint32): int	
 SDL_PIXELTYPE	nodesnim/thirdparty/sdl2.html#SDL_PIXELTYPE.t,uint32	sdl2: SDL_PIXELTYPE(X: uint32): int	
 SDL_PIXELORDER	nodesnim/thirdparty/sdl2.html#SDL_PIXELORDER.t,uint32	sdl2: SDL_PIXELORDER(X: uint32): int	
@@ -473,48 +473,48 @@ SDL_WINDOWPOS_CENTERED_MASK	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_CENTERED
 SDL_WINDOWPOS_CENTERED_DISPLAY	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_CENTERED_DISPLAY.t,cint	sdl2: SDL_WINDOWPOS_CENTERED_DISPLAY(X: cint): cint	
 SDL_WINDOWPOS_CENTERED	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_CENTERED	sdl2: SDL_WINDOWPOS_CENTERED	
 SDL_WINDOWPOS_ISCENTERED	nodesnim/thirdparty/sdl2.html#SDL_WINDOWPOS_ISCENTERED.t,cint	sdl2: SDL_WINDOWPOS_ISCENTERED(X: cint): bool	
-evWindow	nodesnim/thirdparty/sdl2.html#evWindow,Event	sdl2: evWindow(event`gensym13480034: Event): WindowEventPtr	
-window	nodesnim/thirdparty/sdl2.html#window,Event	sdl2: window(event`gensym13480035: Event): WindowEventPtr	
-evKeyboard	nodesnim/thirdparty/sdl2.html#evKeyboard,Event	sdl2: evKeyboard(event`gensym13515217: Event): KeyboardEventPtr	
-key	nodesnim/thirdparty/sdl2.html#key,Event	sdl2: key(event`gensym13515218: Event): KeyboardEventPtr	
-evTextEditing	nodesnim/thirdparty/sdl2.html#evTextEditing,Event	sdl2: evTextEditing(event`gensym13550217: Event): TextEditingEventPtr	
-edit	nodesnim/thirdparty/sdl2.html#edit,Event	sdl2: edit(event`gensym13550218: Event): TextEditingEventPtr	
-evTextInput	nodesnim/thirdparty/sdl2.html#evTextInput,Event	sdl2: evTextInput(event`gensym13585217: Event): TextInputEventPtr	
-text	nodesnim/thirdparty/sdl2.html#text,Event	sdl2: text(event`gensym13585218: Event): TextInputEventPtr	
-evMouseMotion	nodesnim/thirdparty/sdl2.html#evMouseMotion,Event	sdl2: evMouseMotion(event`gensym13620217: Event): MouseMotionEventPtr	
-motion	nodesnim/thirdparty/sdl2.html#motion,Event	sdl2: motion(event`gensym13620218: Event): MouseMotionEventPtr	
-evMouseButton	nodesnim/thirdparty/sdl2.html#evMouseButton,Event	sdl2: evMouseButton(event`gensym13655217: Event): MouseButtonEventPtr	
-button	nodesnim/thirdparty/sdl2.html#button,Event	sdl2: button(event`gensym13655218: Event): MouseButtonEventPtr	
-evMouseWheel	nodesnim/thirdparty/sdl2.html#evMouseWheel,Event	sdl2: evMouseWheel(event`gensym13690217: Event): MouseWheelEventPtr	
-wheel	nodesnim/thirdparty/sdl2.html#wheel,Event	sdl2: wheel(event`gensym13690218: Event): MouseWheelEventPtr	
-EvJoyAxis	nodesnim/thirdparty/sdl2.html#EvJoyAxis,Event	sdl2: EvJoyAxis(event`gensym13725217: Event): JoyAxisEventPtr	
-jaxis	nodesnim/thirdparty/sdl2.html#jaxis,Event	sdl2: jaxis(event`gensym13725218: Event): JoyAxisEventPtr	
-EvJoyBall	nodesnim/thirdparty/sdl2.html#EvJoyBall,Event	sdl2: EvJoyBall(event`gensym13760217: Event): JoyBallEventPtr	
-jball	nodesnim/thirdparty/sdl2.html#jball,Event	sdl2: jball(event`gensym13760218: Event): JoyBallEventPtr	
-EvJoyHat	nodesnim/thirdparty/sdl2.html#EvJoyHat,Event	sdl2: EvJoyHat(event`gensym13795217: Event): JoyHatEventPtr	
-jhat	nodesnim/thirdparty/sdl2.html#jhat,Event	sdl2: jhat(event`gensym13795218: Event): JoyHatEventPtr	
-EvJoyButton	nodesnim/thirdparty/sdl2.html#EvJoyButton,Event	sdl2: EvJoyButton(event`gensym13830217: Event): JoyButtonEventPtr	
-jbutton	nodesnim/thirdparty/sdl2.html#jbutton,Event	sdl2: jbutton(event`gensym13830218: Event): JoyButtonEventPtr	
-EvJoyDevice	nodesnim/thirdparty/sdl2.html#EvJoyDevice,Event	sdl2: EvJoyDevice(event`gensym13865217: Event): JoyDeviceEventPtr	
-jdevice	nodesnim/thirdparty/sdl2.html#jdevice,Event	sdl2: jdevice(event`gensym13865218: Event): JoyDeviceEventPtr	
-EvControllerAxis	nodesnim/thirdparty/sdl2.html#EvControllerAxis,Event	sdl2: EvControllerAxis(event`gensym13900217: Event): ControllerAxisEventPtr	
-caxis	nodesnim/thirdparty/sdl2.html#caxis,Event	sdl2: caxis(event`gensym13900218: Event): ControllerAxisEventPtr	
-EvControllerButton	nodesnim/thirdparty/sdl2.html#EvControllerButton,Event	sdl2: EvControllerButton(event`gensym13935217: Event): ControllerButtonEventPtr	
-cbutton	nodesnim/thirdparty/sdl2.html#cbutton,Event	sdl2: cbutton(event`gensym13935218: Event): ControllerButtonEventPtr	
-EvControllerDevice	nodesnim/thirdparty/sdl2.html#EvControllerDevice,Event	sdl2: EvControllerDevice(event`gensym13970217: Event): ControllerDeviceEventPtr	
-cdevice	nodesnim/thirdparty/sdl2.html#cdevice,Event	sdl2: cdevice(event`gensym13970218: Event): ControllerDeviceEventPtr	
-EvTouchFinger	nodesnim/thirdparty/sdl2.html#EvTouchFinger,Event	sdl2: EvTouchFinger(event`gensym14005217: Event): TouchFingerEventPtr	
-tfinger	nodesnim/thirdparty/sdl2.html#tfinger,Event	sdl2: tfinger(event`gensym14005218: Event): TouchFingerEventPtr	
-EvMultiGesture	nodesnim/thirdparty/sdl2.html#EvMultiGesture,Event	sdl2: EvMultiGesture(event`gensym14040217: Event): MultiGestureEventPtr	
-mgesture	nodesnim/thirdparty/sdl2.html#mgesture,Event	sdl2: mgesture(event`gensym14040218: Event): MultiGestureEventPtr	
-EvDollarGesture	nodesnim/thirdparty/sdl2.html#EvDollarGesture,Event	sdl2: EvDollarGesture(event`gensym14075217: Event): DollarGestureEventPtr	
-dgesture	nodesnim/thirdparty/sdl2.html#dgesture,Event	sdl2: dgesture(event`gensym14075218: Event): DollarGestureEventPtr	
-evDropFile	nodesnim/thirdparty/sdl2.html#evDropFile,Event	sdl2: evDropFile(event`gensym14110217: Event): DropEventPtr	
-drop	nodesnim/thirdparty/sdl2.html#drop,Event	sdl2: drop(event`gensym14110218: Event): DropEventPtr	
-evQuit	nodesnim/thirdparty/sdl2.html#evQuit,Event	sdl2: evQuit(event`gensym14145217: Event): QuitEventPtr	
-quit	nodesnim/thirdparty/sdl2.html#quit,Event	sdl2: quit(event`gensym14145218: Event): QuitEventPtr	
-evUser	nodesnim/thirdparty/sdl2.html#evUser,Event	sdl2: evUser(event`gensym14180217: Event): UserEventPtr	
-user	nodesnim/thirdparty/sdl2.html#user,Event	sdl2: user(event`gensym14180218: Event): UserEventPtr	
+evWindow	nodesnim/thirdparty/sdl2.html#evWindow,Event	sdl2: evWindow(event`gensym207: Event): WindowEventPtr	
+window	nodesnim/thirdparty/sdl2.html#window,Event	sdl2: window(event`gensym207: Event): WindowEventPtr	
+evKeyboard	nodesnim/thirdparty/sdl2.html#evKeyboard,Event	sdl2: evKeyboard(event`gensym214: Event): KeyboardEventPtr	
+key	nodesnim/thirdparty/sdl2.html#key,Event	sdl2: key(event`gensym214: Event): KeyboardEventPtr	
+evTextEditing	nodesnim/thirdparty/sdl2.html#evTextEditing,Event	sdl2: evTextEditing(event`gensym221: Event): TextEditingEventPtr	
+edit	nodesnim/thirdparty/sdl2.html#edit,Event	sdl2: edit(event`gensym221: Event): TextEditingEventPtr	
+evTextInput	nodesnim/thirdparty/sdl2.html#evTextInput,Event	sdl2: evTextInput(event`gensym228: Event): TextInputEventPtr	
+text	nodesnim/thirdparty/sdl2.html#text,Event	sdl2: text(event`gensym228: Event): TextInputEventPtr	
+evMouseMotion	nodesnim/thirdparty/sdl2.html#evMouseMotion,Event	sdl2: evMouseMotion(event`gensym235: Event): MouseMotionEventPtr	
+motion	nodesnim/thirdparty/sdl2.html#motion,Event	sdl2: motion(event`gensym235: Event): MouseMotionEventPtr	
+evMouseButton	nodesnim/thirdparty/sdl2.html#evMouseButton,Event	sdl2: evMouseButton(event`gensym242: Event): MouseButtonEventPtr	
+button	nodesnim/thirdparty/sdl2.html#button,Event	sdl2: button(event`gensym242: Event): MouseButtonEventPtr	
+evMouseWheel	nodesnim/thirdparty/sdl2.html#evMouseWheel,Event	sdl2: evMouseWheel(event`gensym249: Event): MouseWheelEventPtr	
+wheel	nodesnim/thirdparty/sdl2.html#wheel,Event	sdl2: wheel(event`gensym249: Event): MouseWheelEventPtr	
+EvJoyAxis	nodesnim/thirdparty/sdl2.html#EvJoyAxis,Event	sdl2: EvJoyAxis(event`gensym256: Event): JoyAxisEventPtr	
+jaxis	nodesnim/thirdparty/sdl2.html#jaxis,Event	sdl2: jaxis(event`gensym256: Event): JoyAxisEventPtr	
+EvJoyBall	nodesnim/thirdparty/sdl2.html#EvJoyBall,Event	sdl2: EvJoyBall(event`gensym263: Event): JoyBallEventPtr	
+jball	nodesnim/thirdparty/sdl2.html#jball,Event	sdl2: jball(event`gensym263: Event): JoyBallEventPtr	
+EvJoyHat	nodesnim/thirdparty/sdl2.html#EvJoyHat,Event	sdl2: EvJoyHat(event`gensym270: Event): JoyHatEventPtr	
+jhat	nodesnim/thirdparty/sdl2.html#jhat,Event	sdl2: jhat(event`gensym270: Event): JoyHatEventPtr	
+EvJoyButton	nodesnim/thirdparty/sdl2.html#EvJoyButton,Event	sdl2: EvJoyButton(event`gensym277: Event): JoyButtonEventPtr	
+jbutton	nodesnim/thirdparty/sdl2.html#jbutton,Event	sdl2: jbutton(event`gensym277: Event): JoyButtonEventPtr	
+EvJoyDevice	nodesnim/thirdparty/sdl2.html#EvJoyDevice,Event	sdl2: EvJoyDevice(event`gensym284: Event): JoyDeviceEventPtr	
+jdevice	nodesnim/thirdparty/sdl2.html#jdevice,Event	sdl2: jdevice(event`gensym284: Event): JoyDeviceEventPtr	
+EvControllerAxis	nodesnim/thirdparty/sdl2.html#EvControllerAxis,Event	sdl2: EvControllerAxis(event`gensym291: Event): ControllerAxisEventPtr	
+caxis	nodesnim/thirdparty/sdl2.html#caxis,Event	sdl2: caxis(event`gensym291: Event): ControllerAxisEventPtr	
+EvControllerButton	nodesnim/thirdparty/sdl2.html#EvControllerButton,Event	sdl2: EvControllerButton(event`gensym298: Event): ControllerButtonEventPtr	
+cbutton	nodesnim/thirdparty/sdl2.html#cbutton,Event	sdl2: cbutton(event`gensym298: Event): ControllerButtonEventPtr	
+EvControllerDevice	nodesnim/thirdparty/sdl2.html#EvControllerDevice,Event	sdl2: EvControllerDevice(event`gensym305: Event): ControllerDeviceEventPtr	
+cdevice	nodesnim/thirdparty/sdl2.html#cdevice,Event	sdl2: cdevice(event`gensym305: Event): ControllerDeviceEventPtr	
+EvTouchFinger	nodesnim/thirdparty/sdl2.html#EvTouchFinger,Event	sdl2: EvTouchFinger(event`gensym312: Event): TouchFingerEventPtr	
+tfinger	nodesnim/thirdparty/sdl2.html#tfinger,Event	sdl2: tfinger(event`gensym312: Event): TouchFingerEventPtr	
+EvMultiGesture	nodesnim/thirdparty/sdl2.html#EvMultiGesture,Event	sdl2: EvMultiGesture(event`gensym319: Event): MultiGestureEventPtr	
+mgesture	nodesnim/thirdparty/sdl2.html#mgesture,Event	sdl2: mgesture(event`gensym319: Event): MultiGestureEventPtr	
+EvDollarGesture	nodesnim/thirdparty/sdl2.html#EvDollarGesture,Event	sdl2: EvDollarGesture(event`gensym326: Event): DollarGestureEventPtr	
+dgesture	nodesnim/thirdparty/sdl2.html#dgesture,Event	sdl2: dgesture(event`gensym326: Event): DollarGestureEventPtr	
+evDropFile	nodesnim/thirdparty/sdl2.html#evDropFile,Event	sdl2: evDropFile(event`gensym333: Event): DropEventPtr	
+drop	nodesnim/thirdparty/sdl2.html#drop,Event	sdl2: drop(event`gensym333: Event): DropEventPtr	
+evQuit	nodesnim/thirdparty/sdl2.html#evQuit,Event	sdl2: evQuit(event`gensym340: Event): QuitEventPtr	
+quit	nodesnim/thirdparty/sdl2.html#quit,Event	sdl2: quit(event`gensym340: Event): QuitEventPtr	
+evUser	nodesnim/thirdparty/sdl2.html#evUser,Event	sdl2: evUser(event`gensym347: Event): UserEventPtr	
+user	nodesnim/thirdparty/sdl2.html#user,Event	sdl2: user(event`gensym347: Event): UserEventPtr	
 SDL_MESSAGEBOX_ERROR	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_ERROR	sdl2: SDL_MESSAGEBOX_ERROR	
 SDL_MESSAGEBOX_WARNING	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_WARNING	sdl2: SDL_MESSAGEBOX_WARNING	
 SDL_MESSAGEBOX_INFORMATION	nodesnim/thirdparty/sdl2.html#SDL_MESSAGEBOX_INFORMATION	sdl2: SDL_MESSAGEBOX_INFORMATION	
@@ -573,7 +573,7 @@ getGrab	nodesnim/thirdparty/sdl2.html#getGrab,WindowPtr	sdl2: getGrab(window: Wi
 setBrightness	nodesnim/thirdparty/sdl2.html#setBrightness,WindowPtr,cfloat	sdl2: setBrightness(window: WindowPtr; brightness: cfloat): SDL_Return	
 getBrightness	nodesnim/thirdparty/sdl2.html#getBrightness,WindowPtr	sdl2: getBrightness(window: WindowPtr): cfloat	
 setGammaRamp	nodesnim/thirdparty/sdl2.html#setGammaRamp,WindowPtr,ptr.uint16,ptr.uint16,ptr.uint16	sdl2: setGammaRamp(window: WindowPtr; red, green, blue: ptr uint16): SDL_Return	
-getGammaRamp	nodesnim/thirdparty/sdl2.html#getGammaRamp,WindowPtr,ptr.uint16,ptr.uint16,ptr.uint16	sdl2: getGammaRamp(window: WindowPtr; red: ptr uint16; green: ptr uint16; blue: ptr uint16): cint	
+getGammaRamp	nodesnim/thirdparty/sdl2.html#getGammaRamp,WindowPtr,ptr.uint16,ptr.uint16,ptr.uint16	sdl2: getGammaRamp(window: WindowPtr; red: ptr uint16; green: ptr uint16;\n             blue: ptr uint16): cint	
 init	nodesnim/thirdparty/sdl2.html#init,cint	sdl2: init(flags: cint): SDL_Return	
 initSubSystem	nodesnim/thirdparty/sdl2.html#initSubSystem,uint32	sdl2: initSubSystem(flags: uint32): cint	
 quitSubSystem	nodesnim/thirdparty/sdl2.html#quitSubSystem,uint32	sdl2: quitSubSystem(flags: uint32)	
@@ -604,7 +604,7 @@ getTextureAlphaMod	nodesnim/thirdparty/sdl2.html#getTextureAlphaMod,TexturePtr,u
 setTextureBlendMode	nodesnim/thirdparty/sdl2.html#setTextureBlendMode,TexturePtr,BlendMode	sdl2: setTextureBlendMode(texture: TexturePtr; blendMode: BlendMode): SDL_Return	
 getTextureBlendMode	nodesnim/thirdparty/sdl2.html#getTextureBlendMode,TexturePtr,BlendMode	sdl2: getTextureBlendMode(texture: TexturePtr; blendMode: var BlendMode): SDL_Return	
 updateTexture	nodesnim/thirdparty/sdl2.html#updateTexture,TexturePtr,ptr.Rect,pointer,cint	sdl2: updateTexture(texture: TexturePtr; rect: ptr Rect; pixels: pointer; pitch: cint): SDL_Return	
-lockTexture	nodesnim/thirdparty/sdl2.html#lockTexture,TexturePtr,ptr.Rect,ptr.pointer,ptr.cint	sdl2: lockTexture(texture: TexturePtr; rect: ptr Rect; pixels: ptr pointer; pitch: ptr cint): SDL_Return	
+lockTexture	nodesnim/thirdparty/sdl2.html#lockTexture,TexturePtr,ptr.Rect,ptr.pointer,ptr.cint	sdl2: lockTexture(texture: TexturePtr; rect: ptr Rect; pixels: ptr pointer;\n            pitch: ptr cint): SDL_Return	
 unlockTexture	nodesnim/thirdparty/sdl2.html#unlockTexture,TexturePtr	sdl2: unlockTexture(texture: TexturePtr)	
 renderTargetSupported	nodesnim/thirdparty/sdl2.html#renderTargetSupported,RendererPtr	sdl2: renderTargetSupported(renderer: RendererPtr): Bool32	
 setRenderTarget	nodesnim/thirdparty/sdl2.html#setRenderTarget,RendererPtr,TexturePtr	sdl2: setRenderTarget(renderer: RendererPtr; texture: TexturePtr): SDL_Return	
@@ -662,14 +662,14 @@ getClipRect	nodesnim/thirdparty/sdl2.html#getClipRect,RendererPtr,ptr.Rect	sdl2:
 isClipEnabled	nodesnim/thirdparty/sdl2.html#isClipEnabled,RendererPtr	sdl2: isClipEnabled(renderer: RendererPtr): cint	
 convertSurface	nodesnim/thirdparty/sdl2.html#convertSurface,SurfacePtr,ptr.PixelFormat,cint	sdl2: convertSurface(src: SurfacePtr; fmt: ptr PixelFormat; flags: cint): SurfacePtr	
 convertSurfaceFormat	nodesnim/thirdparty/sdl2.html#convertSurfaceFormat,SurfacePtr,uint32,uint32	sdl2: convertSurfaceFormat(src: SurfacePtr; pixel_format, flags: uint32): SurfacePtr	
-convertPixels	nodesnim/thirdparty/sdl2.html#convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint	sdl2: convertPixels(width, height: cint; src_format: uint32; src: pointer; src_pitch: cint;\n              dst_format: uint32; dst: pointer; dst_pitch: cint): cint	
+convertPixels	nodesnim/thirdparty/sdl2.html#convertPixels,cint,cint,uint32,pointer,cint,uint32,pointer,cint	sdl2: convertPixels(width, height: cint; src_format: uint32; src: pointer;\n              src_pitch: cint; dst_format: uint32; dst: pointer; dst_pitch: cint): cint	
 fillRect	nodesnim/thirdparty/sdl2.html#fillRect,SurfacePtr,ptr.Rect,uint32	sdl2: fillRect(dst: SurfacePtr; rect: ptr Rect; color: uint32): SDL_Return	
 fillRects	nodesnim/thirdparty/sdl2.html#fillRects,SurfacePtr,ptr.Rect,cint,uint32	sdl2: fillRects(dst: SurfacePtr; rects: ptr Rect; count: cint; color: uint32): cint	
 upperBlit	nodesnim/thirdparty/sdl2.html#upperBlit,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: upperBlit(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
 lowerBlit	nodesnim/thirdparty/sdl2.html#lowerBlit,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: lowerBlit(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
-softStretch	nodesnim/thirdparty/sdl2.html#softStretch,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: softStretch(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
-upperBlitScaled	nodesnim/thirdparty/sdl2.html#upperBlitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: upperBlitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
-lowerBlitScaled	nodesnim/thirdparty/sdl2.html#lowerBlitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: lowerBlitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+softStretch	nodesnim/thirdparty/sdl2.html#softStretch,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: softStretch(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr;\n            dstrect: ptr Rect): SDL_Return	
+upperBlitScaled	nodesnim/thirdparty/sdl2.html#upperBlitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: upperBlitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr;\n                dstrect: ptr Rect): SDL_Return	
+lowerBlitScaled	nodesnim/thirdparty/sdl2.html#lowerBlitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: lowerBlitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr;\n                dstrect: ptr Rect): SDL_Return	
 readU8	nodesnim/thirdparty/sdl2.html#readU8,RWopsPtr	sdl2: readU8(src: RWopsPtr): uint8	
 readLE16	nodesnim/thirdparty/sdl2.html#readLE16,RWopsPtr	sdl2: readLE16(src: RWopsPtr): uint16	
 readBE16	nodesnim/thirdparty/sdl2.html#readBE16,RWopsPtr	sdl2: readBE16(src: RWopsPtr): uint16	
@@ -742,7 +742,7 @@ vulkanGetInstanceExtensions	nodesnim/thirdparty/sdl2.html#vulkanGetInstanceExten
 vulkanCreateSurface	nodesnim/thirdparty/sdl2.html#vulkanCreateSurface,WindowPtr,VulkanInstance,ptr.VulkanSurface	sdl2: vulkanCreateSurface(window: WindowPtr; instance: VulkanInstance;\n                    surface: ptr VulkanSurface): Bool32	
 vulkanGetDrawableSize	nodesnim/thirdparty/sdl2.html#vulkanGetDrawableSize,WindowPtr,ptr.cint,ptr.cint	sdl2: vulkanGetDrawableSize(window: WindowPtr; w, h: ptr cint)	
 getKeyboardFocus	nodesnim/thirdparty/sdl2.html#getKeyboardFocus	sdl2: getKeyboardFocus(): WindowPtr	
-getKeyboardState	nodesnim/thirdparty/sdl2.html#getKeyboardState,ptr.int	sdl2: getKeyboardState(numkeys: ptr int = nil): ptr array[0 .. SDL_NUM_SCANCODES.int, uint8]	
+getKeyboardState	nodesnim/thirdparty/sdl2.html#getKeyboardState,ptr.int	sdl2: getKeyboardState(numkeys: ptr int = nil): ptr array[0 .. SDL_NUM_SCANCODES.int,\n    uint8]	
 getModState	nodesnim/thirdparty/sdl2.html#getModState	sdl2: getModState(): Keymod	
 setModState	nodesnim/thirdparty/sdl2.html#setModState,Keymod	sdl2: setModState(state: Keymod)	
 getKeyFromScancode	nodesnim/thirdparty/sdl2.html#getKeyFromScancode,Scancode	sdl2: getKeyFromScancode(scancode: Scancode): cint	
@@ -786,7 +786,7 @@ getCursor	nodesnim/thirdparty/sdl2.html#getCursor	sdl2: getCursor(): CursorPtr
 freeCursor	nodesnim/thirdparty/sdl2.html#freeCursor,CursorPtr	sdl2: freeCursor(cursor: CursorPtr)	
 showCursor	nodesnim/thirdparty/sdl2.html#showCursor,bool	sdl2: showCursor(toggle: bool): Bool32	
 pumpEvents	nodesnim/thirdparty/sdl2.html#pumpEvents	sdl2: pumpEvents()	
-peepEvents	nodesnim/thirdparty/sdl2.html#peepEvents,ptr.Event,cint,Eventaction,uint32,uint32	sdl2: peepEvents(events: ptr Event; numevents: cint; action: Eventaction; minType: uint32;\n           maxType: uint32): cint	
+peepEvents	nodesnim/thirdparty/sdl2.html#peepEvents,ptr.Event,cint,Eventaction,uint32,uint32	sdl2: peepEvents(events: ptr Event; numevents: cint; action: Eventaction;\n           minType: uint32; maxType: uint32): cint	
 hasEvent	nodesnim/thirdparty/sdl2.html#hasEvent,uint32	sdl2: hasEvent(kind: uint32): Bool32	
 hasEvents	nodesnim/thirdparty/sdl2.html#hasEvents,uint32,uint32	sdl2: hasEvents(minType: uint32; maxType: uint32): Bool32	
 flushEvent	nodesnim/thirdparty/sdl2.html#flushEvent,uint32	sdl2: flushEvent(kind: uint32)	
@@ -851,8 +851,8 @@ destroy	nodesnim/thirdparty/sdl2.html#destroy,CursorPtr	sdl2: destroy(cursor: Cu
 destroy	nodesnim/thirdparty/sdl2.html#destroy,SurfacePtr	sdl2: destroy(surface: SurfacePtr)	
 destroy	nodesnim/thirdparty/sdl2.html#destroy,ptr.PixelFormat	sdl2: destroy(format: ptr PixelFormat)	
 destroy	nodesnim/thirdparty/sdl2.html#destroy,ptr.Palette	sdl2: destroy(palette: ptr Palette)	
-blitSurface	nodesnim/thirdparty/sdl2.html#blitSurface,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: blitSurface(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
-blitScaled	nodesnim/thirdparty/sdl2.html#blitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: blitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr; dstrect: ptr Rect): SDL_Return	
+blitSurface	nodesnim/thirdparty/sdl2.html#blitSurface,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: blitSurface(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr;\n            dstrect: ptr Rect): SDL_Return	
+blitScaled	nodesnim/thirdparty/sdl2.html#blitScaled,SurfacePtr,ptr.Rect,SurfacePtr,ptr.Rect	sdl2: blitScaled(src: SurfacePtr; srcrect: ptr Rect; dst: SurfacePtr;\n           dstrect: ptr Rect): SDL_Return	
 loadBMP	nodesnim/thirdparty/sdl2.html#loadBMP,string	sdl2: loadBMP(file: string): SurfacePtr	
 saveBMP	nodesnim/thirdparty/sdl2.html#saveBMP,SurfacePtr,string	sdl2: saveBMP(surface: SurfacePtr; file: string): SDL_Return	
 color	nodesnim/thirdparty/sdl2.html#color,range[],range[],range[],range[]	sdl2: color(r, g, b, a: range[0 .. 255]): Color	
@@ -865,7 +865,7 @@ setHintWithPriority	nodesnim/thirdparty/sdl2.html#setHintWithPriority,cstring,cs
 getHint	nodesnim/thirdparty/sdl2.html#getHint,cstring	sdl2: getHint(name: cstring): cstring	
 size	nodesnim/thirdparty/sdl2.html#size,RWopsPtr	sdl2: size(ctx: RWopsPtr): int64	
 seek	nodesnim/thirdparty/sdl2.html#seek,RWopsPtr,int64,cint	sdl2: seek(ctx: RWopsPtr; offset: int64; whence: cint): int64	
-read	nodesnim/thirdparty/sdl2.html#read,RWopsPtr,pointer,csize_t_const,csize_t_const	sdl2: read(ctx: RWopsPtr; `ptr`: pointer; size, maxnum: csize_t_const): csize_t_const	
-write	nodesnim/thirdparty/sdl2.html#write,RWopsPtr,pointer,csize_t_const,csize_t_const	sdl2: write(ctx: RWopsPtr; `ptr`: pointer; size, num: csize_t_const): csize_t_const	
+read	nodesnim/thirdparty/sdl2.html#read,RWopsPtr,pointer,csize_t_const,csize_t_const	sdl2: read(ctx: RWopsPtr; ptr: pointer; size, maxnum: csize_t_const): csize_t_const	
+write	nodesnim/thirdparty/sdl2.html#write,RWopsPtr,pointer,csize_t_const,csize_t_const	sdl2: write(ctx: RWopsPtr; ptr: pointer; size, num: csize_t_const): csize_t_const	
 close	nodesnim/thirdparty/sdl2.html#close,RWopsPtr	sdl2: close(ctx: RWopsPtr): cint	
 defaultEvent	nodesnim/thirdparty/sdl2.html#defaultEvent	sdl2: defaultEvent	

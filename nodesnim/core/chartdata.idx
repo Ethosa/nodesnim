@@ -1,0 +1,16 @@
+ChartDataValue	nodesnim/core/chartdata.html#ChartDataValue	chartdata: ChartDataValue	
+ChartData	nodesnim/core/chartdata.html#ChartData	chartdata: ChartData	
+newChartData	nodesnim/core/chartdata.html#newChartData,string,ColorRef,ChartType	chartdata: newChartData(data_name: string = &quot;data&quot;; data_color: ColorRef = Color();\n             chart_type: ChartType = LINE_CHART): ChartData	
+newChartData	nodesnim/core/chartdata.html#newChartData,int,int,string,ColorRef,ChartType	chartdata: newChartData(x_length, y_length: int; data_name: string = &quot;data&quot;;\n             data_color: ColorRef = Color(); chart_type: ChartType = LINE_CHART): ChartData	
+newChartData	nodesnim/core/chartdata.html#newChartData,seq[ChartDataValue],seq[ChartDataValue],string,ColorRef,ChartType	chartdata: newChartData(x_data, y_data: seq[ChartDataValue]; data_name: string = &quot;data&quot;;\n             data_color: ColorRef = Color(); chart_type: ChartType = LINE_CHART): ChartData	
+findMax	nodesnim/core/chartdata.html#findMax,seq[ChartDataValue]	chartdata: findMax(data: seq[ChartDataValue]): ChartDataValue	
+findMax	nodesnim/core/chartdata.html#findMax,ChartData	chartdata: findMax(chart_data: ChartData): tuple[x, y: ChartDataValue]	
+len	nodesnim/core/chartdata.html#len,ChartData	chartdata: len(data: ChartData): int	
+getNum	nodesnim/core/chartdata.html#getNum,ChartDataValue	chartdata: getNum(val: ChartDataValue): float	
+`$`	nodesnim/core/chartdata.html#$,ChartDataValue	chartdata: `$`(val: ChartDataValue): string	
+getSorted	nodesnim/core/chartdata.html#getSorted,ChartData	chartdata: getSorted(data: ChartData): seq[tuple[x, y: ChartDataValue]]	
+getSum	nodesnim/core/chartdata.html#getSum,ChartData	chartdata: getSum(data: ChartData): float	
+toChartDataValue	nodesnim/core/chartdata.html#toChartDataValue.c,seq[int]	chartdata: toChartDataValue(val: seq[int]): seq[ChartDataValue]	
+toChartDataValue	nodesnim/core/chartdata.html#toChartDataValue.c,seq[float]	chartdata: toChartDataValue(val: seq[float]): seq[ChartDataValue]	
+toChartDataValue	nodesnim/core/chartdata.html#toChartDataValue.c,seq[string]	chartdata: toChartDataValue(val: seq[string]): seq[ChartDataValue]	
+toChartDataValue	nodesnim/core/chartdata.html#toChartDataValue.c,seq[char]	chartdata: toChartDataValue(val: seq[char]): seq[ChartDataValue]	

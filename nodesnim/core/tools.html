@@ -20,7 +20,7 @@
 <title>nodesnim/core/tools</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -106,10 +100,26 @@ function main() {
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">matchBackgroundImage
+      <li><a class="reference" href="#matchBackgroundImage%2Cstring%2Carray%5B%2Cstring%5D"
+    title="matchBackgroundImage(source: string; matches: var array[20, string]): bool">matchBackgroundImage,<wbr>string,<wbr>array[,<wbr>string]</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">bezier
+      <li><a class="reference" href="#bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
+    title="bezier(t, p0, p1, p2: float): float">bezier,<wbr>float,<wbr>float,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">matchColor
+      <li><a class="reference" href="#matchColor%2Cstring"
+    title="matchColor(source: string): bool">matchColor,<wbr>string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">cubic_bezier
       <li><a class="reference" href="#cubic_bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="cubic_bezier(t, p0, p1, p2, p3: float): float"><wbr />cubic_<wbr />bezier<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="bezier(t, p0, p1, p2: float): float"><wbr />bezier<span class="attachedType"></span></a></li>
+    title="cubic_bezier(t, p0, p1, p2, p3: float): float">cubic_bezier,<wbr>float,<wbr>float,<wbr>float,<wbr>float,<wbr>float</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -117,9 +127,9 @@ function main() {
   <a class="reference reference-toplevel" href="#15" id="65">Iterators</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj"
-    title="bezier_iter(step: float; p0, p1, p2: Vector2Obj): Vector2Obj"><wbr />bezier_<wbr />iter<span class="attachedType"></span></a></li>
+    title="bezier_iter(step: float; p0, p1, p2: Vector2Obj): Vector2Obj">bezier_iter</a></li>
   <li><a class="reference" href="#cubic_bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj%2CVector2Obj"
-    title="cubic_bezier_iter(step: float; p0, p1, p2, p3: Vector2Obj): Vector2Obj"><wbr />cubic_<wbr />bezier_<wbr />iter<span class="attachedType"></span></a></li>
+    title="cubic_bezier_iter(step: float; p0, p1, p2, p3: Vector2Obj): Vector2Obj">cubic_bezier_iter</a></li>
 
   </ul>
 </li>
@@ -140,7 +150,8 @@ function main() {
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="cubic_bezier,float,float,float,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#cubic_bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">cubic_bezier</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">,</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">,</span> <span class="Identifier">p3</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#cubic_bezier%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">cubic_bezier</span></a><span class="Other">(</span><span class="Identifier">t</span><span class="Other">,</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">,</span> <span class="Identifier">p3</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -153,14 +164,29 @@ function main() {
 
 
 </dd>
+<a id="matchBackgroundImage,string,array[,string]"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#matchBackgroundImage%2Cstring%2Carray%5B%2Cstring%5D"><span class="Identifier">matchBackgroundImage</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">matches</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">array</span><span class="Other">[</span><span class="DecNumber">20</span><span class="Other">,</span> <span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="matchColor,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#matchColor%2Cstring"><span class="Identifier">matchColor</span></a><span class="Other">(</span><span class="Identifier">source</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">RegexError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 <div class="section" id="15">
 <h1><a class="toc-backref" href="#15">Iterators</a></h1>
 <dl class="item">
 <a id="bezier_iter.i,float,Vector2Obj,Vector2Obj,Vector2Obj"></a>
-<dt><pre><span class="Keyword">iterator</span> <a href="#bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj"><span class="Identifier">bezier_iter</span></a><span class="Other">(</span><span class="Identifier">step</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">;</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">iterator</span> <a href="#bezier_iter.i%2Cfloat%2CVector2Obj%2CVector2Obj%2CVector2Obj"><span class="Identifier">bezier_iter</span></a><span class="Other">(</span><span class="Identifier">step</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">;</span> <span class="Identifier">p0</span><span class="Other">,</span> <span class="Identifier">p1</span><span class="Other">,</span> <span class="Identifier">p2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -184,7 +210,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:26 UTC</small>
       </div>
     </div>
   </div>

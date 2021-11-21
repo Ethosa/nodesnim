@@ -20,7 +20,7 @@
 <title>nodesnim/core/exceptions</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -101,13 +95,13 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#ResourceError"
-    title="ResourceError = object of ValueError"><wbr />Resource<wbr />Error<span class="attachedType"></span></a></li>
+    title="ResourceError = object of ValueError">ResourceError</a></li>
   <li><a class="reference" href="#SceneError"
-    title="SceneError = object of ValueError"><wbr />Scene<wbr />Error<span class="attachedType"></span></a></li>
+    title="SceneError = object of ValueError">SceneError</a></li>
   <li><a class="reference" href="#VMError"
-    title="VMError = object of ValueError"><wbr />VMError<span class="attachedType"></span></a></li>
+    title="VMError = object of ValueError">VMError</a></li>
   <li><a class="reference" href="#WindowError"
-    title="WindowError = object of ValueError"><wbr />Window<wbr />Error<span class="attachedType"></span></a></li>
+    title="WindowError = object of ValueError">WindowError</a></li>
 
   </ul>
 </li>
@@ -115,7 +109,7 @@ function main() {
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#throwError.t%2Ctypedesc%2Cstring"
-    title="throwError(err: typedesc; msg: string)"><wbr />throw<wbr />Error<span class="attachedType"></span></a></li>
+    title="throwError(err: typedesc; msg: string)">throwError</a></li>
 
   </ul>
 </li>
@@ -180,7 +174,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:20 UTC</small>
       </div>
     </div>
   </div>

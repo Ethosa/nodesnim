@@ -20,7 +20,7 @@
 <title>nodesnim/core/image</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -109,17 +103,25 @@ function main() {
       <li><a class="reference" href="#GlTextureObj"
     title="GlTextureObj = object of RootObj
   texture*: GLuint
-  size*: Vector2Obj"><wbr />Gl<wbr />Texture<wbr />Obj<span class="attachedType"></span></a></li>
+  size*: Vector2Obj">GlTextureObj</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">load
       <li><a class="reference" href="#load%2Cstring%2Cfloat%2Cfloat%2CGLenum"
-    title="load(file: string; x, y: var float; mode: GLenum = GL_RGB): GLuint"><wbr />load<span class="attachedType"></span></a></li>
+    title="load(file: string; x, y: var float; mode: GLenum = GL_RGB): GLuint">load,<wbr>string,<wbr>float,<wbr>float,<wbr>GLenum</a></li>
   <li><a class="reference" href="#load%2Cstring%2CGLenum"
-    title="load(file: string; mode: GLenum = GL_RGB): GlTextureObj"><wbr />load<span class="attachedType">GlTextureObj</span></a></li>
+    title="load(file: string; mode: GLenum = GL_RGB): GlTextureObj">load,<wbr>string,<wbr>GLenum</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">freeMemory
+      <li><a class="reference" href="#freeMemory%2CGlTextureObj"
+    title="freeMemory(self: var GlTextureObj)">freeMemory,<wbr>GlTextureObj</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -178,6 +180,13 @@ function main() {
 
 
 </dd>
+<a id="freeMemory,GlTextureObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#freeMemory%2CGlTextureObj"><span class="Identifier">freeMemory</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 
@@ -188,7 +197,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:26 UTC</small>
       </div>
     </div>
   </div>

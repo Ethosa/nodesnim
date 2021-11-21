@@ -1,11 +1,7 @@
 DrawableObj	nodesnim/graphics/drawable.html#DrawableObj	drawable: DrawableObj	
 DrawableRef	nodesnim/graphics/drawable.html#DrawableRef	drawable: DrawableRef	
-drawablepattern	nodesnim/graphics/drawable.html#drawablepattern.t,untyped	drawable: drawablepattern(`type`: untyped): untyped	
+standard_shadow_color	nodesnim/graphics/drawable.html#standard_shadow_color	drawable: standard_shadow_color	
 Drawable	nodesnim/graphics/drawable.html#Drawable	drawable: Drawable(): DrawableRef	
-vd	nodesnim/graphics/drawable.html#vd.t	drawable: vd()	
-recalc	nodesnim/graphics/drawable.html#recalc.t,bool	drawable: recalc(shadow: bool = false)	
-draw_template	nodesnim/graphics/drawable.html#draw_template.t,untyped,untyped,untyped,untyped	drawable: draw_template(drawtype, color, function, secondfunc: untyped): untyped	
-draw_texture_template	nodesnim/graphics/drawable.html#draw_texture_template.t,untyped,untyped,untyped,untyped	drawable: draw_texture_template(drawtype, color, function, secondfunc: untyped): untyped	
 enableShadow	nodesnim/graphics/drawable.html#enableShadow.e,DrawableRef,bool	drawable: enableShadow(self: DrawableRef; val: bool = true)	
 draw	nodesnim/graphics/drawable.html#draw.e,DrawableRef,float,float,float,float	drawable: draw(self: DrawableRef; x1, y1, width, height: float)	
 getColor	nodesnim/graphics/drawable.html#getColor.e,DrawableRef	drawable: getColor(self: DrawableRef): ColorRef	

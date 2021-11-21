@@ -20,7 +20,7 @@
 <title>nodesnim/core/rect2</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -108,33 +102,51 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Rect2Obj"
     title="Rect2Obj = object
-  x*, y*, w*, h*: float"><wbr />Rect2Obj<span class="attachedType"></span></a></li>
+  x*, y*, w*, h*: float">Rect2Obj</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Rect2%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="Rect2(x, y, w, h: float): Rect2Obj"><wbr />Rect2<span class="attachedType">Rect2Obj</span></a></li>
-  <li><a class="reference" href="#Rect2%2CVector2Obj%2CVector2Obj"
-    title="Rect2(pos, size: Vector2Obj): Rect2Obj"><wbr />Rect2<span class="attachedType">Rect2Obj</span></a></li>
-  <li><a class="reference" href="#contains%2CRect2Obj%2Cfloat%2Cfloat"
-    title="contains(self: Rect2Obj; x, y: float): bool"><wbr />contains<span class="attachedType">Rect2Obj</span></a></li>
+      <ul class="simple nested-toc-section">contains
+      <li><a class="reference" href="#contains%2CRect2Obj%2Cfloat%2Cfloat"
+    title="contains(self: Rect2Obj; x, y: float): bool">contains,<wbr>Rect2Obj,<wbr>float,<wbr>float</a></li>
   <li><a class="reference" href="#contains%2CRect2Obj%2CVector2Obj"
-    title="contains(self: Rect2Obj; vector: Vector2Obj): bool"><wbr />contains<span class="attachedType">Rect2Obj</span></a></li>
+    title="contains(self: Rect2Obj; vector: Vector2Obj): bool">contains,<wbr>Rect2Obj,<wbr>Vector2Obj</a></li>
   <li><a class="reference" href="#contains%2CRect2Obj%2CRect2Obj"
-    title="contains(self, other: Rect2Obj): bool"><wbr />contains<span class="attachedType">Rect2Obj</span></a></li>
-  <li><a class="reference" href="#intersects%2CRect2Obj%2CRect2Obj"
-    title="intersects(self, other: Rect2Obj): bool"><wbr />intersects<span class="attachedType">Rect2Obj</span></a></li>
+    title="contains(self, other: Rect2Obj): bool">contains,<wbr>Rect2Obj,<wbr>Rect2Obj</a></li>
   <li><a class="reference" href="#contains%2CRect2Obj%2CVector2Obj%2CVector2Obj"
-    title="contains(self: Rect2Obj; a, b: Vector2Obj): bool"><wbr />contains<span class="attachedType">Rect2Obj</span></a></li>
-  <li><a class="reference" href="#clamp%2Cfloat%2Cfloat%2Cfloat"
-    title="clamp(a, b, c: float): float"><wbr />clamp<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isCollideWithCircle%2CRect2Obj%2Cfloat%2Cfloat%2Cfloat"
-    title="isCollideWithCircle(self: Rect2Obj; x, y, r: float): bool"><wbr />is<wbr />Collide<wbr />With<wbr />Circle<span class="attachedType">Rect2Obj</span></a></li>
-  <li><a class="reference" href="#%24%2CRect2Obj"
-    title="`$`(x: Rect2Obj): string"><wbr />`$`<span class="attachedType">Rect2Obj</span></a></li>
+    title="contains(self: Rect2Obj; a, b: Vector2Obj): bool">contains,<wbr>Rect2Obj,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clamp
+      <li><a class="reference" href="#clamp%2Cfloat%2Cfloat%2Cfloat"
+    title="clamp(a, b, c: float): float">clamp,<wbr>float,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isCollideWithCircle
+      <li><a class="reference" href="#isCollideWithCircle%2CRect2Obj%2Cfloat%2Cfloat%2Cfloat"
+    title="isCollideWithCircle(self: Rect2Obj; x, y, r: float): bool">isCollideWithCircle,<wbr>Rect2Obj,<wbr>float,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">$
+      <li><a class="reference" href="#%24%2CRect2Obj"
+    title="`$`(x: Rect2Obj): string">$,<wbr>Rect2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">intersects
+      <li><a class="reference" href="#intersects%2CRect2Obj%2CRect2Obj"
+    title="intersects(self, other: Rect2Obj): bool">intersects,<wbr>Rect2Obj,<wbr>Rect2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">Rect2
+      <li><a class="reference" href="#Rect2%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
+    title="Rect2(x, y, w, h: float): Rect2Obj">Rect2,<wbr>float,<wbr>float,<wbr>float,<wbr>float</a></li>
+  <li><a class="reference" href="#Rect2%2CVector2Obj%2CVector2Obj"
+    title="Rect2(pos, size: Vector2Obj): Rect2Obj">Rect2,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -190,7 +202,8 @@ function main() {
 
 </dd>
 <a id="contains,Rect2Obj,Vector2Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CRect2Obj%2CVector2Obj"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rect2.html#Rect2Obj"><span class="Identifier">Rect2Obj</span></a><span class="Other">;</span> <span class="Identifier">vector</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CRect2Obj%2CVector2Obj"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rect2.html#Rect2Obj"><span class="Identifier">Rect2Obj</span></a><span class="Other">;</span> <span class="Identifier">vector</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -225,7 +238,8 @@ function main() {
 
 </dd>
 <a id="isCollideWithCircle,Rect2Obj,float,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#isCollideWithCircle%2CRect2Obj%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">isCollideWithCircle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rect2.html#Rect2Obj"><span class="Identifier">Rect2Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#isCollideWithCircle%2CRect2Obj%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">isCollideWithCircle</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="rect2.html#Rect2Obj"><span class="Identifier">Rect2Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -248,7 +262,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:20 UTC</small>
       </div>
     </div>
   </div>

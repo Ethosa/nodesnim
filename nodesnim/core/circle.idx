@@ -6,3 +6,4 @@ contains	nodesnim/core/circle.html#contains,CircleObj,Vector2Obj	circle: contain
 contains	nodesnim/core/circle.html#contains,CircleObj,CircleObj	circle: contains(self, other: CircleObj): bool	
 contains	nodesnim/core/circle.html#contains,CircleObj,Vector2Obj,Vector2Obj	circle: contains(self: CircleObj; a, b: Vector2Obj): bool	
 `$`	nodesnim/core/circle.html#$,CircleObj	circle: `$`(self: CircleObj): string	
+`==`	nodesnim/core/circle.html#==,CircleObj,CircleObj	circle: `==`(x, y: CircleObj): bool	

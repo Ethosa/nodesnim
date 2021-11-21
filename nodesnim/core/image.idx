@@ -1,3 +1,4 @@
 GlTextureObj	nodesnim/core/image.html#GlTextureObj	image: GlTextureObj	
 load	nodesnim/core/image.html#load,string,float,float,GLenum	image: load(file: string; x, y: var float; mode: GLenum = GL_RGB): GLuint	
 load	nodesnim/core/image.html#load,string,GLenum	image: load(file: string; mode: GLenum = GL_RGB): GlTextureObj	
+freeMemory	nodesnim/core/image.html#freeMemory,GlTextureObj	image: freeMemory(self: var GlTextureObj)	

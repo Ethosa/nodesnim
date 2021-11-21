@@ -20,7 +20,7 @@
 <title>nodesnim/nodes/animation_player</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -109,7 +103,7 @@ function main() {
       <li><a class="reference" href="#AnimationObject"
     title="AnimationObject = object
   states: seq[tuple[tick: int, value: float]]
-  obj: ptr float"><wbr />Animation<wbr />Object<span class="attachedType"></span></a></li>
+  obj: ptr float">AnimationObject</a></li>
   <li><a class="reference" href="#AnimationPlayerObj"
     title="AnimationPlayerObj {.final.} = object of NodeObj
   objects*: seq[AnimationObject]
@@ -118,17 +112,20 @@ function main() {
   is_played*: bool
   loop*: bool
   bezier*: tuple[p0, p1: float]
-  mode*: AnimationMode"><wbr />Animation<wbr />Player<wbr />Obj<span class="attachedType"></span></a></li>
+  mode*: AnimationMode">AnimationPlayerObj</a></li>
   <li><a class="reference" href="#AnimationPlayerRef"
-    title="AnimationPlayerRef = ref AnimationPlayerObj"><wbr />Animation<wbr />Player<wbr />Ref<span class="attachedType"></span></a></li>
+    title="AnimationPlayerRef = ref AnimationPlayerObj">AnimationPlayerRef</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">AnimationPlayer
       <li><a class="reference" href="#AnimationPlayer%2Cstring"
-    title="AnimationPlayer(name: string = &quot;AnimationPlayer&quot;): AnimationPlayerRef"><wbr />Animation<wbr />Player<span class="attachedType">AnimationPlayerRef</span></a></li>
+    title="AnimationPlayer(name: string = &quot;AnimationPlayer&quot;): AnimationPlayerRef">AnimationPlayer,<wbr>string</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -137,15 +134,15 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#addState.e%2CAnimationPlayerRef%2Cptr.float%2Cseq%5Btuple%5Bint%2Cfloat%5D%5D"
     title="addState(self: AnimationPlayerRef; obj: ptr float;
-         states: seq[tuple[tick: int, value: float]])"><wbr />add<wbr />State<span class="attachedType">AnimationPlayerRef</span></a></li>
+         states: seq[tuple[tick: int, value: float]])">addState</a></li>
   <li><a class="reference" href="#draw.e%2CAnimationPlayerRef%2CGLfloat%2CGLfloat"
-    title="draw(self: AnimationPlayerRef; w: GLfloat; h: GLfloat)"><wbr />draw<span class="attachedType">AnimationPlayerRef</span></a></li>
+    title="draw(self: AnimationPlayerRef; w: GLfloat; h: GLfloat)">draw</a></li>
   <li><a class="reference" href="#play.e%2CAnimationPlayerRef"
-    title="play(self: AnimationPlayerRef)"><wbr />play<span class="attachedType">AnimationPlayerRef</span></a></li>
+    title="play(self: AnimationPlayerRef)">play</a></li>
   <li><a class="reference" href="#setDuration.e%2CAnimationPlayerRef%2Cint"
-    title="setDuration(self: AnimationPlayerRef; duration: int)"><wbr />set<wbr />Duration<span class="attachedType">AnimationPlayerRef</span></a></li>
+    title="setDuration(self: AnimationPlayerRef; duration: int)">setDuration</a></li>
   <li><a class="reference" href="#stop.e%2CAnimationPlayerRef"
-    title="stop(self: AnimationPlayerRef)"><wbr />stop<span class="attachedType">AnimationPlayerRef</span></a></li>
+    title="stop(self: AnimationPlayerRef)">stop</a></li>
 
   </ul>
 </li>
@@ -160,7 +157,7 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="node.html">node</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/tools.html">../core/tools</a>, <a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>
+<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/tools.html">../core/tools</a>, <a class="reference external" href="../private/templates.html">../private/templates</a>, <a class="reference external" href="node.html">node</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -208,8 +205,8 @@ function main() {
 <dd>
 
 
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">animplayer</span> <span class="Other">=</span> <span class="Identifier">AnimationPlayer</span><span class="Other">(</span><span class="StringLit">&quot;AnimationPlayer&quot;</span><span class="Other">)</span></pre>
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">animplayer</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">AnimationPlayer</span><span class="Punctuation">(</span><span class="StringLit">&quot;AnimationPlayer&quot;</span><span class="Punctuation">)</span></pre>
 
 </dd>
 
@@ -219,14 +216,16 @@ function main() {
 <dl class="item">
 <a id="addState.e,AnimationPlayerRef,ptr.float,seq[tuple[int,float]]"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#addState.e%2CAnimationPlayerRef%2Cptr.float%2Cseq%5Btuple%5Bint%2Cfloat%5D%5D"><span class="Identifier">addState</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animation_player.html#AnimationPlayerRef"><span class="Identifier">AnimationPlayerRef</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">float</span><span class="Other">;</span>
-               <span class="Identifier">states</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">tick</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">,</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+                <span class="Identifier">states</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">tick</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">,</span> <span class="Identifier">value</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">]</span><span class="Other">]</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Adds a new state to AnimationPlayer.
 
 </dd>
 <a id="draw.e,AnimationPlayerRef,GLfloat,GLfloat"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CAnimationPlayerRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animation_player.html#AnimationPlayerRef"><span class="Identifier">AnimationPlayerRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#draw.e%2CAnimationPlayerRef%2CGLfloat%2CGLfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animation_player.html#AnimationPlayerRef"><span class="Identifier">AnimationPlayerRef</span></a><span class="Other">;</span> <span class="Identifier">w</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">;</span> <span class="Identifier">h</span><span class="Other">:</span> <a href="../thirdparty/opengl.html#GLfloat"><span class="Identifier">GLfloat</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 This uses in the <tt class="docutils literal"><span class="pre">window.nim</span></tt>.
@@ -240,7 +239,8 @@ Plays animation.
 
 </dd>
 <a id="setDuration.e,AnimationPlayerRef,int"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setDuration.e%2CAnimationPlayerRef%2Cint"><span class="Identifier">setDuration</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animation_player.html#AnimationPlayerRef"><span class="Identifier">AnimationPlayerRef</span></a><span class="Other">;</span> <span class="Identifier">duration</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setDuration.e%2CAnimationPlayerRef%2Cint"><span class="Identifier">setDuration</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="animation_player.html#AnimationPlayerRef"><span class="Identifier">AnimationPlayerRef</span></a><span class="Other">;</span> <span class="Identifier">duration</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes animation duration.
@@ -263,7 +263,7 @@ Stops animation.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:15 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:38 UTC</small>
       </div>
     </div>
   </div>

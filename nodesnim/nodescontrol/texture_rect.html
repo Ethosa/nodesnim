@@ -20,7 +20,7 @@
 <title>nodesnim/nodescontrol/texture_rect</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -112,17 +106,20 @@ function main() {
   texture_mode*: TextureMode
   texture_size*: Vector2Obj
   texture_anchor*: AnchorObj
-  texture_filter*: ColorRef"><wbr />Texture<wbr />Rect<wbr />Obj<span class="attachedType"></span></a></li>
+  texture_filter*: ColorRef">TextureRectObj</a></li>
   <li><a class="reference" href="#TextureRectRef"
-    title="TextureRectRef = ref TextureRectObj"><wbr />Texture<wbr />Rect<wbr />Ref<span class="attachedType"></span></a></li>
+    title="TextureRectRef = ref TextureRectObj">TextureRectRef</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">TextureRect
       <li><a class="reference" href="#TextureRect%2Cstring"
-    title="TextureRect(name: string = &quot;TextureRect&quot;): TextureRectRef"><wbr />Texture<wbr />Rect<span class="attachedType">TextureRectRef</span></a></li>
+    title="TextureRect(name: string = &quot;TextureRect&quot;): TextureRectRef">TextureRect,<wbr>string</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -130,19 +127,19 @@ function main() {
   <a class="reference reference-toplevel" href="#14" id="64">Methods</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#draw.e%2CTextureRectRef%2CGLfloat%2CGLfloat"
-    title="draw(self: TextureRectRef; w, h: GLfloat)"><wbr />draw<span class="attachedType">TextureRectRef</span></a></li>
+    title="draw(self: TextureRectRef; w, h: GLfloat)">draw</a></li>
   <li><a class="reference" href="#duplicate.e%2CTextureRectRef"
-    title="duplicate(self: TextureRectRef): TextureRectRef"><wbr />duplicate<span class="attachedType">TextureRectRef</span></a></li>
+    title="duplicate(self: TextureRectRef): TextureRectRef">duplicate</a></li>
   <li><a class="reference" href="#loadTexture.e%2CTextureRectRef%2Cstring"
-    title="loadTexture(self: TextureRectRef; file: string)"><wbr />load<wbr />Texture<span class="attachedType">TextureRectRef</span></a></li>
+    title="loadTexture(self: TextureRectRef; file: string)">loadTexture</a></li>
   <li><a class="reference" href="#setTexture.e%2CTextureRectRef%2CGlTextureObj"
-    title="setTexture(self: TextureRectRef; gltexture: GlTextureObj)"><wbr />set<wbr />Texture<span class="attachedType">TextureRectRef</span></a></li>
+    title="setTexture(self: TextureRectRef; gltexture: GlTextureObj)">setTexture</a></li>
   <li><a class="reference" href="#setTextureFilter.e%2CTextureRectRef%2CColorRef"
-    title="setTextureFilter(self: TextureRectRef; color: ColorRef)"><wbr />set<wbr />Texture<wbr />Filter<span class="attachedType">TextureRectRef</span></a></li>
+    title="setTextureFilter(self: TextureRectRef; color: ColorRef)">setTextureFilter</a></li>
   <li><a class="reference" href="#setTextureAnchor.e%2CTextureRectRef%2CAnchorObj"
-    title="setTextureAnchor(self: TextureRectRef; anchor: AnchorObj)"><wbr />set<wbr />Texture<wbr />Anchor<span class="attachedType">TextureRectRef</span></a></li>
+    title="setTextureAnchor(self: TextureRectRef; anchor: AnchorObj)">setTextureAnchor</a></li>
   <li><a class="reference" href="#setTextureAnchor.e%2CTextureRectRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="setTextureAnchor(self: TextureRectRef; x1, y1, x2, y2: float)"><wbr />set<wbr />Texture<wbr />Anchor<span class="attachedType">TextureRectRef</span></a></li>
+    title="setTextureAnchor(self: TextureRectRef; x1, y1, x2, y2: float)">setTextureAnchor</a></li>
 
   </ul>
 </li>
@@ -157,7 +154,7 @@ function main() {
   <div class="section" id="6">
 <h1><a class="toc-backref" href="#6">Imports</a></h1>
 <dl class="item">
-<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/image.html">../core/image</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="control.html">control</a>
+<a class="reference external" href="../thirdparty/opengl.html">../thirdparty/opengl</a>, <a class="reference external" href="../core/vector2.html">../core/vector2</a>, <a class="reference external" href="../core/rect2.html">../core/rect2</a>, <a class="reference external" href="../core/anchor.html">../core/anchor</a>, <a class="reference external" href="../core/input.html">../core/input</a>, <a class="reference external" href="../core/image.html">../core/image</a>, <a class="reference external" href="../core/enums.html">../core/enums</a>, <a class="reference external" href="../core/color.html">../core/color</a>, <a class="reference external" href="../private/templates.html">../private/templates</a>, <a class="reference external" href="../nodes/node.html">../nodes/node</a>, <a class="reference external" href="../graphics/drawable.html">../graphics/drawable</a>, <a class="reference external" href="control.html">control</a>
 </dl></div>
 <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
@@ -188,7 +185,8 @@ function main() {
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
 <a id="TextureRect,string"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#TextureRect%2Cstring"><span class="Identifier">TextureRect</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;TextureRect&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#TextureRect%2Cstring"><span class="Identifier">TextureRect</span></a><span class="Other">(</span><span class="Identifier">name</span><span class="Other">:</span> <span class="Identifier">string</span> <span class="Other">=</span> <span class="StringLit">&quot;TextureRect&quot;</span><span class="Other">)</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Creates a new TextureRect.</p>
@@ -196,8 +194,8 @@ function main() {
 <ul class="simple"><li><tt class="docutils literal"><span class="pre">name</span></tt> is a node name.</li>
 </ul>
 
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">texture</span> <span class="Other">=</span> <span class="Identifier">TextureRect</span><span class="Other">(</span><span class="StringLit">&quot;TextureRect&quot;</span><span class="Other">)</span></pre>
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">texture</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">TextureRect</span><span class="Punctuation">(</span><span class="StringLit">&quot;TextureRect&quot;</span><span class="Punctuation">)</span></pre>
 
 </dd>
 
@@ -214,7 +212,8 @@ This uses in the <tt class="docutils literal"><span class="pre">window.nim</span
 
 </dd>
 <a id="duplicate.e,TextureRectRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CTextureRectRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#duplicate.e%2CTextureRectRef"><span class="Identifier">duplicate</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">)</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Duplicates TextureRect and create a new TextureRect.
@@ -222,7 +221,7 @@ Duplicates TextureRect and create a new TextureRect.
 </dd>
 <a id="loadTexture.e,TextureRectRef,string"></a>
 <dt><pre><span class="Keyword">method</span> <a href="#loadTexture.e%2CTextureRectRef%2Cstring"><span class="Identifier">loadTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
-    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ResourceError</span><span class="Other">,</span> <span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">,</span> <span class="Identifier">ResourceError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Loads texture from file.</p>
@@ -233,8 +232,8 @@ Duplicates TextureRect and create a new TextureRect.
 
 </dd>
 <a id="setTexture.e,TextureRectRef,GlTextureObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTexture.e%2CTextureRectRef%2CGlTextureObj"><span class="Identifier">setTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">gltexture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setTexture.e%2CTextureRectRef%2CGlTextureObj"><span class="Identifier">setTexture</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">gltexture</span><span class="Other">:</span> <a href="../core/image.html#GlTextureObj"><span class="Identifier">GlTextureObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Changes texture.</p>
@@ -245,24 +244,24 @@ Duplicates TextureRect and create a new TextureRect.
 
 </dd>
 <a id="setTextureFilter.e,TextureRectRef,ColorRef"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextureFilter.e%2CTextureRectRef%2CColorRef"><span class="Identifier">setTextureFilter</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextureFilter.e%2CTextureRectRef%2CColorRef"><span class="Identifier">setTextureFilter</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">color</span><span class="Other">:</span> <a href="../core/color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes texture filter color.
 
 </dd>
 <a id="setTextureAnchor.e,TextureRectRef,AnchorObj"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextureAnchor.e%2CTextureRectRef%2CAnchorObj"><span class="Identifier">setTextureAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextureAnchor.e%2CTextureRectRef%2CAnchorObj"><span class="Identifier">setTextureAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">anchor</span><span class="Other">:</span> <a href="../core/anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Changes texture anchor.
 
 </dd>
 <a id="setTextureAnchor.e,TextureRectRef,float,float,float,float"></a>
-<dt><pre><span class="Keyword">method</span> <a href="#setTextureAnchor.e%2CTextureRectRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextureAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">method</span> <a href="#setTextureAnchor.e%2CTextureRectRef%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">setTextureAnchor</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="texture_rect.html#TextureRectRef"><span class="Identifier">TextureRectRef</span></a><span class="Other">;</span> <span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">base</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>Changes texture anchor.</p>
@@ -283,7 +282,7 @@ Changes texture anchor.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:23 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:48 UTC</small>
       </div>
     </div>
   </div>

@@ -2,7 +2,8 @@ ControlXYHandler	nodesnim/nodescontrol/control.html#ControlXYHandler	control: Co
 ControlHandler	nodesnim/nodescontrol/control.html#ControlHandler	control: ControlHandler	
 ControlObj	nodesnim/nodescontrol/control.html#ControlObj	control: ControlObj	
 ControlRef	nodesnim/nodescontrol/control.html#ControlRef	control: ControlRef	
-controlpattern	nodesnim/nodescontrol/control.html#controlpattern.t	control: controlpattern(): untyped	
+control_handler	nodesnim/nodescontrol/control.html#control_handler	control: control_handler	
+control_xy_handler	nodesnim/nodescontrol/control.html#control_xy_handler	control: control_xy_handler	
 Control	nodesnim/nodescontrol/control.html#Control,string	control: Control(name: string = &quot;Control&quot;): ControlRef	
 calcPositionAnchor	nodesnim/nodescontrol/control.html#calcPositionAnchor.e,ControlRef	control: calcPositionAnchor(self: ControlRef)	
 draw	nodesnim/nodescontrol/control.html#draw.e,ControlRef,GLfloat,GLfloat	control: draw(self: ControlRef; w, h: GLfloat)	

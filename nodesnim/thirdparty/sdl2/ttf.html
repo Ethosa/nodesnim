@@ -20,7 +20,7 @@
 <title>nodesnim/thirdparty/sdl2/ttf</title>
 <link rel="stylesheet" type="text/css" href="../../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -107,7 +101,7 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#FontPtr"
-    title="FontPtr {.pure.} = ptr object"><wbr />Font<wbr />Ptr<span class="attachedType"></span></a></li>
+    title="FontPtr {.pure.} = ptr object">FontPtr</a></li>
 
   </ul>
 </li>
@@ -115,131 +109,277 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#UNICODE_BOM_NATIVE"
-    title="UNICODE_BOM_NATIVE = 0x0000FEFF"><wbr />UNICODE_<wbr />BOM_<wbr />NATIVE<span class="attachedType"></span></a></li>
+    title="UNICODE_BOM_NATIVE = 0x0000FEFF">UNICODE_BOM_NATIVE</a></li>
   <li><a class="reference" href="#UNICODE_BOM_SWAPPED"
-    title="UNICODE_BOM_SWAPPED = 0x0000FFFE"><wbr />UNICODE_<wbr />BOM_<wbr />SWAPPED<span class="attachedType"></span></a></li>
+    title="UNICODE_BOM_SWAPPED = 0x0000FFFE">UNICODE_BOM_SWAPPED</a></li>
   <li><a class="reference" href="#TTF_STYLE_NORMAL"
-    title="TTF_STYLE_NORMAL = 0x00000000"><wbr />TTF_<wbr />STYLE_<wbr />NORMAL<span class="attachedType"></span></a></li>
+    title="TTF_STYLE_NORMAL = 0x00000000">TTF_STYLE_NORMAL</a></li>
   <li><a class="reference" href="#TTF_STYLE_BOLD"
-    title="TTF_STYLE_BOLD = 0x00000001"><wbr />TTF_<wbr />STYLE_<wbr />BOLD<span class="attachedType"></span></a></li>
+    title="TTF_STYLE_BOLD = 0x00000001">TTF_STYLE_BOLD</a></li>
   <li><a class="reference" href="#TTF_STYLE_ITALIC"
-    title="TTF_STYLE_ITALIC = 0x00000002"><wbr />TTF_<wbr />STYLE_<wbr />ITALIC<span class="attachedType"></span></a></li>
+    title="TTF_STYLE_ITALIC = 0x00000002">TTF_STYLE_ITALIC</a></li>
   <li><a class="reference" href="#TTF_STYLE_UNDERLINE"
-    title="TTF_STYLE_UNDERLINE = 0x00000004"><wbr />TTF_<wbr />STYLE_<wbr />UNDERLINE<span class="attachedType"></span></a></li>
+    title="TTF_STYLE_UNDERLINE = 0x00000004">TTF_STYLE_UNDERLINE</a></li>
   <li><a class="reference" href="#TTF_STYLE_STRIKETHROUGH"
-    title="TTF_STYLE_STRIKETHROUGH = 0x00000008"><wbr />TTF_<wbr />STYLE_<wbr />STRIKETHROUGH<span class="attachedType"></span></a></li>
+    title="TTF_STYLE_STRIKETHROUGH = 0x00000008">TTF_STYLE_STRIKETHROUGH</a></li>
   <li><a class="reference" href="#TTF_HINTING_NORMAL"
-    title="TTF_HINTING_NORMAL = 0"><wbr />TTF_<wbr />HINTING_<wbr />NORMAL<span class="attachedType"></span></a></li>
+    title="TTF_HINTING_NORMAL = 0">TTF_HINTING_NORMAL</a></li>
   <li><a class="reference" href="#TTF_HINTING_LIGHT"
-    title="TTF_HINTING_LIGHT = 1"><wbr />TTF_<wbr />HINTING_<wbr />LIGHT<span class="attachedType"></span></a></li>
+    title="TTF_HINTING_LIGHT = 1">TTF_HINTING_LIGHT</a></li>
   <li><a class="reference" href="#TTF_HINTING_MONO"
-    title="TTF_HINTING_MONO = 2"><wbr />TTF_<wbr />HINTING_<wbr />MONO<span class="attachedType"></span></a></li>
+    title="TTF_HINTING_MONO = 2">TTF_HINTING_MONO</a></li>
   <li><a class="reference" href="#TTF_HINTING_NONE"
-    title="TTF_HINTING_NONE = 3"><wbr />TTF_<wbr />HINTING_<wbr />NONE<span class="attachedType"></span></a></li>
+    title="TTF_HINTING_NONE = 3">TTF_HINTING_NONE</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#ttfLinkedVersion"
-    title="ttfLinkedVersion(): ptr SDL_Version"><wbr />ttf<wbr />Linked<wbr />Version<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#ttfByteSwappedUnicode%2Ccint"
-    title="ttfByteSwappedUnicode(swapped: cint)"><wbr />ttf<wbr />Byte<wbr />Swapped<wbr />Unicode<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#ttfInit"
-    title="ttfInit(): SDL_Return"><wbr />ttf<wbr />Init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#openFont%2Ccstring%2Ccint"
-    title="openFont(file: cstring; ptsize: cint): FontPtr"><wbr />open<wbr />Font<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#openFontIndex%2Ccstring%2Ccint%2Cclong"
-    title="openFontIndex(file: cstring; ptsize: cint; index: clong): FontPtr"><wbr />open<wbr />Font<wbr />Index<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#openFontRW%2Cptr.RWops%2Ccint%2Ccint"
-    title="openFontRW(src: ptr RWops; freesrc: cint; ptsize: cint): FontPtr"><wbr />open<wbr />Font<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#openFontIndexRW%2Cptr.RWops%2Ccint%2Ccint%2Cclong"
-    title="openFontIndexRW(src: ptr RWops; freesrc: cint; ptsize: cint; index: clong): FontPtr"><wbr />open<wbr />Font<wbr />Index<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getFontStyle%2CFontPtr"
-    title="getFontStyle(font: FontPtr): cint"><wbr />get<wbr />Font<wbr />Style<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setFontStyle%2CFontPtr%2Ccint"
-    title="setFontStyle(font: FontPtr; style: cint)"><wbr />set<wbr />Font<wbr />Style<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getFontOutline%2CFontPtr"
-    title="getFontOutline(font: FontPtr): cint"><wbr />get<wbr />Font<wbr />Outline<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setFontOutline%2CFontPtr%2Ccint"
-    title="setFontOutline(font: FontPtr; outline: cint)"><wbr />set<wbr />Font<wbr />Outline<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getFontHinting%2CFontPtr"
-    title="getFontHinting(font: FontPtr): cint"><wbr />get<wbr />Font<wbr />Hinting<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setFontHinting%2CFontPtr%2Ccint"
-    title="setFontHinting(font: FontPtr; hinting: cint)"><wbr />set<wbr />Font<wbr />Hinting<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontHeight%2CFontPtr"
-    title="fontHeight(font: FontPtr): cint"><wbr />font<wbr />Height<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontAscent%2CFontPtr"
-    title="fontAscent(font: FontPtr): cint"><wbr />font<wbr />Ascent<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontDescent%2CFontPtr"
-    title="fontDescent(font: FontPtr): cint"><wbr />font<wbr />Descent<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontLineSkip%2CFontPtr"
-    title="fontLineSkip(font: FontPtr): cint"><wbr />font<wbr />Line<wbr />Skip<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getFontKerning%2CFontPtr"
-    title="getFontKerning(font: FontPtr): cint"><wbr />get<wbr />Font<wbr />Kerning<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#setFontKerning%2CFontPtr%2Ccint"
-    title="setFontKerning(font: FontPtr; allowed: cint)"><wbr />set<wbr />Font<wbr />Kerning<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontFaces%2CFontPtr"
-    title="fontFaces(font: FontPtr): clong"><wbr />font<wbr />Faces<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontFaceIsFixedWidth%2CFontPtr"
-    title="fontFaceIsFixedWidth(font: FontPtr): cint"><wbr />font<wbr />Face<wbr />Is<wbr />Fixed<wbr />Width<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontFaceFamilyName%2CFontPtr"
-    title="fontFaceFamilyName(font: FontPtr): cstring"><wbr />font<wbr />Face<wbr />Family<wbr />Name<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#fontFaceStyleName%2CFontPtr"
-    title="fontFaceStyleName(font: FontPtr): cstring"><wbr />font<wbr />Face<wbr />Style<wbr />Name<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#glyphIsProvided%2CFontPtr%2Cuint16"
-    title="glyphIsProvided(font: FontPtr; ch: uint16): cint"><wbr />glyph<wbr />Is<wbr />Provided<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#glyphMetrics%2CFontPtr%2Cuint16%2Cptr.cint%2Cptr.cint%2Cptr.cint%2Cptr.cint%2Cptr.cint"
-    title="glyphMetrics(font: FontPtr; ch: uint16; minx: ptr cint; maxx: ptr cint; miny: ptr cint;
-             maxy: ptr cint; advance: ptr cint): cint"><wbr />glyph<wbr />Metrics<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#sizeText%2CFontPtr%2Ccstring%2Cptr.cint%2Cptr.cint"
-    title="sizeText(font: FontPtr; text: cstring; w: ptr cint; h: ptr cint): cint"><wbr />size<wbr />Text<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#sizeUtf8%2CFontPtr%2Ccstring%2Cptr.cint%2Cptr.cint"
-    title="sizeUtf8(font: FontPtr; text: cstring; w: ptr cint; h: ptr cint): cint"><wbr />size<wbr />Utf8<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#sizeUnicode%2CFontPtr%2Cptr.uint16%2Cptr.cint%2Cptr.cint"
-    title="sizeUnicode(font: FontPtr; text: ptr uint16; w, h: ptr cint): cint"><wbr />size<wbr />Unicode<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderTextSolid%2CFontPtr%2Ccstring%2CColor"
-    title="renderTextSolid(font: FontPtr; text: cstring; fg: Color): SurfacePtr"><wbr />render<wbr />Text<wbr />Solid<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUtf8Solid%2CFontPtr%2Ccstring%2CColor"
-    title="renderUtf8Solid(font: FontPtr; text: cstring; fg: Color): SurfacePtr"><wbr />render<wbr />Utf8Solid<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUnicodeSolid%2CFontPtr%2Cptr.uint16%2CColor"
-    title="renderUnicodeSolid(font: FontPtr; text: ptr uint16; fg: Color): SurfacePtr"><wbr />render<wbr />Unicode<wbr />Solid<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderGlyphSolid%2CFontPtr%2Cuint16%2CColor"
-    title="renderGlyphSolid(font: FontPtr; ch: uint16; fg: Color): SurfacePtr"><wbr />render<wbr />Glyph<wbr />Solid<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderTextShaded%2CFontPtr%2Ccstring%2CColor%2CColor"
-    title="renderTextShaded(font: FontPtr; text: cstring; fg, bg: Color): SurfacePtr"><wbr />render<wbr />Text<wbr />Shaded<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUtf8Shaded%2CFontPtr%2Ccstring%2CColor%2CColor"
-    title="renderUtf8Shaded(font: FontPtr; text: cstring; fg, bg: Color): SurfacePtr"><wbr />render<wbr />Utf8Shaded<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUnicodeShaded%2CFontPtr%2Cptr.uint16%2CColor%2CColor"
-    title="renderUnicodeShaded(font: FontPtr; text: ptr uint16; fg, bg: Color): SurfacePtr"><wbr />render<wbr />Unicode<wbr />Shaded<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderGlyphShaded%2CFontPtr%2Cuint16%2CColor%2CColor"
-    title="renderGlyphShaded(font: FontPtr; ch: uint16; fg, bg: Color): SurfacePtr"><wbr />render<wbr />Glyph<wbr />Shaded<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderTextBlended%2CFontPtr%2Ccstring%2CColor"
-    title="renderTextBlended(font: FontPtr; text: cstring; fg: Color): SurfacePtr"><wbr />render<wbr />Text<wbr />Blended<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUtf8Blended%2CFontPtr%2Ccstring%2CColor"
-    title="renderUtf8Blended(font: FontPtr; text: cstring; fg: Color): SurfacePtr"><wbr />render<wbr />Utf8Blended<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUnicodeBlended%2CFontPtr%2Cptr.uint16%2CColor"
-    title="renderUnicodeBlended(font: FontPtr; text: ptr uint16; fg: Color): SurfacePtr"><wbr />render<wbr />Unicode<wbr />Blended<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderTextBlendedWrapped%2CFontPtr%2Ccstring%2CColor%2Cuint32"
-    title="renderTextBlendedWrapped(font: FontPtr; text: cstring; fg: Color; wrapLength: uint32): SurfacePtr"><wbr />render<wbr />Text<wbr />Blended<wbr />Wrapped<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUtf8BlendedWrapped%2CFontPtr%2Ccstring%2CColor%2Cuint32"
-    title="renderUtf8BlendedWrapped(font: FontPtr; text: cstring; fg: Color; wrapLength: uint32): SurfacePtr"><wbr />render<wbr />Utf8Blended<wbr />Wrapped<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderUnicodeBlendedWrapped%2CFontPtr%2Cptr.uint16%2CColor%2Cuint32"
+      <ul class="simple nested-toc-section">fontAscent
+      <li><a class="reference" href="#fontAscent%2CFontPtr"
+    title="fontAscent(font: FontPtr): cint">fontAscent,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setFontStyle
+      <li><a class="reference" href="#setFontStyle%2CFontPtr%2Ccint"
+    title="setFontStyle(font: FontPtr; style: cint)">setFontStyle,<wbr>FontPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fontHeight
+      <li><a class="reference" href="#fontHeight%2CFontPtr"
+    title="fontHeight(font: FontPtr): cint">fontHeight,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fontDescent
+      <li><a class="reference" href="#fontDescent%2CFontPtr"
+    title="fontDescent(font: FontPtr): cint">fontDescent,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">glyphIsProvided
+      <li><a class="reference" href="#glyphIsProvided%2CFontPtr%2Cuint16"
+    title="glyphIsProvided(font: FontPtr; ch: uint16): cint">glyphIsProvided,<wbr>FontPtr,<wbr>uint16</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderTextBlended
+      <li><a class="reference" href="#renderTextBlended%2CFontPtr%2Ccstring%2CColor"
+    title="renderTextBlended(font: FontPtr; text: cstring; fg: Color): SurfacePtr">renderTextBlended,<wbr>FontPtr,<wbr>cstring,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderText
+      <li><a class="reference" href="#renderText%2CFontPtr%2Ccstring%2CColor%2CColor"
+    title="renderText(font: FontPtr; text: cstring; fg, bg: Color): SurfacePtr">renderText,<wbr>FontPtr,<wbr>cstring,<wbr>Color,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getFontKerning
+      <li><a class="reference" href="#getFontKerning%2CFontPtr"
+    title="getFontKerning(font: FontPtr): cint">getFontKerning,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getFontOutline
+      <li><a class="reference" href="#getFontOutline%2CFontPtr"
+    title="getFontOutline(font: FontPtr): cint">getFontOutline,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">openFontIndexRW
+      <li><a class="reference" href="#openFontIndexRW%2Cptr.RWops%2Ccint%2Ccint%2Cclong"
+    title="openFontIndexRW(src: ptr RWops; freesrc: cint; ptsize: cint; index: clong): FontPtr">openFontIndexRW,<wbr>ptr.RWops,<wbr>cint,<wbr>cint,<wbr>clong</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fontFaceFamilyName
+      <li><a class="reference" href="#fontFaceFamilyName%2CFontPtr"
+    title="fontFaceFamilyName(font: FontPtr): cstring">fontFaceFamilyName,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">ttfInit
+      <li><a class="reference" href="#ttfInit"
+    title="ttfInit(): SDL_Return">ttfInit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fontFaceStyleName
+      <li><a class="reference" href="#fontFaceStyleName%2CFontPtr"
+    title="fontFaceStyleName(font: FontPtr): cstring">fontFaceStyleName,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getFontKerningSize
+      <li><a class="reference" href="#getFontKerningSize%2CFontPtr%2Ccint%2Ccint"
+    title="getFontKerningSize(font: FontPtr; prev_index, indx: cint): cint">getFontKerningSize,<wbr>FontPtr,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fontFaces
+      <li><a class="reference" href="#fontFaces%2CFontPtr"
+    title="fontFaces(font: FontPtr): clong">fontFaces,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUnicodeBlendedWrapped
+      <li><a class="reference" href="#renderUnicodeBlendedWrapped%2CFontPtr%2Cptr.uint16%2CColor%2Cuint32"
     title="renderUnicodeBlendedWrapped(font: FontPtr; text: ptr uint16; fg: Color;
-                            wrapLength: uint32): SurfacePtr"><wbr />render<wbr />Unicode<wbr />Blended<wbr />Wrapped<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderGlyphBlended%2CFontPtr%2Cuint16%2CColor"
-    title="renderGlyphBlended(font: FontPtr; ch: uint16; fg: Color): SurfacePtr"><wbr />render<wbr />Glyph<wbr />Blended<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#close%2CFontPtr"
-    title="close(font: FontPtr)"><wbr />close<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#ttfQuit"
-    title="ttfQuit()"><wbr />ttf<wbr />Quit<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#ttfWasInit"
-    title="ttfWasInit(): bool"><wbr />ttf<wbr />Was<wbr />Init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getFontKerningSize%2CFontPtr%2Ccint%2Ccint"
-    title="getFontKerningSize(font: FontPtr; prev_index, indx: cint): cint"><wbr />get<wbr />Font<wbr />Kerning<wbr />Size<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#renderText%2CFontPtr%2Ccstring%2CColor%2CColor"
-    title="renderText(font: FontPtr; text: cstring; fg, bg: Color): SurfacePtr"><wbr />render<wbr />Text<span class="attachedType"></span></a></li>
+                            wrapLength: uint32): SurfacePtr">renderUnicodeBlendedWrapped,<wbr>FontPtr,<wbr>ptr.uint16,<wbr>Color,<wbr>uint32</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">ttfWasInit
+      <li><a class="reference" href="#ttfWasInit"
+    title="ttfWasInit(): bool">ttfWasInit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">ttfLinkedVersion
+      <li><a class="reference" href="#ttfLinkedVersion"
+    title="ttfLinkedVersion(): ptr SDL_Version">ttfLinkedVersion</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUnicodeShaded
+      <li><a class="reference" href="#renderUnicodeShaded%2CFontPtr%2Cptr.uint16%2CColor%2CColor"
+    title="renderUnicodeShaded(font: FontPtr; text: ptr uint16; fg, bg: Color): SurfacePtr">renderUnicodeShaded,<wbr>FontPtr,<wbr>ptr.uint16,<wbr>Color,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getFontHinting
+      <li><a class="reference" href="#getFontHinting%2CFontPtr"
+    title="getFontHinting(font: FontPtr): cint">getFontHinting,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setFontKerning
+      <li><a class="reference" href="#setFontKerning%2CFontPtr%2Ccint"
+    title="setFontKerning(font: FontPtr; allowed: cint)">setFontKerning,<wbr>FontPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">openFontRW
+      <li><a class="reference" href="#openFontRW%2Cptr.RWops%2Ccint%2Ccint"
+    title="openFontRW(src: ptr RWops; freesrc: cint; ptsize: cint): FontPtr">openFontRW,<wbr>ptr.RWops,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUtf8BlendedWrapped
+      <li><a class="reference" href="#renderUtf8BlendedWrapped%2CFontPtr%2Ccstring%2CColor%2Cuint32"
+    title="renderUtf8BlendedWrapped(font: FontPtr; text: cstring; fg: Color;
+                         wrapLength: uint32): SurfacePtr">renderUtf8BlendedWrapped,<wbr>FontPtr,<wbr>cstring,<wbr>Color,<wbr>uint32</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">ttfQuit
+      <li><a class="reference" href="#ttfQuit"
+    title="ttfQuit()">ttfQuit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderGlyphBlended
+      <li><a class="reference" href="#renderGlyphBlended%2CFontPtr%2Cuint16%2CColor"
+    title="renderGlyphBlended(font: FontPtr; ch: uint16; fg: Color): SurfacePtr">renderGlyphBlended,<wbr>FontPtr,<wbr>uint16,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">sizeText
+      <li><a class="reference" href="#sizeText%2CFontPtr%2Ccstring%2Cptr.cint%2Cptr.cint"
+    title="sizeText(font: FontPtr; text: cstring; w: ptr cint; h: ptr cint): cint">sizeText,<wbr>FontPtr,<wbr>cstring,<wbr>ptr.cint,<wbr>ptr.cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">ttfByteSwappedUnicode
+      <li><a class="reference" href="#ttfByteSwappedUnicode%2Ccint"
+    title="ttfByteSwappedUnicode(swapped: cint)">ttfByteSwappedUnicode,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUnicodeSolid
+      <li><a class="reference" href="#renderUnicodeSolid%2CFontPtr%2Cptr.uint16%2CColor"
+    title="renderUnicodeSolid(font: FontPtr; text: ptr uint16; fg: Color): SurfacePtr">renderUnicodeSolid,<wbr>FontPtr,<wbr>ptr.uint16,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setFontOutline
+      <li><a class="reference" href="#setFontOutline%2CFontPtr%2Ccint"
+    title="setFontOutline(font: FontPtr; outline: cint)">setFontOutline,<wbr>FontPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUtf8Shaded
+      <li><a class="reference" href="#renderUtf8Shaded%2CFontPtr%2Ccstring%2CColor%2CColor"
+    title="renderUtf8Shaded(font: FontPtr; text: cstring; fg, bg: Color): SurfacePtr">renderUtf8Shaded,<wbr>FontPtr,<wbr>cstring,<wbr>Color,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUtf8Blended
+      <li><a class="reference" href="#renderUtf8Blended%2CFontPtr%2Ccstring%2CColor"
+    title="renderUtf8Blended(font: FontPtr; text: cstring; fg: Color): SurfacePtr">renderUtf8Blended,<wbr>FontPtr,<wbr>cstring,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderTextBlendedWrapped
+      <li><a class="reference" href="#renderTextBlendedWrapped%2CFontPtr%2Ccstring%2CColor%2Cuint32"
+    title="renderTextBlendedWrapped(font: FontPtr; text: cstring; fg: Color;
+                         wrapLength: uint32): SurfacePtr">renderTextBlendedWrapped,<wbr>FontPtr,<wbr>cstring,<wbr>Color,<wbr>uint32</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">close
+      <li><a class="reference" href="#close%2CFontPtr"
+    title="close(font: FontPtr)">close,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">openFont
+      <li><a class="reference" href="#openFont%2Ccstring%2Ccint"
+    title="openFont(file: cstring; ptsize: cint): FontPtr">openFont,<wbr>cstring,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderGlyphSolid
+      <li><a class="reference" href="#renderGlyphSolid%2CFontPtr%2Cuint16%2CColor"
+    title="renderGlyphSolid(font: FontPtr; ch: uint16; fg: Color): SurfacePtr">renderGlyphSolid,<wbr>FontPtr,<wbr>uint16,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fontLineSkip
+      <li><a class="reference" href="#fontLineSkip%2CFontPtr"
+    title="fontLineSkip(font: FontPtr): cint">fontLineSkip,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">openFontIndex
+      <li><a class="reference" href="#openFontIndex%2Ccstring%2Ccint%2Cclong"
+    title="openFontIndex(file: cstring; ptsize: cint; index: clong): FontPtr">openFontIndex,<wbr>cstring,<wbr>cint,<wbr>clong</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUtf8Solid
+      <li><a class="reference" href="#renderUtf8Solid%2CFontPtr%2Ccstring%2CColor"
+    title="renderUtf8Solid(font: FontPtr; text: cstring; fg: Color): SurfacePtr">renderUtf8Solid,<wbr>FontPtr,<wbr>cstring,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">glyphMetrics
+      <li><a class="reference" href="#glyphMetrics%2CFontPtr%2Cuint16%2Cptr.cint%2Cptr.cint%2Cptr.cint%2Cptr.cint%2Cptr.cint"
+    title="glyphMetrics(font: FontPtr; ch: uint16; minx: ptr cint; maxx: ptr cint;
+             miny: ptr cint; maxy: ptr cint; advance: ptr cint): cint">glyphMetrics,<wbr>FontPtr,<wbr>uint16,<wbr>ptr.cint,<wbr>ptr.cint,<wbr>ptr.cint,<wbr>ptr.cint,<wbr>ptr.cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderUnicodeBlended
+      <li><a class="reference" href="#renderUnicodeBlended%2CFontPtr%2Cptr.uint16%2CColor"
+    title="renderUnicodeBlended(font: FontPtr; text: ptr uint16; fg: Color): SurfacePtr">renderUnicodeBlended,<wbr>FontPtr,<wbr>ptr.uint16,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">sizeUnicode
+      <li><a class="reference" href="#sizeUnicode%2CFontPtr%2Cptr.uint16%2Cptr.cint%2Cptr.cint"
+    title="sizeUnicode(font: FontPtr; text: ptr uint16; w, h: ptr cint): cint">sizeUnicode,<wbr>FontPtr,<wbr>ptr.uint16,<wbr>ptr.cint,<wbr>ptr.cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setFontHinting
+      <li><a class="reference" href="#setFontHinting%2CFontPtr%2Ccint"
+    title="setFontHinting(font: FontPtr; hinting: cint)">setFontHinting,<wbr>FontPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderTextSolid
+      <li><a class="reference" href="#renderTextSolid%2CFontPtr%2Ccstring%2CColor"
+    title="renderTextSolid(font: FontPtr; text: cstring; fg: Color): SurfacePtr">renderTextSolid,<wbr>FontPtr,<wbr>cstring,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderGlyphShaded
+      <li><a class="reference" href="#renderGlyphShaded%2CFontPtr%2Cuint16%2CColor%2CColor"
+    title="renderGlyphShaded(font: FontPtr; ch: uint16; fg, bg: Color): SurfacePtr">renderGlyphShaded,<wbr>FontPtr,<wbr>uint16,<wbr>Color,<wbr>Color</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fontFaceIsFixedWidth
+      <li><a class="reference" href="#fontFaceIsFixedWidth%2CFontPtr"
+    title="fontFaceIsFixedWidth(font: FontPtr): cint">fontFaceIsFixedWidth,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getFontStyle
+      <li><a class="reference" href="#getFontStyle%2CFontPtr"
+    title="getFontStyle(font: FontPtr): cint">getFontStyle,<wbr>FontPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">sizeUtf8
+      <li><a class="reference" href="#sizeUtf8%2CFontPtr%2Ccstring%2Cptr.cint%2Cptr.cint"
+    title="sizeUtf8(font: FontPtr; text: cstring; w: ptr cint; h: ptr cint): cint">sizeUtf8,<wbr>FontPtr,<wbr>cstring,<wbr>ptr.cint,<wbr>ptr.cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">renderTextShaded
+      <li><a class="reference" href="#renderTextShaded%2CFontPtr%2Ccstring%2CColor%2CColor"
+    title="renderTextShaded(font: FontPtr; text: cstring; fg, bg: Color): SurfacePtr">renderTextShaded,<wbr>FontPtr,<wbr>cstring,<wbr>Color,<wbr>Color</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -427,7 +567,8 @@ function main() {
 
 </dd>
 <a id="setFontOutline,FontPtr,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setFontOutline%2CFontPtr%2Ccint"><span class="Identifier">setFontOutline</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">outline</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontOutline&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#setFontOutline%2CFontPtr%2Ccint"><span class="Identifier">setFontOutline</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">outline</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontOutline&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -441,7 +582,8 @@ function main() {
 
 </dd>
 <a id="setFontHinting,FontPtr,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setFontHinting%2CFontPtr%2Ccint"><span class="Identifier">setFontHinting</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">hinting</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontHinting&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#setFontHinting%2CFontPtr%2Ccint"><span class="Identifier">setFontHinting</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">hinting</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontHinting&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -483,7 +625,8 @@ function main() {
 
 </dd>
 <a id="setFontKerning,FontPtr,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#setFontKerning%2CFontPtr%2Ccint"><span class="Identifier">setFontKerning</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">allowed</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontKerning&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#setFontKerning%2CFontPtr%2Ccint"><span class="Identifier">setFontKerning</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">allowed</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_SetFontKerning&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -497,28 +640,32 @@ function main() {
 
 </dd>
 <a id="fontFaceIsFixedWidth,FontPtr"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#fontFaceIsFixedWidth%2CFontPtr"><span class="Identifier">fontFaceIsFixedWidth</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceIsFixedWidth&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#fontFaceIsFixedWidth%2CFontPtr"><span class="Identifier">fontFaceIsFixedWidth</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceIsFixedWidth&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="fontFaceFamilyName,FontPtr"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#fontFaceFamilyName%2CFontPtr"><span class="Identifier">fontFaceFamilyName</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceFamilyName&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#fontFaceFamilyName%2CFontPtr"><span class="Identifier">fontFaceFamilyName</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceFamilyName&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="fontFaceStyleName,FontPtr"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#fontFaceStyleName%2CFontPtr"><span class="Identifier">fontFaceStyleName</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceStyleName&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#fontFaceStyleName%2CFontPtr"><span class="Identifier">fontFaceStyleName</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cstring</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_FontFaceStyleName&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
 
 </dd>
 <a id="glyphIsProvided,FontPtr,uint16"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#glyphIsProvided%2CFontPtr%2Cuint16"><span class="Identifier">glyphIsProvided</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GlyphIsProvided&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#glyphIsProvided%2CFontPtr%2Cuint16"><span class="Identifier">glyphIsProvided</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GlyphIsProvided&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -526,7 +673,7 @@ function main() {
 </dd>
 <a id="glyphMetrics,FontPtr,uint16,ptr.cint,ptr.cint,ptr.cint,ptr.cint,ptr.cint"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#glyphMetrics%2CFontPtr%2Cuint16%2Cptr.cint%2Cptr.cint%2Cptr.cint%2Cptr.cint%2Cptr.cint"><span class="Identifier">glyphMetrics</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">minx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">maxx</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                 <span class="Identifier">miny</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">maxy</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">advance</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+                  <span class="Identifier">miny</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">maxy</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">advance</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_GlyphMetrics&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -647,7 +794,7 @@ function main() {
 </dd>
 <a id="renderTextBlendedWrapped,FontPtr,cstring,Color,uint32"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#renderTextBlendedWrapped%2CFontPtr%2Ccstring%2CColor%2Cuint32"><span class="Identifier">renderTextBlendedWrapped</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <a href="../sdl2.html#Color"><span class="Identifier">Color</span></a><span class="Other">;</span>
-                             <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+                              <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderText_Blended_Wrapped&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -656,7 +803,7 @@ function main() {
 </dd>
 <a id="renderUtf8BlendedWrapped,FontPtr,cstring,Color,uint32"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#renderUtf8BlendedWrapped%2CFontPtr%2Ccstring%2CColor%2Cuint32"><span class="Identifier">renderUtf8BlendedWrapped</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <a href="../sdl2.html#Color"><span class="Identifier">Color</span></a><span class="Other">;</span>
-                             <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+                              <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUTF8_Blended_Wrapped&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -665,7 +812,7 @@ function main() {
 </dd>
 <a id="renderUnicodeBlendedWrapped,FontPtr,ptr.uint16,Color,uint32"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#renderUnicodeBlendedWrapped%2CFontPtr%2Cptr.uint16%2CColor%2Cuint32"><span class="Identifier">renderUnicodeBlendedWrapped</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint16</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">:</span> <a href="../sdl2.html#Color"><span class="Identifier">Color</span></a><span class="Other">;</span>
-                                <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+                                 <span class="Identifier">wrapLength</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;TTF_RenderUNICODE_Blended_Wrapped&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -710,8 +857,8 @@ function main() {
 
 </dd>
 <a id="renderText,FontPtr,cstring,Color,Color"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#renderText%2CFontPtr%2Ccstring%2CColor%2CColor"><span class="Identifier">renderText</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">,</span> <span class="Identifier">bg</span><span class="Other">:</span> <a href="../sdl2.html#Color"><span class="Identifier">Color</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#renderText%2CFontPtr%2Ccstring%2CColor%2CColor"><span class="Identifier">renderText</span></a><span class="Other">(</span><span class="Identifier">font</span><span class="Other">:</span> <a href="ttf.html#FontPtr"><span class="Identifier">FontPtr</span></a><span class="Other">;</span> <span class="Identifier">text</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">fg</span><span class="Other">,</span> <span class="Identifier">bg</span><span class="Other">:</span> <a href="../sdl2.html#Color"><span class="Identifier">Color</span></a><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -727,7 +874,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:26 UTC</small>
       </div>
     </div>
   </div>

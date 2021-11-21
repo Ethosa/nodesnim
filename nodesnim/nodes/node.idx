@@ -4,7 +4,6 @@ NodeObj	nodesnim/nodes/node.html#NodeObj	node: NodeObj
 NodeRef	nodesnim/nodes/node.html#NodeRef	node: NodeRef	
 handler_default	nodesnim/nodes/node.html#handler_default	node: handler_default	
 event_handler_default	nodesnim/nodes/node.html#event_handler_default	node: event_handler_default	
-nodepattern	nodesnim/nodes/node.html#nodepattern.t,untyped	node: nodepattern(nodetype: untyped): untyped	
 Node	nodesnim/nodes/node.html#Node,string	node: Node(name: string = &quot;Node&quot;): NodeRef	
 addChild	nodesnim/nodes/node.html#addChild.e,NodeRef,NodeRef	node: addChild(self: NodeRef; child: NodeRef)	
 addChildren	nodesnim/nodes/node.html#addChildren.e,NodeRef,varargs[NodeRef]	node: addChildren(self: NodeRef; childs: varargs[NodeRef])	
@@ -20,6 +19,7 @@ getPath	nodesnim/nodes/node.html#getPath.e,NodeRef	node: getPath(self: NodeRef):
 getParent	nodesnim/nodes/node.html#getParent.e,NodeRef	node: getParent(self: NodeRef): NodeRef	
 getPauseMode	nodesnim/nodes/node.html#getPauseMode.e,NodeRef	node: getPauseMode(self: NodeRef): PauseMode	
 getRootNode	nodesnim/nodes/node.html#getRootNode.e,NodeRef	node: getRootNode(self: NodeRef): NodeRef	
+insertChild	nodesnim/nodes/node.html#insertChild.e,NodeRef,int,NodeRef	node: insertChild(self: NodeRef; index: int; node: NodeRef)	
 isParentOf	nodesnim/nodes/node.html#isParentOf.e,NodeRef,NodeRef	node: isParentOf(self, other: NodeRef): bool	
 handle	nodesnim/nodes/node.html#handle.e,NodeRef,InputEvent,NodeRef	node: handle(self: NodeRef; event: InputEvent; mouse_on: var NodeRef)	
 hasNode	nodesnim/nodes/node.html#hasNode.e,NodeRef,string	node: hasNode(self: NodeRef; name: string): bool	
@@ -30,9 +30,11 @@ postdraw	nodesnim/nodes/node.html#postdraw.e,NodeRef,GLfloat,GLfloat	node: postd
 rename	nodesnim/nodes/node.html#rename.e,NodeRef,string	node: rename(self: NodeRef; new_name: string)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,int	node: removeChild(self: NodeRef; index: int)	
 removeChild	nodesnim/nodes/node.html#removeChild.e,NodeRef,NodeRef	node: removeChild(self: NodeRef; other: NodeRef)	
+removeChildren	nodesnim/nodes/node.html#removeChildren.e,NodeRef	node: removeChildren(self: NodeRef)	
 show	nodesnim/nodes/node.html#show.e,NodeRef	node: show(self: NodeRef)	
 delete	nodesnim/nodes/node.html#delete.e,NodeRef	node: delete(self: NodeRef)	
 `[]`	nodesnim/nodes/node.html#[].e,NodeRef,int	node: `[]`(self: NodeRef; index: int): NodeRef	
+`[]`	nodesnim/nodes/node.html#[].e,NodeRef,string	node: `[]`(self: NodeRef; index: string): NodeRef	
 `~`	nodesnim/nodes/node.html#~.e,NodeRef,string	node: `~`(self: NodeRef; path: string): NodeRef	
-Examples	node.html#examples	  Examples	
+Examples	nodesnim/nodes/node.html#examples	  Examples	
 `@`	nodesnim/nodes/node.html#@.m,NodeRef,untyped,untyped	node: `@`(node: NodeRef; event_name, code: untyped): untyped	

@@ -20,7 +20,7 @@
 <title>nodesnim/core/color</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -108,79 +102,150 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#ColorObj"
     title="ColorObj = object
-  r*, g*, b*, a*: float"><wbr />Color<wbr />Obj<span class="attachedType"></span></a></li>
+  r*, g*, b*, a*: float">ColorObj</a></li>
   <li><a class="reference" href="#ColorRef"
-    title="ColorRef = ref ColorObj"><wbr />Color<wbr />Ref<span class="attachedType"></span></a></li>
+    title="ColorRef = ref ColorObj">ColorRef</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Color%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="Color(r, g, b, a: float): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2Cfloat%2Cfloat%2Cfloat"
-    title="Color(r, g, b: float): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8%2Cuint8"
-    title="Color(r, g, b, a: uint8): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8%2Cfloat"
-    title="Color(r, g, b: uint8; a: float): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8"
-    title="Color(r, g, b: uint8): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2Cuint32"
-    title="Color(src: uint32): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2Cstring"
-    title="Color(src: string): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color"
-    title="Color(): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#Color%2CColorRef"
-    title="Color(clr: ColorRef): ColorRef"><wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#getBrightness%2CColorRef"
-    title="getBrightness(self: ColorRef): float"><wbr />get<wbr />Brightness<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#normalize%2Cfloat"
-    title="normalize(n: float): uint32"><wbr />normalize<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#normalize%2Cfloat%2Cfloat%2Cfloat"
-    title="normalize(n, min, max: float): float"><wbr />normalize<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#normalizeColor%2Cfloat"
-    title="normalizeColor(color: float): float"><wbr />normalize<wbr />Color<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#toUint32BE%2CColorRef"
-    title="toUint32BE(color: ColorRef): uint32"><wbr />to<wbr />Uint32BE<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#toUint32LE%2CColorRef"
-    title="toUint32LE(color: ColorRef): uint32"><wbr />to<wbr />Uint32LE<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#toFloatTuple%2CColorRef"
-    title="toFloatTuple(color: ColorRef): tuple[r, g, b, a: float]"><wbr />to<wbr />Float<wbr />Tuple<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#toUint32Tuple%2CColorRef"
-    title="toUint32Tuple(color: ColorRef): tuple[r, g, b, a: uint32]"><wbr />to<wbr />Uint32Tuple<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#toUint32BEWithoutAlpha%2CColorRef"
-    title="toUint32BEWithoutAlpha(color: ColorRef): uint32"><wbr />to<wbr />Uint32BEWithout<wbr />Alpha<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#toUint32LEWithoutAlpha%2CColorRef"
-    title="toUint32LEWithoutAlpha(color: ColorRef): uint32"><wbr />to<wbr />Uint32LEWithout<wbr />Alpha<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#lerp%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cfloat"
-    title="lerp(r1, g1, b1, a1, r2, g2, b2, a2: uint32; lerpv: float): uint32"><wbr />lerp<span class="attachedType"></span></a></li>
+      <ul class="simple nested-toc-section">glColor
+      <li><a class="reference" href="#glColor%2CColorRef"
+    title="glColor(clr: ColorRef)">glColor,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">+=
+      <li><a class="reference" href="#%2B%3D%2CColorRef%2CColorRef"
+    title="`+=`(x: var ColorRef; y: ColorRef)">+=,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">$
+      <li><a class="reference" href="#%24%2CColorRef"
+    title="`$`(color: ColorRef): string">$,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">toUint32Tuple
+      <li><a class="reference" href="#toUint32Tuple%2CColorRef"
+    title="toUint32Tuple(color: ColorRef): tuple[r, g, b, a: uint32]">toUint32Tuple,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">lerp
+      <li><a class="reference" href="#lerp%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cfloat"
+    title="lerp(r1, g1, b1, a1, r2, g2, b2, a2: uint32; lerpv: float): uint32">lerp,<wbr>uint32,<wbr>uint32,<wbr>uint32,<wbr>uint32,<wbr>uint32,<wbr>uint32,<wbr>uint32,<wbr>uint32,<wbr>float</a></li>
   <li><a class="reference" href="#lerp%2CColorRef%2CColorRef%2Cfloat"
-    title="lerp(self, other: ColorRef; lerpv: float): uint32"><wbr />lerp<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#glColor%2CColorRef"
-    title="glColor(clr: ColorRef)"><wbr />gl<wbr />Color<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%24%2CColorRef"
-    title="`$`(color: ColorRef): string"><wbr />`$`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%2B%2CColorRef%2CColorRef"
-    title="`+`(x, y: ColorRef): ColorRef"><wbr />`+`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#-%2CColorRef%2CColorRef"
-    title="`-`(x, y: ColorRef): ColorRef"><wbr />`-`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%2A%2CColorRef%2CColorRef"
-    title="`*`(x, y: ColorRef): ColorRef"><wbr />`*`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%2F%2CColorRef%2CColorRef"
-    title="`/`(x, y: ColorRef): ColorRef"><wbr />`/`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%2B%3D%2CColorRef%2CColorRef"
-    title="`+=`(x: var ColorRef; y: ColorRef)"><wbr />`+=`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#-%3D%2CColorRef%2CColorRef"
-    title="`-=`(x: var ColorRef; y: ColorRef)"><wbr />`-=`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%2A%3D%2CColorRef%2CColorRef"
-    title="`*=`(x: var ColorRef; y: ColorRef)"><wbr />`*=`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%2F%3D%2CColorRef%2CColorRef"
-    title="`/=`(x: var ColorRef; y: ColorRef)"><wbr />`/=`<span class="attachedType">ColorRef</span></a></li>
-  <li><a class="reference" href="#%3D%3D%2CColorRef%2CColorRef"
-    title="`==`(x, y: ColorRef): bool"><wbr />`==`<span class="attachedType">ColorRef</span></a></li>
+    title="lerp(self, other: ColorRef; lerpv: float): uint32">lerp,<wbr>ColorRef,<wbr>ColorRef,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">/
+      <li><a class="reference" href="#%2F%2CColorRef%2CColorRef"
+    title="`/`(x, y: ColorRef): ColorRef">/,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">*
+      <li><a class="reference" href="#%2A%2CColorRef%2CColorRef"
+    title="`*`(x, y: ColorRef): ColorRef">*,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">-
+      <li><a class="reference" href="#-%2CColorRef%2CColorRef"
+    title="`-`(x, y: ColorRef): ColorRef">-,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">toUint32LE
+      <li><a class="reference" href="#toUint32LE%2CColorRef"
+    title="toUint32LE(color: ColorRef): uint32">toUint32LE,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">Color
+      <li><a class="reference" href="#Color%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
+    title="Color(r, g, b, a: float): ColorRef">Color,<wbr>float,<wbr>float,<wbr>float,<wbr>float</a></li>
+  <li><a class="reference" href="#Color%2Cfloat%2Cfloat%2Cfloat"
+    title="Color(r, g, b: float): ColorRef">Color,<wbr>float,<wbr>float,<wbr>float</a></li>
+  <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8%2Cuint8"
+    title="Color(r, g, b, a: uint8): ColorRef">Color,<wbr>uint8,<wbr>uint8,<wbr>uint8,<wbr>uint8</a></li>
+  <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8%2Cfloat"
+    title="Color(r, g, b: uint8; a: float): ColorRef">Color,<wbr>uint8,<wbr>uint8,<wbr>uint8,<wbr>float</a></li>
+  <li><a class="reference" href="#Color%2Cuint8%2Cuint8%2Cuint8"
+    title="Color(r, g, b: uint8): ColorRef">Color,<wbr>uint8,<wbr>uint8,<wbr>uint8</a></li>
+  <li><a class="reference" href="#Color%2Cuint32"
+    title="Color(src: uint32): ColorRef">Color,<wbr>uint32</a></li>
+  <li><a class="reference" href="#Color%2Cstring"
+    title="Color(src: string): ColorRef">Color,<wbr>string</a></li>
+  <li><a class="reference" href="#Color"
+    title="Color(): ColorRef">Color</a></li>
+  <li><a class="reference" href="#Color%2CColorRef"
+    title="Color(clr: ColorRef): ColorRef">Color,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">-=
+      <li><a class="reference" href="#-%3D%2CColorRef%2CColorRef"
+    title="`-=`(x: var ColorRef; y: ColorRef)">-=,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getBrightness
+      <li><a class="reference" href="#getBrightness%2CColorRef"
+    title="getBrightness(self: ColorRef): float">getBrightness,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">toFloatTuple
+      <li><a class="reference" href="#toFloatTuple%2CColorRef"
+    title="toFloatTuple(color: ColorRef): tuple[r, g, b, a: float]">toFloatTuple,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">normalize
+      <li><a class="reference" href="#normalize%2Cfloat"
+    title="normalize(n: float): uint32">normalize,<wbr>float</a></li>
+  <li><a class="reference" href="#normalize%2Cfloat%2Cfloat%2Cfloat"
+    title="normalize(n, min, max: float): float">normalize,<wbr>float,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">/=
+      <li><a class="reference" href="#%2F%3D%2CColorRef%2CColorRef"
+    title="`/=`(x: var ColorRef; y: ColorRef)">/=,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">toUint32BEWithoutAlpha
+      <li><a class="reference" href="#toUint32BEWithoutAlpha%2CColorRef"
+    title="toUint32BEWithoutAlpha(color: ColorRef): uint32">toUint32BEWithoutAlpha,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">copyColorTo
+      <li><a class="reference" href="#copyColorTo%2CColorRef%2CColorRef"
+    title="copyColorTo(dest, src: ColorRef)">copyColorTo,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">normalizeColor
+      <li><a class="reference" href="#normalizeColor%2Cfloat"
+    title="normalizeColor(color: float): float">normalizeColor,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">==
+      <li><a class="reference" href="#%3D%3D%2CColorRef%2CColorRef"
+    title="`==`(x, y: ColorRef): bool">==,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">+
+      <li><a class="reference" href="#%2B%2CColorRef%2CColorRef"
+    title="`+`(x, y: ColorRef): ColorRef">+,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">toUint32BE
+      <li><a class="reference" href="#toUint32BE%2CColorRef"
+    title="toUint32BE(color: ColorRef): uint32">toUint32BE,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">*=
+      <li><a class="reference" href="#%2A%3D%2CColorRef%2CColorRef"
+    title="`*=`(x: var ColorRef; y: ColorRef)">*=,<wbr>ColorRef,<wbr>ColorRef</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">toUint32LEWithoutAlpha
+      <li><a class="reference" href="#toUint32LEWithoutAlpha%2CColorRef"
+    title="toUint32LEWithoutAlpha(color: ColorRef): uint32">toUint32LEWithoutAlpha,<wbr>ColorRef</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -263,16 +328,16 @@ Creates a new Color from RGB. <tt class="docutils literal"><span class="pre">r</
 <p>Translate AARRGGBB uint32 color to the Color object.</p>
 <p>0xFF00FF00 -&gt; Color(0, 1, 0, 1)</p>
 
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">clr1</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">0xFFCCAAFF'u32</span><span class="Other">)</span>
-  <span class="Identifier">clr2</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">0xFFAACCFF'u32</span><span class="Other">)</span>
-  <span class="Identifier">clr3</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">0xAACCFFFF'u32</span><span class="Other">)</span>
-  <span class="Identifier">clr4</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="DecNumber">0xAAFFCCFF'u32</span><span class="Other">)</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr1</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr2</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr3</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr4</span></pre>
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace">
+  </span><span class="Identifier">clr1</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="HexNumber">0xFFCCAAFF&apos;</span><span class="Identifier">u32</span><span class="Punctuation">)</span><span class="Whitespace">
+  </span><span class="Identifier">clr2</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="HexNumber">0xFFAACCFF&apos;</span><span class="Identifier">u32</span><span class="Punctuation">)</span><span class="Whitespace">
+  </span><span class="Identifier">clr3</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="HexNumber">0xAACCFFFF&apos;</span><span class="Identifier">u32</span><span class="Punctuation">)</span><span class="Whitespace">
+  </span><span class="Identifier">clr4</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="HexNumber">0xAAFFCCFF&apos;</span><span class="Identifier">u32</span><span class="Punctuation">)</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr1</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr2</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr3</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr4</span></pre>
 
 </dd>
 <a id="Color,string"></a>
@@ -280,16 +345,16 @@ Creates a new Color from RGB. <tt class="docutils literal"><span class="pre">r</
 <dd>
 
 Parses color from string. <tt class="docutils literal"><span class="pre">src</span></tt> should be a string, begins with &quot;#&quot;, &quot;0x&quot; or &quot;0X&quot; and have a AARRGGBB color value.
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span>
-  <span class="Identifier">clr1</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;#FFCCAAFF&quot;</span><span class="Other">)</span>
-  <span class="Identifier">clr2</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;0xFFAACCFF&quot;</span><span class="Other">)</span>
-  <span class="Identifier">clr3</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;0XAACCFFFF&quot;</span><span class="Other">)</span>
-  <span class="Identifier">clr4</span> <span class="Other">=</span> <span class="Identifier">Color</span><span class="Other">(</span><span class="StringLit">&quot;#AAFFCCFF&quot;</span><span class="Other">)</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr1</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr2</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr3</span>
-<span class="Identifier">echo</span> <span class="Identifier">clr4</span></pre>
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace">
+  </span><span class="Identifier">clr1</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="StringLit">&quot;#FFCCAAFF&quot;</span><span class="Punctuation">)</span><span class="Whitespace">
+  </span><span class="Identifier">clr2</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="StringLit">&quot;0xFFAACCFF&quot;</span><span class="Punctuation">)</span><span class="Whitespace">
+  </span><span class="Identifier">clr3</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="StringLit">&quot;0XAACCFFFF&quot;</span><span class="Punctuation">)</span><span class="Whitespace">
+  </span><span class="Identifier">clr4</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Color</span><span class="Punctuation">(</span><span class="StringLit">&quot;#AAFFCCFF&quot;</span><span class="Punctuation">)</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr1</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr2</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr3</span><span class="Whitespace">
+</span><span class="Identifier">echo</span><span class="Whitespace"> </span><span class="Identifier">clr4</span></pre>
 
 </dd>
 <a id="Color"></a>
@@ -349,36 +414,40 @@ Converts Color object to uint32 with <tt class="docutils literal"><span class="p
 
 </dd>
 <a id="toFloatTuple,ColorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#toFloatTuple%2CColorRef"><span class="Identifier">toFloatTuple</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">g</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">,</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#toFloatTuple%2CColorRef"><span class="Identifier">toFloatTuple</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">g</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">,</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts Color object to the tuple.
 
 </dd>
 <a id="toUint32Tuple,ColorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#toUint32Tuple%2CColorRef"><span class="Identifier">toUint32Tuple</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">g</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">,</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#toUint32Tuple%2CColorRef"><span class="Identifier">toUint32Tuple</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">r</span><span class="Other">,</span> <span class="Identifier">g</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">,</span> <span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">]</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span>
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts Color object to the tuple.
 
 </dd>
 <a id="toUint32BEWithoutAlpha,ColorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#toUint32BEWithoutAlpha%2CColorRef"><span class="Identifier">toUint32BEWithoutAlpha</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#toUint32BEWithoutAlpha%2CColorRef"><span class="Identifier">toUint32BEWithoutAlpha</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts Color object to uint32 without alpha-channel with <tt class="docutils literal"><span class="pre">big endian</span></tt>.
 
 </dd>
 <a id="toUint32LEWithoutAlpha,ColorRef"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#toUint32LEWithoutAlpha%2CColorRef"><span class="Identifier">toUint32LEWithoutAlpha</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#toUint32LEWithoutAlpha%2CColorRef"><span class="Identifier">toUint32LEWithoutAlpha</span></a><span class="Other">(</span><span class="Identifier">color</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts Color object to uint32 without alpha-channel with <tt class="docutils literal"><span class="pre">little endian</span></tt>.
 
 </dd>
 <a id="lerp,uint32,uint32,uint32,uint32,uint32,uint32,uint32,uint32,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#lerp%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cfloat"><span class="Identifier">lerp</span></a><span class="Other">(</span><span class="Identifier">r1</span><span class="Other">,</span> <span class="Identifier">g1</span><span class="Other">,</span> <span class="Identifier">b1</span><span class="Other">,</span> <span class="Identifier">a1</span><span class="Other">,</span> <span class="Identifier">r2</span><span class="Other">,</span> <span class="Identifier">g2</span><span class="Other">,</span> <span class="Identifier">b2</span><span class="Other">,</span> <span class="Identifier">a2</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">lerpv</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#lerp%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cuint32%2Cfloat"><span class="Identifier">lerp</span></a><span class="Other">(</span><span class="Identifier">r1</span><span class="Other">,</span> <span class="Identifier">g1</span><span class="Other">,</span> <span class="Identifier">b1</span><span class="Other">,</span> <span class="Identifier">a1</span><span class="Other">,</span> <span class="Identifier">r2</span><span class="Other">,</span> <span class="Identifier">g2</span><span class="Other">,</span> <span class="Identifier">b2</span><span class="Other">,</span> <span class="Identifier">a2</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">lerpv</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>linear interpolate color.</p>
@@ -391,6 +460,13 @@ Converts Color object to uint32 without alpha-channel with <tt class="docutils l
 </dd>
 <a id="lerp,ColorRef,ColorRef,float"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#lerp%2CColorRef%2CColorRef%2Cfloat"><span class="Identifier">lerp</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">,</span> <span class="Identifier">other</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">;</span> <span class="Identifier">lerpv</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">uint32</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="copyColorTo,ColorRef,ColorRef"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#copyColorTo%2CColorRef%2CColorRef"><span class="Identifier">copyColorTo</span></a><span class="Other">(</span><span class="Identifier">dest</span><span class="Other">,</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="color.html#ColorRef"><span class="Identifier">ColorRef</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -483,7 +559,7 @@ Converts Color object to uint32 without alpha-channel with <tt class="docutils l
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:20 UTC</small>
       </div>
     </div>
   </div>

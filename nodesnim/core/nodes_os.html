@@ -20,7 +20,7 @@
 <title>nodesnim/core/nodes_os</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -107,7 +101,7 @@ function main() {
   <a class="reference reference-toplevel" href="#8" id="58">Vars</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#standard_font"
-    title="standard_font: FontPtr = nil"><wbr />standard_<wbr />font<span class="attachedType"></span></a></li>
+    title="standard_font: FontPtr = nil">standard_font</a></li>
 
   </ul>
 </li>
@@ -115,25 +109,31 @@ function main() {
   <a class="reference reference-toplevel" href="#9" id="59">Lets</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#home_folder"
-    title="home_folder = getHomeDir()"><wbr />home_<wbr />folder<span class="attachedType"></span></a></li>
+    title="home_folder = getHomeDir()">home_folder</a></li>
   <li><a class="reference" href="#nodesnim_folder"
-    title="nodesnim_folder = home_folder / &quot;NodesNim&quot;"><wbr />nodesnim_<wbr />folder<span class="attachedType"></span></a></li>
+    title="nodesnim_folder = home_folder / &quot;NodesNim&quot;">nodesnim_folder</a></li>
   <li><a class="reference" href="#saves_folder"
-    title="saves_folder = nodesnim_folder / &quot;saves&quot;"><wbr />saves_<wbr />folder<span class="attachedType"></span></a></li>
+    title="saves_folder = nodesnim_folder / &quot;saves&quot;">saves_folder</a></li>
   <li><a class="reference" href="#standard_font_path"
     title="standard_font_path = parentDir((filename: &quot;/home/runner/work/nodesnim/nodesnim/src/nodesnim/core/nodes_os.nim&quot;,
-                              line: 23, column: 23).filename) /
-    &quot;unifont.ttf&quot;"><wbr />standard_<wbr />font_<wbr />path<span class="attachedType"></span></a></li>
+                                line: 23, column: 23).filename) /
+    &quot;unifont.ttf&quot;">standard_font_path</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">norm
+      <li><a class="reference" href="#norm%2Cfloat%2Cfloat%2Cfloat"
+    title="norm(a, b, c: float): float">norm,<wbr>float,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">setStandardFont
       <li><a class="reference" href="#setStandardFont%2Ccstring%2Ccint"
-    title="setStandardFont(path: cstring; size: cint)"><wbr />set<wbr />Standard<wbr />Font<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#norm%2Cfloat%2Cfloat%2Cfloat"
-    title="norm(a, b, c: float): float"><wbr />norm<span class="attachedType"></span></a></li>
+    title="setStandardFont(path: cstring; size: cint)">setStandardFont,<wbr>cstring,<wbr>cint</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -188,7 +188,7 @@ function main() {
 </dd>
 <a id="standard_font_path"></a>
 <dt><pre><a href="nodes_os.html#standard_font_path"><span class="Identifier">standard_font_path</span></a> <span class="Other">=</span> <span class="Identifier">parentDir</span><span class="Other">(</span><span class="Other">(</span><span class="Identifier">filename</span><span class="Other">:</span> <span class="StringLit">&quot;/home/runner/work/nodesnim/nodesnim/src/nodesnim/core/nodes_os.nim&quot;</span><span class="Other">,</span>
-                              <span class="Identifier">line</span><span class="Other">:</span> <span class="DecNumber">23</span><span class="Other">,</span> <span class="Identifier">column</span><span class="Other">:</span> <span class="DecNumber">23</span><span class="Other">)</span><span class="Other">.</span><span class="Identifier">filename</span><span class="Other">)</span> <span class="Operator">/</span>
+                                <span class="Identifier">line</span><span class="Other">:</span> <span class="DecNumber">23</span><span class="Other">,</span> <span class="Identifier">column</span><span class="Other">:</span> <span class="DecNumber">23</span><span class="Other">)</span><span class="Other">.</span><span class="Identifier">filename</span><span class="Other">)</span> <span class="Operator">/</span>
     <span class="StringLit">&quot;unifont.ttf&quot;</span></pre></dt>
 <dd>
 
@@ -224,7 +224,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:26 UTC</small>
       </div>
     </div>
   </div>

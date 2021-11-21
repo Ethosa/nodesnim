@@ -34,7 +34,7 @@ fontFaceIsFixedWidth	nodesnim/thirdparty/sdl2/ttf.html#fontFaceIsFixedWidth,Font
 fontFaceFamilyName	nodesnim/thirdparty/sdl2/ttf.html#fontFaceFamilyName,FontPtr	ttf: fontFaceFamilyName(font: FontPtr): cstring	
 fontFaceStyleName	nodesnim/thirdparty/sdl2/ttf.html#fontFaceStyleName,FontPtr	ttf: fontFaceStyleName(font: FontPtr): cstring	
 glyphIsProvided	nodesnim/thirdparty/sdl2/ttf.html#glyphIsProvided,FontPtr,uint16	ttf: glyphIsProvided(font: FontPtr; ch: uint16): cint	
-glyphMetrics	nodesnim/thirdparty/sdl2/ttf.html#glyphMetrics,FontPtr,uint16,ptr.cint,ptr.cint,ptr.cint,ptr.cint,ptr.cint	ttf: glyphMetrics(font: FontPtr; ch: uint16; minx: ptr cint; maxx: ptr cint; miny: ptr cint;\n             maxy: ptr cint; advance: ptr cint): cint	
+glyphMetrics	nodesnim/thirdparty/sdl2/ttf.html#glyphMetrics,FontPtr,uint16,ptr.cint,ptr.cint,ptr.cint,ptr.cint,ptr.cint	ttf: glyphMetrics(font: FontPtr; ch: uint16; minx: ptr cint; maxx: ptr cint;\n             miny: ptr cint; maxy: ptr cint; advance: ptr cint): cint	
 sizeText	nodesnim/thirdparty/sdl2/ttf.html#sizeText,FontPtr,cstring,ptr.cint,ptr.cint	ttf: sizeText(font: FontPtr; text: cstring; w: ptr cint; h: ptr cint): cint	
 sizeUtf8	nodesnim/thirdparty/sdl2/ttf.html#sizeUtf8,FontPtr,cstring,ptr.cint,ptr.cint	ttf: sizeUtf8(font: FontPtr; text: cstring; w: ptr cint; h: ptr cint): cint	
 sizeUnicode	nodesnim/thirdparty/sdl2/ttf.html#sizeUnicode,FontPtr,ptr.uint16,ptr.cint,ptr.cint	ttf: sizeUnicode(font: FontPtr; text: ptr uint16; w, h: ptr cint): cint	
@@ -49,8 +49,8 @@ renderGlyphShaded	nodesnim/thirdparty/sdl2/ttf.html#renderGlyphShaded,FontPtr,ui
 renderTextBlended	nodesnim/thirdparty/sdl2/ttf.html#renderTextBlended,FontPtr,cstring,Color	ttf: renderTextBlended(font: FontPtr; text: cstring; fg: Color): SurfacePtr	
 renderUtf8Blended	nodesnim/thirdparty/sdl2/ttf.html#renderUtf8Blended,FontPtr,cstring,Color	ttf: renderUtf8Blended(font: FontPtr; text: cstring; fg: Color): SurfacePtr	
 renderUnicodeBlended	nodesnim/thirdparty/sdl2/ttf.html#renderUnicodeBlended,FontPtr,ptr.uint16,Color	ttf: renderUnicodeBlended(font: FontPtr; text: ptr uint16; fg: Color): SurfacePtr	
-renderTextBlendedWrapped	nodesnim/thirdparty/sdl2/ttf.html#renderTextBlendedWrapped,FontPtr,cstring,Color,uint32	ttf: renderTextBlendedWrapped(font: FontPtr; text: cstring; fg: Color; wrapLength: uint32): SurfacePtr	
-renderUtf8BlendedWrapped	nodesnim/thirdparty/sdl2/ttf.html#renderUtf8BlendedWrapped,FontPtr,cstring,Color,uint32	ttf: renderUtf8BlendedWrapped(font: FontPtr; text: cstring; fg: Color; wrapLength: uint32): SurfacePtr	
+renderTextBlendedWrapped	nodesnim/thirdparty/sdl2/ttf.html#renderTextBlendedWrapped,FontPtr,cstring,Color,uint32	ttf: renderTextBlendedWrapped(font: FontPtr; text: cstring; fg: Color;\n                         wrapLength: uint32): SurfacePtr	
+renderUtf8BlendedWrapped	nodesnim/thirdparty/sdl2/ttf.html#renderUtf8BlendedWrapped,FontPtr,cstring,Color,uint32	ttf: renderUtf8BlendedWrapped(font: FontPtr; text: cstring; fg: Color;\n                         wrapLength: uint32): SurfacePtr	
 renderUnicodeBlendedWrapped	nodesnim/thirdparty/sdl2/ttf.html#renderUnicodeBlendedWrapped,FontPtr,ptr.uint16,Color,uint32	ttf: renderUnicodeBlendedWrapped(font: FontPtr; text: ptr uint16; fg: Color;\n                            wrapLength: uint32): SurfacePtr	
 renderGlyphBlended	nodesnim/thirdparty/sdl2/ttf.html#renderGlyphBlended,FontPtr,uint16,Color	ttf: renderGlyphBlended(font: FontPtr; ch: uint16; fg: Color): SurfacePtr	
 close	nodesnim/thirdparty/sdl2/ttf.html#close,FontPtr	ttf: close(font: FontPtr)	

@@ -20,7 +20,7 @@
 <title>nodesnim/core/tileset</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -109,17 +103,28 @@ function main() {
       <li><a class="reference" href="#TileSetObj"
     title="TileSetObj = ref object
   grid*, size*: Vector2Obj
-  texture*: GLuint"><wbr />Tile<wbr />Set<wbr />Obj<span class="attachedType"></span></a></li>
+  texture*: GLuint">TileSetObj</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">draw
+      <li><a class="reference" href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
+    title="draw(self: TileSetObj; tilex, tiley, x, y, z: float)">draw,<wbr>TileSetObj,<wbr>float,<wbr>float,<wbr>float,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">freeMemory
+      <li><a class="reference" href="#freeMemory%2CTileSetObj"
+    title="freeMemory(self: TileSetObj)">freeMemory,<wbr>TileSetObj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">TileSet
       <li><a class="reference" href="#TileSet%2Cstring%2CVector2Obj%2CGLenum"
-    title="TileSet(img: string; tile_size: Vector2Obj; mode: GLenum = GL_RGB): TileSetObj"><wbr />Tile<wbr />Set<span class="attachedType">TileSetObj</span></a></li>
-  <li><a class="reference" href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="draw(self: TileSetObj; tilex, tiley, x, y, z: float)"><wbr />draw<span class="attachedType">TileSetObj</span></a></li>
+    title="TileSet(img: string; tile_size: Vector2Obj; mode: GLenum = GL_RGB): TileSetObj">TileSet,<wbr>string,<wbr>Vector2Obj,<wbr>GLenum</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -163,10 +168,18 @@ Creates a new TileSet from image
 
 </dd>
 <a id="draw,TileSetObj,float,float,float,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tileset.html#TileSetObj"><span class="Identifier">TileSetObj</span></a><span class="Other">;</span> <span class="Identifier">tilex</span><span class="Other">,</span> <span class="Identifier">tiley</span><span class="Other">,</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#draw%2CTileSetObj%2Cfloat%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">draw</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tileset.html#TileSetObj"><span class="Identifier">TileSetObj</span></a><span class="Other">;</span> <span class="Identifier">tilex</span><span class="Other">,</span> <span class="Identifier">tiley</span><span class="Other">,</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">,</span> <span class="Identifier">z</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Draws tile at position <tt class="docutils literal"><span class="pre">tilex</span></tt>,`tiley` to <tt class="docutils literal"><span class="pre">x</span></tt>,`y` position.
+
+</dd>
+<a id="freeMemory,TileSetObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#freeMemory%2CTileSetObj"><span class="Identifier">freeMemory</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="tileset.html#TileSetObj"><span class="Identifier">TileSetObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">GLerror</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
 
 </dd>
 
@@ -179,7 +192,7 @@ Draws tile at position <tt class="docutils literal"><span class="pre">tilex</spa
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:12 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:31 UTC</small>
       </div>
     </div>
   </div>

@@ -1,0 +1,18 @@
+voidTemplate	nodesnim/private/templates.html#voidTemplate.t	templates: voidTemplate()	
+calculateDrawableCorners	nodesnim/private/templates.html#calculateDrawableCorners.t,bool	templates: calculateDrawableCorners(shadow: bool = false)	
+drawTemplate	nodesnim/private/templates.html#drawTemplate.t,untyped,untyped,untyped,untyped	templates: drawTemplate(drawtype, color, function, secondfunc: untyped): untyped	
+drawTemplate	nodesnim/private/templates.html#drawTemplate.t,untyped,untyped,untyped,untyped,bool	templates: drawTemplate(drawtype, color, function, secondfunc: untyped; is_gradient: bool): untyped	
+drawTextureTemplate	nodesnim/private/templates.html#drawTextureTemplate.t,untyped,untyped,untyped,untyped	templates: drawTextureTemplate(drawtype, color, function, secondfunc: untyped): untyped	
+drawablepattern	nodesnim/private/templates.html#drawablepattern.t,untyped	templates: drawablepattern(type: untyped): untyped	
+nodepattern	nodesnim/private/templates.html#nodepattern.t,untyped	templates: nodepattern(nodetype: untyped): untyped	
+node2dpattern	nodesnim/private/templates.html#node2dpattern.t	templates: node2dpattern(): untyped	
+node3dpattern	nodesnim/private/templates.html#node3dpattern.t	templates: node3dpattern()	
+controlpattern	nodesnim/private/templates.html#controlpattern.t	templates: controlpattern(): untyped	
+chartDrawAxis	nodesnim/private/templates.html#chartDrawAxis.t,untyped	templates: chartDrawAxis(self: untyped)	
+chartDrawRadar	nodesnim/private/templates.html#chartDrawRadar.t	templates: chartDrawRadar()	
+chartDrawLine	nodesnim/private/templates.html#chartDrawLine.t	templates: chartDrawLine()	
+chartDrawBar	nodesnim/private/templates.html#chartDrawBar.t	templates: chartDrawBar()	
+chartDrawPie	nodesnim/private/templates.html#chartDrawPie.t,untyped	templates: chartDrawPie(chart_data: untyped)	
+setTextTemplate	nodesnim/private/templates.html#setTextTemplate.t,untyped,untyped,untyped,untyped	templates: setTextTemplate(self, text, save_properties, t: untyped): untyped	
+colorToRenderer	nodesnim/private/templates.html#colorToRenderer.t,untyped	templates: colorToRenderer(color_argument_name: untyped): untyped	
+canvasDrawGL	nodesnim/private/templates.html#canvasDrawGL.t,untyped	templates: canvasDrawGL(canvas: untyped): untyped	

@@ -51,7 +51,7 @@ getQueuedAudioSize	nodesnim/thirdparty/sdl2/audio.html#getQueuedAudioSize,AudioD
 queueAudio	nodesnim/thirdparty/sdl2/audio.html#queueAudio,AudioDeviceID,pointer,uint32	audio: queueAudio(dev: AudioDeviceID; data: pointer; len: uint32): cint	
 pauseAudio	nodesnim/thirdparty/sdl2/audio.html#pauseAudio,cint	audio: pauseAudio(pause_on: cint)	
 pauseAudioDevice	nodesnim/thirdparty/sdl2/audio.html#pauseAudioDevice,AudioDeviceID,cint	audio: pauseAudioDevice(dev: AudioDeviceID; pause_on: cint)	
-loadWAV_RW	nodesnim/thirdparty/sdl2/audio.html#loadWAV_RW,ptr.RWops,cint,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32	audio: loadWAV_RW(src: ptr RWops; freesrc: cint; spec: ptr AudioSpec; audio_buf: ptr ptr uint8;\n           audio_len: ptr uint32): ptr AudioSpec	
+loadWAV_RW	nodesnim/thirdparty/sdl2/audio.html#loadWAV_RW,ptr.RWops,cint,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32	audio: loadWAV_RW(src: ptr RWops; freesrc: cint; spec: ptr AudioSpec;\n           audio_buf: ptr ptr uint8; audio_len: ptr uint32): ptr AudioSpec	
 loadWAV	nodesnim/thirdparty/sdl2/audio.html#loadWAV.t,string,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32	audio: loadWAV(file: string; spec: ptr AudioSpec; audio_buf: ptr ptr uint8;\n        audio_len: ptr uint32): ptr AudioSpec	
 freeWAV	nodesnim/thirdparty/sdl2/audio.html#freeWAV,ptr.uint8	audio: freeWAV(audio_buf: ptr uint8)	
 buildAudioCVT	nodesnim/thirdparty/sdl2/audio.html#buildAudioCVT,ptr.AudioCVT,AudioFormat,uint8,cint,AudioFormat,uint8,cint	audio: buildAudioCVT(cvt: ptr AudioCVT; src_format: AudioFormat; src_channels: uint8;\n              src_rate: cint; dst_format: AudioFormat; dst_channels: uint8;\n              dst_rate: cint): cint	

@@ -1,6 +1,5 @@
 Node3DObj	nodesnim/nodes3d/node3d.html#Node3DObj	node3d: Node3DObj	
 Node3DRef	nodesnim/nodes3d/node3d.html#Node3DRef	node3d: Node3DRef	
-node3dpattern	nodesnim/nodes3d/node3d.html#node3dpattern.t	node3d: node3dpattern()	
 Node3D	nodesnim/nodes3d/node3d.html#Node3D,string	node3d: Node3D(name: string = &quot;Node3D&quot;): Node3DRef	
 calcGlobalPosition3	nodesnim/nodes3d/node3d.html#calcGlobalPosition3.e,Node3DRef	node3d: calcGlobalPosition3(self: Node3DRef)	
 rotate	nodesnim/nodes3d/node3d.html#rotate.e,Node3DRef,float,float,float	node3d: rotate(self: Node3DRef; x, y, z: float)	

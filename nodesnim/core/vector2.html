@@ -20,7 +20,7 @@
 <title>nodesnim/core/vector2</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -102,101 +96,204 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Vector2Obj"
     title="Vector2Obj = object
-  x*, y*: float"><wbr />Vector2Obj<span class="attachedType"></span></a></li>
+  x*, y*: float">Vector2Obj</a></li>
+
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#9" id="59">Lets</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#NULL_VECTOR2"
+    title="NULL_VECTOR2 = Vector2Obj(x: 0, y: 0)">NULL_VECTOR2</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Vector2%2Cfloat%2Cfloat"
-    title="Vector2(x, y: float): Vector2Obj"><wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#Vector2%2CVector2Obj"
-    title="Vector2(b: Vector2Obj): Vector2Obj"><wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#Vector2%2Cfloat"
-    title="Vector2(x: float): Vector2Obj"><wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#Vector2"
-    title="Vector2(): Vector2Obj"><wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#newVector2%2CVector2Obj"
-    title="newVector2(vec2: Vector2Obj): ref Vector2Obj"><wbr />new<wbr />Vector2<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#abs%2CVector2Obj"
-    title="abs(a: Vector2Obj): Vector2Obj"><wbr />abs<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#angle%2CVector2Obj"
-    title="angle(a: Vector2Obj): float"><wbr />angle<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#clear%2CVector2Obj"
-    title="clear(a: var Vector2Obj)"><wbr />clear<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#cross%2CVector2Obj%2CVector2Obj"
-    title="cross(a, b: Vector2Obj): float"><wbr />cross<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#cross%2CVector2Obj%2Cfloat%2Cfloat"
-    title="cross(a: Vector2Obj; x, y: float): float"><wbr />cross<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#dot%2CVector2Obj%2CVector2Obj"
-    title="dot(a, b: Vector2Obj): float"><wbr />dot<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#dot%2CVector2Obj%2Cfloat%2Cfloat"
-    title="dot(a: Vector2Obj; x, y: float): float"><wbr />dot<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#angleTo%2CVector2Obj%2CVector2Obj"
-    title="angleTo(a, b: Vector2Obj): float"><wbr />angle<wbr />To<span class="attachedType">Vector2Obj</span></a></li>
+      <ul class="simple nested-toc-section">angleTo
+      <li><a class="reference" href="#angleTo%2CVector2Obj%2CVector2Obj"
+    title="angleTo(a, b: Vector2Obj): float">angleTo,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
   <li><a class="reference" href="#angleTo%2CVector2Obj%2Cfloat%2Cfloat"
-    title="angleTo(a: Vector2Obj; x, y: float): float"><wbr />angle<wbr />To<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#angleToPoint%2CVector2Obj%2CVector2Obj"
-    title="angleToPoint(a, b: Vector2Obj): float"><wbr />angle<wbr />To<wbr />Point<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#angleToPoint%2CVector2Obj%2Cfloat%2Cfloat"
-    title="angleToPoint(a: Vector2Obj; x, y: float): float"><wbr />angle<wbr />To<wbr />Point<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#length%2CVector2Obj"
-    title="length(a: Vector2Obj): float"><wbr />length<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#normalize%2CVector2Obj"
-    title="normalize(a: var Vector2Obj)"><wbr />normalize<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#normalized%2CVector2Obj"
-    title="normalized(a: Vector2Obj): Vector2Obj"><wbr />normalized<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#distance%2CVector2Obj%2CVector2Obj"
-    title="distance(a, b: Vector2Obj): float"><wbr />distance<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#distance%2CVector2Obj%2Cfloat%2Cfloat"
-    title="distance(a: Vector2Obj; x, y: float): float"><wbr />distance<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#directionTo%2CVector2Obj%2CVector2Obj"
-    title="directionTo(a, b: Vector2Obj): Vector2Obj"><wbr />direction<wbr />To<span class="attachedType">Vector2Obj</span></a></li>
+    title="angleTo(a: Vector2Obj; x, y: float): float">angleTo,<wbr>Vector2Obj,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">length
+      <li><a class="reference" href="#length%2CVector2Obj"
+    title="length(a: Vector2Obj): float">length,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">+=
+      <li><a class="reference" href="#%2B%3D%2CVector2Obj%2CVector2Obj"
+    title="`+=`(x: var Vector2Obj; y: Vector2Obj)">+=,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">$
+      <li><a class="reference" href="#%24%2CVector2Obj"
+    title="`$`(a: Vector2Obj): string">$,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">>=
+      <li><a class="reference" href="#%3E%3D%2CVector2Obj%2CVector2Obj"
+    title="`&gt;=`(x, y: Vector2Obj): bool">>=,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section"><=
+      <li><a class="reference" href="#%3C%3D%2CVector2Obj%2CVector2Obj"
+    title="`&lt;=`(x, y: Vector2Obj): bool"><=,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">directionTo
+      <li><a class="reference" href="#directionTo%2CVector2Obj%2CVector2Obj"
+    title="directionTo(a, b: Vector2Obj): Vector2Obj">directionTo,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
   <li><a class="reference" href="#directionTo%2CVector2Obj%2Cfloat%2Cfloat"
-    title="directionTo(a: Vector2Obj; x, y: float): Vector2Obj"><wbr />direction<wbr />To<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#intersects%2CVector2Obj%2CVector2Obj%2CVector2Obj%2CVector2Obj"
-    title="intersects(a, b, c, d: Vector2Obj): bool"><wbr />intersects<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#isEmpty%2CVector2Obj"
-    title="isEmpty(a: Vector2Obj): bool"><wbr />is<wbr />Empty<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%24%2CVector2Obj"
-    title="`$`(a: Vector2Obj): string"><wbr />`$`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2B%2CVector2Obj%2CVector2Obj"
-    title="`+`(a, b: Vector2Obj): Vector2Obj"><wbr />`+`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#-%2CVector2Obj%2CVector2Obj"
-    title="`-`(a, b: Vector2Obj): Vector2Obj"><wbr />`-`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2F%2CVector2Obj%2CVector2Obj"
-    title="`/`(a, b: Vector2Obj): Vector2Obj"><wbr />`/`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2A%2CVector2Obj%2CVector2Obj"
-    title="`*`(a, b: Vector2Obj): Vector2Obj"><wbr />`*`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2A%2CVector2Obj%2Cfloat"
-    title="`*`(x: Vector2Obj; y: float): Vector2Obj"><wbr />`*`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2B%2CVector2Obj%2Cfloat"
-    title="`+`(x: Vector2Obj; y: float): Vector2Obj"><wbr />`+`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#-%2CVector2Obj%2Cfloat"
-    title="`-`(x: Vector2Obj; y: float): Vector2Obj"><wbr />`-`<span class="attachedType">Vector2Obj</span></a></li>
+    title="directionTo(a: Vector2Obj; x, y: float): Vector2Obj">directionTo,<wbr>Vector2Obj,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">/
+      <li><a class="reference" href="#%2F%2CVector2Obj%2CVector2Obj"
+    title="`/`(a, b: Vector2Obj): Vector2Obj">/,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
   <li><a class="reference" href="#%2F%2CVector2Obj%2Cfloat"
-    title="`/`(x: Vector2Obj; y: float): Vector2Obj"><wbr />`/`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2A%3D%2CVector2Obj%2CVector2Obj"
-    title="`*=`(x: var Vector2Obj; y: Vector2Obj)"><wbr />`*=`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2B%3D%2CVector2Obj%2CVector2Obj"
-    title="`+=`(x: var Vector2Obj; y: Vector2Obj)"><wbr />`+=`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#-%3D%2CVector2Obj%2CVector2Obj"
-    title="`-=`(x: var Vector2Obj; y: Vector2Obj)"><wbr />`-=`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%2F%3D%2CVector2Obj%2CVector2Obj"
-    title="`/=`(x: var Vector2Obj; y: Vector2Obj)"><wbr />`/=`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%3E%2CVector2Obj%2CVector2Obj"
-    title="`&gt;`(x, y: Vector2Obj): bool"><wbr />`&gt;`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%3C%2CVector2Obj%2CVector2Obj"
-    title="`&lt;`(x, y: Vector2Obj): bool"><wbr />`&lt;`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%3E%3D%2CVector2Obj%2CVector2Obj"
-    title="`&gt;=`(x, y: Vector2Obj): bool"><wbr />`&gt;=`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%3C%3D%2CVector2Obj%2CVector2Obj"
-    title="`&lt;=`(x, y: Vector2Obj): bool"><wbr />`&lt;=`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%3D%3D%2CVector2Obj%2CVector2Obj"
-    title="`==`(x, y: Vector2Obj): bool"><wbr />`==`<span class="attachedType">Vector2Obj</span></a></li>
-  <li><a class="reference" href="#%21%3D%2CVector2Obj%2CVector2Obj"
-    title="`!=`(x, y: Vector2Obj): bool"><wbr />`!=`<span class="attachedType">Vector2Obj</span></a></li>
+    title="`/`(x: Vector2Obj; y: float): Vector2Obj">/,<wbr>Vector2Obj,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section"><
+      <li><a class="reference" href="#%3C%2CVector2Obj%2CVector2Obj"
+    title="`&lt;`(x, y: Vector2Obj): bool"><,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">*
+      <li><a class="reference" href="#%2A%2CVector2Obj%2CVector2Obj"
+    title="`*`(a, b: Vector2Obj): Vector2Obj">*,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#%2A%2CVector2Obj%2Cfloat"
+    title="`*`(x: Vector2Obj; y: float): Vector2Obj">*,<wbr>Vector2Obj,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">>
+      <li><a class="reference" href="#%3E%2CVector2Obj%2CVector2Obj"
+    title="`&gt;`(x, y: Vector2Obj): bool">>,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">-
+      <li><a class="reference" href="#-%2CVector2Obj%2CVector2Obj"
+    title="`-`(a, b: Vector2Obj): Vector2Obj">-,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#-%2CVector2Obj%2Cfloat"
+    title="`-`(x: Vector2Obj; y: float): Vector2Obj">-,<wbr>Vector2Obj,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">angle
+      <li><a class="reference" href="#angle%2CVector2Obj"
+    title="angle(a: Vector2Obj): float">angle,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">cross
+      <li><a class="reference" href="#cross%2CVector2Obj%2CVector2Obj"
+    title="cross(a, b: Vector2Obj): float">cross,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#cross%2CVector2Obj%2Cfloat%2Cfloat"
+    title="cross(a: Vector2Obj; x, y: float): float">cross,<wbr>Vector2Obj,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">dot
+      <li><a class="reference" href="#dot%2CVector2Obj%2CVector2Obj"
+    title="dot(a, b: Vector2Obj): float">dot,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#dot%2CVector2Obj%2Cfloat%2Cfloat"
+    title="dot(a: Vector2Obj; x, y: float): float">dot,<wbr>Vector2Obj,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">normalized
+      <li><a class="reference" href="#normalized%2CVector2Obj"
+    title="normalized(a: Vector2Obj): Vector2Obj">normalized,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">newVector2
+      <li><a class="reference" href="#newVector2%2CVector2Obj"
+    title="newVector2(vec2: Vector2Obj): ref Vector2Obj">newVector2,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#newVector2%2Cfloat%2Cfloat"
+    title="newVector2(x, y: float): ref Vector2Obj">newVector2,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isEmpty
+      <li><a class="reference" href="#isEmpty%2CVector2Obj"
+    title="isEmpty(a: Vector2Obj): bool">isEmpty,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">distance
+      <li><a class="reference" href="#distance%2CVector2Obj%2CVector2Obj"
+    title="distance(a, b: Vector2Obj): float">distance,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#distance%2CVector2Obj%2Cfloat%2Cfloat"
+    title="distance(a: Vector2Obj; x, y: float): float">distance,<wbr>Vector2Obj,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">-=
+      <li><a class="reference" href="#-%3D%2CVector2Obj%2CVector2Obj"
+    title="`-=`(x: var Vector2Obj; y: Vector2Obj)">-=,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">normalize
+      <li><a class="reference" href="#normalize%2CVector2Obj"
+    title="normalize(a: var Vector2Obj)">normalize,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clear
+      <li><a class="reference" href="#clear%2CVector2Obj"
+    title="clear(a: var Vector2Obj)">clear,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">!=
+      <li><a class="reference" href="#%21%3D%2CVector2Obj%2CVector2Obj"
+    title="`!=`(x, y: Vector2Obj): bool">!=,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">Vector2
+      <li><a class="reference" href="#Vector2%2Cfloat%2Cfloat"
+    title="Vector2(x, y: float): Vector2Obj">Vector2,<wbr>float,<wbr>float</a></li>
+  <li><a class="reference" href="#Vector2%2CVector2Obj"
+    title="Vector2(b: Vector2Obj): Vector2Obj">Vector2,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#Vector2%2Cfloat"
+    title="Vector2(x: float): Vector2Obj">Vector2,<wbr>float</a></li>
+  <li><a class="reference" href="#Vector2"
+    title="Vector2(): Vector2Obj">Vector2</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">angleToPoint
+      <li><a class="reference" href="#angleToPoint%2CVector2Obj%2CVector2Obj"
+    title="angleToPoint(a, b: Vector2Obj): float">angleToPoint,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#angleToPoint%2CVector2Obj%2Cfloat%2Cfloat"
+    title="angleToPoint(a: Vector2Obj; x, y: float): float">angleToPoint,<wbr>Vector2Obj,<wbr>float,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">intersects
+      <li><a class="reference" href="#intersects%2CVector2Obj%2CVector2Obj%2CVector2Obj%2CVector2Obj"
+    title="intersects(a, b, c, d: Vector2Obj): bool">intersects,<wbr>Vector2Obj,<wbr>Vector2Obj,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">/=
+      <li><a class="reference" href="#%2F%3D%2CVector2Obj%2CVector2Obj"
+    title="`/=`(x: var Vector2Obj; y: Vector2Obj)">/=,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">abs
+      <li><a class="reference" href="#abs%2CVector2Obj"
+    title="abs(a: Vector2Obj): Vector2Obj">abs,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">==
+      <li><a class="reference" href="#%3D%3D%2CVector2Obj%2CVector2Obj"
+    title="`==`(x, y: Vector2Obj): bool">==,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">+
+      <li><a class="reference" href="#%2B%2CVector2Obj%2CVector2Obj"
+    title="`+`(a, b: Vector2Obj): Vector2Obj">+,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+  <li><a class="reference" href="#%2B%2CVector2Obj%2Cfloat"
+    title="`+`(x: Vector2Obj; y: float): Vector2Obj">+,<wbr>Vector2Obj,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">*=
+      <li><a class="reference" href="#%2A%3D%2CVector2Obj%2CVector2Obj"
+    title="`*=`(x: var Vector2Obj; y: Vector2Obj)">*=,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -215,6 +312,18 @@ function main() {
 <dt><pre><a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">x</span><span class="Operator">*</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float</span>
 </pre></dt>
+<dd>
+
+
+
+</dd>
+
+</dl></div>
+<div class="section" id="9">
+<h1><a class="toc-backref" href="#9">Lets</a></h1>
+<dl class="item">
+<a id="NULL_VECTOR2"></a>
+<dt><pre><a href="vector2.html#NULL_VECTOR2"><span class="Identifier">NULL_VECTOR2</span></a> <span class="Other">=</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
 <dd>
 
 
@@ -255,6 +364,13 @@ function main() {
 </dd>
 <a id="newVector2,Vector2Obj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#newVector2%2CVector2Obj"><span class="Identifier">newVector2</span></a><span class="Other">(</span><span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ref</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="newVector2,float,float"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newVector2%2Cfloat%2Cfloat"><span class="Identifier">newVector2</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ref</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -331,7 +447,8 @@ function main() {
 
 </dd>
 <a id="angleToPoint,Vector2Obj,float,float"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#angleToPoint%2CVector2Obj%2Cfloat%2Cfloat"><span class="Identifier">angleToPoint</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#angleToPoint%2CVector2Obj%2Cfloat%2Cfloat"><span class="Identifier">angleToPoint</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">;</span> <span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -543,7 +660,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:20 UTC</small>
       </div>
     </div>
   </div>

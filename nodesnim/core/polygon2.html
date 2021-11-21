@@ -20,7 +20,7 @@
 <title>nodesnim/core/polygon2</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -107,29 +101,41 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Polygon2Obj"
-    title="Polygon2Obj = seq[Vector2Obj]"><wbr />Polygon2Obj<span class="attachedType"></span></a></li>
+    title="Polygon2Obj = seq[Vector2Obj]">Polygon2Obj</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">Polygon2
       <li><a class="reference" href="#Polygon2%2Cvarargs%5BVector2Obj%5D"
-    title="Polygon2(pnts: varargs[Vector2Obj]): Polygon2Obj"><wbr />Polygon2<span class="attachedType">Polygon2Obj</span></a></li>
+    title="Polygon2(pnts: varargs[Vector2Obj]): Polygon2Obj">Polygon2,<wbr>varargs[Vector2Obj]</a></li>
   <li><a class="reference" href="#Polygon2%2Cseq%5BVector2Obj%5D"
-    title="Polygon2(pnts: var seq[Vector2Obj]): Polygon2Obj"><wbr />Polygon2<span class="attachedType">Polygon2Obj</span></a></li>
-  <li><a class="reference" href="#hasPoint%2CPolygon2Obj%2Cfloat%2Cfloat"
-    title="hasPoint(self: Polygon2Obj; x, y: float): bool"><wbr />has<wbr />Point<span class="attachedType">Polygon2Obj</span></a></li>
+    title="Polygon2(pnts: var seq[Vector2Obj]): Polygon2Obj">Polygon2,<wbr>seq[Vector2Obj]</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">move
+      <li><a class="reference" href="#move%2CPolygon2Obj%2CVector2Obj"
+    title="move(self: var Polygon2Obj; vec2: Vector2Obj)">move,<wbr>Polygon2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">hasPoint
+      <li><a class="reference" href="#hasPoint%2CPolygon2Obj%2Cfloat%2Cfloat"
+    title="hasPoint(self: Polygon2Obj; x, y: float): bool">hasPoint,<wbr>Polygon2Obj,<wbr>float,<wbr>float</a></li>
   <li><a class="reference" href="#hasPoint%2CPolygon2Obj%2CVector2Obj"
-    title="hasPoint(self: Polygon2Obj; vec2: Vector2Obj): bool"><wbr />has<wbr />Point<span class="attachedType">Polygon2Obj</span></a></li>
-  <li><a class="reference" href="#intersects%2CPolygon2Obj%2CPolygon2Obj"
-    title="intersects(self, other: Polygon2Obj): bool"><wbr />intersects<span class="attachedType">Polygon2Obj</span></a></li>
+    title="hasPoint(self: Polygon2Obj; vec2: Vector2Obj): bool">hasPoint,<wbr>Polygon2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">intersects
+      <li><a class="reference" href="#intersects%2CPolygon2Obj%2CPolygon2Obj"
+    title="intersects(self, other: Polygon2Obj): bool">intersects,<wbr>Polygon2Obj,<wbr>Polygon2Obj</a></li>
   <li><a class="reference" href="#intersects%2CPolygon2Obj%2CRect2Obj"
-    title="intersects(self: Polygon2Obj; r: Rect2Obj): bool"><wbr />intersects<span class="attachedType">Polygon2Obj</span></a></li>
+    title="intersects(self: Polygon2Obj; r: Rect2Obj): bool">intersects,<wbr>Polygon2Obj,<wbr>Rect2Obj</a></li>
   <li><a class="reference" href="#intersects%2CPolygon2Obj%2CCircleObj"
-    title="intersects(self: Polygon2Obj; circle: CircleObj): bool"><wbr />intersects<span class="attachedType">Polygon2Obj</span></a></li>
-  <li><a class="reference" href="#move%2CPolygon2Obj%2CVector2Obj"
-    title="move(self: var Polygon2Obj; vec2: Vector2Obj)"><wbr />move<span class="attachedType">Polygon2Obj</span></a></li>
+    title="intersects(self: Polygon2Obj; circle: CircleObj): bool">intersects,<wbr>Polygon2Obj,<wbr>CircleObj</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -191,7 +197,8 @@ Returns true, if point <tt class="docutils literal"><span class="pre">x</span></
 
 </dd>
 <a id="hasPoint,Polygon2Obj,Vector2Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#hasPoint%2CPolygon2Obj%2CVector2Obj"><span class="Identifier">hasPoint</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#hasPoint%2CPolygon2Obj%2CVector2Obj"><span class="Identifier">hasPoint</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if point <tt class="docutils literal"><span class="pre">vec2</span></tt> in the Polygon2.
@@ -212,7 +219,8 @@ Returns true, if rect intersect with polygon.
 
 </dd>
 <a id="intersects,Polygon2Obj,CircleObj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Obj%2CCircleObj"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">circle</span><span class="Other">:</span> <a href="circle.html#CircleObj"><span class="Identifier">CircleObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#intersects%2CPolygon2Obj%2CCircleObj"><span class="Identifier">intersects</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="polygon2.html#Polygon2Obj"><span class="Identifier">Polygon2Obj</span></a><span class="Other">;</span> <span class="Identifier">circle</span><span class="Other">:</span> <a href="circle.html#CircleObj"><span class="Identifier">CircleObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if circle intersect with polygon.
@@ -235,7 +243,7 @@ Moves polygon.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:30 UTC</small>
       </div>
     </div>
   </div>

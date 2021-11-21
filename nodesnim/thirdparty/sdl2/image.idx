@@ -5,12 +5,12 @@ IMG_INIT_WEBP	nodesnim/thirdparty/sdl2/image.html#IMG_INIT_WEBP	image: IMG_INIT_
 linkedVersion	nodesnim/thirdparty/sdl2/image.html#linkedVersion	image: linkedVersion(): ptr SDL_Version	
 init	nodesnim/thirdparty/sdl2/image.html#init,cint	image: init(flags: cint = 0x00000001 or 0x00000002): cint	
 quit	nodesnim/thirdparty/sdl2/image.html#quit	image: quit()	
-loadTyped_RW	nodesnim/thirdparty/sdl2/image.html#loadTyped_RW,RWopsPtr,cint,cstring	image: loadTyped_RW(src: RWopsPtr; freesrc: cint; `type`: cstring): SurfacePtr	
+loadTyped_RW	nodesnim/thirdparty/sdl2/image.html#loadTyped_RW,RWopsPtr,cint,cstring	image: loadTyped_RW(src: RWopsPtr; freesrc: cint; type: cstring): SurfacePtr	
 load	nodesnim/thirdparty/sdl2/image.html#load,cstring	image: load(file: cstring): SurfacePtr	
 load_RW	nodesnim/thirdparty/sdl2/image.html#load_RW,RWopsPtr,cint	image: load_RW(src: RWopsPtr; freesrc: cint): SurfacePtr	
 loadTexture	nodesnim/thirdparty/sdl2/image.html#loadTexture,RendererPtr,cstring	image: loadTexture(renderer: RendererPtr; file: cstring): TexturePtr	
 loadTexture_RW	nodesnim/thirdparty/sdl2/image.html#loadTexture_RW,RendererPtr,RWopsPtr,cint	image: loadTexture_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint): TexturePtr	
-loadTextureTyped_RW	nodesnim/thirdparty/sdl2/image.html#loadTextureTyped_RW,RendererPtr,RWopsPtr,cint,cstring	image: loadTextureTyped_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint;\n                    `type`: cstring): TexturePtr	
+loadTextureTyped_RW	nodesnim/thirdparty/sdl2/image.html#loadTextureTyped_RW,RendererPtr,RWopsPtr,cint,cstring	image: loadTextureTyped_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint;\n                    type: cstring): TexturePtr	
 isICO	nodesnim/thirdparty/sdl2/image.html#isICO,RWopsPtr	image: isICO(src: RWopsPtr): cint	
 isCUR	nodesnim/thirdparty/sdl2/image.html#isCUR,RWopsPtr	image: isCUR(src: RWopsPtr): cint	
 isBMP	nodesnim/thirdparty/sdl2/image.html#isBMP,RWopsPtr	image: isBMP(src: RWopsPtr): cint	

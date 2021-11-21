@@ -20,7 +20,7 @@
 <title>nodesnim/core/anchor</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -108,25 +102,58 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#AnchorObj"
     title="AnchorObj = object
-  x1*, y1*, x2*, y2*: float"><wbr />Anchor<wbr />Obj<span class="attachedType"></span></a></li>
+  x1*, y1*, x2*, y2*: float">AnchorObj</a></li>
+
+  </ul>
+</li>
+<li>
+  <a class="reference reference-toplevel" href="#9" id="59">Lets</a>
+  <ul class="simple simple-toc-section">
+      <li><a class="reference" href="#START_ANCHOR"
+    title="START_ANCHOR = AnchorObj(x1: 0, y1: 0, x2: 0, y2: 0)">START_ANCHOR</a></li>
+  <li><a class="reference" href="#CENTER_ANCHOR"
+    title="CENTER_ANCHOR = AnchorObj(x1: 0.5, y1: 0.5, x2: 0.5, y2: 0.5)">CENTER_ANCHOR</a></li>
+  <li><a class="reference" href="#END_ANCHOR"
+    title="END_ANCHOR = AnchorObj(x1: 1, y1: 1, x2: 1, y2: 1)">END_ANCHOR</a></li>
+  <li><a class="reference" href="#START_END_ANCHOR"
+    title="START_END_ANCHOR = AnchorObj(x1: 0, y1: 1, x2: 0, y2: 1)">START_END_ANCHOR</a></li>
+  <li><a class="reference" href="#END_START_ANCHOR"
+    title="END_START_ANCHOR = AnchorObj(x1: 1, y1: 0, x2: 1, y2: 0)">END_START_ANCHOR</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
+      <ul class="simple nested-toc-section">$
+      <li><a class="reference" href="#%24%2CAnchorObj"
+    title="`$`(x: AnchorObj): string">$,<wbr>AnchorObj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">Anchor
       <li><a class="reference" href="#Anchor%2Cfloat%2Cfloat%2Cfloat%2Cfloat"
-    title="Anchor(x1, y1, x2, y2: float): AnchorObj"><wbr />Anchor<span class="attachedType">AnchorObj</span></a></li>
+    title="Anchor(x1, y1, x2, y2: float): AnchorObj">Anchor,<wbr>float,<wbr>float,<wbr>float,<wbr>float</a></li>
   <li><a class="reference" href="#Anchor%2CVector2Obj%2CVector2Obj"
-    title="Anchor(vec1, vec2: Vector2Obj): AnchorObj"><wbr />Anchor<span class="attachedType">AnchorObj</span></a></li>
+    title="Anchor(vec1, vec2: Vector2Obj): AnchorObj">Anchor,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
   <li><a class="reference" href="#Anchor"
-    title="Anchor(): AnchorObj"><wbr />Anchor<span class="attachedType">AnchorObj</span></a></li>
-  <li><a class="reference" href="#clear%2CAnchorObj"
-    title="clear(a: var AnchorObj)"><wbr />clear<span class="attachedType">AnchorObj</span></a></li>
-  <li><a class="reference" href="#isEmpty%2CAnchorObj"
-    title="isEmpty(a: AnchorObj): bool"><wbr />is<wbr />Empty<span class="attachedType">AnchorObj</span></a></li>
-  <li><a class="reference" href="#%24%2CAnchorObj"
-    title="`$`(x: AnchorObj): string"><wbr />`$`<span class="attachedType">AnchorObj</span></a></li>
+    title="Anchor(): AnchorObj">Anchor</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isEmpty
+      <li><a class="reference" href="#isEmpty%2CAnchorObj"
+    title="isEmpty(a: AnchorObj): bool">isEmpty,<wbr>AnchorObj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clear
+      <li><a class="reference" href="#clear%2CAnchorObj"
+    title="clear(a: var AnchorObj)">clear,<wbr>AnchorObj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">==
+      <li><a class="reference" href="#%3D%3D%2CAnchorObj%2CAnchorObj"
+    title="`==`(x, y: AnchorObj): bool">==,<wbr>AnchorObj,<wbr>AnchorObj</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -157,6 +184,46 @@ function main() {
 </dd>
 
 </dl></div>
+<div class="section" id="9">
+<h1><a class="toc-backref" href="#9">Lets</a></h1>
+<dl class="item">
+<a id="START_ANCHOR"></a>
+<dt><pre><a href="anchor.html#START_ANCHOR"><span class="Identifier">START_ANCHOR</span></a> <span class="Other">=</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">(</span><span class="Identifier">x1</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="CENTER_ANCHOR"></a>
+<dt><pre><a href="anchor.html#CENTER_ANCHOR"><span class="Identifier">CENTER_ANCHOR</span></a> <span class="Other">=</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">(</span><span class="Identifier">x1</span><span class="Other">:</span> <span class="FloatNumber">0.5</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="FloatNumber">0.5</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="FloatNumber">0.5</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="FloatNumber">0.5</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="END_ANCHOR"></a>
+<dt><pre><a href="anchor.html#END_ANCHOR"><span class="Identifier">END_ANCHOR</span></a> <span class="Other">=</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">(</span><span class="Identifier">x1</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="START_END_ANCHOR"></a>
+<dt><pre><a href="anchor.html#START_END_ANCHOR"><span class="Identifier">START_END_ANCHOR</span></a> <span class="Other">=</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">(</span><span class="Identifier">x1</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="END_START_ANCHOR"></a>
+<dt><pre><a href="anchor.html#END_START_ANCHOR"><span class="Identifier">END_START_ANCHOR</span></a> <span class="Other">=</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">(</span><span class="Identifier">x1</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">:</span> <span class="DecNumber">1</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="DecNumber">0</span><span class="Other">)</span></pre></dt>
+<dd>
+
+
+
+</dd>
+
+</dl></div>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
@@ -164,6 +231,15 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#Anchor%2Cfloat%2Cfloat%2Cfloat%2Cfloat"><span class="Identifier">Anchor</span></a><span class="Other">(</span><span class="Identifier">x1</span><span class="Other">,</span> <span class="Identifier">y1</span><span class="Other">,</span> <span class="Identifier">x2</span><span class="Other">,</span> <span class="Identifier">y2</span><span class="Other">:</span> <span class="Identifier">float</span><span class="Other">)</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new anchor object.</p>
+<p>Arguments:</p>
+<ul class="simple"><li>x1, y1 -- usually anchor to the parent node.</li>
+<li>x2, y2 -- usually anchor to the current node.</li>
+</ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#Anchor,Vector2Obj,Vector2Obj">Anchor proc</a></li>
+<li><a class="reference external" href="#Anchor">Anchor proc</a></li>
+</ul>
 
 
 </dd>
@@ -171,6 +247,15 @@ function main() {
 <dt><pre><span class="Keyword">proc</span> <a href="#Anchor%2CVector2Obj%2CVector2Obj"><span class="Identifier">Anchor</span></a><span class="Other">(</span><span class="Identifier">vec1</span><span class="Other">,</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
+<p>Creates a new anchor object.</p>
+<p>Arguments:</p>
+<ul class="simple"><li>vec1 -- usually anchor to the parent node.</li>
+<li>vec2 -- usually anchor to the current node.</li>
+</ul>
+<p>See also:</p>
+<ul class="simple"><li><a class="reference external" href="#Anchor,float,float,float,float">Anchor proc</a></li>
+<li><a class="reference external" href="#Anchor">Anchor proc</a></li>
+</ul>
 
 
 </dd>
@@ -185,18 +270,25 @@ Creates empty Anchor object.
 <dt><pre><span class="Keyword">proc</span> <a href="#clear%2CAnchorObj"><span class="Identifier">clear</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
+Cleares current anchor object.
 
 </dd>
 <a id="isEmpty,AnchorObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#isEmpty%2CAnchorObj"><span class="Identifier">isEmpty</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Returns true, if a is Anchor(0, 0, 0, 0)
+Returns true, if <tt class="docutils literal"><span class="pre">a</span></tt> is Anchor(0, 0, 0, 0)
 
 </dd>
 <a id="$,AnchorObj"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#%24%2CAnchorObj"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="==,AnchorObj,AnchorObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%3D%3D%2CAnchorObj%2CAnchorObj"><span class="Identifier">`==`</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <a href="anchor.html#AnchorObj"><span class="Identifier">AnchorObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -212,7 +304,7 @@ Returns true, if a is Anchor(0, 0, 0, 0)
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:20 UTC</small>
       </div>
     </div>
   </div>

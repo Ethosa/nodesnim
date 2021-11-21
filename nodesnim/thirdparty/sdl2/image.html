@@ -20,7 +20,7 @@
 <title>nodesnim/thirdparty/sdl2/image</title>
 <link rel="stylesheet" type="text/css" href="../../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -107,100 +101,220 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#IMG_INIT_JPG"
-    title="IMG_INIT_JPG = 0x00000001"><wbr />IMG_<wbr />INIT_<wbr />JPG<span class="attachedType"></span></a></li>
+    title="IMG_INIT_JPG = 0x00000001">IMG_INIT_JPG</a></li>
   <li><a class="reference" href="#IMG_INIT_PNG"
-    title="IMG_INIT_PNG = 0x00000002"><wbr />IMG_<wbr />INIT_<wbr />PNG<span class="attachedType"></span></a></li>
+    title="IMG_INIT_PNG = 0x00000002">IMG_INIT_PNG</a></li>
   <li><a class="reference" href="#IMG_INIT_TIF"
-    title="IMG_INIT_TIF = 0x00000004"><wbr />IMG_<wbr />INIT_<wbr />TIF<span class="attachedType"></span></a></li>
+    title="IMG_INIT_TIF = 0x00000004">IMG_INIT_TIF</a></li>
   <li><a class="reference" href="#IMG_INIT_WEBP"
-    title="IMG_INIT_WEBP = 0x00000008"><wbr />IMG_<wbr />INIT_<wbr />WEBP<span class="attachedType"></span></a></li>
+    title="IMG_INIT_WEBP = 0x00000008">IMG_INIT_WEBP</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#linkedVersion"
-    title="linkedVersion(): ptr SDL_Version"><wbr />linked<wbr />Version<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#init%2Ccint"
-    title="init(flags: cint = 0x00000001 or 0x00000002): cint"><wbr />init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#quit"
-    title="quit()"><wbr />quit<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadTyped_RW%2CRWopsPtr%2Ccint%2Ccstring"
-    title="loadTyped_RW(src: RWopsPtr; freesrc: cint; `type`: cstring): SurfacePtr"><wbr />load<wbr />Typed_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#load%2Ccstring"
-    title="load(file: cstring): SurfacePtr"><wbr />load<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#load_RW%2CRWopsPtr%2Ccint"
-    title="load_RW(src: RWopsPtr; freesrc: cint): SurfacePtr"><wbr />load_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadTexture%2CRendererPtr%2Ccstring"
-    title="loadTexture(renderer: RendererPtr; file: cstring): TexturePtr"><wbr />load<wbr />Texture<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadTexture_RW%2CRendererPtr%2CRWopsPtr%2Ccint"
-    title="loadTexture_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint): TexturePtr"><wbr />load<wbr />Texture_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadTextureTyped_RW%2CRendererPtr%2CRWopsPtr%2Ccint%2Ccstring"
+      <ul class="simple nested-toc-section">isICO
+      <li><a class="reference" href="#isICO%2CRWopsPtr"
+    title="isICO(src: RWopsPtr): cint">isICO,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadXV_RW
+      <li><a class="reference" href="#loadXV_RW%2CRWopsPtr"
+    title="loadXV_RW(src: RWopsPtr): SurfacePtr">loadXV_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadGIF_RW
+      <li><a class="reference" href="#loadGIF_RW%2CRWopsPtr"
+    title="loadGIF_RW(src: RWopsPtr): SurfacePtr">loadGIF_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">load
+      <li><a class="reference" href="#load%2Ccstring"
+    title="load(file: cstring): SurfacePtr">load,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadXCF_RW
+      <li><a class="reference" href="#loadXCF_RW%2CRWopsPtr"
+    title="loadXCF_RW(src: RWopsPtr): SurfacePtr">loadXCF_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isPNG
+      <li><a class="reference" href="#isPNG%2CRWopsPtr"
+    title="isPNG(src: RWopsPtr): cint">isPNG,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadXPM_RW
+      <li><a class="reference" href="#loadXPM_RW%2CRWopsPtr"
+    title="loadXPM_RW(src: RWopsPtr): SurfacePtr">loadXPM_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadTexture_RW
+      <li><a class="reference" href="#loadTexture_RW%2CRendererPtr%2CRWopsPtr%2Ccint"
+    title="loadTexture_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint): TexturePtr">loadTexture_RW,<wbr>RendererPtr,<wbr>RWopsPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadTextureTyped_RW
+      <li><a class="reference" href="#loadTextureTyped_RW%2CRendererPtr%2CRWopsPtr%2Ccint%2Ccstring"
     title="loadTextureTyped_RW(renderer: RendererPtr; src: RWopsPtr; freesrc: cint;
-                    `type`: cstring): TexturePtr"><wbr />load<wbr />Texture<wbr />Typed_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isICO%2CRWopsPtr"
-    title="isICO(src: RWopsPtr): cint"><wbr />is<wbr />ICO<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isCUR%2CRWopsPtr"
-    title="isCUR(src: RWopsPtr): cint"><wbr />is<wbr />CUR<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isBMP%2CRWopsPtr"
-    title="isBMP(src: RWopsPtr): cint"><wbr />is<wbr />BMP<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isGIF%2CRWopsPtr"
-    title="isGIF(src: RWopsPtr): cint"><wbr />is<wbr />GIF<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isJPG%2CRWopsPtr"
-    title="isJPG(src: RWopsPtr): cint"><wbr />is<wbr />JPG<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isLBM%2CRWopsPtr"
-    title="isLBM(src: RWopsPtr): cint"><wbr />is<wbr />LBM<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isPCX%2CRWopsPtr"
-    title="isPCX(src: RWopsPtr): cint"><wbr />is<wbr />PCX<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isPNG%2CRWopsPtr"
-    title="isPNG(src: RWopsPtr): cint"><wbr />is<wbr />PNG<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isPNM%2CRWopsPtr"
-    title="isPNM(src: RWopsPtr): cint"><wbr />is<wbr />PNM<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isTIF%2CRWopsPtr"
-    title="isTIF(src: RWopsPtr): cint"><wbr />is<wbr />TIF<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isXCF%2CRWopsPtr"
-    title="isXCF(src: RWopsPtr): cint"><wbr />is<wbr />XCF<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isXPM%2CRWopsPtr"
-    title="isXPM(src: RWopsPtr): cint"><wbr />is<wbr />XPM<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isXV%2CRWopsPtr"
-    title="isXV(src: RWopsPtr): cint"><wbr />is<wbr />XV<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isWEBP%2CRWopsPtr"
-    title="isWEBP(src: RWopsPtr): cint"><wbr />is<wbr />WEBP<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadICO_RW%2CRWopsPtr"
-    title="loadICO_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />ICO_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadCUR_RW%2CRWopsPtr"
-    title="loadCUR_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />CUR_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadBMP_RW%2CRWopsPtr"
-    title="loadBMP_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />BMP_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadGIF_RW%2CRWopsPtr"
-    title="loadGIF_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />GIF_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadJPG_RW%2CRWopsPtr"
-    title="loadJPG_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />JPG_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadLBM_RW%2CRWopsPtr"
-    title="loadLBM_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />LBM_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadPCX_RW%2CRWopsPtr"
-    title="loadPCX_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />PCX_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadPNG_RW%2CRWopsPtr"
-    title="loadPNG_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />PNG_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadPNM_RW%2CRWopsPtr"
-    title="loadPNM_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />PNM_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadTGA_RW%2CRWopsPtr"
-    title="loadTGA_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />TGA_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadTIF_RW%2CRWopsPtr"
-    title="loadTIF_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />TIF_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadXCF_RW%2CRWopsPtr"
-    title="loadXCF_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />XCF_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadXPM_RW%2CRWopsPtr"
-    title="loadXPM_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />XPM_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadXV_RW%2CRWopsPtr"
-    title="loadXV_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />XV_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#loadWEBP_RW%2CRWopsPtr"
-    title="loadWEBP_RW(src: RWopsPtr): SurfacePtr"><wbr />load<wbr />WEBP_<wbr />RW<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#readXPMFromArray%2CcstringArray"
-    title="readXPMFromArray(xpm: cstringArray): SurfacePtr"><wbr />read<wbr />XPMFrom<wbr />Array<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#savePNG%2CSurfacePtr%2Ccstring"
-    title="savePNG(surface: SurfacePtr; file: cstring): cint"><wbr />save<wbr />PNG<span class="attachedType"></span></a></li>
+                    type: cstring): TexturePtr">loadTextureTyped_RW,<wbr>RendererPtr,<wbr>RWopsPtr,<wbr>cint,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadCUR_RW
+      <li><a class="reference" href="#loadCUR_RW%2CRWopsPtr"
+    title="loadCUR_RW(src: RWopsPtr): SurfacePtr">loadCUR_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isPNM
+      <li><a class="reference" href="#isPNM%2CRWopsPtr"
+    title="isPNM(src: RWopsPtr): cint">isPNM,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadTIF_RW
+      <li><a class="reference" href="#loadTIF_RW%2CRWopsPtr"
+    title="loadTIF_RW(src: RWopsPtr): SurfacePtr">loadTIF_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">load_RW
+      <li><a class="reference" href="#load_RW%2CRWopsPtr%2Ccint"
+    title="load_RW(src: RWopsPtr; freesrc: cint): SurfacePtr">load_RW,<wbr>RWopsPtr,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isLBM
+      <li><a class="reference" href="#isLBM%2CRWopsPtr"
+    title="isLBM(src: RWopsPtr): cint">isLBM,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isXPM
+      <li><a class="reference" href="#isXPM%2CRWopsPtr"
+    title="isXPM(src: RWopsPtr): cint">isXPM,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isXCF
+      <li><a class="reference" href="#isXCF%2CRWopsPtr"
+    title="isXCF(src: RWopsPtr): cint">isXCF,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">readXPMFromArray
+      <li><a class="reference" href="#readXPMFromArray%2CcstringArray"
+    title="readXPMFromArray(xpm: cstringArray): SurfacePtr">readXPMFromArray,<wbr>cstringArray</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">init
+      <li><a class="reference" href="#init%2Ccint"
+    title="init(flags: cint = 0x00000001 or 0x00000002): cint">init,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isTIF
+      <li><a class="reference" href="#isTIF%2CRWopsPtr"
+    title="isTIF(src: RWopsPtr): cint">isTIF,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadPCX_RW
+      <li><a class="reference" href="#loadPCX_RW%2CRWopsPtr"
+    title="loadPCX_RW(src: RWopsPtr): SurfacePtr">loadPCX_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadWEBP_RW
+      <li><a class="reference" href="#loadWEBP_RW%2CRWopsPtr"
+    title="loadWEBP_RW(src: RWopsPtr): SurfacePtr">loadWEBP_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">savePNG
+      <li><a class="reference" href="#savePNG%2CSurfacePtr%2Ccstring"
+    title="savePNG(surface: SurfacePtr; file: cstring): cint">savePNG,<wbr>SurfacePtr,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isCUR
+      <li><a class="reference" href="#isCUR%2CRWopsPtr"
+    title="isCUR(src: RWopsPtr): cint">isCUR,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isBMP
+      <li><a class="reference" href="#isBMP%2CRWopsPtr"
+    title="isBMP(src: RWopsPtr): cint">isBMP,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadBMP_RW
+      <li><a class="reference" href="#loadBMP_RW%2CRWopsPtr"
+    title="loadBMP_RW(src: RWopsPtr): SurfacePtr">loadBMP_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">linkedVersion
+      <li><a class="reference" href="#linkedVersion"
+    title="linkedVersion(): ptr SDL_Version">linkedVersion</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadTGA_RW
+      <li><a class="reference" href="#loadTGA_RW%2CRWopsPtr"
+    title="loadTGA_RW(src: RWopsPtr): SurfacePtr">loadTGA_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadTexture
+      <li><a class="reference" href="#loadTexture%2CRendererPtr%2Ccstring"
+    title="loadTexture(renderer: RendererPtr; file: cstring): TexturePtr">loadTexture,<wbr>RendererPtr,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isGIF
+      <li><a class="reference" href="#isGIF%2CRWopsPtr"
+    title="isGIF(src: RWopsPtr): cint">isGIF,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isJPG
+      <li><a class="reference" href="#isJPG%2CRWopsPtr"
+    title="isJPG(src: RWopsPtr): cint">isJPG,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isWEBP
+      <li><a class="reference" href="#isWEBP%2CRWopsPtr"
+    title="isWEBP(src: RWopsPtr): cint">isWEBP,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadICO_RW
+      <li><a class="reference" href="#loadICO_RW%2CRWopsPtr"
+    title="loadICO_RW(src: RWopsPtr): SurfacePtr">loadICO_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadJPG_RW
+      <li><a class="reference" href="#loadJPG_RW%2CRWopsPtr"
+    title="loadJPG_RW(src: RWopsPtr): SurfacePtr">loadJPG_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadLBM_RW
+      <li><a class="reference" href="#loadLBM_RW%2CRWopsPtr"
+    title="loadLBM_RW(src: RWopsPtr): SurfacePtr">loadLBM_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadPNM_RW
+      <li><a class="reference" href="#loadPNM_RW%2CRWopsPtr"
+    title="loadPNM_RW(src: RWopsPtr): SurfacePtr">loadPNM_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isXV
+      <li><a class="reference" href="#isXV%2CRWopsPtr"
+    title="isXV(src: RWopsPtr): cint">isXV,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadTyped_RW
+      <li><a class="reference" href="#loadTyped_RW%2CRWopsPtr%2Ccint%2Ccstring"
+    title="loadTyped_RW(src: RWopsPtr; freesrc: cint; type: cstring): SurfacePtr">loadTyped_RW,<wbr>RWopsPtr,<wbr>cint,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadPNG_RW
+      <li><a class="reference" href="#loadPNG_RW%2CRWopsPtr"
+    title="loadPNG_RW(src: RWopsPtr): SurfacePtr">loadPNG_RW,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isPCX
+      <li><a class="reference" href="#isPCX%2CRWopsPtr"
+    title="isPCX(src: RWopsPtr): cint">isPCX,<wbr>RWopsPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">quit
+      <li><a class="reference" href="#quit"
+    title="quit()">quit</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -275,7 +389,7 @@ It returns the flags successfully initialized, or 0 on failure. This is complete
 
 </dd>
 <a id="loadTyped_RW,RWopsPtr,cint,cstring"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#loadTyped_RW%2CRWopsPtr%2Ccint%2Ccstring"><span class="Identifier">loadTyped_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Other">`</span><span class="Keyword">type</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#loadTyped_RW%2CRWopsPtr%2Ccint%2Ccstring"><span class="Identifier">loadTyped_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">type</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#SurfacePtr"><span class="Identifier">SurfacePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTyped_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -314,7 +428,7 @@ Load an image directly into a render texture.
 </dd>
 <a id="loadTextureTyped_RW,RendererPtr,RWopsPtr,cint,cstring"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#loadTextureTyped_RW%2CRendererPtr%2CRWopsPtr%2Ccint%2Ccstring"><span class="Identifier">loadTextureTyped_RW</span></a><span class="Other">(</span><span class="Identifier">renderer</span><span class="Other">:</span> <a href="../sdl2.html#RendererPtr"><span class="Identifier">RendererPtr</span></a><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <a href="../sdl2.html#RWopsPtr"><span class="Identifier">RWopsPtr</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                        <span class="Other">`</span><span class="Keyword">type</span><span class="Other">`</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#TexturePtr"><span class="Identifier">TexturePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+                         <span class="Identifier">type</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">)</span><span class="Other">:</span> <a href="../sdl2.html#TexturePtr"><span class="Identifier">TexturePtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;IMG_LoadTextureTyped_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -549,7 +663,7 @@ Load an image directly into a render texture.
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:02 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:18 UTC</small>
       </div>
     </div>
   </div>

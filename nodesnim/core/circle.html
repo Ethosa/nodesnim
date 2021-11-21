@@ -20,7 +20,7 @@
 <title>nodesnim/core/circle</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -108,27 +102,41 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#CircleObj"
     title="CircleObj = object
-  x*, y*, r*: float"><wbr />Circle<wbr />Obj<span class="attachedType"></span></a></li>
+  x*, y*, r*: float">CircleObj</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Circle%2Cfloat%2Cfloat%2Cfloat"
-    title="Circle(x, y, r: float): CircleObj"><wbr />Circle<span class="attachedType">CircleObj</span></a></li>
-  <li><a class="reference" href="#Circle%2CVector2Obj%2Cfloat"
-    title="Circle(vec: Vector2Obj; r: float): CircleObj"><wbr />Circle<span class="attachedType">CircleObj</span></a></li>
-  <li><a class="reference" href="#contains%2CCircleObj%2Cfloat%2Cfloat"
-    title="contains(self: CircleObj; x, y: float): bool"><wbr />contains<span class="attachedType">CircleObj</span></a></li>
+      <ul class="simple nested-toc-section">contains
+      <li><a class="reference" href="#contains%2CCircleObj%2Cfloat%2Cfloat"
+    title="contains(self: CircleObj; x, y: float): bool">contains,<wbr>CircleObj,<wbr>float,<wbr>float</a></li>
   <li><a class="reference" href="#contains%2CCircleObj%2CVector2Obj"
-    title="contains(self: CircleObj; vec2: Vector2Obj): bool"><wbr />contains<span class="attachedType">CircleObj</span></a></li>
+    title="contains(self: CircleObj; vec2: Vector2Obj): bool">contains,<wbr>CircleObj,<wbr>Vector2Obj</a></li>
   <li><a class="reference" href="#contains%2CCircleObj%2CCircleObj"
-    title="contains(self, other: CircleObj): bool"><wbr />contains<span class="attachedType">CircleObj</span></a></li>
+    title="contains(self, other: CircleObj): bool">contains,<wbr>CircleObj,<wbr>CircleObj</a></li>
   <li><a class="reference" href="#contains%2CCircleObj%2CVector2Obj%2CVector2Obj"
-    title="contains(self: CircleObj; a, b: Vector2Obj): bool"><wbr />contains<span class="attachedType">CircleObj</span></a></li>
-  <li><a class="reference" href="#%24%2CCircleObj"
-    title="`$`(self: CircleObj): string"><wbr />`$`<span class="attachedType">CircleObj</span></a></li>
+    title="contains(self: CircleObj; a, b: Vector2Obj): bool">contains,<wbr>CircleObj,<wbr>Vector2Obj,<wbr>Vector2Obj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">$
+      <li><a class="reference" href="#%24%2CCircleObj"
+    title="`$`(self: CircleObj): string">$,<wbr>CircleObj</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">Circle
+      <li><a class="reference" href="#Circle%2Cfloat%2Cfloat%2Cfloat"
+    title="Circle(x, y, r: float): CircleObj">Circle,<wbr>float,<wbr>float,<wbr>float</a></li>
+  <li><a class="reference" href="#Circle%2CVector2Obj%2Cfloat"
+    title="Circle(vec: Vector2Obj; r: float): CircleObj">Circle,<wbr>Vector2Obj,<wbr>float</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">==
+      <li><a class="reference" href="#%3D%3D%2CCircleObj%2CCircleObj"
+    title="`==`(x, y: CircleObj): bool">==,<wbr>CircleObj,<wbr>CircleObj</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -173,8 +181,8 @@ function main() {
 <li><tt class="docutils literal"><span class="pre">r</span></tt> is a circle radius.</li>
 </ul>
 
-<p><strong class="examples_text">Examples:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">obj</span> <span class="Other">=</span> <span class="Identifier">Circle</span><span class="Other">(</span><span class="DecNumber">10</span><span class="Other">,</span> <span class="DecNumber">10</span><span class="Other">,</span> <span class="DecNumber">5</span><span class="Other">)</span></pre>
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">obj</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">Circle</span><span class="Punctuation">(</span><span class="DecNumber">10</span><span class="Punctuation">,</span><span class="Whitespace"> </span><span class="DecNumber">10</span><span class="Punctuation">,</span><span class="Whitespace"> </span><span class="DecNumber">5</span><span class="Punctuation">)</span></pre>
 
 </dd>
 <a id="Circle,Vector2Obj,float"></a>
@@ -197,7 +205,8 @@ Returns true, if <tt class="docutils literal"><span class="pre">x</span></tt>,`y
 
 </dd>
 <a id="contains,CircleObj,Vector2Obj"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CCircleObj%2CVector2Obj"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="circle.html#CircleObj"><span class="Identifier">CircleObj</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#contains%2CCircleObj%2CVector2Obj"><span class="Identifier">contains</span></a><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="circle.html#CircleObj"><span class="Identifier">CircleObj</span></a><span class="Other">;</span> <span class="Identifier">vec2</span><span class="Other">:</span> <a href="vector2.html#Vector2Obj"><span class="Identifier">Vector2Obj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Returns true, if <tt class="docutils literal"><span class="pre">vec2</span></tt> in the circle.
@@ -224,6 +233,13 @@ Returns true, if <tt class="docutils literal"><span class="pre">self</span></tt>
 
 
 </dd>
+<a id="==,CircleObj,CircleObj"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%3D%3D%2CCircleObj%2CCircleObj"><span class="Identifier">`==`</span></a><span class="Other">(</span><span class="Identifier">x</span><span class="Other">,</span> <span class="Identifier">y</span><span class="Other">:</span> <a href="circle.html#CircleObj"><span class="Identifier">CircleObj</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">inline</span><span class="Other">,</span> <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
 
 </dl></div>
 
@@ -234,7 +250,7 @@ Returns true, if <tt class="docutils literal"><span class="pre">self</span></tt>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:30 UTC</small>
       </div>
     </div>
   </div>

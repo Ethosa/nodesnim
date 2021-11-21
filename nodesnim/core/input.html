@@ -20,7 +20,7 @@
 <title>nodesnim/core/input</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -108,19 +102,19 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#InputEventType"
     title="InputEventType {.pure, size: 1.} = enum
-  MOUSE,                      ## Mouse button.
-  TOUCH,                      ## Touch screen.
-  MOTION,                     ## Mouse motion.
-  WHEEL,                      ## Mouse wheel.
-  KEYBOARD,                   ## Keyboard input
-  TEXT,                       ## Text input.
-  UNKNOWN                     ## Unknown event."><wbr />Input<wbr />Event<wbr />Type<span class="attachedType"></span></a></li>
+  MOUSE,                    ## Mouse button.
+  TOUCH,                    ## Touch screen.
+  MOTION,                   ## Mouse motion.
+  WHEEL,                    ## Mouse wheel.
+  KEYBOARD,                 ## Keyboard input
+  TEXT,                     ## Text input.
+  UNKNOWN                    ## Unknown event.">InputEventType</a></li>
   <li><a class="reference" href="#InputAction"
     title="InputAction = object
   kind*: InputEventType
   key_int*: cint
   button_index*: cint
-  name*, key*: string"><wbr />Input<wbr />Action<span class="attachedType"></span></a></li>
+  name*, key*: string">InputAction</a></li>
   <li><a class="reference" href="#InputEvent"
     title="InputEvent = ref object
   kind*: InputEventType
@@ -128,19 +122,19 @@ function main() {
   key_int*: cint
   button_index*: cint
   x*, y*, xrel*, yrel*: float
-  key*: string"><wbr />Input<wbr />Event<span class="attachedType"></span></a></li>
+  key*: string">InputEvent</a></li>
   <li><a class="reference" href="#InputEventVoid"
-    title="InputEventVoid = distinct int8"><wbr />Input<wbr />Event<wbr />Void<span class="attachedType"></span></a></li>
+    title="InputEventVoid = distinct int8">InputEventVoid</a></li>
   <li><a class="reference" href="#InputEventMouseButton"
-    title="InputEventMouseButton = distinct int8"><wbr />Input<wbr />Event<wbr />Mouse<wbr />Button<span class="attachedType"></span></a></li>
+    title="InputEventMouseButton = distinct int8">InputEventMouseButton</a></li>
   <li><a class="reference" href="#InputEventMouseMotion"
-    title="InputEventMouseMotion = distinct int8"><wbr />Input<wbr />Event<wbr />Mouse<wbr />Motion<span class="attachedType"></span></a></li>
+    title="InputEventMouseMotion = distinct int8">InputEventMouseMotion</a></li>
   <li><a class="reference" href="#InputEventMouseWheel"
-    title="InputEventMouseWheel = distinct int8"><wbr />Input<wbr />Event<wbr />Mouse<wbr />Wheel<span class="attachedType"></span></a></li>
+    title="InputEventMouseWheel = distinct int8">InputEventMouseWheel</a></li>
   <li><a class="reference" href="#InputEventTouchScreen"
-    title="InputEventTouchScreen = distinct int8"><wbr />Input<wbr />Event<wbr />Touch<wbr />Screen<span class="attachedType"></span></a></li>
+    title="InputEventTouchScreen = distinct int8">InputEventTouchScreen</a></li>
   <li><a class="reference" href="#InputEventKeyboard"
-    title="InputEventKeyboard = distinct int8"><wbr />Input<wbr />Event<wbr />Keyboard<span class="attachedType"></span></a></li>
+    title="InputEventKeyboard = distinct int8">InputEventKeyboard</a></li>
 
   </ul>
 </li>
@@ -148,19 +142,19 @@ function main() {
   <a class="reference reference-toplevel" href="#8" id="58">Vars</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#last_key_state"
-    title="last_key_state: bool = false"><wbr />last_<wbr />key_<wbr />state<span class="attachedType"></span></a></li>
+    title="last_key_state: bool = false">last_key_state</a></li>
   <li><a class="reference" href="#key_state"
-    title="key_state: bool = false"><wbr />key_<wbr />state<span class="attachedType"></span></a></li>
+    title="key_state: bool = false">key_state</a></li>
   <li><a class="reference" href="#mouse_pressed"
-    title="mouse_pressed: bool = false"><wbr />mouse_<wbr />pressed<span class="attachedType"></span></a></li>
+    title="mouse_pressed: bool = false">mouse_pressed</a></li>
   <li><a class="reference" href="#press_state"
-    title="press_state: int = 0"><wbr />press_<wbr />state<span class="attachedType"></span></a></li>
+    title="press_state: int = 0">press_state</a></li>
   <li><a class="reference" href="#last_event"
-    title="last_event: InputEvent = InputEvent()"><wbr />last_<wbr />event<span class="attachedType"></span></a></li>
+    title="last_event: InputEvent = InputEvent()">last_event</a></li>
   <li><a class="reference" href="#pressed_keys_cint"
-    title="pressed_keys_cint: seq[cint] = @[]"><wbr />pressed_<wbr />keys_<wbr />cint<span class="attachedType"></span></a></li>
+    title="pressed_keys_cint: seq[cint] = @[]">pressed_keys_cint</a></li>
   <li><a class="reference" href="#actionlist"
-    title="actionlist: seq[InputAction] = @[]"><wbr />actionlist<span class="attachedType"></span></a></li>
+    title="actionlist: seq[InputAction] = @[]">actionlist</a></li>
 
   </ul>
 </li>
@@ -168,47 +162,89 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#BUTTON_RELEASE"
-    title="BUTTON_RELEASE = 0"><wbr />BUTTON_<wbr />RELEASE<span class="attachedType"></span></a></li>
+    title="BUTTON_RELEASE = 0">BUTTON_RELEASE</a></li>
   <li><a class="reference" href="#BUTTON_CLICK"
-    title="BUTTON_CLICK = 1"><wbr />BUTTON_<wbr />CLICK<span class="attachedType"></span></a></li>
+    title="BUTTON_CLICK = 1">BUTTON_CLICK</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#isInputEventVoid%2CInputEvent"
-    title="isInputEventVoid(a: InputEvent): bool"><wbr />is<wbr />Input<wbr />Event<wbr />Void<span class="attachedType">InputEvent</span></a></li>
-  <li><a class="reference" href="#isInputEventMouseButton%2CInputEvent"
-    title="isInputEventMouseButton(a: InputEvent): bool"><wbr />is<wbr />Input<wbr />Event<wbr />Mouse<wbr />Button<span class="attachedType">InputEvent</span></a></li>
-  <li><a class="reference" href="#isInputEventMouseMotion%2CInputEvent"
-    title="isInputEventMouseMotion(a: InputEvent): bool"><wbr />is<wbr />Input<wbr />Event<wbr />Mouse<wbr />Motion<span class="attachedType">InputEvent</span></a></li>
-  <li><a class="reference" href="#isInputEventMouseWheel%2CInputEvent"
-    title="isInputEventMouseWheel(a: InputEvent): bool"><wbr />is<wbr />Input<wbr />Event<wbr />Mouse<wbr />Wheel<span class="attachedType">InputEvent</span></a></li>
-  <li><a class="reference" href="#isInputEventTouchScreen%2CInputEvent"
-    title="isInputEventTouchScreen(a: InputEvent): bool"><wbr />is<wbr />Input<wbr />Event<wbr />Touch<wbr />Screen<span class="attachedType">InputEvent</span></a></li>
-  <li><a class="reference" href="#isInputEventKeyboard%2CInputEvent"
-    title="isInputEventKeyboard(a: InputEvent): bool"><wbr />is<wbr />Input<wbr />Event<wbr />Keyboard<span class="attachedType">InputEvent</span></a></li>
-  <li><a class="reference" href="#isInputEventText%2CInputEvent"
-    title="isInputEventText(a: InputEvent): bool"><wbr />is<wbr />Input<wbr />Event<wbr />Text<span class="attachedType">InputEvent</span></a></li>
-  <li><a class="reference" href="#addButtonAction%2Cstring%2C"
-    title="addButtonAction(name: string; button: uint8 | cint)"><wbr />add<wbr />Button<wbr />Action<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#addKeyAction%2Cstring%2Cstring"
-    title="addKeyAction(name, key: string)"><wbr />add<wbr />Key<wbr />Action<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#addKeyAction%2Cstring%2Ccint"
-    title="addKeyAction(name: string; key: cint)"><wbr />add<wbr />Key<wbr />Action<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#addTouchAction%2Cstring"
-    title="addTouchAction(name: string)"><wbr />add<wbr />Touch<wbr />Action<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isActionJustPressed%2Cstring"
-    title="isActionJustPressed(name: string): bool"><wbr />is<wbr />Action<wbr />Just<wbr />Pressed<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isActionPressed%2Cstring"
-    title="isActionPressed(name: string): bool"><wbr />is<wbr />Action<wbr />Pressed<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#isActionReleased%2Cstring"
-    title="isActionReleased(name: string): bool"><wbr />is<wbr />Action<wbr />Released<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#%24%2CInputEvent"
-    title="`$`(event: InputEvent): string"><wbr />`$`<span class="attachedType">InputEvent</span></a></li>
+      <ul class="simple nested-toc-section">$
+      <li><a class="reference" href="#%24%2CInputEvent"
+    title="`$`(event: InputEvent): string">$,<wbr>InputEvent</a></li>
   <li><a class="reference" href="#%24%2CInputAction"
-    title="`$`(action: InputAction): string"><wbr />`$`<span class="attachedType">InputAction</span></a></li>
+    title="`$`(action: InputAction): string">$,<wbr>InputAction</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isInputEventVoid
+      <li><a class="reference" href="#isInputEventVoid%2CInputEvent"
+    title="isInputEventVoid(a: InputEvent): bool">isInputEventVoid,<wbr>InputEvent</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isInputEventKeyboard
+      <li><a class="reference" href="#isInputEventKeyboard%2CInputEvent"
+    title="isInputEventKeyboard(a: InputEvent): bool">isInputEventKeyboard,<wbr>InputEvent</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isActionReleased
+      <li><a class="reference" href="#isActionReleased%2Cstring"
+    title="isActionReleased(name: string): bool">isActionReleased,<wbr>string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isInputEventMouseMotion
+      <li><a class="reference" href="#isInputEventMouseMotion%2CInputEvent"
+    title="isInputEventMouseMotion(a: InputEvent): bool">isInputEventMouseMotion,<wbr>InputEvent</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isActionPressed
+      <li><a class="reference" href="#isActionPressed%2Cstring"
+    title="isActionPressed(name: string): bool">isActionPressed,<wbr>string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">addTouchAction
+      <li><a class="reference" href="#addTouchAction%2Cstring"
+    title="addTouchAction(name: string)">addTouchAction,<wbr>string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isInputEventTouchScreen
+      <li><a class="reference" href="#isInputEventTouchScreen%2CInputEvent"
+    title="isInputEventTouchScreen(a: InputEvent): bool">isInputEventTouchScreen,<wbr>InputEvent</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isActionJustPressed
+      <li><a class="reference" href="#isActionJustPressed%2Cstring"
+    title="isActionJustPressed(name: string): bool">isActionJustPressed,<wbr>string</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">addButtonAction
+      <li><a class="reference" href="#addButtonAction%2Cstring%2C"
+    title="addButtonAction(name: string; button: uint8 | cint)">addButtonAction,<wbr>string,<wbr></a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isInputEventText
+      <li><a class="reference" href="#isInputEventText%2CInputEvent"
+    title="isInputEventText(a: InputEvent): bool">isInputEventText,<wbr>InputEvent</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isInputEventMouseWheel
+      <li><a class="reference" href="#isInputEventMouseWheel%2CInputEvent"
+    title="isInputEventMouseWheel(a: InputEvent): bool">isInputEventMouseWheel,<wbr>InputEvent</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">addKeyAction
+      <li><a class="reference" href="#addKeyAction%2Cstring%2Cstring"
+    title="addKeyAction(name, key: string)">addKeyAction,<wbr>string,<wbr>string</a></li>
+  <li><a class="reference" href="#addKeyAction%2Cstring%2Ccint"
+    title="addKeyAction(name: string; key: cint)">addKeyAction,<wbr>string,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">isInputEventMouseButton
+      <li><a class="reference" href="#isInputEventMouseButton%2CInputEvent"
+    title="isInputEventMouseButton(a: InputEvent): bool">isInputEventMouseButton,<wbr>InputEvent</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -230,13 +266,13 @@ function main() {
 <dl class="item">
 <a id="InputEventType"></a>
 <dt><pre><a href="input.html#InputEventType"><span class="Identifier">InputEventType</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">pure</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="DecNumber">1</span></span><span class="Other">.}</span></span> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">MOUSE</span><span class="Other">,</span>                      <span class="Comment">## Mouse button.</span>
-  <span class="Identifier">TOUCH</span><span class="Other">,</span>                      <span class="Comment">## Touch screen.</span>
-  <span class="Identifier">MOTION</span><span class="Other">,</span>                     <span class="Comment">## Mouse motion.</span>
-  <span class="Identifier">WHEEL</span><span class="Other">,</span>                      <span class="Comment">## Mouse wheel.</span>
-  <span class="Identifier">KEYBOARD</span><span class="Other">,</span>                   <span class="Comment">## Keyboard input</span>
-  <span class="Identifier">TEXT</span><span class="Other">,</span>                       <span class="Comment">## Text input.</span>
-  <span class="Identifier">UNKNOWN</span>                     <span class="Comment">## Unknown event.</span></pre></dt>
+  <span class="Identifier">MOUSE</span><span class="Other">,</span>                    <span class="Comment">## Mouse button.</span>
+  <span class="Identifier">TOUCH</span><span class="Other">,</span>                    <span class="Comment">## Touch screen.</span>
+  <span class="Identifier">MOTION</span><span class="Other">,</span>                   <span class="Comment">## Mouse motion.</span>
+  <span class="Identifier">WHEEL</span><span class="Other">,</span>                    <span class="Comment">## Mouse wheel.</span>
+  <span class="Identifier">KEYBOARD</span><span class="Other">,</span>                 <span class="Comment">## Keyboard input</span>
+  <span class="Identifier">TEXT</span><span class="Other">,</span>                     <span class="Comment">## Text input.</span>
+  <span class="Identifier">UNKNOWN</span>                    <span class="Comment">## Unknown event.</span></pre></dt>
 <dd>
 
 
@@ -541,7 +577,7 @@ Returns true, when <tt class="docutils literal"><span class="pre">a</span></tt> 
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:20 UTC</small>
       </div>
     </div>
   </div>

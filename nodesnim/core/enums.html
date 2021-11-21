@@ -20,7 +20,7 @@
 <title>nodesnim/core/enums</title>
 <link rel="stylesheet" type="text/css" href="../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -102,63 +96,70 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#MouseMode"
     title="MouseMode = enum
-  MOUSEMODE_IGNORE = 0x00000001, ## Igore mouse input. This used in Control nodes
-  MOUSEMODE_SEE = 0x00000002    ## Handle mouse input."><wbr />Mouse<wbr />Mode<span class="attachedType"></span></a></li>
+  MOUSEMODE_IGNORE = 1,     ## Igore mouse input. This used in Control nodes
+  MOUSEMODE_SEE = 2          ## Handle mouse input.">MouseMode</a></li>
   <li><a class="reference" href="#PauseMode"
     title="PauseMode = enum
-  PROCESS,                    ## Continue to work when the window paused.
-  PAUSE,                      ## Pause work when the window paused.
-  INHERIT                     ## Take parent value."><wbr />Pause<wbr />Mode<span class="attachedType"></span></a></li>
+  PROCESS,                  ## Continue to work when the window paused.
+  PAUSE,                    ## Pause work when the window paused.
+  INHERIT                    ## Take parent value.">PauseMode</a></li>
   <li><a class="reference" href="#TextureMode"
     title="TextureMode = enum
-  TEXTURE_FILL_XY,            ## Fill texture without keeping the aspect ratio.
-  TEXTURE_KEEP_ASPECT_RATIO,  ## Fill texture with keeping the aspect ratio.
-  TEXTURE_CROP                ## Crop and fill texture."><wbr />Texture<wbr />Mode<span class="attachedType"></span></a></li>
+  TEXTURE_FILL_XY,          ## Fill texture without keeping the aspect ratio.
+  TEXTURE_KEEP_ASPECT_RATIO, ## Fill texture with keeping the aspect ratio.
+  TEXTURE_CROP               ## Crop and fill texture.">TextureMode</a></li>
   <li><a class="reference" href="#NodeKind"
     title="NodeKind = enum
   NODE_NODE, CANVAS_NODE, SCENE_NODE, AUDIO_STREAM_PLAYER_NODE,
   ANIMATION_PLAYER_NODE, COLLISION_SHAPE_2D_NODE, YSORT_NODE, CAMERA_2D_NODE,
   SPRITE_NODE, ANIMATED_SPRITE_NODE, NODE2D_NODE, KINEMATIC_BODY_2D_NODE,
-  TILEMAP_NODE, BOX_NODE, BUTTON_NODE, CHECKBOX_NODE, COLOR_RECT_NODE, CONTROL_NODE,
-  COUNTER_NODE, EDIT_TEXT_NODE, GRID_BOX_NODE, HBOX_NODE, LABEL_NODE, POPUP_NODE,
-  PROGRESS_BAR_NODE, SCROLL_NODE, SLIDER_NODE, TEXTURE_BUTTON_NODE,
-  TEXTURE_PROGRESS_BAR_NODE, TEXTURE_RECT_NODE, VBOX_NODE, SUB_WINDOW_NODE,
-  NODE3D_NODE, GEOMETRY_INSTANCE_NODE, CAMERA_3D_NODE, SPRITE_3D_NODE"><wbr />Node<wbr />Kind<span class="attachedType"></span></a></li>
+  TILEMAP_NODE, BOX_NODE, BUTTON_NODE, CHECKBOX_NODE, COLOR_RECT_NODE,
+  CONTROL_NODE, COUNTER_NODE, EDIT_TEXT_NODE, GRID_BOX_NODE, HBOX_NODE,
+  LABEL_NODE, POPUP_NODE, PROGRESS_BAR_NODE, SCROLL_NODE, SLIDER_NODE,
+  TEXTURE_BUTTON_NODE, TEXTURE_PROGRESS_BAR_NODE, TEXTURE_RECT_NODE, VBOX_NODE,
+  SUB_WINDOW_NODE, TOOLTIP_NODE, CHART_NODE, NODE3D_NODE,
+  GEOMETRY_INSTANCE_NODE, CAMERA_3D_NODE, SPRITE_3D_NODE">NodeKind</a></li>
   <li><a class="reference" href="#NodeTypes"
     title="NodeTypes = enum
-  NODE_TYPE_DEFAULT, NODE_TYPE_CONTROL, NODE_TYPE_2D, NODE_TYPE_3D"><wbr />Node<wbr />Types<span class="attachedType"></span></a></li>
+  NODE_TYPE_DEFAULT, NODE_TYPE_CONTROL, NODE_TYPE_2D, NODE_TYPE_3D">NodeTypes</a></li>
   <li><a class="reference" href="#Visibility"
     title="Visibility = enum
-  VISIBLE, INVISIBLE, GONE"><wbr />Visibility<span class="attachedType"></span></a></li>
+  VISIBLE, INVISIBLE, GONE">Visibility</a></li>
   <li><a class="reference" href="#ProgressBarType"
     title="ProgressBarType = enum
-  PROGRESS_BAR_HORIZONTAL, PROGRESS_BAR_VERTICAL, PROGRESS_BAR_CIRCLE"><wbr />Progress<wbr />Bar<wbr />Type<span class="attachedType"></span></a></li>
+  PROGRESS_BAR_HORIZONTAL, PROGRESS_BAR_VERTICAL, PROGRESS_BAR_CIRCLE">ProgressBarType</a></li>
   <li><a class="reference" href="#SliderType"
     title="SliderType = enum
-  SLIDER_HORIZONTAL, SLIDER_VERTICAL"><wbr />Slider<wbr />Type<span class="attachedType"></span></a></li>
+  SLIDER_HORIZONTAL, SLIDER_VERTICAL">SliderType</a></li>
   <li><a class="reference" href="#GeometryType"
     title="GeometryType = enum
-  GEOMETRY_CUBE,              ## Uses for cube rendering.
-  GEOMETRY_CYLINDER,          ## Uses for cylinder rendering.
-  GEOMETRY_SPHERE             ## Uses for sphere rendering."><wbr />Geometry<wbr />Type<span class="attachedType"></span></a></li>
+  GEOMETRY_CUBE,            ## Uses for cube rendering.
+  GEOMETRY_CYLINDER,        ## Uses for cylinder rendering.
+  GEOMETRY_SPHERE            ## Uses for sphere rendering.">GeometryType</a></li>
   <li><a class="reference" href="#TileMapMode"
     title="TileMapMode = enum
-  TILEMAP_2D,                 ## Default 2D mode.
-  TILEMAP_ISOMETRIC           ## Isometric mode."><wbr />Tile<wbr />Map<wbr />Mode<span class="attachedType"></span></a></li>
+  TILEMAP_2D,               ## Default 2D mode.
+  TILEMAP_ISOMETRIC          ## Isometric mode.">TileMapMode</a></li>
   <li><a class="reference" href="#CollisionShape2DType"
     title="CollisionShape2DType = enum
   COLLISION_SHAPE_2D_RECTANGLE, ## Uses for handle rect collision.
-  COLLISION_SHAPE_2D_CIRCLE,  ## Uses for handle circle collision.
-  COLLISION_SHAPE_2D_POLYGON  ## Uses for handle polygon collision."><wbr />Collision<wbr />Shape2DType<span class="attachedType"></span></a></li>
+  COLLISION_SHAPE_2D_CIRCLE, ## Uses for handle circle collision.
+  COLLISION_SHAPE_2D_POLYGON ## Uses for handle polygon collision.">CollisionShape2DType</a></li>
   <li><a class="reference" href="#AnimationMode"
     title="AnimationMode = enum
-  ANIMATION_NORMAL,           ## specific speed per second.
-  ANIMATION_EASE,             ## ease mode.
-  ANIMATION_BEZIER            ## specific bezier curve for speed."><wbr />Animation<wbr />Mode<span class="attachedType"></span></a></li>
+  ANIMATION_NORMAL,         ## specific speed per second.
+  ANIMATION_EASE,           ## ease mode.
+  ANIMATION_BEZIER           ## specific bezier curve for speed.">AnimationMode</a></li>
   <li><a class="reference" href="#ScreenMode"
     title="ScreenMode = enum
-  SCREEN_MODE_NONE,           ## default mode.
-  SCREEN_MODE_EXPANDED        ## Keep screen size."><wbr />Screen<wbr />Mode<span class="attachedType"></span></a></li>
+  SCREEN_MODE_NONE,         ## default mode.
+  SCREEN_MODE_EXPANDED       ## Keep screen size.">ScreenMode</a></li>
+  <li><a class="reference" href="#ChartType"
+    title="ChartType = enum
+  LINE_CHART, BAR_CHART, PIE_CHART, RADAR_CHART">ChartType</a></li>
+  <li><a class="reference" href="#ChartDataValueType"
+    title="ChartDataValueType = enum
+  INTEGER_VALUE, FLOAT_VALUE, STRING_VALUE, CHAR_VALUE">ChartDataValueType</a></li>
 
   </ul>
 </li>
@@ -175,8 +176,8 @@ function main() {
 <dl class="item">
 <a id="MouseMode"></a>
 <dt><pre><a href="enums.html#MouseMode"><span class="Identifier">MouseMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">MOUSEMODE_IGNORE</span> <span class="Other">=</span> <span class="DecNumber">0x00000001</span><span class="Other">,</span> <span class="Comment">## Igore mouse input. This used in Control nodes</span>
-  <span class="Identifier">MOUSEMODE_SEE</span> <span class="Other">=</span> <span class="DecNumber">0x00000002</span>    <span class="Comment">## Handle mouse input.</span></pre></dt>
+  <span class="Identifier">MOUSEMODE_IGNORE</span> <span class="Other">=</span> <span class="DecNumber">1</span><span class="Other">,</span>     <span class="Comment">## Igore mouse input. This used in Control nodes</span>
+  <span class="Identifier">MOUSEMODE_SEE</span> <span class="Other">=</span> <span class="DecNumber">2</span>          <span class="Comment">## Handle mouse input.</span></pre></dt>
 <dd>
 
 
@@ -184,9 +185,9 @@ function main() {
 </dd>
 <a id="PauseMode"></a>
 <dt><pre><a href="enums.html#PauseMode"><span class="Identifier">PauseMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">PROCESS</span><span class="Other">,</span>                    <span class="Comment">## Continue to work when the window paused.</span>
-  <span class="Identifier">PAUSE</span><span class="Other">,</span>                      <span class="Comment">## Pause work when the window paused.</span>
-  <span class="Identifier">INHERIT</span>                     <span class="Comment">## Take parent value.</span></pre></dt>
+  <span class="Identifier">PROCESS</span><span class="Other">,</span>                  <span class="Comment">## Continue to work when the window paused.</span>
+  <span class="Identifier">PAUSE</span><span class="Other">,</span>                    <span class="Comment">## Pause work when the window paused.</span>
+  <span class="Identifier">INHERIT</span>                    <span class="Comment">## Take parent value.</span></pre></dt>
 <dd>
 
 
@@ -194,9 +195,9 @@ function main() {
 </dd>
 <a id="TextureMode"></a>
 <dt><pre><a href="enums.html#TextureMode"><span class="Identifier">TextureMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">TEXTURE_FILL_XY</span><span class="Other">,</span>            <span class="Comment">## Fill texture without keeping the aspect ratio.</span>
-  <span class="Identifier">TEXTURE_KEEP_ASPECT_RATIO</span><span class="Other">,</span>  <span class="Comment">## Fill texture with keeping the aspect ratio.</span>
-  <span class="Identifier">TEXTURE_CROP</span>                <span class="Comment">## Crop and fill texture.</span></pre></dt>
+  <span class="Identifier">TEXTURE_FILL_XY</span><span class="Other">,</span>          <span class="Comment">## Fill texture without keeping the aspect ratio.</span>
+  <span class="Identifier">TEXTURE_KEEP_ASPECT_RATIO</span><span class="Other">,</span> <span class="Comment">## Fill texture with keeping the aspect ratio.</span>
+  <span class="Identifier">TEXTURE_CROP</span>               <span class="Comment">## Crop and fill texture.</span></pre></dt>
 <dd>
 
 
@@ -207,11 +208,12 @@ function main() {
   <span class="Identifier">NODE_NODE</span><span class="Other">,</span> <span class="Identifier">CANVAS_NODE</span><span class="Other">,</span> <span class="Identifier">SCENE_NODE</span><span class="Other">,</span> <span class="Identifier">AUDIO_STREAM_PLAYER_NODE</span><span class="Other">,</span>
   <span class="Identifier">ANIMATION_PLAYER_NODE</span><span class="Other">,</span> <span class="Identifier">COLLISION_SHAPE_2D_NODE</span><span class="Other">,</span> <span class="Identifier">YSORT_NODE</span><span class="Other">,</span> <span class="Identifier">CAMERA_2D_NODE</span><span class="Other">,</span>
   <span class="Identifier">SPRITE_NODE</span><span class="Other">,</span> <span class="Identifier">ANIMATED_SPRITE_NODE</span><span class="Other">,</span> <span class="Identifier">NODE2D_NODE</span><span class="Other">,</span> <span class="Identifier">KINEMATIC_BODY_2D_NODE</span><span class="Other">,</span>
-  <span class="Identifier">TILEMAP_NODE</span><span class="Other">,</span> <span class="Identifier">BOX_NODE</span><span class="Other">,</span> <span class="Identifier">BUTTON_NODE</span><span class="Other">,</span> <span class="Identifier">CHECKBOX_NODE</span><span class="Other">,</span> <span class="Identifier">COLOR_RECT_NODE</span><span class="Other">,</span> <span class="Identifier">CONTROL_NODE</span><span class="Other">,</span>
-  <span class="Identifier">COUNTER_NODE</span><span class="Other">,</span> <span class="Identifier">EDIT_TEXT_NODE</span><span class="Other">,</span> <span class="Identifier">GRID_BOX_NODE</span><span class="Other">,</span> <span class="Identifier">HBOX_NODE</span><span class="Other">,</span> <span class="Identifier">LABEL_NODE</span><span class="Other">,</span> <span class="Identifier">POPUP_NODE</span><span class="Other">,</span>
-  <span class="Identifier">PROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">SCROLL_NODE</span><span class="Other">,</span> <span class="Identifier">SLIDER_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_BUTTON_NODE</span><span class="Other">,</span>
-  <span class="Identifier">TEXTURE_PROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_RECT_NODE</span><span class="Other">,</span> <span class="Identifier">VBOX_NODE</span><span class="Other">,</span> <span class="Identifier">SUB_WINDOW_NODE</span><span class="Other">,</span>
-  <span class="Identifier">NODE3D_NODE</span><span class="Other">,</span> <span class="Identifier">GEOMETRY_INSTANCE_NODE</span><span class="Other">,</span> <span class="Identifier">CAMERA_3D_NODE</span><span class="Other">,</span> <span class="Identifier">SPRITE_3D_NODE</span></pre></dt>
+  <span class="Identifier">TILEMAP_NODE</span><span class="Other">,</span> <span class="Identifier">BOX_NODE</span><span class="Other">,</span> <span class="Identifier">BUTTON_NODE</span><span class="Other">,</span> <span class="Identifier">CHECKBOX_NODE</span><span class="Other">,</span> <span class="Identifier">COLOR_RECT_NODE</span><span class="Other">,</span>
+  <span class="Identifier">CONTROL_NODE</span><span class="Other">,</span> <span class="Identifier">COUNTER_NODE</span><span class="Other">,</span> <span class="Identifier">EDIT_TEXT_NODE</span><span class="Other">,</span> <span class="Identifier">GRID_BOX_NODE</span><span class="Other">,</span> <span class="Identifier">HBOX_NODE</span><span class="Other">,</span>
+  <span class="Identifier">LABEL_NODE</span><span class="Other">,</span> <span class="Identifier">POPUP_NODE</span><span class="Other">,</span> <span class="Identifier">PROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">SCROLL_NODE</span><span class="Other">,</span> <span class="Identifier">SLIDER_NODE</span><span class="Other">,</span>
+  <span class="Identifier">TEXTURE_BUTTON_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_PROGRESS_BAR_NODE</span><span class="Other">,</span> <span class="Identifier">TEXTURE_RECT_NODE</span><span class="Other">,</span> <span class="Identifier">VBOX_NODE</span><span class="Other">,</span>
+  <span class="Identifier">SUB_WINDOW_NODE</span><span class="Other">,</span> <span class="Identifier">TOOLTIP_NODE</span><span class="Other">,</span> <span class="Identifier">CHART_NODE</span><span class="Other">,</span> <span class="Identifier">NODE3D_NODE</span><span class="Other">,</span>
+  <span class="Identifier">GEOMETRY_INSTANCE_NODE</span><span class="Other">,</span> <span class="Identifier">CAMERA_3D_NODE</span><span class="Other">,</span> <span class="Identifier">SPRITE_3D_NODE</span></pre></dt>
 <dd>
 
 
@@ -251,9 +253,9 @@ function main() {
 </dd>
 <a id="GeometryType"></a>
 <dt><pre><a href="enums.html#GeometryType"><span class="Identifier">GeometryType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">GEOMETRY_CUBE</span><span class="Other">,</span>              <span class="Comment">## Uses for cube rendering.</span>
-  <span class="Identifier">GEOMETRY_CYLINDER</span><span class="Other">,</span>          <span class="Comment">## Uses for cylinder rendering.</span>
-  <span class="Identifier">GEOMETRY_SPHERE</span>             <span class="Comment">## Uses for sphere rendering.</span></pre></dt>
+  <span class="Identifier">GEOMETRY_CUBE</span><span class="Other">,</span>            <span class="Comment">## Uses for cube rendering.</span>
+  <span class="Identifier">GEOMETRY_CYLINDER</span><span class="Other">,</span>        <span class="Comment">## Uses for cylinder rendering.</span>
+  <span class="Identifier">GEOMETRY_SPHERE</span>            <span class="Comment">## Uses for sphere rendering.</span></pre></dt>
 <dd>
 
 
@@ -261,8 +263,8 @@ function main() {
 </dd>
 <a id="TileMapMode"></a>
 <dt><pre><a href="enums.html#TileMapMode"><span class="Identifier">TileMapMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">TILEMAP_2D</span><span class="Other">,</span>                 <span class="Comment">## Default 2D mode.</span>
-  <span class="Identifier">TILEMAP_ISOMETRIC</span>           <span class="Comment">## Isometric mode.</span></pre></dt>
+  <span class="Identifier">TILEMAP_2D</span><span class="Other">,</span>               <span class="Comment">## Default 2D mode.</span>
+  <span class="Identifier">TILEMAP_ISOMETRIC</span>          <span class="Comment">## Isometric mode.</span></pre></dt>
 <dd>
 
 
@@ -271,8 +273,8 @@ function main() {
 <a id="CollisionShape2DType"></a>
 <dt><pre><a href="enums.html#CollisionShape2DType"><span class="Identifier">CollisionShape2DType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">COLLISION_SHAPE_2D_RECTANGLE</span><span class="Other">,</span> <span class="Comment">## Uses for handle rect collision.</span>
-  <span class="Identifier">COLLISION_SHAPE_2D_CIRCLE</span><span class="Other">,</span>  <span class="Comment">## Uses for handle circle collision.</span>
-  <span class="Identifier">COLLISION_SHAPE_2D_POLYGON</span>  <span class="Comment">## Uses for handle polygon collision.</span></pre></dt>
+  <span class="Identifier">COLLISION_SHAPE_2D_CIRCLE</span><span class="Other">,</span> <span class="Comment">## Uses for handle circle collision.</span>
+  <span class="Identifier">COLLISION_SHAPE_2D_POLYGON</span> <span class="Comment">## Uses for handle polygon collision.</span></pre></dt>
 <dd>
 
 
@@ -280,9 +282,9 @@ function main() {
 </dd>
 <a id="AnimationMode"></a>
 <dt><pre><a href="enums.html#AnimationMode"><span class="Identifier">AnimationMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">ANIMATION_NORMAL</span><span class="Other">,</span>           <span class="Comment">## specific speed per second.</span>
-  <span class="Identifier">ANIMATION_EASE</span><span class="Other">,</span>             <span class="Comment">## ease mode.</span>
-  <span class="Identifier">ANIMATION_BEZIER</span>            <span class="Comment">## specific bezier curve for speed.</span></pre></dt>
+  <span class="Identifier">ANIMATION_NORMAL</span><span class="Other">,</span>         <span class="Comment">## specific speed per second.</span>
+  <span class="Identifier">ANIMATION_EASE</span><span class="Other">,</span>           <span class="Comment">## ease mode.</span>
+  <span class="Identifier">ANIMATION_BEZIER</span>           <span class="Comment">## specific bezier curve for speed.</span></pre></dt>
 <dd>
 
 
@@ -290,8 +292,24 @@ function main() {
 </dd>
 <a id="ScreenMode"></a>
 <dt><pre><a href="enums.html#ScreenMode"><span class="Identifier">ScreenMode</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
-  <span class="Identifier">SCREEN_MODE_NONE</span><span class="Other">,</span>           <span class="Comment">## default mode.</span>
-  <span class="Identifier">SCREEN_MODE_EXPANDED</span>        <span class="Comment">## Keep screen size.</span></pre></dt>
+  <span class="Identifier">SCREEN_MODE_NONE</span><span class="Other">,</span>         <span class="Comment">## default mode.</span>
+  <span class="Identifier">SCREEN_MODE_EXPANDED</span>       <span class="Comment">## Keep screen size.</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="ChartType"></a>
+<dt><pre><a href="enums.html#ChartType"><span class="Identifier">ChartType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">LINE_CHART</span><span class="Other">,</span> <span class="Identifier">BAR_CHART</span><span class="Other">,</span> <span class="Identifier">PIE_CHART</span><span class="Other">,</span> <span class="Identifier">RADAR_CHART</span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="ChartDataValueType"></a>
+<dt><pre><a href="enums.html#ChartDataValueType"><span class="Identifier">ChartDataValueType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <span class="Identifier">INTEGER_VALUE</span><span class="Other">,</span> <span class="Identifier">FLOAT_VALUE</span><span class="Other">,</span> <span class="Identifier">STRING_VALUE</span><span class="Other">,</span> <span class="Identifier">CHAR_VALUE</span></pre></dt>
 <dd>
 
 
@@ -307,7 +325,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:04 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:20 UTC</small>
       </div>
     </div>
   </div>

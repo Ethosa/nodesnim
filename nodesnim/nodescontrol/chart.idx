@@ -1,0 +1,6 @@
+ChartObj	nodesnim/nodescontrol/chart.html#ChartObj	chart: ChartObj	
+ChartRef	nodesnim/nodescontrol/chart.html#ChartRef	chart: ChartRef	
+Chart	nodesnim/nodescontrol/chart.html#Chart,string	chart: Chart(name: string = &quot;Chart&quot;): ChartRef	
+hasAxis	nodesnim/nodescontrol/chart.html#hasAxis.e,ChartRef	chart: hasAxis(self: ChartRef): bool	
+draw	nodesnim/nodescontrol/chart.html#draw.e,ChartRef,GLfloat,GLfloat	chart: draw(self: ChartRef; w, h: GLfloat)	
+addChartData	nodesnim/nodescontrol/chart.html#addChartData.e,ChartRef,ChartData	chart: addChartData(self: ChartRef; chart_data: ChartData)	

@@ -20,7 +20,7 @@
 <title>nodesnim/thirdparty/sdl2/audio</title>
 <link rel="stylesheet" type="text/css" href="../../../nimdoc.out.css">
 
-<script type="text/javascript" src="dochack.js"></script>
+<script type="text/javascript" src="../../../dochack.js"></script>
 
 <script type="text/javascript">
 function main() {
@@ -47,21 +47,12 @@ function main() {
 
   toggleSwitch.addEventListener('change', switchTheme, false);
 
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', "dark");
-    toggleSwitch.checked = true;
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', "light");
-    toggleSwitch.checked = false;
-  } else {
-    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-
-      if (currentTheme === 'dark') {
-        toggleSwitch.checked = true;
-      }
+    if (currentTheme === 'dark') {
+      toggleSwitch.checked = true;
     }
   }
 }
@@ -83,6 +74,9 @@ function main() {
   </div>
   <div id="global-links">
     <ul class="simple">
+    <li>
+      <a href="../../../theindex.html">Index</a>
+    </li>
     </ul>
   </div>
   <div id="searchInputDiv">
@@ -107,9 +101,9 @@ function main() {
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#AudioFormat"
-    title="AudioFormat = uint16"><wbr />Audio<wbr />Format<span class="attachedType"></span></a></li>
+    title="AudioFormat = uint16">AudioFormat</a></li>
   <li><a class="reference" href="#AudioCallback"
-    title="AudioCallback = proc (userdata: pointer; stream: ptr uint8; len: cint) {.cdecl.}"><wbr />Audio<wbr />Callback<span class="attachedType"></span></a></li>
+    title="AudioCallback = proc (userdata: pointer; stream: ptr uint8; len: cint) {.cdecl.}">AudioCallback</a></li>
   <li><a class="reference" href="#AudioSpec"
     title="AudioSpec = object
   freq*: cint
@@ -120,7 +114,7 @@ function main() {
   padding*: uint16
   size*: uint32
   callback*: AudioCallback
-  userdata*: pointer"><wbr />Audio<wbr />Spec<span class="attachedType"></span></a></li>
+  userdata*: pointer">AudioSpec</a></li>
   <li><a class="reference" href="#AudioCVT"
     title="AudioCVT {.packed.} = object
   needed*: cint
@@ -133,16 +127,16 @@ function main() {
   len_mult*: cint
   len_ratio*: cdouble
   filters*: array[10, AudioFilter]
-  filter_index*: cint"><wbr />Audio<wbr />CVT<span class="attachedType"></span></a></li>
+  filter_index*: cint">AudioCVT</a></li>
   <li><a class="reference" href="#AudioFilter"
-    title="AudioFilter = proc (cvt: ptr AudioCVT; format: AudioFormat) {.cdecl.}"><wbr />Audio<wbr />Filter<span class="attachedType"></span></a></li>
+    title="AudioFilter = proc (cvt: ptr AudioCVT; format: AudioFormat) {.cdecl.}">AudioFilter</a></li>
   <li><a class="reference" href="#AudioStreamPtr"
-    title="AudioStreamPtr = ptr AudioStream"><wbr />Audio<wbr />Stream<wbr />Ptr<span class="attachedType"></span></a></li>
+    title="AudioStreamPtr = ptr AudioStream">AudioStreamPtr</a></li>
   <li><a class="reference" href="#AudioDeviceID"
-    title="AudioDeviceID = uint32"><wbr />Audio<wbr />Device<wbr />ID<span class="attachedType"></span></a></li>
+    title="AudioDeviceID = uint32">AudioDeviceID</a></li>
   <li><a class="reference" href="#AudioStatus"
     title="AudioStatus {.size: 4.} = enum
-  SDL_AUDIO_STOPPED = 0, SDL_AUDIO_PLAYING, SDL_AUDIO_PAUSED"><wbr />Audio<wbr />Status<span class="attachedType"></span></a></li>
+  SDL_AUDIO_STOPPED = 0, SDL_AUDIO_PLAYING, SDL_AUDIO_PAUSED">AudioStatus</a></li>
 
   </ul>
 </li>
@@ -150,133 +144,235 @@ function main() {
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#SDL_AUDIO_MASK_BITSIZE"
-    title="SDL_AUDIO_MASK_BITSIZE = 255&apos;u"><wbr />SDL_<wbr />AUDIO_<wbr />MASK_<wbr />BITSIZE<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_MASK_BITSIZE = 255&apos;u">SDL_AUDIO_MASK_BITSIZE</a></li>
   <li><a class="reference" href="#SDL_AUDIO_MASK_DATATYPE"
-    title="SDL_AUDIO_MASK_DATATYPE = 256&apos;u"><wbr />SDL_<wbr />AUDIO_<wbr />MASK_<wbr />DATATYPE<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_MASK_DATATYPE = 256&apos;u">SDL_AUDIO_MASK_DATATYPE</a></li>
   <li><a class="reference" href="#SDL_AUDIO_MASK_ENDIAN"
-    title="SDL_AUDIO_MASK_ENDIAN = 4096&apos;u"><wbr />SDL_<wbr />AUDIO_<wbr />MASK_<wbr />ENDIAN<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_MASK_ENDIAN = 4096&apos;u">SDL_AUDIO_MASK_ENDIAN</a></li>
   <li><a class="reference" href="#SDL_AUDIO_MASK_SIGNED"
-    title="SDL_AUDIO_MASK_SIGNED = 32768&apos;u"><wbr />SDL_<wbr />AUDIO_<wbr />MASK_<wbr />SIGNED<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_MASK_SIGNED = 32768&apos;u">SDL_AUDIO_MASK_SIGNED</a></li>
   <li><a class="reference" href="#AUDIO_U8"
-    title="AUDIO_U8 = 0x00000008"><wbr />AUDIO_<wbr />U8<span class="attachedType"></span></a></li>
+    title="AUDIO_U8 = 0x00000008">AUDIO_U8</a></li>
   <li><a class="reference" href="#AUDIO_S8"
-    title="AUDIO_S8 = 0x00008008"><wbr />AUDIO_<wbr />S8<span class="attachedType"></span></a></li>
+    title="AUDIO_S8 = 0x00008008">AUDIO_S8</a></li>
   <li><a class="reference" href="#AUDIO_U16LSB"
-    title="AUDIO_U16LSB = 0x00000010"><wbr />AUDIO_<wbr />U16LSB<span class="attachedType"></span></a></li>
+    title="AUDIO_U16LSB = 0x00000010">AUDIO_U16LSB</a></li>
   <li><a class="reference" href="#AUDIO_S16LSB"
-    title="AUDIO_S16LSB = 0x00008010"><wbr />AUDIO_<wbr />S16LSB<span class="attachedType"></span></a></li>
+    title="AUDIO_S16LSB = 0x00008010">AUDIO_S16LSB</a></li>
   <li><a class="reference" href="#AUDIO_U16MSB"
-    title="AUDIO_U16MSB = 0x00001010"><wbr />AUDIO_<wbr />U16MSB<span class="attachedType"></span></a></li>
+    title="AUDIO_U16MSB = 0x00001010">AUDIO_U16MSB</a></li>
   <li><a class="reference" href="#AUDIO_S16MSB"
-    title="AUDIO_S16MSB = 0x00009010"><wbr />AUDIO_<wbr />S16MSB<span class="attachedType"></span></a></li>
+    title="AUDIO_S16MSB = 0x00009010">AUDIO_S16MSB</a></li>
   <li><a class="reference" href="#AUDIO_U16"
-    title="AUDIO_U16 = 0x00000010"><wbr />AUDIO_<wbr />U16<span class="attachedType"></span></a></li>
+    title="AUDIO_U16 = 0x00000010">AUDIO_U16</a></li>
   <li><a class="reference" href="#AUDIO_S16"
-    title="AUDIO_S16 = 0x00008010"><wbr />AUDIO_<wbr />S16<span class="attachedType"></span></a></li>
+    title="AUDIO_S16 = 0x00008010">AUDIO_S16</a></li>
   <li><a class="reference" href="#AUDIO_S32LSB"
-    title="AUDIO_S32LSB = 0x00008020"><wbr />AUDIO_<wbr />S32LSB<span class="attachedType"></span></a></li>
+    title="AUDIO_S32LSB = 0x00008020">AUDIO_S32LSB</a></li>
   <li><a class="reference" href="#AUDIO_S32MSB"
-    title="AUDIO_S32MSB = 0x00009020"><wbr />AUDIO_<wbr />S32MSB<span class="attachedType"></span></a></li>
+    title="AUDIO_S32MSB = 0x00009020">AUDIO_S32MSB</a></li>
   <li><a class="reference" href="#AUDIO_S32"
-    title="AUDIO_S32 = 0x00008020"><wbr />AUDIO_<wbr />S32<span class="attachedType"></span></a></li>
+    title="AUDIO_S32 = 0x00008020">AUDIO_S32</a></li>
   <li><a class="reference" href="#AUDIO_F32LSB"
-    title="AUDIO_F32LSB = 0x00008120"><wbr />AUDIO_<wbr />F32LSB<span class="attachedType"></span></a></li>
+    title="AUDIO_F32LSB = 0x00008120">AUDIO_F32LSB</a></li>
   <li><a class="reference" href="#AUDIO_F32MSB"
-    title="AUDIO_F32MSB = 0x00009120"><wbr />AUDIO_<wbr />F32MSB<span class="attachedType"></span></a></li>
+    title="AUDIO_F32MSB = 0x00009120">AUDIO_F32MSB</a></li>
   <li><a class="reference" href="#AUDIO_F32"
-    title="AUDIO_F32 = 0x00008120"><wbr />AUDIO_<wbr />F32<span class="attachedType"></span></a></li>
+    title="AUDIO_F32 = 0x00008120">AUDIO_F32</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ALLOW_FREQUENCY_CHANGE"
-    title="SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001"><wbr />SDL_<wbr />AUDIO_<wbr />ALLOW_<wbr />FREQUENCY_<wbr />CHANGE<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001">SDL_AUDIO_ALLOW_FREQUENCY_CHANGE</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ALLOW_FORMAT_CHANGE"
-    title="SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002"><wbr />SDL_<wbr />AUDIO_<wbr />ALLOW_<wbr />FORMAT_<wbr />CHANGE<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002">SDL_AUDIO_ALLOW_FORMAT_CHANGE</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ALLOW_CHANNELS_CHANGE"
-    title="SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004"><wbr />SDL_<wbr />AUDIO_<wbr />ALLOW_<wbr />CHANNELS_<wbr />CHANGE<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004">SDL_AUDIO_ALLOW_CHANNELS_CHANGE</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ALLOW_ANY_CHANGE"
-    title="SDL_AUDIO_ALLOW_ANY_CHANGE = 7"><wbr />SDL_<wbr />AUDIO_<wbr />ALLOW_<wbr />ANY_<wbr />CHANGE<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ALLOW_ANY_CHANGE = 7">SDL_AUDIO_ALLOW_ANY_CHANGE</a></li>
   <li><a class="reference" href="#SDL_MIX_MAXVOLUME"
-    title="SDL_MIX_MAXVOLUME = 128"><wbr />SDL_<wbr />MIX_<wbr />MAXVOLUME<span class="attachedType"></span></a></li>
+    title="SDL_MIX_MAXVOLUME = 128">SDL_MIX_MAXVOLUME</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#getNumAudioDrivers"
-    title="getNumAudioDrivers(): cint"><wbr />get<wbr />Num<wbr />Audio<wbr />Drivers<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getAudioDriver%2Ccint"
-    title="getAudioDriver(index: cint): cstring"><wbr />get<wbr />Audio<wbr />Driver<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#audioInit%2Ccstring"
-    title="audioInit(driver_name: cstring): cint"><wbr />audio<wbr />Init<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#audioQuit"
-    title="audioQuit()"><wbr />audio<wbr />Quit<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getCurrentAudioDriver"
-    title="getCurrentAudioDriver(): cstring"><wbr />get<wbr />Current<wbr />Audio<wbr />Driver<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#openAudio%2Cptr.AudioSpec%2Cptr.AudioSpec"
-    title="openAudio(desired: ptr AudioSpec; obtained: ptr AudioSpec): cint"><wbr />open<wbr />Audio<span class="attachedType">AudioSpec</span></a></li>
-  <li><a class="reference" href="#getNumAudioDevices%2Ccint"
-    title="getNumAudioDevices(iscapture: cint): cint"><wbr />get<wbr />Num<wbr />Audio<wbr />Devices<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getAudioDeviceName%2Ccint%2Ccint"
-    title="getAudioDeviceName(index: cint; iscapture: cint): cstring"><wbr />get<wbr />Audio<wbr />Device<wbr />Name<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#openAudioDevice%2Ccstring%2Ccint%2Cptr.AudioSpec%2Cptr.AudioSpec%2Ccint"
+      <ul class="simple nested-toc-section">put
+      <li><a class="reference" href="#put%2CAudioStreamPtr%2Cpointer%2Ccint"
+    title="put(stream: AudioStreamPtr; buf: pointer; len: cint): cint">put,<wbr>AudioStreamPtr,<wbr>pointer,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">destroy
+      <li><a class="reference" href="#destroy%2CAudioStreamPtr"
+    title="destroy(stream: AudioStreamPtr)">destroy,<wbr>AudioStreamPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">flush
+      <li><a class="reference" href="#flush%2CAudioStreamPtr"
+    title="flush(stream: AudioStreamPtr): cint">flush,<wbr>AudioStreamPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">openAudio
+      <li><a class="reference" href="#openAudio%2Cptr.AudioSpec%2Cptr.AudioSpec"
+    title="openAudio(desired: ptr AudioSpec; obtained: ptr AudioSpec): cint">openAudio,<wbr>ptr.AudioSpec,<wbr>ptr.AudioSpec</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getAudioDeviceName
+      <li><a class="reference" href="#getAudioDeviceName%2Ccint%2Ccint"
+    title="getAudioDeviceName(index: cint; iscapture: cint): cstring">getAudioDeviceName,<wbr>cint,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">unlockAudio
+      <li><a class="reference" href="#unlockAudio"
+    title="unlockAudio()">unlockAudio</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">closeAudio
+      <li><a class="reference" href="#closeAudio"
+    title="closeAudio()">closeAudio</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getAudioStatus
+      <li><a class="reference" href="#getAudioStatus"
+    title="getAudioStatus(): AudioStatus">getAudioStatus</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">audioQuit
+      <li><a class="reference" href="#audioQuit"
+    title="audioQuit()">audioQuit</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getAudioDriver
+      <li><a class="reference" href="#getAudioDriver%2Ccint"
+    title="getAudioDriver(index: cint): cstring">getAudioDriver,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getCurrentAudioDriver
+      <li><a class="reference" href="#getCurrentAudioDriver"
+    title="getCurrentAudioDriver(): cstring">getCurrentAudioDriver</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">openAudioDevice
+      <li><a class="reference" href="#openAudioDevice%2Ccstring%2Ccint%2Cptr.AudioSpec%2Cptr.AudioSpec%2Ccint"
     title="openAudioDevice(device: cstring; iscapture: cint; desired: ptr AudioSpec;
-                obtained: ptr AudioSpec; allowed_changes: cint): AudioDeviceID"><wbr />open<wbr />Audio<wbr />Device<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#getAudioStatus"
-    title="getAudioStatus(): AudioStatus"><wbr />get<wbr />Audio<wbr />Status<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#getAudioDeviceStatus%2CAudioDeviceID"
-    title="getAudioDeviceStatus(dev: AudioDeviceID): AudioStatus"><wbr />get<wbr />Audio<wbr />Device<wbr />Status<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#getQueuedAudioSize%2CAudioDeviceID"
-    title="getQueuedAudioSize(dev: AudioDeviceID): uint32"><wbr />get<wbr />Queued<wbr />Audio<wbr />Size<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#queueAudio%2CAudioDeviceID%2Cpointer%2Cuint32"
-    title="queueAudio(dev: AudioDeviceID; data: pointer; len: uint32): cint"><wbr />queue<wbr />Audio<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#pauseAudio%2Ccint"
-    title="pauseAudio(pause_on: cint)"><wbr />pause<wbr />Audio<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#pauseAudioDevice%2CAudioDeviceID%2Ccint"
-    title="pauseAudioDevice(dev: AudioDeviceID; pause_on: cint)"><wbr />pause<wbr />Audio<wbr />Device<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#loadWAV_RW%2Cptr.RWops%2Ccint%2Cptr.AudioSpec%2Cptr.ptr.uint8%2Cptr.uint32"
-    title="loadWAV_RW(src: ptr RWops; freesrc: cint; spec: ptr AudioSpec; audio_buf: ptr ptr uint8;
-           audio_len: ptr uint32): ptr AudioSpec"><wbr />load<wbr />WAV_<wbr />RW<span class="attachedType">AudioSpec</span></a></li>
-  <li><a class="reference" href="#freeWAV%2Cptr.uint8"
-    title="freeWAV(audio_buf: ptr uint8)"><wbr />free<wbr />WAV<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#buildAudioCVT%2Cptr.AudioCVT%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"
+                obtained: ptr AudioSpec; allowed_changes: cint): AudioDeviceID">openAudioDevice,<wbr>cstring,<wbr>cint,<wbr>ptr.AudioSpec,<wbr>ptr.AudioSpec,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">closeAudioDevice
+      <li><a class="reference" href="#closeAudioDevice%2CAudioDeviceID"
+    title="closeAudioDevice(dev: AudioDeviceID)">closeAudioDevice,<wbr>AudioDeviceID</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">loadWAV_RW
+      <li><a class="reference" href="#loadWAV_RW%2Cptr.RWops%2Ccint%2Cptr.AudioSpec%2Cptr.ptr.uint8%2Cptr.uint32"
+    title="loadWAV_RW(src: ptr RWops; freesrc: cint; spec: ptr AudioSpec;
+           audio_buf: ptr ptr uint8; audio_len: ptr uint32): ptr AudioSpec">loadWAV_RW,<wbr>ptr.RWops,<wbr>cint,<wbr>ptr.AudioSpec,<wbr>ptr.ptr.uint8,<wbr>ptr.uint32</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">audioInit
+      <li><a class="reference" href="#audioInit%2Ccstring"
+    title="audioInit(driver_name: cstring): cint">audioInit,<wbr>cstring</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getAudioDeviceStatus
+      <li><a class="reference" href="#getAudioDeviceStatus%2CAudioDeviceID"
+    title="getAudioDeviceStatus(dev: AudioDeviceID): AudioStatus">getAudioDeviceStatus,<wbr>AudioDeviceID</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">freeWAV
+      <li><a class="reference" href="#freeWAV%2Cptr.uint8"
+    title="freeWAV(audio_buf: ptr uint8)">freeWAV,<wbr>ptr.uint8</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">buildAudioCVT
+      <li><a class="reference" href="#buildAudioCVT%2Cptr.AudioCVT%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"
     title="buildAudioCVT(cvt: ptr AudioCVT; src_format: AudioFormat; src_channels: uint8;
               src_rate: cint; dst_format: AudioFormat; dst_channels: uint8;
-              dst_rate: cint): cint"><wbr />build<wbr />Audio<wbr />CVT<span class="attachedType">AudioFormat</span></a></li>
-  <li><a class="reference" href="#convertAudio%2Cptr.AudioCVT"
-    title="convertAudio(cvt: ptr AudioCVT): cint"><wbr />convert<wbr />Audio<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#mixAudio%2Cptr.uint8%2Cptr.uint8%2Cuint32%2Ccint"
-    title="mixAudio(dst: ptr uint8; src: ptr uint8; len: uint32; volume: cint)"><wbr />mix<wbr />Audio<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#mixAudioFormat%2Cptr.uint8%2Cptr.uint8%2CAudioFormat%2Cuint32%2Ccint"
+              dst_rate: cint): cint">buildAudioCVT,<wbr>ptr.AudioCVT,<wbr>AudioFormat,<wbr>uint8,<wbr>cint,<wbr>AudioFormat,<wbr>uint8,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">lockAudio
+      <li><a class="reference" href="#lockAudio"
+    title="lockAudio()">lockAudio</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">get
+      <li><a class="reference" href="#get%2CAudioStreamPtr%2Cpointer%2Ccint"
+    title="get(stream: AudioStreamPtr; buf: pointer; len: cint): cint">get,<wbr>AudioStreamPtr,<wbr>pointer,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getNumAudioDrivers
+      <li><a class="reference" href="#getNumAudioDrivers"
+    title="getNumAudioDrivers(): cint">getNumAudioDrivers</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">unlockAudioDevice
+      <li><a class="reference" href="#unlockAudioDevice%2CAudioDeviceID"
+    title="unlockAudioDevice(dev: AudioDeviceID)">unlockAudioDevice,<wbr>AudioDeviceID</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getNumAudioDevices
+      <li><a class="reference" href="#getNumAudioDevices%2Ccint"
+    title="getNumAudioDevices(iscapture: cint): cint">getNumAudioDevices,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">queueAudio
+      <li><a class="reference" href="#queueAudio%2CAudioDeviceID%2Cpointer%2Cuint32"
+    title="queueAudio(dev: AudioDeviceID; data: pointer; len: uint32): cint">queueAudio,<wbr>AudioDeviceID,<wbr>pointer,<wbr>uint32</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">clear
+      <li><a class="reference" href="#clear%2CAudioStreamPtr"
+    title="clear(stream: AudioStreamPtr)">clear,<wbr>AudioStreamPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">mixAudioFormat
+      <li><a class="reference" href="#mixAudioFormat%2Cptr.uint8%2Cptr.uint8%2CAudioFormat%2Cuint32%2Ccint"
     title="mixAudioFormat(dst: ptr uint8; src: ptr uint8; format: AudioFormat; len: uint32;
-               volume: cint)"><wbr />mix<wbr />Audio<wbr />Format<span class="attachedType">AudioFormat</span></a></li>
-  <li><a class="reference" href="#lockAudio"
-    title="lockAudio()"><wbr />lock<wbr />Audio<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#lockAudioDevice%2CAudioDeviceID"
-    title="lockAudioDevice(dev: AudioDeviceID)"><wbr />lock<wbr />Audio<wbr />Device<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#unlockAudio"
-    title="unlockAudio()"><wbr />unlock<wbr />Audio<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#unlockAudioDevice%2CAudioDeviceID"
-    title="unlockAudioDevice(dev: AudioDeviceID)"><wbr />unlock<wbr />Audio<wbr />Device<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#closeAudio"
-    title="closeAudio()"><wbr />close<wbr />Audio<span class="attachedType"></span></a></li>
-  <li><a class="reference" href="#closeAudioDevice%2CAudioDeviceID"
-    title="closeAudioDevice(dev: AudioDeviceID)"><wbr />close<wbr />Audio<wbr />Device<span class="attachedType">AudioDeviceID</span></a></li>
-  <li><a class="reference" href="#newAudioStream%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"
+               volume: cint)">mixAudioFormat,<wbr>ptr.uint8,<wbr>ptr.uint8,<wbr>AudioFormat,<wbr>uint32,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">newAudioStream
+      <li><a class="reference" href="#newAudioStream%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"
     title="newAudioStream(src_format: AudioFormat; src_channels: uint8; src_rate: cint;
-               dst_format: AudioFormat; dst_channels: uint8; dst_rate: cint): AudioStreamPtr"><wbr />new<wbr />Audio<wbr />Stream<span class="attachedType">AudioFormat</span></a></li>
+               dst_format: AudioFormat; dst_channels: uint8; dst_rate: cint): AudioStreamPtr">newAudioStream,<wbr>AudioFormat,<wbr>uint8,<wbr>cint,<wbr>AudioFormat,<wbr>uint8,<wbr>cint</a></li>
   <li><a class="reference" href="#newAudioStream%2CAudioSpec%2CAudioSpec"
-    title="newAudioStream(srcSpec, destSpec: AudioSpec): AudioStreamPtr"><wbr />new<wbr />Audio<wbr />Stream<span class="attachedType">AudioSpec</span></a></li>
-  <li><a class="reference" href="#put%2CAudioStreamPtr%2Cpointer%2Ccint"
-    title="put(stream: AudioStreamPtr; buf: pointer; len: cint): cint"><wbr />put<span class="attachedType">AudioStreamPtr</span></a></li>
-  <li><a class="reference" href="#get%2CAudioStreamPtr%2Cpointer%2Ccint"
-    title="get(stream: AudioStreamPtr; buf: pointer; len: cint): cint"><wbr />get<span class="attachedType">AudioStreamPtr</span></a></li>
-  <li><a class="reference" href="#available%2CAudioStreamPtr"
-    title="available(stream: AudioStreamPtr): cint"><wbr />available<span class="attachedType">AudioStreamPtr</span></a></li>
-  <li><a class="reference" href="#flush%2CAudioStreamPtr"
-    title="flush(stream: AudioStreamPtr): cint"><wbr />flush<span class="attachedType">AudioStreamPtr</span></a></li>
-  <li><a class="reference" href="#clear%2CAudioStreamPtr"
-    title="clear(stream: AudioStreamPtr)"><wbr />clear<span class="attachedType">AudioStreamPtr</span></a></li>
-  <li><a class="reference" href="#destroy%2CAudioStreamPtr"
-    title="destroy(stream: AudioStreamPtr)"><wbr />destroy<span class="attachedType">AudioStreamPtr</span></a></li>
+    title="newAudioStream(srcSpec, destSpec: AudioSpec): AudioStreamPtr">newAudioStream,<wbr>AudioSpec,<wbr>AudioSpec</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">available
+      <li><a class="reference" href="#available%2CAudioStreamPtr"
+    title="available(stream: AudioStreamPtr): cint">available,<wbr>AudioStreamPtr</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">getQueuedAudioSize
+      <li><a class="reference" href="#getQueuedAudioSize%2CAudioDeviceID"
+    title="getQueuedAudioSize(dev: AudioDeviceID): uint32">getQueuedAudioSize,<wbr>AudioDeviceID</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">mixAudio
+      <li><a class="reference" href="#mixAudio%2Cptr.uint8%2Cptr.uint8%2Cuint32%2Ccint"
+    title="mixAudio(dst: ptr uint8; src: ptr uint8; len: uint32; volume: cint)">mixAudio,<wbr>ptr.uint8,<wbr>ptr.uint8,<wbr>uint32,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">pauseAudio
+      <li><a class="reference" href="#pauseAudio%2Ccint"
+    title="pauseAudio(pause_on: cint)">pauseAudio,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">convertAudio
+      <li><a class="reference" href="#convertAudio%2Cptr.AudioCVT"
+    title="convertAudio(cvt: ptr AudioCVT): cint">convertAudio,<wbr>ptr.AudioCVT</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">pauseAudioDevice
+      <li><a class="reference" href="#pauseAudioDevice%2CAudioDeviceID%2Ccint"
+    title="pauseAudioDevice(dev: AudioDeviceID; pause_on: cint)">pauseAudioDevice,<wbr>AudioDeviceID,<wbr>cint</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">lockAudioDevice
+      <li><a class="reference" href="#lockAudioDevice%2CAudioDeviceID"
+    title="lockAudioDevice(dev: AudioDeviceID)">lockAudioDevice,<wbr>AudioDeviceID</a></li>
+
+  </ul>
 
   </ul>
 </li>
@@ -284,22 +380,22 @@ function main() {
   <a class="reference reference-toplevel" href="#18" id="68">Templates</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#SDL_AUDIO_BITSIZE.t%2Cuint32"
-    title="SDL_AUDIO_BITSIZE(x: uint32): uint32"><wbr />SDL_<wbr />AUDIO_<wbr />BITSIZE<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_BITSIZE(x: uint32): uint32">SDL_AUDIO_BITSIZE</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ISFLOAT.t%2Cuint32"
-    title="SDL_AUDIO_ISFLOAT(x: uint32): bool"><wbr />SDL_<wbr />AUDIO_<wbr />ISFLOAT<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ISFLOAT(x: uint32): bool">SDL_AUDIO_ISFLOAT</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ISBIGENDIAN.t%2Cuint32"
-    title="SDL_AUDIO_ISBIGENDIAN(x: uint32): bool"><wbr />SDL_<wbr />AUDIO_<wbr />ISBIGENDIAN<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ISBIGENDIAN(x: uint32): bool">SDL_AUDIO_ISBIGENDIAN</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ISSIGNED.t%2Cuint32"
-    title="SDL_AUDIO_ISSIGNED(x: uint32): bool"><wbr />SDL_<wbr />AUDIO_<wbr />ISSIGNED<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ISSIGNED(x: uint32): bool">SDL_AUDIO_ISSIGNED</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ISINT.t%2Cuint32"
-    title="SDL_AUDIO_ISINT(x: uint32): bool"><wbr />SDL_<wbr />AUDIO_<wbr />ISINT<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ISINT(x: uint32): bool">SDL_AUDIO_ISINT</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ISLITTLEENDIAN.t%2Cuint32"
-    title="SDL_AUDIO_ISLITTLEENDIAN(x: uint32): bool"><wbr />SDL_<wbr />AUDIO_<wbr />ISLITTLEENDIAN<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ISLITTLEENDIAN(x: uint32): bool">SDL_AUDIO_ISLITTLEENDIAN</a></li>
   <li><a class="reference" href="#SDL_AUDIO_ISUNSIGNED.t%2Cuint32"
-    title="SDL_AUDIO_ISUNSIGNED(x: uint32): bool"><wbr />SDL_<wbr />AUDIO_<wbr />ISUNSIGNED<span class="attachedType"></span></a></li>
+    title="SDL_AUDIO_ISUNSIGNED(x: uint32): bool">SDL_AUDIO_ISUNSIGNED</a></li>
   <li><a class="reference" href="#loadWAV.t%2Cstring%2Cptr.AudioSpec%2Cptr.ptr.uint8%2Cptr.uint32"
     title="loadWAV(file: string; spec: ptr AudioSpec; audio_buf: ptr ptr uint8;
-        audio_len: ptr uint32): ptr AudioSpec"><wbr />load<wbr />WAV<span class="attachedType">AudioSpec</span></a></li>
+        audio_len: ptr uint32): ptr AudioSpec">loadWAV</a></li>
 
   </ul>
 </li>
@@ -624,7 +720,8 @@ function main() {
 
 </dd>
 <a id="getNumAudioDevices,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#getNumAudioDevices%2Ccint"><span class="Identifier">getNumAudioDevices</span></a><span class="Other">(</span><span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumAudioDevices&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getNumAudioDevices%2Ccint"><span class="Identifier">getNumAudioDevices</span></a><span class="Other">(</span><span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_GetNumAudioDevices&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -640,7 +737,7 @@ function main() {
 </dd>
 <a id="openAudioDevice,cstring,cint,ptr.AudioSpec,ptr.AudioSpec,cint"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#openAudioDevice%2Ccstring%2Ccint%2Cptr.AudioSpec%2Cptr.AudioSpec%2Ccint"><span class="Identifier">openAudioDevice</span></a><span class="Other">(</span><span class="Identifier">device</span><span class="Other">:</span> <span class="Identifier">cstring</span><span class="Other">;</span> <span class="Identifier">iscapture</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">desired</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a><span class="Other">;</span>
-                    <span class="Identifier">obtained</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a><span class="Other">;</span> <span class="Identifier">allowed_changes</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="audio.html#AudioDeviceID"><span class="Identifier">AudioDeviceID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+                     <span class="Identifier">obtained</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a><span class="Other">;</span> <span class="Identifier">allowed_changes</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="audio.html#AudioDeviceID"><span class="Identifier">AudioDeviceID</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_OpenAudioDevice&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -695,7 +792,7 @@ function main() {
 </dd>
 <a id="loadWAV_RW,ptr.RWops,cint,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32"></a>
 <dt><pre><span class="Keyword">proc</span> <a href="#loadWAV_RW%2Cptr.RWops%2Ccint%2Cptr.AudioSpec%2Cptr.ptr.uint8%2Cptr.uint32"><span class="Identifier">loadWAV_RW</span></a><span class="Other">(</span><span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="../sdl2.html#RWops"><span class="Identifier">RWops</span></a><span class="Other">;</span> <span class="Identifier">freesrc</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">spec</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a><span class="Other">;</span>
-               <span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+                <span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_LoadWAV_RW&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -710,9 +807,10 @@ function main() {
 
 </dd>
 <a id="buildAudioCVT,ptr.AudioCVT,AudioFormat,uint8,cint,AudioFormat,uint8,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#buildAudioCVT%2Cptr.AudioCVT%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"><span class="Identifier">buildAudioCVT</span></a><span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioCVT"><span class="Identifier">AudioCVT</span></a><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span> <span class="Identifier">src_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span>
-                  <span class="Identifier">src_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dst_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span> <span class="Identifier">dst_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span>
-                  <span class="Identifier">dst_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_BuildAudioCVT&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#buildAudioCVT%2Cptr.AudioCVT%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"><span class="Identifier">buildAudioCVT</span></a><span class="Other">(</span><span class="Identifier">cvt</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioCVT"><span class="Identifier">AudioCVT</span></a><span class="Other">;</span> <span class="Identifier">src_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span>
+                   <span class="Identifier">src_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dst_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span>
+                   <span class="Identifier">dst_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">dst_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_BuildAudioCVT&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -734,8 +832,8 @@ function main() {
 
 </dd>
 <a id="mixAudioFormat,ptr.uint8,ptr.uint8,AudioFormat,uint32,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#mixAudioFormat%2Cptr.uint8%2Cptr.uint8%2CAudioFormat%2Cuint32%2Ccint"><span class="Identifier">mixAudioFormat</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span> <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span>
-                   <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudioFormat&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#mixAudioFormat%2Cptr.uint8%2Cptr.uint8%2CAudioFormat%2Cuint32%2Ccint"><span class="Identifier">mixAudioFormat</span></a><span class="Other">(</span><span class="Identifier">dst</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span>
+                    <span class="Identifier">len</span><span class="Other">:</span> <span class="Identifier">uint32</span><span class="Other">;</span> <span class="Identifier">volume</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_MixAudioFormat&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -784,8 +882,9 @@ function main() {
 
 </dd>
 <a id="newAudioStream,AudioFormat,uint8,cint,AudioFormat,uint8,cint"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#newAudioStream%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"><span class="Identifier">newAudioStream</span></a><span class="Other">(</span><span class="Identifier">src_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span> <span class="Identifier">src_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">src_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span>
-                   <span class="Identifier">dst_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span> <span class="Identifier">dst_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">dst_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="audio.html#AudioStreamPtr"><span class="Identifier">AudioStreamPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+<dt><pre><span class="Keyword">proc</span> <a href="#newAudioStream%2CAudioFormat%2Cuint8%2Ccint%2CAudioFormat%2Cuint8%2Ccint"><span class="Identifier">newAudioStream</span></a><span class="Other">(</span><span class="Identifier">src_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span> <span class="Identifier">src_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span>
+                    <span class="Identifier">src_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">;</span> <span class="Identifier">dst_format</span><span class="Other">:</span> <a href="audio.html#AudioFormat"><span class="Identifier">AudioFormat</span></a><span class="Other">;</span>
+                    <span class="Identifier">dst_channels</span><span class="Other">:</span> <span class="Identifier">uint8</span><span class="Other">;</span> <span class="Identifier">dst_rate</span><span class="Other">:</span> <span class="Identifier">cint</span><span class="Other">)</span><span class="Other">:</span> <a href="audio.html#AudioStreamPtr"><span class="Identifier">AudioStreamPtr</span></a> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
     <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_NewAudioStream&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
@@ -853,7 +952,8 @@ function main() {
 
 </dd>
 <a id="available,AudioStreamPtr"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#available%2CAudioStreamPtr"><span class="Identifier">available</span></a><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <a href="audio.html#AudioStreamPtr"><span class="Identifier">AudioStreamPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioStreamAvailable&quot;</span></span><span class="Other">.}</span></span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#available%2CAudioStreamPtr"><span class="Identifier">available</span></a><span class="Other">(</span><span class="Identifier">stream</span><span class="Other">:</span> <a href="audio.html#AudioStreamPtr"><span class="Identifier">AudioStreamPtr</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">cint</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">importc</span><span class="Other">:</span> <span class="StringLit">&quot;SDL_AudioStreamAvailable&quot;</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 <p>(Available since SDL 2.0.7) Get the number of converted/resampled bytes available (BYTES, not samples!). The stream may be buffering data behind the scenes until it has enough to resample correctly, so this number might be lower than what you expect, or even be zero. Add more data or flush the stream if you need the data now.</p>
@@ -953,7 +1053,7 @@ function main() {
 </dd>
 <a id="loadWAV.t,string,ptr.AudioSpec,ptr.ptr.uint8,ptr.uint32"></a>
 <dt><pre><span class="Keyword">template</span> <a href="#loadWAV.t%2Cstring%2Cptr.AudioSpec%2Cptr.ptr.uint8%2Cptr.uint32"><span class="Identifier">loadWAV</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">spec</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a><span class="Other">;</span> <span class="Identifier">audio_buf</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Keyword">ptr</span> <span class="Identifier">uint8</span><span class="Other">;</span>
-                <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a></pre></dt>
+                 <span class="Identifier">audio_len</span><span class="Other">:</span> <span class="Keyword">ptr</span> <span class="Identifier">uint32</span><span class="Other">)</span><span class="Other">:</span> <span class="Keyword">ptr</span> <a href="audio.html#AudioSpec"><span class="Identifier">AudioSpec</span></a></pre></dt>
 <dd>
 
 
@@ -969,7 +1069,7 @@ function main() {
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-03 16:19:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-11-21 11:10:30 UTC</small>
       </div>
     </div>
   </div>

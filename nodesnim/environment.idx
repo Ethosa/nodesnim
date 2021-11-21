@@ -1,7 +1,6 @@
 EnvironmentObj	nodesnim/environment.html#EnvironmentObj	environment: EnvironmentObj	
 EnvironmentRef	nodesnim/environment.html#EnvironmentRef	environment: EnvironmentRef	
-newEnvironment	nodesnim/environment.html#newEnvironment,ColorRef,float,WindowPtr	environment: newEnvironment(color: ColorRef; brightness: float = 1.0&apos;f32;\n               windowptr: WindowPtr = nil): EnvironmentRef	
-newEnvironment	nodesnim/environment.html#newEnvironment	environment: newEnvironment(): EnvironmentRef	
+newEnvironment	nodesnim/environment.html#newEnvironment,ColorRef,float,WindowPtr	environment: newEnvironment(color: ColorRef = nil; brightness: float = 1.0&apos;f32;\n               windowptr: WindowPtr = nil): EnvironmentRef	
 delay	nodesnim/environment.html#delay,EnvironmentRef	environment: delay(env: EnvironmentRef): int	
 delay=	nodesnim/environment.html#delay=,EnvironmentRef,int	environment: delay=(env: EnvironmentRef; value: int)	
 background_color	nodesnim/environment.html#background_color,EnvironmentRef	environment: background_color(env: EnvironmentRef): ColorRef	
