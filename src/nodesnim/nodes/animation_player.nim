@@ -1,10 +1,11 @@
 # author: Ethosa
 ## Provides animation in most nodes
 import
-  node,
+  ../thirdparty/opengl,
   ../core/enums,
   ../core/tools,
-  ../thirdparty/opengl
+  ../private/templates,
+  node
 
 
 type

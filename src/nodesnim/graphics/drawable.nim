@@ -8,6 +8,8 @@ import
   ../core/vector2,
   ../core/tools,
 
+  ../private/templates,
+
   strutils,
   re
 
@@ -27,143 +29,10 @@ type
   DrawableRef* = ref DrawableObj
 
 
-let standard_shadow_color: ColorRef = Color(0f, 0f, 0f, 0.5f)
-
-template drawablepattern*(`type`: untyped): untyped =
-  result = `type`(
-    texture: GlTextureObj(), border_width: 0,
-    border_detail: [8, 8, 8, 8],
-    border_radius: [0.float, 0, 0, 0],
-    border_color: Color(0, 0, 0, 0),
-    background_color: Color(0, 0, 0, 0),
-    shadow_offset: Vector2(0, 0), shadow: false,
-    shadow_color: standard_shadow_color
-  )
+let standard_shadow_color*: ColorRef = Color(0f, 0f, 0f, 0.5f)
 
 proc Drawable*: DrawableRef =
   drawablepattern(DrawableRef)
-
-
-template vd* =
-  ## void template
-  discard
-
-template recalc*(shadow: bool = false) =
-  ## Calculates vertex positions.
-  let (xw, yh) = (x + width, y - height)
-  when not shadow:
-    # left top
-    for i in bezier_iter(1f/self.border_detail[0].float, Vector2(0, -self.border_radius[0]),
-                         Vector2(0, 0), Vector2(self.border_radius[0], 0)):
-      vertex.add(Vector2(x + i.x, y + i.y))
-
-    # right top
-    for i in bezier_iter(1f/self.border_detail[1].float, Vector2(-self.border_radius[01], 0),
-                         Vector2(0, 0), Vector2(0, -self.border_radius[1])):
-      vertex.add(Vector2(xw + i.x, y + i.y))
-
-    # right bottom
-    for i in bezier_iter(1f/self.border_detail[2].float, Vector2(0, -self.border_radius[2]),
-                         Vector2(0, 0), Vector2(-self.border_radius[2], 0)):
-      vertex.add(Vector2(xw + i.x, yh - i.y))
-
-    # left bottom
-    for i in bezier_iter(1f/self.border_detail[3].float, Vector2(self.border_radius[3], 0),
-                         Vector2(0, 0), Vector2(0, self.border_radius[3])):
-      vertex.add(Vector2(x + i.x, yh + i.y))
-  else:
-    glBegin(GL_QUAD_STRIP)
-    # left top
-    for i in bezier_iter(1f/self.border_detail[0].float, Vector2(0, -self.border_radius[0]),
-                         Vector2(0, 0), Vector2(self.border_radius[0], 0)):
-      glColor4f(0, 0, 0, 0)
-      glVertex2f(x + i.x + self.shadow_offset.x, y + i.y - self.shadow_offset.y)
-      glColor(self.shadow_color)
-      glVertex2f(x + i.x, y + i.y)
-
-    # right top
-    for i in bezier_iter(1f/self.border_detail[1].float, Vector2(-self.border_radius[1], 0),
-                         Vector2(0, 0), Vector2(0, -self.border_radius[1])):
-      glColor4f(0, 0, 0, 0)
-      glVertex2f(xw + i.x + self.shadow_offset.x, y + i.y - self.shadow_offset.y)
-      glColor(self.shadow_color)
-      glVertex2f(xw + i.x, y + i.y)
-
-    # right bottom
-    for i in bezier_iter(1f/self.border_detail[2].float, Vector2(0, -self.border_radius[2]),
-                         Vector2(0, 0), Vector2(-self.border_radius[2], 0)):
-      glColor4f(0, 0, 0, 0)
-      glVertex2f(xw + i.x + self.shadow_offset.x, yh - i.y - self.shadow_offset.y)
-      glColor(self.shadow_color)
-      glVertex2f(xw + i.x, yh - i.y)
-
-    # left bottom
-    for i in bezier_iter(1f/self.border_detail[3].float, Vector2(self.border_radius[3], 0),
-                         Vector2(0, 0), Vector2(0, self.border_radius[3])):
-      glColor4f(0, 0, 0, 0)
-      glVertex2f(x + i.x + self.shadow_offset.x, yh + i.y - self.shadow_offset.y)
-      glColor(self.shadow_color)
-      glVertex2f(x + i.x, yh + i.y)
-
-    glColor4f(0, 0, 0, 0)
-    glVertex2f(x + self.shadow_offset.x, y - self.border_radius[0] - self.shadow_offset.y)
-    glColor(self.shadow_color)
-    glVertex2f(x, y - self.border_radius[0])
-    glEnd()
-
-
-template draw_template*(drawtype, color, function, secondfunc: untyped): untyped =
-  ## Draws colorized vertexes
-  ##
-  ## Arguments:
-  ## - `drawtype` - draw type, like `GL_POLYGON`
-  ## - `color` - color for border drawing.
-  ## - `function` - function called before `glBegin`
-  ## - `secondfunc` - function called after `glEnd`
-  glColor4f(`color`.r, `color`.g, `color`.b, `color`.a)
-  `function`
-  glBegin(`drawtype`)
-
-  for i in vertex:
-    glVertex2f(i.x, i.y)
-
-  glEnd()
-  `secondfunc`
-
-template draw_texture_template*(drawtype, color, function, secondfunc: untyped): untyped =
-  glEnable(GL_TEXTURE_2D)
-  glBindTexture(GL_TEXTURE_2D, self.texture.texture)
-  glColor4f(`color`.r, `color`.g, `color`.b, `color`.a)
-  `function`
-  glBegin(`drawtype`)
-  var
-    texture_size = self.texture.size
-    h = height
-    w = width
-  if texture_size.x < width:
-    let q = width / texture_size.x
-    texture_size.x *= q
-    texture_size.y *= q
-
-  if texture_size.y < height:
-    let q = height / texture_size.y
-    texture_size.x *= q
-    texture_size.y *= q
-
-  # crop .. :eyes:
-  let q = width / texture_size.x
-  texture_size.x *= q
-  texture_size.y *= q
-  h /= height/width
-
-  for i in vertex:
-    glTexCoord2f((-x + i.x - w + texture_size.x) / texture_size.x,
-                 (y - i.y - h + texture_size.y) / texture_size.y)
-    glVertex2f(i.x, i.y)
-
-  glEnd()
-  `secondfunc`
-  glDisable(GL_TEXTURE_2D)
 
 
 method enableShadow*(self: DrawableRef, val: bool = true) {.base.} =
@@ -177,15 +46,15 @@ method draw*(self: DrawableRef, x1, y1, width, height: float) {.base.} =
     y = y1
 
   if self.shadow:
-    recalc(true)
-  recalc()
+    calculateDrawableCorners(true)
+  calculateDrawableCorners()
 
   if self.texture.texture > 0'u32:
-    draw_texture_template(GL_POLYGON, self.background_color, vd(), vd())
+    drawTextureTemplate(GL_POLYGON, self.background_color, voidTemplate(), voidTemplate())
   else:
-    draw_template(GL_POLYGON, self.background_color, vd(), vd())
+    drawTemplate(GL_POLYGON, self.background_color, voidTemplate(), voidTemplate())
   if self.border_width > 0f:
-    draw_template(GL_LINE_LOOP, self.border_color, glLineWidth(self.border_width), glLineWidth(1))
+    drawTemplate(GL_LINE_LOOP, self.border_color, glLineWidth(self.border_width), glLineWidth(1))
 
 
 method getColor*(self: DrawableRef): ColorRef {.base.} =

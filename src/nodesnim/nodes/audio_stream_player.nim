@@ -3,10 +3,11 @@
 ## 
 ## AudioStream is responsible for audio. You can play multiple audio recordings at once.
 import
-  node,
   ../thirdparty/sdl2/mixer,
   ../core/enums,
-  ../core/audio_stream
+  ../core/audio_stream,
+  ../private/templates,
+  node
 
 
 type

@@ -12,6 +12,7 @@ import
   ../core/color,
   ../core/font,
   ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -70,6 +71,8 @@ method draw*(self: CounterRef, w, h: GLfloat) =
 
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
+  if theme_changed:
+    self.label.text.rendered = false
   self.label.text.renderTo(
     Vector2(x + self.label.padding.x1, y - self.label.padding.y1),
     self.rect_size, self.label.text_align)

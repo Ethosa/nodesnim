@@ -10,8 +10,10 @@ import
   ../core/color,
   ../core/enums,
   ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 

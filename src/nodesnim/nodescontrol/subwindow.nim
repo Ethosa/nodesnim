@@ -13,6 +13,7 @@ import
   ../core/image,
   ../core/font,
   ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,

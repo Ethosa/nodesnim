@@ -8,6 +8,7 @@ import
   ../core/color,
   ../core/anchor,
   ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,

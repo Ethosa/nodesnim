@@ -9,6 +9,7 @@ import
   ../core/enums,
   ../core/image,
   ../core/color,
+  ../private/templates,
 
   ../nodes/node,
   node3d

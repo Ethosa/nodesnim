@@ -2,6 +2,7 @@
 import
   nodesnim,
   nodesnim/runtime/scene_loader,  # For runtime load your node from XML scene file.
+  nodesnim/private,
   strutils
 
 

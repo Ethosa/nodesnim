@@ -1,8 +1,6 @@
 # author: Ethosa
 ## The Scene uses in the `window.nim`. It contains other nodes. Only one scene can work at a time.
 import
-  node,
-  canvas,
   ../thirdparty/opengl,
   ../thirdparty/opengl/glu,
   ../core/enums,
@@ -10,8 +8,11 @@ import
   ../core/vector2,
   ../core/vector3,
   ../core/themes,
+  ../private/templates,
   ../nodes3d/node3d,
-  ../nodes3d/camera3d
+  ../nodes3d/camera3d,
+  node,
+  canvas
 
 
 type

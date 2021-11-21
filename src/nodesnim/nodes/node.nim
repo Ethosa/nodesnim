@@ -8,7 +8,9 @@ import
   ../core/vector2,
   ../core/enums,
   ../core/anchor,
-  ../core/input
+  ../core/input,
+
+  ../private/templates
 {.used.}
 
 
@@ -36,21 +38,6 @@ type
 let
   handler_default* = proc(self: NodeRef) = discard
   event_handler_default* = proc(self: NodeRef, event: InputEvent) = discard
-
-
-template nodepattern*(nodetype: untyped): untyped =
-  ## This used in childs of the NodeObj.
-  result = `nodetype`(
-    name: name, children: @[],
-    on_ready: handler_default,
-    on_process: handler_default,
-    on_input: event_handler_default,
-    on_enter: handler_default,
-    on_exit: handler_default,
-    on_theme_changed: handler_default,
-    is_ready: false, pausemode: INHERIT, visibility: VISIBLE
-  )
-  result.type_of_node = NODE_TYPE_DEFAULT
 
 proc Node*(name: string = "Node"): NodeRef =
   ## Creates a new Node.

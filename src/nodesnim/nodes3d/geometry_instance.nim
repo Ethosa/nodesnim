@@ -8,6 +8,7 @@ import
   ../core/anchor,
   ../core/input,
   ../core/color,
+  ../private/templates,
 
   ../nodes/node,
   node3d,

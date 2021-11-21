@@ -11,6 +11,7 @@ import
   ../core/enums,
   ../core/color,
   ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,

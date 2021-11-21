@@ -13,9 +13,11 @@ import
   ../core/rect2,
   ../core/nodes_os,
   ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,
+  ../graphics/drawable,
 
   label,
   control
@@ -124,23 +126,6 @@ method draw*(self: EditTextRef, w, h: Glfloat) =
     y1 += h.float
     inc i
 
-
-template changeText(self, `text`, `save_properties`, t: untyped): untyped =
-  var st = stext(`text`)
-  if `self`.`t`.font.isNil():
-    `self`.`t`.font = standard_font
-  st.font = `self`.`t`.font
-
-  if `save_properties`:
-    for i in 0..<st.chars.len():
-      if i < `self`.`t`.len():
-        st.chars[i].color = `self`.`t`.chars[i].color
-        st.chars[i].style = `self`.`t`.chars[i].style
-  `self`.`t` = st
-  `self`.rect_min_size = `self`.`t`.getTextSize()
-  `self`.resize(`self`.rect_size.x, `self`.rect_size.y)
-  `self`.`t`.rendered = false
-
 method moveCursorBy*(self: EditTextRef, value: int) {.base.} =
   if value > 0:
     self.caret_pos[0] += value.uint32
@@ -169,10 +154,10 @@ method setText*(self: EditTextRef, t: string, save_properties: bool = false) =
   ## Arguments:
   ## - `text` is a new Label text.
   ## - `save_properties` - saves old text properties, if `true`.
-  changeText(self, t, save_properties, text)
+  setTextTemplate(self, t, save_properties, text)
 
 method setHint*(self: EditTextRef, t: string, save_properties: bool = false) {.base.} =
-  changeText(self, t, save_properties, hint)
+  setTextTemplate(self, t, save_properties, hint)
 
 method setHintColor*(self: EditTextRef, color: ColorRef) {.base.} =
   self.hint.setColor(color)

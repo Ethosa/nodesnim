@@ -11,6 +11,7 @@ import
   ../core/image,
   ../core/color,
   ../core/animation,
+  ../private/templates,
 
   ../nodes/node,
   node2d

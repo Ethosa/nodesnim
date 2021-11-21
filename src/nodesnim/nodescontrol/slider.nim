@@ -10,6 +10,7 @@ import
   ../core/color,
   ../core/themes,
   ../core/enums,
+  ../private/templates,
 
   ../nodes/node,
   ../graphics/drawable,

@@ -8,6 +8,7 @@ import
   ../core/enums,
   ../core/circle,
   ../core/polygon2,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,

@@ -12,6 +12,7 @@ import
   ../core/color,
   ../core/font,
   ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../graphics/drawable,

@@ -15,6 +15,7 @@ import
   ../core/font,
   ../core/nodes_os,
   ../core/themes,
+  ../private/templates,
 
   ../graphics/drawable,
 

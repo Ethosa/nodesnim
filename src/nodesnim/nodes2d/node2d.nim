@@ -8,6 +8,7 @@ import
   ../core/anchor,
   ../core/input,
   ../core/enums,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas
@@ -23,20 +24,6 @@ type
     z_index*, z_index_global*: float
   Node2DRef* = ref Node2DObj
 
-
-template node2dpattern*: untyped =
-  result.centered = false
-  result.timed_position = Vector2()
-  result.rect_size = Vector2()
-  result.rect_min_size = Vector2()
-  result.position = Vector2()
-  result.global_position = Vector2()
-  result.anchor = Anchor(0, 0, 0, 0)
-  result.size_anchor = Vector2()
-  result.z_index = 0f
-  result.z_index_global = 0f
-  result.relative_z_index = true
-  result.type_of_node = NODE_TYPE_2D
 
 proc Node2D*(name: string = "Node2D"): Node2DRef =
   ## Creates a new Node2D.

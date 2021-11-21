@@ -10,6 +10,7 @@ import
   ../core/themes,
   ../core/anchor,
   ../core/nodes_os,
+  ../private/templates,
 
   ../graphics/drawable,
 

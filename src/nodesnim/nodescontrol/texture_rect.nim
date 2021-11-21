@@ -10,6 +10,7 @@ import
   ../core/image,
   ../core/enums,
   ../core/color,
+  ../private/templates,
 
   ../nodes/node,
   ../graphics/drawable,

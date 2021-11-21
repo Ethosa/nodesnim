@@ -9,6 +9,7 @@ import
   ../core/input,
   ../core/image,
   ../core/enums,
+  ../private/templates,
 
   ../nodes/node,
   ../graphics/drawable,

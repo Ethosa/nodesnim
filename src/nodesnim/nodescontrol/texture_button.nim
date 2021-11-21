@@ -12,8 +12,10 @@ import
   ../core/image,
   ../core/color,
   ../core/font,
+  ../private/templates,
 
   ../nodes/node,
+  ../graphics/drawable,
   control,
   label
 
