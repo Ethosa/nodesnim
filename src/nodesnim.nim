@@ -9,9 +9,9 @@ when defined(debug):
 
   info("Compiled in debug mode.")
 
-import nodesnim/thirdparty/sdl2 except Color
+import nodesnim/thirdparty/sdl2 except Color, glBindTexture
 import
-  nodesnim/thirdparty/opengl,
+  nodesnim/thirdparty/gl,
 
   nodesnim/window,
   nodesnim/environment,
@@ -25,7 +25,7 @@ import
 
 export
   # Third party
-  opengl, sdl2,
+  gl, sdl2,
   # Main
   window, environment,
   # Nodes

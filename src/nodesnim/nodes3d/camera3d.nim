@@ -1,6 +1,6 @@
 # author: Ethosa
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector3,
   ../core/input,

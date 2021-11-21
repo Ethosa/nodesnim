@@ -1,7 +1,7 @@
 # author: Ethosa
-import thirdparty/sdl2 except Color
+import thirdparty/sdl2 except Color, glBindTexture
 import
-  thirdparty/opengl,
+  thirdparty/gl,
   thirdparty/opengl/glu,
   thirdparty/sdl2/image,
 
@@ -254,10 +254,6 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   ## Arguments:
   ## - `title` - window title.
   # Set up window.
-  once:
-    when not defined(android) and not defined(ios) and not defined(useGlew):
-      loadExtensions()  # Load OpenGL extensions.
-      discard captureMouse(True32)
   windowptr = createWindow(
     title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h,
     SDL_WINDOW_SHOWN or SDL_WINDOW_OPENGL or SDL_WINDOW_RESIZABLE or
@@ -265,6 +261,11 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
     SDL_WINDOW_INPUT_FOCUS or SDL_WINDOW_MOUSE_FOCUS)
   glcontext = windowptr.glCreateContext()
   env.windowptr = windowptr
+  once:
+    when not defined(android) and not defined(ios) and not defined(useGlew):
+      if not gladLoadGL(glGetProcAddress):  # Load OpenGL extensions.
+        throwError(GLLoadError, "OpenGL couldn't load.")
+      discard captureMouse(True32)
 
   # Set up OpenGL
   glShadeModel(GL_SMOOTH)

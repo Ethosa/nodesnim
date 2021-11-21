@@ -4,6 +4,19 @@
 template voidTemplate* = discard
 
 
+# ----- Core templates ----- #
+template loadGLSLShader*(shader, shader_source: untyped) =
+  var source = allocCStringArray([`shader_source`])
+  glShaderSource(`shader`, 1, source, addr success)
+  glCompileShader(`shader`)
+  glGetShaderiv(`shader`, GL_COMPILE_STATUS, addr success)
+  if success == 0:
+    glGetShaderInfoLog(`shader`, 512, nil, infoLog)
+    throwError(ShaderCompileError, $infoLog)
+  deallocCStringArray(source)
+
+
+
 # ----- Graphics templates ----- #
 
 template calculateDrawableCorners*(shadow: bool = false) =
@@ -405,9 +418,9 @@ template canvasDrawGL*(canvas: untyped): untyped =
   if `canvas`.canvas_texture == 0:
     glGenTextures(1, `canvas`.canvas_texture.addr)
   glBindTexture(GL_TEXTURE_2D, `canvas`.canvas_texture)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST.GLint)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST.GLint)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE.GLint)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE.GLint)
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, `canvas`.surface.w,  `canvas`.surface.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, `canvas`.surface.pixels)
   glBindTexture(GL_TEXTURE_2D, 0)

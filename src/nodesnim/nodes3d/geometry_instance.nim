@@ -1,6 +1,6 @@
 # author: Ethosa
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/vector3,
@@ -18,9 +18,10 @@ import
 type
   GeometryInstanceObj* = object of Node3DObj
     geometry*: GeometryType
-    sides*, rings*: int
     color*: ColorRef
+    sides*, rings*: int
     radius*: float
+    points*: seq[Vector3Obj]
   GeometryInstanceRef* = ref GeometryInstanceObj
 
 
@@ -133,6 +134,11 @@ method draw*(self: GeometryInstanceRef, w, h: Glfloat) =
         py = sin(PI - (S*s))*sin(R*(r + 1))*self.radius
         px = sin(PI - (S*s))*cos(R*(r + 1))*self.radius
         glVertex3f(px, py, pz)
+    glEnd()
+  of GEOMETRY_POLYGON:
+    glBegin(GL_POLYGON)
+    for p in self.points:
+      glVertex3f(p.x, p.y, p.z)
     glEnd()
 
 

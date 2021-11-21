@@ -1,7 +1,7 @@
 # author: Ethosa
 ## It provides primitive display progress.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,

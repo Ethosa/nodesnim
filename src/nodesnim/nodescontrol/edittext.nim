@@ -1,7 +1,7 @@
 # author: Ethosa
-import ../thirdparty/sdl2 except Color
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
   ../thirdparty/sdl2/ttf,
 
   ../core/font,

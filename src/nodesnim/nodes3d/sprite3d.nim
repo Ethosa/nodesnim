@@ -1,7 +1,7 @@
 # author: Ethosa
 ## It provides display sprites.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector3,
   ../core/anchor,

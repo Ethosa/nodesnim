@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Displays colour rectangle.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,

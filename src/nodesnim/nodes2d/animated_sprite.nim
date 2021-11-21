@@ -1,7 +1,7 @@
 # author: Ethosa
 ## It provides display animated sprites.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,

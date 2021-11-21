@@ -1,7 +1,6 @@
 # author: Ethosa
-import
-  ../thirdparty/sdl2,
-  ../thirdparty/sdl2/mixer
+import ../thirdparty/sdl2 except Color, glBindTexture
+import ../thirdparty/sdl2/mixer
 
 
 once:

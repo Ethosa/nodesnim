@@ -1,8 +1,8 @@
 # author: Ethosa
 ## Extended version of SubWindow node.
-import ../thirdparty/sdl2 except Color
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,

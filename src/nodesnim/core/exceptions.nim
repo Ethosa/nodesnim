@@ -4,7 +4,9 @@ import logging
 {.push pure, size: sizeof(int8).}
 type
   ResourceError* = object of ValueError
+  GLLoadError* = object of ValueError
   SceneError* = object of ValueError
+  ShaderCompileError* = object of ValueError
   VMError* = object of ValueError
   WindowError* = object of ValueError
 {.pop.}

@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Contains children in horizontal box.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,
@@ -67,6 +67,7 @@ method addChild*(self: HBoxRef, child: NodeRef) =
 
 method draw*(self: HBoxRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
   procCall self.ControlRef.draw(w, h)
   var
     fakesize = self.getChildSize()

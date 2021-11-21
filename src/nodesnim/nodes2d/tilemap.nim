@@ -1,6 +1,6 @@
 # author: Ethosa
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/enums,
@@ -103,4 +103,6 @@ method setMode*(self: TileMapRef, mode: TileMapMode) {.base.} =
 
 method setTileSet*(self: TileMapRef, tileset: TileSetObj) {.base.} =
   ## Changes current tileset.
+  if not self.tileset.isNil() and self.tileset.texture > 0'u32:
+    glDeleteTextures(1, addr self.tileset.texture)
   self.tileset = tileset

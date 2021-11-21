@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Sorts children by its Y position.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,

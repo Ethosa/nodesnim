@@ -81,7 +81,8 @@ type
   GeometryType* = enum
     GEOMETRY_CUBE,      ## Uses for cube rendering.
     GEOMETRY_CYLINDER,  ## Uses for cylinder rendering.
-    GEOMETRY_SPHERE     ## Uses for sphere rendering.
+    GEOMETRY_SPHERE,    ## Uses for sphere rendering.
+    GEOMETRY_POLYGON    ## Uses for polugon rendering.
 
   TileMapMode* = enum
     TILEMAP_2D,         ## Default 2D mode.

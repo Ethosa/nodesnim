@@ -42,7 +42,15 @@ suite "Work with 3D nodes.":
         translation: Vector3(2, -1, 1)
         color: Color(144, 77, 144, 1.0)
         geometry: GEOMETRY_CYLINDER
-    getSceneByName("main").addChildren(cube, cube1, cube2, sphere, cylinder)
+      - GeometryInstance polygon:
+        translation: Vector3(2, -2, 1)
+        color: Color(144, 77, 144, 1.0)
+        geometry: GEOMETRY_POLYGON
+        points: @[
+          Vector3(), Vector3(100, 10, 0), Vector3(0, 10, -10),
+          Vector3(100, -10, 10), Vector3(100, 10, 0)
+        ]
+    getSceneByName("main").addChildren(cube, cube1, cube2, sphere, cylinder, polygon)
 
 
   test "Camera3D test":
@@ -50,8 +58,9 @@ suite "Work with 3D nodes.":
       - Node3D root:
         call translate(2, 2, -5)
         - Camera3D camera:
-          call setCurrent()
-          call changeTarget(root)
+          call:
+            setCurrent()
+            changeTarget(root)
     root@onInput(self, event):
       if event.isInputEventMouseMotion() and event.pressed:
         camera.rotate(event.xrel*0.25, -event.yrel*0.25)
@@ -77,6 +86,31 @@ suite "Work with 3D nodes.":
     sprite@onProcess(self):
       sprite.rotateY(0.5)
     getSceneByName("main").addChild(sprite)
+
+  test "Shaders test":
+    var shader = GLSLShader(
+      """#version 330 core
+    layout (location = 0) in vec3 position;
+
+    out vec4 vertexColor;
+
+    void main()
+    {
+        gl_Position = vec4(position, 1.0);
+        vertexColor = vec4(0.5f, 0.0f, 0.0f, 1.0f);
+    }""",
+
+    """#version 330 core
+    in vec4 vertexColor;
+
+    out vec4 color;
+
+    void main()
+    {
+        color = vertexColor;
+    } """
+    )
+    shader.use()
 
 
   test "Launch window":

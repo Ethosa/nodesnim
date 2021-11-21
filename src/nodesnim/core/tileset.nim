@@ -1,7 +1,7 @@
 # author: Ethosa
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
-  ../thirdparty/opengl,
-  ../thirdparty/sdl2,
+  ../thirdparty/gl,
   ../thirdparty/sdl2/image,
 
   vector2,
@@ -24,10 +24,10 @@ proc TileSet*(img: string, tile_size: Vector2Obj, mode: Glenum = GL_RGB): TileSe
 
   glGenTextures(1, textureid.addr)
   glBindTexture(GL_TEXTURE_2D, textureid)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR.GLint)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR.GLint)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE.GLint)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE.GLint)
 
   glTexImage2D(GL_TEXTURE_2D, 0, mode.GLint, surface.w,  surface.h, 0, mode, GL_UNSIGNED_BYTE, surface.pixels)
   glBindTexture(GL_TEXTURE_2D, 0)

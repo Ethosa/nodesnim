@@ -1,6 +1,6 @@
 # author: Ethosa
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/color,
   ../core/stylesheet,

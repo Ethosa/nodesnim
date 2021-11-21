@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Contains children in the vertical box.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,
@@ -68,6 +68,7 @@ method addChild*(self: VBoxRef, child: NodeRef) =
 
 method draw*(self: VBoxRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
   procCall self.ControlRef.draw(w, h)
   var
     fakesize = self.getChildSize()

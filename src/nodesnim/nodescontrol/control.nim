@@ -1,7 +1,7 @@
 # author: Ethosa
 ## The base of other Control nodes.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,

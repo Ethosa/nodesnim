@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Provides charting functionality
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/anchor,
   ../core/enums,

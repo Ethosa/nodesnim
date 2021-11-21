@@ -2,7 +2,7 @@
 ## It provides primitive text rendering.
 import
   strutils,
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
   ../thirdparty/sdl2/ttf,
 
   ../core/vector2,

@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Moves all child nodes at the center of the box.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,
@@ -62,6 +62,7 @@ method addChild*(self: BoxRef, child: NodeRef) =
 
 method draw*(self: BoxRef, w, h: GLfloat) =
   ## this method uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
   for child in self.children:
     child.CanvasRef.position.x = self.rect_size.x*self.child_anchor.x1 - child.CanvasRef.rect_size.x*self.child_anchor.x2 + self.padding.x1
     child.CanvasRef.position.y = self.rect_size.y*self.child_anchor.y1 - child.CanvasRef.rect_size.y*self.child_anchor.y2 + self.padding.y1

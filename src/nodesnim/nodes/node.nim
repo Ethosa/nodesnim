@@ -3,7 +3,7 @@
 import
   strutils,
 
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/enums,

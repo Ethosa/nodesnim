@@ -1,9 +1,9 @@
 # author: Ethosa
 ## Provides TTF text rendering. Use SDL2_ttf.
-import ../thirdparty/sdl2 except Color
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../thirdparty/sdl2/ttf,
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   image,
   vector2,
@@ -332,10 +332,10 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
     if text.texture.texture == 0'u32:
       glGenTextures(1, addr text.texture.texture)
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE)
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR.GLint)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR.GLint)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE.GLint)
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE.GLint)
 
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, surface.w, surface.h,
                  0, GL_RGBA, GL_UNSIGNED_BYTE, surface.pixels)

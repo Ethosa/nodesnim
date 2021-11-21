@@ -1,7 +1,7 @@
 # author: Ethosa
 ## Contains children in grid.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,
@@ -81,6 +81,7 @@ method addChild*(self: GridBoxRef, child: NodeRef) =
 
 method draw*(self: GridBoxRef, w, h: GLfloat) =
   ## This method uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
   var
     row = 0
     fakesize = self.getChildSize()

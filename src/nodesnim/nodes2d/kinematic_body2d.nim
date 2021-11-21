@@ -2,7 +2,7 @@
 ## This uses for create hero with physics.
 
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,

@@ -2,9 +2,9 @@
 ## Canvas is the root type of all 2D and Control nodes.
 ## 
 ## Canvas used for drawing primitive geometry.
-import ../thirdparty/sdl2 except Color
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
   ../thirdparty/sdl2/image,
   ../core/vector2,
   ../core/color,
@@ -73,6 +73,7 @@ method calcPositionAnchor*(self: CanvasRef) {.base.} =
 
 method draw*(canvas: CanvasRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
   let
     x = -w/2 + canvas.global_position.x
     y = h/2 - canvas.global_position.y

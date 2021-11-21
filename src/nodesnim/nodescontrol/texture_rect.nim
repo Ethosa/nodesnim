@@ -1,7 +1,7 @@
 # author: Ethosa
 ## It provides a primitive display image.
 import
-  ../thirdparty/opengl,
+  ../thirdparty/gl,
 
   ../core/vector2,
   ../core/rect2,
