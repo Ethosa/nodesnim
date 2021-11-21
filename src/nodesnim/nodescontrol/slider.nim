@@ -8,7 +8,9 @@ import
   ../core/anchor,
   ../core/input,
   ../core/color,
+  ../core/themes,
   ../core/enums,
+  ../private/templates,
 
   ../nodes/node,
   ../graphics/drawable,
@@ -39,11 +41,11 @@ proc Slider*(name: string = "Slider"): SliderRef =
   controlpattern()
   result.slider_type = SLIDER_HORIZONTAL
   result.thumb = Drawable()
-  result.background.setColor(Color(1f, 1f, 1f))
-  result.thumb.setColor(Color(0.7, 0.7, 0.7))
+  result.background.setColor(current_theme~background_deep)
+  result.thumb.setColor(current_theme~accent)
   result.rect_size.x = 120
   result.rect_size.y = 40
-  result.progress_color = Color(0.5, 0.5, 0.5)
+  result.progress_color = current_theme~accent_dark
   result.max_value = 100
   result.value = 0
   result.on_changed = slider_changed_handler

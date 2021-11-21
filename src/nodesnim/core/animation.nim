@@ -37,16 +37,12 @@ proc `[]`*[T](arr: AnimationArray[T], index: string): AnimationRef[T] =
     if elem.name == index:
       return elem
 
-proc contains*[T](arr: AnimationArray[T], animation: AnimationRef[T]): bool =
-  result = false
-  for elem in arr:
-    if elem.name == animation.name:
-      result = true
-      break
-
 proc contains*[T](arr: AnimationArray[T], name: string): bool =
   result = false
   for elem in arr:
     if elem.name == name:
       result = true
       break
+
+proc contains*[T](arr: AnimationArray[T], animation: AnimationRef[T]): bool =
+  animation.name in arr

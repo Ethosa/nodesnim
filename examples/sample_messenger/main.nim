@@ -9,6 +9,7 @@ when isMainModule:
   Window("Client", 320, 640)
 
   addKeyAction("send", 13)  # Enter
+  changeTheme("light")
 
 
   addScene(chat_scene)

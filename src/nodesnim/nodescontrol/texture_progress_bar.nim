@@ -9,6 +9,7 @@ import
   ../core/input,
   ../core/image,
   ../core/enums,
+  ../private/templates,
 
   ../nodes/node,
   ../graphics/drawable,
@@ -114,8 +115,12 @@ method setProgress*(self: TextureProgressBarRef, value: uint) {.base.} =
 
 method setProgressTexture*(self: TextureProgressBarRef, texture: GlTextureObj) {.base.} =
   ## Changes progress texture.
+  if self.progress_texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.progress_texture.texture)
   self.progress_texture = texture
 
 method setBackgroundTexture*(self: TextureProgressBarRef, texture: GlTextureObj) {.base.} =
   ## Changes background progress texture.
+  if self.back_texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.back_texture.texture)
   self.back_texture = texture

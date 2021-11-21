@@ -12,7 +12,6 @@ gradient.setCornerColors(Color("#cac"), Color("#cac"), Color("#acc"), Color("#ac
 
 build:
   - Scene (enter_scene):
-    call rename("Enter")
   
     - Control background:
       call setSizeAnchor(1, 1)
@@ -20,27 +19,29 @@ build:
   
       - VBox input:
         separator: 8
-        call setAnchor(0.5, 0.5, 0.5, 0.5)
-        call setChildAnchor(0.5, 0.5, 0.5, 0.5)
-        call resize(256, 256+64)
-        call setStyle(style({
-          border-radius: 8,
-          border-detail: 8,
-          background-color: rgba(100, 111, 122, 0.4)
-          }))
+        call:
+          setAnchor(0.5, 0.5, 0.5, 0.5)
+          setChildAnchor(0.5, 0.5, 0.5, 0.5)
+          resize(256, 256+64)
+          setStyle(style({
+              border-radius: 8,
+              border-detail: 8,
+              background-color: rgba(100, 111, 122, 0.4)
+            }))
   
         - EditText login:
           caret: false
-          call setTextAlign(0.5, 0.5, 0.5, 0.5)
-          call setHint("Username")
-          call setHintColor(Color("#ebebeb"))
-          call setTextColor(Color("#fff"))
-          call setStyle(style({
-            border-radius: 8,
-            border-detail: 8,
-            border-color: rgba(100, 111, 122, 0.4),
-            border-width: 1
-            }))
+          call:
+            setTextAlign(0.5, 0.5, 0.5, 0.5)
+            setHint("Username")
+            setHintColor(Color("#ebebeb"))
+            setTextColor(Color("#fff"))
+            setStyle(style({
+                border-radius: 8,
+                border-detail: 8,
+                border-color: rgba(100, 111, 122, 0.4),
+                border-width: 1
+              }))
         - Button send:
           call setText("ENTER")
 
@@ -70,4 +71,4 @@ send@onClick(self, x, y):
   if username.len > 0:
     var response = waitFor enter()
     if response:
-      changeScene("Chat")
+      changeScene("chat_scene")

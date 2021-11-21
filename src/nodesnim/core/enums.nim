@@ -50,6 +50,8 @@ type
     TEXTURE_RECT_NODE,
     VBOX_NODE,
     SUB_WINDOW_NODE,
+    TOOLTIP_NODE,
+    CHART_NODE,
     # 3D nodes
     NODE3D_NODE,
     GEOMETRY_INSTANCE_NODE,
@@ -98,5 +100,17 @@ type
   ScreenMode* = enum
     SCREEN_MODE_NONE,  ## default mode.
     SCREEN_MODE_EXPANDED  ## Keep screen size.
+
+  ChartType* = enum
+    LINE_CHART,
+    BAR_CHART,
+    PIE_CHART,
+    RADAR_CHART
+
+  ChartDataValueType* = enum
+    INTEGER_VALUE,
+    FLOAT_VALUE,
+    STRING_VALUE,
+    CHAR_VALUE
 
 {.pop.}

@@ -9,6 +9,7 @@ import
   ../core/enums,
   ../core/image,
   ../core/color,
+  ../private/templates,
 
   ../nodes/node,
   node3d
@@ -82,6 +83,8 @@ method loadTexture*(self: Sprite3DRef, file: string, mode = GL_RGB) {.base.} =
   ## Arguments:
   ## - `file` is a texture path.
   ## - `mode` is a GLenum. can be GL_RGB or GL_RGBA.
+  if self.texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.texture.texture)
   self.texture = load(file, mode)
 
 method setTexture*(self: Sprite3DRef, texture: GlTextureObj) {.base.} =
@@ -89,4 +92,6 @@ method setTexture*(self: Sprite3DRef, texture: GlTextureObj) {.base.} =
   ##
   ## Arguments:
   ## - `texture` is a GlTexture object.
+  if self.texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.texture.texture)
   self.texture = texture

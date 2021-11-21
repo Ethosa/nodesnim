@@ -1,5 +1,6 @@
 # author: Ethosa
 import
+  re,
   math,
   vector2
 
@@ -26,3 +27,11 @@ iterator cubic_bezier_iter*(step: float, p0, p1, p2, p3: Vector2Obj): Vector2Obj
   while t <= 1f:
     yield Vector2(cubic_bezier(t, p0.x, p1.x, p2.x, p3.x), cubic_bezier(t, p0.y, p1.y, p2.y, p3.y))
     t += s
+
+proc matchBackgroundImage*(source: string, matches: var array[20, string]): bool =
+  source.match(re"\A\s*url\(([^\)]+)\)\s*\Z", matches)
+
+proc matchColor*(source: string): bool =
+  source.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+\.?\d*?)\s*\)\s*\Z") or
+  source.match(re"\A\s*rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*\Z") or
+  source.match(re"\A(#|0x|0X)[0-9a-fA-F]{3,8}\Z")

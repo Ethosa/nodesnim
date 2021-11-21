@@ -7,6 +7,9 @@ type
     x*, y*, z*: float
 
 
+let
+  NULL_VECTOR3* = Vector3Obj(x: 0, y: 0, z: 0)
+
 proc Vector3*(x, y, z: float): Vector3Obj =
   ## Creates a new Vector3 object.
   runnableExamples:

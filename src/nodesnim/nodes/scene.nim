@@ -1,16 +1,18 @@
 # author: Ethosa
 ## The Scene uses in the `window.nim`. It contains other nodes. Only one scene can work at a time.
 import
-  node,
-  canvas,
   ../thirdparty/opengl,
   ../thirdparty/opengl/glu,
   ../core/enums,
   ../core/input,
   ../core/vector2,
   ../core/vector3,
+  ../core/themes,
+  ../private/templates,
   ../nodes3d/node3d,
-  ../nodes3d/camera3d
+  ../nodes3d/camera3d,
+  node,
+  canvas
 
 
 type
@@ -69,6 +71,9 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
       if not child.is_ready:
         child.on_ready(child)
         child.is_ready = true
+
+      if theme_changed:
+        child.on_theme_changed(child)
       child.on_process(child)
       child.draw(w, h)
   for child in scene.getChildIter():
@@ -76,6 +81,8 @@ method drawScene*(scene: SceneRef, w, h: GLfloat, paused: bool) {.base.} =
       continue
     if child.visibility != GONE:
       child.postdraw(w, h)
+  if theme_changed:
+    theme_changed = false
   scene.calcGlobalPosition()
 
 method duplicate*(self: SceneRef): SceneRef {.base.} =

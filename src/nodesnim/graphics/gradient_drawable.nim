@@ -6,6 +6,9 @@ import
   ../core/stylesheet,
   ../core/image,
   ../core/vector2,
+  ../core/tools,
+
+  ../private/templates,
 
   drawable,
   strutils
@@ -23,39 +26,6 @@ proc GradientDrawable*: GradientDrawableRef =
                     Color(1f, 1f, 1f, 1.0),
                     Color(1f, 1f, 1f, 1.0)]
 
-
-template draw_template*(drawtype, color, function, secondfunc: untyped, is_gradient: bool = true): untyped =
-  ## Draws colorized vertexes
-  ##
-  ## Arguments:
-  ## - `drawtype` - draw type, like `GL_POLYGON`
-  ## - `color` - color for border drawing.
-  ## - `function` - function called before `glBegin`
-  ## - `secondfunc` - function called after `glEnd`
-  ## - `is_gradient` - true when drawtype is `GL_POLYGON`.
-  glColor4f(`color`.r, `color`.g, `color`.b, `color`.a)
-  `function`
-  glBegin(`drawtype`)
-
-  if is_gradient:
-    for i in 0..vertex.high:
-      let tmp = i/vertex.len()
-      if tmp < 0.25:
-        glColor(self.corners[0])
-      elif tmp < 0.5:
-        glColor(self.corners[1])
-      elif tmp < 0.75:
-        glColor(self.corners[2])
-      else:
-        glColor(self.corners[3])
-      glVertex2f(vertex[i].x, vertex[i].y)
-  else:
-    for i in vertex:
-      glVertex2f(i.x, i.y)
-
-  glEnd()
-  `secondfunc`
-
 method draw*(self: GradientDrawableRef, x1, y1, width, height: float) =
   var
     vertex: seq[Vector2Obj] = @[]
@@ -63,16 +33,15 @@ method draw*(self: GradientDrawableRef, x1, y1, width, height: float) =
     y = y1
 
   if self.shadow:
-    recalc(true)
-
-  recalc()
+    calculateDrawableCorners(true)
+  calculateDrawableCorners()
 
   if self.texture.texture > 0'u32:
-    draw_texture_template(GL_POLYGON, self.background_color, vd(), vd())
+    drawTextureTemplate(GL_POLYGON, self.background_color, voidTemplate(), voidTemplate())
   else:
-    draw_template(GL_POLYGON, self.background_color, vd(), vd())
+    drawTemplate(GL_POLYGON, self.background_color, voidTemplate(), voidTemplate(), true)
   if self.border_width > 0f:
-    draw_template(GL_LINE_LOOP, self.border_color, glLineWidth(self.border_width), glLineWidth(1), false)
+    drawTemplate(GL_LINE_LOOP, self.border_color, glLineWidth(self.border_width), glLineWidth(1), false)
 
 method setCornerColors*(self: GradientDrawableRef, c0, c1, c2, c3: ColorRef) {.base.} =
   ## Changes corners colors

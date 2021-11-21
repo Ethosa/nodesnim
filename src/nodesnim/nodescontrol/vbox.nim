@@ -8,9 +8,11 @@ import
   ../core/anchor,
   ../core/input,
   ../core/enums,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,
+  ../graphics/drawable,
   control,
   box
 

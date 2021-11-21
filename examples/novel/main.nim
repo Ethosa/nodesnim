@@ -17,37 +17,43 @@ var
 
 build:
   - Scene main:
-    call rename("Main")
     - Button button:
-      call setText("New game")
-      call resize(128, 32)
-      call setAnchor(0.5, 0.5, 0.5, 0.5)
+      call:
+        setText("New game")
+        resize(128, 32)
+        setAnchor(0.5, 0.5, 0.5, 0.5)
+      @onTouch(x, y):
+        changeScene("game_scene")
+
   - Scene game_scene:
-    call rename("Game")
     - TextureRect background_image:
-      call setSizeAnchor(1, 1)
-      call setTexture(night)
-      call setTextureAnchor(0.5, 0.5, 0.5, 0.5)
       texture_mode: TEXTURE_KEEP_ASPECT_RATIO
+      call:
+        setSizeAnchor(1, 1)
+        setTexture(night)
+        setTextureAnchor(0.5, 0.5, 0.5, 0.5)
     - TextureRect charapter:
-      call setSizeAnchor(1, 1)
-      call setTexture(akiko_default)
-      call setTextureAnchor(0.5, 0.5, 0.5, 0.5)
       texture_mode: TEXTURE_KEEP_ASPECT_RATIO
       visibility: GONE
+      call:
+        setSizeAnchor(1, 1)
+        setTexture(akiko_default)
+        setTextureAnchor(0.5, 0.5, 0.5, 0.5)
     - Label dialog_text:
-      call setSizeAnchor(0.8, 0.3)
-      call setAnchor(0.1, 0.6, 0, 0)
-      call setBackgroundColor(Color(0x0e131760))
-      call setPadding(8, 8, 8, 8)
+      call:
+        setSizeAnchor(0.8, 0.3)
+        setAnchor(0.1, 0.6, 0, 0)
+        setBackgroundColor(Color(0x0e131760))
+        setPadding(8, 8, 8, 8)
       - Label name_charapter:
-        call resize(128, 32)
-        call setAnchor(0, 0, 0, 1)
-        call setBackgroundColor(Color(0x0e131760'u32))
-        call setStyle(style({
-          border-radius: "8 8 0 0"
-        }))
-        call setTextAlign(0.1, 0.5, 0.1, 0.5)
+        call:
+          resize(128, 32)
+          setAnchor(0, 0, 0, 1)
+          setBackgroundColor(Color(0x0e131760'u32))
+          setStyle(style({
+            border-radius: "8 8 0 0"
+          }))
+          setTextAlign(0.1, 0.5, 0.1, 0.5)
     - ColorRect foreground_rect:
       call setSizeAnchor(1, 1)
       color: Color(0x0e1317ff)
@@ -55,12 +61,11 @@ build:
       loop: false
       call addState(foreground_rect.color.a.addr,
                     @[(tick: 0, value: 1.0), (tick: 100, value: 0.0)])
+      @onReady():
+        animation.play()
 
 
-foreground_rect@on_ready(self):
-  animation.play()
-
-foreground_rect@on_input(self, event):
+foreground_rect@onInput(self, event):
   if event.isInputEventMouseButton() and not event.pressed:
     if stage < dialog.len():
       name_charapter.setText(dialog[stage][0])
@@ -68,11 +73,6 @@ foreground_rect@on_input(self, event):
       charapter.visibility = dialog[stage][2]
     inc stage
 
-
-
-button.on_touch =
-  proc(self: ButtonRef, x, y: float) =
-    changeScene("Game")
 
 addMainScene(main)
 addScene(game_scene)

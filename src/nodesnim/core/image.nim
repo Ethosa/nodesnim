@@ -41,8 +41,6 @@ proc load*(file: string, x, y: var float, mode: Glenum = GL_RGB): Gluint =
 
   # free memory
   surface.freeSurface()
-  surface = nil
-
   textureid
 
 
@@ -57,3 +55,7 @@ proc load*(file: string, mode: Glenum = GL_RGB): GlTextureObj =
     textureid: Gluint
   textureid = load(file, x, y, mode)
   GlTextureObj(texture: textureid, size: Vector2(x, y))
+
+
+proc freeMemory*(self: var GlTextureObj) =
+  glDeleteTextures(1, addr self.texture)

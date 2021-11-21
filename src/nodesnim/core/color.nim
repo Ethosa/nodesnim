@@ -95,7 +95,7 @@ proc Color*(src: string): ColorRef =
     return Color(parseHexInt(target).uint32)
 
   # rgba(255, 255, 255, 1.0)
-  elif target.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+.?\d*?)\s*\)\s*\Z", matched):
+  elif target.match(re"\A\s*rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+\.?\d*?)\s*\)\s*\Z", matched):
     return Color(parseInt(matched[0]).uint8, parseInt(matched[1]).uint8, parseInt(matched[2]).uint8, parseFloat(matched[3]))
 
   # rgb(255, 255, 255)
@@ -200,6 +200,12 @@ proc lerp*(self, other: ColorRef, lerpv: float): uint32 =
     (r1, g1, b1, a1) = self.toUint32Tuple()
     (r2, g2, b2, a2) = self.toUint32Tuple()
   lerp(r1, g1, b1, a1, r2, g2, b2, a2, lerpv)
+
+proc copyColorTo*(dest, src: ColorRef) =
+  src.r = dest.r
+  src.g = dest.g
+  src.b = dest.b
+  src.a = dest.a
 
 
 proc glColor*(clr: ColorRef) =

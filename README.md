@@ -13,7 +13,7 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 [![channel icon](https://patrolavia.github.io/telegram-badge/follow.png)](https://t.me/nim1love)
 [![channel icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/nodesnim)
 
-<h4>Stable version - 0.4.1</h4>
+<h4>Stable version - 0.4.2</h4>
 </div>
 
 ## Install
@@ -38,8 +38,11 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 
 ## Features
 - Godot-like node system.
-- Build nodes with YML-like syntax.
+- Runtime scene loader.
+- Powerful node build system using YML-like syntax.
 - Stylesheets (CSS-like).
+- Android-like drawables.
+- Customizable GUI themes.
 - Simple usage
   ```nim
   import nodesnim
@@ -50,10 +53,11 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
   build:
     - Scene scene:
       - Label hello:
-        call setSizeAnchor(1, 1)
-        call setTextAlign(0.5, 0.5, 0.5, 0.5)
-        call setText("Hello, world!")
-        call setBackgroundColor(Color(31, 45, 62))
+        call:
+          setSizeAnchor(1, 1)
+          setTextAlign(0.5, 0.5, 0.5, 0.5)
+          setText("Hello, world!")
+          setBackgroundColor(Color(31, 45, 62))
 
   addMainScene(scene)
   windowLaunch()
@@ -81,11 +85,11 @@ This section contains links to documentation for all nodes.
 |[SceneBuilder][]|                     |[TextureButton][]     |                    |                    |                    |
 |[StyleSheet][]  |                     |[TextureProgressBar][]|                    |                    |                    |
 |[TileSet][]     |                     |[Counter][]           |                    |                    |                    |
-|                |                     |[Switch][]            |                    |                    |                    |
-|                |                     |[SubWindow][]         |                    |                    |                    |
-|                |                     |[CheckBox][]          |                    |                    |                    |
+|[ChartData][]   |                     |[Switch][]            |                    |                    |                    |
+|[Scripts][]     |                     |[SubWindow][]         |                    |                    |                    |
+|[Scene loader][]|                     |[CheckBox][]          |                    |                    |                    |
 |                |                     |[ToolTip][]           |                    |                    |                    |
-
+|                |                     |[Chart][]             |                    |                    |                    |
 
 
 ## Debug mode
@@ -103,28 +107,28 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 ## Screenshots
 <div align="center">
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/hello_world">
-    <img src="https://user-images.githubusercontent.com/49402667/138453889-ea538f86-2fc4-4947-843f-ca100561b05d.png" width="380" height="220" alt="Hello world example">
+    <img src="https://user-images.githubusercontent.com/49402667/138453889-ea538f86-2fc4-4947-843f-ca100561b05d.png" height="220" alt="Hello world example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/calculator">
-    <img src="https://user-images.githubusercontent.com/49402667/138453360-6b701b6a-8695-4ace-bf9f-25d5ae8c68c2.png" width="380" height="220" alt="Calculator example">
+    <img src="https://user-images.githubusercontent.com/49402667/138453360-6b701b6a-8695-4ace-bf9f-25d5ae8c68c2.png" height="220" alt="Calculator example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/snake">
-    <img src="https://user-images.githubusercontent.com/49402667/138456143-292a5b73-7a52-4d29-9769-1c8101db9f85.png" width="380" height="220" alt="Snake game example">
+    <img src="https://user-images.githubusercontent.com/49402667/138456143-292a5b73-7a52-4d29-9769-1c8101db9f85.png" height="220" alt="Snake game example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/screensaver">
-    <img src="https://user-images.githubusercontent.com/49402667/138455275-3df817ae-275d-4164-afc1-92fbdbbb4a6c.png" width="380" height="220" alt="Screensaver example">
+    <img src="https://user-images.githubusercontent.com/49402667/138455275-3df817ae-275d-4164-afc1-92fbdbbb4a6c.png" height="220" alt="Screensaver example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/novel">
-    <img src="https://user-images.githubusercontent.com/49402667/138454518-376b40ba-44d0-458a-9b2b-48a5ea53ff64.png" width="380" height="220" alt="Novel game example">
+    <img src="https://user-images.githubusercontent.com/49402667/138454518-376b40ba-44d0-458a-9b2b-48a5ea53ff64.png" height="220" alt="Novel game example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/roguelike">
-    <img src="https://user-images.githubusercontent.com/49402667/138454722-e2b2766d-29cd-412a-92d2-29393d442775.png" width="380" height="220" alt="Roguelike game example">
+    <img src="https://user-images.githubusercontent.com/49402667/138454722-e2b2766d-29cd-412a-92d2-29393d442775.png" height="200" alt="Roguelike game example">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/sample_messenger">
-    <img src="https://user-images.githubusercontent.com/49402667/138455176-d38ea0b3-274d-41c6-b877-2a9be39a7b90.png" width="240" height="480" alt="sample messenger">
+    <img src="https://user-images.githubusercontent.com/49402667/138455176-d38ea0b3-274d-41c6-b877-2a9be39a7b90.png" height="460" alt="sample messenger">
   </a>
   <a href="https://github.com/Ethosa/nodesnim/tree/nightly/examples/calculator">
-    <img src="https://user-images.githubusercontent.com/49402667/138453719-0b4d50a9-b4a3-40c5-b017-1e0e0dd4892b.png" width="360" height="480" alt="Material Calculator example">
+    <img src="https://user-images.githubusercontent.com/49402667/138453719-0b4d50a9-b4a3-40c5-b017-1e0e0dd4892b.png" height="460" alt="Material Calculator example">
   </a>
 </div>
 
@@ -158,7 +162,9 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [Font]:https://ethosa.github.io/nodesnim/nodesnim/core/font.html
 [StyleSheet]:https://ethosa.github.io/nodesnim/nodesnim/core/stylesheet.html
 [TileSet]:https://ethosa.github.io/nodesnim/nodesnim/core/tileset.html
-[Scripts]:https://ethosa.github.io/nodesnim/nodesnim/core/scripts.html
+[Scripts]:https://ethosa.github.io/nodesnim/nodesnim/runtime/scripts.html
+[Scene loader]:https://ethosa.github.io/nodesnim/nodesnim/runtime/scene_loader.html
+[ChartData]:https://ethosa.github.io/nodesnim/nodesnim/core/chartdata.html
 
 [Node]:https://ethosa.github.io/nodesnim/nodesnim/nodes/node.html
 [Canvas]:https://ethosa.github.io/nodesnim/nodesnim/nodes/canvas.html
@@ -189,6 +195,7 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [SubWindow]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/subwindow.html
 [CheckBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/checkbox.html
 [ToolTip]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/tooltip.html
+[Chart]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/chart.html
 
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
 [Sprite]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html

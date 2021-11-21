@@ -8,7 +8,9 @@ import
   ../core/vector2,
   ../core/enums,
   ../core/anchor,
-  ../core/input
+  ../core/input,
+
+  ../private/templates
 {.used.}
 
 
@@ -17,38 +19,25 @@ type
   NodeEvHandler* = proc(self: NodeRef, event: InputEvent)
   NodeObj* = object of RootObj
     kind*: NodeKind
-    type_of_node*: NodeTypes     ## default, gui, 2d or 3d.
-    visibility*: Visibility      ## visible, invisible or gone.
-    is_ready*: bool              ## true, when scene is ready.
-    pausemode*: PauseMode        ## Pause mode, by default is INHERIT.
-    name*: string                ## Node name.
-    parent*: NodeRef             ## Node parent.
-    children*: seq[NodeRef]      ## Node children.
-    on_enter*: NodeHandler       ## This called when scene changed.
-    on_exit*: NodeHandler        ## This called when exit from the scene.
-    on_input*: NodeEvHandler     ## This called on user input.
-    on_ready*: NodeHandler       ## This called when the scene changed and the `enter` was called.
-    on_process*: NodeHandler     ## This called every frame.
+    type_of_node*: NodeTypes        ## default, gui, 2d or 3d.
+    visibility*: Visibility         ## visible, invisible or gone.
+    is_ready*: bool                 ## true, when scene is ready.
+    pausemode*: PauseMode           ## Pause mode, by default is INHERIT.
+    name*: string                   ## Node name.
+    parent*: NodeRef                ## Node parent.
+    children*: seq[NodeRef]         ## Node children.
+    on_enter*: NodeHandler          ## This called when scene changed.
+    on_exit*: NodeHandler           ## This called when exit from the scene.
+    on_input*: NodeEvHandler        ## This called on user input.
+    on_ready*: NodeHandler          ## This called when the scene changed and the `enter` was called.
+    on_process*: NodeHandler        ## This called every frame.
+    on_theme_changed*: NodeHandler  ## This called when current theme changed.
   NodeRef* = ref NodeObj
 
 
 let
   handler_default* = proc(self: NodeRef) = discard
   event_handler_default* = proc(self: NodeRef, event: InputEvent) = discard
-
-
-template nodepattern*(nodetype: untyped): untyped =
-  ## This used in childs of the NodeObj.
-  result = `nodetype`(
-    name: name, children: @[],
-    on_ready: handler_default,
-    on_process: handler_default,
-    on_input: event_handler_default,
-    on_enter: handler_default,
-    on_exit: handler_default,
-    is_ready: false, pausemode: INHERIT, visibility: VISIBLE
-  )
-  result.type_of_node = NODE_TYPE_DEFAULT
 
 proc Node*(name: string = "Node"): NodeRef =
   ## Creates a new Node.
@@ -190,6 +179,9 @@ method getRootNode*(self: NodeRef): NodeRef {.base.} =
   while result.parent != nil:
     result = result.parent
 
+method insertChild*(self: NodeRef, index: int, node: NodeRef) {.base.} =
+  self.children.insert(node, index)
+
 method isParentOf*(self, other: NodeRef): bool {.base, inline.} =
   other in self.children
 
@@ -247,6 +239,9 @@ method removeChild*(self: NodeRef, other: NodeRef) {.base.} =
   if index != -1:
     self.removeChild(index)
 
+method removeChildren*(self: NodeRef) {.base.} =
+  self.children = @[]
+
 method show*(self: NodeRef) {.base.} =
   self.visibility = VISIBLE
 
@@ -254,10 +249,14 @@ method delete*(self: NodeRef) {.base.} =
   ## Deletes current node.
   if self.parent != nil:
     self.parent.removeChild(self)
+  self.removeChildren()
 
 
 method `[]`*(self: NodeRef, index: int): NodeRef {.base, inline.} =
   self.getChild(index)
+
+method `[]`*(self: NodeRef, index: string): NodeRef {.base, inline.} =
+  self.getNode(index)
 
 method `~`*(self: NodeRef, path: string): NodeRef {.base, inline.} =
   self.getNode(path)
@@ -335,7 +334,7 @@ macro `@`*(node: NodeRef, event_name, code: untyped): untyped =
     ename = $event_name[0]
   # Do style insensitive comparision
   case nimIdentNormalize(ename)
-  of "onprocess", "onready", "onenter", "onexit":
+  of "onprocess", "onready", "onenter", "onexit", "onthemechanged":
     var name = event_name[0]
     event_name.expectParams(@["self"])
     result = quote do:

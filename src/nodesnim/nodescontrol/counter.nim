@@ -11,6 +11,8 @@ import
   ../core/enums,
   ../core/color,
   ../core/font,
+  ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -43,10 +45,11 @@ proc Counter*(name: string = "Counter"): CounterRef =
   result.max_value = 10
   result.as_int = true
   result.label = Label()
+  result.label.setText($result.value)
   result.label.mousemode = MOUSEMODE_IGNORE
   result.label.parent = result
   result.label.setTextAlign(0.1, 0.5, 0.1, 0.5)
-  result.background.setColor(Color(0x212121ff))
+  result.background.setColor(current_theme~background_deep)
   result.kind = COUNTER_NODE
 
 
@@ -68,15 +71,13 @@ method draw*(self: CounterRef, w, h: GLfloat) =
 
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
-  if self.as_int:
-    self.label.setText($self.value.int)
-  else:
-    self.label.setText($self.value)
+  if theme_changed:
+    self.label.text.rendered = false
   self.label.text.renderTo(
     Vector2(x + self.label.padding.x1, y - self.label.padding.y1),
     self.rect_size, self.label.text_align)
 
-  glColor4f(1f, 1f, 1f, 1f)
+  glColor(current_theme~accent)
 
   glBegin(GL_TRIANGLES)
   # First button
@@ -119,13 +120,23 @@ method handle*(self: CounterRef, event: InputEvent, mouse_on: var NodeRef) =
 
   if first_button and self.pressed:
     self.changeValue(self.value+1)
+    if self.as_int:
+      self.label.setText($self.value.int)
+    else:
+      self.label.setText($self.value)
   elif second_button and self.pressed:
     self.changeValue(self.value-1)
+    if self.as_int:
+      self.label.setText($self.value.int)
+    else:
+      self.label.setText($self.value)
   elif self.pressed:
     if self.as_int:
-      self.changeValue(self.value - event.xrel)
+      self.changeValue(self.value + event.xrel)
+      self.label.setText($self.value.int)
     else:
-      self.changeValue(self.value - event.xrel*0.01)
+      self.changeValue(self.value + event.xrel*0.01)
+      self.label.setText($self.value)
 
 method setMaxValue*(self: CounterRef, value: float) {.base.} =
   ## Changes max value, if it more then current `value`.

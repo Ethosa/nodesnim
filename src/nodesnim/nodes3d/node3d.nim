@@ -5,6 +5,7 @@ import
   ../core/enums,
   ../core/anchor,
   ../core/input,
+  ../private/templates,
 
   ../nodes/node
 
@@ -14,16 +15,6 @@ type
     rotation*, translation*, scale*: Vector3Obj
     global_rotation*, global_translation*, global_scale*: Vector3Obj
   Node3DRef* = ref Node3DObj
-
-
-template node3dpattern* =
-  result.rotation = Vector3()
-  result.translation = Vector3()
-  result.scale = Vector3(1, 1, 1)
-  result.global_rotation = Vector3()
-  result.global_translation = Vector3()
-  result.global_scale = Vector3(1, 1, 1)
-  result.type_of_node = NODE_TYPE_3D
 
 
 proc Node3D*(name: string = "Node3D"): Node3DRef =

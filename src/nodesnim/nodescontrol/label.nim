@@ -14,6 +14,8 @@ import
   ../core/stylesheet,
   ../core/font,
   ../core/nodes_os,
+  ../core/themes,
+  ../private/templates,
 
   ../graphics/drawable,
 
@@ -58,6 +60,8 @@ method draw*(self: LabelRef, w, h: GLfloat) =
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
 
+  if theme_changed:
+    self.text.rendered = false
   self.text.renderTo(Vector2(x + self.padding.x1, y - self.padding.y1), self.rect_size, self.text_align)
 
 method duplicate*(self: LabelRef): LabelRef {.base.} =

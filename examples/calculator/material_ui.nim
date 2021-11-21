@@ -62,7 +62,7 @@ proc calculate(tree: TokenTree): float =
     result = parseFloat(t[0].token_value)
 
 Window("material ui calculator", ((64+32)*4)+16, 480)
-env.setBackgroundColor(Color("#FAFAFA"))
+env.background_color = Color("#FAFAFA")
 
 
 var
@@ -73,13 +73,15 @@ var
 
 build:
   - Button number_button:
-    call setStyle(style({color: "#EEEEEE"}))
-    call resize(64+32, 64)
-    call setTextFont(loadFont(standard_font_path, 24))
+    call:
+      setStyle(style({color: "#EEEEEE"}))
+      resize(64+32, 64)
+      setTextFont(loadFont(standard_font_path, 24))
   - Button operator_button:
-    call setStyle(style({color: "#F5F5F5"}))
-    call resize(64+32, 51.2f)
-    call setTextFont(loadFont(standard_font_path, 22))
+    call:
+      setStyle(style({color: "#F5F5F5"}))
+      resize(64+32, 51.2f)
+      setTextFont(loadFont(standard_font_path, 22))
 
 number_button.normal_background.setStyle(style({background-color: "#424242"}))
 number_button.hover_background.setStyle(style({background-color: "#616161"}))
@@ -101,28 +103,31 @@ build:
   - Scene main:
     - HBox hbox:
       separator: 0
-      call setPadding(8, 8, 8, 8)
-      call move(0, 200)
+      call:
+        setPadding(8, 8, 8, 8)
+        move(0, 200)
       - GridBox numbers:
         separator: 0
         call setRow(3)
       - Vbox operators:
         separator: 0
     - Control result_back:
-      call resize(((64+32)*4), 200)
-      call move(8, 8)
-      call setStyle(style({
-        background-color: "#4DD0E1",
-        shadow: true,
-        shadow-offset: "0 8"
-      }))
+      call:
+        resize(((64+32)*4), 200)
+        move(8, 8)
+        setStyle(style({
+          background-color: "#4DD0E1",
+          shadow: true,
+          shadow-offset: "0 8"
+        }))
       - Label text:
-        call setTextFont(loadFont(standard_font_path, 32))
-        call setTextColor(Color("#fff"))
-        call setTextAlign(1, 1, 1, 1)
-        call setAnchor(1, 1, 1, 1)
-        call setSizeAnchor(1, 0.5)
-        call setPadding(16, 16, 16, 16)
+        call:
+          setTextFont(loadFont(standard_font_path, 32))
+          setTextColor(Color("#fff"))
+          setTextAlign(1, 1, 1, 1)
+          setAnchor(1, 1, 1, 1)
+          setSizeAnchor(1, 0.5)
+          setPadding(16, 16, 16, 16)
 
 
 for i in 0..11:

@@ -10,6 +10,7 @@ import
   ../core/image,
   ../core/enums,
   ../core/color,
+  ../private/templates,
 
   ../nodes/node,
   ../graphics/drawable,
@@ -40,7 +41,7 @@ proc TextureRect*(name: string = "TextureRect"): TextureRectRef =
   result.texture = 0
   result.texture_mode = TEXTURE_FILL_XY
   result.texture_size = Vector2()
-  result.texture_anchor = Anchor(0, 0, 0, 0)
+  result.texture_anchor = START_ANCHOR
   result.texture_filter = Color(1f, 1f, 1f)
   result.kind = TEXTURE_RECT_NODE
 
@@ -130,6 +131,8 @@ method loadTexture*(self: TextureRectRef, file: string) {.base.} =
   var
     x: float = 0f
     y: float = 0f
+  if self.texture > 0'u32:
+    glDeleteTextures(1, addr self.texture)
   self.texture = load(file, x, y)
   self.texture_size = Vector2(x, y)
 
@@ -138,6 +141,8 @@ method setTexture*(self: TextureRectRef, gltexture: GlTextureObj) {.base.} =
   ##
   ## Arguments:
   ## - `gltexture` is a texture, loaded via load(file, mode=GL_RGB).
+  if self.texture > 0'u32:
+    glDeleteTextures(1, addr self.texture)
   self.texture = gltexture.texture
   self.texture_size = gltexture.size
 

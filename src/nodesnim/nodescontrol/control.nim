@@ -10,6 +10,7 @@ import
   ../core/enums,
   ../core/color,
   ../core/stylesheet,
+  ../private/templates,
 
   ../graphics/drawable,
 
@@ -40,32 +41,9 @@ type
     on_unfocus*: ControlHandler              ## This called when the Control node loses focus.
   ControlRef* = ref ControlObj
 
-let control_handler = proc(self: ControlRef) = discard
-let control_xy_handler = proc(self: ControlRef, x, y: float) = discard
-
-template controlpattern*: untyped =
-  result.hovered = false
-  result.focused = false
-  result.pressed = false
-
-  result.mousemode = MOUSEMODE_SEE
-  result.rect_size = Vector2()
-  result.rect_min_size = Vector2()
-  result.position = Vector2()
-  result.global_position = Vector2()
-  result.size_anchor = Vector2()
-  result.anchor = Anchor(0, 0, 0, 0)
-  result.padding = Anchor(0, 0, 0, 0)
-  result.background = Drawable()
-
-  result.on_mouse_enter = control_xy_handler
-  result.on_mouse_exit = control_xy_handler
-  result.on_click = control_xy_handler
-  result.on_press = control_xy_handler
-  result.on_release = control_xy_handler
-  result.on_focus = control_handler
-  result.on_unfocus = control_handler
-  result.type_of_node = NODE_TYPE_CONTROL
+let
+  control_handler* = proc(self: ControlRef) = discard
+  control_xy_handler* = proc(self: ControlRef, x, y: float) = discard
 
 proc Control*(name: string = "Control"): ControlRef =
   ## Creates a new Control.

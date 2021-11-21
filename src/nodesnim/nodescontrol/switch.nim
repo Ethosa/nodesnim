@@ -9,8 +9,11 @@ import
   ../core/input,
   ../core/color,
   ../core/enums,
+  ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
+  ../graphics/drawable,
   control
 
 
@@ -36,10 +39,10 @@ proc Switch*(name: string = "Switch"): SwitchRef =
     var colorrect1 = Switch("Switch")
   nodepattern(SwitchRef)
   controlpattern()
-  result.color_disable = Color(0.4, 0.4, 0.4)
-  result.color_enable = Color(0.4, 0.8, 0.4)
-  result.back_disable = Color(0.16, 0.16, 0.16)
-  result.back_enable = Color(0.16, 0.36, 0.16)
+  result.color_disable = current_theme~accent_dark
+  result.color_enable = current_theme~accent
+  result.back_disable = current_theme~background_deep
+  result.back_enable = current_theme~accent_dark
   result.value = false
   result.rect_size.x = 50
   result.rect_size.y = 20

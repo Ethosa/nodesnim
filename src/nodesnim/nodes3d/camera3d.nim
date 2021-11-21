@@ -5,6 +5,7 @@ import
   ../core/vector3,
   ../core/input,
   ../core/enums,
+  ../private/templates,
 
   ../nodes/node,
   node3d,

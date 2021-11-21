@@ -6,6 +6,8 @@ import
   ../core/enums,
   ../core/input,
   ../core/tileset,
+  ../core/anchor,
+  ../private/templates,
 
   ../nodes/node,
   node2d

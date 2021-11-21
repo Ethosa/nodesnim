@@ -8,6 +8,8 @@ import
   ../core/anchor,
   ../core/input,
   ../core/enums,
+  ../private/templates,
+  ../graphics/drawable,
 
   ../nodes/node,
   ../nodes/canvas,

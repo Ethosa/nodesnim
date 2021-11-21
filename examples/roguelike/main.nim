@@ -22,6 +22,7 @@ build:
 
     # Player
     - KinematicBody2D player:
+      z_index: 1
       call move(300, 120)
       - Sprite player_sprite:
         call setTexture(charapter)

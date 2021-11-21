@@ -9,6 +9,7 @@ import
   vector2,
   anchor,
   color,
+  themes,
   nodes_os,
   exceptions,
   unicode
@@ -23,21 +24,25 @@ type
   StyleText* = ref object
     font*: FontPtr
     rendered*: bool
+    need_free*: bool
     spacing*: float
     max_lines*: int
     texture*: GlTextureObj
     chars*: seq[StyleUnicode]
 
-let URL_COLOR = Color(0.45, 0.45, 0.9)
 
-
-proc schar*(c: string, color: ColorRef = Color(1f, 1f, 1f),
+proc schar*(c: string, color: ColorRef = nil,
             style: cint = TTF_STYLE_NORMAL, is_url: bool = false): StyleUnicode =
-  StyleUnicode(c: c, color: color, style: style, is_url: is_url, url: "")
+  StyleUnicode(
+    c: c, style: style, is_url: is_url, url: "",
+    color: if color.isNil():
+             current_theme~foreground
+           else:
+             color)
 
-proc stext*(text: string, color: ColorRef = Color(1f, 1f, 1f),
+proc stext*(text: string, color: ColorRef = nil,
             style: cint = TTF_STYLE_NORMAL): StyleText =
-  result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1)
+  result = StyleText(texture: GlTextureObj(size: Vector2()), spacing: 2, max_lines: -1, need_free: false)
   for i in text.utf8():
     result.chars.add(schar(i, color, style))
   result.font = standard_font
@@ -88,6 +93,12 @@ proc `[]`*[T, U](text: StyleText, slice: HSlice[T, U]): StyleText =
   for i in text.chars[slice.a..slice.b]:
     result &= i
 
+proc `==`*(x, y: StyleUnicode): bool =
+  x.c == y.c and x.url == y.url
+
+proc `==`*(x, y: StyleText): bool =
+  x.chars == y.chars
+
 
 # ------ Funcs ------ #
 proc applyStyle*(symbol: StyleUnicode, style: cint, enabled: bool = true) =
@@ -95,6 +106,9 @@ proc applyStyle*(symbol: StyleUnicode, style: cint, enabled: bool = true) =
     symbol.style = symbol.style or style
   elif (symbol.style and style) != 0 and not enabled:
     symbol.style = symbol.style xor style
+
+proc clear*(text: StyleText) =
+  text.chars = @[]
 
 proc toUpper*(text: StyleText): StyleText =
   result = text.deepCopy()
@@ -138,11 +152,11 @@ styleFunc(setUnderline, TTF_STYLE_UNDERLINE)
 styleFunc(setStrikethrough, TTF_STYLE_STRIKETHROUGH)
 
 proc setURL*(text: StyleText, s, e: int,
-             url: string, color: ColorRef = URL_COLOR) =
+             url: string, color: ColorRef = current_theme~url_color) =
   for i in s..e:
     text.chars[i].is_url = true
     text.chars[i].url = url
-    text.chars[i].color = URL_COLOR
+    text.chars[i].color = current_theme~url_color
 
 proc setFont*(text: StyleText, font: cstring, size: cint) =
   text.font = openFont(font, size)
@@ -300,6 +314,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
             color(uint8(c.color.r * 255), uint8(c.color.g * 255), uint8(c.color.b * 255), uint8(c.color.a * 255)))
           r = rect(x, y, w, h)
         rendered.blitSurface(nil, surface, addr r)
+        rendered.freeSurface()
         rendered = nil
         x += w
       y += h + text.spacing.cint
@@ -315,7 +330,7 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
 
     # OpenGL:
     if text.texture.texture == 0'u32:
-      glGenTextures(1, text.texture.texture.addr)
+      glGenTextures(1, addr text.texture.texture)
     glBindTexture(GL_TEXTURE_2D, text.texture.texture)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR)
@@ -384,3 +399,10 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
     glEnd()
     glDisable(GL_TEXTURE_2D)
     glBindTexture(GL_TEXTURE_2D, 0)
+    if text.need_free:
+      glDeleteTextures(1, addr text.texture.texture)
+
+
+proc freeMemory*(text: StyleText) =
+  ## Frees memory.
+  glDeleteTextures(1, addr text.texture.texture)

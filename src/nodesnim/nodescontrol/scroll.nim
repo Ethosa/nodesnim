@@ -10,6 +10,8 @@ import
   ../core/input,
   ../core/enums,
   ../core/color,
+  ../core/themes,
+  ../private/templates,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -45,8 +47,8 @@ proc Scroll*(name: string = "Scroll"): ScrollRef =
   result.viewport_y = 0
   result.thumb_width = 8
   result.thumb_height = 8
-  result.back_color = Color(0, 0, 0, 128)
-  result.thumb_color = Color(0, 0, 0, 128)
+  result.back_color = current_theme~accent_dark
+  result.thumb_color = current_theme~accent
   result.thumb_y_has_mouse = false
   result.thumb_x_has_mouse = false
   result.mousemode = MOUSEMODE_IGNORE
@@ -151,7 +153,7 @@ method handle*(self: ScrollRef, event: InputEvent, mouse_on: var NodeRef) =
   # Mouse Y
   if (mouse_in_y and mouse_pressed and event.kind == MOUSE) or self.thumb_y_has_mouse:
     self.thumb_y_has_mouse = true
-    self.scrollBy(0, -event.yrel)
+    self.scrollBy(0, event.yrel)
     mouse_on = self
   if not mouse_pressed and self.thumb_y_has_mouse:
     self.thumb_y_has_mouse = false
@@ -160,7 +162,7 @@ method handle*(self: ScrollRef, event: InputEvent, mouse_on: var NodeRef) =
   # Mouse X
   if (mouse_in_x and mouse_pressed and event.kind == MOUSE) or self.thumb_x_has_mouse:
     self.thumb_x_has_mouse = true
-    self.scrollBy(-event.xrel, 0)
+    self.scrollBy(event.xrel, 0)
     mouse_on = self
   if not mouse_pressed and self.thumb_x_has_mouse:
     self.thumb_x_has_mouse = false
