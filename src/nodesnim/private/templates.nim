@@ -11,7 +11,7 @@ template loadGLSLShader*(shader, shader_source: untyped) =
   glCompileShader(`shader`)
   glGetShaderiv(`shader`, GL_COMPILE_STATUS, addr success)
   if success == 0:
-    glGetShaderInfoLog(`shader`, 512, nil, infoLog)
+    glGetShaderInfoLog(`shader`, 512, addr success, infoLog)
     throwError(ShaderCompileError, $infoLog)
   deallocCStringArray(source)
 

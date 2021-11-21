@@ -27,6 +27,9 @@ type
     viewport_x*, viewport_y*: float
     thumb_color*: ColorRef
     back_color*: ColorRef
+    framebuffer*: Gluint
+    texture*: Gluint
+    renderbuffer*: Gluint
   ScrollRef* = ref ScrollObj
 
 
@@ -51,6 +54,7 @@ proc Scroll*(name: string = "Scroll"): ScrollRef =
   result.thumb_color = current_theme~accent
   result.thumb_y_has_mouse = false
   result.thumb_x_has_mouse = false
+  glGenFramebuffers(1, addr result.framebuffer)
   result.mousemode = MOUSEMODE_IGNORE
   result.kind = SCROLL_NODE
 
@@ -72,15 +76,38 @@ method duplicate*(self: ScrollRef): ScrollRef {.base.} =
 
 method draw*(self: ScrollRef, w, h: GLfloat) =
   ## This uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
   let
     x = -w/2 + self.global_position.x
     y = h/2 - self.global_position.y
+  var
+    texture: Gluint
+    rbo: Gluint
+
+  glBindFramebuffer(GL_FRAMEBUFFER, self.framebuffer)
+  glGenTextures(1, addr texture)
+  glBindTexture(GL_TEXTURE_2D, texture)
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB.GLint, self.viewport_w.GLint, self.viewport_h.GLint, 0, GL_RGB, GL_UNSIGNED_BYTE, nil)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR.GLint)
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR.GLint)
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0)
+
+  glGenRenderbuffers(1, addr rbo)
+  glBindRenderbuffer(GL_RENDERBUFFER, rbo)
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, self.viewport_w.GLint, self.viewport_h.GLint)
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo)
+  glBindRenderbuffer(GL_RENDERBUFFER, 0)
+  glBindTexture(GL_TEXTURE_2D, 0)
+
+  if glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE:
+    echo "Error"
 
   self.background.draw(x, y, self.rect_size.x, self.rect_size.y)
 
   # Press
   if self.pressed:
     self.on_press(self, last_event.x, last_event.y)
+  glBindFramebuffer(GL_FRAMEBUFFER, 0)
 
 
 method scrollBy*(self: ScrollRef, x, y: float) {.base.} =

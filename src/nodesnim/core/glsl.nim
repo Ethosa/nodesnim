@@ -26,7 +26,7 @@ proc GLSLShader*(vertex_source, fragment_source: string): GLSLShaderObj =
   glLinkProgram(result.id)
   glGetProgramiv(result.id, GL_COMPILE_STATUS, addr success)
   if success == 0:
-    glGetProgramInfoLog(result.id, 512, nil, infoLog)
+    glGetProgramInfoLog(result.id, 512, addr success, infoLog)
     throwError(ShaderCompileError, $infoLog)
 
   glDeleteShader(vertex)
