@@ -35,7 +35,9 @@ var
              "url_color": Color("#2a9afc")}.toTable())
   ]
 {.cast(noSideEffect).}:
-  var current_theme* = themes[0].deepCopy()
+  var
+    current_theme* = themes[0].deepCopy()
+    theme_changed* = false
 
 proc addTheme*(theme: ThemeRef) =
   themes.add(theme)
@@ -58,6 +60,7 @@ proc changeTheme*(name: string) =
   current_theme.name = theme.name
   for name, clr in theme.colors.pairs():
     theme.colors[name].copyColorTo(current_theme.colors[name])
+  theme_changed = true
 
 macro `~`*(theme: ThemeRef, field: untyped): untyped =
   ## Alternative usage of `[]` proc.

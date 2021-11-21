@@ -83,3 +83,6 @@ proc contains*(self: CircleObj, a, b: Vector2Obj): bool =
 # --- Operators --- #
 proc `$`*(self: CircleObj): string {.inline.} =
   "Circle(x:" & $self.x & ", y:" & $self.y & ", r:" & $self.r & ")"
+
+proc `==`*(x, y: CircleObj): bool {.inline.} =
+  x.x == y.x and x.y == y.y and x.r == y.r

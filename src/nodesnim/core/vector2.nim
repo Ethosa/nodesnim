@@ -7,6 +7,8 @@ type
   Vector2Obj* = object
     x*, y*: float
 
+let
+  NULL_VECTOR2* = Vector2Obj(x: 0, y: 0)
 
 proc Vector2*(x, y: float): Vector2Obj {.inline.} =
   Vector2Obj(x: x, y: y)

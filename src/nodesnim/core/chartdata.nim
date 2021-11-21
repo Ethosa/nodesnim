@@ -58,6 +58,7 @@ proc newChartData*(x_data, y_data: seq[ChartDataValue], data_name: string = "dat
 
 
 proc cmp(x, y: ChartDataValue): int =
+  ## Compares two `ChartDataValue`.
   if x.kind == y.kind:
     case x.kind
     of INTEGER_VALUE:
@@ -68,6 +69,7 @@ proc cmp(x, y: ChartDataValue): int =
       return cmp(x.sval, y.sval)
     of CHAR_VALUE:
       return cmp(x.cval, y.cval)
+
 proc findMax*(data: seq[ChartDataValue]): ChartDataValue =
   ## Returns max value from sequence.
   (data.sorted do (x, y: ChartDataValue) -> int: cmp(x, y))[^1]
@@ -77,9 +79,11 @@ proc findMax*(chart_data: ChartData): tuple[x, y: ChartDataValue] =
   (x: findMax(chart_data.x_axis), y: findMax(chart_data.y_axis))
 
 proc len*(data: ChartData): int =
+  ## Returns length of the data.
   zip(data.x_axis, data.y_axis).len
 
 proc getNum*(val: ChartDataValue): float =
+  ## Returns numeric value of the chart data value.
   case val.kind
   of INTEGER_VALUE:
     val.ival.float

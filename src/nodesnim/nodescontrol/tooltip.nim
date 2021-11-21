@@ -46,7 +46,8 @@ proc ToolTip*(name: string = "ToolTip",
 
 method postdraw*(self: ToolTipRef, w, h: GLfloat) =
   {.warning[LockLevel]: off.}
-  self.text.rendered = false
+  if theme_changed:
+    self.text.rendered = false
   procCall self.LabelRef.draw(w, h)
 
 method showAt*(self: ToolTipRef, x, y: float) {.base.} =

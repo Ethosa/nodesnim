@@ -93,6 +93,12 @@ proc `[]`*[T, U](text: StyleText, slice: HSlice[T, U]): StyleText =
   for i in text.chars[slice.a..slice.b]:
     result &= i
 
+proc `==`*(x, y: StyleUnicode): bool =
+  x.c == y.c and x.url == y.url
+
+proc `==`*(x, y: StyleText): bool =
+  x.chars == y.chars
+
 
 # ------ Funcs ------ #
 proc applyStyle*(symbol: StyleUnicode, style: cint, enabled: bool = true) =
@@ -309,6 +315,7 @@ proc renderSurface*(text: StyleText, align: AnchorObj): SurfacePtr =
           r = rect(x, y, w, h)
         rendered.blitSurface(nil, surface, addr r)
         rendered.freeSurface()
+        rendered = nil
         x += w
       y += h + text.spacing.cint
     return surface
@@ -336,7 +343,6 @@ proc render*(text: StyleText, size: Vector2Obj, align: AnchorObj) =
     # free memory
     surface.freeSurface()
     surface = nil
-    echo text.texture.texture, ", ", text
   text.rendered = true
 
 proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
@@ -398,4 +404,5 @@ proc renderTo*(text: StyleText, pos, size: Vector2Obj, align: AnchorObj) =
 
 
 proc freeMemory*(text: StyleText) =
+  ## Frees memory.
   glDeleteTextures(1, addr text.texture.texture)

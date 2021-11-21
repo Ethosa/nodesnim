@@ -18,8 +18,7 @@ import
   ../nodes/canvas,
   ../graphics/drawable,
   control,
-  popup,
-  label
+  popup
 
 
 type
@@ -29,7 +28,7 @@ type
     icon*: GlTextureObj
     title_bar*: DrawableRef
     title_taked_pos*: Vector2Obj
-    title*: LabelRef
+    title*: StyleText
   SubWindowRef* = ref SubWindowObj
 
 
@@ -50,9 +49,7 @@ proc SubWindow*(name: string = "SubWindow"): SubWindowRef =
   result.rect_size.x = 320
   result.rect_size.y = 220
   result.visibility = GONE
-  result.title = Label("Title")
-  result.title.text = stext"Title"
-  result.title.parent = result
+  result.title = stext"Title"
   result.left_taked = false
   result.right_taked = false
   result.top_taked = false
@@ -96,12 +93,10 @@ method draw*(self: SubWindowRef, w, h: GLfloat) =
 
   self.title_bar.draw(x, y, self.rect_size.x-1, 32)
 
-  let size = self.title.text.getTextSize()
-  self.title.position.x = self.rect_size.x / 2 - size.x / 2
-  self.title.position.y = 1 + 15 - size.y / 2
-  self.title.calcGlobalPosition()
-  self.title.text.rendered = false
-  self.title.draw(w, h)
+  let size = self.title.getTextSize()
+  self.title.rendered = false
+  self.title.renderTo(Vector2(x + self.rect_size.x / 2 - size.x / 2, y - 16 + size.y/2),
+                      size, CENTER_ANCHOR)
 
   if self.icon.texture > 0'u32:
     glColor4f(1, 1, 1, 1)
@@ -134,9 +129,9 @@ method handle*(self: SubWindowRef, event: InputEvent, mouse_on: var NodeRef) =
   procCall self.ControlRef.handle(event, mouse_on)
 
   let
-    left = event.x >= self.global_position.x-1 and event.x <= self.global_position.x+2
+    left = event.x >= self.global_position.x-2 and event.x <= self.global_position.x+1
     right = event.x <= self.global_position.x+self.rect_size.x+1 and event.x >= self.global_position.x+self.rect_size.x-1
-    top = event.y >= self.global_position.y-1 and event.y <= self.global_position.y+2
+    top = event.y >= self.global_position.y-2 and event.y <= self.global_position.y+1
     bottom = event.y <= self.global_position.y+self.rect_size.y+1 and event.y >= self.global_position.y+self.rect_size.y-1
     title = Rect2(self.global_position+2, Vector2(self.rect_size.x-4, 32)).contains(event.x, event.y)
 
@@ -247,6 +242,8 @@ method setIcon*(self: SubWindowRef, gltexture: GlTextureObj) {.base.} =
   ##
   ## Arguments:
   ## - `gltexture` is a texture, loaded via load(file, mode=GL_RGB).
+  if self.icon.texture > 0'u32:
+    self.icon.freeMemory()
   self.icon = gltexture
 
 
@@ -255,6 +252,8 @@ method setIcon*(self: SubWindowRef, file: string) {.base.} =
   ##
   ## Arguments:
   ## - `file` is an image file path.
+  if self.icon.texture > 0'u32:
+    self.icon.freeMemory()
   self.icon = load(file)
 
 
@@ -271,4 +270,4 @@ method setTitle*(self: SubWindowRef, title: string) {.base.} =
   ##
   ## Arguments:
   ## - `title` is a new title.
-  self.title.setText(title)
+  self.title = stext(title)

@@ -145,6 +145,8 @@ method removeAnimation*(self: AnimatedSpriteRef, name: string) {.base.} =
     return
   for i in 0..self.animations.high:
     if self.animations[i].name == name:
+      for j in 0..self.animations[i].frames.high:
+        glDeleteTextures(1, addr self.animations[i].frames[j].texture)
       self.animations.delete(i)
       break
 

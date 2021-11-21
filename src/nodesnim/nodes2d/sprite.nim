@@ -99,6 +99,8 @@ method loadTexture*(self: SpriteRef, file: string, mode = GL_RGB) {.base.} =
   ## Arguments:
   ## - `file` is a texture path.
   ## - `mode` is a GLenum. can be GL_RGB or GL_RGBA.
+  if self.texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.texture.texture)
   self.texture = load(file, mode)
   self.rect_size = self.texture.size
 
@@ -107,5 +109,7 @@ method setTexture*(self: SpriteRef, texture: GlTextureObj) {.base.} =
   ##
   ## Arguments:
   ## - `texture` is a GlTexture object.
+  if self.texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.texture.texture)
   self.texture = texture
   self.rect_size = self.texture.size

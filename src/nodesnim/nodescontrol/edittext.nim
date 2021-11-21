@@ -12,6 +12,7 @@ import
   ../core/input,
   ../core/rect2,
   ../core/nodes_os,
+  ../core/themes,
 
   ../nodes/node,
   ../nodes/canvas,
@@ -85,6 +86,10 @@ method draw*(self: EditTextRef, w, h: Glfloat) =
   if self.blink_time == 0:
     self.blink_time = BLINK_TIME
     self.is_blink = not self.is_blink
+
+  if theme_changed:
+    self.hint.rendered = false
+    self.text.rendered = false
 
   if self.text.chars.len == 0:
     self.hint.renderTo(Vector2(x+self.padding.x1, y-self.padding.y1), self.rect_size, self.text_align)

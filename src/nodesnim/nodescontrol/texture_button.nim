@@ -89,7 +89,6 @@ method draw*(self: TextureButtonRef, w, h: GLfloat) =
 
     glDisable(GL_TEXTURE_2D)
 
-  self.text.rendered = false
   procCall self.LabelRef.draw(w, h)
 
 method duplicate*(self: TextureButtonRef): TextureButtonRef {.base.} =
@@ -108,12 +107,18 @@ method handle*(self: TextureButtonRef, event: InputEvent, mouse_on: var NodeRef)
 
 method setNormalTexture*(self: TextureButtonRef, texture: GlTextureObj) {.base.} =
   ## Changes button texture, when it not pressed and not hovered.
+  if self.normal_background_texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.normal_background_texture.texture)
   self.normal_background_texture = texture
 
 method setHoverTexture*(self: TextureButtonRef, texture: GlTextureObj) {.base.} =
   ## Changes button texture, when it hovered.
+  if self.hover_background_texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.hover_background_texture.texture)
   self.hover_background_texture = texture
 
 method setPressTexture*(self: TextureButtonRef, texture: GlTextureObj) {.base.} =
   ## Changes button texture, when it pressed.
+  if self.press_background_texture.texture > 0'u32:
+    glDeleteTextures(1, addr self.press_background_texture.texture)
   self.press_background_texture = texture
