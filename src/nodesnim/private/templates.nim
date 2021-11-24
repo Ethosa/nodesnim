@@ -424,3 +424,14 @@ template canvasDrawGL*(canvas: untyped): untyped =
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE.GLint)
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA.GLint, `canvas`.surface.w,  `canvas`.surface.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, `canvas`.surface.pixels)
   glBindTexture(GL_TEXTURE_2D, 0)
+
+
+
+# ----- Window ----- #
+template checkWindowCallback*(event, condition, conditionelif: untyped): untyped =
+  if last_event is `event` and `condition`:
+    press_state = 2
+  elif `conditionelif`:
+    press_state = 1
+  else:
+    press_state = 0

@@ -1,8 +1,6 @@
 # author: Ethosa
 ## Node is the root type of all other nodes.
 import
-  strutils,
-
   ../thirdparty/gl,
 
   ../core/vector2,
@@ -10,7 +8,9 @@ import
   ../core/anchor,
   ../core/input,
 
-  ../private/templates
+  ../private/templates,
+
+  strutils
 {.used.}
 
 
@@ -124,12 +124,13 @@ method getChildIter*(self: NodeRef): seq[NodeRef] {.base.} =
   ## Returns all children iter.
   result = @[]
   for child in self.children:
+    if child.visibility != VISIBLE:
+      continue
     if child notin result:
       result.add(child)
-    if child.children.len() > 0:
-      for node in child.getChildIter():
-        if node notin result:
-          result.add(node)
+    for node in child.getChildIter():
+      if node notin result:
+        result.add(node)
 
 method getNode*(self: NodeRef, path: string): NodeRef {.base.} =
   ## Returns child by `path`
@@ -138,7 +139,7 @@ method getNode*(self: NodeRef, path: string): NodeRef {.base.} =
     current: NodeRef = self
 
   for name in p:
-    if current == nil:
+    if current.isNil():
       break
 
     case name
@@ -169,21 +170,30 @@ method getPauseMode*(self: NodeRef): PauseMode {.base.} =
   ## Calculates pause mode
   result = self.pausemode
   var current = self
-  while result == INHERIT and current.parent != nil:
+  while result == INHERIT and not current.parent.isNil():
     current = current.parent
     result = current.pausemode
 
 method getRootNode*(self: NodeRef): NodeRef {.base.} =
   ## Gets root node.
   result = self
-  while result.parent != nil:
+  while not result.parent.isNil():
     result = result.parent
 
-method insertChild*(self: NodeRef, index: int, node: NodeRef) {.base.} =
-  self.children.insert(node, index)
+method isChildOf*(self, other: NodeRef): bool {.base, inline.} =
+  ## See also `<#isParentOf.e,NodeRef,NodeRef>`_
+  self in other.children
+
+method isEmpty*(self: NodeRef): bool {.base, inline.} =
+  self.children.len() == 0
 
 method isParentOf*(self, other: NodeRef): bool {.base, inline.} =
+  ## See also `<#isChildOf.e,NodeRef,NodeRef>`_
   other in self.children
+
+method insertChild*(self: NodeRef, index: int, node: NodeRef) {.base.} =
+  ## Inserts child in node at `index` position.
+  self.children.insert(node, index)
 
 method handle*(self: NodeRef, event: InputEvent, mouse_on: var NodeRef) {.base.} =
   ## Handles user input.
@@ -247,7 +257,7 @@ method show*(self: NodeRef) {.base.} =
 
 method delete*(self: NodeRef) {.base.} =
   ## Deletes current node.
-  if self.parent != nil:
+  if not self.parent.isNil():
     self.parent.removeChild(self)
   self.removeChildren()
 

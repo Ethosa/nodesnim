@@ -70,6 +70,7 @@ method addState*(self: AnimationPlayerRef, obj: ptr float, states: seq[tuple[tic
 
 method draw*(self: AnimationPlayerRef, w: GLfloat, h: GLfloat) =
   ## This uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
   if self.is_played:
     if self.tick > self.duration:
       self.tick = 0

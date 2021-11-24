@@ -2,22 +2,14 @@
 import thirdparty/sdl2 except Color, glBindTexture
 import
   thirdparty/gl,
-  thirdparty/opengl/glu,
   thirdparty/sdl2/image,
-
-  core/color,
-  core/input,
   core/exceptions,
   core/vector2,
   core/enums,
-
   nodes/node,
   nodes/scene,
-
-  environment,
-  strutils,
-  unicode,
-  os
+  private/window_events,
+  environment
 when defined(debug):
   import logging
 
@@ -42,123 +34,6 @@ var
   paused*: bool = false
   running*: bool = true
   event = sdl2.defaultEvent
-
-
-# --- Callbacks --- #
-var
-  mouse_on: NodeRef = nil
-  window_created: bool = false
-
-proc display {.cdecl.} =
-  ## Displays window.
-  glClearColor(env.background_color.r, env.background_color.g, env.background_color.b, env.background_color.a)
-  glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
-  glEnable(GL_BLEND)
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
-
-  # Draw current scene.
-  current_scene.drawScene(width.GLfloat, height.GLfloat, paused)
-  press_state = -1
-  mouse_on = nil
-
-  # Update window.
-  glFlush()
-  windowptr.glSwapWindow()
-  os.sleep(env.delay)
-
-
-proc reshape(w, h: cint) {.cdecl.} =
-  ## This called when window resized.
-  if w > 0 and h > 0:
-    glViewport(0, 0, w, h)
-    glLoadIdentity()
-    glMatrixMode(GL_PROJECTION)
-    glMatrixMode(GL_MODELVIEW)
-    glOrtho(-w.GLdouble/2, w.GLdouble/2, -h.GLdouble/2, h.GLdouble/2, -w.GLdouble, w.GLdouble)
-    gluPerspective(45.0, w/h, 1.0, 200.0)
-    width = w
-    height = h
-
-    if current_scene != nil:
-      current_scene.reAnchorScene(w.GLfloat, h.GLfloat, paused)
-
-template check(event, condition, conditionelif: untyped): untyped =
-  if last_event is `event` and `condition`:
-    press_state = 2
-  elif `conditionelif`:
-    press_state = 1
-  else:
-    press_state = 0
-
-proc mouse(button, x, y: cint, pressed: bool) {.cdecl.} =
-  ## Handle mouse input.
-  check(InputEventMouseButton, last_event.pressed and pressed, pressed)
-  last_event.button_index = button
-  last_event.x = x.float
-  last_event.y = y.float
-  last_event.kind = MOUSE
-  mouse_pressed = pressed
-  last_event.pressed = pressed
-
-  current_scene.handleScene(last_event, mouse_on, paused)
-
-proc wheel(x, y: cint) {.cdecl.} =
-  ## Handle mouse wheel input.
-  check(InputEventMouseWheel, false, false)
-  last_event.kind = WHEEL
-  last_event.xrel = x.float
-  last_event.yrel = y.float
-
-  current_scene.handleScene(last_event, mouse_on, paused)
-
-proc keyboardpress(c: cint) {.cdecl.} =
-  ## Called when press any key on keyboard.
-  if c < 0:
-    return
-  check(InputEventKeyboard, last_event.pressed, true)
-  last_event.key_int = c
-  if c notin pressed_keys_cint:
-    pressed_keys_cint.add(c)
-  last_event.kind = KEYBOARD
-  last_key_state = key_state
-  key_state = true
-
-  current_scene.handleScene(last_event, mouse_on, paused)
-
-proc textinput(c: TextInputEventPtr) {.cdecl.} =
-  ## Called when start text input
-  last_event.key = toRunes(join(c.text[0..<32]))[0].toUtf8()
-  last_event.kind = TEXT
-  last_key_state = key_state
-  key_state = true
-
-  current_scene.handleScene(last_event, mouse_on, paused)
-
-proc keyboardup(c: cint) {.cdecl.} =
-  ## Called when any key no more pressed.
-  if c < 0:
-    return
-  check(InputEventKeyboard, false, false)
-  last_event.key_int = c
-  last_event.kind = KEYBOARD
-  last_key_state = key_state
-  key_state = false
-  for i in pressed_keys_cint.low..pressed_keys_cint.high:
-    if pressed_keys_cint[i] == c:
-      pressed_keys_cint.delete(i)
-      break
-
-  current_scene.handleScene(last_event, mouse_on, paused)
-
-proc motion(x, y, xrel, yrel: cint) {.cdecl.} =
-  ## Called on any mouse motion.
-  last_event.kind = MOTION
-  last_event.xrel = xrel.float
-  last_event.yrel = yrel.float
-  last_event.x = x.float
-  last_event.y = y.float
-
-  current_scene.handleScene(last_event, mouse_on, paused)
 
 
 
@@ -236,14 +111,14 @@ proc setMainScene*(name: string) =
 
 proc setTitle*(title: cstring) =
   ## Changes window title.
-  if window_created:
+  if not windowptr.isNil():
     windowptr.setTitle(title)
   else:
     throwError(WindowError, "Window not launched!")
 
 proc setIcon*(icon_path: cstring) =
   ## Changes window title.
-  if window_created:
+  if not windowptr.isNil():
     windowptr.setIcon(image.load(icon_path))
   else:
     throwError(WindowError, "Window not launched!")
@@ -273,8 +148,9 @@ proc Window*(title: cstring, w: cint = 640, h: cint = 360) {.cdecl.} =
   glEnable(GL_COLOR_MATERIAL)
   glMaterialf(GL_FRONT, GL_SHININESS, 15)
 
-  reshape(w, h)
-  window_created = true
+  width = w
+  height = h
+  reshape(current_scene, width, height, paused)
 
 
 proc onReshape(userdata: pointer; event: ptr Event): Bool32 {.cdecl.} =
@@ -283,8 +159,8 @@ proc onReshape(userdata: pointer; event: ptr Event): Bool32 {.cdecl.} =
     of WindowEvent_Resized, WindowEvent_SizeChanged, WindowEvent_Minimized, WindowEvent_Maximized, WindowEvent_Restored:
       windowptr.getSize(width, height)
       if env.screen_mode == SCREEN_MODE_NONE:
-        reshape(width, height)
-        display()
+        reshape(current_scene, width, height, paused)
+        display(env, current_scene, width, height, paused, windowptr)
     else:
       discard
   False32
@@ -305,28 +181,28 @@ proc windowLaunch* =
         running = false
       of KeyDown:
         let e = evKeyboard(event)
-        keyboardpress(e.keysym.sym)
+        keyboardpress(current_scene, e.keysym.sym, paused)
       of KeyUp:
         let e = evKeyboard(event)
-        keyboardup(e.keysym.sym)
+        keyboardup(current_scene, e.keysym.sym, paused)
       of TextInput:
         let e = text(event)
-        textinput(e)
+        textinput(current_scene, e, paused)
       of MouseMotion:
         let e = evMouseMotion(event)
-        motion(e.x, e.y, e.xrel, e.yrel)
+        motion(current_scene, e.x, e.y, e.xrel, e.yrel, paused)
       of MouseButtonDown:
         let e = evMouseButton(event)
-        mouse(e.button.cint, e.x, e.y, true)
+        mouse(current_scene, e.button.cint, e.x, e.y, true, paused)
       of MouseButtonUp:
         let e = evMouseButton(event)
-        mouse(e.button.cint, e.x, e.y, false)
+        mouse(current_scene, e.button.cint, e.x, e.y, false, paused)
       of MouseWheel:
         let e = evMouseWheel(event)
-        wheel(e.x, e.y)
+        wheel(current_scene, e.x, e.y, paused)
       else:
         discard
-    display()
+    display(env, current_scene, width, height, paused, windowptr)
 
   current_scene.exit()
   sdl2.glDeleteContext(glcontext)

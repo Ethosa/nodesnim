@@ -223,8 +223,8 @@ suite "Work with Control nodes.":
         - GridBox grid:
           call:
             setPadding(2, 4, 8, 16)
-            setRow(3)
             setBackgroundColor(Color(1f, 1f, 1f))
+            setRow(3)
           - ColorRect first(color: Color(0xff6699ff'u32), rect_size: Vector2(100, 200))
           - ColorRect second(color: Color(0xff64ffff'u32))
           - ColorRect third(color: Color(0xffaa00ff'u32))
