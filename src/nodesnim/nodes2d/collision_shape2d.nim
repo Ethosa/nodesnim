@@ -18,7 +18,7 @@ import
 when defined(debug):
   import
     math,
-    ../thirdparty/opengl
+    ../thirdparty/gl
   const PI2 = PI*2
 
 
