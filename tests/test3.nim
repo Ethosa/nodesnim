@@ -1,4 +1,5 @@
 # --- Test 3. Work with Control nodes. --- #
+# To change scene press SPACE.
 import
   nodesnim,
   unittest
@@ -395,6 +396,15 @@ suite "Work with Control nodes.":
           resize(196, 196)
 
     getSceneByName("main").addChildren(spiderweb_chart)
+
+  test "Treeview test":
+    build:
+      - TreeView tree:
+        call:
+          bindTree(getSceneByName("main").toTree())
+    echo tree.tree
+
+    getSceneByName("second_scene").addChild(tree)
 
 
   test "Launch window":

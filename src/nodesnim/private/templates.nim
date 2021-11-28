@@ -1,6 +1,5 @@
 # author: Ethosa
 
-
 template voidTemplate* = discard
 
 

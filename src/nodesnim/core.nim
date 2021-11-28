@@ -20,10 +20,11 @@ import
   core/tileset,
   core/themes,
   core/chartdata,
-  core/glsl
+  core/glsl,
+  core/tree
 
 export
   vector2, rect2, circle, polygon2, enums, anchor, color,
   exceptions, input, image, audio_stream,
   animation, nodes_os, vector3, scene_builder, stylesheet,
-  tools, font, tileset, themes, chartdata, glsl
+  tools, font, tileset, themes, chartdata, glsl, tree

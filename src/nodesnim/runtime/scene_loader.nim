@@ -75,9 +75,10 @@ var
 mkparse(Node, Scene, AudioStreamPlayer, AnimationPlayer)
 mkparse(Control, Box, VBox, HBox, ColorRect, Label, SubWindow, ToolTip,
         Button, EditText, TextureButton, TextureRect, GridBox, CheckBox, Chart,
-        Slider, Switch, Popup, Scroll, Counter, ProgressBar, TextureProgressBar)
+        Slider, Switch, Popup, Scroll, Counter, ProgressBar, TextureProgressBar,
+        TreeView)
 mkparse(Node2D, Sprite, AnimatedSprite, KinematicBody2D, CollisionShape2D, TileMap, Camera2D, YSort)
-mkparse(Node3D, Sprite3D, GeometryInstance)
+mkparse(Node3D, Sprite3D, GeometryInstancem, Camera3D)
 
 mkattrs attrs(node, value):
   "color":

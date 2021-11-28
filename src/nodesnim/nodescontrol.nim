@@ -20,10 +20,12 @@ import
   nodescontrol/subwindow,
   nodescontrol/checkbox,
   nodescontrol/tooltip,
-  nodescontrol/chart
+  nodescontrol/chart,
+  nodescontrol/treeview
 
 export
   control, color_rect, texture_rect, label, button,
   box, hbox, vbox, grid_box, edittext, scroll, progress_bar,
   slider, popup, texture_button, texture_progress_bar,
-  counter, switch, subwindow, checkbox, tooltip, chart
+  counter, switch, subwindow, checkbox, tooltip, chart,
+  treeview

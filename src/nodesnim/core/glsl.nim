@@ -43,5 +43,16 @@ proc GLSLShaderFile*(vertex_shader, fragment_shader: string): GLSLShaderObj =
 proc use*(shader: GLSLShaderObj) =
   glUseProgram(shader.id)
 
+proc unuse*(shader: GLSLShaderObj) =
+  glUseProgram(0)
+
+proc uniform*[T](shader: GLSLShaderObj, uniform_name: cstring, value: T) =
+  if T is SomeInteger | Glint | bool:
+    glUniform1i(glGetUniformLocation(shader.id, uniform_name), value.int)
+  elif T is SomeFloat | Glfloat:
+    glUniform1f(glGetUniformLocation(shader.id, uniform_name), value.Glfloat)
+  else:
+    throwError(ValueError, "..")
+
 proc freeMemory*(shader: GLSLShaderObj) =
   glDeleteProgram(shader.id)
