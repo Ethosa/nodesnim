@@ -4,8 +4,6 @@ import
   os
 when defined(linux):
   import distros
-when defined(debug):
-  import logging
 {.used.}
 
 discard ttfInit()
@@ -31,12 +29,12 @@ let standard_font_path* =
   else:
     currentSourcePath().parentDir() / "unifont.ttf"
 
-when defined(debug):
-  info(standard_font_path)
 
 var standard_font*: FontPtr = nil
 
 proc setStandardFont*(path: cstring, size: cint) =
+  when defined(debug):
+    echo "standard font path is " & standard_font_path
   if not standard_font.isNil():
     standard_font.close()
   standard_font = openFont(path, size)
