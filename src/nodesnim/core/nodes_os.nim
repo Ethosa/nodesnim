@@ -16,7 +16,7 @@ let
 discard existsOrCreateDir(nodesnim_folder)
 discard existsOrCreateDir(saves_folder)
 
-let standard_font_path* =
+var standard_font_path* =
   when defined(windows):
     "C://Windows/Fonts/segoeuib.ttf"
   elif defined(android):
@@ -28,6 +28,9 @@ let standard_font_path* =
       currentSourcePath().parentDir() / "unifont.ttf"
   else:
     currentSourcePath().parentDir() / "unifont.ttf"
+
+if not fileExists(standard_font_path):
+  standard_font_path = currentSourcePath().parentDir() / "unifont.ttf"
 
 
 var standard_font*: FontPtr = nil
