@@ -90,6 +90,7 @@ This section contains links to documentation for all nodes.
 |[Scene loader][]|                     |[CheckBox][]          |                    |                    |                    |
 |                |                     |[ToolTip][]           |                    |                    |                    |
 |                |                     |[Chart][]             |                    |                    |                    |
+|                |                     |[TreeView][]          |                    |                    |                    |
 
 
 ## Debug mode
@@ -196,6 +197,7 @@ Also use [`niminst`](https://github.com/nim-lang/niminst) tool for generate an i
 [CheckBox]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/checkbox.html
 [ToolTip]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/tooltip.html
 [Chart]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/chart.html
+[TreeView]:https://ethosa.github.io/nodesnim/nodesnim/nodescontrol/treeview.html
 
 [Node2D]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/node2d.html
 [Sprite]:https://ethosa.github.io/nodesnim/nodesnim/nodes2d/sprite.html

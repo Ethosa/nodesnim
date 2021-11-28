@@ -8,7 +8,7 @@ build:
     - Label hello:
       call:
         setSizeAnchor(1, 1)
-        setTextAlign(0.5, 0.5, 0.5, 0.5)
+        setTextAlign(CENTER_ANCHOR)
         setText("Hello, world!")
         setBackgroundColor(Color(31, 45, 62))
 
