@@ -4,6 +4,8 @@ import
   os
 when defined(linux):
   import distros
+when defined(debug):
+  import logging
 {.used.}
 
 discard ttfInit()
@@ -28,6 +30,9 @@ let standard_font_path* =
       currentSourcePath().parentDir() / "unifont.ttf"
   else:
     currentSourcePath().parentDir() / "unifont.ttf"
+
+when defined(debug):
+  info(standard_font_path)
 
 var standard_font*: FontPtr = nil
 
