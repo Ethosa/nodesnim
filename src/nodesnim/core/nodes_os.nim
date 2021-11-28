@@ -2,6 +2,8 @@
 import
   ../thirdparty/sdl2/ttf,
   os
+when defined(linux):
+  import distros
 {.used.}
 
 discard ttfInit()
@@ -19,8 +21,13 @@ let standard_font_path* =
     "C://Windows/Fonts/segoeuib.ttf"
   elif defined(android):
     "/system/fonts/DroidSans.ttf"
-  else:
+  elif defined(linux):
+    if detectOS(Ubuntu):
+      "usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf"
+    else:
       currentSourcePath().parentDir() / "unifont.ttf"
+  else:
+    currentSourcePath().parentDir() / "unifont.ttf"
 
 var standard_font*: FontPtr = nil
 
