@@ -23,7 +23,7 @@ let standard_font_path* =
     "/system/fonts/DroidSans.ttf"
   elif defined(linux):
     if detectOS(Ubuntu):
-      "usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf"
+      getHomeDir() / "usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf"
     else:
       currentSourcePath().parentDir() / "unifont.ttf"
   else:
