@@ -25,7 +25,7 @@ var standard_font_path* =
     if detectOS(Ubuntu):
       "/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf"
     else:
-      currentSourcePath().parentDir() / "unifont.ttf"
+      "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
   else:
     currentSourcePath().parentDir() / "unifont.ttf"
 
