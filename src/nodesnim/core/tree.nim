@@ -4,7 +4,8 @@ import
   exceptions,
   ../thirdparty/gl,
   ../nodes/node,
-  strutils
+  strutils,
+  os
 
 type
   TreeRef* = ref object
@@ -55,6 +56,16 @@ proc toTree*(node: NodeRef, level: uint = 0): TreeRef =
   var lvl = level + 1
   for child in node.children:
     result.addTree(child.toTree(lvl))
+  if lvl > 1:
+    dec lvl
+
+proc dirToTree*(directory: string, level: uint = 0): TreeRef =
+  result = Tree(directory.lastPathPart(), level)
+  var lvl = level
+  if dirExists(directory):
+    inc lvl
+    for kind, path in walkDir(directory, true, true):
+      result.addTree((directory / path).dirToTree(lvl))
   if lvl > 1:
     dec lvl
 

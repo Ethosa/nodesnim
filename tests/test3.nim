@@ -402,9 +402,13 @@ suite "Work with Control nodes.":
       - TreeView tree:
         call:
           bindTree(getSceneByName("main").toTree())
+      - TreeView directory_tree:
+        call:
+          bindTree(dirToTree("assets"))
+          move(250, 0)
     echo tree.tree
 
-    getSceneByName("second_scene").addChild(tree)
+    getSceneByName("second_scene").addChildren(tree, directory_tree)
 
 
   test "Launch window":
