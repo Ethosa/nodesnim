@@ -40,15 +40,14 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 - Godot-like node system.
 - Runtime scene loader.
 - Powerful node build system using YML-like syntax.
-- Stylesheets (CSS-like).
+- [Stylesheets](https://github.com/Ethosa/nodesnim/wiki/Stylesheets) (CSS-like).
 - Android-like drawables.
-- Customizable GUI themes.
+- Customizable GUI [themes](https://github.com/Ethosa/nodesnim/wiki/Custom-themes).
 - Simple usage
   ```nim
   import nodesnim
 
   Window("Hello, world!")
-
 
   build:
     - Scene scene:
@@ -61,7 +60,6 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
 
   addMainScene(scene)
   windowLaunch()
-  
   ```
 
 ## Now available

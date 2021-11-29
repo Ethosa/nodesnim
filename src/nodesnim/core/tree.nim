@@ -52,6 +52,7 @@ proc getTreeIter*(tree: TreeRef): seq[TreeRef] =
       result.add(t)
 
 proc toTree*(node: NodeRef, level: uint = 0): TreeRef =
+  ## Translates the node and all its files to the tree.
   result = Tree(node.name, level)
   var lvl = level + 1
   for child in node.children:
@@ -60,6 +61,7 @@ proc toTree*(node: NodeRef, level: uint = 0): TreeRef =
     dec lvl
 
 proc dirToTree*(directory: string, level: uint = 0): TreeRef =
+  ## Translates the directory and all its files to the tree.
   result = Tree(directory.lastPathPart(), level)
   var lvl = level
   if dirExists(directory):
