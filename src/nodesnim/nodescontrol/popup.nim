@@ -1,5 +1,6 @@
 # author: Ethosa
 ## By default popup visibility is false. Popup, unlike other nodes, changes children visibility when calling show() and hide().
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../core/vector2,
   ../core/rect2,

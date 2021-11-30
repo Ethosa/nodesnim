@@ -59,7 +59,7 @@ The Nim GUI/2D framework based on OpenGL and SDL2.
           setBackgroundColor(Color(31, 45, 62))
 
   addMainScene(scene)
-  windowLaunch()
+  runApp()
   ```
 
 ## Now available

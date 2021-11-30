@@ -1,5 +1,6 @@
 # author: Ethosa
 ## The base of other Control nodes.
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../thirdparty/gl,
 

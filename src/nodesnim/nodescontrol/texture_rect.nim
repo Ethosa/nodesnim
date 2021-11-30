@@ -1,5 +1,6 @@
 # author: Ethosa
 ## It provides a primitive display image.
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../thirdparty/gl,
 

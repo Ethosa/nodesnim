@@ -22,9 +22,9 @@ const TAU = PI + PI
 
 type
   CanvasObj* = object of NodeObj
-    surface: SurfacePtr
-    renderer: RendererPtr
-    canvas_texture: Gluint
+    surface*: SurfacePtr
+    renderer*: RendererPtr
+    canvas_texture*: Gluint
 
     position*: Vector2Obj            ## Node position, by default is Vector2(0, 0).
     global_position*: Vector2Obj     ## Node global position.
@@ -71,12 +71,7 @@ method calcPositionAnchor*(self: CanvasRef) {.base.} =
   ## This used in the Window object.
   discard
 
-method draw*(canvas: CanvasRef, w, h: GLfloat) =
-  ## This uses in the `window.nim`.
-  {.warning[LockLevel]: off.}
-  let
-    x = -w/2 + canvas.global_position.x
-    y = h/2 - canvas.global_position.y
+method drawSurface*(canvas: CanvasRef, x, y: GLfloat) {.base.} =
   glColor4f(1, 1, 1, 1)
   glBindTexture(GL_TEXTURE_2D, canvas.canvas_texture)
   glEnable(GL_TEXTURE_2D)
@@ -92,6 +87,14 @@ method draw*(canvas: CanvasRef, w, h: GLfloat) =
   glEnd()
   glDisable(GL_TEXTURE_2D)
   glBindTexture(GL_TEXTURE_2D, 0)
+
+method draw*(canvas: CanvasRef, w, h: GLfloat) =
+  ## This uses in the `window.nim`.
+  {.warning[LockLevel]: off.}
+  let
+    x = -w/2 + canvas.global_position.x
+    y = h/2 - canvas.global_position.y
+  canvas.drawSurface(x, y)
 
 method duplicate*(self: CanvasRef): CanvasRef {.base.} =
   ## Duplicates Canvas object and create a new Canvas.
@@ -157,7 +160,7 @@ method resize*(self: CanvasRef, w, h: GLfloat, save_anchor: bool = false) {.base
       self.size_anchor.y = 0.0
   else:
     self.rect_size.y = self.rect_min_size.y
-  if self.kind == CANVAS_NODE:
+  if not self.surface.isNil():
     var new_surface = createRGBSurface(
       0, w.cint, h.cint, 32,
       0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)

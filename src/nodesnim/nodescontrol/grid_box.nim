@@ -1,5 +1,6 @@
 # author: Ethosa
 ## Contains children in grid.
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../thirdparty/gl,
 

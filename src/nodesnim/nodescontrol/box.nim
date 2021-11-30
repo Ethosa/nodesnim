@@ -1,5 +1,6 @@
 # author: Ethosa
 ## Moves all child nodes at the center of the box.
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../thirdparty/gl,
 

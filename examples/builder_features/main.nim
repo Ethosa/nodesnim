@@ -52,4 +52,4 @@ for child in main.getChildIter():
   echo child.name
 
 addMainScene(main)
-windowLaunch()
+runApp()

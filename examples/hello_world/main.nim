@@ -13,4 +13,4 @@ build:
         setBackgroundColor(Color(31, 45, 62))
 
 addMainScene(main_scene)
-windowLaunch()
+runApp()

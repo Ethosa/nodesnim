@@ -28,7 +28,7 @@ template calculateDrawableCorners*(shadow: bool = false) =
       vertex.add(Vector2(x + i.x, y + i.y))
 
     # right top
-    for i in bezier_iter(1f/self.border_detail[1].float, Vector2(-self.border_radius[01], 0),
+    for i in bezier_iter(1f/self.border_detail[1].float, Vector2(-self.border_radius[1], 0),
                          Vector2(0, 0), Vector2(0, -self.border_radius[1])):
       vertex.add(Vector2(xw + i.x, y + i.y))
 
@@ -234,6 +234,12 @@ template controlpattern*: untyped =
   result.anchor = Anchor(0, 0, 0, 0)
   result.padding = Anchor(0, 0, 0, 0)
   result.background = Drawable()
+
+  result.canvas_texture = 0
+  result.surface = createRGBSurface(
+      0, 1, 1, 32,
+      0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000u32)
+  result.renderer = result.surface.createSoftwareRenderer()
 
   result.on_mouse_enter = control_xy_handler
   result.on_mouse_exit = control_xy_handler

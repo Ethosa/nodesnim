@@ -1,5 +1,6 @@
 # author: Ethosa
 ## Displays colour rectangle.
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../thirdparty/gl,
 

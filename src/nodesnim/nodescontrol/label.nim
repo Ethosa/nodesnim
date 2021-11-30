@@ -1,5 +1,6 @@
 # author: Ethosa
 ## It provides primitive text rendering.
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   strutils,
   ../thirdparty/gl,

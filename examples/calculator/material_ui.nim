@@ -206,4 +206,4 @@ for i in 0..4:
 
 
 addMainScene(main)
-windowLaunch()
+runApp()

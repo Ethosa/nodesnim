@@ -165,7 +165,7 @@ proc onReshape(userdata: pointer; event: ptr Event): Bool32 {.cdecl.} =
       discard
   False32
 
-proc windowLaunch* =
+proc runApp* =
   if main_scene.isNil():
     throwError(SceneError, "Main scene is not indicated!")
   changeScene(main_scene.name)
@@ -208,3 +208,7 @@ proc windowLaunch* =
   sdl2.glDeleteContext(glcontext)
   sdl2.destroy(windowptr)
   sdl2.quit()
+
+proc windowLaunch* =
+  {.warning: "`windowLaunch` is deprecated. Use `runApp` instead.".}
+  runApp()

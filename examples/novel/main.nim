@@ -76,4 +76,4 @@ foreground_rect@onInput(self, event):
 
 addMainScene(main)
 addScene(game_scene)
-windowLaunch()
+runApp()

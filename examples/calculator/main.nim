@@ -97,4 +97,4 @@ result@on_process(self):
     result.setText(first & " " & sign & " " & second)
 
 addMainScene(main)
-windowLaunch()
+runApp()

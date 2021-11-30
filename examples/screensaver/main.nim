@@ -34,4 +34,4 @@ sprite@on_process(self):
 
 
 addMainScene(main)
-windowLaunch()
+runApp()

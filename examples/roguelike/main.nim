@@ -88,4 +88,4 @@ player@onProcess(self):
 
 
 addMainScene(main)
-windowLaunch()
+runApp()

@@ -14,4 +14,4 @@ when isMainModule:
 
   addScene(chat_scene)
   addMainScene(enter_scene)
-  windowLaunch()
+  runApp()

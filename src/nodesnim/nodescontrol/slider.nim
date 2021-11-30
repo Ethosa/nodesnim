@@ -1,5 +1,6 @@
 # author: Ethosa
 ## It provides primitive horizontal slider.
+import ../thirdparty/sdl2 except Color, glBindTexture
 import
   ../thirdparty/gl,
 

@@ -123,4 +123,4 @@ canvas@on_process(self):
 
 addScene(game_over)
 addMainScene(main)
-windowLaunch()
+runApp()
