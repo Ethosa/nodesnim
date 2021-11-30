@@ -183,4 +183,4 @@ suite "Work with 2D nodes.":
 
 
   test "Launch window":
-    windowLaunch()
+    runApp()

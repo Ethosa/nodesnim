@@ -81,4 +81,4 @@ suite "Work with default nodes.":
     getSceneByName("main").addChildren(rect, rect1, rect2, animation, animation1, animation2)
 
   test "Launch window":
-    windowLaunch()
+    runApp()

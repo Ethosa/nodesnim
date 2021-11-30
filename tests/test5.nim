@@ -88,4 +88,4 @@ suite "Work with graphics.":
 
 
   test "Launch window":
-    windowLaunch()
+    runApp()

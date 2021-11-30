@@ -89,4 +89,4 @@ suite "Work with 3D nodes.":
 
 
   test "Launch window":
-    windowLaunch()
+    runApp()

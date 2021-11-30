@@ -412,4 +412,4 @@ suite "Work with Control nodes.":
 
 
   test "Launch window":
-    windowLaunch()
+    runApp()

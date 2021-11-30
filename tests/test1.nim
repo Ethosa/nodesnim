@@ -45,4 +45,4 @@ suite "Work with Window":
           echo "backward pressed!"
 
     addMainScene(main)  # Adds scene to window and 
-    windowLaunch()
+    runApp()
